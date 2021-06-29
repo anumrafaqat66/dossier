@@ -11,17 +11,20 @@ class User_Login extends CI_Controller
 		if ($this->session->has_userdata('user_id')) {
 			$id = $this->session->userdata('user_id');
 			$acct_type = $this->session->userdata('acct_type');
-			
-			if ($acct_type == "SO_STORE") {
-				redirect('SO_STORE');
-			} elseif ($acct_type == "PO") {
-				redirect('Project_Officer');
-			} elseif ($acct_type == "SO_CW") {
-				redirect('SO_CW');
-			} elseif ($acct_type == "SO_RECORD") {
-				redirect('SO_RECORD');
-			}
-			elseif($acct_type == "admin"){
+
+			if ($acct_type == "do") {
+				redirect('D_O');
+			} elseif ($acct_type == "joto") {
+				redirect('JOTO');
+			} elseif ($acct_type == "ct") {
+				redirect('CT');
+			} elseif ($acct_type == "co") {
+				redirect('CO');
+			} elseif ($acct_type == "exo") {
+				redirect('EXO');
+			} elseif ($acct_type == "sqc") {
+				redirect('SQC');
+			} elseif ($acct_type == "admin") {
 				redirect('Admin');
 			} else {
 				$this->load->view('login');
@@ -43,7 +46,7 @@ class User_Login extends CI_Controller
 			//To create encrypted password use
 			$username = $postedData['username'];
 			$password = $postedData['password'];
-			$status = $postedData['optradio'];
+			$status = $postedData['role'];
 			$query = $this->db->where('username', $username)->where('acct_type', $status)->get('security_info')->row_array();
 			$hash = $query['password'];
 

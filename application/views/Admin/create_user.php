@@ -30,18 +30,20 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-1">
+                                    <div class="col-sm-12 mb-1">
                                         <select class="form-control rounded-pill" name="status" id="status" data-placeholder="Select Controller" style="font-size: 0.8rem; height:50px;">\
-                                            <option class="form-control form-control-user" value="">Select Account Type</option>
-                                            <option class="form-control form-control-user" value="SO_STORE">SO Store</option>
-                                            <option class="form-control form-control-user" value="PO">Project Officer</option>
-                                            <option class="form-control form-control-user" value="SO_CW">SO CW</option>
-                                            <option class="form-control form-control-user" value="SO_RECORD">SO Record</option>
-                                          
+                                            <option class="form-control form-control-user" value="">Select Role Type</option>
+                                            <option value="do">DO</option>
+                                            <option value="joto">JOTO</option>
+                                            <option value="ct">Captain Training</option>
+                                            <option value="co">Commanding Officer</option>
+                                            <option value="exo">EXO</option>
+                                            <option value="sqc">Squadron Commander</option>
+
                                         </select>
                                     </div>
 
-                                <!--     <div class="col-sm-6 mb-1">
+                                    <!--     <div class="col-sm-6 mb-1">
                                         <select class="form-control rounded-pill" name="Ship_ID" id="Ship_ID" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
                                             <option class="form-control form-control-user" value="">Select Ship</option>
                                             <?php foreach ($ships_data as $ship) { ?>
@@ -77,7 +79,7 @@
 <script>
     $('#status').on('focusout', function() {
         var status = $('#status').val();
-        
+
         if (status == "typecdr") {
             $("#Ship_ID").prop("disabled", true);
         } else {
@@ -121,33 +123,32 @@
         }
     });
 
-    
-     function seen(data) {
-         // alert('in');
-         // alert(data);
-         // var receiver_id=$(this).attr('id');
-         $.ajax({
-             url: '<?= base_url(); ?>ChatController/seen',
-             method: 'POST',
-             data: {
-                 'id': data
-             },
-             success: function(data) {
-                 $('#notification').html(data);
-             },
-             async: true
-         });
-     }
 
-     $('#notifications').focusout(function(){
- // alert('notification clicked');
-    $.ajax({
-      url: '<?= base_url(); ?>ChatController/activity_seen',
-      success: function(data) {
-        $('#notifications').html(data);
-      },
-      async: true
+    function seen(data) {
+        // alert('in');
+        // alert(data);
+        // var receiver_id=$(this).attr('id');
+        $.ajax({
+            url: '<?= base_url(); ?>ChatController/seen',
+            method: 'POST',
+            data: {
+                'id': data
+            },
+            success: function(data) {
+                $('#notification').html(data);
+            },
+            async: true
+        });
+    }
+
+    $('#notifications').focusout(function() {
+        // alert('notification clicked');
+        $.ajax({
+            url: '<?= base_url(); ?>ChatController/activity_seen',
+            success: function(data) {
+                $('#notifications').html(data);
+            },
+            async: true
+        });
     });
-});
-
 </script>

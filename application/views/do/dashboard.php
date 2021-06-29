@@ -1,4 +1,4 @@
-<?php $this->load->view('Admin/common/header'); ?>
+<?php $this->load->view('do/common/header'); ?>
 
 
 <div class="container-fluid my-4">
@@ -6,8 +6,8 @@
    
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-black-800"><strong>Welcome to Admin Dashboard</strong></h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#all_projects"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+        <h1 class="h3 mb-0 text-black-800"><strong>Welcome Division Officer</strong></h1>
+        
     </div>
     <!-- Content Row -->
     <div class="row">

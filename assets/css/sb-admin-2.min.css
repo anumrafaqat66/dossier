@@ -2511,37 +2511,37 @@ fieldset:disabled a.btn {
 
 .btn-primary {
     color: white;
-    background-color: #483d8b;;
-    border-color: #483d8b;
-}
-
-.btn-primary:hover {
-    color: white;
     background-color: rgb(0, 1, 84);
     border-color: rgb(0, 1, 84);
 }
 
+.btn-primary:hover {
+    color: white;
+    background-color: #1a088f;
+    border-color: #1a088f;
+}
+
 .btn-primary.focus,
 .btn-primary:focus {
-    color: black;
-    background-color: #faca2c;
-    border-color: #faca2c;
+    color: white;
+    background-color: rgb(0, 1, 84);
+    border-color: rgb(0, 1, 84);
     box-shadow: 0 0 0 .2rem rgba(105, 136, 228, .5)
 }
 
 .btn-primary.disabled,
 .btn-primary:disabled {
-    color: black;
-    background-color: #faca2c;
-    border-color: #faca2c
+    color: white;
+    background-color: rgb(0, 1, 84);
+    border-color: rgb(0, 1, 84);
 }
 
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
 .show>.btn-primary.dropdown-toggle {
-    color: black;
-    background-color: #faca2c;
-    border-color: #faca2c
+    color: white;
+    background-color: rgb(0, 1, 84);
+    border-color: rgb(0, 1, 84);
 }
 
 .btn-primary:not(:disabled):not(.disabled).active:focus,
@@ -6732,7 +6732,7 @@ a.close.disabled {
 }
 
 .bg-custom1 {
-    background-color: rgb(0, 1, 84);  !important;
+    background-color: rgb(0, 1, 84) !important;
 }
 
 .bg-custom2 {
@@ -6740,7 +6740,7 @@ a.close.disabled {
 }
 
 .bg-custom3 {
-    background-color: #d1d1d1 !important;
+    background-color: rgb(214, 214, 214) !important;
 }
 
 .bg-primary {
@@ -10254,8 +10254,8 @@ a:focus {
 }
 
 .bg-gradient-primary {
-    background-color: #6b5fb9 !important;
-    background-image: linear-gradient(180deg, #6b5fb9 10%, #483D8B 100%);
+    background-color: rgb(0, 1, 84) !important;
+    background-image: linear-gradient(180deg, rgb(0, 1, 84) 10%, #140670 100%);
     background-size: cover
 }
 
@@ -10585,8 +10585,8 @@ a:focus {
 }
 
 .topbar .dropdown-list .dropdown-header {
-    background-color: #ca9e0c;
-    border: 1px solid #ca9e0c;
+    background-color: #000154;
+    border: 1px solid #000154;
     padding-top: .75rem;
     padding-bottom: .75rem;
     color: #fff

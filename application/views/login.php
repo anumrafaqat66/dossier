@@ -56,34 +56,50 @@
                   <div class="form-group">
                     <input type="password" name="password" class="form-control form-control-user" id="password" placeholder="Password">
                   </div>
-                  <div class="form-group row">
+                  <div class="form-group">
+                    <select class="form-control form-control-user" name="role" id="role" style="height:50px;padding:10px">
+                      <option value="">Select Role</option>
+                      <option value="do">DO</option>
+                      <option value="joto">JOTO</option>
+                      <option value="ct">Captain Training</option>
+                      <option value="co">Commanding Officer</option>
+                      <option value="exo">EXO</option>
+                      <option value="sqc">Squadron Commander</option>
+
+                    </select>
+                  </div>
+                  <!-- <div class="form-group row">
 
                     <label class="custom-control radio-inline small">
                       <input type="radio" value="PO" name="optradio">
-                      <div style="float:right; margin-left:5px;">Project Officer</div>
+                      <div style="float:right; margin-left:5px;">DO</div>
                     </label>
 
                     <label class="custom-control radio-inline small">
                       <input type="radio" value="SO_STORE" name="optradio">
-                      <div style="float:right; margin-left:5px;">SO Store</div>
+                      <div style="float:right; margin-left:5px;">JOTO</div>
                     </label>
 
                     <label class="custom-control radio-inline small">
                       <input type="radio" value="SO_CW" name="optradio">
-                      <div style="float:right; margin-left:5px;">SO CW</div>
+                      <div style="float:right; margin-left:5px;">Captain Training</div>
                     </label>
 
                     <label class="custom-control radio-inline small">
                       <input type="radio" value="SO_RECORD" name="optradio">
-                      <div style="float:right; margin-left:5px;">SO Record</div>
+                      <div style="float:right; margin-left:5px;">Commanding Officer</div>
                     </label>
                     <div style="float:right; margin-left:20px;"></div>
                     <label class="custom-control radio-inline small">
                       <input type="radio" value="admin" name="optradio">
-                      <div style="float:right; margin-left:5px;">Admin</div>
+                      <div style="float:right; margin-left:5px;">EXO</div>
                     </label>
-                    
-                  </div>
+                    <label class="custom-control radio-inline small">
+                      <input type="radio" value="admin" name="optradio">
+                      <div style="float:right; margin-left:5px;">Squarden Commander</div>
+                    </label>
+
+                  </div> -->
                   <span style="color: red; display: none;font-size: 12px" id="Account_error">
                     *Please select Account type
                   </span>
@@ -127,7 +143,6 @@
   <script src="assets/js/sb-admin-2.min.js"></script>
 
   <script>
-    
     $('#login_btn').on('click', function() {
       // alert('javascript working');
       $('#login_btn').attr('disabled', true);
@@ -137,6 +152,7 @@
 
       var username = $('#username').val();
       var password = $('#password').val();
+      var role = $('#role').val();
 
       if (username == '') {
         validate = 1;
@@ -146,10 +162,14 @@
         validate = 1;
         $('#password').addClass('red-border');
       }
-      if (user_type[0].checked != true && user_type[1].checked != true && user_type[2].checked != true && user_type[3].checked != true && user_type[4].checked != true && user_type[5].checked != true) {
+      if (role == 'select role') {
         validate = 1;
-        $('#Account_error').show();
+        $('#password').addClass('red-border');
       }
+      // if (user_type[0].checked != true && user_type[1].checked != true && user_type[2].checked != true && user_type[3].checked != true && user_type[4].checked != true && user_type[5].checked != true) {
+      //   validate = 1;
+      //   $('#Account_error').show();
+      // }
 
       if (validate == 0) {
         $('#login_form')[0].submit();

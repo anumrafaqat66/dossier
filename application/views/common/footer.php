@@ -10,7 +10,7 @@
                 height: 60px;
                 bottom: 85px;
                 right: 10px;
-                background-color: #ca9e0c;
+                background-color: #000154;
                 color: #FFF;
                 border-radius: 50px;
                 text-align: center;
@@ -25,7 +25,7 @@
         <footer class="sticky-footer bg-custom1 text-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2020</span>
+                    <span>Copyright &copy; Your Website 2021</span>
                 </div>
             </div>
         </footer>
@@ -43,7 +43,8 @@
         </a>
         <!-- Code begins here -->
 
-        <a href="<?= base_url(); ?>ChatController?sender_id=" class="float">
+        <!-- <a href="<?= base_url(); ?>ChatController?sender_id=" class="float"> -->
+        <a class="float">
             <i class="fas fa-comment-dots my-float"></i>
         </a>
 
