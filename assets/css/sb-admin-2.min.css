@@ -2510,15 +2510,15 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary {
-    color: black;
-    background-color: #ca9e0c;
-    border-color: #ca9e0c
+    color: white;
+    background-color: #483d8b;;
+    border-color: #483d8b;
 }
 
 .btn-primary:hover {
-    color: black;
-    background-color: #faca2c;
-    border-color: #faca2c
+    color: white;
+    background-color: rgb(0, 1, 84);
+    border-color: rgb(0, 1, 84);
 }
 
 .btn-primary.focus,
@@ -6732,7 +6732,7 @@ a.close.disabled {
 }
 
 .bg-custom1 {
-    background-color: #ca9e0c !important;
+    background-color: rgb(0, 1, 84);  !important;
 }
 
 .bg-custom2 {
@@ -11229,7 +11229,7 @@ a:focus {
 }
 
 .bg-login-image {
-    background: url(../img/construction.jpg);
+    background: url(../img/Pakistan-Navy.jpg);
     background-position: center;
     background-size: cover
 }
