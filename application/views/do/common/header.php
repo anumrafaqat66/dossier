@@ -33,7 +33,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <!-- <i class="fas fa-laugh-wink"></i> -->
                 </div>
-                <div class="sidebar-brand-text mx-3">Dossier System</div>
+                <div class="sidebar-brand-text mx-3">E-Dossier</div>
             </a>
 
             <!-- Divider -->
@@ -51,28 +51,99 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <!-- <div class="sidebar-heading">
-                Features
-            </div> -->
+
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span> Menu Items </span>
+                <a class="nav-link" href="#"  aria-expanded="true">
+                    <i class="fas fa-th-list"></i>
+                    <span> View Dossiers </span>
                     <!-- <span>Components</span> -->
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="<?php echo base_url(); ?>/D_O/PN_Form" aria-expanded="true">
+                    <i class="fab fa-wpforms"></i>
+                    <span>PN Form I</span>
+                    <!-- <span>Components</span> -->
+                </a>
+
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                PHASE I (Common Tranings)
+            </div>
+
+            <li class="nav-item">
+                <a id="general" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_general" aria-expanded="true">
+                    <i class="fas fa-file-alt"></i>
+                    <span> General</span>
+                    <!-- <span>Components</span> -->
+                </a>
+                <div id="collapse_general" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Features:</h6>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>SO_STORE/add_inventory"></a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>SO_STORE/view_projects"></a>
-                        <a class="collapse-item" href="#">Edit Profile</a>
-                        <a class="collapse-item" href="#">Change Password</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/Inspection_record">Inspection Record</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/personal_data">Personal Data</a>
+                        <a class="collapse-item" href="#">Obiography</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/auto_biography">Cadet's Auto-biography</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/psychologist_report">Psychologist's Report</a>
                     </div>
                 </div>
             </li>
-            <br><br><br>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_discipline" aria-expanded="true">
+                    <i class="fas fa-running"></i>
+                    <span> Discipline</span>
+                    <!-- <span>Components</span> -->
+                </a>
+                <div id="collapse_discipline" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?php echo base_url(); ?>SO_STORE/add_inventory">Observation Record (Terms I-III)</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>SO_STORE/view_projects">Punishment Record</a>
+                        <a class="collapse-item" href="#">Observation Slips</a> 
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_warning" aria-expanded="true">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span> Warning</span>
+                    <!-- <span>Components</span> -->
+                </a>
+                <div id="collapse_warning" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="#">Record of Warnings</a>
+                        <a class="collapse-item" href="#">Record Attachments</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_academic" aria-expanded="true">
+                    <i class="fas fa-book"></i>
+                    <span> Academic Record</span>
+                    <!-- <span>Components</span> -->
+                </a>
+                <div id="collapse_academic" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="#">Results (Terms I - III)</a>
+                        <a class="collapse-item" href="#">Sea Training Report Term II</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_officer" aria-expanded="true">
+                    <i class="fas fa-medal"></i>
+                    <span> Officer Like Qualities</span>
+                    <!-- <span>Components</span> -->
+                </a>
+                
+            </li>
+
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <!-- <li class="nav-item">
@@ -94,10 +165,10 @@
             </li> -->
 
             <!-- Divider -->
-            <!--  <hr class="sidebar-divider"> -->
+            <!-- <hr class="sidebar-divider"> -->
 
             <!-- Heading -->
-            <!--   <div class="sidebar-heading">
+            <!-- <div class="sidebar-heading">
                 Addons
             </div> -->
 
@@ -175,7 +246,7 @@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        
+
 
                         <li class="nav-item dropdown no-arrow mx-1" id="notifications">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -184,14 +255,14 @@
                                 <span class="badge badge-danger badge-counter"></span>
                             </a>
                             <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown" id="xyz"> 
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown" id="xyz">
                                 <h6 class="dropdown-header">
                                     Notifications
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div style="padding:10px">
-                                    <b>No New Notifications </b>
-                                </div>
+                                    <div style="padding:10px">
+                                        <b>No New Notifications </b>
+                                    </div>
                                 </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Notifications </a>
                             </div>
@@ -256,3 +327,10 @@
 
                 </nav>
                 <!-- End of Topbar -->
+
+                <script>
+                    $('#general').click(function() {
+                        $('.collapse_general').collapse();
+                    });
+                    
+                </script>
