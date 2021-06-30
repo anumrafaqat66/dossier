@@ -65,6 +65,8 @@
                       <option value="co">Commanding Officer</option>
                       <option value="exo">EXO</option>
                       <option value="sqc">Squadron Commander</option>
+                      <option value="smo">SMO</option>
+                      <option value="cao">CAO</option>
 
                     </select>
                   </div>
