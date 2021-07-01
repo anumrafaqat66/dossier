@@ -105,15 +105,26 @@
 
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-12">
+                                <div class="col-sm-6">
                                     <h6>&nbsp;Division Name:</h6>
+                                </div>
+                                <div class="col-sm-6">
+                                    <h6>&nbsp;Term:</h6>
                                 </div>
 
                             </div>
 
                             <div class="form-group row">
-                                <div class="col-sm-12 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="div_name" id="div_name" placeholder="Division Name">
+                                <div class="col-sm-6 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="term" id="term" placeholder="Select Term">
+                                </div>
+                                <div class="col-sm-6 mb-1">
+                                    <select class="form-control rounded-pill" name="category" id="category" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                        <option class="form-control form-control-user" value="">Select Term</option>
+                                        <option class="form-control form-control-user" value="Term-I">Term-I</option>
+                                        <option class="form-control form-control-user" value="Term-II">Term-II</option>
+                                        <option class="form-control form-control-user" value="Term-III">Term-III</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -183,6 +194,7 @@
         var batch_no = $('#batch_no').val();
         var category = $('#category').val();
         var div_name = $('#div_name').val();
+        var term = $('#term').val();
 
         if (oc_no == '') {
             validate = 1;
@@ -212,6 +224,10 @@
         if (div_name == '') {
             validate = 1;
             $('#div_name').addClass('red-border');
+        }
+        if (term == '') {
+            validate = 1;
+            $('#term').addClass('red-border');
         }
 
         if (validate == 0) {

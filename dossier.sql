@@ -2130,6 +2130,30 @@ INSERT INTO `warning_records` (`id`, `p_id`, `sno`, `date`, `issued_by`, `reason
 (8, 33, 1, '2020-12-15', 'Lt Hamza', 'Lie', 'Lt Hamza', 1, 'Phase 1', NULL, '2020-12-15 09:44:55', '2020-12-15 09:44:55', NULL);
 
 --
+-- Table structure for table `cadet_club`
+--
+
+CREATE TABLE `cadet_club` (
+  `id` int(20) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `status` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cadet_club`
+--
+
+INSERT INTO `cadet_club` (`id`, `name`, `status`) VALUES
+(1, 'club-1', 'Active'),
+(2, 'club-2', 'Active'),
+(3, 'club-3', 'Active');
+
+-- Alter Tables by Awais Ahmad
+
+alter table pn_form1s
+add COLUMN club varchar(30) null;
+
+--
 -- Indexes for dumped tables
 --
 
@@ -2448,6 +2472,12 @@ ALTER TABLE `warning_attachments`
 --
 ALTER TABLE `warning_records`
   ADD PRIMARY KEY (`id`);
+  
+--
+-- Indexes for table `cadet_club`
+--
+ALTER TABLE `cadet_club`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -2728,6 +2758,12 @@ ALTER TABLE `warning_attachments`
 --
 ALTER TABLE `warning_records`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  
+--
+-- AUTO_INCREMENT for table `cadet_club`
+--
+ALTER TABLE `cadet_club`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
