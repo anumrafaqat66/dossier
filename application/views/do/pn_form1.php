@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>Project_Officer/insert_project">
+                        <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>D_O/add_PN_Form">
                             <div class="form-group row">
                                 <div class="col-sm-6">
                                     <h6>&nbsp;OC NO:</h6>
@@ -95,7 +95,7 @@
                                 </div>
 
                                 <div class="col-sm-6 mb-1">
-                                    <select class="form-control rounded-pill" name="status" id="status" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                    <select class="form-control rounded-pill" name="category" id="category" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Category</option>
                                         <option class="form-control form-control-user" value="PN-Cadet">PN-Cadet</option>
                                         <option class="form-control form-control-user" value="SSC Cadet">SSC Cadet</option>
@@ -181,9 +181,8 @@
         var name = $('#name').val();
         var class_ = $('#class').val();
         var batch_no = $('#batch_no').val();
-        var status = $('#status').val();
+        var category = $('#category').val();
         var div_name = $('#div_name').val();
-        var status = $('#status').val();
 
         if (oc_no == '') {
             validate = 1;
@@ -206,9 +205,9 @@
             validate = 1;
             $('#batch_no').addClass('red-border');
         }
-        if (status == '') {
+        if (category == '') {
             validate = 1;
-            $('#status').addClass('red-border');
+            $('#category').addClass('red-border');
         }
         if (div_name == '') {
             validate = 1;
