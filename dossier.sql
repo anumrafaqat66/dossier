@@ -1738,7 +1738,8 @@ CREATE TABLE `security_info` (
   `password` varchar(255) NOT NULL,
   `reg_data` timestamp NOT NULL DEFAULT current_timestamp(),
   `acct_type` enum('do','joto','ct','co','exo','sqc','cao','smo','admin') NOT NULL,
-  `status` enum('offline','online') NOT NULL
+  `status` enum('offline','online') NOT NULL,
+  `division` varchar(50) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -2148,6 +2149,26 @@ INSERT INTO `cadet_club` (`id`, `name`, `status`) VALUES
 (2, 'club-2', 'Active'),
 (3, 'club-3', 'Active');
 
+--
+-- Table structure for table `divisions`
+--
+
+CREATE TABLE `divisions` (
+  `id` int(20) NOT NULL,
+  `division_name` varchar(50) NOT NULL,
+  `division_officer` varchar(50) DEFAULT NULL,
+  `status` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `divisions`
+--
+
+INSERT INTO `divisions` (`id`, `division_name`, `division_officer`, `status`) VALUES
+(1, 'Hamza', NULL, NULL),
+(2, 'Saif', NULL, NULL),
+(3, 'Iqbal', NULL, NULL);
+
 -- Alter Tables by Awais Ahmad
 
 alter table pn_form1s
@@ -2478,6 +2499,12 @@ ALTER TABLE `warning_records`
 --
 ALTER TABLE `cadet_club`
   ADD PRIMARY KEY (`id`);
+  
+--
+-- Indexes for table `divisions`
+--
+ALTER TABLE `divisions`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -2763,6 +2790,12 @@ ALTER TABLE `warning_records`
 -- AUTO_INCREMENT for table `cadet_club`
 --
 ALTER TABLE `cadet_club`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  
+--
+-- AUTO_INCREMENT for table `divisions`
+--
+ALTER TABLE `divisions`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 

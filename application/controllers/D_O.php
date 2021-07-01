@@ -96,11 +96,10 @@ class D_O extends CI_Controller
     {
         if ($this->input->post()) {
             $oc_no = $_POST['oc_no'];
-            $query = $this->db->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
+            $query = $this->db->where('oc_no', $oc_no)->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->row_array();
             echo json_encode($query);
         }
     }
-
 
     public function Inspection_record()
     {
@@ -131,6 +130,13 @@ class D_O extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $data['club_data'] = $this->db->get('cadet_club')->result_array();
             $this->load->view('do/add_club', $data);
+        }
+    }
+    public function daily_module()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            // $data['club_data'] = $this->db->get('cadet_club')->result_array();
+            $this->load->view('do/daily_module');//, $data);
         }
     }
 }

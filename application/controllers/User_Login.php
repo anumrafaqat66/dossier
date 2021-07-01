@@ -55,6 +55,7 @@ class User_Login extends CI_Controller
 					$this->session->set_userdata('user_id', $query['id']);
 					$this->session->set_userdata('acct_type', $query['acct_type']);
 					$this->session->set_userdata('username', $query['username']);
+					$this->session->set_userdata('division', $query['division']);
 					$this->session->set_flashdata('success', 'Login successfully');
 
 					$this->db->set('status', 'online');

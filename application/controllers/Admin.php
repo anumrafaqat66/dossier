@@ -18,7 +18,8 @@ class Admin extends CI_Controller
     }
 
     public function add_users(){
-        $this->load->view('Admin/create_user');
+        $data['divisions'] = $this->db->get('divisions')->result_array();
+        $this->load->view('Admin/create_user',$data);
     }
 
     public function login_process()
@@ -66,11 +67,13 @@ class Admin extends CI_Controller
             $username = $postData['username'];
             $password = password_hash($postData['password'], PASSWORD_DEFAULT);
             $status = $postData['status'];
+            $division = $postData['div'];
 
             $insert_array = array(
                 'username' => $username,
                 'password' => $password,
-                'acct_type' => $status
+                'acct_type' => $status,
+                'division' => $division
             );
             
             $insert = $this->db->insert('security_info', $insert_array);

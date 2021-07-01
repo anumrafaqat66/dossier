@@ -30,7 +30,7 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <div class="col-sm-12 mb-1">
+                                    <div class="col-sm-6 mb-1">
                                         <select class="form-control rounded-pill" name="status" id="status" data-placeholder="Select Controller" style="font-size: 0.8rem; height:50px;">\
                                             <option class="form-control form-control-user" value="">Select Role Type</option>
                                             <option value="do">DO</option>
@@ -39,18 +39,20 @@
                                             <option value="co">Commanding Officer</option>
                                             <option value="exo">EXO</option>
                                             <option value="sqc">Squadron Commander</option>
+                                            <option value="cao">CAO</option>
+                                            <option value="smo">SMO</option>
 
                                         </select>
                                     </div>
 
-                                    <!--     <div class="col-sm-6 mb-1">
-                                        <select class="form-control rounded-pill" name="Ship_ID" id="Ship_ID" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
-                                            <option class="form-control form-control-user" value="">Select Ship</option>
-                                            <?php foreach ($ships_data as $ship) { ?>
-                                                <option class="form-control form-control-user" value="<?= $ship['ID'] ?>"><?= $ship['Ship_name'] ?></option>
+                                    <div class="col-sm-6 mb-1">
+                                        <select class="form-control rounded-pill" name="div" id="div" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
+                                            <option class="form-control form-control-user" value="">Select Division</option>
+                                            <?php foreach ($divisions as $data) { ?>
+                                                <option class="form-control form-control-user" value="<?= $data['division_name'] ?>"><?= $data['division_name'] ?></option>
                                             <?php } ?>
                                         </select>
-                                    </div> -->
+                                    </div>
 
 
                                 </div>
@@ -80,10 +82,10 @@
     $('#status').on('focusout', function() {
         var status = $('#status').val();
 
-        if (status == "typecdr") {
-            $("#Ship_ID").prop("disabled", true);
+        if (status != "do") {
+            $("#div").prop("disabled", true);
         } else {
-            $("#Ship_ID").prop("disabled", false);
+            $("#div").prop("disabled", false);
         }
     });
 
@@ -95,7 +97,7 @@
         var username = $('#username').val();
         var password = $('#password').val();
         var status = $('#status').val();
-        var ship = $('#Ship_ID').val();
+        var div = $('#div').val();
 
 
 
@@ -111,9 +113,9 @@
             validate = 1;
             $('#status').addClass('red-border');
         }
-        if (ship == '' && status != 'typecdr') {
+        if (div == '' && status == 'do') {
             validate = 1;
-            $('#Ship_ID').addClass('red-border');
+            $('#div').addClass('red-border');
         }
 
         if (validate == 0) {
