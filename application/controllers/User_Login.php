@@ -24,6 +24,10 @@ class User_Login extends CI_Controller
 				redirect('EXO');
 			} elseif ($acct_type == "sqc") {
 				redirect('SQC');
+			} elseif ($acct_type == "smo") {
+				redirect('SMO');
+			} elseif ($acct_type == "cao") {
+				redirect('CAO');
 			} elseif ($acct_type == "admin") {
 				redirect('Admin');
 			} else {

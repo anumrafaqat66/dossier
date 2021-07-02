@@ -116,10 +116,15 @@
 
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="term" id="term" placeholder="Select Term">
+                                    <select class="form-control rounded-pill" name="div" id="div" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
+                                        <option class="form-control form-control-user" value="">Select Division</option>
+                                        <?php foreach ($divisions as $data) { ?>
+                                            <option class="form-control form-control-user" value="<?= $data['division_name'] ?>"><?= $data['division_name'] ?></option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
                                 <div class="col-sm-6 mb-1">
-                                    <select class="form-control rounded-pill" name="category" id="category" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                    <select class="form-control rounded-pill" name="term" id="term" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Term</option>
                                         <option class="form-control form-control-user" value="Term-I">Term-I</option>
                                         <option class="form-control form-control-user" value="Term-II">Term-II</option>
@@ -193,7 +198,7 @@
         var class_ = $('#class').val();
         var batch_no = $('#batch_no').val();
         var category = $('#category').val();
-        var div_name = $('#div_name').val();
+        var div_name = $('#div').val();
         var term = $('#term').val();
 
         if (oc_no == '') {

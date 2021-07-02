@@ -18,12 +18,15 @@
 </style>
 
 <div class="container-fluid my-2">
-    <!-- Page Heading -->
-    <div class="card-body" style="padding:10px">
-        <img src='<?= base_url() ?>assets/img/navy_logo-new.png' style="height: 130px; width:100px;">
-        <div class="card-body" style="margin-bottom:20px;float:right; padding:30px; margin-right:500px">
-            <h1 style="text-align:center"><strong>ADD PUNISHMENT</strong></h1>
+
+    <div class="form-group row justify-content-center">
+        <div class="col-lg-1">
+            <img src='<?= base_url() ?>assets/img/navy_logo-new.png' style="height: 130px; width:100px;">
         </div>
+        <div class="col-lg-11">
+            <h1 style="text-align:center; padding:40px"><strong>ADD PUNISHMENT</strong></h1>
+        </div>
+
     </div>
 
     <div class="card-body bg-custom3">
@@ -148,6 +151,7 @@
                                 </div>
                                 <div class="col-sm-4 mb-1">
                                     <input type="date" class="form-control form-control-user" name="end_date" id="end_date">
+                                    <span id="error_end_date" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;End Date cannot be less than start date</span>
                                 </div>
                                 <div class="col-sm-4 mb-1">
                                     <input type="text" class="form-control form-control-user" name="days" id="days" readonly>
@@ -277,7 +281,21 @@
     $('#end_date').on('focusout', function() {
         var start_date = new Date($('#start_date').val());
         var end_date = new Date($('#end_date').val());
-        $('#days').val(Math.abs(end_date-start_date)/1000/60/60/24);
+        var validate = 0;
+
+        if (end_date < start_date) {
+            $('#error_end_date').show();
+            $('#end_date').addClass('red-border');
+            $('#end_date').focus();
+            $('#save_btn').attr('disabled', true);
+        } else {
+            $('#error_end_date').hide();
+            $('#save_btn').removeAttr('disabled');
+            $('#end_date').removeClass('red-border');
+
+        }
+
+        $('#days').val(Math.abs(end_date - start_date) / 1000 / 60 / 60 / 24);
     });
 
 

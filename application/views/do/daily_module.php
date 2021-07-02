@@ -53,7 +53,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row" style="margin-top:50px;">
+                            <!-- <div class="form-group row" style="margin-top:50px;">
                                 <div class="col-sm-6">
                                     <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>Project_Officer/add_projects'">
                                         <span><i class="fas fa-hand-paper" style="font-size:25px;margin:5px"></i></span>
@@ -66,7 +66,7 @@
                                         <h4 style="font-weight: bold;display:inline-block">View Excuse List</h4>
                                     </button>
                                 </div>
-                            </div>
+                            </div> -->
                     </form>
                 </div>
 
