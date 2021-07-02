@@ -2174,6 +2174,12 @@ INSERT INTO `divisions` (`id`, `division_name`, `division_officer`, `status`) VA
 alter table pn_form1s
 add COLUMN club varchar(30) null;
 
+alter table punishment_records
+add column start_date date null;
+
+alter table punishment_records
+add column end_date date null;
+
 --
 -- Indexes for dumped tables
 --

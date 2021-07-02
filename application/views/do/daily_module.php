@@ -40,13 +40,13 @@
                         <div class="card-body bg-custom3">
                             <div class="form-group row" style="margin-top:50px;">
                                 <div class="col-sm-6">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:65px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>Project_Officer/add_projects'">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>D_O/add_punishment'">
                                         <span><i class="fas fa-radiation-alt" style="font-size:25px;margin:5px"></i></span>
                                         <h4 style="font-weight: bold;display:inline-block">Add Punishment</h4>
                                     </button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:65px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>Project_Officer/add_projects'">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>D_O/view_punishment_list'">
                                         <span><i class="fas fa-exclamation-triangle" style="font-size:25px;margin:5px"></i></span>
                                         <h4 style="font-weight: bold;display:inline-block">View Punishment List</h4>
                                     </button>
@@ -55,13 +55,13 @@
 
                             <div class="form-group row" style="margin-top:50px;">
                                 <div class="col-sm-6">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:65px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>Project_Officer/add_projects'">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>Project_Officer/add_projects'">
                                         <span><i class="fas fa-hand-paper" style="font-size:25px;margin:5px"></i></span>
                                         <h4 style="font-weight: bold; display:inline-block">Add Excuse</h4>
                                     </button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:65px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>Project_Officer/add_projects'">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>Project_Officer/add_projects'">
                                     <span><i class="fas fa-stopwatch" style="font-size:25px;margin:5px"></i></span>
                                         <h4 style="font-weight: bold;display:inline-block">View Excuse List</h4>
                                     </button>
