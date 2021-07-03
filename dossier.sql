@@ -2165,9 +2165,21 @@ CREATE TABLE `divisions` (
 --
 
 INSERT INTO `divisions` (`id`, `division_name`, `division_officer`, `status`) VALUES
-(1, 'Hamza', NULL, NULL),
-(2, 'Saif', NULL, NULL),
-(3, 'Iqbal', NULL, NULL);
+(1, 'Kashmir division', NULL, NULL),
+(2, 'Tariq division', NULL, NULL), 
+(3, 'Shamsheer division', NULL, NULL), 
+(4, 'Hamza division', NULL, NULL), 
+(5, 'Nasr division', NULL, NULL),
+(6, 'Khaibar division', NULL, NULL),
+(7, 'Saad division', NULL, NULL),
+(8, 'Aslat division', NULL, NULL),
+(9, 'Zulfiqar division', NULL, NULL), 
+(10, 'Yarmook division', NULL, NULL), 
+(11, 'Alamgir division', NULL, NULL), 
+(12, 'Tabuk division', NULL, NULL), 
+(13, 'Saif division', NULL, NULL), 
+(14, 'Khalid division', NULL, NULL), 
+(15, 'Moawin division', NULL, NULL);
 
 -- Alter Tables by Awais Ahmad
 
@@ -2179,6 +2191,14 @@ add column start_date date null;
 
 alter table punishment_records
 add column end_date date null;
+
+alter table medical_records
+add column start_date date;
+
+alter table medical_records
+add column end_date date;
+
+
 
 --
 -- Indexes for dumped tables
