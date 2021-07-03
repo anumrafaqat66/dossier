@@ -1749,7 +1749,9 @@ CREATE TABLE `security_info` (
 INSERT INTO `security_info` (`id`, `username`, `password`, `reg_data`, `acct_type`, `status`) VALUES
 (1, 'admin', '$2y$10$uVajLuVrXeV2S4TWWuH4a.CLTS4LW92nmGiitB94akkA6pAWMJyI2', '2021-05-21 14:00:00', 'admin', 'offline'),
 (2, 'do', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'do', 'offline'),
-(3, 'joto', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'joto', 'offline');
+(3, 'joto', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'joto', 'offline'),
+(4, 'cao', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'cao', 'offline'),
+(5, 'smo', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'smo', 'offline');
 
 -- --------------------------------------------------------
 
@@ -2198,7 +2200,8 @@ add column start_date date;
 alter table medical_records
 add column end_date date;
 
-
+alter table observation_records
+add column status varchar(50) NOT NULL;
 
 --
 -- Indexes for dumped tables

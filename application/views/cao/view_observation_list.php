@@ -1,4 +1,4 @@
-<?php $this->load->view('do/common/header'); ?>
+<?php $this->load->view('cao/common/header'); ?>
 
 <style>
     .red-border {
@@ -21,78 +21,18 @@
 <div class="container-fluid my-2">
 
 
-    <div class="modal fade" id="reduce_punishment">
+    <div class="modal fade" id="success_message">
         <!-- <div class="row"> -->
-        <div class="modal-dialog modal-dialog-centered " style="margin-left: 370px;" role="document">
-            <div class="modal-content bg-custom3" style="width:1000px;">
-                <div class="modal-header" style="width:1000px;">
+        <div class="modal-dialog modal-dialog-centered " role="document">
+            <div class="modal-content bg-custom1">
+                <div class="modal-header">
+                    <h4>Success</h4>
                 </div>
                 <div class="card-body bg-custom3">
                     <!-- Nested Row within Card Body -->
                     <div class="row">
                         <div class="col-lg-12">
-
-                            <div class="card">
-                                <div class="card-header bg-custom1">
-                                    <h1 class="h4">Reduce Punishment</h1>
-                                </div>
-
-                                <div class="card-body bg-custom3">
-                                    <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>Project_Officer/insert_project">
-                                        <div class="form-group row">
-                                            <div class="col-sm-12">
-                                                <h3 id="cadet_name_heading"></h3>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-sm-3">
-                                                <h6>&nbsp;Punish Detail:</h6>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <h6>&nbsp;Start Date:</h6>
-                                            </div>
-
-                                            <div class="col-sm-3">
-                                                <h6>&nbsp;End Date:</h6>
-                                            </div>
-
-                                            <div class="col-sm-3">
-                                                <h6>&nbsp;Days:</h6>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <div class="col-sm-3 mb-1">
-                                                <input type="text" class="form-control form-control-user" name="punish" id="punish">
-                                            </div>
-                                            <div class="col-sm-3 mb-1">
-                                                <input type="date" class="form-control form-control-user" name="start_date" id="start_date">
-                                            </div>
-                                            <div class="col-sm-3 mb-1">
-                                                <input type="date" class="form-control form-control-user" name="end_date" id="end_date">
-                                                <span id="error_end_date" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;End Date cannot be less than start date</span>
-                                            </div>
-                                            <div class="col-sm-3 mb-1">
-                                                <input type="text" class="form-control form-control-user" name="days" id="days" readonly>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row justify-content-center">
-                                            <div class="col-sm-4">
-                                                <button type="button" class="btn btn-primary btn-user btn-block" id="add_btn">
-                                                    <!-- <i class="fab fa-google fa-fw"></i>  -->
-                                                    Update
-                                                </button>
-                                                <span id="show_error_new" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
-                                            </div>
-                                        </div>
-
-                                    </form>
-                                </div>
-                            </div>
-
-
+                            <h4 style="color:black">Status Updated Successfully</h4>
                         </div>
                     </div>
                 </div>
@@ -170,6 +110,8 @@
                                             <th scope="col">Date</th>
                                             <th scope="col">Observation</th>
                                             <th scope="col">Status</th>
+                                            <th scope="col">Action</th>
+                                            <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody id="table_rows">
@@ -177,11 +119,27 @@
                                         foreach ($observation_records as $data) { ?>
                                             <tr>
                                                 <td scope="row"><?= ++$count; ?></td>
+                                                <td scope="row" style="display:none"><?= $data['id']; ?></td>
                                                 <td scope="row"><?= $data['name']; ?></td>
                                                 <td scope="row"><?= $data['term']; ?></td>
                                                 <td scope="row"><?= $data['date']; ?></td>
                                                 <td scope="row"><?= $data['observation']; ?></td>
-                                                <td scope="row"><?= $data['status']; ?></td>
+                                                <?php if ($data['status'] == 'Pending') { ?>
+                                                    <td scope="row" style="color:orange;font-weight:bold"><?= $data['status']; ?></td>
+                                                <?php } elseif ($data['status'] == 'Approved') { ?>
+                                                    <td scope="row" style="color:green;font-weight:bold"><?= $data['status']; ?></td>
+                                                <?php } elseif ($data['status'] == 'Rejected') { ?>
+                                                    <td scope="row" style="color:red;font-weight:bold"><?= $data['status']; ?></td>
+                                                <?php } else { ?>
+                                                    <td></td>
+                                                <?php } ?>
+                                                <?php if ($data['status'] == 'Pending') { ?>
+                                                    <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:green; font-weight:bold; border:0px">Approve</button></td>
+                                                    <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:red; font-weight:bold; border:0px">Reject</button></td>
+                                                <?php } else { ?>
+                                                    <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:green; font-weight:bold; border:0px" disabled>Approve</button></td>
+                                                    <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:red; font-weight:bold; border:0px" disabled>Reject</button></td>
+                                                <?php } ?>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
@@ -232,6 +190,45 @@
             },
             async: true
         });
-    });  
-  
+    });
+
+    var global_col_position = 0;
+    $('#table_rows').find('td').click(function(e) {
+        global_col_position = $(this).index();
+    });
+
+    $('#table_rows').find('tr').click(function(e) {
+        var $columns = $(this).find('td');
+        var cadet_id = $columns[1].innerHTML;
+        var cadet_name = $columns[2].innerHTML;
+
+        var status = '';
+        if (global_col_position == 7) {
+            status = 'Approved';
+        } else if (global_col_position == 8) {
+            status = 'Rejected';
+        }
+
+        if (global_col_position == 7 || global_col_position == 8) {
+            $('#success_message').modal('show');
+            setTimeout(
+                function() {
+                    $.ajax({
+                        url: '<?= base_url(); ?>CAO/update_observation_status',
+                        method: 'POST',
+                        data: {
+                            'id': cadet_id,
+                            'status': status
+                        },
+                        success: function(data) {
+                            var newDoc = document.open("text/html", "replace");
+                            newDoc.write(data);
+                            newDoc.close();
+                        },
+                        async: true
+                    });
+                }, 1000);
+        }
+
+    });
 </script>

@@ -21,7 +21,7 @@ class D_O extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $data['divisions'] = $this->db->get('divisions')->result_array();
-            $this->load->view('do/pn_form1',$data);
+            $this->load->view('do/pn_form1', $data);
         }
     }
 
@@ -92,7 +92,7 @@ class D_O extends CI_Controller
         }
     }
 
-        public function add_inspection_record()
+    public function add_inspection_record()
     {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
@@ -101,22 +101,22 @@ class D_O extends CI_Controller
             $date = $postData['date'];
             $inspecting_officer_name = $postData['inspector_name'];
             $remarks = $postData['remarks'];
-           // $id = $this->db->where('name',$officer_name)->get('pn_form1s')->row_array();
-           //echo $officer_id;exit;
+            // $id = $this->db->where('name',$officer_name)->get('pn_form1s')->row_array();
+            //echo $officer_id;exit;
 
             $insert_array = array(
                 //'officer_name' => $officer_name,
-                'p_id'=>$officer_id,
+                'p_id' => $officer_id,
                 'date' => $date,
                 'inspecting_officer_name' => $inspecting_officer_name,
-                'remarks'=>$remarks,
+                'remarks' => $remarks,
                 'do_id' => $this->session->userdata('user_id'),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
 
 
             );
-           // print_r($insert_array);exit;
+            // print_r($insert_array);exit;
             $insert = $this->db->insert('inspection_records', $insert_array);
             //$last_id = $this->db->insert_id();
 
@@ -130,16 +130,16 @@ class D_O extends CI_Controller
         }
     }
 
-          public function add_personal_record()
+    public function add_personal_record()
     {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
 
             $upload1 = $this->upload($_FILES['report']);
-            if(count($upload1)>1){
-           $files=implode(',', $upload1);
-            }else{
-             $files=$upload1[0];
+            if (count($upload1) > 1) {
+                $files = implode(',', $upload1);
+            } else {
+                $files = $upload1[0];
             }
             //echo $files;exit;
 
@@ -147,70 +147,70 @@ class D_O extends CI_Controller
             $p_no = $postData['pno'];
             $course = $postData['course'];
             $religion = $postData['religion'];
-            $e_contact=$postData['e_contact'];
+            $e_contact = $postData['e_contact'];
             $telephone_no = $postData['telephone'];
             $ex_army = $postData['army'];
             $father_name = $postData['father_name'];
-            $father_occupation=$postData['occupation'];
+            $father_occupation = $postData['occupation'];
             $next_of_kin = $postData['next_of_kin'];
             $siblings = $postData['siblings'];
             $near_relatives = $postData['relatives'];
-            $identification_marks=$postData['mark'];
-            $height=$postData['height'];
-            $weight=$postData['weight'];
+            $identification_marks = $postData['mark'];
+            $height = $postData['height'];
+            $weight = $postData['weight'];
             $navy_joining_date = $postData['joining_date'];
             $entry_mode = $postData['entry_mode'];
-            $service_id=$postData['service_no'];
-             $nic=$postData['cnic'];
-            $blood_group=$postData['blood'];
-            $address=$postData['address'];
-            $karachi_address=$postData['khi_address'];
-            $matric_school=$postData['matric'];
-               $matric_division=$postData['grade_matric'];
-               $intermediate_college=$postData['college'];
-               $intermediate_division=$postData['grade_intermediate'];
-               $diploma=$postData['diploma'];
+            $service_id = $postData['service_no'];
+            $nic = $postData['cnic'];
+            $blood_group = $postData['blood'];
+            $address = $postData['address'];
+            $karachi_address = $postData['khi_address'];
+            $matric_school = $postData['matric'];
+            $matric_division = $postData['grade_matric'];
+            $intermediate_college = $postData['college'];
+            $intermediate_division = $postData['grade_intermediate'];
+            $diploma = $postData['diploma'];
 
 
 
-           // $id = $this->db->where('name',$officer_name)->get('pn_form1s')->row_array();
-           //echo $officer_id;exit;
+            // $id = $this->db->where('name',$officer_name)->get('pn_form1s')->row_array();
+            //echo $officer_id;exit;
 
             $insert_array = array(
                 //'officer_name' => $officer_name,
-                'p_id'=>$officer_id,
+                'p_id' => $officer_id,
                 'p_no' => $p_no,
                 'course' => $course,
-                'religion'=>$religion,
-                'emergency_contact'=>$e_contact,
-                'telephone_no'=>$telephone_no,
-                'ex_army'=>$ex_army,
-                'father_name'=>$father_name,
-                'father_occupation'=>$father_occupation,
-                'next_of_kin'=>$next_of_kin,
-                'siblings'=>$siblings,
-                'near_relatives'=>$near_relatives,
-                'identification_marks'=>$identification_marks,
-                'height'=>$height,
-                'weight'=>$weight,
-                'navy_joining_date'=>$navy_joining_date,
-                'entry_mode'=>$entry_mode,
-                'service_id'=>$service_id,
-                'nic'=>$nic,
-                'blood_group'=>$blood_group,
-                'address'=>$address,
-                'karachi_address'=>$karachi_address,
-                'matric_school'=>$matric_school,
-                'matric_division'=>$matric_division,
-                'intermediate_college'=>$intermediate_division,
-                'intermediate_division'=>$intermediate_division,
-                'diploma'=>$diploma,
+                'religion' => $religion,
+                'emergency_contact' => $e_contact,
+                'telephone_no' => $telephone_no,
+                'ex_army' => $ex_army,
+                'father_name' => $father_name,
+                'father_occupation' => $father_occupation,
+                'next_of_kin' => $next_of_kin,
+                'siblings' => $siblings,
+                'near_relatives' => $near_relatives,
+                'identification_marks' => $identification_marks,
+                'height' => $height,
+                'weight' => $weight,
+                'navy_joining_date' => $navy_joining_date,
+                'entry_mode' => $entry_mode,
+                'service_id' => $service_id,
+                'nic' => $nic,
+                'blood_group' => $blood_group,
+                'address' => $address,
+                'karachi_address' => $karachi_address,
+                'matric_school' => $matric_school,
+                'matric_division' => $matric_division,
+                'intermediate_college' => $intermediate_division,
+                'intermediate_division' => $intermediate_division,
+                'diploma' => $diploma,
                 'do_id' => $this->session->userdata('user_id'),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
-                'upload_file'=>$files
+                'upload_file' => $files
             );
-           // print_r($insert_array);exit;
+            // print_r($insert_array);exit;
             $insert = $this->db->insert('personal_datas', $insert_array);
             //$last_id = $this->db->insert_id();
 
@@ -335,7 +335,8 @@ class D_O extends CI_Controller
                 'observed_by' => $awarded_by,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
-                'term' => $term
+                'term' => $term,
+                'status' => 'Pending'
             );
 
             $insert = $this->db->insert('observation_records', $insert_array);
@@ -364,8 +365,8 @@ class D_O extends CI_Controller
     public function Inspection_record()
     {
         if ($this->session->has_userdata('user_id')) {
-            $data['pn_data']=$this->db->get('pn_form1s')->result_array();
-            $this->load->view('do/inspection_record',$data);
+            $data['pn_data'] = $this->db->get('pn_form1s')->result_array();
+            $this->load->view('do/inspection_record', $data);
         }
     }
     public function psychologist_report()
@@ -383,8 +384,8 @@ class D_O extends CI_Controller
     public function personal_data()
     {
         if ($this->session->has_userdata('user_id')) {
-             $data['pn_data']=$this->db->get('pn_form1s')->result_array();
-             $this->load->view('do/personal_data',$data);
+            $data['pn_data'] = $this->db->get('pn_form1s')->result_array();
+            $this->load->view('do/personal_data', $data);
         }
     }
     public function add_club()
@@ -398,26 +399,26 @@ class D_O extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             // $data['club_data'] = $this->db->get('cadet_club')->result_array();
-            $this->load->view('do/daily_module');//, $data);
+            $this->load->view('do/daily_module'); //, $data);
         }
     }
     public function add_punishment()
     {
         if ($this->session->has_userdata('user_id')) {
             // $data['club_data'] = $this->db->get('cadet_club')->result_array();
-            $this->load->view('do/add_punishment');//, $data);
+            $this->load->view('do/add_punishment'); //, $data);
         }
     }
     public function add_excuse()
     {
         if ($this->session->has_userdata('user_id')) {
-            $this->load->view('do/add_excuse');//, $data);
+            $this->load->view('do/add_excuse'); //, $data);
         }
     }
     public function add_observation()
     {
         if ($this->session->has_userdata('user_id')) {
-            $this->load->view('do/add_observation');//, $data);
+            $this->load->view('do/add_observation'); //, $data);
         }
     }
 
@@ -425,12 +426,13 @@ class D_O extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $this->db->select('pr.*, f.*');
-            $this->db->from('punishment_records pr' );
+            $this->db->from('punishment_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('f.oc_no = pr.oc_no');
-            $this->db->where('pr.do_id',$this->session->userdata('user_id'));
-            $this->db->where('pr.start_date <=',date('Y-m-d'));
-            $this->db->where('pr.end_date >=',date('Y-m-d'));
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('pr.start_date <=', date('Y-m-d'));
+            $this->db->where('pr.end_date >=', date('Y-m-d'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $data['punishment_records'] = $this->db->get()->result_array();
             // $data['punishment_records'] = $this->db->where('do_id',$this->session->userdata('user_id'))->get('punishment_records')->result_array();
             $this->load->view('do/view_punishment_list', $data);
@@ -441,12 +443,13 @@ class D_O extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $this->db->select('mr.*, f.*');
-            $this->db->from('medical_records mr' );
+            $this->db->from('medical_records mr');
             $this->db->join('pn_form1s f', 'f.p_id = mr.p_id');
             $this->db->where('f.oc_no = mr.oc_no');
-            $this->db->where('mr.do_id',$this->session->userdata('user_id'));
-            $this->db->where('mr.start_date <=',date('Y-m-d'));
-            $this->db->where('mr.end_date >=',date('Y-m-d'));
+            $this->db->where('mr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('mr.start_date <=', date('Y-m-d'));
+            $this->db->where('mr.end_date >=', date('Y-m-d'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $data['medical_records'] = $this->db->get()->result_array();
             $this->load->view('do/view_excuse_list', $data);
         }
@@ -455,9 +458,10 @@ class D_O extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $this->db->select('or.*, f.*');
-            $this->db->from('observation_records or' );
-            $this->db->join('pn_form1s f', 'f.p_id = or.p_id');  
-            $this->db->where('or.do_id',$this->session->userdata('user_id'));
+            $this->db->from('observation_records or');
+            $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
+            $this->db->where('or.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $data['observation_records'] = $this->db->get()->result_array();
             $this->load->view('do/view_observation_list', $data);
         }
@@ -469,11 +473,12 @@ class D_O extends CI_Controller
             $date = $_POST['search_date'];
 
             $this->db->select('mr.*, f.*');
-            $this->db->from('medical_records mr' );
+            $this->db->from('medical_records mr');
             $this->db->join('pn_form1s f', 'f.p_id = mr.p_id');
             $this->db->where('f.oc_no = mr.oc_no');
-            $this->db->where('mr.do_id',$this->session->userdata('user_id'));
-            $this->db->where('mr.start_date =',$date);
+            $this->db->where('mr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('mr.start_date =', $date);
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             // $this->db->where('mr.end_date >=',date('Y-m-d'));
             $data['medical_records'] = $this->db->get()->result_array();
             $data['search_date'] = $date;
@@ -489,11 +494,12 @@ class D_O extends CI_Controller
             $date = $_POST['search_date'];
 
             $this->db->select('pr.*, f.*');
-            $this->db->from('punishment_records pr' );
+            $this->db->from('punishment_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('f.oc_no = pr.oc_no');
-            $this->db->where('pr.do_id',$this->session->userdata('user_id'));
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('pr.start_date =', $date);
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $data['punishment_records'] = $this->db->get()->result_array();
             $data['search_date'] = $date;
             $view_page = $this->load->view('do/view_punishment_list', $data, TRUE);
@@ -502,7 +508,7 @@ class D_O extends CI_Controller
         }
     }
 
-     public function upload($fieldname)
+    public function upload($fieldname)
     {
         //$data = NULL;
         //echo $fieldname;exit;
@@ -535,6 +541,4 @@ class D_O extends CI_Controller
         //print_r($count);exit();
         return $count;
     }
-
-
 }
