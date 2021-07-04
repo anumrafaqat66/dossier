@@ -54,7 +54,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="#"  aria-expanded="true">
+                <a class="nav-link" href="<?php echo base_url(); ?>D_O/view_dossier"  aria-expanded="true">
                     <i class="fas fa-th-list"></i>
                     <span> View Dossiers </span>
                     <!-- <span>Components</span> -->

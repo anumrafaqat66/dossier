@@ -106,9 +106,11 @@
                                         <tr>
                                             <th scope="col">S. No.</th>
                                             <th scope="col">Cadet Name</th>
+                                            <th scope="col">OC No.</th>
                                             <th scope="col">Term</th>
                                             <th scope="col">Date</th>
                                             <th scope="col">Observation</th>
+                                            <th scope="col">By Officer</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Action</th>
                                             <th scope="col">Action</th>
@@ -121,9 +123,11 @@
                                                 <td scope="row"><?= ++$count; ?></td>
                                                 <td scope="row" style="display:none"><?= $data['id']; ?></td>
                                                 <td scope="row"><?= $data['name']; ?></td>
+                                                <td scope="row"><?= $data['oc_no']; ?></td>
                                                 <td scope="row"><?= $data['term']; ?></td>
                                                 <td scope="row"><?= $data['date']; ?></td>
                                                 <td scope="row"><?= $data['observation']; ?></td>
+                                                <td scope="row"><?= $data['observed_by']; ?></td>
                                                 <?php if ($data['status'] == 'Pending') { ?>
                                                     <td scope="row" style="color:orange;font-weight:bold"><?= $data['status']; ?></td>
                                                 <?php } elseif ($data['status'] == 'Approved') { ?>

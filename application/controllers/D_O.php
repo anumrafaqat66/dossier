@@ -388,6 +388,13 @@ class D_O extends CI_Controller
             $this->load->view('do/personal_data', $data);
         }
     }
+    public function view_dossier()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $data['pn_data'] = $this->db->get('pn_form1s')->result_array();
+            $this->load->view('do/view_dossier', $data);
+        }
+    }
     public function add_club()
     {
         if ($this->session->has_userdata('user_id')) {
@@ -436,6 +443,26 @@ class D_O extends CI_Controller
             $data['punishment_records'] = $this->db->get()->result_array();
             // $data['punishment_records'] = $this->db->where('do_id',$this->session->userdata('user_id'))->get('punishment_records')->result_array();
             $this->load->view('do/view_punishment_list', $data);
+        }
+    }
+    public function view_punishments_in_dossier()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $cadet_id = $_POST['id'];
+            
+            $this->db->select('pr.*, f.*');
+            $this->db->from('punishment_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('f.oc_no = pr.oc_no');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.start_date <=', date('Y-m-d'));
+            // $this->db->where('pr.end_date >=', date('Y-m-d'));
+            $this->db->where('f.p_id', $cadet_id);
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $data['punishment_records'] = $this->db->get()->result_array();
+            // $data['punishment_records'] = $this->db->where('do_id',$this->session->userdata('user_id'))->get('punishment_records')->result_array();
+            // $this->load->view('do/view_punishment_list', $data);
+            echo json_encode($data['punishment_records']);
         }
     }
 
