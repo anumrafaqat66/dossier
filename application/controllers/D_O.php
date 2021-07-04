@@ -327,7 +327,7 @@ class D_O extends CI_Controller
             $awarded_id = $this->session->userdata('user_id');
 
             $insert_array = array(
-                // 'oc_no' => $oc_no,
+           //  'oc_no' => $oc_no,
                 'p_id' => $id,
                 'date' => date('Y-m-d'),
                 'observation' => $observation,
@@ -336,7 +336,7 @@ class D_O extends CI_Controller
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
                 'term' => $term,
-                'status' => 'Pending'
+                //'status' => 'Pending'
             );
 
             $insert = $this->db->insert('observation_records', $insert_array);
@@ -466,6 +466,49 @@ class D_O extends CI_Controller
         }
     }
 
+        public function view_excuses_in_dossier()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $cadet_id = $_POST['id'];
+            
+            $this->db->select('pr.*, f.*');
+            $this->db->from('medical_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('f.oc_no = pr.oc_no');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.start_date <=', date('Y-m-d'));
+            // $this->db->where('pr.end_date >=', date('Y-m-d'));
+            $this->db->where('f.p_id', $cadet_id);
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $data['excuse_records'] = $this->db->get()->result_array();
+            // $data['punishment_records'] = $this->db->where('do_id',$this->session->userdata('user_id'))->get('punishment_records')->result_array();
+            // $this->load->view('do/view_punishment_list', $data);
+            //echo $data['excuse_records'];exit;
+            echo json_encode($data['excuse_records']);
+        }
+    }
+
+     public function view_observation_in_dossier()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $cadet_id = $_POST['id'];
+            //echo $cadet_id;exit;
+            $this->db->select('pr.*, f.*');
+            $this->db->from('observation_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+           // $this->db->where('f.oc_no = pr.oc_no');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.start_date <=', date('Y-m-d'));
+            // $this->db->where('pr.end_date >=', date('Y-m-d'));
+            $this->db->where('f.p_id', $cadet_id);
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $data['observation_records'] = $this->db->get()->result_array();
+            // $data['punishment_records'] = $this->db->where('do_id',$this->session->userdata('user_id'))->get('punishment_records')->result_array();
+            // $this->load->view('do/view_punishment_list', $data);
+          //  print_r($data['observation_records']); exit;
+            echo json_encode($data['observation_records']);
+        }
+    }
     public function view_excuse_list()
     {
         if ($this->session->has_userdata('user_id')) {

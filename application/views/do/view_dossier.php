@@ -90,6 +90,144 @@
         </div>
     </div>
 
+
+    <div class="modal fade" id="excuses">
+        <!-- <div class="row"> -->
+        <div class="modal-dialog modal-dialog-centered " style="margin-left: 250px;" role="document">
+            <div class="modal-content bg-custom3" style="width:1200px;">
+                <div class="modal-header" style="width:1200px;">
+                </div>
+                <div class="card-body bg-custom3">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="card">
+                                <div class="card-header bg-custom1">
+                                    <h1 class="h4">Excuses Record</h1>
+                                </div>
+
+                                <div class="card-body bg-custom3">
+                                    <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>Project_Officer/insert_project">
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <h3 id="cadet_name_heading"></h3>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h3 id="cadet_oc_no"></h3>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h3 id="cadet_term"></h3>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <div id="table_div">
+                                                <table id="datatable" class="table table-striped" style="color:black">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">No.</th>
+                                                            <th scope="col">Term</th>
+                                                            <th scope="col">Date</th>
+                                                            <th scope="col">disease</th>
+                                                            <th scope="col">mo_remarks</th>
+                                                            <th scope="col">Start Date</th>
+                                                            <th scope="col">End Date</th>
+                                                            <th scope="col">Days</th>
+                                                            <th scope="col">Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="table_rows_excuses">
+                                                        <tr>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-primary rounded-pill" data-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Observation-->
+     <div class="modal fade" id="observations">
+        <!-- <div class="row"> -->
+        <div class="modal-dialog modal-dialog-centered " style="margin-left: 250px;" role="document">
+            <div class="modal-content bg-custom3" style="width:1200px;">
+                <div class="modal-header" style="width:1200px;">
+                </div>
+                <div class="card-body bg-custom3">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="card">
+                                <div class="card-header bg-custom1">
+                                    <h1 class="h4">Observation Record</h1>
+                                </div>
+
+                                <div class="card-body bg-custom3">
+                                    <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>Project_Officer/insert_project">
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <h3 id="cadet_name_heading"></h3>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h3 id="cadet_oc_no"></h3>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h3 id="cadet_term"></h3>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <div id="table_div">
+                                                <table id="datatable" class="table table-striped" style="color:black">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">No.</th>
+                                                            <th scope="col">Term</th>
+                                                            <th scope="col">Date</th>
+                                                            <th scope="col">observation</th>
+                                                            <th scope="col">Created Date</th>
+                                                            <!-- <th scope="col">End Date</th> -->
+                                                           <!--  <th scope="col">Days</th>
+                                                            <th scope="col">Status</th> -->
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="table_rows_observations">
+                                                        <tr>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-primary rounded-pill" data-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Page Heading -->
     <div class="card-body" style="padding:10px">
         <div class="row my-2">
@@ -181,8 +319,8 @@
                                                 <td scope="row"><?= $data['term']; ?></td>
                                                 <td scope="row"><?= $data['divison_name']; ?></td>
                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_punishments(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#punishments">Punishments</button></td>
-                                                <td scope="row" style="text-align:center"><button type="button" class="btn btn-primary btn-user rounded-pill">Excuses</button></td>
-                                                <td scope="row" style="text-align:center"><button type="button" class="btn btn-primary btn-user rounded-pill">Observations</button></td>
+                                                <td scope="row" style="text-align:center"><button type="button" onclick="view_excuses(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#excuses">Excuses</button></td>
+                                                <td scope="row" style="text-align:center"><button type="button" onclick="view_observations(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#observations">Observations</button></td>
                                                 <td scope="row" style="text-align:center"><button type="button" class="btn btn-primary btn-user rounded-pill">Clubs</button></td>
                                                 <td scope="row" style="text-align:center"><button type="button" class="btn btn-primary btn-user rounded-pill">Branches</button></td>
 
@@ -224,7 +362,7 @@
 
                 // $("#bid_amount").empty();
                 // $('#bid_amount').removeAttr('disabled');
-
+                 $("#table_rows_punishment").empty();
                 for (var i = 0; i < len; i++) {
                     // $diff = date_diff(result[i]['start_date'], result[i]['end_date']);
                     const date1 = new Date(result[i]['start_date']);
@@ -238,7 +376,7 @@
                     } else {
                         status='Ended'
                     }
-                    $("#table_rows_punishment").append(`<tr>
+                    $("#table_rows_punishment").html(`<tr>
                                                         <td>${i+1}</td>
                                                         <td>${result[i]['term']}</td>
                                                         <td>${result[i]['date']}</td>
@@ -247,6 +385,91 @@
                                                         <td>${result[i]['start_date']}</td>
                                                         <td>${result[i]['end_date']}</td>
                                                         <td>${diff}</td>
+                                                        <td>${status}</td>
+                                                    </tr>`);
+                }
+            },
+            async: true
+        });
+    }
+
+        function view_excuses(id) {
+        // alert('cadet id: ' + id);
+        $.ajax({
+            url: '<?= base_url(); ?>D_O/view_excuses_in_dossier',
+            method: 'POST',
+            data: {
+                'id': id
+            },
+            success: function(data) {
+                var result = jQuery.parseJSON(data);
+                var len = result.length;
+
+                 $("#table_rows_excuses").empty();
+                for (var i = 0; i < len; i++) {
+                    // $diff = date_diff(result[i]['start_date'], result[i]['end_date']);
+                    const date1 = new Date(result[i]['start_date']);
+                    const date2 = new Date(result[i]['end_date']);
+                    var diff = (Math.abs(date1 - date2))/(1000 * 60 * 60 * 24);
+
+                    var today_date = new Date();
+                    var status = '';
+                    if ((today_date >= date1) && (today_date <= date2)) {
+                        status='Active';
+                    } else {
+                        status='Ended'
+                    }
+                    $("#table_rows_excuses").html(`<tr>
+                                                        <td>${i+1}</td>
+                                                        <td>${result[i]['term']}</td>
+                                                        <td>${result[i]['date']}</td>
+                                                        <td>${result[i]['disease']}</td>
+                                                        <td>${result[i]['mo_remarks']}</td>
+                                                        <td>${result[i]['start_date']}</td>
+                                                        <td>${result[i]['end_date']}</td>
+                                                        <td>${diff}</td>
+                                                        <td>${status}</td>
+                                                    </tr>`);
+                }
+            },
+            async: true
+        });
+    }
+
+  function view_observations(id) {
+        // alert('cadet id: ' + id);
+        $.ajax({
+            url: '<?= base_url(); ?>D_O/view_observation_in_dossier',
+            method: 'POST',
+            data: {
+                'id': id
+            },
+            success: function(data) {
+                var result = jQuery.parseJSON(data);
+                var len = result.length;
+
+                // $("#bid_amount").empty();
+                // $('#bid_amount').removeAttr('disabled');
+                $("#table_rows_observations").empty();
+                for (var i = 0; i < len; i++) {
+                    // $diff = date_diff(result[i]['start_date'], result[i]['end_date']);
+                    //const date1 = new Date(result[i]['start_date']);
+                    //const date2 = new Date(result[i]['end_date']);
+                    //var diff = (Math.abs(date1 - date2))/(1000 * 60 * 60 * 24);
+
+                    var today_date = new Date();
+                    var status = '';
+                    // if ((today_date >= date1) && (today_date <= date2)) {
+                    //     status='Active';
+                    // } else {
+                    //     status='Ended'
+                    // }
+                    $("#table_rows_observations").html(`<tr>
+                                                        <td>${i+1}</td>
+                                                        <td>${result[i]['term']}</td>
+                                                        <td>${result[i]['date']}</td>
+                                                        <td>${result[i]['observation']}</td>
+                                                        <td>${result[i]['created_at']}</td>
                                                         <td>${status}</td>
                                                     </tr>`);
                 }
