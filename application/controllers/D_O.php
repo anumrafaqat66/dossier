@@ -20,7 +20,7 @@ class D_O extends CI_Controller
     public function PN_Form()
     {
         if ($this->session->has_userdata('user_id')) {
-            $data['divisions'] = $this->db->get('divisions')->result_array();
+            $data['divisions'] = $this->db->where('division_name', $this->session->userdata('division'))->get('divisions')->result_array();
             $this->load->view('do/pn_form1', $data);
         }
     }
@@ -61,7 +61,7 @@ class D_O extends CI_Controller
             $class = $postData['class'];
             $batch_no = $postData['batch_no'];
             $category = $postData['category'];
-            $div_name = $postData['div_name'];
+            $div_name = $postData['div'];
             $term = $postData['term'];
 
             $insert_array = array(
@@ -327,7 +327,7 @@ class D_O extends CI_Controller
             $awarded_id = $this->session->userdata('user_id');
 
             $insert_array = array(
-           //  'oc_no' => $oc_no,
+                //  'oc_no' => $oc_no,
                 'p_id' => $id,
                 'date' => date('Y-m-d'),
                 'observation' => $observation,
@@ -391,7 +391,7 @@ class D_O extends CI_Controller
     public function view_dossier()
     {
         if ($this->session->has_userdata('user_id')) {
-            $data['pn_data'] = $this->db->get('pn_form1s')->result_array();
+            $data['pn_data'] = $this->db->where('divison_name', 'XYZ')->get('pn_form1s')->result_array();
             $this->load->view('do/view_dossier', $data);
         }
     }
@@ -449,46 +449,39 @@ class D_O extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $cadet_id = $_POST['id'];
-            
+
             $this->db->select('pr.*, f.*');
             $this->db->from('punishment_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('f.oc_no = pr.oc_no');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('pr.start_date <=', date('Y-m-d'));
-            // $this->db->where('pr.end_date >=', date('Y-m-d'));
             $this->db->where('f.p_id', $cadet_id);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             $data['punishment_records'] = $this->db->get()->result_array();
-            // $data['punishment_records'] = $this->db->where('do_id',$this->session->userdata('user_id'))->get('punishment_records')->result_array();
-            // $this->load->view('do/view_punishment_list', $data);
+
             echo json_encode($data['punishment_records']);
         }
     }
 
-        public function view_excuses_in_dossier()
+    public function view_excuses_in_dossier()
     {
         if ($this->session->has_userdata('user_id')) {
             $cadet_id = $_POST['id'];
-            
+
             $this->db->select('pr.*, f.*');
             $this->db->from('medical_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('f.oc_no = pr.oc_no');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('pr.start_date <=', date('Y-m-d'));
-            // $this->db->where('pr.end_date >=', date('Y-m-d'));
             $this->db->where('f.p_id', $cadet_id);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             $data['excuse_records'] = $this->db->get()->result_array();
-            // $data['punishment_records'] = $this->db->where('do_id',$this->session->userdata('user_id'))->get('punishment_records')->result_array();
-            // $this->load->view('do/view_punishment_list', $data);
-            //echo $data['excuse_records'];exit;
+
             echo json_encode($data['excuse_records']);
         }
     }
 
-     public function view_observation_in_dossier()
+    public function view_observation_in_dossier()
     {
         if ($this->session->has_userdata('user_id')) {
             $cadet_id = $_POST['id'];
@@ -496,7 +489,7 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('observation_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-           // $this->db->where('f.oc_no = pr.oc_no');
+            // $this->db->where('f.oc_no = pr.oc_no');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             // $this->db->where('pr.start_date <=', date('Y-m-d'));
             // $this->db->where('pr.end_date >=', date('Y-m-d'));
@@ -505,7 +498,7 @@ class D_O extends CI_Controller
             $data['observation_records'] = $this->db->get()->result_array();
             // $data['punishment_records'] = $this->db->where('do_id',$this->session->userdata('user_id'))->get('punishment_records')->result_array();
             // $this->load->view('do/view_punishment_list', $data);
-          //  print_r($data['observation_records']); exit;
+            //  print_r($data['observation_records']); exit;
             echo json_encode($data['observation_records']);
         }
     }
@@ -557,6 +550,38 @@ class D_O extends CI_Controller
             json_encode($view_page);
         }
     }
+
+    public function search_cadet_for_dossier()
+    {
+        if ($this->session->has_userdata('user_id')) {
+
+            $oc_no = $_POST['oc_no'];
+            $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->where('oc_no', $oc_no)->get('pn_form1s')->result_array();
+            $data['oc_no_entered'] = $oc_no;
+            if (count($data['pn_data']) > 0) {
+                $view_page = $this->load->view('do/view_dossier', $data, TRUE);
+                echo $view_page;
+                json_encode($view_page);
+            } else {
+                echo '0';
+            }
+        }
+    }
+
+    public function search_all_cadets_for_dossier()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->result_array();
+            if (count($data['pn_data']) > 0) {
+                $view_page = $this->load->view('do/view_dossier', $data, TRUE);
+                echo $view_page;
+                json_encode($view_page);
+            } else {
+                echo '0';
+            }
+        }
+    }
+
     public function search_punish_by_date()
     {
         if ($this->session->has_userdata('user_id')) {

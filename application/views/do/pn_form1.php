@@ -116,8 +116,8 @@
 
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-1">
-                                    <select class="form-control rounded-pill" name="div" id="div" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
-                                        <option class="form-control form-control-user" value="">Select Division</option>
+                                    <select class="form-control rounded-pill" name="div" id="div" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;" readonly>
+                                        <!-- <option class="form-control form-control-user" value="">Select Division</option> -->
                                         <?php foreach ($divisions as $data) { ?>
                                             <option class="form-control form-control-user" value="<?= $data['division_name'] ?>"><?= $data['division_name'] ?></option>
                                         <?php } ?>

@@ -1,5 +1,5 @@
 <?php $this->load->view('do/common/header'); ?>
-<?php !isset($search_date) ? $search_date = '' : $search_date; ?>
+<?php !isset($oc_no_entered) ? $oc_no_entered = '' : $oc_no_entered; ?>
 <style>
     .red-border {
         border: 1px solid red !important;
@@ -111,13 +111,13 @@
                                     <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>Project_Officer/insert_project">
                                         <div class="form-group row">
                                             <div class="col-sm-4">
-                                                <h3 id="cadet_name_heading"></h3>
+                                                <h3 id="cadet_name_heading_ex"></h3>
                                             </div>
                                             <div class="col-sm-4">
-                                                <h3 id="cadet_oc_no"></h3>
+                                                <h3 id="cadet_oc_no_ex"></h3>
                                             </div>
                                             <div class="col-sm-4">
-                                                <h3 id="cadet_term"></h3>
+                                                <h3 id="cadet_term_ex"></h3>
                                             </div>
                                         </div>
 
@@ -129,8 +129,8 @@
                                                             <th scope="col">No.</th>
                                                             <th scope="col">Term</th>
                                                             <th scope="col">Date</th>
-                                                            <th scope="col">disease</th>
-                                                            <th scope="col">mo_remarks</th>
+                                                            <th scope="col">Disease</th>
+                                                            <th scope="col">Excuse</th>
                                                             <th scope="col">Start Date</th>
                                                             <th scope="col">End Date</th>
                                                             <th scope="col">Days</th>
@@ -161,7 +161,7 @@
     </div>
 
     <!-- Observation-->
-     <div class="modal fade" id="observations">
+    <div class="modal fade" id="observations">
         <!-- <div class="row"> -->
         <div class="modal-dialog modal-dialog-centered " style="margin-left: 250px;" role="document">
             <div class="modal-content bg-custom3" style="width:1200px;">
@@ -181,13 +181,13 @@
                                     <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>Project_Officer/insert_project">
                                         <div class="form-group row">
                                             <div class="col-sm-4">
-                                                <h3 id="cadet_name_heading"></h3>
+                                                <h3 id="cadet_name_heading_ob"></h3>
                                             </div>
                                             <div class="col-sm-4">
-                                                <h3 id="cadet_oc_no"></h3>
+                                                <h3 id="cadet_oc_no_ob"></h3>
                                             </div>
                                             <div class="col-sm-4">
-                                                <h3 id="cadet_term"></h3>
+                                                <h3 id="cadet_term_ob"></h3>
                                             </div>
                                         </div>
 
@@ -202,7 +202,7 @@
                                                             <th scope="col">observation</th>
                                                             <th scope="col">Created Date</th>
                                                             <!-- <th scope="col">End Date</th> -->
-                                                           <!--  <th scope="col">Days</th>
+                                                            <!--  <th scope="col">Days</th>
                                                             <th scope="col">Status</th> -->
                                                         </tr>
                                                     </thead>
@@ -257,8 +257,8 @@
                                 </div>
 
                                 <div class="col-sm-3 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="search_date" id="search_date" placeholder="Enter OC No.">
-                                    <span id="error_search" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please select date</span>
+                                    <input type="text" class="form-control form-control-user" name="oc_no" id="oc_no" placeholder="Enter OC No." value="<?= $oc_no_entered ?>">
+                                    <span id="error_search" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please enter OC No.</span>
                                 </div>
 
                                 <div class="col-sm-2 mb-1">
@@ -280,18 +280,27 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-lg-12">
+        <div id="no_data" class="row my-2" style="display:none">
+            <div class="col-lg-12 my-5">
 
-                <div class="card">
-                    <div class="card-header bg-custom1">
-                        <h1 class="h4">Dossiser Record</h1>
-                    </div>
+                <h4 style="color:red">No Cadet Found. Please check the OC No.</h4>
+
+            </div>
+        </div>
+
+        <?php if (count($pn_data) > 0) { ?>
+            <div id="cadet_dossier" class="row">
+                <div class="col-lg-12">
+
+                    <div class="card">
+                        <div class="card-header bg-custom1">
+                            <h1 class="h4">Dossiser Record</h1>
+                        </div>
 
 
-                    <div class="card-body">
-                        <div id="table_div">
-                            <?php if (count($pn_data) > 0) { ?>
+                        <div class="card-body">
+                            <div id="table_div">
+
                                 <table id="datatable" class="table table-striped" style="color:black">
                                     <thead>
                                         <tr>
@@ -328,17 +337,19 @@
                                         <?php } ?>
                                     </tbody>
                                 </table>
-                            <?php } else { ?>
-                                <a> No Data found </a>
-                            <?php } ?>
+
+                                <!-- <a> No Data found </a> -->
+
+                            </div>
                         </div>
+
+
                     </div>
 
-
                 </div>
-
             </div>
-        </div>
+
+        <?php } ?>
 
     </div>
 
@@ -360,23 +371,20 @@
                 var result = jQuery.parseJSON(data);
                 var len = result.length;
 
-                // $("#bid_amount").empty();
-                // $('#bid_amount').removeAttr('disabled');
-                 $("#table_rows_punishment").empty();
+                $("#table_rows_punishment").empty();
                 for (var i = 0; i < len; i++) {
-                    // $diff = date_diff(result[i]['start_date'], result[i]['end_date']);
-                    const date1 = new Date(result[i]['start_date']);
-                    const date2 = new Date(result[i]['end_date']);
-                    var diff = (Math.abs(date1 - date2))/(1000 * 60 * 60 * 24);
+                    var date1 = new Date(result[i]['start_date']);
+                    var date2 = new Date(result[i]['end_date']);
+                    var diff = (Math.abs(date1 - date2)) / (1000 * 60 * 60 * 24);
 
                     var today_date = new Date();
                     var status = '';
                     if ((today_date >= date1) && (today_date <= date2)) {
-                        status='Active';
+                        status = 'Active';
                     } else {
-                        status='Ended'
+                        status = 'Ended'
                     }
-                    $("#table_rows_punishment").html(`<tr>
+                    $("#table_rows_punishment").append(`<tr>
                                                         <td>${i+1}</td>
                                                         <td>${result[i]['term']}</td>
                                                         <td>${result[i]['date']}</td>
@@ -393,7 +401,7 @@
         });
     }
 
-        function view_excuses(id) {
+    function view_excuses(id) {
         // alert('cadet id: ' + id);
         $.ajax({
             url: '<?= base_url(); ?>D_O/view_excuses_in_dossier',
@@ -405,21 +413,21 @@
                 var result = jQuery.parseJSON(data);
                 var len = result.length;
 
-                 $("#table_rows_excuses").empty();
+                $("#table_rows_excuses").empty();
                 for (var i = 0; i < len; i++) {
                     // $diff = date_diff(result[i]['start_date'], result[i]['end_date']);
                     const date1 = new Date(result[i]['start_date']);
                     const date2 = new Date(result[i]['end_date']);
-                    var diff = (Math.abs(date1 - date2))/(1000 * 60 * 60 * 24);
+                    var diff = (Math.abs(date1 - date2)) / (1000 * 60 * 60 * 24);
 
                     var today_date = new Date();
                     var status = '';
                     if ((today_date >= date1) && (today_date <= date2)) {
-                        status='Active';
+                        status = 'Active';
                     } else {
-                        status='Ended'
+                        status = 'Ended'
                     }
-                    $("#table_rows_excuses").html(`<tr>
+                    $("#table_rows_excuses").append(`<tr>
                                                         <td>${i+1}</td>
                                                         <td>${result[i]['term']}</td>
                                                         <td>${result[i]['date']}</td>
@@ -436,7 +444,7 @@
         });
     }
 
-  function view_observations(id) {
+    function view_observations(id) {
         // alert('cadet id: ' + id);
         $.ajax({
             url: '<?= base_url(); ?>D_O/view_observation_in_dossier',
@@ -448,23 +456,12 @@
                 var result = jQuery.parseJSON(data);
                 var len = result.length;
 
-                // $("#bid_amount").empty();
-                // $('#bid_amount').removeAttr('disabled');
                 $("#table_rows_observations").empty();
                 for (var i = 0; i < len; i++) {
-                    // $diff = date_diff(result[i]['start_date'], result[i]['end_date']);
-                    //const date1 = new Date(result[i]['start_date']);
-                    //const date2 = new Date(result[i]['end_date']);
-                    //var diff = (Math.abs(date1 - date2))/(1000 * 60 * 60 * 24);
 
                     var today_date = new Date();
                     var status = '';
-                    // if ((today_date >= date1) && (today_date <= date2)) {
-                    //     status='Active';
-                    // } else {
-                    //     status='Ended'
-                    // }
-                    $("#table_rows_observations").html(`<tr>
+                    $("#table_rows_observations").append(`<tr>
                                                         <td>${i+1}</td>
                                                         <td>${result[i]['term']}</td>
                                                         <td>${result[i]['date']}</td>
@@ -533,7 +530,7 @@
                     var result = jQuery.parseJSON(data);
 
                     if (result != undefined) {
-                        $('#search_cadet').show();
+                        $('#cadet_dossier').show();
                         $('#no_data').hide();
 
                         $('#name').val(result['name']);
@@ -561,6 +558,12 @@
         $('#cadet_name_heading').html('<strong> Cadet Name: ' + $columns[1].innerHTML + '</strong>');
         $('#cadet_oc_no').html('<strong> OC No: ' + $columns[2].innerHTML + '</strong>');
         $('#cadet_term').html('<strong> Term: ' + $columns[3].innerHTML + '</strong>');
+        $('#cadet_name_heading_ex').html('<strong> Cadet Name: ' + $columns[1].innerHTML + '</strong>');
+        $('#cadet_oc_no_ex').html('<strong> OC No: ' + $columns[2].innerHTML + '</strong>');
+        $('#cadet_term_ex').html('<strong> Term: ' + $columns[3].innerHTML + '</strong>');
+        $('#cadet_name_heading_ob').html('<strong> Cadet Name: ' + $columns[1].innerHTML + '</strong>');
+        $('#cadet_oc_no_ob').html('<strong> OC No: ' + $columns[2].innerHTML + '</strong>');
+        $('#cadet_term_ob').html('<strong> Term: ' + $columns[3].innerHTML + '</strong>');
         $('#punish').val($columns[5].innerHTML);
         $('#start_date').val($columns[6].innerHTML);
         $('#end_date').val($columns[7].innerHTML);
@@ -569,28 +572,32 @@
     });
 
     $('#search_btn').on('click', function() {
-        // $('#add_btn').attr('disabled', true);
         var validate = 0;
-        var search_date = $('#search_date').val();
+        var oc_no = $('#oc_no').val();
 
-        if (search_date == '') {
+        if (oc_no == '') {
             validate = 1;
-            $('#search_date').addClass('red-border');
+            $('#oc_no').addClass('red-border');
         }
 
         if (validate == 0) {
             $('#error_search').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>D_O/search_punish_by_date',
+                url: '<?= base_url(); ?>D_O/search_cadet_for_dossier',
                 method: 'POST',
                 data: {
-                    'search_date': search_date
+                    'oc_no': oc_no
                 },
                 success: function(data) {
-                    var newDoc = document.open("text/html", "replace");
-                    newDoc.write(data);
-                    newDoc.close();
+                    if (data != '0') {
+                        var newDoc = document.open("text/html", "replace");
+                        newDoc.write(data);
+                        newDoc.close();
+                    } else {
+                        $('#no_data').show();
+                        $('#cadet_dossier').hide();
+                    }
                 },
                 async: true
             });
@@ -601,6 +608,31 @@
 
     });
 
+    $('#show_all_btn').on('click', function() {
+        var validate = 0;
+
+        if (validate == 0) {
+            $('#error_search').hide();
+            $.ajax({
+                url: '<?= base_url(); ?>D_O/search_all_cadets_for_dossier',
+                method: 'POST',
+                success: function(data) {
+                    if (data != '0') {
+                        var newDoc = document.open("text/html", "replace");
+                        newDoc.write(data);
+                        newDoc.close();
+                    } else {
+                        $('#no_data').show();
+                        $('#cadet_dossier').hide();
+                    }
+                },
+                async: true
+            });
+        } else {
+            $('#error_search').show();
+        }
+
+    });
 
     $('#save_btn').on('click', function() {
         $('#save_btn').attr('disabled', true);
