@@ -38,7 +38,7 @@
 
                     <form class="user" role="form" method="post" id="add_form">
                         <div class="card-body bg-custom3">
-                            <div class="form-group row" style="margin-top:50px;">
+                            <div class="form-group row">
                                 <div class="col-sm-6">
                                     <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>D_O/add_punishment'">
                                         <span><i class="fas fa-radiation-alt" style="font-size:25px;margin:5px"></i></span>
@@ -53,7 +53,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row" style="margin-top:50px;">
+                            <div class="form-group row">
                                 <div class="col-sm-6">
                                     <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>D_O/add_excuse'">
                                         <span><i class="fas fa-hand-paper" style="font-size:25px;margin:5px"></i></span>
@@ -67,7 +67,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="form-group row" style="margin-top:50px;">
+                            <div class="form-group row">
                                 <div class="col-sm-6">
                                     <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>D_O/add_observation'">
                                         <!-- <span><i class="fas fa-hand-paper" style="font-size:25px;margin:5px"></i></span> -->
@@ -79,6 +79,20 @@
                                     <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>D_O/view_observation_list'">
                                     <span><i class="far fa-lightbulb" style="font-size:25px;margin:5px"></i></span>
                                         <h4 style="font-weight: bold;display:inline-block">View Observation List</h4>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>D_O/add_physical_milestone'">
+                                        <span><i class="fas fa-running" style="font-size:25px;margin:5px"></i></span>
+                                        <h4 style="font-weight: bold; display:inline-block">Add Physical Milestone</h4>
+                                    </button>
+                                </div>
+                                <div class="col-sm-6">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>D_O/view_physical_milestone'">
+                                    <span><i class="fas fa-heartbeat" style="font-size:25px;margin:5px"></i></span>
+                                        <h4 style="font-weight: bold;display:inline-block">View Physical Milestones List</h4>
                                     </button>
                                 </div>
                             </div>

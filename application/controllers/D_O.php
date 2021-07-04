@@ -405,15 +405,19 @@ class D_O extends CI_Controller
     public function daily_module()
     {
         if ($this->session->has_userdata('user_id')) {
-            // $data['club_data'] = $this->db->get('cadet_club')->result_array();
-            $this->load->view('do/daily_module'); //, $data);
+            $this->load->view('do/daily_module'); 
         }
     }
     public function add_punishment()
     {
         if ($this->session->has_userdata('user_id')) {
-            // $data['club_data'] = $this->db->get('cadet_club')->result_array();
-            $this->load->view('do/add_punishment'); //, $data);
+            $this->load->view('do/add_punishment'); 
+        }
+    }
+    public function add_physical_milestone()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $this->load->view('do/add_physical_milestone');
         }
     }
     public function add_excuse()
