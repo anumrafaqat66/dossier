@@ -91,6 +91,139 @@ class D_O extends CI_Controller
             }
         }
     }
+
+        public function add_inspection_record()
+    {
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+
+            $officer_id = $postData['officer_name'];
+            $date = $postData['date'];
+            $inspecting_officer_name = $postData['inspector_name'];
+            $remarks = $postData['remarks'];
+           // $id = $this->db->where('name',$officer_name)->get('pn_form1s')->row_array();
+           //echo $officer_id;exit;
+
+            $insert_array = array(
+                //'officer_name' => $officer_name,
+                'p_id'=>$officer_id,
+                'date' => $date,
+                'inspecting_officer_name' => $inspecting_officer_name,
+                'remarks'=>$remarks,
+                'do_id' => $this->session->userdata('user_id'),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+
+
+            );
+           // print_r($insert_array);exit;
+            $insert = $this->db->insert('inspection_records', $insert_array);
+            //$last_id = $this->db->insert_id();
+
+            if (!empty($insert)) {
+                $this->session->set_flashdata('success', 'Data Submitted successfully');
+                redirect('D_O/Inspection_record');
+            } else {
+                $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                redirect('D_O/Inspection_record');
+            }
+        }
+    }
+
+          public function add_personal_record()
+    {
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+
+            $upload1 = $this->upload($_FILES['report']);
+            if(count($upload1)>1){
+           $files=implode(',', $upload1);
+            }else{
+             $files=$upload1[0];
+            }
+            //echo $files;exit;
+
+            $officer_id = $postData['officer_name'];
+            $p_no = $postData['pno'];
+            $course = $postData['course'];
+            $religion = $postData['religion'];
+            $e_contact=$postData['e_contact'];
+            $telephone_no = $postData['telephone'];
+            $ex_army = $postData['army'];
+            $father_name = $postData['father_name'];
+            $father_occupation=$postData['occupation'];
+            $next_of_kin = $postData['next_of_kin'];
+            $siblings = $postData['siblings'];
+            $near_relatives = $postData['relatives'];
+            $identification_marks=$postData['mark'];
+            $height=$postData['height'];
+            $weight=$postData['weight'];
+            $navy_joining_date = $postData['joining_date'];
+            $entry_mode = $postData['entry_mode'];
+            $service_id=$postData['service_no'];
+             $nic=$postData['cnic'];
+            $blood_group=$postData['blood'];
+            $address=$postData['address'];
+            $karachi_address=$postData['khi_address'];
+            $matric_school=$postData['matric'];
+               $matric_division=$postData['grade_matric'];
+               $intermediate_college=$postData['college'];
+               $intermediate_division=$postData['grade_intermediate'];
+               $diploma=$postData['diploma'];
+
+
+
+           // $id = $this->db->where('name',$officer_name)->get('pn_form1s')->row_array();
+           //echo $officer_id;exit;
+
+            $insert_array = array(
+                //'officer_name' => $officer_name,
+                'p_id'=>$officer_id,
+                'p_no' => $p_no,
+                'course' => $course,
+                'religion'=>$religion,
+                'emergency_contact'=>$e_contact,
+                'telephone_no'=>$telephone_no,
+                'ex_army'=>$ex_army,
+                'father_name'=>$father_name,
+                'father_occupation'=>$father_occupation,
+                'next_of_kin'=>$next_of_kin,
+                'siblings'=>$siblings,
+                'near_relatives'=>$near_relatives,
+                'identification_marks'=>$identification_marks,
+                'height'=>$height,
+                'weight'=>$weight,
+                'navy_joining_date'=>$navy_joining_date,
+                'entry_mode'=>$entry_mode,
+                'service_id'=>$service_id,
+                'nic'=>$nic,
+                'blood_group'=>$blood_group,
+                'address'=>$address,
+                'karachi_address'=>$karachi_address,
+                'matric_school'=>$matric_school,
+                'matric_division'=>$matric_division,
+                'intermediate_college'=>$intermediate_division,
+                'intermediate_division'=>$intermediate_division,
+                'diploma'=>$diploma,
+                'do_id' => $this->session->userdata('user_id'),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+                'upload_file'=>$files
+            );
+           // print_r($insert_array);exit;
+            $insert = $this->db->insert('personal_datas', $insert_array);
+            //$last_id = $this->db->insert_id();
+
+            if (!empty($insert)) {
+                $this->session->set_flashdata('success', 'Data Submitted successfully');
+                redirect('D_O/personal_data');
+            } else {
+                $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                redirect('D_O/personal_data');
+            }
+        }
+    }
+
     public function save_cadet_punishment()
     {
         if ($this->input->post()) {
@@ -231,7 +364,8 @@ class D_O extends CI_Controller
     public function Inspection_record()
     {
         if ($this->session->has_userdata('user_id')) {
-            $this->load->view('do/inspection_record');
+            $data['pn_data']=$this->db->get('pn_form1s')->result_array();
+            $this->load->view('do/inspection_record',$data);
         }
     }
     public function psychologist_report()
@@ -249,7 +383,8 @@ class D_O extends CI_Controller
     public function personal_data()
     {
         if ($this->session->has_userdata('user_id')) {
-            $this->load->view('do/personal_data');
+             $data['pn_data']=$this->db->get('pn_form1s')->result_array();
+             $this->load->view('do/personal_data',$data);
         }
     }
     public function add_club()
@@ -366,4 +501,40 @@ class D_O extends CI_Controller
             json_encode($view_page);
         }
     }
+
+     public function upload($fieldname)
+    {
+        //$data = NULL;
+        //echo $fieldname;exit;
+        $filesCount = count($_FILES['report']['name']);
+        //print_r($_FILES['reg_cert']['name']);exit;
+        for ($i = 0; $i < $filesCount; $i++) {
+            $_FILES['file']['name']     = $_FILES['report']['name'][$i];
+            $_FILES['file']['type']     = $_FILES['report']['type'][$i];
+            $_FILES['file']['tmp_name'] = $_FILES['report']['tmp_name'][$i];
+            $_FILES['file']['error']    = $_FILES['report']['error'][$i];
+            $_FILES['file']['size']     = $_FILES['report']['size'][$i];
+
+            $config['upload_path'] = 'uploads/documents';
+            $config['allowed_types']        = 'gif|jpg|png|doc|xls|pdf|xlsx|docx|ppt|pptx';
+
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            //$data['upload_data'] = '';
+            if (!$this->upload->do_upload('file')) {
+                $data = array('msg' => $this->upload->display_errors());
+                //echo "here";exit;
+            } else {
+                //echo $filesCount;exit;
+                $data = array('msg' => "success");
+                $data['upload_data'] = $this->upload->data();
+                $count[$i] = $data['upload_data']['file_name'];
+            }
+        } //end of for
+        //print_r($count);exit();
+        return $count;
+    }
+
+
 }

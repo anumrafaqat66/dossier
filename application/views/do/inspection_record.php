@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>Project_Officer/insert_project">
+                        <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>D_O/add_inspection_record">
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Officer Name:</h6>
@@ -57,6 +57,9 @@
                                 <div class="col-sm-4 mb-1">
                                     <select class="form-control rounded-pill" name="officer_name" id="officer_name" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Officer Name</option>
+                                        <?php foreach($pn_data as $data){ ?>
+                                        <option class="form-control form-control-user" value="<?= $data['p_id'];?>"><?= $data['name']; ?></option>
+                                        <?php } ?>
                                     </select>
                                 </div>
 
@@ -88,7 +91,7 @@
                                         <!-- <i class="fab fa-google fa-fw"></i>  -->
                                         Submit
                                     </button>
-                                    <span id="show_error_new" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
+                                    <span id="show_error_new" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please Fill in required fields*</span>
                                 </div>
                             </div>
 
@@ -141,44 +144,24 @@
         $('#add_btn').attr('disabled', true);
         var validate = 0;
 
-        var oc_no = $('#oc_no').val();
-        var pno = $('#pno').val();
-        var name = $('#name').val();
-        var class_ = $('#class').val();
-        var batch_no = $('#batch_no').val();
-        var status = $('#status').val();
-        var div_name = $('#div_name').val();
-        var status = $('#status').val();
+        var officer_name = $('#officer_name').val();
+        var date = $('#date').val();
+        var inspector_name = $('#inspector_name').val();
 
-        if (oc_no == '') {
+        if (officer_name == '') {
             validate = 1;
-            $('#oc_no').addClass('red-border');
+        $('#officer_name').addClass('red-border');
         }
-        if (pno == '') {
+        if (date == '') {
             validate = 1;
-            $('#pno').addClass('red-border');
+            $('#date').addClass('red-border');
         }
-        if (name == '') {
+        if (inspector_name == '') {
             validate = 1;
-            $('#name').addClass('red-border');
+            $('#inspector_name').addClass('red-border');
         }
-        if (class_ == '') {
-            validate = 1;
-            $('#class').addClass('red-border');
-        }
+     
 
-        if (batch_no == '') {
-            validate = 1;
-            $('#batch_no').addClass('red-border');
-        }
-        if (status == '') {
-            validate = 1;
-            $('#status').addClass('red-border');
-        }
-        if (div_name == '') {
-            validate = 1;
-            $('#div_name').addClass('red-border');
-        }
 
         if (validate == 0) {
             $('#add_form')[0].submit();

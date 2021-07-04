@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>Project_Officer/insert_project">
+                        <form class="user" role="form" method="post" id="add_form" enctype="multipart/form-data" action="<?= base_url(); ?>D_O/add_personal_record">
                             <nav>
                                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                                     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#step1" role="tab" aria-controls="nav-home" aria-selected="true" style="width:300px;">Part 1</a>
@@ -61,6 +61,9 @@
                                         <div class="col-sm-12 mb-1">
                                             <select class="form-control rounded-pill" name="officer_name" id="officer_name" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                                 <option class="form-control form-control-user" value="">Select Officer Name</option>
+                                                <?php foreach($pn_data as $data){ ?>
+                                        <option class="form-control form-control-user" value="<?= $data['p_id'];?>"><?= $data['name']; ?></option>
+                                        <?php } ?>
                                             </select>
                                         </div>
                                     </div>
@@ -73,7 +76,7 @@
 
                                     <div class="form-group row custom-file-upload">
                                         <div class="col-sm-12 mb-1">
-                                            <input type="file" style="height: 50px; padding:10px !important;" class="form-control form-control-user" placeholder="Upload Document" x-model="fileName">
+                                            <input type="file" style="height: 50px; padding:10px !important;"  multiple="multiple" class="form-control form-control-user" placeholder="Upload Document" name="report[]" x-model="fileName">
                                         </div>
                                     </div>
 
@@ -307,7 +310,7 @@
                                             <input type="text" class="form-control form-control-user" name="matric" id="matric" placeholder="Matric School">
                                         </div>
                                         <div class="col-sm-6 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="grade" id="grade" placeholder="Matric Grade">
+                                            <input type="text" class="form-control form-control-user" name="grade_matric" id="grade" placeholder="Matric Grade">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -325,7 +328,7 @@
                                             <input type="text" class="form-control form-control-user" name="college" id="college" placeholder="Intermediate College">
                                         </div>
                                         <div class="col-sm-6 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="grade" id="grade" placeholder="Intermediate Grade">
+                                            <input type="text" class="form-control form-control-user" name="grade_intermediate" id="grade" placeholder="Intermediate Grade">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -342,7 +345,7 @@
 
                                     <div class="form-group row justify-content-center">
                                         <div class="col-sm-4">
-                                            <button type="button" class="btn btn-primary btn-user btn-block" id="add_btn">
+                                            <button type="submit" class="btn btn-primary btn-user btn-block" id="add_btn">
                                                 <!-- <i class="fab fa-google fa-fw"></i>  -->
                                                 Submit
                                             </button>
