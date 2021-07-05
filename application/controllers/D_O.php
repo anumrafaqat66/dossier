@@ -385,7 +385,7 @@ class D_O extends CI_Controller
     public function personal_data()
     {
         if ($this->session->has_userdata('user_id')) {
-            $data['pn_data'] = $this->db->get('pn_form1s')->result_array();
+            $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->result_array();
             $this->load->view('do/personal_data', $data);
         }
     }
@@ -430,7 +430,26 @@ class D_O extends CI_Controller
     public function add_observation()
     {
         if ($this->session->has_userdata('user_id')) {
-            $this->load->view('do/add_observation'); //, $data);
+            $this->load->view('do/add_observation'); 
+        }
+    }
+    public function add_observation_slip()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $this->load->view('do/add_observation_slip');
+        }
+    }
+    public function add_warning()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $this->load->view('do/add_warning'); 
+        }
+    }
+    public function add_officer_qualities()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $data['quality_list'] = $this->db->get('quality_list')->result_array();
+            $this->load->view('do/officer_like_qualities', $data); 
         }
     }
 

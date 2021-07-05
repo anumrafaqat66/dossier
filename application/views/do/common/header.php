@@ -105,9 +105,9 @@
                 </a>
                 <div id="collapse_discipline" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url(); ?>SO_STORE/add_inventory">Observation Record (Terms I-III)</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>SO_STORE/view_projects">Punishment Record</a>
-                        <a class="collapse-item" href="#">Observation Slips</a> 
+                        <a class="collapse-item" href="<?php echo base_url(); ?>D_O/add_observation">Observation Record</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>D_O/add_punishment">Punishment Record</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>D_O/add_observation_slip">Observation Slips</a> 
                     </div>
                 </div>
             </li>
@@ -119,8 +119,8 @@
                 </a>
                 <div id="collapse_warning" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Record of Warnings</a>
-                        <a class="collapse-item" href="#">Record Attachments</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>D_O/add_warning">Record of Warnings</a>
+                        <!-- <a class="collapse-item" href="#">Record Attachments</a> -->
                     </div>
                 </div>
             </li>
@@ -138,7 +138,25 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_officer" aria-expanded="true">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_assesment" aria-expanded="true">
+                    <i class="fas fa-chart-bar"></i>
+                    <span> Assesment</span>
+                    <!-- <span>Components</span> -->
+                </a>
+                <div id="collapse_assesment" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="#">General Remarks</a>
+                        <a class="collapse-item" href="#">Performance Report</a>
+                        <a class="collapse-item" href="#">Progress Chart</a>
+                        <a class="collapse-item" href="#">Distictions</a>
+                        <a class="collapse-item" href="#">Seniority</a>
+                        <a class="collapse-item" href="#">Branch Allocation</a>
+                        <a class="collapse-item" href="#">Degree Complete</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url(); ?>D_O/add_officer_qualities" aria-expanded="true">
                     <i class="fas fa-medal"></i>
                     <span> Officer Like Qualities</span>
                     <!-- <span>Components</span> -->

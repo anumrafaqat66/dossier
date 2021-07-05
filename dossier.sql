@@ -2183,6 +2183,39 @@ INSERT INTO `divisions` (`id`, `division_name`, `division_officer`, `status`) VA
 (14, 'Khalid division', NULL, NULL), 
 (15, 'Moawin division', NULL, NULL);
 
+
+--
+-- Table structure for table `quality_list`
+--
+
+CREATE TABLE `quality_list` (
+  `id` int(20) NOT NULL,
+  `quality_name` varchar(50) DEFAULT NULL,
+  `max_marks` int(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `quality_list`
+--
+
+INSERT INTO `quality_list` (`id`, `quality_name`, `max_marks`) VALUES
+(1, 'Truthfulness', 20),
+(2, 'Integrity', 25),
+(3, 'Sense of Pride', 10),
+(4, 'Moral Courage', 15),
+(5, 'Confidence and Behviour Under Stress', 15),
+(6, 'Initiative', 10),
+(7, 'Ability to command,control and Assert', 10),
+(8, 'Self and General Discipline', 10),
+(9, 'Sense of Duty', 10),
+(10, 'Reliability', 10),
+(11, 'General Appearance and Bearing', 10),
+(12, 'Physical Fitness', 10),
+(13, 'Manners and Social Conduct', 10),
+(14, 'Intelligence and Common sense', 10),
+(15, 'Cooperation Adaptability and Team work', 10),
+(16, 'Power of Expression (Written & Oral)', 15);
+
 -- Alter Tables by Awais Ahmad
 
 alter table pn_form1s
@@ -2534,6 +2567,12 @@ ALTER TABLE `cadet_club`
 --
 ALTER TABLE `divisions`
   ADD PRIMARY KEY (`id`);
+  
+--
+-- Indexes for table `quality_list`
+--
+ALTER TABLE `quality_list`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -2826,69 +2865,70 @@ ALTER TABLE `cadet_club`
 --
 ALTER TABLE `divisions`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-COMMIT;
+  
+
+--
+-- AUTO_INCREMENT for table `quality_list`
+--
+ALTER TABLE `quality_list`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 
 --
 -- Table structure for table `academic_records`
 --
 
--- physical_milestone --
+-- physical_milestone 
 CREATE TABLE `physical_milestone` (
-  `id` bigint(20) UNSIGNED NOT NULL  AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `p_id` int(11) NOT NULL,
   `oc_no` int(11) NOT NULL,
   `do_id` int(11) DEFAULT NULL,
   `PST_result` varchar(200),
   `PST_attempt` varchar(200),
- `SST_result` varchar(200),
+  `SST_result` varchar(200),
   `SST_attempt` varchar(200),
- `PET_I_result` varchar(200),
+  `PET_I_result` varchar(200),
   `PET_I_attempt` varchar(200),
- `PET_II_result` varchar(200),
+  `PET_II_result` varchar(200),
   `PET_II_attempt` varchar(200),
- `assault_result` varchar(200),
+  `assault_result` varchar(200),
   `assault_attempt` varchar(200),
- `saluting_result` varchar(200),
+  `saluting_result` varchar(200),
   `saluting_attempt` varchar(200),
- `PLX_result` varchar(200),
-  `PLX_attempt` varchar(200)
-  `date_added` timestamp NULL DEFAULT NULL,
-  
-
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `PLX_result` varchar(200),
+  `PLX_attempt` varchar(200),
+  `date_added` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Term_I Details  --
 CREATE TABLE `term_I_details` (
-  `id` bigint(20) UNSIGNED NOT NULL  AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `p_id` int(11) NOT NULL,
   `oc_no` int(11) NOT NULL,
   `do_id` int(11) DEFAULT NULL,
   `mile_time` varchar(200),
   `pushups` varchar(200),
- `chinups` varchar(200),
+  `chinups` varchar(200),
   `rope` varchar(200),
- 
-  `date_added` timestamp NULL DEFAULT NULL,
-  
-
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `date_added` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Term_II Details  --
 CREATE TABLE `term_II_details` (
-  `id` bigint(20) UNSIGNED NOT NULL  AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL  PRIMARY KEY AUTO_INCREMENT,
   `p_id` int(11) NOT NULL,
   `oc_no` int(11) NOT NULL,
   `do_id` int(11) DEFAULT NULL,
   `mile_time` varchar(200),
   `pushups` varchar(200),
- `chinups` varchar(200),
+  `chinups` varchar(200),
   `rope` varchar(200),
- 
-  `date_added` timestamp NULL DEFAULT NULL,
-  
-
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `date_added` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+COMMIT;
