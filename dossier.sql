@@ -2828,6 +2828,67 @@ ALTER TABLE `divisions`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
+--
+-- Table structure for table `academic_records`
+--
+
+-- physical_milestone --
+CREATE TABLE `physical_milestone` (
+  `id` bigint(20) UNSIGNED NOT NULL  AUTO_INCREMENT,
+  `p_id` int(11) NOT NULL,
+  `oc_no` int(11) NOT NULL,
+  `do_id` int(11) DEFAULT NULL,
+  `PST_result` varchar(200),
+  `PST_attempt` varchar(200),
+ `SST_result` varchar(200),
+  `SST_attempt` varchar(200),
+ `PET_I_result` varchar(200),
+  `PET_I_attempt` varchar(200),
+ `PET_II_result` varchar(200),
+  `PET_II_attempt` varchar(200),
+ `assault_result` varchar(200),
+  `assault_attempt` varchar(200),
+ `saluting_result` varchar(200),
+  `saluting_attempt` varchar(200),
+ `PLX_result` varchar(200),
+  `PLX_attempt` varchar(200)
+  `date_added` timestamp NULL DEFAULT NULL,
+  
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Term_I Details  --
+CREATE TABLE `term_I_details` (
+  `id` bigint(20) UNSIGNED NOT NULL  AUTO_INCREMENT,
+  `p_id` int(11) NOT NULL,
+  `oc_no` int(11) NOT NULL,
+  `do_id` int(11) DEFAULT NULL,
+  `mile_time` varchar(200),
+  `pushups` varchar(200),
+ `chinups` varchar(200),
+  `rope` varchar(200),
+ 
+  `date_added` timestamp NULL DEFAULT NULL,
+  
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Term_II Details  --
+CREATE TABLE `term_II_details` (
+  `id` bigint(20) UNSIGNED NOT NULL  AUTO_INCREMENT,
+  `p_id` int(11) NOT NULL,
+  `oc_no` int(11) NOT NULL,
+  `do_id` int(11) DEFAULT NULL,
+  `mile_time` varchar(200),
+  `pushups` varchar(200),
+ `chinups` varchar(200),
+  `rope` varchar(200),
+ 
+  `date_added` timestamp NULL DEFAULT NULL,
+  
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -16,9 +16,173 @@
         z-index: 9999;
     }
 </style>
+<!-- Term I Modal -->
 
 <div class="container-fluid my-2">
+  <div class="modal fade" id="term-I">
+        <!-- <div class="row"> -->
+        <div class="modal-dialog modal-dialog-centered " style="margin-left: 250px;" role="document">
+            <div class="modal-content bg-custom3" style="width:1200px;">
+                <div class="modal-header" style="width:1200px;">
+                </div>
+                <div class="card-body bg-custom3">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-12">
 
+                            <div class="card">
+                                <div class="card-header bg-custom1">
+                                    <h1 class="h4">Term-I Details</h1>
+                                </div>
+
+                                <div class="card-body bg-custom3">
+                                    <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>D_O/add_termI_details">
+                                        <div class="form-group row">
+                                            <div class="col-sm-3">
+                                                <h3 id="">Mile Time</h3>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <h3 id="">Chinups</h3>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <h3 id="">Pushups</h3>
+                                            </div>
+                                             <div class="col-sm-3">
+                                                <h3 id="">Rope</h3>
+                                            </div>
+                                        </div>
+                                         <div class="form-group row">
+
+                                <div class="col-sm-4 mb-1" style="display:none">
+                                    <input type="text" class="" name="oc_num1" id="oc_num1">
+                                </div>
+                                <div class="col-sm-4 mb-1" style="display:none">
+                                    <input type="text" class="" name="id1" id="id1">
+                                </div>
+
+                                <div class="col-sm-3 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="mile_time_I" id="mile_time" style="" placeholder="mile time" >
+                                </div>
+                                <div class="col-sm-3 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="Chinups_I" id="Chinups"  placeholder="Chinups" >
+                                </div>
+                                <div class="col-sm-3 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="Pushups_I" id="Pushups"  placeholder="Pushups" >
+                                </div>
+                                  <div class="col-sm-3 mb-1">
+                                     <select class="form-control rounded-pill" name="Rope_I" id="rope" data-placeholder="Select Grade" style="font-size: 0.8rem; height:50px;">
+                                        <option class="form-control form-control-user" value="">Select Grade</option>
+                                        <option class="form-control form-control-user" value="Alpha">Alpha</option>
+                                        <option class="form-control form-control-user" value="Bravo">Bravo</option>
+                                        <option class="form-control form-control-user" value="Charlie">Charlie</option>
+                                    </select>
+                                </div>
+
+
+                            </div>
+                     <div class="form-group row">
+                        <button type="submit" class="btn btn-primary btn-user rounded-pill col-md-5" style="margin-left: 300px;" >Save</button>
+                     </div>
+                                        <div class="card-body">
+                                           
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-primary rounded-pill" data-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Term II Modal -->
+
+      <div class="modal fade" id="term-II">
+        <!-- <div class="row"> -->
+        <div class="modal-dialog modal-dialog-centered " style="margin-left: 250px;" role="document">
+            <div class="modal-content bg-custom3" style="width:1200px;">
+                <div class="modal-header" style="width:1200px;">
+                </div>
+                <div class="card-body bg-custom3">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="card">
+                                <div class="card-header bg-custom1">
+                                    <h1 class="h4">Term-II Details</h1>
+                                </div>
+
+                                <div class="card-body bg-custom3">
+                                    <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>D_O/add_termII_details">
+                                       
+                                        <div class="form-group row">
+                                            <div class="col-sm-3">
+                                                <h3 id="">Mile Time</h3>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <h3 id="">Chinups</h3>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <h3 id="">Pushups</h3>
+                                            </div>
+                                             <div class="col-sm-3">
+                                                <h3 id="">Rope</h3>
+                                            </div>
+                                        </div>
+                                            <div class="form-group row">
+
+                                <div class="col-sm-4 mb-1" style="display:none">
+                                    <input type="text" class="" name="oc_num2" id="oc_num2">
+                                </div>
+                                <div class="col-sm-4 mb-1" style="display:none">
+                                    <input type="text" class="" name="id2" id="id2">
+                                </div>
+
+                                <div class="col-sm-3 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="mile_time_II" id="mile_time"  placeholder="mile time">
+                                </div>
+                                <div class="col-sm-3 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="Chinups_II" id="Chinups"  placeholder="Chinups">
+                                </div>
+                                <div class="col-sm-3 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="Pushups_II" id="Pushups"  placeholder="Pushups">
+                                </div>
+                                  <div class="col-sm-3 mb-1">
+                                     <select class="form-control rounded-pill" name="Rope_II" id="rope" data-placeholder="Select Grade" style="font-size: 0.8rem; height:50px;">
+                                        <option class="form-control form-control-user" value="">Select Grade</option>
+                                        <option class="form-control form-control-user" value="Alpha">Alpha</option>
+                                        <option class="form-control form-control-user" value="Bravo">Bravo</option>
+                                        <option class="form-control form-control-user" value="Charlie">Charlie</option>
+                                    </select>
+                                </div>
+
+
+                            </div>
+                        <div class="form-group row">
+                        <button type="submit" class="btn btn-primary btn-user rounded-pill col-md-5" style="margin-left: 300px;" >Save</button>
+                     </div>
+                                    </form>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-primary rounded-pill" data-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="form-group row justify-content-center">
         <div class="col-lg-1">
             <img src='<?= base_url() ?>assets/img/navy_logo-new.png' style="height: 130px; width:100px;">
@@ -77,7 +241,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" id="save_form" action="<?= base_url(); ?>D_O/save_cadet_punishment">
+                        <form class="user" role="form" method="post" id="save_form" action="<?= base_url(); ?>D_O/save_physical_milestone">
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Name:</h6>
@@ -161,14 +325,14 @@
                                     <h5>&nbsp;<strong>2 - SST</strong></h5>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                    <select class="form-control rounded-pill" name="pst" id="pst" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                    <select class="form-control rounded-pill" name="sst" id="sst" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Result</option>
                                         <option class="form-control form-control-user" value="qualified">Qualified</option>
                                         <option class="form-control form-control-user" value="disqualified">Disqualified</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                    <select class="form-control rounded-pill" name="pst_attempt" id="pst_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                    <select class="form-control rounded-pill" name="sst_attempt" id="sst_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Attempt</option>
                                         <option class="form-control form-control-user" value="1">1st</option>
                                         <option class="form-control form-control-user" value="2">2nd</option>
@@ -184,14 +348,14 @@
                                     <h5>&nbsp;<strong>3 - PET-I</strong></h5>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                    <select class="form-control rounded-pill" name="pst" id="pst" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                    <select class="form-control rounded-pill" name="pet_I" id="pet_I" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Result</option>
                                         <option class="form-control form-control-user" value="qualified">Qualified</option>
                                         <option class="form-control form-control-user" value="disqualified">Disqualified</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                    <select class="form-control rounded-pill" name="pst_attempt" id="pst_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                    <select class="form-control rounded-pill" name="pet_I_attempt" id="pet_I_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Attempt</option>
                                         <option class="form-control form-control-user" value="1">1st</option>
                                         <option class="form-control form-control-user" value="2">2nd</option>
@@ -200,21 +364,23 @@
                                         <option class="form-control form-control-user" value="5">5th</option>
                                     </select>
                                 </div>
-
+                                <div class="col-sm-3 mb-1">
+                                   <button type="button" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#term-I">Add Details</button>
+                                </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-2 my-2">
                                     <h5>&nbsp;<strong>4 - PET-II</strong></h5>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                    <select class="form-control rounded-pill" name="pst" id="pst" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                    <select class="form-control rounded-pill" name="pet_II" id="pet_II" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Result</option>
                                         <option class="form-control form-control-user" value="qualified">Qualified</option>
                                         <option class="form-control form-control-user" value="disqualified">Disqualified</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                    <select class="form-control rounded-pill" name="pst_attempt" id="pst_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                    <select class="form-control rounded-pill" name="pet_II_attempt" id="pet_II_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Attempt</option>
                                         <option class="form-control form-control-user" value="1">1st</option>
                                         <option class="form-control form-control-user" value="2">2nd</option>
@@ -223,21 +389,23 @@
                                         <option class="form-control form-control-user" value="5">5th</option>
                                     </select>
                                 </div>
-
+                                <div class="col-sm-3 mb-1">
+                                   <button type="button" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#term-II">Add Details</button>
+                                </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-2 my-2">
                                     <h5>&nbsp;<strong>5 - Assault course</strong></h5>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                    <select class="form-control rounded-pill" name="pst" id="pst" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                    <select class="form-control rounded-pill" name="assault" id="assault" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Result</option>
                                         <option class="form-control form-control-user" value="qualified">Qualified</option>
                                         <option class="form-control form-control-user" value="disqualified">Disqualified</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                    <select class="form-control rounded-pill" name="pst_attempt" id="pst_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                    <select class="form-control rounded-pill" name="assault_attempt" id="assault_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Attempt</option>
                                         <option class="form-control form-control-user" value="1">1st</option>
                                         <option class="form-control form-control-user" value="2">2nd</option>
@@ -253,14 +421,14 @@
                                     <h5>&nbsp;<strong>6 - Saluting Test</strong></h5>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                    <select class="form-control rounded-pill" name="pst" id="pst" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                    <select class="form-control rounded-pill" name="saluting" id="saluting" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Result</option>
                                         <option class="form-control form-control-user" value="qualified">Qualified</option>
                                         <option class="form-control form-control-user" value="disqualified">Disqualified</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                    <select class="form-control rounded-pill" name="pst_attempt" id="pst_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                    <select class="form-control rounded-pill" name="saluting_attempt" id="saluting_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Attempt</option>
                                         <option class="form-control form-control-user" value="1">1st</option>
                                         <option class="form-control form-control-user" value="2">2nd</option>
@@ -276,14 +444,14 @@
                                     <h5>&nbsp;<strong>7 - PLX</strong></h5>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                    <select class="form-control rounded-pill" name="pst" id="pst" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                    <select class="form-control rounded-pill" name="plx" id="plx" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Result</option>
                                         <option class="form-control form-control-user" value="qualified">Qualified</option>
                                         <option class="form-control form-control-user" value="disqualified">Disqualified</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                    <select class="form-control rounded-pill" name="pst_attempt" id="pst_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                    <select class="form-control rounded-pill" name="plx_attempt" id="plx_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Attempt</option>
                                         <option class="form-control form-control-user" value="1">1st</option>
                                         <option class="form-control form-control-user" value="2">2nd</option>
@@ -396,6 +564,10 @@
                         $('#division').val(result['divison_name']);
                         $('#oc_num').val(result['oc_no']);
                         $('#id').val(result['p_id']);
+                         $('#oc_num1').val(result['oc_no']);
+                        $('#id1').val(result['p_id']);
+                         $('#oc_num2').val(result['oc_no']);
+                        $('#id2').val(result['p_id']);
                     } else {
                         $('#no_data').show();
                         $('#search_cadet').hide();

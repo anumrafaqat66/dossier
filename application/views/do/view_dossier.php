@@ -308,7 +308,7 @@
                                             <th scope="col">Cadet Name</th>
                                             <th scope="col">OC No.</th>
                                             <th scope="col">Term</th>
-                                            <th scope="col">Divsion</th>
+                                            <th scope="col">physical Milestone</th>
                                             <th scope="col" style="text-align:center">Punishments</th>
                                             <th scope="col" style="text-align:center">Excuses</th>
                                             <th scope="col" style="text-align:center">Observations</th>
@@ -326,7 +326,8 @@
                                                 <td scope="row"><?= $data['name']; ?></td>
                                                 <td scope="row"><?= $data['oc_no']; ?></td>
                                                 <td scope="row"><?= $data['term']; ?></td>
-                                                <td scope="row"><?= $data['divison_name']; ?></td>
+                                    
+                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_physical_milestone(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#milestone">Physical Milestone</button></td>
                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_punishments(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#punishments">Punishments</button></td>
                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_excuses(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#excuses">Excuses</button></td>
                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_observations(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#observations">Observations</button></td>

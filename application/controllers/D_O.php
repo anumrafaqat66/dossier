@@ -358,6 +358,7 @@ class D_O extends CI_Controller
         if ($this->input->post()) {
             $oc_no = $_POST['oc_no'];
             $query = $this->db->where('oc_no', $oc_no)->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->row_array();
+           // print_r($query);
             echo json_encode($query);
         }
     }
@@ -640,4 +641,126 @@ class D_O extends CI_Controller
         //print_r($count);exit();
         return $count;
     }
+    public function save_physical_milestone(){
+            if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+            //print_r($postData);exit;
+
+             $oc_no = $postData['oc_num'];
+             $p_id = $postData['id'];
+             $PST_result = $postData['pst'];
+             $PST_attempt = $postData['pst_attempt'];
+             $SST_result = $postData['sst'];
+             $SST_attempt = $postData['sst_attempt'];
+             $PET_I_result = $postData['pet_I'];
+             $PET_I_attempt = $postData['pet_I_attempt'];
+             $PET_II_result = $postData['pet_II'];
+             $PET_II_attempt = $postData['pet_II_attempt'];
+
+             $assault_result = $postData['assault'];
+             $assault_attempt = $postData['assault_attempt'];
+             $saluting_result = $postData['saluting'];
+             $saluting_attempt = $postData['saluting_attempt'];
+             $plx_result = $postData['plx'];
+             $plx_attempt = $postData['plx_attempt'];
+
+            $insert_array = array(
+                'oc_no' => $oc_no,
+                'p_id' => $p_id,
+                'do_id'=>$this->session->userdata('user_id'),
+                'PST_result' => $PST_result,
+                'PST_attempt' => $PST_attempt,
+                'SST_result' => $SST_result,
+                'SST_attempt' => $SST_attempt,
+                  'PET_I_result' => $PET_I_result,
+                'PET_I_attempt' => $PET_I_attempt,
+                'PET_II_result' => $PET_II_result,
+                'PET_II_attempt' => $PET_II_attempt,
+
+                'assault_result' => $assault_result,
+                'assault_attempt' => $assault_attempt,
+                'saluting_result' => $saluting_result,
+                'saluting_attempt' => $saluting_attempt,
+                 'plx_result' => $plx_result,
+                'plx_attempt' => $plx_attempt,
+                'date_added' => date('Y-m-d H:i:s')
+            );
+            
+            $insert = $this->db->insert('physical_milestone', $insert_array);
+            //$last_id = $this->db->insert_id();
+
+            if (!empty($insert)) {
+                $this->session->set_flashdata('success', 'Data Submitted successfully');
+                redirect('D_O/add_physical_milestone');
+            } else {
+                $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                redirect('D_O/add_physical_milestone');
+            }
+}
+    }
+
+    public function add_termI_details(){
+
+ if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+            //print_r($postData);exit;
+
+             $oc_no = $postData['oc_num1'];
+             $p_id = $postData['id1'];
+             $mile_time = $postData['mile_time_I'];
+             $pushups = $postData['Pushups_I'];
+             $chinups = $postData['Chinups_I'];
+             $rope = $postData['Rope_I'];
+             $date_added = date('Y-m-d H:i:s');
+            
+
+            $insert_array = array(
+                'oc_no' => $oc_no,
+                'p_id' => $p_id,
+                'do_id'=>$this->session->userdata('user_id'),
+                'mile_time' => $mile_time,
+                'pushups' => $pushups,
+                'chinups' => $chinups,
+                'rope'=>$rope,
+            
+                'date_added' => date('Y-m-d H:i:s')
+            );
+            
+            $insert = $this->db->insert('term_i_details', $insert_array);
+            redirect('D_O/add_physical_milestone');
+    }
+}
+
+     public function add_termII_details(){
+
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+            //print_r($postData);exit;
+
+             $oc_no = $postData['oc_num2'];
+             $p_id = $postData['id2'];
+             $mile_time = $postData['mile_time_II'];
+             $pushups = $postData['Pushups_II'];
+             $chinups = $postData['Chinups_II'];
+             $rope = $postData['Rope_II'];
+             $date_added = date('Y-m-d H:i:s');
+            
+            
+
+            $insert_array = array(
+                'oc_no' => $oc_no,
+                'p_id' => $p_id,
+                'do_id'=>$this->session->userdata('user_id'),
+                'mile_time' => $mile_time,
+                'pushups' => $pushups,
+                'chinups' => $chinups,
+                'rope'=>$rope,
+            
+                'date_added' => date('Y-m-d H:i:s')
+            );
+            
+            $insert = $this->db->insert('term_ii_details', $insert_array);
+            redirect('D_O/add_physical_milestone');
+    }
+}
 }
