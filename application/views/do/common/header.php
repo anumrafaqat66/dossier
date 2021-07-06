@@ -150,7 +150,7 @@
                         <a class="collapse-item" href="#">Progress Chart</a>
                         <a class="collapse-item" href="#">Distictions</a>
                         <a class="collapse-item" href="#">Seniority</a>
-                        <a class="collapse-item" href="#">Branch Allocation</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>D_O/add_branch_allocation">Branch Allocation</a>
                         <a class="collapse-item" href="#">Degree Complete</a>
                     </div>
                 </div>

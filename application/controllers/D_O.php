@@ -483,6 +483,13 @@ class D_O extends CI_Controller
         }
     }
 
+    public function add_branch_allocation()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $this->load->view('do/branch_allocation');
+        }
+    }
+
     public function view_punishment_list()
     {
         if ($this->session->has_userdata('user_id')) {
