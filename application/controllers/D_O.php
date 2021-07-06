@@ -744,6 +744,11 @@ class D_O extends CI_Controller
             $plx_result = $postData['plx'];
             $plx_attempt = $postData['plx_attempt'];
 
+            $long_cross = $postData['long_cross'];
+            $long_cross_card = $postData['long_cross_card'];
+            $mini_cross = $postData['mini_cross'];
+            $mini_cross_card = $postData['mini_cross_card'];
+
             $insert_array = array(
                 'oc_no' => $oc_no,
                 'p_id' => $p_id,
@@ -763,6 +768,10 @@ class D_O extends CI_Controller
                 'saluting_attempt' => $saluting_attempt,
                 'plx_result' => $plx_result,
                 'plx_attempt' => $plx_attempt,
+                'long_cross_result' => $long_cross,
+                'long_cross_card_number' => $long_cross_card,
+                'mini_cross_result' => $mini_cross,
+                'mini_cross_card_number' => $mini_cross_card,
                 'date_added' => date('Y-m-d H:i:s')
             );
 

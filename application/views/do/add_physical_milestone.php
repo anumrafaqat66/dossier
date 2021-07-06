@@ -280,23 +280,23 @@
                                 <h1 class="h5">Enter Physical Milestone Information</h1>
                             </div>
 
-                            <div class="form-group row my-3" style="text-align:center">
-                                <div class="col-sm-2">
+                            <div class="form-group row my-3" >
+                                <div class="col-sm-3">
                                     <h5>&nbsp;<strong>Test Name</strong></h5>
                                 </div>
 
                                 <div class="col-sm-2">
-                                    <h5>&nbsp;<strong>Result</strong></h5>
+                                    <h5 style="text-align:center">&nbsp;<strong>Result</strong></h5>
                                 </div>
 
                                 <div class="col-sm-2">
-                                    <h5>&nbsp;<strong>Attempt</strong></h5>
+                                    <h5 style="text-align:center">&nbsp;<strong>Attempt</strong></h5>
                                 </div>
 
                             </div>
                             <hr>
                             <div class="form-group row">
-                                <div class="col-sm-2 my-2">
+                                <div class="col-sm-3 my-2">
                                     <h5>&nbsp;<strong>1 - PST</strong></h5>
                                 </div>
                                 <div class="col-sm-2 mb-1">
@@ -319,7 +319,7 @@
 
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2 my-2">
+                                <div class="col-sm-3 my-2">
                                     <h5>&nbsp;<strong>2 - SST</strong></h5>
                                 </div>
                                 <div class="col-sm-2 mb-1">
@@ -342,7 +342,7 @@
 
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2 my-2">
+                                <div class="col-sm-3 my-2">
                                     <h5>&nbsp;<strong>3 - PET-I</strong></h5>
                                 </div>
                                 <div class="col-sm-2 mb-1">
@@ -367,7 +367,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2 my-2">
+                                <div class="col-sm-3 my-2">
                                     <h5>&nbsp;<strong>4 - PET-II</strong></h5>
                                 </div>
                                 <div class="col-sm-2 mb-1">
@@ -392,7 +392,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2 my-2">
+                                <div class="col-sm-3 my-2">
                                     <h5>&nbsp;<strong>5 - Assault course</strong></h5>
                                 </div>
                                 <div class="col-sm-2 mb-1">
@@ -415,7 +415,7 @@
 
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2 my-2">
+                                <div class="col-sm-3 my-2">
                                     <h5>&nbsp;<strong>6 - Saluting Test</strong></h5>
                                 </div>
                                 <div class="col-sm-2 mb-1">
@@ -438,7 +438,7 @@
 
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2 my-2">
+                                <div class="col-sm-3 my-2">
                                     <h5>&nbsp;<strong>7 - PLX</strong></h5>
                                 </div>
                                 <div class="col-sm-2 mb-1">
@@ -456,6 +456,52 @@
                                         <option class="form-control form-control-user" value="3">3rd</option>
                                         <option class="form-control form-control-user" value="4">4th</option>
                                         <option class="form-control form-control-user" value="5">5th</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3 my-2">
+                                    <h5>&nbsp;<strong>8 - Long Cross Country</strong></h5>
+                                </div>
+                                <div class="col-sm-2 mb-1">
+                                    <select class="form-control rounded-pill" name="long_cross" id="long_cross" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                        <option class="form-control form-control-user" value="">Select Result</option>
+                                        <option class="form-control form-control-user" value="qualified">Qualified</option>
+                                        <option class="form-control form-control-user" value="disqualified">Disqualified</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-2 mb-1">
+                                    <select class="form-control rounded-pill" name="long_cross_card" id="long_cross_card" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                        <option class="form-control form-control-user" value="">Card Number</option>
+                                        <option class="form-control form-control-user" value="1">1</option>
+                                        <option class="form-control form-control-user" value="2">2</option>
+                                        <option class="form-control form-control-user" value="3">3</option>
+                                        <option class="form-control form-control-user" value="4">4</option>
+                                        <option class="form-control form-control-user" value="5">5</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3 my-2">
+                                    <h5>&nbsp;<strong>9 - Mini Cross Country</strong></h5>
+                                </div>
+                                <div class="col-sm-2 mb-1">
+                                    <select class="form-control rounded-pill" name="mini_cross" id="mini_cross" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                        <option class="form-control form-control-user" value="">Select Result</option>
+                                        <option class="form-control form-control-user" value="qualified">Qualified</option>
+                                        <option class="form-control form-control-user" value="disqualified">Disqualified</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-2 mb-1">
+                                    <select class="form-control rounded-pill" name="mini_cross_card" id="mini_cross_card" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                        <option class="form-control form-control-user" value="">Card Number</option>
+                                        <option class="form-control form-control-user" value="1">1</option>
+                                        <option class="form-control form-control-user" value="2">2</option>
+                                        <option class="form-control form-control-user" value="3">3</option>
+                                        <option class="form-control form-control-user" value="4">4</option>
+                                        <option class="form-control form-control-user" value="5">5</option>
                                     </select>
                                 </div>
 

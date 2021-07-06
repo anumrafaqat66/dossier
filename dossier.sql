@@ -2887,6 +2887,10 @@ CREATE TABLE `physical_milestone` (
   `saluting_attempt` varchar(200),
   `PLX_result` varchar(200),
   `PLX_attempt` varchar(200),
+  `long_cross_result` varchar(200),
+  `long_cross_card_number` varchar(200),
+  `mini_cross_result` varchar(200),
+  `mini_cross_card_number` varchar(200),
   `date_added` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

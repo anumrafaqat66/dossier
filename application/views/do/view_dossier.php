@@ -307,6 +307,147 @@
         </div>
     </div>
 
+    <div class="modal fade" id="PET_I">
+        <!-- <div class="row"> -->
+        <div class="modal-dialog modal-dialog-centered " style="margin-left: 370px;" role="document">
+            <div class="modal-content bg-custom3" style="width:1000px;">
+                <div class="modal-header" style="width:1000px;">
+                </div>
+                <div class="card-body bg-custom3">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="card">
+                                <div class="card-header bg-custom1">
+                                    <h1 class="h4">PET-I Details</h1>
+                                </div>
+
+                                <div class="card-body bg-custom3">
+                                    <form class="user" role="form" method="post" id="add_form" action="">
+                                        <div class="form-group row">
+                                            <div class="col-sm-12">
+                                                <h3 id="cadet_name_heading"></h3>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-3">
+                                                <h6>&nbsp;<strong>Mile Time:</strong></h6>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <h6 id="mile_time1_detail"></h6>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-3">
+                                                <h6>&nbsp;<strong>Chinups:</strong></h6>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <h6 id="chinups1_detail"></h6>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-3">
+                                                <h6>&nbsp;<strong>Pushups:</strong></h6>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <h6 id="pushup1_detail"></h6>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-3">
+                                                <h6>&nbsp;<strong>Rope:</strong></h6>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <h6 id="rope1_detail"></h6>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-primary rounded-pill" data-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="PET_II">
+        <!-- <div class="row"> -->
+        <div class="modal-dialog modal-dialog-centered " style="margin-left: 370px;" role="document">
+            <div class="modal-content bg-custom3" style="width:1000px;">
+                <div class="modal-header" style="width:1000px;">
+                </div>
+                <div class="card-body bg-custom3">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="card">
+                                <div class="card-header bg-custom1">
+                                    <h1 class="h4">PET-II Details</h1>
+                                </div>
+
+                                <div class="card-body bg-custom3">
+                                    <form class="user" role="form" method="post" id="add_form" action="">
+                                        <div class="form-group row">
+                                            <div class="col-sm-12">
+                                                <h3 id="cadet_name_heading"></h3>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-3">
+                                                <h6>&nbsp;<strong>Mile Time:</strong></h6>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <h6 id="mile_time2_detail"></h6>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-3">
+                                                <h6>&nbsp;<strong>Chinups:</strong></h6>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <h6 id="chinups2_detail"></h6>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-3">
+                                                <h6>&nbsp;<strong>Pushups:</strong></h6>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <h6 id="pushup2_detail"></h6>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-3">
+                                                <h6>&nbsp;<strong>Rope:</strong></h6>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <h6 id="rope2_detail"></h6>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-primary rounded-pill" data-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <!-- Page Heading -->
     <div class="card-body" style="padding:10px">
@@ -413,6 +554,7 @@
                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_observations(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#observations">Observations</button></td>
                                                 <td scope="row" style="text-align:center"><button type="button" class="btn btn-primary btn-user rounded-pill">Clubs</button></td>
                                                 <td scope="row" style="text-align:center"><button type="button" class="btn btn-primary btn-user rounded-pill">Branches</button></td>
+                                                <td scope="row" style="display:none"><?= $data['p_id']; ?></td>
 
                                             </tr>
                                         <?php } ?>
@@ -510,6 +652,22 @@
                     value_plx = 'Disqualified';
                 }
 
+                if (result['long_cross_result'] == 'qualified') {
+                    color_long_cross = 'green';
+                    value_long_cross = 'Qualified';
+                } else if (result['long_cross_result'] == 'disqualified') {
+                    color_long_cross = 'red';
+                    value_long_cross = 'Disqualified';
+                }
+
+                if (result['mini_cross_result'] == 'qualified') {
+                    color_mini_cross = 'green';
+                    value_mini_cross = 'Qualified';
+                } else if (result['mini_cross_result'] == 'disqualified') {
+                    color_mini_cross = 'red';
+                    value_mini_cross = 'Disqualified';
+                }
+
                 $("#milestone_details").html(`<form class="user" role="form" method="post" id="add_form" action="">
                                         <div class="form-group row">
                                             <div class="col-sm-12">
@@ -518,93 +676,124 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                                 <h5><strong>Test Name</strong></h5>
                                             </div>
                                             <div class="col-sm-2">
                                                 <h5>&nbsp;<strong>Result</strong></h5>
                                             </div>
                                             <div class="col-sm-2">
-                                                <h5>&nbsp;<strong>Attempt</strong></h5>
+                                                <h5  style="text-align:center">&nbsp;<strong>Attempt</strong></h5>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h5>&nbsp;<strong>Show Details</strong></h5>
                                             </div>
                                         </div>
                                         <hr>
 
                                         <div class="form-group row">
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                                 <h6>&nbsp;<strong>PST:</strong></h6>
                                             </div>
                                             <div class="col-sm-2">
                                                 <h6 id="pst_result" style="color:${color_pst}">${value_pst}</h6>
                                             </div>
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-2" style="text-align:center">
                                                 <h6 id="pst_attempt">${result['PST_attempt']}</h6>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                                 <h6>&nbsp;<strong>SST:</strong></h6>
                                             </div>
                                             <div class="col-sm-2">
                                                 <h6 id="sst_result" style="color:${color_sst}">${value_sst}</h6>
                                             </div>
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-2" style="text-align:center">
                                                 <h6 id="sst_attempt">${result['SST_attempt']}</h6>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                                 <h6>&nbsp;<strong>PET-I:</strong></h6>
                                             </div>
                                             <div class="col-sm-2">
                                                 <h6 id="pet1_result" style="color:${color_pet1}">${value_pet1}</h6>
                                             </div>
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-2" style="text-align:center">
                                                 <h6 id="pet1_attempt">${result['PET_I_attempt']}</h6>
+                                            </div>
+                                            <div class="col-sm-2" style="text-align:center">
+                                            <i style="font-size:18px" type="button" class="fas fa-clipboard-list" data-toggle="modal" data-target="#PET_I"></i>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                                 <h6>&nbsp;<strong>PET-II:</strong></h6>
                                             </div>
                                             <div class="col-sm-2">
                                                 <h6 id="pet2_result" style="color:${color_pet2}">${value_pet2}</h6>
                                             </div>
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-2" style="text-align:center">
                                                 <h6 id="pet2_attempt">${result['PET_II_attempt']}</h6>
+                                            </div>
+                                            <div class="col-sm-2" style="text-align:center">
+                                            <i style="font-size:18px" type="button" class="fas fa-clipboard-list" data-toggle="modal" data-target="#PET_II"></i>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                                 <h6>&nbsp;<strong>Assault:</strong></h6>
                                             </div>
                                             <div class="col-sm-2">
                                                 <h6 id="assault_result" style="color:${color_assault}">${value_assault}</h6>
                                             </div>
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-2" style="text-align:center">
                                                 <h6 id="assault_attempt">${result['assault_attempt']}</h6>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                                 <h6>&nbsp;<strong>Saluting:</strong></h6>
                                             </div>
                                             <div class="col-sm-2">
                                                 <h6 id="saluting_result" style="color:${color_saluting}">${value_saluting}</h6>
                                             </div>
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-2" style="text-align:center">
                                                 <h6 id="saluting_attempt">${result['saluting_attempt']}</h6>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                                 <h6>&nbsp;<strong>PLX:</strong></h6>
                                             </div>
                                             <div class="col-sm-2">
                                                 <h6 id="plx_result" style="color:${color_plx}">${value_plx}</h6>
                                             </div>
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-2" style="text-align:center">
                                                 <h6 id="plx_attempt">${result['PLX_attempt']}</h6>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-3">
+                                                <h6>&nbsp;<strong>Long Cross Country:</strong></h6>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h6 id="plx_result" style="color:${color_long_cross}">${value_long_cross}</h6>
+                                            </div>
+                                            <div class="col-sm-2" style="text-align:center">
+                                                <h6 id="plx_attempt">${result['long_cross_card_number']}</h6>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-3">
+                                                <h6>&nbsp;<strong>Mini Cross Country:</strong></h6>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h6 id="plx_result" style="color:${color_mini_cross}">${value_mini_cross}</h6>
+                                            </div>
+                                            <div class="col-sm-2" style="text-align:center">
+                                                <h6 id="plx_attempt">${result['mini_cross_card_number']}</h6>
                                             </div>
                                         </div>
 
@@ -827,6 +1016,45 @@
         $('#start_date').val($columns[6].innerHTML);
         $('#end_date').val($columns[7].innerHTML);
         $('#days').val((Date.parse($columns[7].innerHTML) - Date.parse($columns[6].innerHTML)) / 1000 / 60 / 60 / 24);
+
+        $.ajax({
+            url: '<?= base_url(); ?>D_O/view_PET_I',
+            method: 'POST',
+            data: {
+                'id': $columns[10].innerHTML
+            },
+            success: function(data) {
+                var result = jQuery.parseJSON(data);
+                var len = result.length;
+                
+                $('#mile_time1_detail').html(result['mile_time']);
+                $('#pushup1_detail').html(result['pushups']);
+                $('#chinups1_detail').html(result['chinups']);
+                $('#rope1_detail').html(result['rope']);
+            },
+            async: false
+        });
+
+        $.ajax({
+            url: '<?= base_url(); ?>D_O/view_PET_II',
+            method: 'POST',
+            data: {
+                'id': $columns[10].innerHTML
+            },
+            success: function(data) {
+                var result = jQuery.parseJSON(data);
+                var len = result.length;
+
+                $('#mile_time2_detail').html(result['mile_time']);
+                $('#pushup2_detail').html(result['pushups']);
+                $('#chinups2_detail').html(result['chinups']);
+                $('#rope2_detail').html(result['rope']);
+
+
+                // }
+            },
+            async: false
+        });
 
     });
 

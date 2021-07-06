@@ -45,93 +45,125 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                                 <h5><strong>Test Name</strong></h5>
                                             </div>
                                             <div class="col-sm-2">
                                                 <h5>&nbsp;<strong>Result</strong></h5>
                                             </div>
                                             <div class="col-sm-2">
-                                                <h5>&nbsp;<strong>Attempt</strong></h5>
+                                                <h5 style="text-align:center">&nbsp;<strong>Attempt</strong></h5>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h5>&nbsp;<strong>Show Details</strong></h5>
                                             </div>
                                         </div>
                                         <hr>
 
                                         <div class="form-group row">
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                                 <h6>&nbsp;<strong>PST:</strong></h6>
                                             </div>
                                             <div class="col-sm-2">
                                                 <h6 id="pst_result"></h6>
                                             </div>
                                             <div class="col-sm-2">
-                                                <h6 id="pst_attempt"></h6>
+                                                <h6 id="pst_attempt" style="text-align:center"></h6>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                                 <h6>&nbsp;<strong>SST:</strong></h6>
                                             </div>
                                             <div class="col-sm-2">
                                                 <h6 id="sst_result"></h6>
                                             </div>
                                             <div class="col-sm-2">
-                                                <h6 id="sst_attempt"></h6>
+                                                <h6 id="sst_attempt" style="text-align:center"> h6>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                                 <h6>&nbsp;<strong>PET-I:</strong></h6>
                                             </div>
                                             <div class="col-sm-2">
                                                 <h6 id="pet1_result"></h6>
                                             </div>
                                             <div class="col-sm-2">
-                                                <h6 id="pet1_attempt"></h6>
+                                                <h6 id="pet1_attempt" style="text-align:center"></h6>
+                                            </div>
+                                            <div class="col-sm-2" style="text-align:center">
+                                                <i style="font-size:18px" type="button" class="fas fa-clipboard-list" data-toggle="modal" data-target="#PET_I"></i>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                                 <h6>&nbsp;<strong>PET-II:</strong></h6>
                                             </div>
                                             <div class="col-sm-2">
                                                 <h6 id="pet2_result"></h6>
                                             </div>
                                             <div class="col-sm-2">
-                                                <h6 id="pet2_attempt"></h6>
+                                                <h6 id="pet2_attempt" style="text-align:center"></h6>
                                             </div>
+                                            <div class="col-sm-2" style="text-align:center">
+                                                <i style="font-size:18px" type="button" class="fas fa-clipboard-list" data-toggle="modal" data-target="#PET_II"></i>
+                                            </div>
+
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                                 <h6>&nbsp;<strong>Assault:</strong></h6>
                                             </div>
                                             <div class="col-sm-2">
                                                 <h6 id="assault_result"></h6>
                                             </div>
                                             <div class="col-sm-2">
-                                                <h6 id="assault_attempt"></h6>
+                                                <h6 id="assault_attempt" style="text-align:center"></h6>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                                 <h6>&nbsp;<strong>Saluting:</strong></h6>
                                             </div>
                                             <div class="col-sm-2">
                                                 <h6 id="saluting_result"></h6>
                                             </div>
                                             <div class="col-sm-2">
-                                                <h6 id="saluting_attempt"></h6>
+                                                <h6 id="saluting_attempt" style="text-align:center"></h6>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                                 <h6>&nbsp;<strong>PLX:</strong></h6>
                                             </div>
                                             <div class="col-sm-2">
                                                 <h6 id="plx_result"></h6>
                                             </div>
                                             <div class="col-sm-2">
-                                                <h6 id="plx_attempt"></h6>
+                                                <h6 id="plx_attempt" style="text-align:center"></h6>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-3">
+                                                <h6>&nbsp;<strong>Long Cross Country:</strong></h6>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h6 id="long_cross_result"></h6>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h6 id="long_cross_card" style="text-align:center"></h6>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-3">
+                                                <h6>&nbsp;<strong>Mini Cross Country:</strong></h6>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h6 id="mini_cross_result"></h6>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h6 id="mini_cross_card" style="text-align:center"></h6>
                                             </div>
                                         </div>
 
@@ -168,56 +200,44 @@
                                 </div>
 
                                 <div class="card-body bg-custom3">
-                                    <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>Project_Officer/insert_project">
-                                        <!--   <div class="form-group row">
+                                    <form class="user" role="form" method="post" id="add_form" action="">
+                                        <div class="form-group row">
                                             <div class="col-sm-12">
                                                 <h3 id="cadet_name_heading"></h3>
                                             </div>
-                                        </div> -->
-
+                                        </div>
                                         <div class="form-group row">
                                             <div class="col-sm-3">
-                                                <h3 id="">Mile Time</h3>
+                                                <h6>&nbsp;<strong>Mile Time:</strong></h6>
                                             </div>
                                             <div class="col-sm-3">
-                                                <h3 id="">Chinups</h3>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <h3 id="">Pushups</h3>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <h3 id="">Rope</h3>
+                                                <h6 id="mile_time1_detail"></h6>
                                             </div>
                                         </div>
-
                                         <div class="form-group row">
-                                            <div class="col-sm-4 mb-1" style="display:none">
-                                                <input type="text" class="" name="oc_num2" id="oc_num2">
+                                            <div class="col-sm-3">
+                                                <h6>&nbsp;<strong>Chinups:</strong></h6>
                                             </div>
-                                            <div class="col-sm-4 mb-1" style="display:none">
-                                                <input type="text" class="" name="id2" id="id2">
-                                            </div>
-
-                                            <div class="col-sm-3 mb-1">
-                                                <input type="text" class="form-control form-control-user" name="mile_time_I" id="mile_time_I" placeholder="mile time">
-                                            </div>
-                                            <div class="col-sm-3 mb-1">
-                                                <input type="text" class="form-control form-control-user" name="Chinups_I" id="Chinups_I" placeholder="Chinups">
-                                            </div>
-                                            <div class="col-sm-3 mb-1">
-                                                <input type="text" class="form-control form-control-user" name="Pushups_I" id="Pushups_I" placeholder="Pushups">
-                                            </div>
-                                            <div class="col-sm-3 mb-1">
-                                                <select class="form-control rounded-pill" name="Rope_II" id="Rope_I" data-placeholder="Select Grade" style="font-size: 0.8rem; height:50px;">
-                                                    <option class="form-control form-control-user" value="">Select Grade</option>
-                                                    <option class="form-control form-control-user" value="Alpha">Alpha</option>
-                                                    <option class="form-control form-control-user" value="Bravo">Bravo</option>
-                                                    <option class="form-control form-control-user" value="Charlie">Charlie</option>
-                                                </select>
+                                            <div class="col-sm-3">
+                                                <h6 id="chinups1_detail"></h6>
                                             </div>
                                         </div>
-
-
+                                        <div class="form-group row">
+                                            <div class="col-sm-3">
+                                                <h6>&nbsp;<strong>Pushups:</strong></h6>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <h6 id="pushup1_detail"></h6>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-3">
+                                                <h6>&nbsp;<strong>Rope:</strong></h6>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <h6 id="rope1_detail"></h6>
+                                            </div>
+                                        </div>
 
                                     </form>
                                 </div>
@@ -251,62 +271,48 @@
                                 </div>
 
                                 <div class="card-body bg-custom3">
-                                    <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>Project_Officer/insert_project">
-                                        <!--  <div class="form-group row">
+                                    <form class="user" role="form" method="post" id="add_form" action="">
+                                        <div class="form-group row">
                                             <div class="col-sm-12">
                                                 <h3 id="cadet_name_heading"></h3>
                                             </div>
-                                        </div> -->
+                                        </div>
                                         <div class="form-group row">
                                             <div class="col-sm-3">
-                                                <h3 id="">Mile Time</h3>
+                                                <h6>&nbsp;<strong>Mile Time:</strong></h6>
                                             </div>
                                             <div class="col-sm-3">
-                                                <h3 id="">Chinups</h3>
+                                                <h6 id="mile_time2_detail"></h6>
                                             </div>
-                                            <div class="col-sm-3">
-                                                <h3 id="">Pushups</h3>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <h3 id="">Rope</h3>
-                                            </div>
-
                                         </div>
-
                                         <div class="form-group row">
-                                            <div class="col-sm-4 mb-1" style="display:none">
-                                                <input type="text" class="" name="oc_num2" id="oc_num2">
+                                            <div class="col-sm-3">
+                                                <h6>&nbsp;<strong>Chinups:</strong></h6>
                                             </div>
-                                            <div class="col-sm-4 mb-1" style="display:none">
-                                                <input type="text" class="" name="id2" id="id2">
-                                            </div>
-
-                                            <div class="col-sm-3 mb-1">
-                                                <input type="text" class="form-control form-control-user" name="mile_time_II" id="mile_time_II" placeholder="mile time">
-                                            </div>
-                                            <div class="col-sm-3 mb-1">
-                                                <input type="text" class="form-control form-control-user" name="Chinups_II" id="Chinups_II" placeholder="Chinups">
-                                            </div>
-                                            <div class="col-sm-3 mb-1">
-                                                <input type="text" class="form-control form-control-user" name="Pushups_II" id="Pushups_II" placeholder="Pushups">
-                                            </div>
-                                            <div class="col-sm-3 mb-1">
-                                                <select class="form-control rounded-pill" name="Rope_II" id="Rope_II" data-placeholder="Select Grade" style="font-size: 0.8rem; height:50px;">
-                                                    <option class="form-control form-control-user" value="">Select Grade</option>
-                                                    <option class="form-control form-control-user" value="Alpha">Alpha</option>
-                                                    <option class="form-control form-control-user" value="Bravo">Bravo</option>
-                                                    <option class="form-control form-control-user" value="Charlie">Charlie</option>
-                                                </select>
+                                            <div class="col-sm-3">
+                                                <h6 id="chinups2_detail"></h6>
                                             </div>
                                         </div>
-
-
+                                        <div class="form-group row">
+                                            <div class="col-sm-3">
+                                                <h6>&nbsp;<strong>Pushups:</strong></h6>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <h6 id="pushup2_detail"></h6>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-3">
+                                                <h6>&nbsp;<strong>Rope:</strong></h6>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <h6 id="rope2_detail"></h6>
+                                            </div>
+                                        </div>
 
                                     </form>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
@@ -316,6 +322,8 @@
             </div>
         </div>
     </div>
+
+
 
 
     <!-- Page Heading -->
@@ -412,6 +420,7 @@
                                     <tbody id="table_rows">
                                         <?php $count = 0; ?>
                                         <td scope="row" style="padding:20px"><?= $milestone_records['id']; ?></td>
+                                        <td scope="row" style="padding:20px; display:none"><?= $milestone_records['p_id']; ?></td>
                                         <td scope="row" style="padding:20px"><?= $milestone_records['name']; ?></td>
                                         <td scope="row" style="padding:20px"><?= $milestone_records['term']; ?></td>
                                         <td scope="row" style="display:none"><?= $milestone_records['PST_result']; ?></td>
@@ -428,10 +437,14 @@
                                         <td scope="row" style="display:none"><?= $milestone_records['saluting_attempt']; ?></td>
                                         <td scope="row" style="display:none"><?= $milestone_records['PLX_result']; ?></td>
                                         <td scope="row" style="display:none"><?= $milestone_records['PLX_attempt']; ?></td>
+                                        <td scope="row" style="display:none"><?= $milestone_records['long_cross_result']; ?></td>
+                                        <td scope="row" style="display:none"><?= $milestone_records['long_cross_card_number']; ?></td>
+                                        <td scope="row" style="display:none"><?= $milestone_records['mini_cross_result']; ?></td>
+                                        <td scope="row" style="display:none"><?= $milestone_records['mini_cross_card_number']; ?></td>
 
                                         <!-- <td scope="row"><button type="button" class="btn btn-primary btn-user " onclick="view_PET_I(<?= $milestone_records['p_id'] ?>)" style="font-size:12px; background-color:green" data-toggle="modal" data-target="#PET_I"> PET-I Details</button></td> -->
                                         <!-- <td scope="row"><button type="button" onclick="view_PET_II(<?= $milestone_records['p_id'] ?>)" class="btn btn-primary btn-user " data-toggle="modal" data-target="#PET_II" style="font-size:12px; background-color:green"> PET-II Details</button></td> -->
-                                        <td scope="row"><button type="button" onclick="view_detail(<?= $milestone_records['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#view_details"> View Details</button></td>
+                                        <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#view_details"> View Details</button></td>
 
 
                                         </tr>
@@ -539,61 +552,114 @@
     $('#table_rows').find('tr').click(function(e) {
         var $columns = $(this).find('td');
 
-        $('#cadet_name_heading').html('<strong> Cadet Name: ' + $columns[1].innerHTML + '</strong>');
-        
-        if ($columns[3].innerHTML == 'qualified') {
+        $('#cadet_name_heading').html('<strong> Cadet Name: ' + $columns[2].innerHTML + '</strong>');
+
+        if ($columns[4].innerHTML == 'qualified') {
             $('#pst_result').html('<span style="color:green">Qualified</span>');
-        } else if ($columns[3].innerHTML == 'disqualified') {
+        } else if ($columns[4].innerHTML == 'disqualified') {
             $('#pst_result').html('<span style="color:red">Disqualified</span>');
         }
-        $('#pst_attempt').html($columns[4].innerHTML);
-        
-        if ($columns[5].innerHTML == 'qualified') {
+        $('#pst_attempt').html($columns[5].innerHTML);
+
+        if ($columns[6].innerHTML == 'qualified') {
             $('#sst_result').html('<span style="color:green">Qualified</span>');
-        } else if ($columns[5].innerHTML == 'disqualified') {
+        } else if ($columns[6].innerHTML == 'disqualified') {
             $('#sst_result').html('<span style="color:red">Disqualified</span>');
         }
-        $('#sst_attempt').html($columns[6].innerHTML);
-        
-        
-        if ($columns[7].innerHTML == 'qualified') {
+        $('#sst_attempt').html($columns[7].innerHTML);
+
+
+        if ($columns[8].innerHTML == 'qualified') {
             $('#pet1_result').html('<span style="color:green">Qualified</span>');
-        } else if ($columns[7].innerHTML == 'disqualified') {
+        } else if ($columns[8].innerHTML == 'disqualified') {
             $('#pet1_result').html('<span style="color:red">Disqualified</span>');
         }
-        $('#pet1_attempt').html($columns[8].innerHTML);
-        
-        
-        if ($columns[9].innerHTML == 'qualified') {
+        $('#pet1_attempt').html($columns[9].innerHTML);
+
+
+        if ($columns[10].innerHTML == 'qualified') {
             $('#pet2_result').html('<span style="color:green">Qualified</span>');
-        } else if ($columns[9].innerHTML == 'disqualified') {
+        } else if ($columns[10].innerHTML == 'disqualified') {
             $('#pet2_result').html('<span style="color:red">Disqualified</span>');
         }
-        $('#pet2_attempt').html($columns[10].innerHTML);
+        $('#pet2_attempt').html($columns[11].innerHTML);
 
-        
-        if ($columns[11].innerHTML == 'qualified') {
+
+        if ($columns[12].innerHTML == 'qualified') {
             $('#assault_result').html('<span style="color:green">Qualified</span>');
-        } else if ($columns[11].innerHTML == 'disqualified') {
+        } else if ($columns[12].innerHTML == 'disqualified') {
             $('#assault_result').html('<span style="color:red">Disqualified</span>');
         }
-        $('#assault_attempt').html($columns[12].innerHTML);
+        $('#assault_attempt').html($columns[13].innerHTML);
 
-        
-        if ($columns[13].innerHTML == 'qualified') {
+
+        if ($columns[14].innerHTML == 'qualified') {
             $('#saluting_result').html('<span style="color:green">Qualified</span>');
-        } else if ($columns[13].innerHTML == 'disqualified') {
+        } else if ($columns[14].innerHTML == 'disqualified') {
             $('#saluting_result').html('<span style="color:red">Disqualified</span>');
         }
-        $('#saluting_attempt').html($columns[14].innerHTML);
+        $('#saluting_attempt').html($columns[15].innerHTML);
 
-        
-        if ($columns[15].innerHTML == 'qualified') {
+
+        if ($columns[16].innerHTML == 'qualified') {
             $('#plx_result').html('<span style="color:green">Qualified</span>');
-        } else if ($columns[15].innerHTML == 'disqualified') {
+        } else if ($columns[16].innerHTML == 'disqualified') {
             $('#plx_result').html('<span style="color:red">Disqualified</span>');
         }
-        $('#plx_attempt').html($columns[16].innerHTML);
+        $('#plx_attempt').html($columns[17].innerHTML);
+
+        if ($columns[18].innerHTML == 'qualified') {
+            $('#long_cross_result').html('<span style="color:green">Qualified</span>');
+        } else if ($columns[18].innerHTML == 'disqualified') {
+            $('#long_cross_result').html('<span style="color:red">Disqualified</span>');
+        }
+        $('#long_cross_card').html($columns[19].innerHTML);
+
+        if ($columns[20].innerHTML == 'qualified') {
+            $('#mini_cross_result').html('<span style="color:green">Qualified</span>');
+        } else if ($columns[20].innerHTML == 'disqualified') {
+            $('#mini_cross_result').html('<span style="color:red">Disqualified</span>');
+        }
+        $('#mini_cross_card').html($columns[21].innerHTML);
+
+        $.ajax({
+            url: '<?= base_url(); ?>D_O/view_PET_I',
+            method: 'POST',
+            data: {
+                'id': $columns[1].innerHTML
+            },
+            success: function(data) {
+                var result = jQuery.parseJSON(data);
+                var len = result.length;
+                
+                $('#mile_time1_detail').html(result['mile_time']);
+                $('#pushup1_detail').html(result['pushups']);
+                $('#chinups1_detail').html(result['chinups']);
+                $('#rope1_detail').html(result['rope']);
+            },
+            async: false
+        });
+
+        $.ajax({
+            url: '<?= base_url(); ?>D_O/view_PET_II',
+            method: 'POST',
+            data: {
+                'id': $columns[1].innerHTML
+            },
+            success: function(data) {
+                var result = jQuery.parseJSON(data);
+                var len = result.length;
+
+                $('#mile_time2_detail').html(result['mile_time']);
+                $('#pushup2_detail').html(result['pushups']);
+                $('#chinups2_detail').html(result['chinups']);
+                $('#rope2_detail').html(result['rope']);
+
+
+                // }
+            },
+            async: false
+        });
 
     });
 
@@ -717,10 +783,11 @@
             success: function(data) {
                 var result = jQuery.parseJSON(data);
                 var len = result.length;
-                $('#mile_time_II').val(result['mile_time']);
-                $('#Pushups_II').val(result['chinups']);
-                $('#Chinups_II').val(result['pushups']);
-                $('#Rope_II').val(result['rope']);
+
+                $('#mile_time2_detail').val(result['mile_time']);
+                $('#pushups2_detail').val(result['chinups']);
+                $('#chinups2_detail').val(result['pushups']);
+                $('#rope2_details').val(result['rope']);
 
 
                 // }
