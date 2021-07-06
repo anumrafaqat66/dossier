@@ -207,13 +207,13 @@
         var cadet_name = $columns[2].innerHTML;
 
         var status = '';
-        if (global_col_position == 7) {
+        if (global_col_position == 9) {
             status = 'Approved';
-        } else if (global_col_position == 8) {
+        } else if (global_col_position == 10) {
             status = 'Rejected';
         }
-
-        if (global_col_position == 7 || global_col_position == 8) {
+        
+        if (global_col_position == 9 || global_col_position == 10) {
             $('#success_message').modal('show');
             setTimeout(
                 function() {

@@ -366,7 +366,7 @@ class D_O extends CI_Controller
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
                 'term' => $term,
-                //'status' => 'Pending'
+                'status' => 'Pending'
             );
 
             $insert = $this->db->insert('observation_records', $insert_array);
@@ -552,14 +552,10 @@ class D_O extends CI_Controller
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('f.oc_no = pr.oc_no');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('pr.start_date <=', date('Y-m-d'));
-            // $this->db->where('pr.end_date >=', date('Y-m-d'));
             $this->db->where('f.p_id', $cadet_id);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('pr.status', 'Approved');
             $data['observation_records'] = $this->db->get()->result_array();
-            // $data['punishment_records'] = $this->db->where('do_id',$this->session->userdata('user_id'))->get('punishment_records')->result_array();
-            // $this->load->view('do/view_punishment_list', $data);
-            //  print_r($data['observation_records']); exit;
             echo json_encode($data['observation_records']);
         }
     }
