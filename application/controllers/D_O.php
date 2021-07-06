@@ -553,6 +553,35 @@ class D_O extends CI_Controller
             $this->load->view('do/view_observation_list', $data);
         }
     }
+                public function view_milestone_in_dossier()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $this->db->select('or.*, f.*');
+            $this->db->from('physical_milestone or');
+            $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
+            $this->db->where('or.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $data['milestone_records'] = $this->db->get()->row_array();
+           // print_r( $data['milestone_records']);exit;
+            echo json_encode($data['milestone_records']);
+        }
+    }
+
+        public function view_milestone_list()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $this->db->select('or.*, f.*');
+            $this->db->from('physical_milestone or');
+            $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
+            $this->db->where('or.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $data['milestone_records'] = $this->db->get()->row_array();
+           // print_r( $data['milestone_records']);exit;
+            $this->load->view('do/view_milestone_list', $data);
+        }
+    }
+    
+
     public function search_excuse_by_date()
     {
         if ($this->session->has_userdata('user_id')) {
@@ -724,12 +753,12 @@ class D_O extends CI_Controller
             $postData = $this->security->xss_clean($this->input->post());
             //print_r($postData);exit;
 
-             $oc_no = $postData['oc_num1'];
-             $p_id = $postData['id1'];
-             $mile_time = $postData['mile_time_I'];
-             $pushups = $postData['Pushups_I'];
-             $chinups = $postData['Chinups_I'];
-             $rope = $postData['Rope_I'];
+             $oc_no = $postData['oc_no'];
+             $p_id = $postData['p_id'];
+             $mile_time = $postData['mile_time'];
+             $pushups = $postData['Pushups'];
+             $chinups = $postData['Chinups'];
+             $rope = $postData['rope'];
              $date_added = date('Y-m-d H:i:s');
             
 
@@ -741,12 +770,11 @@ class D_O extends CI_Controller
                 'pushups' => $pushups,
                 'chinups' => $chinups,
                 'rope'=>$rope,
-            
                 'date_added' => date('Y-m-d H:i:s')
             );
             
             $insert = $this->db->insert('term_i_details', $insert_array);
-            redirect('D_O/add_physical_milestone');
+            //redirect('D_O/add_physical_milestone');
     }
 }
 
@@ -756,12 +784,12 @@ class D_O extends CI_Controller
             $postData = $this->security->xss_clean($this->input->post());
             //print_r($postData);exit;
 
-             $oc_no = $postData['oc_num2'];
-             $p_id = $postData['id2'];
-             $mile_time = $postData['mile_time_II'];
-             $pushups = $postData['Pushups_II'];
-             $chinups = $postData['Chinups_II'];
-             $rope = $postData['Rope_II'];
+         $oc_no = $postData['oc_no'];
+             $p_id = $postData['p_id'];
+             $mile_time = $postData['mile_time'];
+             $pushups = $postData['Pushups'];
+             $chinups = $postData['Chinups'];
+             $rope = $postData['rope'];
              $date_added = date('Y-m-d H:i:s');
             
             
@@ -774,12 +802,31 @@ class D_O extends CI_Controller
                 'pushups' => $pushups,
                 'chinups' => $chinups,
                 'rope'=>$rope,
-            
                 'date_added' => date('Y-m-d H:i:s')
             );
             
             $insert = $this->db->insert('term_ii_details', $insert_array);
-            redirect('D_O/add_physical_milestone');
+           // redirect('D_O/add_physical_milestone');
     }
+}
+
+public function view_PET_I(){
+     if ($this->session->has_userdata('user_id')) {
+            $p_id = $_POST['id'];
+
+           
+            $data['term_i_details'] = $this->db->where('p_id',$p_id)->get('term_i_details')->row_array();
+           
+            echo json_encode($data['term_i_details']);
+        }
+}
+
+public function view_PET_II(){
+ if ($this->session->has_userdata('user_id')) {
+            $p_id = $_POST['id'];
+            $data['term_ii_details'] = $this->db->where('p_id',$p_id)->get('term_ii_details')->row_array();
+   
+            echo json_encode($data['term_ii_details']);
+        }
 }
 }

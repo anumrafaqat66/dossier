@@ -90,7 +90,7 @@
                                     </button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>D_O/view_physical_milestone'">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>D_O/view_milestone_list'">
                                     <span><i class="fas fa-heartbeat" style="font-size:25px;margin:5px"></i></span>
                                         <h4 style="font-weight: bold;display:inline-block">View Physical Milestones List</h4>
                                     </button>

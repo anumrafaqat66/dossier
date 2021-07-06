@@ -61,16 +61,16 @@
                                 </div>
 
                                 <div class="col-sm-3 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="mile_time_I" id="mile_time" style="" placeholder="mile time" >
+                                    <input type="text" class="form-control form-control-user" name="mile_time_I" id="mile_time_I" style="" placeholder="mile time" >
                                 </div>
                                 <div class="col-sm-3 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="Chinups_I" id="Chinups"  placeholder="Chinups" >
+                                    <input type="text" class="form-control form-control-user" name="Chinups_I" id="Chinups_I"  placeholder="Chinups" >
                                 </div>
                                 <div class="col-sm-3 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="Pushups_I" id="Pushups"  placeholder="Pushups" >
+                                    <input type="text" class="form-control form-control-user" name="Pushups_I" id="Pushups_I"  placeholder="Pushups" >
                                 </div>
                                   <div class="col-sm-3 mb-1">
-                                     <select class="form-control rounded-pill" name="Rope_I" id="rope" data-placeholder="Select Grade" style="font-size: 0.8rem; height:50px;">
+                                     <select class="form-control rounded-pill" name="Rope_I" id="Rope_I" data-placeholder="Select Grade" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Grade</option>
                                         <option class="form-control form-control-user" value="Alpha">Alpha</option>
                                         <option class="form-control form-control-user" value="Bravo">Bravo</option>
@@ -81,7 +81,7 @@
 
                             </div>
                      <div class="form-group row">
-                        <button type="submit" class="btn btn-primary btn-user rounded-pill col-md-5" style="margin-left: 300px;" >Save</button>
+                        <button type="button" class="btn btn-primary btn-user rounded-pill col-md-5" id="add_btn_termI" style="margin-left: 300px;" >Save</button>
                      </div>
                                         <div class="card-body">
                                            
@@ -147,28 +147,26 @@
                                 </div>
 
                                 <div class="col-sm-3 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="mile_time_II" id="mile_time"  placeholder="mile time">
+                                    <input type="text" class="form-control form-control-user" name="mile_time_II" id="mile_time_II"  placeholder="mile time">
                                 </div>
                                 <div class="col-sm-3 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="Chinups_II" id="Chinups"  placeholder="Chinups">
+                                    <input type="text" class="form-control form-control-user" name="Chinups_II" id="Chinups_II"  placeholder="Chinups">
                                 </div>
                                 <div class="col-sm-3 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="Pushups_II" id="Pushups"  placeholder="Pushups">
+                                    <input type="text" class="form-control form-control-user" name="Pushups_II" id="Pushups_II"  placeholder="Pushups">
                                 </div>
-                                  <div class="col-sm-3 mb-1">
-                                     <select class="form-control rounded-pill" name="Rope_II" id="rope" data-placeholder="Select Grade" style="font-size: 0.8rem; height:50px;">
+                                <div class="col-sm-3 mb-1">
+                                     <select class="form-control rounded-pill" name="Rope_II" id="Rope_II" data-placeholder="Select Grade" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Grade</option>
                                         <option class="form-control form-control-user" value="Alpha">Alpha</option>
                                         <option class="form-control form-control-user" value="Bravo">Bravo</option>
                                         <option class="form-control form-control-user" value="Charlie">Charlie</option>
                                     </select>
                                 </div>
-
-
                             </div>
                         <div class="form-group row">
-                        <button type="submit" class="btn btn-primary btn-user rounded-pill col-md-5" style="margin-left: 300px;" >Save</button>
-                     </div>
+                        <button type="button" class="btn btn-primary btn-user rounded-pill col-md-5" id="add_btn_termII" style="margin-left: 300px;" >Save</button>
+                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -500,6 +498,76 @@
 
 <?php $this->load->view('common/footer'); ?>
 <script>
+       $('#add_btn_termI').on('click', function() {
+         //alert('javascript working');
+         //  $('#add_btn_bids').attr('disabled', true);
+         var p_id = $('#id1').val();
+         var oc_no = $('#oc_num1').val();
+         var mile_time=  $('#mile_time_I').val();
+         var Pushups=$('#Pushups_I').val();
+         var Chinups=  $('#Chinups_I').val();
+         var rope=$('#Rope_I').val();
+
+    
+             $.ajax({
+                 url: '<?= base_url(); ?>D_O/add_termI_details',
+                 method: 'POST',
+                 //  type:'json',
+                 data: {
+                     'p_id': p_id,
+                     'oc_no': oc_no,
+                     'mile_time': mile_time,
+                     'Pushups': Pushups,
+                     'Chinups': Chinups,
+                     'rope': rope
+                 },
+                 success: function(response) {
+
+                 },
+                 async: false
+             });
+
+             //  $('#add_form_bids')[0].submit();
+            // $('#show_error_new').hide();
+             $('#term-I').modal('hide');
+     });
+
+            $('#add_btn_termII').on('click', function() {
+         //alert('javascript working');
+         //  $('#add_btn_bids').attr('disabled', true);
+         var validate = 0;
+     
+         var p_id = $('#id2').val();
+         var oc_no = $('#oc_num2').val();
+         var mile_time=  $('#mile_time_II').val();
+         var Pushups=$('#Pushups_II').val();
+         var Chinups=  $('#Chinups_II').val();
+         var rope=$('#Rope_II').val();
+
+             $.ajax({
+                 url: '<?= base_url(); ?>D_O/add_termII_details',
+                 method: 'POST',
+                 //  type:'json',
+                 data: {
+                     'p_id': p_id,
+                     'oc_no': oc_no,
+                     'mile_time': mile_time,
+                     'Pushups': Pushups,
+                     'Chinups': Chinups,
+                     'rope': rope
+                 },
+                 success: function(response) {
+
+                 },
+                 async: false
+             });
+
+             //  $('#add_form_bids')[0].submit();
+           //  $('#show_error_new').hide();
+             $('#term-II').modal('hide');
+
+     });
+
     function seen(data) {
         // alert('in');
         // alert(data);

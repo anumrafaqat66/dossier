@@ -349,8 +349,8 @@
                 <!-- End of Topbar -->
 
                 <script>
-                    $('#general').click(function() {
-                        $('.collapse_general').collapse();
-                    });
+                   // $('#general').click(function() {
+                    //    $('.collapse_general').collapse();
+                    //});
                     
                 </script>

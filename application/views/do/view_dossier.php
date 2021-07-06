@@ -228,6 +228,88 @@
             </div>
         </div>
     </div>
+
+    <!-- Physical Milestone  -->
+      <div class="modal fade" id="milestone">
+        <!-- <div class="row"> -->
+        <div class="modal-dialog modal-dialog-centered" style="margin-left: 250px;" role="document">
+            <div class="modal-content bg-custom3" style="width:1200px;">
+                <div class="modal-header" style="width:1200px;">
+                </div>
+                <div class="card-body bg-custom3">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="card">
+                                <div class="card-header bg-custom1">
+                                    <h1 class="h4">Physical Milestone Record</h1>
+                                </div>
+
+                                <div class="card-body bg-custom3">
+                                    <form class="user" role="form" method="post" id="add_form" action="">
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <h3 id="cadet_name_heading_ms"></h3>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h3 id="cadet_oc_no_ms"></h3>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h3 id="cadet_term_ms"></h3>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <div id="table_div">
+                                                <table id="datatable" class="table table-striped" style="color:black">
+                                                    <thead>
+                                                        <tr>
+                                             <th scope="col">ID</th>
+                                            <th scope="col">PST Result</th>
+                                            <th scope="col">PST Attempt</th>
+                                            <th scope="col">SST Result</th>
+                                             <th scope="col">SST Attempt</th>
+                                            <th scope="col">PET-I Result</th>
+                                             <th scope="col">PET-I Attempt</th>
+                                            <th scope="col">PET-II Result</th>
+                                             <th scope="col">PET-II Attempt</th>
+                                             <th scope="col">Assault Result</th>
+                                            <th scope="col">Assault Attempt</th>
+                                            <th scope="col">Saluting Result</th>
+                                            <th scope="col">Saluting Attempt</th>
+                                            <th scope="col">PLX Result</th>
+                                            <th scope="col">PLX Attempt</th>
+                                          <!--   <th scope="col">Acions</th>
+                                            <th scope="col">Actions</th> -->
+                                            
+
+                                        </tr>
+                                                    </thead>
+                                                    <tbody id="table_rows_milestone">
+                                                        <tr>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-primary rounded-pill" data-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- Page Heading -->
     <div class="card-body" style="padding:10px">
         <div class="row my-2">
@@ -360,6 +442,44 @@
 
 <?php $this->load->view('common/footer'); ?>
 <script>
+     function view_physical_milestone(id) {
+        // alert('cadet id: ' + id);
+        $.ajax({
+            url: '<?= base_url(); ?>D_O/view_milestone_in_dossier',
+            method: 'POST',
+            data: {
+                'id': id
+            },
+            success: function(data) {
+                var result = jQuery.parseJSON(data);
+                var len = result.length;
+
+                $("#table_rows_punishment").empty();
+            
+                    $("#table_rows_milestone").append(`<tr>
+                                                        <td>${1}</td>
+                                                        <td>${result['PST_result']}</td>
+                                                        <td>${result['PST_attempt']}</td>
+                                                        <td>${result['SST_result']}</td>
+                                                        <td>${result['SST_attempt']}</td>
+                                                        <td>${result['PET_I_result']}</td>
+                                                        <td>${result['PET_I_attempt']}</td>
+                                                        <td>${result['PET_II_result']}</td>
+                                                        <td>${result['PET_II_attempt']}</td>
+                                                           <td>${result['assault_result']}</td>
+                                                        <td>${result['assault_attempt']}</td>
+                                                        <td>${result['saluting_result']}</td>
+                                                        <td>${result['saluting_attempt']}</td>
+                                                         <td>${result['PLX_result']}</td>
+                                                        <td>${result['PLX_attempt']}</td>
+                                                       
+                                                    </tr>`);
+                },
+        
+            async: true
+        });
+    }
+
     function view_punishments(id) {
         // alert('cadet id: ' + id);
         $.ajax({
@@ -565,6 +685,9 @@
         $('#cadet_name_heading_ob').html('<strong> Cadet Name: ' + $columns[1].innerHTML + '</strong>');
         $('#cadet_oc_no_ob').html('<strong> OC No: ' + $columns[2].innerHTML + '</strong>');
         $('#cadet_term_ob').html('<strong> Term: ' + $columns[3].innerHTML + '</strong>');
+         $('#cadet_name_heading_ms').html('<strong> Cadet Name: ' + $columns[1].innerHTML + '</strong>');
+        $('#cadet_oc_no_ms').html('<strong> OC No: ' + $columns[2].innerHTML + '</strong>');
+        $('#cadet_term_ms').html('<strong> Term: ' + $columns[3].innerHTML + '</strong>');
         $('#punish').val($columns[5].innerHTML);
         $('#start_date').val($columns[6].innerHTML);
         $('#end_date').val($columns[7].innerHTML);
