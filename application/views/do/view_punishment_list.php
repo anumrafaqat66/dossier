@@ -21,6 +21,91 @@
 <div class="container-fluid my-2">
 
 
+    <div class="modal fade" id="reduce_punishment">
+        <!-- <div class="row"> -->
+        <div class="modal-dialog modal-dialog-centered " style="margin-left: 370px;" role="document">
+            <div class="modal-content bg-custom3" style="width:1000px;">
+                <div class="modal-header" style="width:1000px;">
+                </div>
+                <div class="card-body bg-custom3">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="card">
+                                <div class="card-header bg-custom1">
+                                    <h1 class="h4">Update Punishment</h1>
+                                </div>
+
+                                <div class="card-body bg-custom3">
+                                    <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>D_O/update_punishment">
+                                        <div class="form-group row">
+                                            <div class="col-sm-12">
+                                                <h3 id="cadet_name_heading"></h3>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-3">
+                                                <h6>&nbsp;Punish Detail:</h6>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <h6>&nbsp;Start Date:</h6>
+                                            </div>
+
+                                            <div class="col-sm-3">
+                                                <h6>&nbsp;End Date:</h6>
+                                            </div>
+
+                                            <div class="col-sm-3">
+                                                <h6>&nbsp;Days:</h6>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-sm-3 mb-1" style="display: none;">
+                                                <input type="text" class="form-control form-control-user" name="punish_id" id="punish_id" val="">
+                                            </div>
+                                            <div class="col-sm-3 mb-1">
+                                                <input type="text" class="form-control form-control-user" name="punish" id="punish">
+                                            </div>
+                                            <div class="col-sm-3 mb-1">
+                                                <input type="date" class="form-control form-control-user" name="start_date" id="start_date">
+                                            </div>
+                                            <div class="col-sm-3 mb-1">
+                                                <input type="date" class="form-control form-control-user" name="end_date" id="end_date">
+                                                <span id="error_end_date" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;End Date cannot be less than start date</span>
+                                            </div>
+                                            <div class="col-sm-3 mb-1">
+                                                <input type="text" class="form-control form-control-user" name="days" id="days" readonly>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row justify-content-center">
+                                            <div class="col-sm-4">
+                                                <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn">
+                                                    <!-- <i class="fab fa-google fa-fw"></i>  -->
+                                                    Update
+                                                </button>
+                                                <span id="show_error_new" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-primary rounded-pill" data-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Page Heading -->
     <div class="card-body" style="padding:10px">
         <div class="row my-2">
@@ -103,7 +188,7 @@
                                             $diff = date_diff($date1, date_create($data['end_date'])); ?>
                                             <tr>
 
-                                                <td scope="row"><?= $data['id']; ?></td>
+                                                <td scope="row"><?= ++$count; ?></td>
                                                 <td scope="row"><?= $data['name']; ?></td>
                                                 <td scope="row"><?= $data['term']; ?></td>
                                                 <td scope="row"><?= $data['date']; ?></td>
@@ -113,7 +198,8 @@
                                                 <td scope="row" style="display:none"><?= $data['end_date']; ?></td>
                                                 <td scope="row"><?php echo $diff->format('%d days'); ?></td>
                                                 <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:green" data-toggle="modal" data-target="#reduce_punishment">Reduce Punishment</button></td>
-                                                <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:red">Increase Punishment</button></td>
+                                                <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:red" data-toggle="modal" data-target="#reduce_punishment">Increase Punishment</button></td>
+                                                <td scope="row" style="display:none"><?= $data['id']; ?></td>
                                                 <!-- <td type="button" id="edit<?= $data['ID']; ?>" class="edit" scope="row" data-toggle="modal" data-target="#edit_material"><i style="margin-left: 70px;" class="fas fa-edit"></i></td> -->
                                                 <!-- <td id="view" class="view" scope="row"><a href="<?= base_url(); ?>SO_STORE/view_inventory_detail/<?= $data['ID']; ?>" style="color:black"><i style="margin-left: 40px;" class="fas fa-eye"></i></a></td> -->
 
@@ -170,63 +256,64 @@
     });
 
 
-    $('#add_btn').on('click', function() {
-        //alert('javascript working');
-        // $('#add_btn').attr('disabled', true);
-        var validate = 0;
+    // $('#add_btn').on('click', function() {
+    //     //alert('javascript working');
+    //     // $('#add_btn').attr('disabled', true);
+    //     var validate = 0;
 
-        var oc_no = $('#oc_no').val();
+    //     var oc_no = $('#oc_no').val();
 
 
-        if (oc_no == '') {
-            validate = 1;
-            $('#oc_no').addClass('red-border');
-        }
+    //     if (oc_no == '') {
+    //         validate = 1;
+    //         $('#oc_no').addClass('red-border');
+    //     }
 
-        if (validate == 0) {
-            // $('#add_form')[0].submit();
-            $('#show_error_new').hide();
+    //     if (validate == 0) {
+    //         // $('#add_form')[0].submit();
+    //         $('#show_error_new').hide();
 
-            $.ajax({
-                url: '<?= base_url(); ?>D_O/search_cadet',
-                method: 'POST',
-                data: {
-                    'oc_no': oc_no
-                },
-                success: function(data) {
-                    var result = jQuery.parseJSON(data);
+    //         $.ajax({
+    //             url: '<?= base_url(); ?>D_O/search_cadet',
+    //             method: 'POST',
+    //             data: {
+    //                 'oc_no': oc_no
+    //             },
+    //             success: function(data) {
+    //                 var result = jQuery.parseJSON(data);
 
-                    if (result != undefined) {
-                        $('#search_cadet').show();
-                        $('#no_data').hide();
+    //                 if (result != undefined) {
+    //                     $('#search_cadet').show();
+    //                     $('#no_data').hide();
 
-                        $('#name').val(result['name']);
-                        $('#term').val(result['term']);
-                        $('#division').val(result['divison_name']);
-                        $('#oc_num').val(result['oc_no']);
-                        $('#id').val(result['p_id']);
-                    } else {
-                        $('#no_data').show();
-                        $('#search_cadet').hide();
-                    }
-                },
-                async: true
-            });
+    //                     $('#name').val(result['name']);
+    //                     $('#term').val(result['term']);
+    //                     $('#division').val(result['divison_name']);
+    //                     $('#oc_num').val(result['oc_no']);
+    //                     $('#id').val(result['p_id']);
+    //                 } else {
+    //                     $('#no_data').show();
+    //                     $('#search_cadet').hide();
+    //                 }
+    //             },
+    //             async: true
+    //         });
 
-        } else {
-            $('#add_btn').removeAttr('disabled');
-            $('#show_error_new').show();
-        }
-    });
+    //     } else {
+    //         $('#add_btn').removeAttr('disabled');
+    //         $('#show_error_new').show();
+    //     }
+    // });
 
     $('#table_rows').find('tr').click(function(e) {
         var $columns = $(this).find('td');
 
         $('#cadet_name_heading').html('<strong> Cadet Name: ' + $columns[1].innerHTML + '</strong>');
         $('#punish').val($columns[5].innerHTML);
+        $('#punish_id').val($columns[11].innerHTML);
         $('#start_date').val($columns[6].innerHTML);
         $('#end_date').val($columns[7].innerHTML);
-        $('#days').val((Date.parse($columns[7].innerHTML)-Date.parse($columns[6].innerHTML))/ 1000 / 60 / 60 / 24);
+        $('#days').val((Date.parse($columns[7].innerHTML) - Date.parse($columns[6].innerHTML)) / 1000 / 60 / 60 / 24);
 
     });
 
@@ -290,7 +377,7 @@
         }
 
         if (validate == 0) {
-            $('#save_form')[0].submit();
+            $('#add_form')[0].submit();
             $('#show_error_save').hide();
 
         } else {

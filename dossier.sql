@@ -1714,18 +1714,7 @@ CREATE TABLE `saluting_swimming_records` (
 INSERT INTO `saluting_swimming_records` (`id`, `p_id`, `saluting_date`, `saluting_remarks_attempt`, `saluting_remarks_status`, `p_swimming_date`, `p_swimming_remarks_attempt`, `p_swimming_remarks_status`, `s_swimming_date`, `s_swimming_remarks_attempt`, `s_swimming_remarks_status`, `do_id`, `phase`, `created_at`, `updated_at`, `joto_id`, `oc_no`) VALUES
 (1, 1, '2018-11-29', 'Attempt 5', 'qualified', '2018-11-30', 'Attempt 5', 'qualified', '2019-11-30', 'Attempt 10', 'qualified', 3, 'Phase 1', '2020-06-03 19:58:46', '2020-06-03 19:58:46', NULL, NULL),
 (2, 4, '2020-07-01', 'Attempt 5', 'qualified', '2020-06-25', 'Attempt 3', 'qualified', '2020-06-24', 'Attempt 1', 'qualified', 1, 'Phase 1', '2020-06-13 12:21:22', '2020-06-13 12:21:22', NULL, NULL),
-(3, 1, '1970-01-01', 'Attempt 3', 'failed', '1970-01-01', 'Attempt 5', 'failed', '1970-01-01', 'Attempt 5', 'pass', 1, 'Phase 1', '2020-12-03 12:49:20', '2020-12-03 12:49:20', NULL, NULL),
-(4, NULL, '1970-01-01', 'Attempt 3', 'failed', '1970-01-01', 'Attempt 5', 'failed', '1970-01-01', 'Attempt 5', 'pass', NULL, 'Phase 1', '2020-12-03 12:56:10', '2020-12-03 12:56:10', NULL, 11),
-(5, NULL, '1970-01-01', 'Attempt 3', 'failed', '1970-01-01', 'Attempt 5', 'failed', '1970-01-01', 'Attempt 5', 'pass', NULL, 'Phase 1', '2020-12-03 12:59:03', '2020-12-03 12:59:03', NULL, 11),
-(6, NULL, '1970-01-01', 'Attempt 3', 'failed', '1970-01-01', 'Attempt 5', 'failed', '1970-01-01', 'Attempt 5', 'pass', NULL, 'Phase 1', '2020-12-03 13:09:44', '2020-12-03 13:09:44', NULL, 11),
-(7, NULL, '1970-01-01', 'Attempt 3', 'failed', '1970-01-01', 'Attempt 5', 'failed', '1970-01-01', 'Attempt 5', 'pass', NULL, 'Phase 1', '2020-12-03 13:10:31', '2020-12-03 13:10:31', NULL, 11),
-(8, NULL, '1970-01-01', 'Attempt 3', 'failed', '1970-01-01', 'Attempt 5', 'failed', '1970-01-01', 'Attempt 5', 'pass', NULL, 'Phase 1', '2020-12-03 13:25:09', '2020-12-03 13:25:09', NULL, 11),
-(9, NULL, '1970-01-01', 'Attempt 3', 'failed', '1970-01-01', 'Attempt 5', 'failed', '1970-01-01', 'Attempt 5', 'pass', NULL, 'Phase 1', '2020-12-03 13:27:19', '2020-12-03 13:27:19', NULL, 11),
-(10, NULL, '1970-01-01', 'Attempt 3', 'failed', '1970-01-01', 'Attempt 5', 'failed', '1970-01-01', 'Attempt 5', 'pass', NULL, 'Phase 1', '2020-12-03 13:34:01', '2020-12-03 13:34:01', NULL, 11),
-(11, NULL, '1970-01-01', 'Attempt 3', 'failed', '1970-01-01', 'Attempt 5', 'failed', '1970-01-01', 'Attempt 5', 'pass', NULL, 'Phase 1', '2020-12-12 08:20:27', '2020-12-12 08:20:27', NULL, 454),
-(12, NULL, '1970-01-01', 'Attempt 3', 'failed', '1970-01-01', 'Attempt 5', 'failed', '1970-01-01', 'Attempt 5', 'pass', NULL, 'Phase 1', '2020-12-13 07:06:02', '2020-12-13 07:06:02', NULL, 454),
-(13, NULL, '1970-01-01', 'Attempt 3', 'failed', '1970-01-01', 'Attempt 5', 'failed', '1970-01-01', 'Attempt 5', 'pass', NULL, 'Phase 1', '2020-12-15 10:06:16', '2020-12-15 10:06:16', NULL, 12349);
-
+(3, 1, '1970-01-01', 'Attempt 3', 'failed', '1970-01-01', 'Attempt 5', 'failed', '1970-01-01', 'Attempt 5', 'pass', 1, 'Phase 1', '2020-12-03 12:49:20', '2020-12-03 12:49:20', NULL, NULL);
 -- --------------------------------------------------------
 
 --
@@ -1746,12 +1735,12 @@ CREATE TABLE `security_info` (
 -- Dumping data for table `security_info`
 --
 
-INSERT INTO `security_info` (`id`, `username`, `password`, `reg_data`, `acct_type`, `status`) VALUES
-(1, 'admin', '$2y$10$uVajLuVrXeV2S4TWWuH4a.CLTS4LW92nmGiitB94akkA6pAWMJyI2', '2021-05-21 14:00:00', 'admin', 'offline'),
-(2, 'do', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'do', 'offline'),
-(3, 'joto', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'joto', 'offline'),
-(4, 'cao', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'cao', 'offline'),
-(5, 'smo', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'smo', 'offline');
+INSERT INTO `security_info` (`id`, `username`, `password`, `reg_data`, `acct_type`, `status`, `division`) VALUES
+(1, 'admin', '$2y$10$uVajLuVrXeV2S4TWWuH4a.CLTS4LW92nmGiitB94akkA6pAWMJyI2', '2021-05-21 14:00:00', 'admin', 'offline', NULL),
+(2, 'do', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'do', 'offline', 'Hamza division'),
+(3, 'joto', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'joto', 'offline', 'Hamza division'),
+(4, 'cao', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'cao', 'offline', NULL),
+(5, 'smo', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'smo', 'offline', NULL);
 
 -- --------------------------------------------------------
 

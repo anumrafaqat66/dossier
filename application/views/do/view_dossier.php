@@ -230,7 +230,7 @@
     </div>
 
     <!-- Physical Milestone  -->
-      <div class="modal fade" id="milestone">
+    <div class="modal fade" id="milestone">
         <!-- <div class="row"> -->
         <div class="modal-dialog modal-dialog-centered" style="margin-left: 250px;" role="document">
             <div class="modal-content bg-custom3" style="width:1200px;">
@@ -260,38 +260,36 @@
                                             </div>
                                         </div>
 
-                                        <div class="card-body">
-                                            <div id="table_div">
+                                        <div class="card-body" id="milestone_details">
+                                            <!-- <div id="table_div">
                                                 <table id="datatable" class="table table-striped" style="color:black">
                                                     <thead>
                                                         <tr>
-                                             <th scope="col">ID</th>
-                                            <th scope="col">PST Result</th>
-                                            <th scope="col">PST Attempt</th>
-                                            <th scope="col">SST Result</th>
-                                             <th scope="col">SST Attempt</th>
-                                            <th scope="col">PET-I Result</th>
-                                             <th scope="col">PET-I Attempt</th>
-                                            <th scope="col">PET-II Result</th>
-                                             <th scope="col">PET-II Attempt</th>
-                                             <th scope="col">Assault Result</th>
-                                            <th scope="col">Assault Attempt</th>
-                                            <th scope="col">Saluting Result</th>
-                                            <th scope="col">Saluting Attempt</th>
-                                            <th scope="col">PLX Result</th>
-                                            <th scope="col">PLX Attempt</th>
-                                          <!--   <th scope="col">Acions</th>
-                                            <th scope="col">Actions</th> -->
-                                            
+                                                            <th scope="col">ID</th>
+                                                            <th scope="col">PST Result</th>
+                                                            <th scope="col">PST Attempt</th>
+                                                            <th scope="col">SST Result</th>
+                                                            <th scope="col">SST Attempt</th>
+                                                            <th scope="col">PET-I Result</th>
+                                                            <th scope="col">PET-I Attempt</th>
+                                                            <th scope="col">PET-II Result</th>
+                                                            <th scope="col">PET-II Attempt</th>
+                                                            <th scope="col">Assault Result</th>
+                                                            <th scope="col">Assault Attempt</th>
+                                                            <th scope="col">Saluting Result</th>
+                                                            <th scope="col">Saluting Attempt</th>
+                                                            <th scope="col">PLX Result</th>
+                                                            <th scope="col">PLX Attempt</th>
 
-                                        </tr>
+
+                                                        </tr>
                                                     </thead>
                                                     <tbody id="table_rows_milestone">
                                                         <tr>
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                            </div>
+                                            </div> -->
                                         </div>
 
                                     </form>
@@ -390,7 +388,7 @@
                                             <th scope="col">Cadet Name</th>
                                             <th scope="col">OC No.</th>
                                             <th scope="col">Term</th>
-                                            <th scope="col">physical Milestone</th>
+                                            <th scope="col" style="text-align:center">Physical Milestone</th>
                                             <th scope="col" style="text-align:center">Punishments</th>
                                             <th scope="col" style="text-align:center">Excuses</th>
                                             <th scope="col" style="text-align:center">Observations</th>
@@ -408,8 +406,8 @@
                                                 <td scope="row"><?= $data['name']; ?></td>
                                                 <td scope="row"><?= $data['oc_no']; ?></td>
                                                 <td scope="row"><?= $data['term']; ?></td>
-                                    
-                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_physical_milestone(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#milestone">Physical Milestone</button></td>
+
+                                                <td scope="row" style="text-align:center"><button type="button" onclick="view_physical_milestone(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#milestone">Physical Milestone</button></td>
                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_punishments(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#punishments">Punishments</button></td>
                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_excuses(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#excuses">Excuses</button></td>
                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_observations(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#observations">Observations</button></td>
@@ -442,7 +440,7 @@
 
 <?php $this->load->view('common/footer'); ?>
 <script>
-     function view_physical_milestone(id) {
+    function view_physical_milestone(id) {
         // alert('cadet id: ' + id);
         $.ajax({
             url: '<?= base_url(); ?>D_O/view_milestone_in_dossier',
@@ -454,28 +452,165 @@
                 var result = jQuery.parseJSON(data);
                 var len = result.length;
 
-                $("#table_rows_punishment").empty();
-            
-                    $("#table_rows_milestone").append(`<tr>
-                                                        <td>${1}</td>
-                                                        <td>${result['PST_result']}</td>
-                                                        <td>${result['PST_attempt']}</td>
-                                                        <td>${result['SST_result']}</td>
-                                                        <td>${result['SST_attempt']}</td>
-                                                        <td>${result['PET_I_result']}</td>
-                                                        <td>${result['PET_I_attempt']}</td>
-                                                        <td>${result['PET_II_result']}</td>
-                                                        <td>${result['PET_II_attempt']}</td>
-                                                           <td>${result['assault_result']}</td>
-                                                        <td>${result['assault_attempt']}</td>
-                                                        <td>${result['saluting_result']}</td>
-                                                        <td>${result['saluting_attempt']}</td>
-                                                         <td>${result['PLX_result']}</td>
-                                                        <td>${result['PLX_attempt']}</td>
-                                                       
-                                                    </tr>`);
-                },
-        
+                $("#table_rows_milestone").empty();
+
+                if (result['PST_result'] == 'qualified') {
+                    color_pst = 'green';
+                    value_pst = 'Qualified';
+                } else if (result['PST_result'] == 'disqualified') {
+                    color_pst = 'red';
+                    value_pst = 'Disqualified';
+                }
+
+                if (result['SST_result'] == 'qualified') {
+                    color_sst = 'green';
+                    value_sst = 'Qualified';
+                } else if (result['SST_result'] == 'disqualified') {
+                    color_sst = 'red';
+                    value_sst = 'Disqualified';
+                }
+
+                if (result['PET_I_result'] == 'qualified') {
+                    color_pet1 = 'green';
+                    value_pet1 = 'Qualified';
+                } else if (result['PET_I_result'] == 'disqualified') {
+                    color_pet1 = 'red';
+                    value_pet1 = 'Disqualified';
+                }
+
+                if (result['PET_II_result'] == 'qualified') {
+                    color_pet2 = 'green';
+                    value_pet2 = 'Qualified';
+                } else if (result['PET_II_result'] == 'disqualified') {
+                    color_pet2 = 'red';
+                    value_pet2 = 'Disqualified';
+                }
+
+                if (result['assault_result'] == 'qualified') {
+                    color_assault = 'green';
+                    value_assault = 'Qualified';
+                } else if (result['assault_result'] == 'disqualified') {
+                    color_assault = 'red';
+                    value_assault = 'Disqualified';
+                }
+
+                if (result['saluting_result'] == 'qualified') {
+                    color_saluting = 'green';
+                    value_saluting = 'Qualified';
+                } else if (result['saluting_result'] == 'disqualified') {
+                    color_saluting = 'red';
+                    value_saluting = 'Disqualified';
+                }
+
+                if (result['PLX_result'] == 'qualified') {
+                    color_plx = 'green';
+                    value_plx = 'Qualified';
+                } else if (result['PLX_result'] == 'disqualified') {
+                    color_plx = 'red';
+                    value_plx = 'Disqualified';
+                }
+
+                $("#milestone_details").html(`<form class="user" role="form" method="post" id="add_form" action="">
+                                        <div class="form-group row">
+                                            <div class="col-sm-12">
+                                                <h4 id="cadet_name_heading"></h4>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-sm-2">
+                                                <h5><strong>Test Name</strong></h5>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h5>&nbsp;<strong>Result</strong></h5>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h5>&nbsp;<strong>Attempt</strong></h5>
+                                            </div>
+                                        </div>
+                                        <hr>
+
+                                        <div class="form-group row">
+                                            <div class="col-sm-2">
+                                                <h6>&nbsp;<strong>PST:</strong></h6>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h6 id="pst_result" style="color:${color_pst}">${value_pst}</h6>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h6 id="pst_attempt">${result['PST_attempt']}</h6>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-2">
+                                                <h6>&nbsp;<strong>SST:</strong></h6>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h6 id="sst_result" style="color:${color_sst}">${value_sst}</h6>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h6 id="sst_attempt">${result['SST_attempt']}</h6>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-2">
+                                                <h6>&nbsp;<strong>PET-I:</strong></h6>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h6 id="pet1_result" style="color:${color_pet1}">${value_pet1}</h6>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h6 id="pet1_attempt">${result['PET_I_attempt']}</h6>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-2">
+                                                <h6>&nbsp;<strong>PET-II:</strong></h6>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h6 id="pet2_result" style="color:${color_pet2}">${value_pet2}</h6>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h6 id="pet2_attempt">${result['PET_II_attempt']}</h6>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-2">
+                                                <h6>&nbsp;<strong>Assault:</strong></h6>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h6 id="assault_result" style="color:${color_assault}">${value_assault}</h6>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h6 id="assault_attempt">${result['assault_attempt']}</h6>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-2">
+                                                <h6>&nbsp;<strong>Saluting:</strong></h6>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h6 id="saluting_result" style="color:${color_saluting}">${value_saluting}</h6>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h6 id="saluting_attempt">${result['saluting_attempt']}</h6>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-2">
+                                                <h6>&nbsp;<strong>PLX:</strong></h6>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h6 id="plx_result" style="color:${color_plx}">${value_plx}</h6>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h6 id="plx_attempt">${result['PLX_attempt']}</h6>
+                                            </div>
+                                        </div>
+
+                                    </form>`);
+            },
+
             async: true
         });
     }
@@ -685,7 +820,7 @@
         $('#cadet_name_heading_ob').html('<strong> Cadet Name: ' + $columns[1].innerHTML + '</strong>');
         $('#cadet_oc_no_ob').html('<strong> OC No: ' + $columns[2].innerHTML + '</strong>');
         $('#cadet_term_ob').html('<strong> Term: ' + $columns[3].innerHTML + '</strong>');
-         $('#cadet_name_heading_ms').html('<strong> Cadet Name: ' + $columns[1].innerHTML + '</strong>');
+        $('#cadet_name_heading_ms').html('<strong> Cadet Name: ' + $columns[1].innerHTML + '</strong>');
         $('#cadet_oc_no_ms').html('<strong> OC No: ' + $columns[2].innerHTML + '</strong>');
         $('#cadet_term_ms').html('<strong> Term: ' + $columns[3].innerHTML + '</strong>');
         $('#punish').val($columns[5].innerHTML);

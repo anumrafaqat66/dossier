@@ -4,7 +4,6 @@
     .red-border {
         border: 1px solid red !important;
     }
-
     /* .modal {
         display: none;
         position: fixed;
