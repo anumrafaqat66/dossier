@@ -10,7 +10,7 @@ class CAO extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
-            
+
             $this->load->view('cao/dashboard');
         } else {
             $this->load->view('login');
@@ -18,10 +18,10 @@ class CAO extends CI_Controller
     }
 
     public function logout()
-	{
-		$this->session->sess_destroy();
-		redirect('Admin');
-	}
+    {
+        $this->session->sess_destroy();
+        redirect('Admin');
+    }
 
     public function daily_module()
     {
@@ -58,9 +58,9 @@ class CAO extends CI_Controller
             $this->db->from('punishment_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('f.oc_no = pr.oc_no');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('pr.start_date <=', date('Y-m-d'));
-            $this->db->where('pr.end_date >=', date('Y-m-d'));
+            //$this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.start_date <=', date('Y-m-d'));
+            // $this->db->where('pr.end_date >=', date('Y-m-d'));
             $data['punishment_records'] = $this->db->get()->result_array();
             // $data['punishment_records'] = $this->db->where('do_id',$this->session->userdata('user_id'))->get('punishment_records')->result_array();
             $this->load->view('cao/view_punishment_list', $data);
@@ -75,7 +75,7 @@ class CAO extends CI_Controller
             $this->db->join('pn_form1s f', 'f.p_id = mr.p_id');
             $this->db->where('f.oc_no = mr.oc_no');
             $this->db->where('mr.start_date <=', date('Y-m-d'));
-            $this->db->where('mr.end_date >=', date('Y-m-d')); 
+            $this->db->where('mr.end_date >=', date('Y-m-d'));
             $data['medical_records'] = $this->db->get()->result_array();
             $this->load->view('cao/view_excuse_list', $data);
         }
@@ -274,7 +274,7 @@ class CAO extends CI_Controller
             $data_update = [
                 'status' => $status
             ];
-            
+
             $this->db->where($cond);
             $update = $this->db->update('observation_records', $data_update);
 
@@ -287,6 +287,28 @@ class CAO extends CI_Controller
             json_encode($view_page);
         }
     }
+    public function update_punishment_status()
+    {
+        if ($this->input->post()) {
+            $id = $_POST['id'];
+            $status = $_POST['status'];
 
+            $cond  = ['id' => $id];
+            $data_update = [
+                'status' => $status
+            ];
 
+            $this->db->where($cond);
+            $update = $this->db->update('punishment_records', $data_update);
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('punishment_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('f.oc_no = pr.oc_no');
+            $data['punishment_records'] = $this->db->get()->result_array();
+            $view_page = $this->load->view('cao/view_punishment_list', $data, TRUE);
+            echo $view_page;
+            json_encode($view_page);
+        }
+    }
 }

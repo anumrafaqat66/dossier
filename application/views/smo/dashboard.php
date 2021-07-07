@@ -1,4 +1,4 @@
-<?php $this->load->view('Admin/common/header'); ?>
+<?php $this->load->view('smo/common/header'); ?>
 
 
 <div class="container-fluid my-4">

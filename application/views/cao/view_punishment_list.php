@@ -20,6 +20,28 @@
 
 <div class="container-fluid my-2">
 
+    <div class="modal fade" id="success_message">
+        <!-- <div class="row"> -->
+        <div class="modal-dialog modal-dialog-centered " role="document">
+            <div class="modal-content bg-custom1">
+                <div class="modal-header">
+                    <h4>Success</h4>
+                </div>
+                <div class="card-body bg-custom3">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h4 style="color:black">Status Updated Successfully</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-primary rounded-pill" data-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div class="modal fade" id="reduce_punishment">
         <!-- <div class="row"> -->
@@ -174,6 +196,9 @@
                                             <th scope="col" style="width:100px">Days left</th>
                                             <th scope="col" style="text-align:center">Action</th>
                                             <th scope="col" style="text-align:center">Action</th>
+                                            <th scope="col" style="text-align:center">Status</th>
+                                            <th scope="col" style="text-align:center">Approve</th>
+                                            <th scope="col" style="text-align:center">Reject</th>
 
                                         </tr>
                                     </thead>
@@ -194,10 +219,24 @@
                                                 <td scope="row" style="display:none"><?= $data['start_date']; ?></td>
                                                 <td scope="row" style="display:none"><?= $data['end_date']; ?></td>
                                                 <td scope="row"><?php echo $diff->format('%d days'); ?></td>
-                                                <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:green" data-toggle="modal" data-target="#reduce_punishment">Reduce Punishment</button></td>
-                                                <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:red">Increase Punishment</button></td>
-                                                <!-- <td type="button" id="edit<?= $data['ID']; ?>" class="edit" scope="row" data-toggle="modal" data-target="#edit_material"><i style="margin-left: 70px;" class="fas fa-edit"></i></td> -->
-                                                <!-- <td id="view" class="view" scope="row"><a href="<?= base_url(); ?>SO_STORE/view_inventory_detail/<?= $data['ID']; ?>" style="color:black"><i style="margin-left: 40px;" class="fas fa-eye"></i></a></td> -->
+                                                <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:green" data-toggle="modal" data-target="#reduce_punishment">Reduce</button></td>
+                                                <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:red">Increase</button></td>
+                                                <?php if ($data['status'] == 'Pending') { ?>
+                                                    <td scope="row" style="color:orange;font-weight:bold"><?= $data['status']; ?></td>
+                                                <?php } elseif ($data['status'] == 'Approved') { ?>
+                                                    <td scope="row" style="color:green;font-weight:bold"><?= $data['status']; ?></td>
+                                                <?php } elseif ($data['status'] == 'Rejected') { ?>
+                                                    <td scope="row" style="color:red;font-weight:bold"><?= $data['status']; ?></td>
+                                                <?php } else { ?>
+                                                    <td></td>
+                                                <?php } ?>
+                                                <?php if ($data['status'] == 'Pending') { ?>
+                                                    <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:green; font-weight:bold; border:0px">Approve</button></td>
+                                                    <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:red; font-weight:bold; border:0px">Reject</button></td>
+                                                <?php } else { ?>
+                                                    <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:green; font-weight:bold; border:0px" disabled>Approve</button></td>
+                                                    <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:red; font-weight:bold; border:0px" disabled>Reject</button></td>
+                                                <?php } ?>
 
                                             </tr>
                                         <?php } ?>
@@ -301,6 +340,11 @@
         }
     });
 
+    var global_col_position = 0;
+    $('#table_rows').find('td').click(function(e) {
+        global_col_position = $(this).index();
+    });
+
     $('#table_rows').find('tr').click(function(e) {
         var $columns = $(this).find('td');
 
@@ -308,7 +352,36 @@
         $('#punish').val($columns[5].innerHTML);
         $('#start_date').val($columns[6].innerHTML);
         $('#end_date').val($columns[7].innerHTML);
-        $('#days').val((Date.parse($columns[7].innerHTML)-Date.parse($columns[6].innerHTML))/ 1000 / 60 / 60 / 24);
+        $('#days').val((Date.parse($columns[7].innerHTML) - Date.parse($columns[6].innerHTML)) / 1000 / 60 / 60 / 24);
+
+        var id = $columns[0].innerHTML;
+        var status = '';
+        if (global_col_position == 12) {
+            status = 'Approved';
+        } else if (global_col_position == 13) {
+            status = 'Rejected';
+        }
+
+        if (global_col_position == 12 || global_col_position == 13) {
+            $('#success_message').modal('show');
+            setTimeout(
+                function() {
+                    $.ajax({
+                        url: '<?= base_url(); ?>CAO/update_punishment_status',
+                        method: 'POST',
+                        data: {
+                            'id': id,
+                            'status': status
+                        },
+                        success: function(data) {
+                            var newDoc = document.open("text/html", "replace");
+                            newDoc.write(data);
+                            newDoc.close();
+                        },
+                        async: true
+                    });
+                }, 1000);
+        }
 
     });
 

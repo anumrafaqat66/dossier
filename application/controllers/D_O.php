@@ -263,7 +263,8 @@ class D_O extends CI_Controller
                 'updated_at' => date('Y-m-d H:i:s'),
                 'term' => $term,
                 'start_date' => $start_date,
-                'end_date' => $end_date
+                'end_date' => $end_date,
+                'status' => 'Pending'
 
             );
 
@@ -529,6 +530,7 @@ class D_O extends CI_Controller
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('pr.status', 'Approved');
             $data['punishment_records'] = $this->db->get()->result_array();
 
             echo json_encode($data['punishment_records']);

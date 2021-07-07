@@ -1964,6 +1964,9 @@ add column end_date date;
 alter table observation_records
 add column status varchar(50) NOT NULL;
 
+alter table punishment_records
+add COLUMN status(50);
+
 --
 -- Indexes for dumped tables
 --

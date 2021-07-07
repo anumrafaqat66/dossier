@@ -10,14 +10,15 @@ class SMO extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
-            
-            $this->load->view('Admin/admin');
+
+            $this->load->view('smo/dashboard');
         } else {
-            $this->load->view('Admin/login');
+            $this->load->view('login');
         }
     }
 
-    public function add_users(){
+    public function add_users()
+    {
         $this->load->view('Admin/create_user');
     }
 
@@ -53,38 +54,82 @@ class SMO extends CI_Controller
     }
 
     public function logout()
-	{
-		$this->session->sess_destroy();
-		redirect('Admin');
-	}
+    {
+        $this->session->sess_destroy();
+        redirect('Admin');
+    }
 
-    public function add_user()
+    public function daily_module()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            // $data['club_data'] = $this->db->get('cadet_club')->result_array();
+            $this->load->view('smo/daily_module'); //, $data);
+        }
+    }
+
+    public function add_excuse()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $this->load->view('smo/add_excuse'); //, $data);
+        }
+    }
+
+    public function view_excuse_list()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $this->db->select('mr.*, f.*');
+            $this->db->from('medical_records mr');
+            $this->db->join('pn_form1s f', 'f.p_id = mr.p_id');
+            $this->db->where('f.oc_no = mr.oc_no');
+            $this->db->where('mr.start_date <=', date('Y-m-d'));
+            $this->db->where('mr.end_date >=', date('Y-m-d'));
+            $data['medical_records'] = $this->db->get()->result_array();
+            $this->load->view('smo/view_excuse_list', $data);
+        }
+    }
+
+    public function save_cadet_excuse()
     {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
 
-            $username = $postData['username'];
-            $password = password_hash($postData['password'], PASSWORD_DEFAULT);
-            $status = $postData['status'];
+            $id = $postData['id'];
+            $oc_no = $postData['oc_num'];
+            $excuse = $postData['excuse'];
+            $disease = $postData['disease'];
+            // $div_name = $postData['division'];
+            $term = $postData['term'];
+            $start_date = $postData['start_date'];
+            $end_date = $postData['end_date'];
+            // $awarded_by = $this->session->userdata('username');
+            $awarded_id = $this->session->userdata('user_id');
 
             $insert_array = array(
-                'username' => $username,
-                'password' => $password,
-                'acct_type' => $status
+                'oc_no' => $oc_no,
+                'p_id' => $id,
+                'date' => date('Y-m-d'),
+                'disease' => $disease,
+                'mo_remarks' => $excuse,
+                'do_id' => $awarded_id,
+                // 'awarded_by' => $awarded_by,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+                'term' => $term,
+                'start_date' => $start_date,
+                'end_date' => $end_date
+
             );
-            
-            $insert = $this->db->insert('security_info', $insert_array);
-            
+
+            $insert = $this->db->insert('medical_records', $insert_array);
+            //$last_id = $this->db->insert_id();
+
             if (!empty($insert)) {
-                $this->session->set_flashdata('success', 'Data Submitted successfully');
-                redirect('Admin/add_users');
+                $this->session->set_flashdata('success', 'Excuse added successfully');
+                redirect('SMO/add_excuse');
             } else {
                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
-                redirect('Admin/add_users');
+                redirect('SMO/add_excuse');
             }
-        } else {
-            $this->session->set_flashdata('failure', 'Something went wrong, Try again.');
-            redirect('Admin/add_users');
         }
     }
 }
