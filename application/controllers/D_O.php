@@ -32,6 +32,17 @@ class D_O extends CI_Controller
 
             $oc_no = $postData['oc_num'];
             $club = $postData['club'];
+            $id = $postData['p_id'];
+
+            $insert_array = array(
+                'p_id' => $id,
+                'assigned_club' => $club,
+                'do_id' => $this->session->userdata('user_id'),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            );
+
+            $insert = $this->db->insert('club_records', $insert_array);
 
             $cond  = ['oc_no' => $oc_no];
             $data_update = [
@@ -41,7 +52,7 @@ class D_O extends CI_Controller
             $this->db->where($cond);
             $update = $this->db->update('pn_form1s', $data_update);
 
-            if (!empty($update)) {
+            if (!empty($update) && !empty($insert)) {
                 $this->session->set_flashdata('success', 'Cadet added to Club successfully');
                 redirect('D_O/add_club');
             } else {
@@ -598,6 +609,20 @@ class D_O extends CI_Controller
             $data['milestone_records'] = $this->db->get()->row_array();
             // print_r( $data['milestone_records']);exit;
             echo json_encode($data['milestone_records']);
+        }
+    }
+
+    public function view_club_in_dossier()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $this->db->select('cr.*, f.*');
+            $this->db->from('club_records cr');
+            $this->db->join('pn_form1s f', 'f.p_id = cr.p_id');
+            $this->db->where('cr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $data['club_records'] = $this->db->get()->result_array();
+            // print_r( $data['milestone_records']);exit;
+            echo json_encode($data['club_records']);
         }
     }
 

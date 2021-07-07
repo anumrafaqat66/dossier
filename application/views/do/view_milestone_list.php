@@ -392,7 +392,7 @@
                             </div>
                         </div> -->
                         <div id="table_div">
-                            <?php if (count($milestone_records) > 0) { ?>
+                            <?php if (isset($milestone_records) ) { ?>
                                 <table id="datatable" class="table table-striped" style="color:black; width:auto !important;table-layout:auto !important;">
                                     <thead>
                                         <tr>

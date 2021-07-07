@@ -139,6 +139,9 @@
                                 <div class="col-sm-3 mb-1" style="display:none">
                                     <input type="text" class="" name="oc_num" id="oc_num">
                                 </div>
+                                <div class="col-sm-3 mb-1" style="display:none">
+                                    <input type="text" class="" name="p_id" id="p_id">
+                                </div>
 
                                 <div class="col-sm-3 mb-1">
                                     <input type="text" class="form-control form-control-user" name="name" id="name" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
@@ -257,6 +260,7 @@
                         $('#division').val(result['divison_name']);
                         $('#oc_num').val(result['oc_no']);
                         $('#club').val(result['club']);
+                        $('#p_id').val(result['p_id']);
                     } else {
                         $('#no_data').show();
                         $('#search_cadet').hide();

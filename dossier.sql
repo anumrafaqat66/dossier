@@ -1003,10 +1003,7 @@ CREATE TABLE `obiographies` (
 --
 
 INSERT INTO `obiographies` (`id`, `p_id`, `p_no`, `division`, `religion`, `sect`, `permanent_address`, `telephone`, `identification_mark`, `height`, `weight`, `blood_group`, `date_place_birth`, `joining_date`, `nic`, `not_held`, `previous_service`, `matric_marks`, `matric_division`, `matric_year`, `matric_school`, `fsc_marks`, `fsc_division`, `fsc_year`, `fsc_school`, `other_marks`, `other_division`, `other_year`, `other_school`, `father_name`, `profession`, `next_of_kin`, `relation`, `address`, `karachi_address`, `karachi_phone`, `emergency_contact`, `family_background`, `education_early`, `education_high_school`, `education_college`, `unforgettable_moment`, `favourite_personality`, `influence_by_whom`, `disliked_person`, `achievements`, `aim`, `good_points`, `weak_points`, `phase`, `do_id`, `created_at`, `updated_at`, `joto_id`) VALUES
-(1, 1, '9750', 'c', 'islam', 'sunni', 'skardu', 'nil', 'nil', '173', '65', 'a+', '01 02 1997         skardu', '2016-01-31', '1234343 4425 4', 'nil', 'nil', '800', 'a', '2010', 's', '800', 'a', '2012', 'govt', 'nnil', 'nil', 'nil', 'nil', 'khan', 'teacher', 'father', 'father', 'skardu', 'skardu', NULL, 'nil', 'good', 'good', 'good', 'good', 'good', 'good', 'good', 'good', 'good', 'good', 'good', 'good', 'Phase 1', 3, '2020-06-03 19:49:24', '2020-06-03 19:49:24', NULL),
-(2, 4, '16134', 'hamza', 'islam', 'Sunni', 'dalazak road peshawar', '03111931294', 'nil', '173cm', '65kg', 'A+ve', 'peshawar KPK', '2020-07-02', '12343-12334455-7', 'NIL', 'NIL', '800', 'A', '2010', 'aps peshawar', '900', 'A', '2012', 'aps peshawar', 'nil', 'nil', 'nil', 'nil', 'khan', 'teacher', 'Khan', 'father', 'dalazak road peshawar', 'nil', NULL, '03111931294', 'Belong to middle class family. father is teacher.Mother is housewife.', 'From aps peshawar', 'From aps peshawar with ist division', 'From aps peshawar with ist division', 'Father\'s heart operation', 'MY father', 'Father', 'nill', 'ist position in matric in my district', 'To become a proud naval officer', 'honest\r\nhardworking', 'lackness in prayers', 'Phase 1', 1, '2020-06-12 23:32:40', '2020-06-12 23:32:40', NULL),
-(3, 3, '3434', 'er', 'islam', 'islam', 'sf', '341', 'sfg', '3', '3', 'n', 'rtr', '2020-12-11', '445', '45', '45', '1', '4', '2002', 'e', '1', '3', '2002', 'e', '1', '3', '2002', 'e', 'sdg', 'sfg', 'gsdfg', 'sfdg', 'sf', 'ssdfg', NULL, '444', 'dfg', 'sdg', 'sdg', 'sdg', 'sdg', 'sdg', 'sdsg', 'sg', 'sdg', 'sdg', 'sg', 'sg', 'Phase 1', 9, '2020-12-12 07:41:21', '2020-12-12 07:41:21', NULL),
-(4, 33, '34561', 'hamza', 'islam', 'sunni', 'karachi', '3434', 'nil', '5.7', '65', 'A+', 'Karachi', '2020-12-14', '44444444', 'nil', 'nil', '789', 'A', '2002', 'APS', '1000', 'A+', '2004', 'APS', NULL, NULL, NULL, NULL, 'ali', 'farmar', 'mushtaq', 'brother', 'karachi', 'karachi', NULL, '9999999', 'karachi', 'karachi', 'karachi', 'karachi', 'karachi', 'karachi', 'karachi', 'karachi', 'karachi', 'karachi', 'karachi', 'karachi', 'Phase 1', 1, '2020-12-15 09:42:29', '2020-12-15 09:42:29', NULL);
+(1, 1, '9750', 'c', 'islam', 'sunni', 'skardu', 'nil', 'nil', '173', '65', 'a+', '01 02 1997         skardu', '2016-01-31', '1234343 4425 4', 'nil', 'nil', '800', 'a', '2010', 's', '800', 'a', '2012', 'govt', 'nnil', 'nil', 'nil', 'nil', 'khan', 'teacher', 'father', 'father', 'skardu', 'skardu', NULL, 'nil', 'good', 'good', 'good', 'good', 'good', 'good', 'good', 'good', 'good', 'good', 'good', 'good', 'Phase 1', 3, '2020-06-03 19:49:24', '2020-06-03 19:49:24', NULL);
 
 -- --------------------------------------------------------
 
@@ -1036,46 +1033,7 @@ CREATE TABLE `observation_records` (
 
 INSERT INTO `observation_records` (`id`, `p_id`, `term`, `date`, `observation`, `observed_by`, `action_taken`, `phase3_type`, `do_id`, `phase`, `created_at`, `updated_at`, `joto_id`) VALUES
 (1, 1, 'Term-I', '2018-12-31', 'good', 'LT IMRAN', 'APPRECIATED', NULL, 3, 'Phase 1', '2020-06-03 19:52:43', '2020-06-03 19:52:43', NULL),
-(2, 1, 'Term-II', '2019-12-31', 'good', 'lt cdr  umair pn', 'green slip', NULL, 3, 'Phase 1', '2020-06-03 19:53:19', '2020-06-03 19:53:19', NULL),
-(3, 1, 'Term-III', '2020-12-31', 'good', 'lt cdr  umair pn', 'green slip', NULL, 3, 'Phase 1', '2020-06-03 19:53:53', '2020-06-03 19:53:53', NULL),
-(4, 1, 'Term-IV', '2018-10-31', 'well disciplined food bearing', 'lt cdr  umair pn', 'nill', NULL, 3, 'Phase 2', '2020-06-06 07:34:11', '2020-06-06 07:34:11', NULL),
-(5, 1, NULL, '2019-12-31', 'found sleeping in the class', 'LT IMRAN', 'bullshit', 'pnec', 3, 'Phase 3', '2020-06-06 08:20:16', '2020-06-06 08:20:16', NULL),
-(6, 4, 'Term-I', '2020-07-03', 'Wearing improper uniform', 'LT IMRAN', 'red slip', NULL, 1, 'Phase 1', '2020-06-12 23:38:38', '2020-06-12 23:38:38', NULL),
-(7, 4, 'Term-II', '2020-06-26', 'good dressing and turnout', 'lt cdr  umair pn', 'green slip', NULL, 1, 'Phase 1', '2020-06-12 23:39:14', '2020-06-12 23:39:14', NULL),
-(8, 4, 'Term-III', '2020-06-18', 'lieing', 'LT IMRAN', '7 R\'c', NULL, 1, 'Phase 1', '2020-06-12 23:41:03', '2020-06-12 23:41:03', NULL),
-(9, 4, 'Term-I', '2020-06-25', 'good dress', 'LT IMRAN', 'green slip', NULL, 1, 'Phase 1', '2020-06-13 12:12:50', '2020-06-13 12:12:50', NULL),
-(10, 4, 'Term-II', '2020-06-17', 'lieing', 'lt cdr  umair pn', '7 R\'c', NULL, 1, 'Phase 1', '2020-06-13 12:13:16', '2020-06-13 12:13:16', NULL),
-(11, 4, 'Term-III', '2020-06-18', 'lieing', 'LT IMRAN', '7 R\'c', NULL, 1, 'Phase 1', '2020-06-13 12:13:43', '2020-06-13 12:13:43', NULL),
-(12, 4, 'Term-IV', '2020-06-23', 'lieing', 'lt cdr  umair pn', '7 R\'c', NULL, 1, 'Phase 2', '2020-06-14 00:20:33', '2020-06-14 00:20:33', NULL),
-(13, 4, NULL, '2020-06-23', 'lieing', 'lt cdr  umair pn', '7 R\'c', 'pnec', 1, 'Phase 3', '2020-06-14 00:37:11', '2020-06-14 00:37:11', NULL),
-(14, 12, 'Term-I', '2020-11-28', 'Integrity', 'hamza', 'bad', NULL, 3, 'Phase 1', '2020-11-28 10:39:00', '2020-11-28 10:39:00', NULL),
-(15, 12, 'Term-I', '2020-11-28', 'Integrity', 'hamza', 'bad', NULL, 3, 'Phase 1', '2020-11-28 10:39:00', '2020-11-28 10:39:00', NULL),
-(16, 12, 'Term-I', '2020-11-28', 'Integrity', 'hamza', 'bad', NULL, 3, 'Phase 1', '2020-11-28 10:39:00', '2020-11-28 10:39:00', NULL),
-(17, 12, 'Term-I', '2020-11-28', 'Moral Courage and Sense of Pride', 'hamza', 'bad', NULL, 3, 'Phase 1', '2020-11-28 10:39:00', '2020-11-28 10:39:00', NULL),
-(18, 12, 'Term-II', '2020-11-29', 'General Discipline', 'hamza', 'bad', NULL, 3, 'Phase 1', '2020-11-29 03:48:44', '2020-11-29 03:48:44', NULL),
-(19, 12, 'Term-II', '2020-11-29', 'Fitness', 'hamza', 'bad', NULL, 3, 'Phase 1', '2020-11-29 03:48:44', '2020-11-29 03:48:44', NULL),
-(20, 24, 'Term-IV', '2020-12-02', 'Integrity', 'hamza', 'bad', NULL, NULL, 'Phase 2', '2020-12-02 13:01:03', '2020-12-02 13:01:03', 1),
-(21, 24, 'Term-IV', '2020-12-02', 'Fitness', 'hamza', 'bad', NULL, NULL, 'Phase 2', '2020-12-02 13:01:03', '2020-12-02 13:01:03', 1),
-(22, 24, 'Term-IV', '2020-12-02', 'General Discipline', 'hamza', 'bad', NULL, NULL, 'Phase 2', '2020-12-02 13:01:03', '2020-12-02 13:01:03', 1),
-(23, 10, 'Term-IV', '2020-12-02', 'Integrity', 'hamza', 'bad', NULL, NULL, 'Phase 2', '2020-12-02 13:12:56', '2020-12-02 13:12:56', 1),
-(24, 10, 'Term-IV', '2020-12-02', 'General Discipline', 'hamza', 'bad', NULL, NULL, 'Phase 2', '2020-12-02 13:12:56', '2020-12-02 13:12:56', 1),
-(25, 10, 'Term-IV', '2020-12-03', 'Truthfulness', 'hamza', 'hamza', NULL, NULL, 'Phase 2', '2020-12-02 14:32:43', '2020-12-02 14:32:43', 1),
-(26, 10, 'Term-IV', '2020-12-03', 'Truthfulness', 'hamza', 'hamza', NULL, NULL, 'Phase 2', '2020-12-02 14:32:43', '2020-12-02 14:32:43', 1),
-(27, 10, 'Term-IV', '2020-12-03', 'Reliability', 'hamza', 'hamza', NULL, NULL, 'Phase 2', '2020-12-02 14:32:43', '2020-12-02 14:32:43', 1),
-(28, 10, 'Term-IV', '2020-12-03', 'Truthfulness', 'hamza', 'hamza', NULL, NULL, 'Phase 2', '2020-12-02 14:54:37', '2020-12-02 14:54:37', 1),
-(29, 3, 'Term-I', '2020-12-12', 'Truthfulness', 'hamza', 'hamza', NULL, 9, 'Phase 1', '2020-12-12 07:48:18', '2020-12-12 07:48:18', NULL),
-(30, 3, 'Term-I', '2020-12-12', 'Physical Fitness', 'hamza', 'hamza', NULL, 9, 'Phase 1', '2020-12-12 07:48:19', '2020-12-12 07:48:19', NULL),
-(31, 3, 'Term-I', '2020-12-11', 'Truthfulness', 'hamza', 'hamza', NULL, 9, 'Phase 1', '2020-12-12 07:52:48', '2020-12-12 07:52:48', NULL),
-(32, 17, 'Term-I', '2020-12-14', 'Integrity', 'hamza', 'bad', NULL, 3, 'Phase 1', '2020-12-14 04:45:56', '2020-12-14 04:45:56', NULL),
-(33, 17, 'Term-I', '2020-12-14', 'Integrity', 'hamza', 'bad', NULL, 3, 'Phase 1', '2020-12-14 04:45:56', '2020-12-14 04:45:56', NULL),
-(34, 21, 'Term-I', '2020-12-14', 'Integrity', 'hamza', 'bad', NULL, 3, 'Phase 1', '2020-12-14 08:09:37', '2020-12-14 08:09:37', NULL),
-(35, 21, 'Term-I', '2020-12-14', 'Integrity', 'hamza', 'bad', NULL, 3, 'Phase 1', '2020-12-14 08:09:37', '2020-12-14 08:09:37', NULL),
-(36, 21, 'Term-I', '2020-12-14', 'Integrity', 'hamza', 'bad', NULL, 3, 'Phase 1', '2020-12-14 08:09:38', '2020-12-14 08:09:38', NULL),
-(37, 21, 'Term-I', '2020-12-14', 'Truthfulness', 'hamza', 'bad', NULL, 3, 'Phase 1', '2020-12-14 09:42:43', '2020-12-14 09:42:43', NULL),
-(38, 21, 'Term-I', '2020-12-14', 'Truthfulness', 'hamza', 'bad', NULL, 3, 'Phase 1', '2020-12-14 09:42:43', '2020-12-14 09:42:43', NULL),
-(39, 21, 'Term-I', '2020-12-14', 'Truthfulness', 'hamza', 'bad', NULL, 3, 'Phase 1', '2020-12-14 09:42:43', '2020-12-14 09:42:43', NULL),
-(40, 33, 'Term-I', '2020-12-14', 'Truthfulness', 'Lt hamza', 'punishment', NULL, 1, 'Phase 1', '2020-12-15 09:44:01', '2020-12-15 09:44:01', NULL),
-(41, 33, 'Term-I', '2020-12-14', 'Integrity', 'Lt hamza', 'punishment', NULL, 1, 'Phase 1', '2020-12-15 09:44:01', '2020-12-15 09:44:01', NULL);
+(2, 1, 'Term-II', '2019-12-31', 'good', 'lt cdr  umair pn', 'green slip', NULL, 3, 'Phase 1', '2020-06-03 19:53:19', '2020-06-03 19:53:19', NULL);
 
 -- --------------------------------------------------------
 
@@ -1104,28 +1062,7 @@ CREATE TABLE `observation_slips` (
 
 INSERT INTO `observation_slips` (`id`, `file_name`, `file_type`, `file_path`, `file_size`, `p_id`, `do_id`, `phase`, `phase3_type`, `created_at`, `updated_at`, `joto_id`) VALUES
 (1, '5ed8469b02524BIO-DATAFORM.docx', 'docx', 'http://localhost/dossier/attachments/observation_slips/5ed8469b02524BIO-DATAFORM.docx', '17.545 kb', 1, 3, 'Phase 1', NULL, '2020-06-03 19:55:55', '2020-06-03 19:55:55', NULL),
-(2, '5edb8dad21b7bWhatsAppImage2020-06-04at08.27.48.jpeg', 'jpeg', 'http://localhost/dossier/attachments/observation_slips/5edb8dad21b7bWhatsAppImage2020-06-04at08.27.48.jpeg', '59.072 kb', 1, 3, 'Phase 1', NULL, '2020-06-06 07:35:57', '2020-06-06 07:35:57', NULL),
-(3, '5edb9876d1fbfWhatsAppImage2020-06-04at08.30.31.jpeg', 'jpeg', 'http://localhost/dossier/attachments/observation_slips/5edb9876d1fbfWhatsAppImage2020-06-04at08.30.31.jpeg', '62.942 kb', 1, 3, 'Phase 1', 'pnec', '2020-06-06 08:21:58', '2020-06-06 08:21:58', NULL),
-(4, '5ee50a3a13cc5WhatsAppImage2020-06-04at08.30.31.jpeg', 'jpeg', 'http://localhost/dossier/attachments/observation_slips/5ee50a3a13cc5WhatsAppImage2020-06-04at08.30.31.jpeg', '62.942 kb', 4, 1, 'Phase 1', NULL, '2020-06-13 12:17:46', '2020-06-13 12:17:46', NULL),
-(5, '5ee50a5308f0cWhatsAppImage2020-06-04at08.28.29.jpeg', 'jpeg', 'http://localhost/dossier/attachments/observation_slips/5ee50a5308f0cWhatsAppImage2020-06-04at08.28.29.jpeg', '62.128 kb', 4, 1, 'Phase 1', NULL, '2020-06-13 12:18:11', '2020-06-13 12:18:11', NULL),
-(6, '5ee5b4dbd21bdWhatsAppImage2020-06-04at08.28.29.jpeg', 'jpeg', 'http://localhost/dossier/attachments/observation_slips/5ee5b4dbd21bdWhatsAppImage2020-06-04at08.28.29.jpeg', '62.128 kb', 4, 1, 'Phase 2', NULL, '2020-06-14 00:25:47', '2020-06-14 00:25:47', NULL),
-(7, '5ee5b7cc6e0bfWhatsAppImage2020-06-04at08.28.29.jpeg', 'jpeg', 'http://localhost/dossier/attachments/observation_slips/5ee5b7cc6e0bfWhatsAppImage2020-06-04at08.28.29.jpeg', '62.128 kb', 4, 1, 'Phase 3', 'pnec', '2020-06-14 00:38:20', '2020-06-14 00:38:20', NULL),
-(8, '5ee9a3dc55902observationslip.jpeg', 'jpeg', 'http://localhost/dossier/attachments/observation_slips/5ee9a3dc55902observationslip.jpeg', '106.722 kb', 4, 1, 'Phase 1', NULL, '2020-06-17 00:02:20', '2020-06-17 00:02:20', NULL),
-(9, '5ee9a3f8cd320observationslip.jpeg', 'jpeg', 'http://localhost/dossier/attachments/observation_slips/5ee9a3f8cd320observationslip.jpeg', '106.722 kb', 4, 1, 'Phase 2', NULL, '2020-06-17 00:02:48', '2020-06-17 00:02:48', NULL),
-(10, '5ee9a4164a5dbobservationslip.jpeg', 'jpeg', 'http://localhost/dossier/attachments/observation_slips/5ee9a4164a5dbobservationslip.jpeg', '106.722 kb', 4, 1, 'Phase 3', 'pnec', '2020-06-17 00:03:18', '2020-06-17 00:03:18', NULL),
-(11, '5ee9a707634b3observationslip.jpeg', 'jpeg', 'http://localhost/dossier/attachments/observation_slips/5ee9a707634b3observationslip.jpeg', '106.722 kb', 4, 1, 'Phase 3', 'pnec', '2020-06-17 00:15:51', '2020-06-17 00:15:51', NULL),
-(12, '5fbd4d812696fGeneralKnowledge2016to20Nov2017.pdf', 'pdf', 'http://localhost/dossier/attachments/observation_slips/5fbd4d812696fGeneralKnowledge2016to20Nov2017.pdf', '942.186 kb', 1, 3, 'Phase 1', NULL, '2020-11-24 13:14:25', '2020-11-24 13:14:25', NULL),
-(13, '5fc7d7b9419d1GeneralKnowledge2016to20Nov2017.pdf', 'pdf', 'http://localhost/dossier/attachments/observation_slips/5fc7d7b9419d1GeneralKnowledge2016to20Nov2017.pdf', '942.186 kb', 10, NULL, 'Phase 2', NULL, '2020-12-02 13:06:49', '2020-12-02 13:06:49', NULL),
-(14, '5fc7d8d88b956GeneralKnowledge2016to20Nov2017.pdf', 'pdf', 'http://localhost/dossier/attachments/observation_slips/5fc7d8d88b956GeneralKnowledge2016to20Nov2017.pdf', '942.186 kb', 10, NULL, 'Phase 2', NULL, '2020-12-02 13:11:36', '2020-12-02 13:11:36', 1),
-(15, '5fcbb473c2795GeneralKnowledge2016to20Nov2017.pdf', 'pdf', 'http://localhost/dossier/attachments/observation_slips/5fcbb473c2795GeneralKnowledge2016to20Nov2017.pdf', '942.186 kb', 12, 3, 'Phase 1', NULL, '2020-12-05 11:25:24', '2020-12-05 11:25:24', NULL),
-(16, '5fd4bd8f8f038integrity.pdf', 'pdf', 'http://localhost/dossier/attachments/observation_slips/5fd4bd8f8f038integrity.pdf', '942.186 kb', 3, 9, 'Phase 1', NULL, '2020-12-12 07:54:39', '2020-12-12 07:54:39', NULL),
-(17, '5fd7640433d95aron-smith-CV-financial-manager.pdf', 'pdf', 'http://localhost/dossier/attachments/observation_slips/5fd7640433d95aron-smith-CV-financial-manager.pdf', '91.948 kb', 21, 3, 'Phase 1', NULL, '2020-12-14 08:09:24', '2020-12-14 08:09:24', NULL),
-(18, 'integrity.pdf', 'pdf', 'http://localhost/dossier/attachments/observation_slips/integrity.pdf', '942.186 kb', 21, 3, 'Phase 1', NULL, '2020-12-14 08:57:57', '2020-12-14 08:57:57', NULL),
-(19, 'Truthfulness.pdf', 'pdf', 'http://localhost/dossier/attachments/observation_slips/Truthfulness.pdf', '95.643 kb', 21, 3, 'Phase 1', NULL, '2020-12-14 09:42:24', '2020-12-14 09:42:24', NULL),
-(20, 'aron-smith-CV-financial-manager.pdf', 'pdf', 'http://localhost/dossier/attachments/observation_slips/aron-smith-CV-financial-manager.pdf', '91.948 kb', 33, 1, 'Phase 1', NULL, '2020-12-15 09:44:10', '2020-12-15 09:44:10', NULL),
-(21, 'aron-smith-CV-financial-manager.pdf', 'pdf', 'http://localhost/dossier/attachments/observation_slips/aron-smith-CV-financial-manager.pdf', '91.948 kb', 33, 1, 'Phase 1', NULL, '2020-12-15 09:44:20', '2020-12-15 09:44:20', NULL),
-(22, 'Truthfulness.pdf', 'pdf', 'http://localhost/dossier/attachments/observation_slips/Truthfulness.pdf', '91.948 kb', 37, 1, 'Phase 1', NULL, '2020-12-21 11:30:03', '2020-12-21 11:30:03', NULL),
-(23, 'PIAIC Student Portal.pdf', 'pdf', 'http://localhost:8080/dossier/attachments/observation_slips/PIAIC Student Portal.pdf', '805.566 kb', 37, 1, 'Phase 1', NULL, '2021-06-26 05:23:02', '2021-06-26 05:23:02', NULL);
+(2, '5edb8dad21b7bWhatsAppImage2020-06-04at08.27.48.jpeg', 'jpeg', 'http://localhost/dossier/attachments/observation_slips/5edb8dad21b7bWhatsAppImage2020-06-04at08.27.48.jpeg', '59.072 kb', 1, 3, 'Phase 1', NULL, '2020-06-06 07:35:57', '2020-06-06 07:35:57', NULL);
 
 -- --------------------------------------------------------
 
@@ -1190,46 +1127,7 @@ CREATE TABLE `officer_qualities` (
 
 INSERT INTO `officer_qualities` (`id`, `p_id`, `term`, `truthfulness_mid`, `truthfulness_terminal`, `integrity_mid`, `integrity_terminal`, `pride_mid`, `pride_terminal`, `courage_mid`, `courage_terminal`, `confidence_mid`, `confidence_terminal`, `initiative_mid`, `inititative_terminal`, `command_mid`, `command_terminal`, `discipline_mid`, `discipline_terminal`, `duty_mid`, `duty_terminal`, `reliability_mid`, `reliability_terminal`, `appearance_mid`, `appearance_terminal`, `fitness_mid`, `fitness_terminal`, `conduct_mid`, `conduct_terminal`, `cs_mid`, `cs_terminal`, `teamwork_mid`, `teamwork_terminal`, `expression_mid`, `expression_terminal`, `total_mid`, `total_terminal`, `mid_marks`, `terminal_marks`, `mid_marks_date`, `terminal_marks_date`, `do_name`, `form_type`, `do_id`, `phase`, `phase3_type`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Term-I', 19, 18, 18, 17, 10, 10, 7, 5, 10, 6, 5, 8, 9, 9, 10, 7, 4, 7, 8, 5, 9, 9, 6, 8, 9, 8, 5, 5, 5, 8, 15, 15, 149, 145, '74.5%', '72.5%', '2018-11-29', '2015-04-03', 'lt cdr hamza pn', 'S 1-27', 3, 'Phase 1', NULL, '2020-06-03 20:12:32', '2020-06-03 20:12:32'),
-(2, 1, 'Term-II', 13, 12, 14, 18, 10, 10, 5, 9, 11, 12, 10, 8, 10, 10, 10, 4, 5, 6, 5, 8, 9, 8, 8, 7, 5, 8, 10, 7, 9, 7, 8, 9, 142, 143, '71%', '71.5%', '2017-11-30', '2017-10-29', 'lt cdr hamza pn', 'S 1-28', 3, 'Phase 1', NULL, '2020-06-03 20:15:06', '2020-06-03 20:15:06'),
-(3, 1, 'Term-III', 11, 8, 14, 14, 10, 10, 8, 13, 13, 11, 10, 9, 9, 7, 5, 8, 7, 8, 5, 7, 9, 10, 9, 8, 6, 8, 9, 6, 8, 6, 9, 15, 142, 148, '71%', '74%', '2017-10-18', '2017-11-30', 'lt cdr hamza pn', 'S 1-29', 3, 'Phase 1', NULL, '2020-06-03 20:17:31', '2020-06-03 20:17:31'),
-(4, 1, 'Term-IV', 17, 13, 17, 19, 10, 10, 14, 12, 11, 14, 10, 10, 7, 0, 7, 7, 4, 5, 7, 7, 6, 5, 3, 5, 6, 8, 8, 10, 4, 6, 8, 12, 139, 143, '69.5%', '71.5%', '2017-03-28', '2016-09-26', 'lt cdr hamza pn', 'S 1-27', 3, 'Phase 2', NULL, '2020-06-03 20:44:04', '2020-06-03 20:44:04'),
-(5, 1, 'Term-IV', 18, 10, 13, 16, 9, 10, 10, 12, 11, 11, 10, 9, 8, 9, 7, 8, 9, 8, 9, 10, 9, 10, 10, 9, 10, 10, 8, 7, 9, 10, 11, 13, 161, 162, '80.5%', '81%', '2017-10-29', '2017-08-28', 'lt cdr hamza pn', 'S 1-27', 3, 'Phase 2', NULL, '2020-06-06 07:56:44', '2020-06-06 07:56:44'),
-(6, 1, 'Semseter-III', 16, 17, 16, 15, 10, 4, 3, 8, 9, 11, 7, 3, 7, 6, 4, 6, 9, 10, 9, 10, 8, 10, 9, 6, 4, 7, 10, 8, 5, 9, 8, 15, 134, 145, '67%', '72.5%', '2018-06-30', '2015-11-22', 'lt cdr hamza pn', 'S 1-27', 3, 'Phase 3', 'pnec', '2020-06-06 08:44:39', '2020-06-06 08:44:39'),
-(7, 1, 'Semseter-IV', 8, 15, 11, 13, 10, 10, 8, 8, 10, 9, 10, 7, 6, 7, 7, 7, 8, 9, 8, 9, 8, 9, 9, 9, 8, 7, 9, 9, 7, 10, 9, 8, 136, 146, '68%', '73%', '2018-07-03', '2019-03-07', 'farhat ullah', 'S 1-27', 3, 'Phase 3', 'pnec', '2020-06-06 08:47:46', '2020-06-06 08:47:46'),
-(8, 1, 'Semseter-V', 15, 15, 15, 11, 7, 10, 9, 11, 10, 8, 9, 9, 10, 3, 10, 7, 10, 7, 5, 10, 8, 6, 8, 7, 7, 10, 8, 10, 10, 6, 5, 8, 146, 138, '73%', '69%', '2015-09-04', '2019-11-29', 'farhat ullah', 'S 1-27', 3, 'Phase 3', 'pnec', '2020-06-06 08:50:47', '2020-06-06 08:50:47'),
-(9, 1, 'Semseter-VI', 11, 10, 9, 13, 10, 10, 11, 10, 12, 12, 10, 10, 5, 6, 10, 7, 9, 9, 6, 10, 8, 10, 5, 7, 8, 8, 9, 9, 4, 7, 9, 12, 136, 150, '68%', '75%', '2017-05-03', '2018-10-30', 'farhat ullah', 'S 1-27', 3, 'Phase 3', 'pnec', '2020-06-06 08:54:35', '2020-06-06 08:54:35'),
-(10, 1, 'Semseter-VII', 10, 8, 16, 11, 8, 10, 11, 13, 10, 12, 10, 7, 10, 10, 10, 9, 7, 7, 6, 7, 6, 6, 5, 5, 7, 8, 7, 6, 6, 10, 8, 15, 137, 144, '68.5%', '72%', '2018-10-05', '2017-08-29', 'Kashif', 'S 1-27', 3, 'Phase 3', 'pnec', '2020-06-06 08:58:07', '2020-06-06 08:58:07'),
-(11, 1, 'Semseter-VIII', 13, 12, 17, 18, 10, 9, 11, 9, 13, 11, 10, 10, 10, 9, 9, 6, 8, 6, 9, 10, 9, 4, 10, 8, 10, 6, 9, 7, 8, 10, 7, 15, 163, 150, '81.5%', '75%', '2019-07-03', '2020-09-02', 'asad', 'S 1-27', 3, 'Phase 3', 'pnec', '2020-06-06 09:00:23', '2020-06-06 09:00:23'),
-(12, 4, 'Term-I', 14, 13, 12, 13, 8, 7, 7, 7, 7, 7, 7, 7, 7, 7, 9, 7, 7, 7, 7, 6, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 132, 129, '66%', '64.5%', '2020-06-22', '2020-07-02', 'lt cdr hamza pn', 'S 1-27', 1, 'Phase 1', NULL, '2020-06-13 12:31:51', '2020-06-13 12:31:51'),
-(13, 4, 'Term-II', 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 127, 128, '63.5%', '64%', '2020-06-22', '2020-06-17', 'lt cdr hamza pn', 'S 1-27', 1, 'Phase 1', NULL, '2020-06-13 12:32:32', '2020-06-13 12:32:32'),
-(14, 4, 'Term-III', 7, 7, 7, 7, 7, 7, 7, 7, 8, 9, 9, 9, 9, 9, 9, 9, 8, 8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 134, 135, '67%', '67.5%', '2020-06-16', '2020-06-10', 'lt cdr hamza pn', 'S 1-27', 1, 'Phase 1', NULL, '2020-06-13 12:33:21', '2020-06-13 12:33:21'),
-(15, 4, 'Term-III', 8, 8, 7, 7, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 141, 141, '70.5%', '70.5%', '2020-06-24', '2020-06-11', 'lt cdr hamza pn', 'S 1-27', 1, 'Phase 1', NULL, '2020-06-13 12:34:43', '2020-06-13 12:34:43'),
-(16, 4, 'Term-IV', 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 8, 8, 143, 143, '71.5%', '71.5%', '2020-06-24', '2020-06-24', 'lt cdr hamza pn', 'S 1-27', 1, 'Phase 2', NULL, '2020-06-14 00:29:38', '2020-06-14 00:29:38'),
-(17, 4, 'Semseter-III', 9, 9, 9, 9, 9, 9, 9, 8, 8, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 8, 8, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 134, 134, '67%', '67%', '2020-06-30', '2020-06-24', 'lt cdr hamza pn', 'S 1-27', 1, 'Phase 3', 'pnec', '2020-06-14 00:45:44', '2020-06-14 00:45:44'),
-(18, 4, 'Semseter-IV', 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 112, 112, '56%', '56%', '2020-06-23', '2020-06-25', 'lt cdr hamza pn', 'S 1-27', 1, 'Phase 3', 'pnec', '2020-06-14 00:47:08', '2020-06-14 00:47:08'),
-(19, 4, 'Semseter-V', 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 128, 128, '64%', '64%', '2020-06-24', '2020-06-23', 'lt cdr hamza pn', 'S 1-27', 1, 'Phase 3', 'pnec', '2020-06-14 00:48:38', '2020-06-14 00:48:38'),
-(20, 4, 'Semseter-VI', 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 128, 128, '64%', '64%', '2020-06-15', '2020-06-18', 'lt cdr hamza pn', 'S 1-27', 1, 'Phase 3', 'pnec', '2020-06-14 00:49:49', '2020-06-14 00:49:49'),
-(21, 4, 'Semseter-VI', 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 8, 9, 9, 9, 9, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 139, 139, '69%', '69.5%', '2020-06-23', '2020-06-24', 'lt cdr hamza pn', 'S 1-27', 1, 'Phase 3', 'pnec', '2020-06-14 00:51:21', '2020-06-14 00:51:21'),
-(22, 4, 'Semseter-VII', 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 126, 124, '63%', '62%', '2020-06-30', '2020-06-25', 'lt cdr hamza pn', 'S 1-27', 1, 'Phase 3', 'pnec', '2020-06-14 00:52:24', '2020-06-14 00:52:24'),
-(23, 4, 'Semseter-VIII', 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 111, 112, '55.5%', '56%', '2020-06-02', '2020-06-02', 'lt cdr hamza pn', 'S 1-27', 1, 'Phase 3', 'pnec', '2020-06-14 00:53:36', '2020-06-14 00:53:36'),
-(24, 1, 'Term-I', 19, 18, 18, 17, 10, 10, 7, 5, 10, 6, 5, 8, 9, 9, 10, 7, 4, 7, 8, 5, 2, 9, 6, 8, 9, 8, 5, 3, 5, 8, 15, 15, 142, 143, '71%', '71.5%', '2020-11-04', '2020-11-03', 'hamaza', 'S 1-27', 3, 'Phase 1', NULL, '2020-11-28 02:26:50', '2020-11-28 02:26:50'),
-(25, 1, 'Term-II', 13, 12, 14, 18, 10, 10, 5, 9, 11, 12, 10, 8, 10, 10, 10, 4, 5, 6, 5, 8, 2, 3, 8, 7, 5, 8, 10, 7, 9, 7, 8, 9, 135, 138, '67.5%', '69%', '2020-11-12', '2020-11-24', 'hamaza', 'S 1-27', 3, 'Phase 1', NULL, '2020-11-28 08:36:23', '2020-11-28 08:36:23'),
-(26, 1, NULL, 19, 18, 18, 17, 10, 10, 7, 5, 10, 6, 5, 8, 9, 9, 10, 7, 4, 7, 8, 5, 1, 2, 6, 8, 9, 8, 5, 3, 5, 8, 15, 11, 141, 132, '70.5%', '66%', '2020-11-28', '2020-11-28', 'hamaza', 'S 1-27', 3, 'Phase 1', NULL, '2020-11-28 08:37:41', '2020-11-28 08:37:41'),
-(27, 3, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 16, 16, '8%', '8%', '2020-11-28', '2020-11-26', 'hamaza', 'S 1-27', 3, 'Phase 1', NULL, '2020-11-28 08:38:33', '2020-11-28 08:38:33'),
-(28, 3, NULL, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 96, 95, '48%', '47.5%', '2020-11-28', '2020-11-28', 'hamaza', 'S 1-27', 3, 'Phase 1', NULL, '2020-11-28 08:47:12', '2020-11-28 08:47:12'),
-(29, 3, 'Term-I', 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 9, 112, 114, '56%', '57%', '2020-11-28', '2020-11-28', 'hamaza', 'S 1-27', 3, 'Phase 1', NULL, '2020-11-28 08:51:23', '2020-11-28 08:51:23'),
-(30, 3, 'Term-I', 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 9, 112, 114, '56%', '57%', '2020-11-28', '2020-11-28', 'hamaza', 'S 1-27', 3, 'Phase 1', NULL, '2020-11-28 08:51:42', '2020-11-28 08:51:42'),
-(31, 12, 'Term-I', 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 80, 80, '40%', '40%', '2020-11-28', '2020-11-28', 'hamaza', 'S 1-27', 3, 'Phase 1', NULL, '2020-11-28 08:56:22', '2020-11-28 08:56:22'),
-(32, 12, 'Term-II', 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 128, 128, '64%', '64%', '2020-11-25', '2020-11-26', 'hamazadd', 'S 1-27', 3, 'Phase 1', NULL, '2020-11-29 03:47:26', '2020-11-29 03:47:26'),
-(33, 21, 'Term-I', 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 128, 128, '64%', '64%', '2020-11-29', '2020-11-24', 'hamaza', 'S 1-27', 3, 'Phase 1', NULL, '2020-11-29 11:08:08', '2020-11-29 11:08:08'),
-(34, 21, 'Term-I', 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 128, 128, '64%', '64%', '2020-11-29', '2020-11-24', 'hamaza', 'S 1-27', 3, 'Phase 1', NULL, '2020-11-29 11:08:39', '2020-11-29 11:08:39'),
-(35, 21, 'Term-II', 8, 8, 8, 8, 8, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 128, 127, '64%', '63.5%', '2020-11-29', '2020-11-29', 'hamaza', 'S 1-27', 3, 'Phase 1', NULL, '2020-11-29 11:10:09', '2020-11-29 11:10:09'),
-(36, 12, 'Term-III', 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 6, NULL, 126, NULL, '63%', NULL, '2020-12-01', '2020-12-01', 'Murtaza', 'S 1-27', 3, 'Phase 1', NULL, '2020-12-02 01:25:48', '2020-12-02 01:25:48'),
-(37, 14, 'Term-I', 4, NULL, 4, NULL, 3, NULL, 4, NULL, 4, NULL, 4, NULL, 4, NULL, 4, NULL, 4, NULL, 4, NULL, 4, NULL, 4, NULL, 4, NULL, 4, NULL, 4, NULL, 4, NULL, 63, NULL, '31.5%', NULL, '2020-12-05', '2020-12-05', 'er', 'S 1-27', 3, 'Phase 1', NULL, '2020-12-05 11:22:51', '2020-12-05 11:22:51'),
-(38, 3, 'Term-II', 4, NULL, 4, NULL, 4, NULL, 4, NULL, 4, NULL, 4, NULL, 4, NULL, 4, NULL, 4, NULL, 4, NULL, 4, NULL, 4, NULL, 4, NULL, 4, NULL, 4, NULL, 4, NULL, 64, NULL, '32%', NULL, '2020-12-11', '2020-12-11', 'Murtaza', 'S 1-27', 9, 'Phase 1', NULL, '2020-12-12 07:50:20', '2020-12-12 07:50:20'),
-(39, 33, 'Term-I', 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 128, NULL, '64%', NULL, '2020-12-14', NULL, 'Lt Hamaza', 'S 1-27', 1, 'Phase 1', NULL, '2020-12-15 09:48:59', '2020-12-15 09:48:59'),
-(40, 33, 'Term-I', 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 128, 128, '64%', '64%', '2020-12-14', '2020-12-14', 'Lt Hamaza', 'S 1-27', 1, 'Phase 1', NULL, '2020-12-15 10:09:29', '2020-12-15 10:09:29'),
-(41, 37, 'Term-I', 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 8, NULL, 7, NULL, 127, NULL, '63.5%', NULL, '2020-12-21', NULL, 'Lt Hamaza', 'S 1-27', 1, 'Phase 1', NULL, '2020-12-21 11:31:32', '2020-12-21 11:31:32');
+(2, 1, 'Term-II', 13, 12, 14, 18, 10, 10, 5, 9, 11, 12, 10, 8, 10, 10, 10, 4, 5, 6, 5, 8, 9, 8, 8, 7, 5, 8, 10, 7, 9, 7, 8, 9, 142, 143, '71%', '71.5%', '2017-11-30', '2017-10-29', 'lt cdr hamza pn', 'S 1-28', 3, 'Phase 1', NULL, '2020-06-03 20:15:06', '2020-06-03 20:15:06');
 
 -- --------------------------------------------------------
 
@@ -1265,16 +1163,7 @@ CREATE TABLE `overall_seniority_records` (
 
 INSERT INTO `overall_seniority_records` (`id`, `p_id`, `phase1_seniority_gained`, `phase1_seniority_lost`, `phase2_seniority_gained`, `phase2_seniority_lost`, `phase3_seniority_gained`, `phase3_seniority_lost`, `phase3_seniority_professional_gained`, `phase3_seniority_professional_lost`, `total_gained`, `total_lost`, `net_gained_lost`, `phase`, `phase3_type`, `do_id`, `created_at`, `updated_at`, `joto_id`) VALUES
 (1, 1, '30', '0', '15', '0', '2', '2', '2', '0', '49', '2', '47', NULL, NULL, 3, '2020-06-03 20:25:11', '2020-12-13 14:08:25', NULL),
-(2, 4, '30', '0', '10', '0', '45', '0', NULL, NULL, '85', '0', '85', NULL, NULL, 1, '2020-06-14 00:17:15', '2020-06-14 01:02:55', NULL),
-(3, 10, NULL, NULL, '44', '0', NULL, NULL, NULL, NULL, '44', '0', '44', NULL, NULL, NULL, '2020-12-02 13:35:34', '2020-12-02 13:35:34', 1),
-(4, 2, NULL, NULL, NULL, NULL, '2', '2', NULL, NULL, '2', '2', '0', NULL, NULL, 3, '2020-12-13 13:53:17', '2020-12-13 14:07:56', NULL),
-(5, 7, NULL, NULL, NULL, NULL, '2', '2', NULL, NULL, '2', '2', '0', NULL, NULL, 3, '2020-12-13 13:54:25', '2020-12-13 13:54:25', NULL),
-(6, 25, NULL, NULL, NULL, NULL, '2', '2', NULL, NULL, '2', '2', '0', NULL, NULL, 3, '2020-12-14 12:18:41', '2020-12-14 12:18:41', NULL),
-(7, 26, NULL, NULL, NULL, NULL, '2', '2', NULL, NULL, '2', '2', '0', NULL, NULL, 3, '2020-12-14 12:25:29', '2020-12-14 12:34:12', NULL),
-(8, 28, NULL, NULL, NULL, NULL, '2', '2', NULL, NULL, '2', '2', '0', NULL, NULL, 3, '2020-12-14 12:37:05', '2020-12-14 12:43:14', NULL),
-(9, 29, NULL, NULL, NULL, NULL, '2', '2', NULL, NULL, '2', '2', '0', NULL, NULL, 3, '2020-12-14 12:44:10', '2020-12-14 12:45:26', NULL),
-(10, 33, '45', '10', NULL, NULL, NULL, NULL, NULL, NULL, '45', '10', '35', NULL, NULL, 1, '2020-12-15 09:52:23', '2020-12-15 09:52:23', NULL),
-(11, 37, '98', '89', NULL, NULL, NULL, NULL, NULL, NULL, '98', '89', '9', NULL, NULL, 1, '2021-06-26 05:24:24', '2021-06-26 05:24:24', NULL);
+(2, 4, '30', '0', '10', '0', '45', '0', NULL, NULL, '85', '0', '85', NULL, NULL, 1, '2020-06-14 00:17:15', '2020-06-14 01:02:55', NULL);
 
 -- --------------------------------------------------------
 
@@ -1338,13 +1227,7 @@ CREATE TABLE `personal_datas` (
 --
 
 INSERT INTO `personal_datas` (`id`, `p_id`, `p_no`, `course`, `religion`, `emergency_contact`, `telephone_no`, `ex_army`, `ex_army_from`, `ex_army_to`, `father_name`, `father_occupation`, `next_of_kin`, `siblings`, `near_relatives`, `identification_marks`, `height`, `weight`, `navy_joining_date`, `entry_mode`, `service_id`, `nic`, `blood_group`, `address`, `karachi_address`, `matric_school`, `matric_division`, `matric_subjects`, `intermediate_college`, `intermediate_division`, `diploma`, `phase`, `do_id`, `created_at`, `updated_at`, `joto_id`) VALUES
-(1, 1, '9686', '16A', 'islam', '24456', '23456', 'nil', 'nil', 'nil', 'khan', 'teacher', 'father       skardu', 'a\r\na\r\ns\r\nd', 'nil', 'nil', '173', '65', '2020-01-31', 'regular', '12455', '3234 34234 4322', 'a+', 'skardu', 'nil', 'govt school', '1st divison', 'maths physics chemistry  english', 'govt college tanduu allahyar', 'a', 'nill', 'Phase 1', 3, '2020-06-03 19:43:40', '2020-06-03 19:43:40', NULL),
-(2, 1, '9750', '16A', 'islam', '24456', 'nil', 'nil', 'nil', 'nil', 'khan', 'teacher', 'khan   skardu', 'shoaib', 'nil', 'nil', '173', '65', '2016-12-01', 'regular', '3543-7654454-7', '1234343 4425 4', 'a+', 'dalazak road peshawar', 'nil', 'junior school', 'a', 'maths physics chemistry  english', 'govt college tanduu allahyar', 'a', 'nill', 'Phase 2', 3, '2020-06-06 07:32:44', '2020-06-06 07:32:44', NULL),
-(3, 4, '16134', '16A', 'islam', '24456', '03408846142', 'nil', 'nil', 'nil', 'khan', 'teacher', 'dalazak road peshawar', 'ali\r\nahmed', 'nil', 'nil', '173cm', '65kg', '2020-06-27', 'regular', 'nil', '45237-98766554-1', 'A+VE', 'dalazak road peshawar', 'NIL', 'aps peshawar', 'A', 'science', 'aps peshawar', 'A', 'NIL', 'Phase 1', 1, '2020-06-12 23:25:29', '2020-06-12 23:25:29', NULL),
-(4, 4, '16134', '16A', 'islam', '24456', '03408846142', 'nil', 'nil', 'nil', 'khan', 'teacher', 'dalazak road peshawar', 'ali\r\nsara', 'nil', 'nil', '173cm', '65kg', '2020-06-23', 'regular', 'nil', '12343-12334455-7', 'A+ve', 'dalazak road peshawar', 'nil', 'aps peshawar', 'A', 'science', 'govt college tanduu allahyar', 'A', 'nill', 'Phase 2', 1, '2020-06-14 00:20:07', '2020-06-14 00:20:07', NULL),
-(5, 10, '3333', '333', 'zcvz', '5555', '454', 'fdg', '03/03/2010', '03/03/2010', 'asdf', 'asfd', 'asd', 'asdf', 'asf', 'adfa', '33', '33', '2020-12-02', '33', '3434', '3434', 'a', 'asdf', 'asdf', '3fdsf', 'a', 'b', 'c', 'de', 'e', 'Phase 2', NULL, '2020-12-02 12:58:03', '2020-12-02 12:58:03', 1),
-(6, 3, '44', 'e', 'e', '3', '3', 'sdf', '12/12/2020', '12/12/2020', 'e', 'e', 'e', 'e', 'e', 'e', '444', '4', '2020-12-12', '4', '555', '555', 'rtrtrt', 'rtrt', 'rtrt', 'r', 'a', 'r', 'r', 'r', 'r', 'Phase 1', 9, '2020-12-12 07:33:54', '2020-12-12 07:33:54', NULL),
-(7, 33, '34561', 'course', 'islam', '88888', '88888', 'nil', 'nil', 'nil', 'ali', 'farmar', 'mushtaq', 'ali\r\naslam', 'nil', 'ali', '5.7 ft', '65 kg', '2020-12-14', 'Regular', NULL, '4343343434343', 'A+', 'gulshan karachi', 'gulshan karachi', 'APS', 'A', 'Science', 'APS', 'A', 'nil', 'Phase 1', 1, '2020-12-15 09:39:24', '2020-12-15 09:39:24', NULL);
+(1, 1, '9686', '16A', 'islam', '24456', '23456', 'nil', 'nil', 'nil', 'khan', 'teacher', 'father       skardu', 'a\r\na\r\ns\r\nd', 'nil', 'nil', '173', '65', '2020-01-31', 'regular', '12455', '3234 34234 4322', 'a+', 'skardu', 'nil', 'govt school', '1st divison', 'maths physics chemistry  english', 'govt college tanduu allahyar', 'a', 'nill', 'Phase 1', 3, '2020-06-03 19:43:40', '2020-06-03 19:43:40', NULL);
 
 -- --------------------------------------------------------
 
@@ -1371,13 +1254,7 @@ CREATE TABLE `personal_data_attachments` (
 
 INSERT INTO `personal_data_attachments` (`id`, `file_name`, `file_type`, `file_path`, `file_size`, `p_id`, `phase`, `created_at`, `updated_at`, `joto_id`) VALUES
 (1, '5ed843bc23261uniformpic2019-10-21at5.21.46PM.jpeg', 'jpeg', 'http://localhost/dossier/attachments/officer_pics/5ed843bc23261uniformpic2019-10-21at5.21.46PM.jpeg', '66.802 kb', 1, 'Phase 1', '2020-06-03 19:43:40', '2020-06-03 19:43:40', NULL),
-(2, '5edb8cec85ee0uniformpic2019-10-21at5.21.46PM.jpeg', 'jpeg', 'http://localhost/dossier/attachments/officer_pics/5edb8cec85ee0uniformpic2019-10-21at5.21.46PM.jpeg', '66.802 kb', 1, 'Phase 2', '2020-06-06 07:32:44', '2020-06-06 07:32:44', NULL),
-(3, '5ee45539aadb7uniformpic2019-10-21at5.21.46PM.jpeg', 'jpeg', 'http://localhost/dossier/attachments/officer_pics/5ee45539aadb7uniformpic2019-10-21at5.21.46PM.jpeg', '66.802 kb', 4, 'Phase 1', '2020-06-12 23:25:29', '2020-06-12 23:25:29', NULL),
-(4, '5ee5b387683d7uniformpic2019-10-21at5.21.46PM.jpeg', 'jpeg', 'http://localhost/dossier/attachments/officer_pics/5ee5b387683d7uniformpic2019-10-21at5.21.46PM.jpeg', '66.802 kb', 4, 'Phase 2', '2020-06-14 00:20:07', '2020-06-14 00:20:07', NULL),
-(5, '5fd4b8b299fd5afsf.jpg', 'jpg', 'http://localhost/dossier/attachments/officer_pics/5fd4b8b299fd5afsf.jpg', '214.289 kb', 3, 'Phase 1', '2020-12-12 07:33:54', '2020-12-12 07:33:54', NULL),
-(6, '5fd4bb7351f86error404.PNG', 'PNG', 'http://localhost/dossier/attachments/officer_pics/5fd4bb7351f86error404.PNG', '16.214 kb', 3, 'Phase 1', '2020-12-12 07:45:39', '2020-12-12 07:45:39', NULL),
-(7, '5fd8ca40bdc73WhatsAppImage2020-12-14at2.59.29PM.jpeg', 'jpeg', 'http://localhost/dossier/attachments/officer_pics/5fd8ca40bdc73WhatsAppImage2020-12-14at2.59.29PM.jpeg', '43.792 kb', 33, 'Phase 1', '2020-12-15 09:37:53', '2020-12-15 09:37:53', NULL),
-(8, '5fd8ca9ca830eWhatsAppImage2020-12-14at2.59.29PM.jpeg', 'jpeg', 'http://localhost/dossier/attachments/officer_pics/5fd8ca9ca830eWhatsAppImage2020-12-14at2.59.29PM.jpeg', '43.792 kb', 33, 'Phase 1', '2020-12-15 09:39:24', '2020-12-15 09:39:24', NULL);
+(2, '5edb8cec85ee0uniformpic2019-10-21at5.21.46PM.jpeg', 'jpeg', 'http://localhost/dossier/attachments/officer_pics/5edb8cec85ee0uniformpic2019-10-21at5.21.46PM.jpeg', '66.802 kb', 1, 'Phase 2', '2020-06-06 07:32:44', '2020-06-06 07:32:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -1421,18 +1298,7 @@ CREATE TABLE `physical_effeciency_records` (
 
 INSERT INTO `physical_effeciency_records` (`id`, `p_id`, `term`, `mile_time`, `mile_time_status`, `rope_class`, `rope_class_status`, `beam_work`, `beam_work_status`, `push_ups`, `push_ups_status`, `sprint_time`, `sprint_time_status`, `pet_score_date`, `pet_score_status`, `mini_cross_country`, `mini_cross_country_status`, `cross_country`, `cross_country_status`, `assault_course_time`, `assault_course_time_status`, `do_id`, `phase`, `created_at`, `updated_at`, `joto_id`, `oc_no`) VALUES
 (1, 1, 'Term-I', '6.18', 'Qualified', 'alpha', 'Qualified', '6', 'Qualified', '40', 'Qualified', '17', 'Qualified', '80', 'Qualified', '119', 'Qualified', '43', 'Qualified', '15 min', 'Qualified', 3, 'Phase 1', '2020-06-03 20:00:05', '2020-06-03 20:00:05', NULL, NULL),
-(2, 1, 'Term-II', '6.03', 'Qualified', 'alpha', 'Qualified', '6', 'Qualified', '40', 'Qualified', '11', 'Qualified', '80', 'Qualified', '220', 'Qualified', '122', 'Qualified', '16', 'Qualified', 3, 'Phase 1', '2020-06-03 20:01:06', '2020-06-03 20:01:06', NULL, NULL),
-(3, 1, 'Term-III', '6.03', 'Qualified', 'alpha', 'Qualified', '6', 'Qualified', '40', 'Qualified', '15', 'Qualified', '91', 'Qualified', '123', 'Qualified', '21', 'Qualified', '9 min', 'Qualified', 3, 'Phase 1', '2020-06-03 20:01:48', '2020-06-03 20:01:48', NULL, NULL),
-(4, 4, 'Term-I', '6.03', 'Qualified', 'A', 'Qualified', '6', 'Disqualified', '40', 'Qualified', '11', 'Qualified', '80', 'Qualified', '12 card', 'Qualified', '13 CARD', 'Qualified', '12MINTS', 'Qualified', 1, 'Phase 1', '2020-06-13 12:22:12', '2020-06-13 12:22:12', NULL, NULL),
-(5, 4, 'Term-II', '6.18', 'Qualified', 'A', 'Qualified', '6', 'Qualified', '40', 'Qualified', '15', 'Qualified', '89', 'Qualified', '12 card', 'Qualified', '13 CARD', 'Qualified', '15 min', 'Qualified', 1, 'Phase 1', '2020-06-13 12:22:47', '2020-06-13 12:22:47', NULL, NULL),
-(6, 4, 'Term-III', '6.03', 'Qualified', 'A', 'Qualified', '6', 'Qualified', '40', 'Qualified', '15', 'Qualified', '91', 'Qualified', '12 card', 'Qualified', '13 CARD', 'Qualified', '16', 'Qualified', 1, 'Phase 1', '2020-06-13 12:23:16', '2020-06-13 12:23:16', NULL, NULL),
-(7, 1, 'Term-II', '6.09', 'Qualified', 'A', 'Qualified', '6', 'Qualified', '6', 'Qualified', '6', 'Qualified', '6', 'Qualified', '6', 'Qualified', 'card', 'Qualified', '17', 'Qualified', 2, 'Phase 1', '2020-11-13 07:50:38', '2020-11-13 07:50:38', NULL, NULL),
-(8, NULL, 'Term-II', '6.09', 'Qualified', 'A', 'Qualified', '6', 'Qualified', '6', 'Qualified', '6', 'Qualified', '6', 'Qualified', '6', 'Qualified', 'card', 'Qualified', '17', 'Qualified', NULL, 'Phase 1', '2020-12-03 12:31:34', '2020-12-03 12:31:34', NULL, 11),
-(9, NULL, 'Term-III', '6.09', 'Qualified', 'A', 'Qualified', '6', 'Qualified', '6', 'Qualified', '6', 'Qualified', '6', 'Qualified', '6', 'Qualified', 'card', 'Qualified', '17', 'Qualified', NULL, 'Phase 1', '2020-12-03 12:33:43', '2020-12-03 12:33:43', NULL, 11),
-(10, NULL, 'Term-III', '6.09', 'Qualified', 'A', 'Qualified', '6', 'Qualified', '6', 'Qualified', '6', 'Qualified', '6', 'Qualified', '6', 'Qualified', 'card', 'Qualified', '17', 'Qualified', NULL, 'Phase 1', '2020-12-12 08:18:05', '2020-12-12 08:18:05', NULL, 454),
-(11, NULL, 'Term-III', '6.09', 'Qualified', 'A', 'Qualified', '6', 'Qualified', '6', 'Qualified', '6', 'Qualified', '6', 'Qualified', '6', 'Qualified', 'card', 'Qualified', '17', 'Qualified', NULL, 'Phase 1', '2020-12-13 07:05:00', '2020-12-13 07:05:00', NULL, 454),
-(12, NULL, 'Term-III', '6.09', 'Qualified', 'A', 'Qualified', '6', 'Qualified', '6', 'Qualified', '6', 'Qualified', '6', 'Qualified', '6', 'Qualified', 'card', 'Qualified', '17', 'Qualified', NULL, 'Phase 1', '2020-12-13 07:05:00', '2020-12-13 07:05:00', NULL, 454),
-(13, NULL, 'Term-III', '6.09', 'Qualified', 'A', 'Qualified', '6', 'Qualified', '6', 'Qualified', '6', 'Qualified', '6', 'Qualified', '6', 'Qualified', 'card', 'Qualified', '17', 'Qualified', NULL, 'Phase 1', '2020-12-15 10:06:00', '2020-12-15 10:06:00', NULL, 12349);
+(2, 1, 'Term-II', '6.03', 'Qualified', 'alpha', 'Qualified', '6', 'Qualified', '40', 'Qualified', '11', 'Qualified', '80', 'Qualified', '220', 'Qualified', '122', 'Qualified', '16', 'Qualified', 3, 'Phase 1', '2020-06-03 20:01:06', '2020-06-03 20:01:06', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1589,11 +1455,7 @@ CREATE TABLE `psychologist_reports` (
 INSERT INTO `psychologist_reports` (`id`, `file_name`, `file_type`, `file_path`, `file_size`, `p_id`, `do_id`, `phase`, `created_at`, `updated_at`, `joto_id`) VALUES
 (1, '5ed845b2186ddBIO-DATAFORM.docx', 'docx', 'http://localhost/dossier/attachments/psychologist_report/5ed845b2186ddBIO-DATAFORM.docx', '17.545 kb', 1, 3, 'Phase 1', '2020-06-03 19:52:02', '2020-06-03 19:52:02', NULL),
 (2, '5ee457cd22cdaWhatsAppImage2019-06-15at8.16.25PM-Copy.jpeg', 'jpeg', 'http://localhost/dossier/attachments/psychologist_report/5ee457cd22cdaWhatsAppImage2019-06-15at8.16.25PM-Copy.jpeg', '153.611 kb', 4, 1, 'Phase 1', '2020-06-12 23:36:29', '2020-06-12 23:36:29', NULL),
-(3, '5faaac1919f3cMedical-CV-template.pdf', 'pdf', 'http://localhost/dossier/attachments/psychologist_report/5faaac1919f3cMedical-CV-template.pdf', '211.885 kb', 1, 3, 'Phase 1', '2020-11-10 10:04:57', '2020-11-10 10:04:57', NULL),
-(4, '5faaae0113be1Income-TaxEmployeesCo-operativeHousingSociety-GoogleMaps.pdf', 'pdf', 'http://localhost/dossier/attachments/psychologist_report/5faaae0113be1Income-TaxEmployeesCo-operativeHousingSociety-GoogleMaps.pdf', '1519.695 kb', 1, 3, 'Phase 1', '2020-11-10 10:13:05', '2020-11-10 10:13:05', NULL),
-(5, '5fd4babdcd58cGeneralKnowledge2016to20Nov2017.pdf', 'pdf', 'http://localhost/dossier/attachments/psychologist_report/5fd4babdcd58cGeneralKnowledge2016to20Nov2017.pdf', '942.186 kb', 3, 9, 'Phase 1', '2020-12-12 07:42:38', '2020-12-12 07:42:38', NULL),
-(6, '5fd7343da00cdintegrity.pdf', 'pdf', 'http://localhost/dossier/attachments/psychologist_report/5fd7343da00cdintegrity.pdf', '942.186 kb', 17, 3, 'Phase 1', '2020-12-14 04:45:34', '2020-12-14 04:45:34', NULL),
-(7, '5fd8cb807c4cfaron-smith-CV-financial-manager.pdf', 'pdf', 'http://localhost/dossier/attachments/psychologist_report/5fd8cb807c4cfaron-smith-CV-financial-manager.pdf', '91.948 kb', 33, 1, 'Phase 1', '2020-12-15 09:43:12', '2020-12-15 09:43:12', NULL);
+(3, '5faaac1919f3cMedical-CV-template.pdf', 'pdf', 'http://localhost/dossier/attachments/psychologist_report/5faaac1919f3cMedical-CV-template.pdf', '211.885 kb', 1, 3, 'Phase 1', '2020-11-10 10:04:57', '2020-11-10 10:04:57', NULL);
 
 -- --------------------------------------------------------
 
@@ -1623,31 +1485,7 @@ CREATE TABLE `punishment_records` (
 --
 
 INSERT INTO `punishment_records` (`id`, `p_id`, `term`, `date`, `offence`, `punishment_awarded`, `awarded_by`, `do_id`, `phase`, `phase3_type`, `created_at`, `updated_at`, `joto_id`, `oc_no`) VALUES
-(1, 1, 'Term-I', '2017-12-31', 'absent from classes', '7*RC', 'lt cdr kazim pn', 3, 'Phase 1', NULL, '2020-06-03 19:54:34', '2020-06-03 19:54:34', NULL, NULL),
-(2, 1, 'Term-II', '2018-11-22', 'absent from classes', '7 DAYS RC', 'lt cdr kazim pn', 3, 'Phase 1', NULL, '2020-06-03 19:55:00', '2020-06-03 19:55:00', NULL, NULL),
-(3, 1, 'Term-III', '2019-12-31', 'absent from classes', 'extra duty', 'lt cdr kazim pn', 3, 'Phase 1', NULL, '2020-06-03 19:55:26', '2020-06-03 19:55:26', NULL, NULL),
-(4, 1, 'Term-IV', '2019-11-29', 'absent in both watches', 'red slip', 'exo', 3, 'Phase 2', NULL, '2020-06-06 07:35:12', '2020-06-06 07:35:12', NULL, NULL),
-(5, 1, NULL, '2019-10-29', 'found absent from duty station', '7 DAYS RC', 'lt cdr kazim pn', 3, 'Phase 3', 'pnec', '2020-06-06 08:21:15', '2020-06-06 08:21:15', NULL, NULL),
-(6, 4, 'Term-I', '2020-06-26', 'absent from classes', '7*RC', 'lt cdr kazim pn', 1, 'Phase 1', NULL, '2020-06-12 23:41:35', '2020-06-12 23:41:35', NULL, NULL),
-(7, 4, 'Term-II', '2020-06-23', 'LIEING', '7*RC', 'lt cdr kazim pn', 1, 'Phase 1', NULL, '2020-06-12 23:41:55', '2020-06-12 23:41:55', NULL, NULL),
-(8, 4, 'Term-III', '2020-06-24', 'absent from classes', '7*RC', 'lt cdr kazim pn', 1, 'Phase 1', NULL, '2020-06-12 23:42:16', '2020-06-12 23:42:16', NULL, NULL),
-(9, 4, 'Term-I', '2020-06-03', 'LIEING', '7 DAYS RC', 'lt cdr kazim pn', 1, 'Phase 1', NULL, '2020-06-12 23:52:43', '2020-06-12 23:52:43', NULL, NULL),
-(10, 4, 'Term-II', '2020-07-10', 'absent from classes', '7*RC', 'lt cdr kazim pn', 1, 'Phase 1', NULL, '2020-06-12 23:53:08', '2020-06-12 23:53:08', NULL, NULL),
-(11, 4, 'Term-III', '2020-06-25', 'absent from classes', '7*RC', 'lt cdr kazim pn', 1, 'Phase 1', NULL, '2020-06-12 23:53:29', '2020-06-12 23:53:29', NULL, NULL),
-(12, 4, 'Term-I', '2020-07-01', 'LIEING', '7*RC', 'lt cdr kazim pn', 1, 'Phase 1', NULL, '2020-06-13 12:14:09', '2020-06-13 12:14:09', NULL, NULL),
-(13, 4, 'Term-II', '2020-06-19', 'absent from classes', '7*RC', 'lt cdr kazim pn', 1, 'Phase 1', NULL, '2020-06-13 12:14:27', '2020-06-13 12:14:27', NULL, NULL),
-(14, 4, 'Term-III', '2020-06-10', 'absent from classes', '7 DAYS RC', 'lt cdr kazim pn', 1, 'Phase 1', NULL, '2020-06-13 12:14:54', '2020-06-13 12:14:54', NULL, NULL),
-(15, 4, 'Term-IV', '2020-06-23', 'LIEING', '7*RC', 'lt cdr kazim pn', 1, 'Phase 2', NULL, '2020-06-14 00:20:51', '2020-06-14 00:20:51', NULL, NULL),
-(16, 4, NULL, '2020-06-30', 'LIEING', '7*RC', 'lt cdr kazim pn', 1, 'Phase 3', 'pnec', '2020-06-14 00:37:30', '2020-06-14 00:37:30', NULL, NULL),
-(17, 10, 'Term-IV', '2020-12-02', 'physical', 'physical', 'jotosham', NULL, 'Phase 2', NULL, '2020-12-02 13:01:45', '2020-12-02 13:01:45', 1, NULL),
-(18, NULL, 'Term_II', '1970-01-01', 'asdf', 'sdf', 'asdf', NULL, 'Phase 1', NULL, '2020-12-03 13:58:07', '2020-12-03 13:58:07', NULL, 11),
-(19, NULL, 'Term-II', '1970-01-01', 'asdf', 'sdf', 'asdf', NULL, 'Phase 1', NULL, '2020-12-03 14:27:36', '2020-12-03 14:27:36', NULL, 11),
-(20, NULL, 'Term-III', '1970-01-01', 'asdf', 'sdf', 'asdf', NULL, 'Phase 1', NULL, '2020-12-03 14:30:52', '2020-12-03 14:30:52', NULL, 11),
-(21, 10, 'Term-IV', '2020-12-04', 'physical', 'ere', 'erer', NULL, 'Phase 2', NULL, '2020-12-03 14:42:47', '2020-12-03 14:42:47', 1, NULL),
-(22, NULL, 'Term-III', '1970-01-01', 'asdf', 'sdf', 'asdf', NULL, 'Phase 1', NULL, '2020-12-12 08:18:22', '2020-12-12 08:18:22', NULL, 454),
-(23, NULL, 'Term-III', '1970-01-01', 'asdf', 'sdf', 'asdf', NULL, 'Phase 1', NULL, '2020-12-13 07:05:17', '2020-12-13 07:05:17', NULL, 454),
-(24, NULL, 'Term-III', '1970-01-01', 'asdf', 'sdf', 'asdf', NULL, 'Phase 1', NULL, '2020-12-13 07:05:26', '2020-12-13 07:05:26', NULL, 454),
-(25, NULL, 'Term-III', '1970-01-01', 'asdf', 'sdf', 'asdf', NULL, 'Phase 1', NULL, '2020-12-15 10:05:46', '2020-12-15 10:05:46', NULL, 12349);
+(1, 1, 'Term-I', '2017-12-31', 'absent from classes', '7*RC', 'lt cdr kazim pn', 3, 'Phase 1', NULL, '2020-06-03 19:54:34', '2020-06-03 19:54:34', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1675,11 +1513,7 @@ CREATE TABLE `relegations` (
 --
 
 INSERT INTO `relegations` (`id`, `oc_no`, `re_p_id`, `new_p_id`, `p_id`, `term`, `reason`, `remarks`, `co_name`, `do_name`, `created_at`, `updated_at`) VALUES
-(1, '3333333333', NULL, NULL, '11', 'Term-I', 'adfasdf', 'asdfsdfsa', 'rahbharco', 'sabir', '2020-12-14 04:24:30', '2020-12-14 04:24:30'),
-(2, '334350', NULL, NULL, '15', 'Term-I', 'efe', 'sdfsdf', 'rahbharco', 'sabir', '2020-12-14 04:29:27', '2020-12-14 04:29:27'),
-(3, '232323', NULL, NULL, '17', 'Term-I', 'adfasdf', 'asdfsdfdsf', 'rahbharco', 'sabir', '2020-12-14 04:47:07', '2020-12-14 04:47:07'),
-(4, '1234567', NULL, NULL, '23', 'Term-I', 'Reason', 'Reason', 'rahbharco', 'sabir', '2020-12-14 12:13:25', '2020-12-14 12:13:25'),
-(5, '11111114', NULL, NULL, '34', 'Term-I', 'aasdf', 'asdf', 'rahbharco', 'dfsdf', '2020-12-15 10:40:01', '2020-12-15 10:40:01');
+(1, '3333333333', NULL, NULL, '11', 'Term-I', 'adfasdf', 'asdfsdfsa', 'rahbharco', 'sabir', '2020-12-14 04:24:30', '2020-12-14 04:24:30');
 
 -- --------------------------------------------------------
 
@@ -1712,9 +1546,7 @@ CREATE TABLE `saluting_swimming_records` (
 --
 
 INSERT INTO `saluting_swimming_records` (`id`, `p_id`, `saluting_date`, `saluting_remarks_attempt`, `saluting_remarks_status`, `p_swimming_date`, `p_swimming_remarks_attempt`, `p_swimming_remarks_status`, `s_swimming_date`, `s_swimming_remarks_attempt`, `s_swimming_remarks_status`, `do_id`, `phase`, `created_at`, `updated_at`, `joto_id`, `oc_no`) VALUES
-(1, 1, '2018-11-29', 'Attempt 5', 'qualified', '2018-11-30', 'Attempt 5', 'qualified', '2019-11-30', 'Attempt 10', 'qualified', 3, 'Phase 1', '2020-06-03 19:58:46', '2020-06-03 19:58:46', NULL, NULL),
-(2, 4, '2020-07-01', 'Attempt 5', 'qualified', '2020-06-25', 'Attempt 3', 'qualified', '2020-06-24', 'Attempt 1', 'qualified', 1, 'Phase 1', '2020-06-13 12:21:22', '2020-06-13 12:21:22', NULL, NULL),
-(3, 1, '1970-01-01', 'Attempt 3', 'failed', '1970-01-01', 'Attempt 5', 'failed', '1970-01-01', 'Attempt 5', 'pass', 1, 'Phase 1', '2020-12-03 12:49:20', '2020-12-03 12:49:20', NULL, NULL);
+(1, 1, '2018-11-29', 'Attempt 5', 'qualified', '2018-11-30', 'Attempt 5', 'qualified', '2019-11-30', 'Attempt 10', 'qualified', 3, 'Phase 1', '2020-06-03 19:58:46', '2020-06-03 19:58:46', NULL, NULL);
 -- --------------------------------------------------------
 
 --
@@ -1769,10 +1601,7 @@ CREATE TABLE `seniority_record2_phase2s` (
 
 INSERT INTO `seniority_record2_phase2s` (`id`, `p_id`, `marks_obtained`, `aggregate_percentage`, `relegated`, `subjects_failed`, `seniority_gained_lost`, `phase`, `do_id`, `created_at`, `updated_at`, `joto_id`) VALUES
 (1, 1, '600', '76', 'no', '0', '15', 'Phase 2', 3, '2020-06-03 20:46:18', '2020-06-03 20:46:18', NULL),
-(2, 1, '750', '65', 'no', 'no', '10', 'Phase 2', 3, '2020-06-04 00:49:12', '2020-06-04 00:49:12', NULL),
-(3, 1, '675', '80', 'no', '0', '15', 'Phase 2', 3, '2020-06-06 08:04:33', '2020-06-06 08:04:33', NULL),
-(4, 4, '600', '67%', 'no', 'no', '10', 'Phase 2', 1, '2020-06-14 00:31:55', '2020-06-14 00:31:55', NULL),
-(5, 10, '3434', '3343', '343', 'sfdg', '44', 'Phase 2', NULL, '2020-12-02 13:35:34', '2020-12-02 13:35:34', 1);
+(2, 1, '750', '65', 'no', 'no', '10', 'Phase 2', 3, '2020-06-04 00:49:12', '2020-06-04 00:49:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -1814,11 +1643,7 @@ CREATE TABLE `seniority_records` (
 --
 
 INSERT INTO `seniority_records` (`id`, `p_id`, `term1_marks`, `term1_percentage`, `term1_relegated`, `term1_subjects_failed`, `term1_seniority`, `term2_marks`, `term2_percentage`, `term2_relegated`, `term2_subjects_failed`, `term2_seniority`, `term3_marks`, `term3_percentage`, `term3_relegated`, `term3_subjects_failed`, `term3_seniority`, `net_percentage`, `seniority_gained`, `seniority_lost`, `net_seniority`, `phase`, `do_id`, `created_at`, `updated_at`, `joto_id`) VALUES
-(1, 1, '76', '76', 'no', '0', '5', '81', '83', 'no', '0', '15', '76', '77', 'no', '0', '15', '65%', '35', '0', '35', 'Phase 1', 3, '2020-06-03 20:25:11', '2020-06-03 20:25:11', NULL),
-(2, 1, '1023', '87', 'no', 'no', '10', '1234', '89', 'no', 'no', '10', '1235', '89', 'no', 'no', '10', '88', '30', '0', '30', 'Phase 1', 3, '2020-06-04 00:48:36', '2020-06-04 00:48:36', NULL),
-(3, 4, '1040', '87', 'no', 'no', '10', '1036', '85', 'no', 'no', '10', '1030', '86', 'no', 'no', '10', '86', '30', '0', '30', 'Phase 1', 1, '2020-06-14 00:17:15', '2020-06-14 00:17:15', NULL),
-(4, 33, '700', '78', 'no', '0', '10', '700', '78', 'no', '0', '10', '700', '78', 'no', '0', '10', '78', '45', '10', '35', 'Phase 1', 1, '2020-12-15 09:52:23', '2020-12-15 09:52:23', NULL),
-(5, 37, '89', '98', '89', '98', '89', '78', '78', '87', '78', '87', '67', '76', '67', '76', '67', '89', '98', '89', '98', 'Phase 1', 1, '2021-06-26 05:24:24', '2021-06-26 05:24:24', NULL);
+(1, 1, '76', '76', 'no', '0', '5', '81', '83', 'no', '0', '15', '76', '77', 'no', '0', '15', '65%', '35', '0', '35', 'Phase 1', 3, '2020-06-03 20:25:11', '2020-06-03 20:25:11', NULL);
 
 -- --------------------------------------------------------
 
@@ -1914,25 +1739,7 @@ CREATE TABLE `seniority_record_phase3_pnecs` (
 INSERT INTO `seniority_record_phase3_pnecs` (`id`, `p_id`, `term3_cgpa`, `term3_relegated`, `term3_subjects_failed`, `term3_seniority`, `term4_cgpa`, `term4_relegated`, `term4_subjects_failed`, `term4_seniority`, `term5_cgpa`, `term5_relegated`, `term5_subjects_failed`, `term5_seniority`, `term6_cgpa`, `term6_relegated`, `term6_subjects_failed`, `term6_seniority`, `term7_cgpa`, `term7_relegated`, `term7_subjects_failed`, `term7_seniority`, `term8_cgpa`, `term8_relegated`, `term8_subjects_failed`, `term8_seniority`, `term9_cgpa`, `term9_relegated`, `term9_subjects_failed`, `term9_seniority`, `term10_cgpa`, `term10_relegated`, `term10_subjects_failed`, `term10_seniority`, `term11_cgpa`, `term11_relegated`, `term11_subjects_failed`, `term11_seniority`, `net_percentage`, `seniority_gained`, `seniority_lost`, `net_seniority`, `phase`, `phase3_type`, `do_id`, `created_at`, `updated_at`, `joto_id`) VALUES
 (1, 1, '3.7', 'no', 'no', '10', '3,8', 'no', 'no', '10', '3.4', 'no', 'no', '10', '3.7', 'no', 'no', '10', '3.7', 'no', 'no', '10', '3.7', 'no', 'no', '10', '3.7', 'no', 'no', '10', '3.7', 'no', 'no', '10', '3.7', 'no', 'no', '10', '88', '40', '0', '40', 'Phase 3', 'pnec', 3, '2020-06-04 00:52:16', '2020-06-04 00:52:16', NULL),
 (2, 1, '3.7', 'no', '0', '10', '3,8', 'no', 'no', '12', '3.4', 'no', 'no', '12', '3.7', 'no', 'no', '10', '3.7', 'no', 'no', '10', '3.7', 'no', 'no', '10', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '65%', '64', '0', '70', 'Phase 3', 'pnec', 3, '2020-06-06 09:14:04', '2020-06-06 09:14:04', NULL),
-(3, 4, '3.7', 'no', 'no', '5', '3,8', 'no', 'no', '5', '3.4', 'no', 'no', '5', '3.7', 'no', 'no', '5', '3.7', 'no', 'no', '5', '3.7', 'no', 'no', '5', '3.7', 'no', 'no', '5', '3.7', 'no', 'no', '5', '3.7', 'no', 'no', '5', '85', '45', '0', '45', 'Phase 3', 'pnec', 1, '2020-06-14 01:02:55', '2020-06-14 01:02:55', NULL),
-(4, 1, '3.43', 'yes', '2', '2', '3.43', 'yes', '2', '2', '3.43', 'yes', '2', '2', '3.43', 'yes', '2', '2', '3.43', 'yes', '2', '2', '3.43', 'yes', '2', '2', '3.43', 'yes', '2', '2', '3.43', 'yes', '2', '2', '3.43', 'yes', '2', '2', '56', '45', '45', '44', 'Phase 3', 'pnec', 3, '2020-12-13 13:50:29', '2020-12-13 13:50:29', NULL),
-(5, 2, '3.43', 'yes', '2', '2', '3.43', 'yes', '2', '2', '3.43', 'yes', '2', '2', '3.43', 'yes', '2', '2', '3.43', 'yes', '2', '2', '3.43', 'yes', '2', '2', '3.43', 'yes', '2', '2', '3.43', 'yes', '2', '2', '3.43', 'yes', '2', '2', '2', '2', '2', '2', 'Phase 3', 'pnec', 3, '2020-12-13 13:53:16', '2020-12-13 13:53:16', NULL),
-(6, 7, '3.43', 'yes', '2', '2', '3.43', 'yes', '2', '2', '3.43', 'yes', '2', '2', '3.43', 'yes', '22', '2', '3.43', 'yes', '2', '2', '3.43', 'yes', '2', '2', '3.43', 'yes', '2', '2', '3.43', 'yes', '2', '2', '3.43', 'yes', '2', '2', '2', '2', '2', '2', 'Phase 3', 'pnec', 3, '2020-12-13 13:54:25', '2020-12-13 13:54:25', NULL),
-(7, 1, '3.43', 'yes', '2', '2', '3.43', 'yes', '2', '2', '2', 'yes', '2', '2', '2', 'yes', '2', '2', '2', 'yes', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '22', '2', '2', 'Phase 3', 'pnec', 3, '2020-12-13 14:06:16', '2020-12-13 14:06:16', NULL),
-(8, 1, '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', 'Phase 3', 'pnec', 3, '2020-12-13 14:07:25', '2020-12-13 14:07:25', NULL),
-(9, 2, '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', 'Phase 3', 'pnec', 3, '2020-12-13 14:07:56', '2020-12-13 14:07:56', NULL),
-(10, 25, '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', NULL, '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', 'Phase 3', 'pnec', 3, '2020-12-14 12:18:41', '2020-12-14 12:18:41', NULL),
-(11, 26, '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', 'Phase 3', 'pnec', 3, '2020-12-14 12:25:29', '2020-12-14 12:25:29', NULL),
-(12, 26, '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', 'Phase 3', 'pnec', 3, '2020-12-14 12:27:37', '2020-12-14 12:27:37', NULL),
-(13, 26, '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', 'Phase 3', 'pnec', 3, '2020-12-14 12:34:12', '2020-12-14 12:34:12', NULL),
-(14, 28, '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '22', '2', '2', '2', '2', '2', '2', '2', '2', '2', 'Phase 3', 'pnec', 3, '2020-12-14 12:37:04', '2020-12-14 12:37:04', NULL),
-(15, 28, '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', 'Phase 3', 'pnec', 3, '2020-12-14 12:39:12', '2020-12-14 12:39:12', NULL),
-(16, 28, '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', 'Phase 3', 'pnec', 3, '2020-12-14 12:39:58', '2020-12-14 12:39:58', NULL),
-(17, 28, '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', 'Phase 3', 'pnec', 3, '2020-12-14 12:41:41', '2020-12-14 12:41:41', NULL),
-(18, 28, '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', 'Phase 3', 'pnec', 3, '2020-12-14 12:42:58', '2020-12-14 12:42:58', NULL),
-(19, 28, '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', 'Phase 3', 'pnec', 3, '2020-12-14 12:43:13', '2020-12-14 12:43:13', NULL),
-(20, 29, '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', 'Phase 3', 'pnec', 3, '2020-12-14 12:44:10', '2020-12-14 12:44:10', NULL),
-(21, 29, '2', '2', '2', '2', '2', '2', '2', '2', '2', '22', '2', '2', '2', '2', '2', '2', '2', '2', '2', '22', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '22', '2', '2', '2', '2', 'Phase 3', 'pnec', 3, '2020-12-14 12:45:26', '2020-12-14 12:45:26', NULL);
+(3, 4, '3.7', 'no', 'no', '5', '3,8', 'no', 'no', '5', '3.4', 'no', 'no', '5', '3.7', 'no', 'no', '5', '3.7', 'no', 'no', '5', '3.7', 'no', 'no', '5', '3.7', 'no', 'no', '5', '3.7', 'no', 'no', '5', '3.7', 'no', 'no', '5', '85', '45', '0', '45', 'Phase 3', 'pnec', 1, '2020-06-14 01:02:55', '2020-06-14 01:02:55', NULL);
 
 -- --------------------------------------------------------
 
@@ -2060,30 +1867,7 @@ CREATE TABLE `warning_attachments` (
 
 INSERT INTO `warning_attachments` (`id`, `file_name`, `file_type`, `file_path`, `file_size`, `p_id`, `do_id`, `phase`, `phase3_type`, `warning_type`, `created_at`, `updated_at`, `joto_id`) VALUES
 (1, '5ed846f8821e0BIO-DATAFORM.docx', 'docx', 'http://localhost/dossier/attachments/warnings/5ed846f8821e0BIO-DATAFORM.docx', '17.545 kb', 1, 3, 'Phase 1', NULL, 'Training Commander', '2020-06-03 19:57:28', '2020-06-03 19:57:28', NULL),
-(2, '5ed8550c2e13bBIO-DATAFORM.docx', 'docx', 'http://localhost/dossier/attachments/warnings/5ed8550c2e13bBIO-DATAFORM.docx', '17.545 kb', 1, 3, 'Phase 3', 'pnec', 'Training Commander', '2020-06-03 20:57:32', '2020-06-03 20:57:32', NULL),
-(3, '5edb8f0a5a210WhatsAppImage2020-06-04at08.27.48.jpeg', 'jpeg', 'http://localhost/dossier/attachments/warnings/5edb8f0a5a210WhatsAppImage2020-06-04at08.27.48.jpeg', '59.072 kb', 1, 3, 'Phase 2', NULL, 'Admin Authority', '2020-06-06 07:41:46', '2020-06-06 07:41:46', NULL),
-(4, '5edb98cebf949WhatsAppImage2020-06-04at08.27.48.jpeg', 'jpeg', 'http://localhost/dossier/attachments/warnings/5edb98cebf949WhatsAppImage2020-06-04at08.27.48.jpeg', '59.072 kb', 1, 3, 'Phase 3', 'pnec', 'Training Commander', '2020-06-06 08:23:26', '2020-06-06 08:23:26', NULL),
-(5, '5ee50ad2181d2WhatsAppImage2020-06-04at08.27.48.jpeg', 'jpeg', 'http://localhost/dossier/attachments/warnings/5ee50ad2181d2WhatsAppImage2020-06-04at08.27.48.jpeg', '59.072 kb', 4, 1, 'Phase 1', NULL, 'Divisional Officer', '2020-06-13 12:20:18', '2020-06-13 12:20:18', NULL),
-(6, '5ee50aec1b737WhatsAppImage2020-06-04at08.27.48.jpeg', 'jpeg', 'http://localhost/dossier/attachments/warnings/5ee50aec1b737WhatsAppImage2020-06-04at08.27.48.jpeg', '59.072 kb', 4, 1, 'Phase 1', NULL, 'Training Commander', '2020-06-13 12:20:44', '2020-06-13 12:20:44', NULL),
-(7, '5ee5b501cfdedWhatsAppImage2020-06-04at08.27.48.jpeg', 'jpeg', 'http://localhost/dossier/attachments/warnings/5ee5b501cfdedWhatsAppImage2020-06-04at08.27.48.jpeg', '59.072 kb', 4, 1, 'Phase 2', NULL, 'Training Commander', '2020-06-14 00:26:25', '2020-06-14 00:26:25', NULL),
-(8, '5ee5b7f24b522WhatsAppImage2020-06-04at08.27.48.jpeg', 'jpeg', 'http://localhost/dossier/attachments/warnings/5ee5b7f24b522WhatsAppImage2020-06-04at08.27.48.jpeg', '59.072 kb', 4, 1, 'Phase 3', 'pnec', 'Training Commander', '2020-06-14 00:38:58', '2020-06-14 00:38:58', NULL),
-(9, '5ee9a4f9ece7awarningattachmentt.png', 'png', 'http://localhost/dossier/attachments/warnings/5ee9a4f9ece7awarningattachmentt.png', '843.996 kb', 4, 1, 'Phase 1', NULL, 'Admin Authority', '2020-06-17 00:07:06', '2020-06-17 00:07:06', NULL),
-(10, '5ee9a51024200warningattachmentt.png', 'png', 'http://localhost/dossier/attachments/warnings/5ee9a51024200warningattachmentt.png', '843.996 kb', 4, 1, 'Phase 1', NULL, 'Commandant', '2020-06-17 00:07:28', '2020-06-17 00:07:28', NULL),
-(11, '5ee9a52510701warningattachmentt.png', 'png', 'http://localhost/dossier/attachments/warnings/5ee9a52510701warningattachmentt.png', '843.996 kb', 4, 1, 'Phase 1', NULL, 'Training Commander', '2020-06-17 00:07:49', '2020-06-17 00:07:49', NULL),
-(12, '5ee9a537a22b2warningattachmentt.png', 'png', 'http://localhost/dossier/attachments/warnings/5ee9a537a22b2warningattachmentt.png', '843.996 kb', 4, 1, 'Phase 1', NULL, 'Divisional Officer', '2020-06-17 00:08:07', '2020-06-17 00:08:07', NULL),
-(13, '5ee9a548825a0warningattachmentt.png', 'png', 'http://localhost/dossier/attachments/warnings/5ee9a548825a0warningattachmentt.png', '843.996 kb', 4, 1, 'Phase 1', NULL, 'Training Commander', '2020-06-17 00:08:24', '2020-06-17 00:08:24', NULL),
-(14, '5ee9a56cd4d8ewarningattachmentt.png', 'png', 'http://localhost/dossier/attachments/warnings/5ee9a56cd4d8ewarningattachmentt.png', '843.996 kb', 4, 1, 'Phase 2', NULL, 'Admin Authority', '2020-06-17 00:09:00', '2020-06-17 00:09:00', NULL),
-(15, '5ee9a57e6db7cwarningattachmentt.png', 'png', 'http://localhost/dossier/attachments/warnings/5ee9a57e6db7cwarningattachmentt.png', '843.996 kb', 4, 1, 'Phase 2', NULL, 'Commandant', '2020-06-17 00:09:18', '2020-06-17 00:09:18', NULL),
-(16, '5ee9a59210d5fwarningattachmentt.png', 'png', 'http://localhost/dossier/attachments/warnings/5ee9a59210d5fwarningattachmentt.png', '843.996 kb', 4, 1, 'Phase 2', NULL, 'Training Commander', '2020-06-17 00:09:38', '2020-06-17 00:09:38', NULL),
-(17, '5ee9a5b65c27dwarningattachmentt.png', 'png', 'http://localhost/dossier/attachments/warnings/5ee9a5b65c27dwarningattachmentt.png', '843.996 kb', 4, 1, 'Phase 2', NULL, 'Training Commander', '2020-06-17 00:10:14', '2020-06-17 00:10:14', NULL),
-(18, '5ee9a5ce2f145warningattachmentt.png', 'png', 'http://localhost/dossier/attachments/warnings/5ee9a5ce2f145warningattachmentt.png', '843.996 kb', 4, 1, 'Phase 2', NULL, 'Divisional Officer', '2020-06-17 00:10:38', '2020-06-17 00:10:38', NULL),
-(19, '5ee9a6b66f6b3warningattachmentt.png', 'png', 'http://localhost/dossier/attachments/warnings/5ee9a6b66f6b3warningattachmentt.png', '843.996 kb', 4, 1, 'Phase 3', 'pnec', 'Admin Authority', '2020-06-17 00:14:30', '2020-06-17 00:14:30', NULL),
-(20, '5ee9a6c35f656warningattachmentt.png', 'png', 'http://localhost/dossier/attachments/warnings/5ee9a6c35f656warningattachmentt.png', '843.996 kb', 4, 1, 'Phase 3', 'pnec', 'Commandant', '2020-06-17 00:14:43', '2020-06-17 00:14:43', NULL),
-(21, '5ee9a6d166b99warningattachmentt.png', 'png', 'http://localhost/dossier/attachments/warnings/5ee9a6d166b99warningattachmentt.png', '843.996 kb', 4, 1, 'Phase 3', 'pnec', 'Training Commander', '2020-06-17 00:14:57', '2020-06-17 00:14:57', NULL),
-(22, '5ee9a6e68e286warningattachmentt.png', 'png', 'http://localhost/dossier/attachments/warnings/5ee9a6e68e286warningattachmentt.png', '843.996 kb', 4, 1, 'Phase 3', 'pnec', 'Officer In Charge', '2020-06-17 00:15:18', '2020-06-17 00:15:18', NULL),
-(23, '5ee9a6f2ef3d9warningattachmentt.png', 'png', 'http://localhost/dossier/attachments/warnings/5ee9a6f2ef3d9warningattachmentt.png', '843.996 kb', 4, 1, 'Phase 3', 'pnec', 'Divisional Officer', '2020-06-17 00:15:31', '2020-06-17 00:15:31', NULL),
-(24, '5fc7db80e9e0fGeneralKnowledge2016to20Nov2017.pdf', 'pdf', 'http://localhost/dossier/attachments/warnings/5fc7db80e9e0fGeneralKnowledge2016to20Nov2017.pdf', '942.186 kb', 10, NULL, 'Phase 2', NULL, 'Training Commander', '2020-12-02 13:22:57', '2020-12-02 13:22:57', 1),
-(25, '5fd8cbf339f9earon-smith-CV-financial-manager.pdf', 'pdf', 'http://localhost/dossier/attachments/warnings/5fd8cbf339f9earon-smith-CV-financial-manager.pdf', '91.948 kb', 33, 1, 'Phase 1', NULL, 'Divisional Officer', '2020-12-15 09:45:07', '2020-12-15 09:45:07', NULL);
+(2, '5ed8550c2e13bBIO-DATAFORM.docx', 'docx', 'http://localhost/dossier/attachments/warnings/5ed8550c2e13bBIO-DATAFORM.docx', '17.545 kb', 1, 3, 'Phase 3', 'pnec', 'Training Commander', '2020-06-03 20:57:32', '2020-06-03 20:57:32', NULL);
 
 -- --------------------------------------------------------
 
@@ -2113,13 +1897,7 @@ CREATE TABLE `warning_records` (
 
 INSERT INTO `warning_records` (`id`, `p_id`, `sno`, `date`, `issued_by`, `reasons`, `do_name`, `do_id`, `phase`, `phase3_type`, `created_at`, `updated_at`, `joto_id`) VALUES
 (1, 1, 1, '2018-10-31', 'lt cdr seemab pn', 'failed in aggregate', 'LT CDR IMRAN', 3, 'Phase 1', NULL, '2020-06-03 19:56:36', '2020-06-03 19:56:36', NULL),
-(2, 1, 1, '2019-11-29', 'lt cdr seemab pn', 'failed in aggregate', 'LT CDR IOMRAN', 3, 'Phase 2', NULL, '2020-06-06 07:40:52', '2020-06-06 07:40:52', NULL),
-(3, 1, 2, '2019-11-02', 'lt cdr seemab pn', 'failed in paper', 'LT CDR IMRAN', 3, 'Phase 3', 'pnec', '2020-06-06 08:22:56', '2020-06-06 08:22:56', NULL),
-(4, 4, 1, '2020-06-25', 'lt cdr seemab pn', 'failed in aggregate', 'LT CDR IMRAN', 1, 'Phase 1', NULL, '2020-06-13 12:19:56', '2020-06-13 12:19:56', NULL),
-(5, 4, 1, '2020-07-02', 'lt cdr seemab pn', 'failed in aggregate', 'LT CDR IMRAN', 1, 'Phase 2', NULL, '2020-06-14 00:26:08', '2020-06-14 00:26:08', NULL),
-(6, 4, 1, '2020-06-17', 'lt cdr seemab pn', 'failed in aggregate', 'LT CDR IMRAN', 1, 'Phase 3', 'pnec', '2020-06-14 00:38:39', '2020-06-14 00:38:39', NULL),
-(7, 10, 3434, '2020-12-02', 'ha', 'asdfs', 'sdfa', NULL, 'Phase 2', NULL, '2020-12-02 13:22:37', '2020-12-02 13:22:37', 1),
-(8, 33, 1, '2020-12-15', 'Lt Hamza', 'Lie', 'Lt Hamza', 1, 'Phase 1', NULL, '2020-12-15 09:44:55', '2020-12-15 09:44:55', NULL);
+(2, 1, 1, '2019-11-29', 'lt cdr seemab pn', 'failed in aggregate', 'LT CDR IOMRAN', 3, 'Phase 2', NULL, '2020-06-06 07:40:52', '2020-06-06 07:40:52', NULL);
 
 --
 -- Table structure for table `cadet_club`
@@ -2204,6 +1982,20 @@ INSERT INTO `quality_list` (`id`, `quality_name`, `max_marks`) VALUES
 (14, 'Intelligence and Common sense', 10),
 (15, 'Cooperation Adaptability and Team work', 10),
 (16, 'Power of Expression (Written & Oral)', 15);
+
+--
+-- Table structure for table `club_records`
+--
+
+CREATE TABLE `club_records` (
+  `id` bigint(20) NOT NULL,
+  `p_id` int(11) NOT NULL,
+  `assigned_club` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `do_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 
 -- Alter Tables by Awais Ahmad
 
@@ -2564,6 +2356,12 @@ ALTER TABLE `quality_list`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `club_records`
+--
+ALTER TABLE `club_records`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -2862,6 +2660,11 @@ ALTER TABLE `divisions`
 ALTER TABLE `quality_list`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
+--
+-- AUTO_INCREMENT for table `club_records`
+--
+ALTER TABLE `club_records`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Table structure for table `academic_records`

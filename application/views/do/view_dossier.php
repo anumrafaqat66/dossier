@@ -447,6 +447,71 @@
         </div>
     </div>
 
+    <div class="modal fade" id="clubs">
+        <!-- <div class="row"> -->
+        <div class="modal-dialog modal-dialog-centered " style="margin-left: 250px;" role="document">
+            <div class="modal-content bg-custom3" style="width:1200px;">
+                <div class="modal-header" style="width:1200px;">
+                </div>
+                <div class="card-body bg-custom3">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="card">
+                                <div class="card-header bg-custom1">
+                                    <h1 class="h4">Club Record</h1>
+                                </div>
+
+                                <div class="card-body bg-custom3">
+                                    <form class="user" role="form" method="post" id="add_form" action="">
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <h3 id="cadet_name_heading_club"></h3>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h3 id="cadet_oc_no_club"></h3>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h3 id="cadet_term_club"></h3>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <div id="table_div">
+                                                <table id="datatable" class="table table-striped" style="color:black">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">No.</th>
+                                                            <th scope="col">Term</th>
+                                                            <th scope="col">Assigned Club</th>
+                                                            <th scope="col">Created Date</th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="table_rows_club">
+                                                        <tr>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-primary rounded-pill" data-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
     <!-- Page Heading -->
@@ -552,7 +617,7 @@
                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_punishments(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#punishments">Punishments</button></td>
                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_excuses(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#excuses">Excuses</button></td>
                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_observations(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#observations">Observations</button></td>
-                                                <td scope="row" style="text-align:center"><button type="button" class="btn btn-primary btn-user rounded-pill">Clubs</button></td>
+                                                <td scope="row" style="text-align:center"><button type="button" onclick="view_club(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#clubs">Clubs</button></td>
                                                 <td scope="row" style="text-align:center"><button type="button" class="btn btn-primary btn-user rounded-pill">Branches</button></td>
                                                 <td scope="row" style="display:none"><?= $data['p_id']; ?></td>
 
@@ -817,19 +882,20 @@
                 var len = result.length;
 
                 $("#table_rows_punishment").empty();
-                for (var i = 0; i < len; i++) {
-                    var date1 = new Date(result[i]['start_date']);
-                    var date2 = new Date(result[i]['end_date']);
-                    var diff = (Math.abs(date1 - date2)) / (1000 * 60 * 60 * 24);
+                if (len > 0) {
+                    for (var i = 0; i < len; i++) {
+                        var date1 = new Date(result[i]['start_date']);
+                        var date2 = new Date(result[i]['end_date']);
+                        var diff = (Math.abs(date1 - date2)) / (1000 * 60 * 60 * 24);
 
-                    var today_date = new Date();
-                    var status = '';
-                    if ((today_date >= date1) && (today_date <= date2)) {
-                        status = 'Active';
-                    } else {
-                        status = 'Ended'
-                    }
-                    $("#table_rows_punishment").append(`<tr>
+                        var today_date = new Date();
+                        var status = '';
+                        if ((today_date >= date1) && (today_date <= date2)) {
+                            status = 'Active';
+                        } else {
+                            status = 'Ended'
+                        }
+                        $("#table_rows_punishment").append(`<tr>
                                                         <td>${i+1}</td>
                                                         <td>${result[i]['term']}</td>
                                                         <td>${result[i]['date']}</td>
@@ -839,6 +905,19 @@
                                                         <td>${result[i]['end_date']}</td>
                                                         <td>${diff}</td>
                                                         <td>${status}</td>
+                                                    </tr>`);
+                    }
+                } else {
+                    $("#table_rows_punishment").append(`<tr>
+                                                    <td>No Data Found</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
                                                     </tr>`);
                 }
             },
@@ -859,20 +938,21 @@
                 var len = result.length;
 
                 $("#table_rows_excuses").empty();
-                for (var i = 0; i < len; i++) {
-                    // $diff = date_diff(result[i]['start_date'], result[i]['end_date']);
-                    const date1 = new Date(result[i]['start_date']);
-                    const date2 = new Date(result[i]['end_date']);
-                    var diff = (Math.abs(date1 - date2)) / (1000 * 60 * 60 * 24);
+                if (len > 0) {
+                    for (var i = 0; i < len; i++) {
+                        // $diff = date_diff(result[i]['start_date'], result[i]['end_date']);
+                        const date1 = new Date(result[i]['start_date']);
+                        const date2 = new Date(result[i]['end_date']);
+                        var diff = (Math.abs(date1 - date2)) / (1000 * 60 * 60 * 24);
 
-                    var today_date = new Date();
-                    var status = '';
-                    if ((today_date >= date1) && (today_date <= date2)) {
-                        status = 'Active';
-                    } else {
-                        status = 'Ended'
-                    }
-                    $("#table_rows_excuses").append(`<tr>
+                        var today_date = new Date();
+                        var status = '';
+                        if ((today_date >= date1) && (today_date <= date2)) {
+                            status = 'Active';
+                        } else {
+                            status = 'Ended'
+                        }
+                        $("#table_rows_excuses").append(`<tr>
                                                         <td>${i+1}</td>
                                                         <td>${result[i]['term']}</td>
                                                         <td>${result[i]['date']}</td>
@@ -882,6 +962,19 @@
                                                         <td>${result[i]['end_date']}</td>
                                                         <td>${diff}</td>
                                                         <td>${status}</td>
+                                                    </tr>`);
+                    }
+                } else {
+                    $("#table_rows_excuses").append(`<tr>
+                                                    <td>No Data Found</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
                                                     </tr>`);
                 }
             },
@@ -902,17 +995,63 @@
                 var len = result.length;
 
                 $("#table_rows_observations").empty();
-                for (var i = 0; i < len; i++) {
+                if (len > 0) {
+                    for (var i = 0; i < len; i++) {
 
-                    var today_date = new Date();
-                    var status = '';
-                    $("#table_rows_observations").append(`<tr>
+                        var today_date = new Date();
+                        var status = '';
+                        $("#table_rows_observations").append(`<tr>
                                                         <td>${i+1}</td>
                                                         <td>${result[i]['term']}</td>
                                                         <td>${result[i]['date']}</td>
                                                         <td>${result[i]['observation']}</td>
                                                         <td>${result[i]['created_at']}</td>
                                                         <td>${status}</td>
+                                                    </tr>`);
+                    }
+                } else {
+                    $("#table_rows_observations").append(`<tr>
+                                                    <td>No Data Found</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    </tr>`);
+                }
+            },
+            async: true
+        });
+    }
+
+    function view_club(id) {
+        // alert('cadet id: ' + id);
+        $.ajax({
+            url: '<?= base_url(); ?>D_O/view_club_in_dossier',
+            method: 'POST',
+            data: {
+                'id': id
+            },
+            success: function(data) {
+                var result = jQuery.parseJSON(data);
+                var len = result.length;
+
+                $("#table_rows_club").empty();
+                if (len > 0) {
+                    for (var i = 0; i < len; i++) {
+                        $("#table_rows_club").append(`<tr>
+                                                        <td>${i+1}</td>
+                                                        <td>${result[i]['term']}</td>
+                                                        <td>${result[i]['assigned_club']}</td>
+                                                        <td>${result[i]['created_at']}</td>
+                                                    </tr>`);
+                    }
+                } else {
+                    $("#table_rows_club").append(`<tr>
+                                                    <td>No Data Found</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
                                                     </tr>`);
                 }
             },
@@ -1003,15 +1142,23 @@
         $('#cadet_name_heading').html('<strong> Cadet Name: ' + $columns[1].innerHTML + '</strong>');
         $('#cadet_oc_no').html('<strong> OC No: ' + $columns[2].innerHTML + '</strong>');
         $('#cadet_term').html('<strong> Term: ' + $columns[3].innerHTML + '</strong>');
+
         $('#cadet_name_heading_ex').html('<strong> Cadet Name: ' + $columns[1].innerHTML + '</strong>');
         $('#cadet_oc_no_ex').html('<strong> OC No: ' + $columns[2].innerHTML + '</strong>');
         $('#cadet_term_ex').html('<strong> Term: ' + $columns[3].innerHTML + '</strong>');
+
         $('#cadet_name_heading_ob').html('<strong> Cadet Name: ' + $columns[1].innerHTML + '</strong>');
         $('#cadet_oc_no_ob').html('<strong> OC No: ' + $columns[2].innerHTML + '</strong>');
         $('#cadet_term_ob').html('<strong> Term: ' + $columns[3].innerHTML + '</strong>');
+
         $('#cadet_name_heading_ms').html('<strong> Cadet Name: ' + $columns[1].innerHTML + '</strong>');
         $('#cadet_oc_no_ms').html('<strong> OC No: ' + $columns[2].innerHTML + '</strong>');
         $('#cadet_term_ms').html('<strong> Term: ' + $columns[3].innerHTML + '</strong>');
+
+        $('#cadet_name_heading_club').html('<strong> Cadet Name: ' + $columns[1].innerHTML + '</strong>');
+        $('#cadet_oc_no_club').html('<strong> OC No: ' + $columns[2].innerHTML + '</strong>');
+        $('#cadet_term_club').html('<strong> Term: ' + $columns[3].innerHTML + '</strong>');
+
         $('#punish').val($columns[5].innerHTML);
         $('#start_date').val($columns[6].innerHTML);
         $('#end_date').val($columns[7].innerHTML);
@@ -1026,7 +1173,7 @@
             success: function(data) {
                 var result = jQuery.parseJSON(data);
                 var len = result.length;
-                
+
                 $('#mile_time1_detail').html(result['mile_time']);
                 $('#pushup1_detail').html(result['pushups']);
                 $('#chinups1_detail').html(result['chinups']);
