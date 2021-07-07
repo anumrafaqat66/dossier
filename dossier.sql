@@ -1965,7 +1965,7 @@ alter table observation_records
 add column status varchar(50) NOT NULL;
 
 alter table punishment_records
-add COLUMN status(50);
+add COLUMN status varchar(50) NOT NULL;
 
 --
 -- Indexes for dumped tables
