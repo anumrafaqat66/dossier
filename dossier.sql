@@ -53,42 +53,7 @@ CREATE TABLE `academic_records` (
 
 INSERT INTO `academic_records` (`id`, `file_name`, `file_type`, `file_path`, `file_size`, `p_id`, `do_id`, `phase`, `phase3_type`, `term`, `doc_name`, `doc_type`, `created_at`, `updated_at`, `joto_id`) VALUES
 (1, '5ed8493a34453uniformpic2019-10-21at5.21.46PM.jpeg', 'jpeg', 'http://localhost/dossier/attachments/academic_record/5ed8493a34453uniformpic2019-10-21at5.21.46PM.jpeg', '66.802 kb', 1, 3, 'Phase 1', NULL, 'Term I', 'result', 'Result', '2020-06-03 20:07:06', '2020-06-03 20:07:06', NULL),
-(2, '5ed849581fc76BIO-DATAFORM.docx', 'docx', 'http://localhost/dossier/attachments/academic_record/5ed849581fc76BIO-DATAFORM.docx', '17.545 kb', 1, 3, 'Phase 1', NULL, 'Term II', 'result', 'Result', '2020-06-03 20:07:36', '2020-06-03 20:07:36', NULL),
-(3, '5ed84971bba98BIO-DATAFORM.docx', 'docx', 'http://localhost/dossier/attachments/academic_record/5ed84971bba98BIO-DATAFORM.docx', '17.545 kb', 1, 3, 'Phase 1', NULL, 'Term III', 'result', 'Result', '2020-06-03 20:08:01', '2020-06-03 20:08:01', NULL),
-(4, '5ed849933b921BIO-DATAFORM.docx', 'docx', 'http://localhost/dossier/attachments/academic_record/5ed849933b921BIO-DATAFORM.docx', '17.545 kb', 1, 3, 'Phase 1', NULL, 'Term II', 'sea training result', 'Sea Training Report', '2020-06-03 20:08:35', '2020-06-03 20:08:35', NULL),
-(5, '5ed8513ba9311BIO-DATAFORM.docx', 'docx', 'http://localhost/dossier/attachments/academic_record/5ed8513ba9311BIO-DATAFORM.docx', '17.545 kb', 1, 3, 'Phase 2', NULL, 'Term IV', 'result', 'Result', '2020-06-03 20:41:15', '2020-06-03 20:41:15', NULL),
-(6, '5edb918ea9e91WhatsAppImage2020-06-04at08.28.55.jpeg', 'jpeg', 'http://localhost/dossier/attachments/academic_record/5edb918ea9e91WhatsAppImage2020-06-04at08.28.55.jpeg', '45.837 kb', 1, 3, 'Phase 2', NULL, 'Term IV', 'midshipman result', 'Result', '2020-06-06 07:52:30', '2020-06-06 07:52:30', NULL),
-(7, '5edb98f5e3e2bWhatsAppImage2020-06-04at08.28.55.jpeg', 'jpeg', 'http://localhost/dossier/attachments/academic_record/5edb98f5e3e2bWhatsAppImage2020-06-04at08.28.55.jpeg', '45.837 kb', 1, 3, 'Phase 3', 'pnec', 'Semester-III', '3me', 'Result', '2020-06-06 08:24:05', '2020-06-06 08:24:05', NULL),
-(8, '5edb9916e4084WhatsAppImage2020-06-04at08.29.14.jpeg', 'jpeg', 'http://localhost/dossier/attachments/academic_record/5edb9916e4084WhatsAppImage2020-06-04at08.29.14.jpeg', '47.478 kb', 1, 3, 'Phase 3', 'pnec', 'Semester-IV', '4ME', 'Result', '2020-06-06 08:24:38', '2020-06-06 08:24:38', NULL),
-(9, '5edb993ab5fd6WhatsAppImage2020-06-04at08.28.55.jpeg', 'jpeg', 'http://localhost/dossier/attachments/academic_record/5edb993ab5fd6WhatsAppImage2020-06-04at08.28.55.jpeg', '45.837 kb', 1, 3, 'Phase 3', 'pnec', 'Semester-V', '5ME', 'Result', '2020-06-06 08:25:14', '2020-06-06 08:25:14', NULL),
-(10, '5edb99563f04bWhatsAppImage2020-06-04at08.28.55.jpeg', 'jpeg', 'http://localhost/dossier/attachments/academic_record/5edb99563f04bWhatsAppImage2020-06-04at08.28.55.jpeg', '45.837 kb', 1, 3, 'Phase 3', 'pnec', 'Semester-VI', '6ME', 'Result', '2020-06-06 08:25:42', '2020-06-06 08:25:42', NULL),
-(11, '5edb9970bcc79WhatsAppImage2020-06-04at08.28.55.jpeg', 'jpeg', 'http://localhost/dossier/attachments/academic_record/5edb9970bcc79WhatsAppImage2020-06-04at08.28.55.jpeg', '45.837 kb', 1, 3, 'Phase 3', 'pnec', 'Semester-VIII', '7ME', 'Result', '2020-06-06 08:26:08', '2020-06-06 08:26:08', NULL),
-(12, '5edb998810a41WhatsAppImage2020-06-04at08.28.55.jpeg', 'jpeg', 'http://localhost/dossier/attachments/academic_record/5edb998810a41WhatsAppImage2020-06-04at08.28.55.jpeg', '45.837 kb', 1, 3, 'Phase 3', 'pnec', 'Semester-VIII', '8ME', 'Result', '2020-06-06 08:26:32', '2020-06-06 08:26:32', NULL),
-(13, '5edb99c472fd1WhatsAppImage2020-06-04at08.29.14.jpeg', 'jpeg', 'http://localhost/dossier/attachments/academic_record/5edb99c472fd1WhatsAppImage2020-06-04at08.29.14.jpeg', '47.478 kb', 1, 3, 'Phase 3', 'pnec', NULL, 'Basic managment course', 'Additional Courses', '2020-06-06 08:27:32', '2020-06-06 08:27:32', NULL),
-(14, '5ee50d0cc60efWhatsApp.exe', 'exe', 'http://localhost/dossier/attachments/academic_record/5ee50d0cc60efWhatsApp.exe', '679.344 kb', 4, 1, 'Phase 1', NULL, 'Term I', 'result', 'Result', '2020-06-13 12:29:48', '2020-06-13 12:29:48', NULL),
-(15, '5ee5b14fbbd20UndergraduateAdmission2015.png', 'png', 'http://localhost/dossier/attachments/academic_record/5ee5b14fbbd20UndergraduateAdmission2015.png', '36.126 kb', 4, 1, 'Phase 1', NULL, 'Term I', 'result', 'Result', '2020-06-14 00:10:39', '2020-06-14 00:10:39', NULL),
-(16, '5ee5b19a3ee1fUndergraduateAdmission2015.png', 'png', 'http://localhost/dossier/attachments/academic_record/5ee5b19a3ee1fUndergraduateAdmission2015.png', '36.126 kb', 4, 1, 'Phase 1', NULL, 'Term II', 'result', 'Result', '2020-06-14 00:11:54', '2020-06-14 00:11:54', NULL),
-(17, '5ee5b1a9929b9UndergraduateAdmission2015.png', 'png', 'http://localhost/dossier/attachments/academic_record/5ee5b1a9929b9UndergraduateAdmission2015.png', '36.126 kb', 4, 1, 'Phase 1', NULL, 'Term III', 'result', 'Result', '2020-06-14 00:12:09', '2020-06-14 00:12:09', NULL),
-(18, '5ee5b1c173713UndergraduateAdmission2015.png', 'png', 'http://localhost/dossier/attachments/academic_record/5ee5b1c173713UndergraduateAdmission2015.png', '36.126 kb', 4, 1, 'Phase 1', NULL, 'Term II', 'result', 'Sea Training Report', '2020-06-14 00:12:33', '2020-06-14 00:12:33', NULL),
-(19, '5ee5b54b2f3c5UndergraduateAdmission2015.png', 'png', 'http://localhost/dossier/attachments/academic_record/5ee5b54b2f3c5UndergraduateAdmission2015.png', '36.126 kb', 4, 1, 'Phase 2', NULL, 'Term IV', 'result', 'Result', '2020-06-14 00:27:39', '2020-06-14 00:27:39', NULL),
-(20, '5ee5b815464c0UndergraduateAdmission2015.png', 'png', 'http://localhost/dossier/attachments/academic_record/5ee5b815464c0UndergraduateAdmission2015.png', '36.126 kb', 4, 1, 'Phase 3', 'pnec', 'Semester-III', 'result', 'Result', '2020-06-14 00:39:33', '2020-06-14 00:39:33', NULL),
-(21, '5ee5b826265bbUndergraduateAdmission2015.png', 'png', 'http://localhost/dossier/attachments/academic_record/5ee5b826265bbUndergraduateAdmission2015.png', '36.126 kb', 4, 1, 'Phase 3', 'pnec', 'Semester-IV', 'result', 'Result', '2020-06-14 00:39:50', '2020-06-14 00:39:50', NULL),
-(22, '5ee5b86b2ea85UndergraduateAdmission2015.png', 'png', 'http://localhost/dossier/attachments/academic_record/5ee5b86b2ea85UndergraduateAdmission2015.png', '36.126 kb', 4, 1, 'Phase 3', 'pnec', 'Semester-V', 'result', 'Result', '2020-06-14 00:40:59', '2020-06-14 00:40:59', NULL),
-(23, '5ee5b886734b2UndergraduateAdmission2015.png', 'png', 'http://localhost/dossier/attachments/academic_record/5ee5b886734b2UndergraduateAdmission2015.png', '36.126 kb', 4, 1, 'Phase 3', 'pnec', 'Semester-VI', 'result', 'Result', '2020-06-14 00:41:26', '2020-06-14 00:41:26', NULL),
-(24, '5ee5b8a48edacUndergraduateAdmission2015.png', 'png', 'http://localhost/dossier/attachments/academic_record/5ee5b8a48edacUndergraduateAdmission2015.png', '36.126 kb', 4, 1, 'Phase 3', 'pnec', 'Semester-VI', 'result', 'Result', '2020-06-14 00:41:56', '2020-06-14 00:41:56', NULL),
-(25, '5ee5b8bb6a987UndergraduateAdmission2015.png', 'png', 'http://localhost/dossier/attachments/academic_record/5ee5b8bb6a987UndergraduateAdmission2015.png', '36.126 kb', 4, 1, 'Phase 3', 'pnec', 'Semester-VII', 'result', 'Result', '2020-06-14 00:42:19', '2020-06-14 00:42:19', NULL),
-(26, '5ee5b8ca2c413UndergraduateAdmission2015.png', 'png', 'http://localhost/dossier/attachments/academic_record/5ee5b8ca2c413UndergraduateAdmission2015.png', '36.126 kb', 4, 1, 'Phase 3', 'pnec', 'Semester-VIII', 'result', 'Result', '2020-06-14 00:42:34', '2020-06-14 00:42:34', NULL),
-(27, '5ee5b8da8d2d6UndergraduateAdmission2015.png', 'png', 'http://localhost/dossier/attachments/academic_record/5ee5b8da8d2d6UndergraduateAdmission2015.png', '36.126 kb', 4, 1, 'Phase 3', 'pnec', 'Semester-IX', 'result', 'Result', '2020-06-14 00:42:50', '2020-06-14 00:42:50', NULL),
-(28, '5ee5b8e9e5d8aUndergraduateAdmission2015.png', 'png', 'http://localhost/dossier/attachments/academic_record/5ee5b8e9e5d8aUndergraduateAdmission2015.png', '36.126 kb', 4, 1, 'Phase 3', 'pnec', 'Semester-IX', 'result', 'Result', '2020-06-14 00:43:05', '2020-06-14 00:43:05', NULL),
-(29, '5ee5b90438a4fUndergraduateAdmission2015.png', 'png', 'http://localhost/dossier/attachments/academic_record/5ee5b90438a4fUndergraduateAdmission2015.png', '36.126 kb', 4, 1, 'Phase 3', 'pnec', 'Semester-X', 'result', 'Result', '2020-06-14 00:43:32', '2020-06-14 00:43:32', NULL),
-(30, '5ee5b91381ec8UndergraduateAdmission2015.png', 'png', 'http://localhost/dossier/attachments/academic_record/5ee5b91381ec8UndergraduateAdmission2015.png', '36.126 kb', 4, 1, 'Phase 3', 'pnec', 'Semester-XI', 'result', 'Result', '2020-06-14 00:43:47', '2020-06-14 00:43:47', NULL),
-(31, '5ee5b92d970beUndergraduateAdmission2015.png', 'png', 'http://localhost/dossier/attachments/academic_record/5ee5b92d970beUndergraduateAdmission2015.png', '36.126 kb', 4, 1, 'Phase 3', 'pnec', NULL, 'sea training result', 'Additional Courses', '2020-06-14 00:44:13', '2020-06-14 00:44:13', NULL),
-(32, '5fc7de2506e44GeneralKnowledge2016to20Nov2017.pdf', 'pdf', 'http://localhost/dossier/attachments/academic_record/5fc7de2506e44GeneralKnowledge2016to20Nov2017.pdf', '942.186 kb', 10, NULL, 'Phase 2', NULL, 'Term IV', 'vv', 'Result', '2020-12-02 13:34:13', '2020-12-02 13:34:13', 1),
-(33, '5fd8cc0bd684daron-smith-CV-financial-manager.pdf', 'pdf', 'http://localhost/dossier/attachments/academic_record/5fd8cc0bd684daron-smith-CV-financial-manager.pdf', '91.948 kb', 33, 1, 'Phase 1', NULL, 'Term I', 'Term1result', 'Result', '2020-12-15 09:45:32', '2020-12-15 09:45:32', NULL),
-(34, '5fd8cc19d6f19aron-smith-CV-financial-manager.pdf', 'pdf', 'http://localhost/dossier/attachments/academic_record/5fd8cc19d6f19aron-smith-CV-financial-manager.pdf', '91.948 kb', 33, 1, 'Phase 1', NULL, 'Term II', 'Term2result', 'Result', '2020-12-15 09:45:45', '2020-12-15 09:45:45', NULL),
-(35, '5fd8cc27c46aaaron-smith-CV-financial-manager.pdf', 'pdf', 'http://localhost/dossier/attachments/academic_record/5fd8cc27c46aaaron-smith-CV-financial-manager.pdf', '91.948 kb', 33, 1, 'Phase 1', NULL, 'Term III', 'Term3result', 'Result', '2020-12-15 09:45:59', '2020-12-15 09:45:59', NULL),
-(36, '5fd8cc28608d0aron-smith-CV-financial-manager.pdf', 'pdf', 'http://localhost/dossier/attachments/academic_record/5fd8cc28608d0aron-smith-CV-financial-manager.pdf', '91.948 kb', 33, 1, 'Phase 1', NULL, 'Term III', 'Term3result', 'Result', '2020-12-15 09:46:00', '2020-12-15 09:46:00', NULL),
-(37, '5fd8cc3746fc4aron-smith-CV-financial-manager.pdf', 'pdf', 'http://localhost/dossier/attachments/academic_record/5fd8cc3746fc4aron-smith-CV-financial-manager.pdf', '91.948 kb', 33, 1, 'Phase 1', NULL, 'Term II', 'searesult', 'Sea Training Report', '2020-12-15 09:46:15', '2020-12-15 09:46:15', NULL);
+(2, '5ed849581fc76BIO-DATAFORM.docx', 'docx', 'http://localhost/dossier/attachments/academic_record/5ed849581fc76BIO-DATAFORM.docx', '17.545 kb', 1, 3, 'Phase 1', NULL, 'Term II', 'result', 'Result', '2020-06-03 20:07:36', '2020-06-03 20:07:36', NULL);
 
 -- --------------------------------------------------------
 
@@ -117,22 +82,7 @@ CREATE TABLE `branch_allocations` (
 
 INSERT INTO `branch_allocations` (`id`, `p_id`, `option1`, `option2`, `option3`, `branch_recommended`, `branch_allocated`, `do_id`, `phase`, `created_at`, `updated_at`, `joto_id`) VALUES
 (1, 1, 'OPS', 'WE', 'LOG', 'OPS', 'OPS', 3, 'Phase 1', '2020-06-03 20:25:43', '2020-06-03 20:25:43', NULL),
-(2, 2, 'LOG', 'LOG', 'LOG', 'LOG', 'LOG', 4, 'Phase 1', '2020-06-04 00:34:53', '2020-06-04 00:34:53', NULL),
-(3, 4, 'ME', 'ME', 'WE', 'ME', 'ME', 1, 'Phase 1', '2020-06-14 00:17:37', '2020-06-14 00:17:37', NULL),
-(4, 6, 'LOG', 'OPS', 'OPS', 'OPS', 'OPS', 1, 'Phase 1', '2020-06-14 01:28:38', '2020-06-14 01:28:38', NULL),
-(5, 10, 'LOG', 'OPS', 'WE', 'LOG', 'OPS', 1, 'Phase 1', '2020-06-16 22:02:56', '2020-06-16 22:02:56', NULL),
-(6, 22, 'WE', 'WE', 'WE', 'we', 'we', 3, 'Phase 1', '2020-11-21 08:32:15', '2020-11-21 08:32:15', NULL),
-(7, 3, 'OPS', 'OPS', 'OPS', 'ops', 'ops', 3, 'Phase 1', '2020-12-12 08:54:24', '2020-12-12 08:54:24', NULL),
-(8, 7, 'OPS', 'OPS', 'OPS', 'OPS', 'OPS', 3, 'Phase 1', '2020-12-13 12:37:35', '2020-12-13 12:37:35', NULL),
-(9, 9, 'OPS', 'OPS', 'OPS', 'OPS', 'OPS', 3, 'Phase 1', '2020-12-14 02:07:56', '2020-12-14 02:07:56', NULL),
-(10, 11, 'OPS', 'OPS', 'OPS', 'ops', 'ops', 3, 'Phase 1', '2020-12-14 02:21:43', '2020-12-14 02:21:43', NULL),
-(11, 17, 'OPS', 'OPS', 'OPS', 'OPS', 'OPS', 3, 'Phase 1', '2020-12-14 04:46:31', '2020-12-14 04:46:31', NULL),
-(12, 23, 'OPS', 'OPS', 'OPS', 'OPS', 'OPS', 3, 'Phase 1', '2020-12-14 12:13:01', '2020-12-14 12:13:01', NULL),
-(13, 28, 'WE', 'WE', 'WE', 'WE', 'WE', 3, 'Phase 1', '2020-12-14 12:38:07', '2020-12-14 12:38:07', NULL),
-(14, 29, 'WE', 'WE', 'WE', 'WE', 'WE', 3, 'Phase 1', '2020-12-14 12:44:49', '2020-12-14 12:44:49', NULL),
-(15, 33, 'OPS', 'OPS', 'OPS', 'OPS', 'OPS', 1, 'Phase 1', '2020-12-15 09:52:45', '2020-12-15 09:52:45', NULL),
-(16, 38, 'OPS', 'OPS', 'OPS', 'OPS', 'OPS', 1, 'Phase 1', '2020-12-15 11:17:41', '2020-12-15 11:17:41', NULL),
-(17, 39, 'OPS', 'OPS', 'OPS', 'OPS', 'OPS', 1, 'Phase 1', '2020-12-15 11:36:56', '2020-12-15 11:36:56', NULL);
+(2, 2, 'LOG', 'LOG', 'LOG', 'LOG', 'LOG', 4, 'Phase 1', '2020-06-04 00:34:53', '2020-06-04 00:34:53', NULL);
 
 -- --------------------------------------------------------
 
@@ -159,10 +109,7 @@ CREATE TABLE `cadets_autobiographies` (
 --
 
 INSERT INTO `cadets_autobiographies` (`id`, `file_name`, `file_type`, `file_path`, `file_size`, `p_id`, `do_id`, `phase`, `created_at`, `updated_at`, `joto_id`) VALUES
-(1, '5ed8458edfa09BIO-DATAFORM.docx', 'docx', 'http://localhost/dossier/attachments/cadets_autobiography/5ed8458edfa09BIO-DATAFORM.docx', '17.545 kb', 1, 3, 'Phase 1', '2020-06-03 19:51:26', '2020-06-03 19:51:26', NULL),
-(2, '5ee457b62933dWhatsAppImage2019-10-07at4.00.56PM.jpeg', 'jpeg', 'http://localhost/dossier/attachments/cadets_autobiography/5ee457b62933dWhatsAppImage2019-10-07at4.00.56PM.jpeg', '81.274 kb', 4, 1, 'Phase 1', '2020-06-12 23:36:06', '2020-06-12 23:36:06', NULL),
-(3, '5fd4baa3a7ea4GeneralKnowledge2016to20Nov2017.pdf', 'pdf', 'http://localhost/dossier/attachments/cadets_autobiography/5fd4baa3a7ea4GeneralKnowledge2016to20Nov2017.pdf', '942.186 kb', 3, 9, 'Phase 1', '2020-12-12 07:42:11', '2020-12-12 07:42:11', NULL),
-(4, '5fd8cb70f1161aron-smith-CV-financial-manager.pdf', 'pdf', 'http://localhost/dossier/attachments/cadets_autobiography/5fd8cb70f1161aron-smith-CV-financial-manager.pdf', '91.948 kb', 33, 1, 'Phase 1', '2020-12-15 09:42:57', '2020-12-15 09:42:57', NULL);
+(1, '5ed8458edfa09BIO-DATAFORM.docx', 'docx', 'http://localhost/dossier/attachments/cadets_autobiography/5ed8458edfa09BIO-DATAFORM.docx', '17.545 kb', 1, 3, 'Phase 1', '2020-06-03 19:51:26', '2020-06-03 19:51:26', NULL);
 
 -- --------------------------------------------------------
 
