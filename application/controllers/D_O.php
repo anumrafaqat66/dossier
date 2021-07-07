@@ -902,4 +902,77 @@ class D_O extends CI_Controller
             echo json_encode($data['term_ii_details']);
         }
     }
+
+    public function save_officer_qualities(){
+ if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+           // print_r($postData);exit;
+
+           // $oc_no = $postData['oc_num'];
+            $p_id = $postData['id'];
+            $term = $postData['term'];
+        
+            $insert_array = array(
+                //'oc_no' => $oc_no,
+                'p_id' => $p_id,
+                'do_id' => $this->session->userdata('user_id'),
+                'truthfulness_mid' => $postData['mid_marks'][0],
+                'truthfulness_terminal' => $postData['final_marks'][0],
+                'integrity_mid' => $postData['mid_marks'][1],
+                'integrity_terminal' => $postData['final_marks'][1],
+                'pride_mid' => $postData['mid_marks'][2],
+                'pride_terminal' => $postData['final_marks'][2],
+                
+                 'courage_mid' => $postData['mid_marks'][3],
+                'courage_terminal' => $postData['final_marks'][3],
+                'confidence_mid' => $postData['mid_marks'][4],
+                'confidence_terminal' => $postData['final_marks'][4],
+                'initiative_mid' => $postData['mid_marks'][5],
+                'inititative_terminal' => $postData['final_marks'][5],
+
+                   'command_mid' => $postData['mid_marks'][6],
+                'command_terminal' => $postData['final_marks'][6],
+                'discipline_mid' => $postData['mid_marks'][7],
+                'discipline_terminal' => $postData['final_marks'][7],
+                'duty_mid' => $postData['mid_marks'][8],
+                'duty_terminal' => $postData['final_marks'][8],
+                 'reliability_mid' => $postData['mid_marks'][9],
+                'reliability_terminal' => $postData['final_marks'][9],
+                'appearance_mid' => $postData['mid_marks'][10],
+                'appearance_terminal' => $postData['final_marks'][10],
+                'fitness_mid' => $postData['mid_marks'][11],
+                'fitness_terminal' => $postData['final_marks'][11],
+                 'conduct_mid' => $postData['mid_marks'][12],
+                'conduct_terminal' => $postData['final_marks'][12],
+                'cs_mid' => $postData['mid_marks'][13],
+                'cs_terminal' => $postData['final_marks'][13],
+                'teamwork_mid' => $postData['mid_marks'][14],
+                'teamwork_terminal' => $postData['final_marks'][14],
+                'expression_mid' => $postData['mid_marks'][15],
+                'expression_terminal' => $postData['final_marks'][15],
+                'total_mid' => $postData['total_mid_marks'],
+                'total_terminal' => $postData['total_final_marks'],
+                'mid_marks' => $postData['mid_percentage'],
+                'terminal_marks' => $postData['final_percentage'],
+                'mid_marks_date' => $postData['mid_exam_date'],
+                'terminal_marks_date' => $postData['final_exam_date'],
+                'created_at'=>date('Y-m-d')
+            );
+
+            //print_r($insert_array);exit;
+            $insert = $this->db->insert('officer_qualities', $insert_array);
+        }
+            //$last_id = $this->db->insert_id();
+
+            if (!empty($insert)) {
+                $this->session->set_flashdata('success', 'Data Submitted successfully');
+                redirect('D_O/add_officer_qualities');
+            } else {
+                $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                redirect('D_O/add_officer_qualities');
+            }
+
+    }
 }
+
+

@@ -77,7 +77,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" id="save_form" action="">
+                        <form class="user" role="form" method="post" id="save_form" action="<?= base_url(); ?>D_O/save_officer_qualities">
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Name:</h6>
@@ -134,8 +134,8 @@
                                                         <td scope="row" style="padding:25px"><?= $data['id']; ?></td>
                                                         <td scope="row" style="padding:25px"><?= $data['quality_name']; ?></td>
                                                         <td scope="row" style="padding:25px"><?= $data['max_marks']; ?></td>
-                                                        <td scope="row"><input type="text" class="form-control form-control-user" name="mid_marks" id="mid_marks" placeholder="Marks"></td>
-                                                        <td scope="row"><input type="text" class="form-control form-control-user" name="final_marks" id="final_marks" placeholder="Marks"></td>
+                                                        <td scope="row"><input type="text" class="form-control form-control-user" name="mid_marks[]" id="mid_marks" placeholder="Marks"></td>
+                                                        <td scope="row"><input type="text" class="form-control form-control-user" name="final_marks[]" id="final_marks" placeholder="Marks"></td>
 
                                                     </tr>
                                                 <?php } ?>
@@ -188,7 +188,7 @@
 
                             <div class="form-group row justify-content-center">
                                 <div class="col-sm-4">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn">
+                                    <button type="submit" class="btn btn-primary btn-user btn-block" id="save_btn">
                                         <!-- <i class="fab fa-google fa-fw"></i>   -->
                                         save
                                     </button>
