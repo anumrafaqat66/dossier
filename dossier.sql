@@ -1943,6 +1943,24 @@ CREATE TABLE `club_records` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Table structure for table `branch_preference_list`
+--
+
+CREATE TABLE `branch_preference_list` (
+  `id` int(20) NOT NULL,
+  `branch_name` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `branch_preference_list`
+--
+
+INSERT INTO `branch_preference_list` (`id`, `branch_name`) VALUES
+(1, 'OPS'),
+(2, 'WE'),
+(3, 'LOG');
+
 
 -- Alter Tables by Awais Ahmad
 
@@ -2310,6 +2328,12 @@ ALTER TABLE `quality_list`
 --
 ALTER TABLE `club_records`
   ADD PRIMARY KEY (`id`);
+  
+--
+-- Indexes for table `branch_preference_list`
+--
+ALTER TABLE `branch_preference_list`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -2615,6 +2639,12 @@ ALTER TABLE `quality_list`
 --
 ALTER TABLE `club_records`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `branch_preference_list`
+--
+ALTER TABLE `branch_preference_list`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Table structure for table `academic_records`

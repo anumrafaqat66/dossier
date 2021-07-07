@@ -50,6 +50,21 @@ class CAO extends CI_Controller
             $this->load->view('cao/add_observation'); //, $data);
         }
     }
+    public function PN_Form()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $data['divisions'] = $this->db->get('divisions')->result_array();
+            $this->load->view('cao/pn_form1', $data);
+        }
+    }
+
+    public function view_dossier()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $data['pn_data'] = $this->db->where('divison_name', 'XYZ')->get('pn_form1s')->result_array();
+            $this->load->view('cao/view_dossier', $data);
+        }
+    }
 
     public function view_punishment_list()
     {
@@ -156,7 +171,8 @@ class CAO extends CI_Controller
                 'updated_at' => date('Y-m-d H:i:s'),
                 'term' => $term,
                 'start_date' => $start_date,
-                'end_date' => $end_date
+                'end_date' => $end_date,
+                'status' => 'Approved'
 
             );
 
@@ -240,7 +256,7 @@ class CAO extends CI_Controller
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
                 'term' => $term,
-                'status' => 'pending'
+                'status' => 'Approved'
             );
 
             $insert = $this->db->insert('observation_records', $insert_array);
@@ -311,4 +327,151 @@ class CAO extends CI_Controller
             json_encode($view_page);
         }
     }
+
+    public function add_PN_Form()
+    {
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+
+            $oc_no = $postData['oc_no'];
+            $pno = $postData['pno'];
+            $name = $postData['name'];
+            $class = $postData['class'];
+            $batch_no = $postData['batch_no'];
+            $category = $postData['category'];
+            $div_name = $postData['div'];
+            $term = $postData['term'];
+
+            $insert_array = array(
+                'oc_no' => $oc_no,
+                'p_no' => $pno,
+                'name' => $name,
+                'class' => $class,
+                'issb_batch' => $batch_no,
+                'do_id' => $this->session->userdata('user_id'),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+                'category' => $category,
+                'divison_name' => $div_name,
+                'term' => $term
+
+            );
+
+            $insert = $this->db->insert('pn_form1s', $insert_array);
+            //$last_id = $this->db->insert_id();
+
+            if (!empty($insert)) {
+                $this->session->set_flashdata('success', 'Data Submitted successfully');
+                redirect('CAO/PN_Form');
+            } else {
+                $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                redirect('CAO/PN_Form');
+            }
+        }
+    }
+
+    public function search_all_cadets_for_dossier()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $data['pn_data'] = $this->db->get('pn_form1s')->result_array();
+            if (count($data['pn_data']) > 0) {
+                $view_page = $this->load->view('cao/view_dossier', $data, TRUE);
+                echo $view_page;
+                json_encode($view_page);
+            } else {
+                echo '0';
+            }
+        }
+    }
+
+    public function search_cadet_for_dossier()
+    {
+        if ($this->session->has_userdata('user_id')) {
+
+            $oc_no = $_POST['oc_no'];
+            $data['pn_data'] = $this->db->where('oc_no', $oc_no)->get('pn_form1s')->result_array();
+            $data['oc_no_entered'] = $oc_no;
+            if (count($data['pn_data']) > 0) {
+                $view_page = $this->load->view('cao/view_dossier', $data, TRUE);
+                echo $view_page;
+                json_encode($view_page);
+            } else {
+                echo '0';
+            }
+        }
+    }
+
+    public function view_milestone_in_dossier()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $this->db->select('or.*, f.*');
+            $this->db->from('physical_milestone or');
+            $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
+            $data['milestone_records'] = $this->db->get()->row_array();
+            // print_r( $data['milestone_records']);exit;
+            echo json_encode($data['milestone_records']);
+        }
+    }
+
+    public function view_club_in_dossier()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $this->db->select('cr.*, f.*');
+            $this->db->from('club_records cr');
+            $this->db->join('pn_form1s f', 'f.p_id = cr.p_id');
+            $data['club_records'] = $this->db->get()->result_array();
+            // print_r( $data['milestone_records']);exit;
+            echo json_encode($data['club_records']);
+        }
+    }
+
+    public function view_punishments_in_dossier()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $cadet_id = $_POST['id'];
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('punishment_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('f.oc_no = pr.oc_no');
+            $this->db->where('f.p_id', $cadet_id);
+            // $this->db->where('pr.status', 'Approved');
+            $data['punishment_records'] = $this->db->get()->result_array();
+
+            echo json_encode($data['punishment_records']);
+        }
+    }
+
+    public function view_excuses_in_dossier()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $cadet_id = $_POST['id'];
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('medical_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('f.oc_no = pr.oc_no');
+            $this->db->where('f.p_id', $cadet_id);
+            $data['excuse_records'] = $this->db->get()->result_array();
+
+            echo json_encode($data['excuse_records']);
+        }
+    }
+
+    public function view_observation_in_dossier()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $cadet_id = $_POST['id'];
+            $this->db->select('pr.*, f.*');
+            $this->db->from('observation_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('f.p_id', $cadet_id);
+            // $this->db->where('pr.status', 'Approved');
+            $data['observation_records'] = $this->db->get()->result_array();
+            echo json_encode($data['observation_records']);
+        }
+    }
+
+   
+
 }

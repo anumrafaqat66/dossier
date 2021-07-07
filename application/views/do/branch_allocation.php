@@ -112,6 +112,78 @@
 
                             </div>
 
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <h5 style="text-decoration:underline">Preference Order by Cadet</h5>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Preference 1:</h6>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Preference 2:</h6>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Preference 3:</h6>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+
+                                <div class="col-sm-4 mb-1">
+                                    <select class="form-control rounded-pill" name="prefer_1" id="prefer_1" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
+                                        <option class="form-control form-control-user" value="">Select 1st Preference</option>
+                                        <?php foreach ($branch_list as $data) { ?>
+                                            <option class="form-control form-control-user" value="<?= $data['branch_name'] ?>"><?= $data['branch_name'] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4 mb-1">
+                                    <select class="form-control rounded-pill" name="prefer_2" id="prefer_2" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
+                                        <option class="form-control form-control-user" value="">Select 1st Preference</option>
+                                        <?php foreach ($branch_list as $data) { ?>
+                                            <option class="form-control form-control-user" value="<?= $data['branch_name'] ?>"><?= $data['branch_name'] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4 mb-1">
+                                    <select class="form-control rounded-pill" name="prefer_3" id="prefer_3" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
+                                        <option class="form-control form-control-user" value="">Select 1st Preference</option>
+                                        <?php foreach ($branch_list as $data) { ?>
+                                            <option class="form-control form-control-user" value="<?= $data['branch_name'] ?>"><?= $data['branch_name'] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <h6>&nbsp;Branch Recommended:</h6>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-12 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="recommended_branch" id="recommended_branch" placeholder="Recommended Branch">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <h6>&nbsp;Branch Recommended:</h6>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-12 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="allocated_branch" id="allocated_branch" placeholder="Branch Allocated">
+                                </div>
+                            </div>
+
                             <div class="form-group row justify-content-center">
                                 <div class="col-sm-4">
                                     <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn">

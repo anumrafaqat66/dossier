@@ -54,7 +54,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="#"  aria-expanded="true">
+                <a class="nav-link" href="<?php echo base_url(); ?>CAO/view_dossier"  aria-expanded="true">
                     <i class="fas fa-th-list"></i>
                     <span> View Dossiers </span>
                     <!-- <span>Components</span> -->
@@ -63,7 +63,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo base_url(); ?>/D_O/PN_Form" aria-expanded="true">
+                <a class="nav-link collapsed" href="<?php echo base_url(); ?>/CAO/PN_Form" aria-expanded="true">
                     <i class="fab fa-wpforms"></i>
                     <span>PN Form I</span>
                     <!-- <span>Components</span> -->

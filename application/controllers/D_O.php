@@ -498,7 +498,8 @@ class D_O extends CI_Controller
     public function add_branch_allocation()
     {
         if ($this->session->has_userdata('user_id')) {
-            $this->load->view('do/branch_allocation');
+            $data['branch_list'] = $this->db->get('branch_preference_list')->result_array();
+            $this->load->view('do/branch_allocation', $data);
         }
     }
 
