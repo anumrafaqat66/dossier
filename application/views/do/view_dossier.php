@@ -934,13 +934,13 @@
                         <div class="card-body">
                             <div id="table_div">
 
-                                <table id="datatable" class="table table-striped" style="color:black">
+                                <table id="datatable" class="table table-striped" style="color:black; font-size:smaller">
                                     <thead>
                                         <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Cadet Name</th>
-                                            <th scope="col">OC No.</th>
-                                            <th scope="col">Term</th>
+                                            <th scope="col" style='white-space: nowrap;'>ID</th>
+                                            <th scope="col" style='white-space: nowrap;'>Cadet Name</th>
+                                            <th scope="col" style='white-space: nowrap;'>OC No.</th>
+                                            <th scope="col" style='white-space: nowrap;'>Term</th>
                                             <th scope="col" style="text-align:center">Physical Milestone</th>
                                             <th scope="col" style="text-align:center">Punishments</th>
                                             <th scope="col" style="text-align:center">Excuses</th>
@@ -957,9 +957,9 @@
                                             <tr>
 
                                                 <td scope="row"><?= ++$count; ?></td>
-                                                <td scope="row"><?= $data['name']; ?></td>
-                                                <td scope="row"><?= $data['oc_no']; ?></td>
-                                                <td scope="row"><?= $data['term']; ?></td>
+                                                <td scope="row" style='white-space: nowrap;'><?= $data['name']; ?></td>
+                                                <td scope="row" style='white-space: nowrap;'><?= $data['oc_no']; ?></td>
+                                                <td scope="row" style='white-space: nowrap;'><?= $data['term']; ?></td>
 
                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_physical_milestone(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#milestone">Physical Milestone</button></td>
                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_punishments(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#punishments">Punishments</button></td>
