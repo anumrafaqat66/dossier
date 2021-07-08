@@ -117,8 +117,7 @@
                 </a>
                 <div id="collapse_warning" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Record of Warnings</a>
-                        <a class="collapse-item" href="#">Record Attachments</a>
+                        <a class="collapse-item" href="#">Add Warning</a>
                     </div>
                 </div>
             </li>
