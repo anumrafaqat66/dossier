@@ -134,11 +134,12 @@
                                                         <td scope="row" style="padding:25px"><?= $data['id']; ?></td>
                                                         <td scope="row" style="padding:25px"><?= $data['quality_name']; ?></td>
                                                         <td scope="row" style="padding:25px"><?= $data['max_marks']; ?></td>
-                                                        <td scope="row"><input type="text" class="form-control form-control-user" name="mid_marks[]" id="mid_marks" placeholder="Marks"></td>
+                                                        <td scope="row"><input type="text" class="form-control form-control-user" name="mid_marks[]" id="mid_marks[]" placeholder="Marks"></td>
                                                         <td scope="row"><input type="text" class="form-control form-control-user" name="final_marks[]" id="final_marks" placeholder="Marks"></td>
 
                                                     </tr>
-                                                <?php } ?>
+                                                <?php
+                                                $count++; } ?>
                                                 <tr>
                                                     <td scope="row" style="padding:25px"></td>
                                                     <td scope="row" style="padding:25px; text-align:right"><strong>Grand Total</strong></td>
@@ -357,5 +358,17 @@
             $('#save_btn').removeAttr('disabled');
             $('#show_error_save').show();
         }
+    });
+
+    $('#total_mid_marks').on('click', function() {
+        alert('dsfsdf');
+        var sum=0;
+        var inps = document.getElementsByName('mid_marks[]');
+            for (var i = 0; i <inps.length; i++) {
+                //sum=sum+i;
+                 }
+      //alert(sum);
+      $('#total_mid_marks').val(sum);
+      // alert(a);
     });
 </script>

@@ -77,7 +77,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" id="save_form" action="<?= base_url(); ?>D_O/save_cadet_punishment">
+                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>D_O/save_cadet_warning">
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Name:</h6>
@@ -162,7 +162,7 @@
 
                             <div class="form-group row custom-file-upload">
                                 <div class="col-sm-12 mb-1">
-                                    <input type="file" style="height: 50px; padding:10px !important;" multiple="multiple" class="form-control form-control-user" placeholder="Upload Document" name="report[]" x-model="fileName">
+                                    <input type="file" style="height: 50px; padding:10px !important;" multiple="multiple" class="form-control form-control-user" placeholder="Upload Document" name="file[]" x-model="fileName">
                                 </div>
                             </div>
 
@@ -307,26 +307,26 @@
     $('#save_btn').on('click', function() {
         $('#save_btn').attr('disabled', true);
         var validate = 0;
-        var punish = $('#punish').val();
-        var offense = $('#offense').val();
-        var start_date = $('#start_date').val();
-        var end_date = $('#end_date').val();
+        var issued_by = $('#issued_by').val();
+        var warning_type = $('#warning_type').val();
+        var reason = $('#reason').val();
+        var date = $('#date').val();
 
-        if (punish == '') {
+        if (issued_by == '') {
             validate = 1;
-            $('#punish').addClass('red-border');
+            $('#issued_by').addClass('red-border');
         }
-        if (offense == '') {
+        if (warning_type == '') {
             validate = 1;
-            $('#offense').addClass('red-border');
+            $('#warning_type').addClass('red-border');
         }
-        if (start_date == '') {
+        if (reason == '') {
             validate = 1;
-            $('#start_date').addClass('red-border');
+            $('#reason').addClass('red-border');
         }
-        if (end_date == '') {
+        if (date == '') {
             validate = 1;
-            $('#end_date').addClass('red-border');
+            $('#date').addClass('red-border');
         }
 
         if (validate == 0) {

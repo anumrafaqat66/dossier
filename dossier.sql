@@ -2703,6 +2703,18 @@ CREATE TABLE `term_II_details` (
   `date_added` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+ALTER TABLE `warning_records`
+  ADD `type` varchar(500);
+
+ALTER TABLE `warning_records`
+  ADD `file` varchar(500);
+
+ALTER TABLE `warning_records`
+  ADD `type` varchar(500);
+
+ALTER TABLE `warning_records`
+  ADD `oc_no` int(11);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -395,6 +395,60 @@ class D_O extends CI_Controller
     }
 
 
+    public function save_cadet_warning()
+    {
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+//print_r($_FILES['file']['name'][0] != NULL);
+       if($_FILES['file']['name'][0] != NULL){
+            $upload1 = $this->upload_warning($_FILES['file']);
+            if (count($upload1) > 1) {
+                $files = implode(',', $upload1);
+            } else {
+                $files = $upload1[0];
+            }
+        }else{
+            $files='';
+        }
+
+            $id = $postData['id'];
+            $oc_no = $postData['oc_num'];
+            $date = $postData['date'];
+            $issued_by = $postData['issued_by'];
+            // $div_name = $postData['division'];
+            $type = $postData['warning_type'];
+            $reason = $postData['reason'];
+            
+          
+            $insert_array = array(
+                'oc_no' => $oc_no,
+                'p_id' => $id,
+                'date' => date('Y-m-d'),
+                'file'=> $files,
+                'issued_by' => $issued_by,
+                'type' => $type,
+                'do_id' => $this->session->userdata('user_id'),
+                'reasons' => $reason,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+                //'status' => 'Pending'
+
+            );
+
+            $insert = $this->db->insert('warning_records', $insert_array);
+            //$last_id = $this->db->insert_id();
+
+            if (!empty($insert)) {
+                $this->session->set_flashdata('success', 'Punishment added successfully');
+                redirect('D_O/add_warning');
+            } else {
+                $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                redirect('D_O/add_warning');
+            }
+        }
+    }
+
+
     public function search_cadet()
     {
         if ($this->input->post()) {
@@ -573,6 +627,25 @@ class D_O extends CI_Controller
             echo json_encode($data['observation_records']);
         }
     }
+
+        public function view_warning_in_dossier()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $cadet_id = $_POST['id'];
+            //echo $cadet_id;exit;
+            $this->db->select('pr.*, f.*');
+            $this->db->from('warning_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('f.oc_no = pr.oc_no');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.p_id', $cadet_id);
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
+           // $this->db->where('pr.status', 'Approved');
+            $data['warning_records'] = $this->db->get()->result_array();
+            echo json_encode($data['warning_records']);
+        }
+    }
+
     public function view_excuse_list()
     {
         if ($this->session->has_userdata('user_id')) {
@@ -751,6 +824,41 @@ class D_O extends CI_Controller
         //print_r($count);exit();
         return $count;
     }
+
+      public function upload_warning($fieldname)
+    {
+        //$data = NULL;
+        //echo $fieldname;exit;
+        $filesCount = count($_FILES['file']['name']);
+        //print_r($_FILES['reg_cert']['name']);exit;
+        for ($i = 0; $i < $filesCount; $i++) {
+            $_FILES['file']['name']     = $_FILES['file']['name'][$i];
+            $_FILES['file']['type']     = $_FILES['file']['type'][$i];
+            $_FILES['file']['tmp_name'] = $_FILES['file']['tmp_name'][$i];
+            $_FILES['file']['error']    = $_FILES['file']['error'][$i];
+            $_FILES['file']['size']     = $_FILES['file']['size'][$i];
+
+            $config['upload_path'] = 'uploads/warning';
+            $config['allowed_types']        = 'gif|jpg|png|doc|xls|pdf|xlsx|docx|ppt|pptx';
+
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            //$data['upload_data'] = '';
+            if (!$this->upload->do_upload('file')) {
+                $data = array('msg' => $this->upload->display_errors());
+                //echo "here";exit;
+            } else {
+                //echo $filesCount;exit;
+                $data = array('msg' => "success");
+                $data['upload_data'] = $this->upload->data();
+                $count[$i] = $data['upload_data']['file_name'];
+            }
+        } //end of for
+        //print_r($count);exit();
+        return $count;
+    }
+
     public function save_physical_milestone()
     {
         if ($this->input->post()) {
