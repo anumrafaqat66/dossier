@@ -248,6 +248,7 @@ class D_O extends CI_Controller
             $term = $postData['term'];
             $start_date = $postData['start_date'];
             $end_date = $postData['end_date'];
+            $days = $postData['days'];
             $awarded_by = $this->session->userdata('username');
             $awarded_id = $this->session->userdata('user_id');
 
@@ -264,6 +265,7 @@ class D_O extends CI_Controller
                 'term' => $term,
                 'start_date' => $start_date,
                 'end_date' => $end_date,
+                'days' => $days,
                 'status' => 'Pending'
 
             );
@@ -290,12 +292,14 @@ class D_O extends CI_Controller
             $punish = $postData['punish'];
             $start_date = $postData['start_date'];
             $end_date = $postData['end_date'];
+            $days = $postData['days'];
 
             $cond  = ['id' => $id];
             $data_update = [
                 'punishment_awarded' => $punish,
                 'start_date' => $start_date,
                 'end_date' => $end_date,
+                'days' => $days
             ];
 
             $this->db->where($cond);
@@ -454,6 +458,26 @@ class D_O extends CI_Controller
         if ($this->input->post()) {
             $oc_no = $_POST['oc_no'];
             $query = $this->db->where('oc_no', $oc_no)->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->row_array();
+            // print_r($query);
+            echo json_encode($query);
+        }
+    }
+
+    public function search_cadet_for_punishment()
+    {
+        if ($this->input->post()) {
+            $oc_no = $_POST['oc_no'];
+            $query = $this->db->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
+            // print_r($query);
+            echo json_encode($query);
+        }
+    }
+
+    public function search_cadet_for_observation()
+    {
+        if ($this->input->post()) {
+            $oc_no = $_POST['oc_no'];
+            $query = $this->db->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
             // print_r($query);
             echo json_encode($query);
         }

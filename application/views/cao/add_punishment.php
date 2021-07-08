@@ -154,7 +154,7 @@
                                     <span id="error_end_date" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;End Date cannot be less than start date</span>
                                 </div>
                                 <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="days" id="days" readonly>
+                                    <input type="text" class="form-control form-control-user" name="days" id="days">
                                 </div>
                             </div>
 
@@ -296,6 +296,28 @@
         }
 
         $('#days').val(Math.abs(end_date - start_date) / 1000 / 60 / 60 / 24);
+    });
+
+    $('#days').on('keyup', function() {
+
+        var days = parseInt($('#days').val());
+
+        var date = new Date(),
+            yr = date.getFullYear(),
+            month = (date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) : (date.getMonth() + 1),
+            day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate(),
+            startDate = yr + '-' + month + '-' + day;
+
+        var date = new Date();
+        date.setDate(date.getDate() + days);
+        var yr = date.getFullYear(),
+            month = (date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) : (date.getMonth() + 1),
+            day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate(),
+            endDate = yr + '-' + month + '-' + day;
+
+        $('#start_date').val(startDate);
+        $('#end_date').val(endDate);
+
     });
 
 

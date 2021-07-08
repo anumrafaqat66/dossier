@@ -1,4 +1,4 @@
-<?php $this->load->view('do/common/header'); ?>
+<?php $this->load->view('cao/common/header'); ?>
 <?php !isset($oc_no_entered) ? $oc_no_entered = '' : $oc_no_entered; ?>
 <style>
     .red-border {

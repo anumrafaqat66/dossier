@@ -96,7 +96,7 @@
                                                 <span id="error_end_date" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;End Date cannot be less than start date</span>
                                             </div>
                                             <div class="col-sm-3 mb-1">
-                                                <input type="text" class="form-control form-control-user" name="days" id="days" readonly>
+                                                <input type="text" class="form-control form-control-user" name="days" id="days">
                                             </div>
                                         </div>
 
@@ -218,9 +218,10 @@
                                                 <td scope="row"><?= $data['punishment_awarded']; ?></td>
                                                 <td scope="row" style="display:none"><?= $data['start_date']; ?></td>
                                                 <td scope="row" style="display:none"><?= $data['end_date']; ?></td>
+                                                <td scope="row" style="display:none"><?= $data['days']; ?></td>
                                                 <td scope="row"><?php echo $diff->format('%d days'); ?></td>
-                                                <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:green" data-toggle="modal" data-target="#reduce_punishment">Reduce</button></td>
-                                                <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:red">Increase</button></td>
+                                                <td scope="row"><button onclick="update_punish(<?= $data['days']; ?>)" type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:green" data-toggle="modal" data-target="#reduce_punishment">Reduce</button></td>
+                                                <td scope="row"><button onclick="update_punish(<?= $data['days']; ?>)" type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:red" data-toggle="modal" data-target="#reduce_punishment">Increase</button></td>
                                                 <?php if ($data['status'] == 'Pending') { ?>
                                                     <td scope="row" style="color:orange;font-weight:bold"><?= $data['status']; ?></td>
                                                 <?php } elseif ($data['status'] == 'Approved') { ?>
@@ -473,4 +474,33 @@
 
         $('#days').val(Math.abs(end_date - start_date) / 1000 / 60 / 60 / 24);
     });
+
+
+
+    $('#days').on('keyup', function() {
+
+        var days = parseInt($('#days').val());
+
+        var date = new Date(),
+            yr = date.getFullYear(),
+            month = (date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) : (date.getMonth() + 1),
+            day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate(),
+            startDate = yr + '-' + month + '-' + day;
+
+        var date = new Date();
+        date.setDate(date.getDate() + days);
+        var yr = date.getFullYear(),
+            month = (date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) : (date.getMonth() + 1),
+            day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate(),
+            endDate = yr + '-' + month + '-' + day;
+
+        $('#start_date').val(startDate);
+        $('#end_date').val(endDate);
+
+    });
+
+    function update_punish(days) {
+
+    }
+   
 </script>

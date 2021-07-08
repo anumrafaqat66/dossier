@@ -1985,6 +1985,9 @@ add column status varchar(50) NOT NULL;
 alter table punishment_records
 add COLUMN status varchar(50) NOT NULL;
 
+alter table punishment_records
+add column days int(20);
+
 --
 -- Indexes for dumped tables
 --
@@ -2708,9 +2711,6 @@ ALTER TABLE `warning_records`
 
 ALTER TABLE `warning_records`
   ADD `file` varchar(500);
-
-ALTER TABLE `warning_records`
-  ADD `type` varchar(500);
 
 ALTER TABLE `warning_records`
   ADD `oc_no` int(11);

@@ -77,7 +77,7 @@
                                                 <span id="error_end_date" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;End Date cannot be less than start date</span>
                                             </div>
                                             <div class="col-sm-3 mb-1">
-                                                <input type="text" class="form-control form-control-user" name="days" id="days" readonly>
+                                                <input type="text" class="form-control form-control-user" name="days" id="days">
                                             </div>
                                         </div>
 
@@ -256,54 +256,27 @@
     });
 
 
-    // $('#add_btn').on('click', function() {
-    //     //alert('javascript working');
-    //     // $('#add_btn').attr('disabled', true);
-    //     var validate = 0;
+    $('#days').on('keyup', function() {
 
-    //     var oc_no = $('#oc_no').val();
+        var days = parseInt($('#days').val());
 
+        var date = new Date(),
+            yr = date.getFullYear(),
+            month = (date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) : (date.getMonth() + 1),
+            day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate(),
+            startDate = yr + '-' + month + '-' + day;
 
-    //     if (oc_no == '') {
-    //         validate = 1;
-    //         $('#oc_no').addClass('red-border');
-    //     }
+        var date = new Date();
+        date.setDate(date.getDate() + days);
+        var yr = date.getFullYear(),
+            month = (date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) : (date.getMonth() + 1),
+            day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate(),
+            endDate = yr + '-' + month + '-' + day;
 
-    //     if (validate == 0) {
-    //         // $('#add_form')[0].submit();
-    //         $('#show_error_new').hide();
+        $('#start_date').val(startDate);
+        $('#end_date').val(endDate);
 
-    //         $.ajax({
-    //             url: '<?= base_url(); ?>D_O/search_cadet',
-    //             method: 'POST',
-    //             data: {
-    //                 'oc_no': oc_no
-    //             },
-    //             success: function(data) {
-    //                 var result = jQuery.parseJSON(data);
-
-    //                 if (result != undefined) {
-    //                     $('#search_cadet').show();
-    //                     $('#no_data').hide();
-
-    //                     $('#name').val(result['name']);
-    //                     $('#term').val(result['term']);
-    //                     $('#division').val(result['divison_name']);
-    //                     $('#oc_num').val(result['oc_no']);
-    //                     $('#id').val(result['p_id']);
-    //                 } else {
-    //                     $('#no_data').show();
-    //                     $('#search_cadet').hide();
-    //                 }
-    //             },
-    //             async: true
-    //         });
-
-    //     } else {
-    //         $('#add_btn').removeAttr('disabled');
-    //         $('#show_error_new').show();
-    //     }
-    // });
+    });
 
     $('#table_rows').find('tr').click(function(e) {
         var $columns = $(this).find('td');

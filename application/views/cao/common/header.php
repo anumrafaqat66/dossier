@@ -42,7 +42,7 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="<?php echo base_url(); ?><?php if ($this->session->userdata('acct_type') == 'do') {
-                                                                        echo "D_O";
+                                                                        echo "CAO";
                                                                     } ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -54,7 +54,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url(); ?>CAO/view_dossier"  aria-expanded="true">
+                <a class="nav-link" href="<?php echo base_url(); ?>CAO/view_dossier" aria-expanded="true">
                     <i class="fas fa-th-list"></i>
                     <span> View Dossiers </span>
                     <!-- <span>Components</span> -->
@@ -88,12 +88,12 @@
                 <div id="collapse_general" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!-- <a class="collapse-item" href="<?php echo base_url(); ?>/CAO/add_club">Add Club</a> -->
-                        <a class="collapse-item" href="<?php echo base_url(); ?>CAO/daily_module">Daily Module</a>
+                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>CAO/daily_module">Daily Module</a> -->
                         <!-- <a class="collapse-item" href="<?php echo base_url(); ?>/CAO/Inspection_record">Inspection Record</a> -->
-                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>/CAO/personal_data">Personal Data</a> -->
+                        <a class="collapse-item" href="<?php echo base_url(); ?>/CAO/personal_data">Personal Data</a>
                         <!-- <a class="collapse-item" href="#">Obiography</a> -->
-                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/auto_biography">Cadet's Auto-biography</a> -->
-                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/psychologist_report">Psychologist's Report</a> -->
+                        <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/auto_biography">Cadet's Auto-biography</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/psychologist_report">Psychologist's Report</a>
                     </div>
                 </div>
             </li>
@@ -105,9 +105,7 @@
                 </a>
                 <div id="collapse_discipline" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url(); ?>SO_STORE/add_inventory">Observation Record (Terms I-III)</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>SO_STORE/view_projects">Punishment Record</a>
-                        <a class="collapse-item" href="#">Observation Slips</a> 
+                        <a class="collapse-item" href="<?php echo base_url(); ?>CAO/daily_module">Daily Module</a>
                     </div>
                 </div>
             </li>
@@ -143,7 +141,7 @@
                     <span> Officer Like Qualities</span>
                     <!-- <span>Components</span> -->
                 </a>
-                
+
             </li>
 
 
@@ -334,5 +332,4 @@
                     $('#general').click(function() {
                         $('.collapse_general').collapse();
                     });
-                    
                 </script>
