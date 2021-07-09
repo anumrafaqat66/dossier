@@ -293,27 +293,72 @@ class D_O extends CI_Controller
             $start_date = $postData['start_date'];
             $end_date = $postData['end_date'];
             $days = $postData['days'];
-
-            $cond  = ['id' => $id];
+            if(isset($postData['offense'])){
             $data_update = [
                 'punishment_awarded' => $punish,
                 'start_date' => $start_date,
+                'date' => date('Y-m-d'),
+                //'date'=>$date,
+                'offence'=> $postData['offense'],
                 'end_date' => $end_date,
-                'days' => $days
+                'days' => $days,
+                 'updated_at' => date('Y-m-d H:i:s')
+
             ];
+            }else{
+                  $data_update = [
+                'punishment_awarded' => $punish,
+                'date' => date('Y-m-d'),
+                'start_date' => $start_date,
+                'end_date' => $end_date,
+                'days' => $days,
+                 'updated_at' => date('Y-m-d H:i:s')
+            ];
+            }
+       
+       //print_r($data_update);exit;
+            $cond  = ['id' => $id];
 
             $this->db->where($cond);
             $update = $this->db->update('punishment_records', $data_update);
 
             if (!empty($update)) {
                 $this->session->set_flashdata('success', 'Punishment updated successfully');
+                if(isset($postData['offense'])){
+                redirect('D_O/view_dossier');
+            }else{
                 redirect('D_O/view_punishment_list');
+            }
             } else {
                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
-                redirect('D_O/vew_punishment_list');
+                      if(isset($postData['offense'])){
+                redirect('D_O/view_dossier');
+            }else{
+                redirect('D_O/view_punishment_list');
+            }
             }
         }
     }
+
+        public function edit_punishment_data()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $cadet_id = $_POST['id'];
+            //echo $cadet_id;exit;
+            $this->db->select('pr.*, f.*');
+            $this->db->from('punishment_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('f.oc_no = pr.oc_no');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.p_id', $cadet_id);
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
+           // $this->db->where('pr.status', 'Approved');
+            $data['edit_record'] = $this->db->get()->row_array();
+            //print_r($data['edit_record']);exit;
+            echo json_encode($data['edit_record']);
+        }
+    }
+    
 
     public function save_cadet_excuse()
     {
@@ -443,7 +488,7 @@ class D_O extends CI_Controller
             //$last_id = $this->db->insert_id();
 
             if (!empty($insert)) {
-                $this->session->set_flashdata('success', 'Punishment added successfully');
+                $this->session->set_flashdata('success', 'Warning added successfully');
                 redirect('D_O/add_warning');
             } else {
                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
@@ -451,7 +496,58 @@ class D_O extends CI_Controller
             }
         }
     }
+ public function update_cadet_warning()
+    {
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+//print_r($_FILES['file']['name'][0] != NULL);
+       if($_FILES['file']['name'][0] != NULL){
+            $upload1 = $this->upload_warning($_FILES['file']);
+            if (count($upload1) > 1) {
+                $files = implode(',', $upload1);
+            } else {
+                $files = $upload1[0];
+            }
+        }else{
+            $files=$postData['old_file'];
+        }
 
+            $id = $postData['id'];
+            $oc_no = $postData['oc_num'];
+            $date = $postData['date'];
+            $issued_by = $postData['issued_by'];
+            $type = $postData['warning_type'];
+            $reason = $postData['reason'];
+            
+             $cond  = ['oc_no' => $oc_no];
+             $data_update = array(
+                'oc_no' => $oc_no,
+                'p_id' => $id,
+                'date' => date('Y-m-d'),
+                'file'=> $files,
+                'issued_by' => $issued_by,
+                'type' => $type,
+                'do_id' => $this->session->userdata('user_id'),
+                'reasons' => $reason,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+                //'status' => 'Pending'
+
+            );
+
+           
+            $this->db->where($cond);
+            $update = $this->db->update('warning_records', $data_update);
+
+            if (!empty($update)) {
+                $this->session->set_flashdata('success', 'Warning updated successfully');
+                redirect('D_O/view_dossier');
+            } else {
+                $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                redirect('D_O/view_dossier');
+            }
+        }
+    }
 
     public function search_cadet()
     {
@@ -669,6 +765,27 @@ class D_O extends CI_Controller
             echo json_encode($data['warning_records']);
         }
     }
+
+        public function edit_warning_data()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $cadet_id = $_POST['id'];
+            //echo $cadet_id;exit;
+            $this->db->select('pr.*, f.*');
+            $this->db->from('warning_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('f.oc_no = pr.oc_no');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.p_id', $cadet_id);
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
+           // $this->db->where('pr.status', 'Approved');
+            $data['edit_record'] = $this->db->get()->row_array();
+            //print_r($data['edit_record']);exit;
+            echo json_encode($data['edit_record']);
+        }
+    }
+
+
 
     public function view_excuse_list()
     {

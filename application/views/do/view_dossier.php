@@ -65,6 +65,8 @@
                                                             <th scope="col">End Date</th>
                                                             <th scope="col">Days</th>
                                                             <th scope="col">Status</th>
+                                                             <th scope="col">Edit</th>
+
                                                         </tr>
                                                     </thead>
                                                     <tbody id="table_rows_punishment">
@@ -90,6 +92,130 @@
         </div>
     </div>
 
+ <div class="modal fade" id="edit_punishment">
+        <!-- <div class="row"> -->
+        <div class="modal-dialog modal-dialog-centered " style="margin-left: 250px;" role="document">
+            <div class="modal-content bg-custom3" style="width:1200px;">
+                <div class="modal-header" style="width:1200px;">
+                </div>
+                <div class="card-body bg-custom3">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="card">
+                                <div class="card-header bg-custom1">
+                                    <h1 class="h4">Update Punishments Record</h1>
+                                </div>
+
+                                <div class="card-body bg-custom3">
+                                   <form class="user" role="form" method="post" id="save_form" action="<?= base_url(); ?>D_O/update_punishment">
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Name:</h6>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Term:</h6>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Division:</h6>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+
+                                <div class="col-sm-4 mb-1" style="display:none">
+                                    <input type="text" class="" name="oc_num_ep" id="oc_num">
+                                </div>
+                                <div class="col-sm-4 mb-1" style="display:none">
+                                    <input type="text" class="" name="id_ep" id="id">
+                                </div>
+                               
+                               
+                               <input type="hidden" class="form-control form-control-user" name="punish_id" id="punish_id" val="">
+                                <div class="col-sm-4 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="name" id="name" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
+                                </div>
+                                <div class="col-sm-4 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="term" id="term" style="font-weight: bold; font-size:large" placeholder="Term" readonly>
+                                </div>
+                                <div class="col-sm-4 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="division" id="division" style="font-weight: bold; font-size:large" placeholder="Division" readonly>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <h6>&nbsp;Punishment Detail:</h6>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12 mb-1">
+                                    <textarea class="form-control form-control-user" name="punish" id="punish" style="border-radius:10px" placeholder="Add Punishment details"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <h6>&nbsp;Offense:</h6>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12 mb-1">
+                                    <textarea class="form-control form-control-user" name="offense" id="offense" style="border-radius:10px" placeholder="Add Offense details"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Start Date:</h6>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;End Date:</h6>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Total Days:</h6>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-4 mb-1">
+                                    <input type="date" class="form-control form-control-user" name="start_date" id="start_date">
+                                </div>
+                                <div class="col-sm-4 mb-1">
+                                    <input type="date" class="form-control form-control-user" name="end_date" id="end_date">
+                                    <span id="error_end_date" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;End Date cannot be less than start date</span>
+                                </div>
+                                <div class="col-sm-4 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="days" id="days">
+                                </div>
+                            </div>
+
+                            <div class="form-group row justify-content-center">
+                                <div class="col-sm-4">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn_punishment">
+                                        <!-- <i class="fab fa-google fa-fw"></i>   -->
+                                        Update
+                                    </button>
+                                    <span id="show_error_save" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
+                                </div>
+                            </div>
+
+                        </form>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-primary rounded-pill" data-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="modal fade" id="excuses">
         <!-- <div class="row"> -->
@@ -348,6 +474,7 @@
                                                             <th scope="col">Reason</th>
                                                             <th scope="col">Warning Type</th>
                                                             <th scope="col">date</th>
+                                                             <th scope="col">Edit</th>
                                                          <!--    <th scope="col">Start Date</th>
                                                             <th scope="col">End Date</th>
                                                             <th scope="col">Days</th>
@@ -360,6 +487,156 @@
                                                     </tbody>
                                                 </table>
                                             </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-primary rounded-pill" data-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+ <div class="modal fade" id="edit_warning" style="z-index: 2100">
+        <!-- <div class="row"> -->
+        <div class="modal-dialog modal-dialog-centered " style="margin-left: 250px;" role="document">
+            <div class="modal-content bg-custom3" style="width:1200px;">
+                <div class="modal-header" style="width:1200px;">
+                </div>
+                <div class="card-body bg-custom3">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="card">
+                                <div class="card-header bg-custom1">
+                                    <h1 class="h4">Update Warnings Record</h1>
+                                </div>
+
+                                <div class="card-body bg-custom3">
+                                <!--     <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>Project_Officer/insert_project"> -->
+                                       <!--  <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <h3 id="cadet_name_heading_ew"></h3>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h3 id="cadet_oc_no_ew"></h3>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h3 id="cadet_term_ew"></h3>
+                                            </div>
+                                        </div> -->
+
+                                        <div class="card-body">
+                                           <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>D_O/update_cadet_warning">
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Name:</h6>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Term:</h6>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Division:</h6>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+
+                                <div class="col-sm-4 mb-1" style="display:none">
+                                    <input type="text" class="" name="oc_num" id="oc_num_ew">
+                                </div>
+                                <div class="col-sm-4 mb-1" style="display:none">
+                                    <input type="text" class="" name="id" id="id_ew">
+                                </div>
+
+                                <div class="col-sm-4 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="name" id="name" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
+                                </div>
+                                <div class="col-sm-4 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="term" id="term" style="font-weight: bold; font-size:large" placeholder="Term" readonly>
+                                </div>
+                                <div class="col-sm-4 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="division" id="division" style="font-weight: bold; font-size:large" placeholder="Division" readonly>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Date:</h6>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Issue By:</h6>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Warning Type:</h6>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-4 mb-1">
+                                    <input type="date" class="form-control form-control-user" name="date" id="date">
+                                </div>
+                                <div class="col-sm-4 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="issued_by" id="issued_by" placeholder="Issue by">
+                                    <span id="error_end_date" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;End Date cannot be less than start date</span>
+                                </div>
+                                <div class="col-sm-4 mb-1">
+                                    <select class="form-control rounded-pill" name="warning_type" id="warning_type" data-placeholder="Warning Type" style="font-size: 0.8rem; height:50px;">
+                                        <option class="form-control form-control-user" value="">Select Warning Type</option>
+                                        <option class="form-control form-control-user" value="red">Red</option>
+                                        <option class="form-control form-control-user" value="orange">Orange</option>
+                                        <option class="form-control form-control-user" value="yellow">Yellow</option>
+                                        <option class="form-control form-control-user" value="white">White</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <h6>&nbsp;Reasons:</h6>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12 mb-1">
+                                    <textarea class="form-control form-control-user" name="reason" id="reason" style="border-radius:10px" placeholder="Add warning reasons"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <h6>&nbsp;Upload Warning Letter:</h6>
+                                </div>
+                            </div>
+
+                            <div class="form-group row custom-file-upload">
+                                <div class="col-sm-12 mb-1">
+                                    <input type="file" style="height: 50px; padding:10px !important;" multiple="multiple" class="form-control form-control-user" placeholder="Upload Document" name="file[]" x-model="fileName">
+                                    <label style="color: black;font-weight: bold;" id="file_name"></label>
+                                </div>
+                            </div>
+                            <input type="hidden"  name="old_file" id="old_file">
+                            <div class="form-group row justify-content-center">
+                                <div class="col-sm-4">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn">
+                                        <!-- <i class="fab fa-google fa-fw"></i>   -->
+                                        Update
+                                    </button>
+                                    <span id="show_error_save" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
+                                </div>
+                            </div>
+
+                        </form>
+                                    
                                         </div>
 
                                     </form>
@@ -977,6 +1254,7 @@
                                                         <td>${result[i]['end_date']}</td>
                                                         <td>${diff}</td>
                                                         <td>${status}</td>
+                                                        <td data-toggle="modal" data-target="#edit_punishment"><a onclick="edit_punishment(${result[i]['p_id']})" ><i class="fa fa-edit"></i></a></td>
                                                     </tr>`);
                     }
                 } else {
@@ -990,6 +1268,7 @@
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
+                                                      <td></td>
                                                     </tr>`);
                 }
             },
@@ -1153,6 +1432,7 @@ function view_warning(id) {
                                                         <td>${result[i]['reasons']}</td>
                                                         <td>${result[i]['type']}</td>
                                                         <td>${result[i]['date']}</td>
+                                                        <td data-toggle="modal" data-target="#edit_warning"><a onclick="edit_warning(${result[i]['p_id']})" ><i class="fa fa-edit"></i></a></td>
                                                     </tr>`);
                     }
                 } else {
@@ -1167,6 +1447,69 @@ function view_warning(id) {
             async: true
         });
     }
+    function edit_warning(id) {
+        // alert('cadet id: ' + id);
+        $.ajax({
+            url: '<?= base_url(); ?>D_O/edit_warning_data',
+            method: 'POST',
+            data: {
+                'id': id
+            },
+            success: function(data) {
+                var result = jQuery.parseJSON(data);
+                var len = result.length;
+                // alert('xczxcx');
+                 //alert(result['name']);
+                  $('#oc_num_ew').val(result['oc_no']);
+                  $('#id_ew').val(result['p_id']);
+                  $('#name').val(result['name']);
+                  $('#division').val(result['division']);
+                  $('#warning_type').val(result['type']);
+                  $('#term').val(result['term']);
+                  $('#date').val(result['date']);
+                  $('#issued_by').val(result['issued_by']);
+                  $('#reason').val(result['reasons']);
+                   $('#file_name').html(result['file'] );
+                    $('#old_file').val(result['file']);
+            },
+            async: true
+        });
+    }
+        function edit_punishment(id) {
+        // alert('cadet id: ' + id);
+        $.ajax({
+            url: '<?= base_url(); ?>D_O/edit_punishment_data',
+            method: 'POST',
+            data: {
+                'id': id
+            },
+            success: function(data) {
+                var result = jQuery.parseJSON(data);
+                var len = result.length;
+                // alert('xczxcx');
+                 //alert(result['name']);
+                 // var date1 = new Date(result['start_date']);
+                 //    var date2 = new Date(result['end_date']);
+                 //    var diff = (Math.abs(date1 - date2)) / (1000 * 60 * 60 * 24);
+
+                  $('#oc_num_ep').val(result['oc_no']);
+                  $('#id_ep').val(result['p_id']);
+                  $('#name').val(result['name']);
+                   $('#term').val(result['term']);
+                  $('#division').val(result['division']);
+                  $('#punish').val(result['punishment_awarded']);
+                  $('#offense').val(result['offence']);
+                  $('#start_date').val(result['start_date']);
+                  $('#end_date').val(result['start_date']);
+                  $('#days').val(result['days']);
+                   $('#punish_id').val(result['id']);
+                  
+            },
+            async: true
+        });
+    }
+    
+
 
     function seen(data) {
         // alert('in');
@@ -1195,6 +1538,40 @@ function view_warning(id) {
         });
     });
 
+ $('#save_btn').on('click', function() {
+        $('#save_btn').attr('disabled', true);
+        var validate = 0;
+        var issued_by = $('#issued_by').val();
+        var warning_type = $('#warning_type').val();
+        var reason = $('#reason').val();
+        var date = $('#date').val();
+
+        if (issued_by == '') {
+            validate = 1;
+            $('#issued_by').addClass('red-border');
+        }
+        if (warning_type == '') {
+            validate = 1;
+            $('#warning_type').addClass('red-border');
+        }
+        if (reason == '') {
+            validate = 1;
+            $('#reason').addClass('red-border');
+        }
+        if (date == '') {
+            validate = 1;
+            $('#date').addClass('red-border');
+        }
+
+        if (validate == 0) {
+            $('#save_form')[0].submit();
+            $('#show_error_save').hide();
+
+        } else {
+            $('#save_btn').removeAttr('disabled');
+            $('#show_error_save').show();
+        }
+    });
 
     $('#add_btn').on('click', function() {
         //alert('javascript working');
@@ -1379,6 +1756,41 @@ function view_warning(id) {
             $('#error_search').show();
         }
 
+    });
+
+     $('#save_btn_punishment').on('click', function() {
+        $('#save_btn').attr('disabled', true);
+        var validate = 0;
+        var punish = $('#punish').val();
+        var offense = $('#offense').val();
+        var start_date = $('#start_date').val();
+        var end_date = $('#end_date').val();
+
+        if (punish == '') {
+            validate = 1;
+            $('#punish').addClass('red-border');
+        }
+        if (offense == '') {
+            validate = 1;
+            $('#offense').addClass('red-border');
+        }
+        if (start_date == '') {
+            validate = 1;
+            $('#start_date').addClass('red-border');
+        }
+        if (end_date == '') {
+            validate = 1;
+            $('#end_date').addClass('red-border');
+        }
+
+        if (validate == 0) {
+            $('#save_form')[0].submit();
+            $('#show_error_save').hide();
+
+        } else {
+            $('#save_btn').removeAttr('disabled');
+            $('#show_error_save').show();
+        }
     });
 
     $('#save_btn').on('click', function() {
