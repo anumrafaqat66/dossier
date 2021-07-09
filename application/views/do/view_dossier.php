@@ -327,7 +327,7 @@
                                                             <th scope="col">Date</th>
                                                             <th scope="col">observation</th>
                                                             <th scope="col">Created Date</th>
-                                                            <!-- <th scope="col">End Date</th> -->
+                                                            <th scope="col">Edit</th> 
                                                             <!--  <th scope="col">Days</th>
                                                             <th scope="col">Status</th> -->
                                                         </tr>
@@ -355,6 +355,98 @@
         </div>
     </div>
 
+  <div class="modal fade" id="edit_observation">
+        <!-- <div class="row"> -->
+        <div class="modal-dialog modal-dialog-centered " style="margin-left: 250px;" role="document">
+            <div class="modal-content bg-custom3" style="width:1200px;">
+                <div class="modal-header" style="width:1200px;">
+                </div>
+                <div class="card-body bg-custom3">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="card">
+                                <div class="card-header bg-custom1">
+                                    <h1 class="h4">Edit Observation Record</h1>
+                                </div>
+
+                                <div class="card-body bg-custom3">
+                                
+                                        <div class="card-body">
+                               <form class="user" role="form" method="post" id="save_form_observation" action="<?= base_url(); ?>D_O/update_cadet_observation">
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Name:</h6>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Term:</h6>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Division:</h6>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+
+                                <div class="col-sm-4 mb-1" style="display:none">
+                                    <input type="text" class="" name="oc_num" id="oc_num_eo">
+                                </div>
+                                <div class="col-sm-4 mb-1" style="display:none">
+                                    <input type="text" class="" name="id" id="id_eo">
+                                </div>
+
+                                <div class="col-sm-4 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="name" id="name_eo" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
+                                </div>
+                                <div class="col-sm-4 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="term" id="term_eo" style="font-weight: bold; font-size:large" placeholder="Term" readonly>
+                                </div>
+                                <div class="col-sm-4 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="division" id="division_eo" style="font-weight: bold; font-size:large" placeholder="Division" readonly>
+                                </div>
+                               <input type="hidden" id="observation_id" name="observation_id">
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <h6>&nbsp;Add Observation:</h6>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12 mb-1">
+                                    <textarea class="form-control form-control-user" name="observation" id="observation_eo" style="border-radius:10px" placeholder="Add Observation"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group row justify-content-center">
+                                <div class="col-sm-4">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn_observation">
+                                        <!-- <i class="fab fa-google fa-fw"></i>   -->
+                                        Update
+                                    </button>
+                                    <span id="show_error_save" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
+                                </div>
+                            </div>
+
+                        </form>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-primary rounded-pill" data-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Physical Milestone  -->
     <div class="modal fade" id="milestone">
         <!-- <div class="row"> -->
@@ -833,6 +925,7 @@
                                                             <th scope="col">Term</th>
                                                             <th scope="col">Assigned Club</th>
                                                             <th scope="col">Created Date</th>
+                                                            <th>Edit</th>
 
                                                         </tr>
                                                     </thead>
@@ -842,6 +935,104 @@
                                                     </tbody>
                                                 </table>
                                             </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-primary rounded-pill" data-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="modal fade" id="edit_clubs">
+        <!-- <div class="row"> -->
+        <div class="modal-dialog modal-dialog-centered " style="margin-left: 250px;" role="document">
+            <div class="modal-content bg-custom3" style="width:1200px;">
+                <div class="modal-header" style="width:1200px;">
+                </div>
+                <div class="card-body bg-custom3">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="card">
+                                <div class="card-header bg-custom1">
+                                    <h1 class="h4">Edit Club Record</h1>
+                                </div>
+
+                                <div class="card-body bg-custom3">
+
+                                        <div class="card-body">
+                                             <form class="user" role="form" method="post" id="save_form_club" action="<?= base_url(); ?>D_O/update_cadet_club">
+                            <div class="form-group row">
+                                <div class="col-sm-3">
+                                    <h6>&nbsp;Name:</h6>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <h6>&nbsp;Term:</h6>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <h6>&nbsp;Division:</h6>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <h6>&nbsp;Club:</h6>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+
+                                <div class="col-sm-3 mb-1" style="display:none">
+                                    <input type="text" class="" name="oc_num" id="oc_num_ec">
+                                </div>
+                                <div class="col-sm-3 mb-1" style="display:none">
+                                    <input type="text" class="" name="p_id" id="p_id_ec">
+                                </div>
+
+                                <div class="col-sm-3 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="name" id="name_ec" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
+                                </div>
+                                <div class="col-sm-3 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="term" id="term_ec" style="font-weight: bold; font-size:large" placeholder="Term" readonly>
+                                </div>
+                                <input type="hidden" name="club_id" id="club_id">
+                                <div class="col-sm-3 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="division" id="division_ec" style="font-weight: bold; font-size:large" placeholder="Division" readonly>
+                                </div>
+                                <div class="col-sm-3 mb-1">
+                                    <select class="form-control rounded-pill" name="club" id="club_ec" data-placeholder="Select Club" style="font-size: 0.8rem; height:50px; font-weight: bold; font-size:large">
+                                        <option class="form-control form-control-user" value="">Select Club</option>
+                                          <?php $club_data = $this->db->get('cadet_club')->result_array();?>
+                                        <?php foreach ($club_data as $club) { ?>
+                                            <option class="form-control form-control-user" value="<?= $club['name'] ?>"><?= $club['name'] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row justify-content-center">
+                                <div class="col-sm-4">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn_club">
+                                        <!-- <i class="fab fa-google fa-fw"></i>   -->
+                                        save
+                                    </button>
+                                    <span id="show_error_save" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
+                                </div>
+                            </div>
+
+                        </form>
                                         </div>
 
                                     </form>
@@ -1358,6 +1549,7 @@
                                                         <td>${result[i]['observation']}</td>
                                                         <td>${result[i]['created_at']}</td>
                                                         <td>${status}</td>
+                                                         <td data-toggle="modal" data-target="#edit_observation"><a onclick="edit_observation(${result[i]['p_id']})" ><i class="fa fa-edit"></i></a></td>
                                                     </tr>`);
                     }
                 } else {
@@ -1395,6 +1587,7 @@
                                                         <td>${result[i]['term']}</td>
                                                         <td>${result[i]['assigned_club']}</td>
                                                         <td>${result[i]['created_at']}</td>
+                                                         <td data-toggle="modal" data-target="#edit_clubs"><a onclick="edit_club(${result[i]['p_id']})" ><i class="fa fa-edit"></i></a></td>
                                                     </tr>`);
                     }
                 } else {
@@ -1463,7 +1656,7 @@ function view_warning(id) {
                   $('#oc_num_ew').val(result['oc_no']);
                   $('#id_ew').val(result['p_id']);
                   $('#name').val(result['name']);
-                  $('#division').val(result['division']);
+                  $('#division').val(result['divison_name']);
                   $('#warning_type').val(result['type']);
                   $('#term').val(result['term']);
                   $('#date').val(result['date']);
@@ -1486,17 +1679,13 @@ function view_warning(id) {
             success: function(data) {
                 var result = jQuery.parseJSON(data);
                 var len = result.length;
-                // alert('xczxcx');
-                 //alert(result['name']);
-                 // var date1 = new Date(result['start_date']);
-                 //    var date2 = new Date(result['end_date']);
-                 //    var diff = (Math.abs(date1 - date2)) / (1000 * 60 * 60 * 24);
-
+                
+                //alert(result['name']);
                   $('#oc_num_ep').val(result['oc_no']);
                   $('#id_ep').val(result['p_id']);
                   $('#name').val(result['name']);
                    $('#term').val(result['term']);
-                  $('#division').val(result['division']);
+                  $('#division').val(result['divison_name']);
                   $('#punish').val(result['punishment_awarded']);
                   $('#offense').val(result['offence']);
                   $('#start_date').val(result['start_date']);
@@ -1509,8 +1698,58 @@ function view_warning(id) {
         });
     }
     
+     function edit_observation(id) {
+        // alert('cadet id: ' + id);
+        $.ajax({
+            url: '<?= base_url(); ?>D_O/edit_observation_data',
+            method: 'POST',
+            data: {
+                'id': id
+            },
+            success: function(data) {
+                var result = jQuery.parseJSON(data);
+                var len = result.length;
+//alert(result['name']);
+                  $('#oc_num_eo').val(result['oc_no']);
+                  $('#id_eo').val(result['p_id']);
+                  $('#name_eo').val(result['name']);
+                   $('#term_eo').val(result['term']);
+                  $('#division_eo').val(result['divison_name']);
+                  $('#observation_eo').val(result['observation']);
+                  
+                   $('#observation_id').val(result['id']);
+                  
+            },
+            async: true
+        });
+    }
 
-
+     function edit_club(id) {
+        // alert('cadet id: ' + id);
+        $.ajax({
+            url: '<?= base_url(); ?>D_O/edit_club_data',
+            method: 'POST',
+            data: {
+                'id': id
+            },
+            success: function(data) {
+                var result = jQuery.parseJSON(data);
+                var len = result.length;
+//alert(result['assigned_club']);
+                  $('#oc_num_ec').val(result['oc_no']);
+                  $('#id_ec').val(result['p_id']);
+                  $('#name_ec').val(result['name']);
+                   $('#term_ec').val(result['term']);
+                  $('#division_ec').val(result['divison_name']);
+                  $('#club_ec').val(result['assigned_club']);
+                  $('#observation_ec').val(result['observation']);
+                  
+                   $('#club_id').val(result['id']);
+                  
+            },
+            async: true
+        });
+    }
     function seen(data) {
         // alert('in');
         // alert(data);
@@ -1846,5 +2085,46 @@ function view_warning(id) {
         }
 
         $('#days').val(Math.abs(end_date - start_date) / 1000 / 60 / 60 / 24);
+    });
+
+       $('#save_btn_observation').on('click', function() {
+        $('#save_btn').attr('disabled', true);
+        var validate = 0;
+        var observation = $('#observation').val();
+
+        
+        if (observation == '') {
+            validate = 1;
+            $('#observation').addClass('red-border');
+        }
+
+        if (validate == 0) {
+            $('#save_form_observation')[0].submit();
+            $('#show_error_save').hide();
+
+        } else {
+            $('#save_btn_observation').removeAttr('disabled');
+            $('#show_error_save').show();
+        }
+    });
+
+          $('#save_btn_club').on('click', function() {
+        // $('#save_btn').attr('disabled', true);
+        var validate = 0;
+        var club = $('#club').val();
+
+        if (club == '') {
+            validate = 1;
+            $('#club').addClass('red-border');
+        }
+
+        if (validate == 0) {
+            $('#save_form_club')[0].submit();
+            $('#show_error_save').hide();
+
+        } else {
+            $('#save_btn_club').removeAttr('disabled');
+            $('#show_error_save').show();
+        }
     });
 </script>

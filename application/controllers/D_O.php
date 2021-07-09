@@ -61,6 +61,39 @@ class D_O extends CI_Controller
             }
         }
     }
+
+     public function update_cadet_club()
+    {
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+
+           
+            $club = $postData['club'];
+            $id=$postData['club_id'];
+
+            $insert_array = array(
+                
+                'assigned_club' => $club,
+                'updated_at' => date('Y-m-d H:i:s')
+            );
+            $cond  = ['id' => $id];
+            $data_update = [
+                'assigned_club' => $club
+            ];
+
+            $this->db->where($cond);
+            $update = $this->db->update('club_records', $data_update);
+
+            if (!empty($update)) {
+                $this->session->set_flashdata('success', 'Cadet Club Updated successfully');
+                redirect('D_O/view_dossier');
+            } else {
+                $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                redirect('D_O/view_dossier');
+            }
+        }
+    }
+
     public function add_PN_Form()
     {
         if ($this->input->post()) {
@@ -443,6 +476,39 @@ class D_O extends CI_Controller
         }
     }
 
+ public function update_cadet_observation()
+    {
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+
+            $id = $postData['observation_id'];
+            // $oc_no = $postData['oc_num'];
+            $observation = $postData['observation'];
+            $term = $postData['term'];
+            // $awarded_by = $this->session->userdata('username');
+            // $awarded_id = $this->session->userdata('user_id');
+
+            $update_array = array(
+                //  'oc_no' => $oc_no,
+            
+                'observation' => $observation,
+                'updated_at' => date('Y-m-d H:i:s'),
+            
+            );
+            $cond  = ['id' => $id];
+            $this->db->where($cond);
+            $insert = $this->db->update('observation_records', $update_array);
+            //$last_id = $this->db->insert_id();
+
+            if (!empty($insert)) {
+                $this->session->set_flashdata('success', 'Observation updated successfully');
+                redirect('D_O/view_dossier');
+            } else {
+                $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                redirect('D_O/view_dossier');
+            }
+        }
+    }
 
     public function save_cadet_warning()
     {
@@ -608,7 +674,9 @@ class D_O extends CI_Controller
     public function view_dossier()
     {
         if ($this->session->has_userdata('user_id')) {
+              $data['club_data'] = $this->db->get('cadet_club')->result_array();
             $data['pn_data'] = $this->db->where('divison_name', 'XYZ')->get('pn_form1s')->result_array();
+            print_r($data['club_data']);
             $this->load->view('do/view_dossier', $data);
         }
     }
@@ -785,6 +853,44 @@ class D_O extends CI_Controller
         }
     }
 
+          public function edit_club_data()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $cadet_id = $_POST['id'];
+            //echo $cadet_id;exit;
+            $this->db->select('pr.*, f.*');
+            $this->db->from('club_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('f.oc_no = pr.oc_no');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.p_id', $cadet_id);
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
+           // $this->db->where('pr.status', 'Approved');
+            $data['edit_record'] = $this->db->get()->row_array();
+            //print_r($data['edit_record']);exit;
+            echo json_encode($data['edit_record']);
+        }
+    }
+
+         public function edit_observation_data()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $cadet_id = $_POST['id'];
+            //echo $cadet_id;exit;
+            $this->db->select('pr.*, f.*');
+            $this->db->from('observation_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('f.oc_no = pr.oc_no');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.p_id', $cadet_id);
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
+           // $this->db->where('pr.status', 'Approved');
+            $data['edit_record'] = $this->db->get()->row_array();
+            //print_r($data['edit_record']);exit;
+            echo json_encode($data['edit_record']);
+        }
+    }
+
 
 
     public function view_excuse_list()
@@ -884,6 +990,7 @@ class D_O extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
 
+
             $oc_no = $_POST['oc_no'];
             $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->where('oc_no', $oc_no)->get('pn_form1s')->result_array();
             $data['oc_no_entered'] = $oc_no;
@@ -899,8 +1006,9 @@ class D_O extends CI_Controller
 
     public function search_all_cadets_for_dossier()
     {
+       // echo $this->session->userdata('division');exit;
         if ($this->session->has_userdata('user_id')) {
-            $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->result_array();
+            $data['pn_data'] = $this->db->where('oc_no', $this->session->userdata('division'))->get('pn_form1s')->result_array();
             if (count($data['pn_data']) > 0) {
                 $view_page = $this->load->view('do/view_dossier', $data, TRUE);
                 echo $view_page;
