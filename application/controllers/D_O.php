@@ -322,6 +322,7 @@ class D_O extends CI_Controller
             $postData = $this->security->xss_clean($this->input->post());
 
             $id = $postData['punish_id'];
+            $page=$postData['page'];
             $punish = $postData['punish'];
             $start_date = $postData['start_date'];
             $end_date = $postData['end_date'];
@@ -358,14 +359,26 @@ class D_O extends CI_Controller
             if (!empty($update)) {
                 $this->session->set_flashdata('success', 'Punishment updated successfully');
                 if(isset($postData['offense'])){
-                redirect('D_O/view_dossier');
+                     if($page=='daily_module'){
+                            redirect('D_O/view_punishment_list');
+                        }elseif($page=='dossier'){
+                            redirect('D_O/view_dossier');
+                        }
             }else{
+                if($page=='daily_module'){
                 redirect('D_O/view_punishment_list');
+            }elseif($page=='dossier'){
+                redirect('D_O/view_dossier');
+            }
             }
             } else {
                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
                       if(isset($postData['offense'])){
-                redirect('D_O/view_dossier');
+                         if($page=='daily_module'){
+                            redirect('D_O/view_punishment_list');
+                        }elseif($page=='dossier'){
+                            redirect('D_O/view_dossier');
+                        }
             }else{
                 redirect('D_O/view_punishment_list');
             }
@@ -387,7 +400,7 @@ class D_O extends CI_Controller
             $this->db->where('f.divison_name', $this->session->userdata('division'));
            // $this->db->where('pr.status', 'Approved');
             $data['edit_record'] = $this->db->get()->row_array();
-            //print_r($data['edit_record']);exit;
+           // echo $data['edit_record']);exit;
             echo json_encode($data['edit_record']);
         }
     }
@@ -481,6 +494,9 @@ class D_O extends CI_Controller
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
 
+           $page=$postData['page'];
+           //echo "sdfsfsd";
+          // echo "page".$page;exit;
             $id = $postData['observation_id'];
             // $oc_no = $postData['oc_num'];
             $observation = $postData['observation'];
@@ -501,11 +517,23 @@ class D_O extends CI_Controller
             //$last_id = $this->db->insert_id();
 
             if (!empty($insert)) {
-                $this->session->set_flashdata('success', 'Observation updated successfully');
-                redirect('D_O/view_dossier');
+               
+                if($page=='daily_module'){
+                            $this->session->set_flashdata('success', 'Observation updated successfully');
+                            redirect('D_O/view_observation_list');
+                        }elseif($page=='dossier'){
+                            $this->session->set_flashdata('success', 'Observation updated successfully');
+                            redirect('D_O/view_dossier');
+                        }
             } else {
-                $this->session->set_flashdata('failure', 'Something went wrong, try again.');
-                redirect('D_O/view_dossier');
+                
+                if($page=='daily_module'){
+                            $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                            redirect('D_O/view_observation_list');
+                        }elseif($page=='dossier'){
+                            $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                            redirect('D_O/view_dossier');
+                        }
             }
         }
     }
@@ -757,6 +785,7 @@ class D_O extends CI_Controller
             $this->db->where('pr.end_date >=', date('Y-m-d'));
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             $data['punishment_records'] = $this->db->get()->result_array();
+            //print_r($data['punishment_records']);exit;
             // $data['punishment_records'] = $this->db->where('do_id',$this->session->userdata('user_id'))->get('punishment_records')->result_array();
             $this->load->view('do/view_punishment_list', $data);
         }

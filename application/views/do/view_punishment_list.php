@@ -20,6 +20,132 @@
 
 <div class="container-fluid my-2">
 
+<div class="modal fade" id="edit_punishment">
+        <!-- <div class="row"> -->
+        <div class="modal-dialog modal-dialog-centered " style="margin-left: 250px;" role="document">
+            <div class="modal-content bg-custom3" style="width:1200px;">
+                <div class="modal-header" style="width:1200px;">
+                </div>
+                <div class="card-body bg-custom3">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="card">
+                                <div class="card-header bg-custom1">
+                                    <h1 class="h4">Update Punishments Record</h1>
+                                </div>
+
+                                <div class="card-body bg-custom3">
+                                   <form class="user" role="form" method="post" id="save_form" action="<?= base_url(); ?>D_O/update_punishment">
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Name:</h6>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Term:</h6>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Division:</h6>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+
+                                <div class="col-sm-4 mb-1" style="display:none">
+                                    <input type="text" class="" name="oc_num_ep" id="oc_num_epi">
+                                </div>
+                                <div class="col-sm-4 mb-1" style="display:none">
+                                    <input type="text" class="" name="id_ep" id="id_epi">
+                                </div>
+                               
+                               
+                               <input type="hidden" class="form-control form-control-user" name="punish_id" id="punish_id" val="">
+                                <input type="hidden" class="form-control form-control-user" name="page" id="page" val="">
+                                <div class="col-sm-4 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="name" id="name_ep" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
+                                </div>
+                                <div class="col-sm-4 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="term" id="term_ep" style="font-weight: bold; font-size:large" placeholder="Term" readonly>
+                                </div>
+                                <div class="col-sm-4 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="division" id="division_ep" style="font-weight: bold; font-size:large" placeholder="Division" readonly>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <h6>&nbsp;Punishment Detail:</h6>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12 mb-1">
+                                    <textarea class="form-control form-control-user" name="punish" id="punish" style="border-radius:10px" placeholder="Add Punishment details"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <h6>&nbsp;Offense:</h6>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12 mb-1">
+                                    <textarea class="form-control form-control-user" name="offense" id="offense" style="border-radius:10px" placeholder="Add Offense details"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Start Date:</h6>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;End Date:</h6>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Total Days:</h6>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-4 mb-1">
+                                    <input type="date" class="form-control form-control-user" name="start_date" id="start_date">
+                                </div>
+                                <div class="col-sm-4 mb-1">
+                                    <input type="date" class="form-control form-control-user" name="end_date" id="end_date">
+                                    <span id="error_end_date" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;End Date cannot be less than start date</span>
+                                </div>
+                                <div class="col-sm-4 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="days" id="days">
+                                </div>
+                            </div>
+
+                            <div class="form-group row justify-content-center">
+                                <div class="col-sm-4">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn_punishment">
+                                        <!-- <i class="fab fa-google fa-fw"></i>   -->
+                                        Update
+                                    </button>
+                                    <span id="show_error_save" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
+                                </div>
+                            </div>
+
+                        </form>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-primary rounded-pill" data-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div class="modal fade" id="reduce_punishment">
         <!-- <div class="row"> -->
@@ -177,6 +303,7 @@
                                             <th scope="col" style="width:100px">Days left</th>
                                             <th scope="col" style="text-align:center">Action</th>
                                             <th scope="col" style="text-align:center">Action</th>
+                                            <th scope="col" style="text-align:center">Action</th>
 
                                         </tr>
                                     </thead>
@@ -200,7 +327,7 @@
                                                 <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:green" data-toggle="modal" data-target="#reduce_punishment">Reduce Punishment</button></td>
                                                 <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:red" data-toggle="modal" data-target="#reduce_punishment">Increase Punishment</button></td>
                                                 <td scope="row" style="display:none"><?= $data['id']; ?></td>
-                                                <!-- <td type="button" id="edit<?= $data['ID']; ?>" class="edit" scope="row" data-toggle="modal" data-target="#edit_material"><i style="margin-left: 70px;" class="fas fa-edit"></i></td> -->
+                                             <td type="button" id="edit<?= $data['id']; ?>" class="edit" scope="row" data-toggle="modal" data-target="#edit_punishment" onclick="edit_punishment(<?= $data['p_id']; ?>)"><i style="" class="fas fa-edit"></i></td> 
                                                 <!-- <td id="view" class="view" scope="row"><a href="<?= base_url(); ?>SO_STORE/view_inventory_detail/<?= $data['ID']; ?>" style="color:black"><i style="margin-left: 40px;" class="fas fa-eye"></i></a></td> -->
 
                                             </tr>
@@ -377,5 +504,78 @@
         }
 
         $('#days').val(Math.abs(end_date - start_date) / 1000 / 60 / 60 / 24);
+    });
+     function edit_punishment(id) {
+         //alert('cadet id: ' + id);
+        $.ajax({
+            url: '<?= base_url(); ?>D_O/edit_punishment_data',
+            method: 'POST',
+            data: {
+                'id': id
+
+            },
+            success: function(data) {
+                var result = jQuery.parseJSON(data);
+                var len = result.length;
+                
+               // alert(result['name']);
+                  $('#oc_num_epi').val(result['oc_no']);
+                  $('#id_epi').val(result['p_id']);
+                  $('#name_ep').val(result['name']);
+                   $('#term_ep').val(result['term']);
+                  $('#division_ep').val(result['divison_name']);
+                  $('#punish').val(result['punishment_awarded']);
+                  $('#offense').val(result['offence']);
+                  $('#start_date').val(result['start_date']);
+                  $('#end_date').val(result['start_date']);
+                  $('#days').val(result['days']);
+                   $('#punish_id').val(result['id']);
+                    $('#page').val('daily_module');
+
+                  
+            },
+            async: true
+        });
+    }
+    
+     $('#save_btn_punishment').on('click', function() {
+        $('#save_btn').attr('disabled', true);
+        var validate = 0;
+        var punish = $('#punish').val();
+        var offense = $('#offense').val();
+        var start_date = $('#start_date').val();
+        var end_date = $('#end_date').val();
+
+        if (punish == '') {
+            validate = 1;
+            $('#punish').addClass('red-border');
+        }
+        if (offense == '') {
+            validate = 1;
+            $('#offense').addClass('red-border');
+        }
+        if (start_date == '') {
+            validate = 1;
+            $('#start_date').addClass('red-border');
+        }
+        if (end_date == '') {
+            validate = 1;
+            $('#end_date').addClass('red-border');
+        }
+
+        if (validate == 0) {
+            $('#save_form')[0].submit();
+            $('#show_error_save').hide();
+
+        } else {
+            $('#save_btn').removeAttr('disabled');
+            $('#show_error_save').show();
+        }
+    });
+       $('#table_rows').find('tr').click(function(e) {
+        var $columns = $(this).find('td');
+        $('#start_date').val($columns[6].innerHTML);
+        $('#end_date').val($columns[7].innerHTML);
+        $('#days').val((Date.parse($columns[7].innerHTML) - Date.parse($columns[6].innerHTML)) / 1000 / 60 / 60 / 24);
     });
 </script>

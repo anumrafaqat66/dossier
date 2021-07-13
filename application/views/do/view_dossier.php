@@ -132,7 +132,7 @@
                                 <div class="col-sm-4 mb-1" style="display:none">
                                     <input type="text" class="" name="id_ep" id="id">
                                 </div>
-                               
+                                <input type="hidden" class="form-control form-control-user" name="page" id="page" val="dossier">
                                
                                <input type="hidden" class="form-control form-control-user" name="punish_id" id="punish_id" val="">
                                 <div class="col-sm-4 mb-1">
@@ -397,6 +397,7 @@
                                 <div class="col-sm-4 mb-1" style="display:none">
                                     <input type="text" class="" name="id" id="id_eo">
                                 </div>
+                                  <input type="hidden" class="form-control form-control-user" name="page" id="page1" val="dossier">
 
                                 <div class="col-sm-4 mb-1">
                                     <input type="text" class="form-control form-control-user" name="name" id="name_eo" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
@@ -1692,6 +1693,7 @@ function view_warning(id) {
                   $('#end_date').val(result['start_date']);
                   $('#days').val(result['days']);
                    $('#punish_id').val(result['id']);
+                     $('#page').val('dossier');
                   
             },
             async: true
@@ -1718,6 +1720,7 @@ function view_warning(id) {
                   $('#observation_eo').val(result['observation']);
                   
                    $('#observation_id').val(result['id']);
+                     $('#page1').val('dossier');
                   
             },
             async: true
