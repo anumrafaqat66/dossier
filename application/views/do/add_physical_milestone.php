@@ -262,7 +262,10 @@
                                 <div class="col-sm-4 mb-1" style="display:none">
                                     <input type="text" class="" name="id" id="id">
                                 </div>
-
+                                <?php if(isset($page)){ 
+                                    //echo "sdfsdfds";?>
+                                <input type="hidden" name="pagee" id="pagee" value="<?= $page;?>">
+                                <?php } ?>
                                 <div class="col-sm-4 mb-1">
                                     <input type="text" class="form-control form-control-user" name="name" id="name" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
                                 </div>
@@ -520,7 +523,7 @@
                                     <span id="show_error_save" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
                                 </div>
                             </div>
-
+                                <input type="hidden" name="milestone_id" id="milestone_id">
                         </form>
                     </div>
                 </div>
@@ -659,9 +662,9 @@
         if (validate == 0) {
             // $('#add_form')[0].submit();
             $('#show_error_new').hide();
-
+            //alert('validate');
             $.ajax({
-                url: '<?= base_url(); ?>D_O/search_cadet',
+                url: '<?= base_url(); ?>D_O/search_cadet_physical_milestone',
                 method: 'POST',
                 data: {
                     'oc_no': oc_no
@@ -682,6 +685,41 @@
                         $('#id1').val(result['p_id']);
                          $('#oc_num2').val(result['oc_no']);
                         $('#id2').val(result['p_id']);
+                        $('#pst').val(result['PST_result']);
+                         $('#pst_attempt').val(result['PST_attempt']);
+                          $('#sst').val(result['SST_result']);
+                           $('#sst_attempt').val(result['SST_attempt']);
+
+                        $('#pet_I').val(result['PET_I_result']);
+                         $('#pet_I_attempt').val(result['PET_I_attempt']);
+                          $('#pet_II').val(result['PET_II_result']);
+                           $('#pet_II_attempt').val(result['PET_II_attempt']);
+
+
+                         $('#assault').val(result['assault_result']);
+                         $('#assault_attempt').val(result['assault_attempt']);
+                          $('#saluting').val(result['saluting_result']);
+                           $('#saluting_attempt').val(result['saluting_attempt']);
+
+                             $('#plx').val(result['PLX_result']);
+                         $('#plx_attempt').val(result['PLX_attempt']);
+                          $('#long_cross').val(result['long_cross_result']);
+                           $('#long_cross_card').val(result['long_cross_card_number']);
+                           $('#mini_cross').val(result['mini_cross_result']);
+                           $('#mini_cross_card').val(result['mini_cross_card_number']);
+                           $('#milestone_id').val(result['id']);
+
+                             $('#mile_time_I').val(result['mile_time']);
+                           $('#Chinups_I').val(result['chinups']);
+                           $('#Pushups_I').val(result['pushups']);
+                            $('#Rope_I').val(result['rope']);
+
+                             $('#mile_time_II').val(result['mile_time_II']);
+                           $('#Chinups_II').val(result['chinups_II']);
+                           $('#Pushups_II').val(result['pushups_II']);
+                            $('#Rope_II').val(result['rope_II']);
+
+
                     } else {
                         $('#no_data').show();
                         $('#search_cadet').hide();

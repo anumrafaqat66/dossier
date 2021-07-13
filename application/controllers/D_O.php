@@ -652,6 +652,25 @@ class D_O extends CI_Controller
             echo json_encode($query);
         }
     }
+       public function search_cadet_physical_milestone()
+    {
+        if ($this->input->post()) {
+            $oc_no = $_POST['oc_no'];
+              $this->db->select('or.*, f.*, term_i_details.*,term_ii_details.*');
+            $this->db->from('physical_milestone or');
+            $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
+            $this->db->join('term_i_details', 'term_i_details.p_id = or.p_id');
+            $this->db->join('term_ii_details', 'term_ii_details.p_id = or.p_id');
+
+            $this->db->where('or.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $data['milestone_records'] = $this->db->get()->row_array();
+            // print_r( $data['milestone_records']);exit;
+            echo json_encode($data['milestone_records']);
+            //echo json_encode($data);
+        }
+    }
+
 
     public function search_cadet_for_punishment()
     {
@@ -704,7 +723,7 @@ class D_O extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
               $data['club_data'] = $this->db->get('cadet_club')->result_array();
             $data['pn_data'] = $this->db->where('divison_name', 'XYZ')->get('pn_form1s')->result_array();
-            print_r($data['club_data']);
+           // print_r($data['club_data']);
             $this->load->view('do/view_dossier', $data);
         }
     }
@@ -727,10 +746,15 @@ class D_O extends CI_Controller
             $this->load->view('do/add_punishment');
         }
     }
-    public function add_physical_milestone()
+    public function add_physical_milestone($page=null)
     {
         if ($this->session->has_userdata('user_id')) {
-            $this->load->view('do/add_physical_milestone');
+           // echo $page;
+            $data['physical_milestone_data']=$this->db->where('p_id',$this->session->has_userdata('user_id'))->get('physical_milestone')->row_array();
+            if($page != null){
+                $data['page']=$page;
+            }
+            $this->load->view('do/add_physical_milestone',$data);
         }
     }
     public function add_excuse()
@@ -1142,7 +1166,7 @@ class D_O extends CI_Controller
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
             //print_r($postData);exit;
-
+            //echo "pahgg".$postData['pagee'];exit;
             $oc_no = $postData['oc_num'];
             $p_id = $postData['id'];
             $PST_result = $postData['pst'];
@@ -1165,6 +1189,8 @@ class D_O extends CI_Controller
             $long_cross_card = $postData['long_cross_card'];
             $mini_cross = $postData['mini_cross'];
             $mini_cross_card = $postData['mini_cross_card'];
+
+            $milestone_id=$postData['milestone_id'];
 
             $insert_array = array(
                 'oc_no' => $oc_no,
@@ -1192,15 +1218,32 @@ class D_O extends CI_Controller
                 'date_added' => date('Y-m-d H:i:s')
             );
 
-            $insert = $this->db->insert('physical_milestone', $insert_array);
+            $insert = $this->db->where('oc_no',$oc_no)->update('physical_milestone', $insert_array);
             //$last_id = $this->db->insert_id();
 
             if (!empty($insert)) {
+
+                if($postData['pagee']=='milestone_list'){
+               $this->session->set_flashdata('success', 'Data Submitted successfully');
+                redirect('D_O/view_milestone_list');
+                }elseif($postData['pagee']=='dossier'){
                 $this->session->set_flashdata('success', 'Data Submitted successfully');
+                redirect('D_O/view_dossier');
+                }else{
+               $this->session->set_flashdata('success', 'Data Submitted successfully');
                 redirect('D_O/add_physical_milestone');
+                }
+               
             } else {
-                $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                    if(isset($postData['pagee'])){
+                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                redirect('D_O/view_milestone_list');
+                }else{
+                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
                 redirect('D_O/add_physical_milestone');
+                }
+             
+                
             }
         }
     }
@@ -1258,10 +1301,10 @@ class D_O extends CI_Controller
                 'oc_no' => $oc_no,
                 'p_id' => $p_id,
                 'do_id' => $this->session->userdata('user_id'),
-                'mile_time' => $mile_time,
-                'pushups' => $pushups,
-                'chinups' => $chinups,
-                'rope' => $rope,
+                'mile_time_II' => $mile_time,
+                'pushups_II' => $pushups,
+                'chinups_II' => $chinups,
+                'rope_II' => $rope,
                 'date_added' => date('Y-m-d H:i:s')
             );
 

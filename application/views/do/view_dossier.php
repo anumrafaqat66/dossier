@@ -1152,6 +1152,7 @@
                                                 <td scope="row" style='white-space: nowrap;'><?= $data['name']; ?></td>
                                                 <td scope="row" style='white-space: nowrap;'><?= $data['oc_no']; ?></td>
                                                 <td scope="row" style='white-space: nowrap;'><?= $data['term']; ?></td>
+                                                 <td scope="row" style="display: none" style='white-space: nowrap;'><?= $data['p_id']; ?></td>
 
                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_physical_milestone(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#milestone">Physical Milestone</button></td>
                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_punishments(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#punishments">Punishments</button></td>
@@ -1293,6 +1294,9 @@
                                             </div>
                                             <div class="col-sm-2">
                                                 <h5>&nbsp;<strong>Show Details</strong></h5>
+                                            </div>
+                                             <div class="col-sm-2">
+                                                <a type="button" href="<?=base_url(); ?>D_O/add_physical_milestone/<?php echo "dossier" ?>" class="btn btn-primary rounded-pill">Edit Record</a>
                                             </div>
                                         </div>
                                         <hr>
@@ -1865,6 +1869,7 @@ function view_warning(id) {
     });
 
     $('#table_rows').find('tr').click(function(e) {
+        //alert('dvdfvdfv');
         var $columns = $(this).find('td');
 
         $('#cadet_name_heading').html('<strong> Cadet Name: ' + $columns[1].innerHTML + '</strong>');
@@ -1896,11 +1901,13 @@ function view_warning(id) {
         $('#end_date').val($columns[7].innerHTML);
         $('#days').val((Date.parse($columns[7].innerHTML) - Date.parse($columns[6].innerHTML)) / 1000 / 60 / 60 / 24);
 
+         //var id = $('#p_id').val();
+//alert($columns[4].innerHTML);
         $.ajax({
             url: '<?= base_url(); ?>D_O/view_PET_I',
             method: 'POST',
             data: {
-                'id': $columns[10].innerHTML
+                'id': $columns[4].innerHTML
             },
             success: function(data) {
                 var result = jQuery.parseJSON(data);
@@ -1918,16 +1925,16 @@ function view_warning(id) {
             url: '<?= base_url(); ?>D_O/view_PET_II',
             method: 'POST',
             data: {
-                'id': $columns[10].innerHTML
+                'id': $columns[4].innerHTML
             },
             success: function(data) {
                 var result = jQuery.parseJSON(data);
                 var len = result.length;
 
-                $('#mile_time2_detail').html(result['mile_time']);
-                $('#pushup2_detail').html(result['pushups']);
-                $('#chinups2_detail').html(result['chinups']);
-                $('#rope2_detail').html(result['rope']);
+                $('#mile_time2_detail').html(result['mile_time_II']);
+                $('#pushup2_detail').html(result['pushups_II']);
+                $('#chinups2_detail').html(result['chinups_II']);
+                $('#rope2_detail').html(result['rope_II']);
 
 
                 // }

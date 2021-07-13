@@ -415,6 +415,7 @@
                                             <th scope="col">PLX Result</th> -->
                                             <!-- <th scope="col">Acions</th> -->
                                             <th scope="col">Actions</th>
+                                             <th scope="col">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody id="table_rows">
@@ -445,6 +446,7 @@
                                         <!-- <td scope="row"><button type="button" class="btn btn-primary btn-user " onclick="view_PET_I(<?= $milestone_records['p_id'] ?>)" style="font-size:12px; background-color:green" data-toggle="modal" data-target="#PET_I"> PET-I Details</button></td> -->
                                         <!-- <td scope="row"><button type="button" onclick="view_PET_II(<?= $milestone_records['p_id'] ?>)" class="btn btn-primary btn-user " data-toggle="modal" data-target="#PET_II" style="font-size:12px; background-color:green"> PET-II Details</button></td> -->
                                         <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#view_details"> View Details</button></td>
+                                          <td type="button"  class="edit" scope="row" ><a style="color: black" href="<?=base_url(); ?>D_O/add_physical_milestone/<?php echo "milestone_list" ?>"><i style="" class="fas fa-edit"></i></a></td> 
 
 
                                         </tr>
@@ -622,6 +624,7 @@
         }
         $('#mini_cross_card').html($columns[21].innerHTML);
 
+//alert( $columns[1].innerHTML);
         $.ajax({
             url: '<?= base_url(); ?>D_O/view_PET_I',
             method: 'POST',
@@ -650,10 +653,10 @@
                 var result = jQuery.parseJSON(data);
                 var len = result.length;
 
-                $('#mile_time2_detail').html(result['mile_time']);
-                $('#pushup2_detail').html(result['pushups']);
-                $('#chinups2_detail').html(result['chinups']);
-                $('#rope2_detail').html(result['rope']);
+                $('#mile_time2_detail').html(result['mile_time_II']);
+                $('#pushup2_detail').html(result['pushups_II']);
+                $('#chinups2_detail').html(result['chinups_II']);
+                $('#rope2_detail').html(result['rope_II']);
 
 
                 // }
