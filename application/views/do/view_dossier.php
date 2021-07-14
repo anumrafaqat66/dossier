@@ -596,6 +596,225 @@
             </div>
         </div>
     </div>
+  <div class="modal fade" id="branches">
+        <!-- <div class="row"> -->
+        <div class="modal-dialog modal-dialog-centered " style="margin-left: 250px;" role="document">
+            <div class="modal-content bg-custom3" style="width:1200px;">
+                <div class="modal-header" style="width:1200px;">
+                </div>
+                <div class="card-body bg-custom3">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="card">
+                                <div class="card-header bg-custom1">
+                                    <h1 class="h4">Branches Record</h1>
+                                </div>
+
+                                <div class="card-body bg-custom3">
+                                    <form class="user" role="form" method="post" id="add_form" action="">
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <h3 id="cadet_name_heading_b"></h3>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h3 id="cadet_oc_no_b"></h3>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h3 id="cadet_term_b"></h3>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <div id="table_div">
+                                                <table id="datatable" class="table table-striped" style="color:black">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">No.</th>
+                                                            <th scope="col">1st Preference</th>
+                                                            <th scope="col">2nd Preference</th>
+                                                            <th scope="col">3rd Preference</th>
+                                                            <th scope="col">Branch Allocated</th>
+                                                            <th scope="col">Branch Recommendation</th>
+                                                             <th scope="col">Edit</th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="table_rows_branches">
+                                                        <tr>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-primary rounded-pill" data-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="edit_branches">
+        <!-- <div class="row"> -->
+        <div class="modal-dialog modal-dialog-centered " style="margin-left: 250px;" role="document">
+            <div class="modal-content bg-custom3" style="width:1200px;">
+                <div class="modal-header" style="width:1200px;">
+                </div>
+                <div class="card-body bg-custom3">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="card">
+                                <div class="card-header bg-custom1">
+                                    <h1 class="h4">Update Branches Record</h1>
+                                </div>
+
+                                <div class="card-body bg-custom3">
+                                   <form class="user" role="form" method="post" id="save_form_branches" action="<?= base_url(); ?>D_O/update_branches_allocation">
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Name:</h6>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Term:</h6>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Division:</h6>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+
+                                <div class="col-sm-4 mb-1" style="display:none">
+                                    <input type="text" class="" name="oc_num_b" id="oc_num_b">
+                                </div>
+                                <div class="col-sm-4 mb-1" style="display:none">
+                                    <input type="text" class="" name="id_b" id="id_b">
+                                </div>
+
+                                <div class="col-sm-4 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="name_b" id="name_b" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
+                                </div>
+                                <div class="col-sm-4 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="term_b" id="term_b" style="font-weight: bold; font-size:large" placeholder="Term" readonly>
+                                </div>
+                                <div class="col-sm-4 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="division_b" id="division_b" style="font-weight: bold; font-size:large" placeholder="Division" readonly>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <h5 style="text-decoration:underline">Preference Order by Cadet</h5>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Preference 1:</h6>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Preference 2:</h6>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Preference 3:</h6>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+
+                                <div class="col-sm-4 mb-1">
+                                    <select class="form-control rounded-pill" name="prefer_1" id="prefer_1" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
+                                        <option class="form-control form-control-user" value="">Select 1st Preference</option>
+                                        <?php  $branch_list = $this->db->get('branch_preference_list')->result_array(); ?>
+                                        <?php foreach ($branch_list as $data) { ?>
+                                            <option class="form-control form-control-user" value="<?= $data['branch_name'] ?>"><?= $data['branch_name'] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4 mb-1">
+                                    <select class="form-control rounded-pill" name="prefer_2" id="prefer_2" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
+                                        <option class="form-control form-control-user" value="">Select 2nd Preference</option>
+                                        <?php foreach ($branch_list as $data) { ?>
+                                            <option class="form-control form-control-user" value="<?= $data['branch_name'] ?>"><?= $data['branch_name'] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4 mb-1">
+                                    <select class="form-control rounded-pill" name="prefer_3" id="prefer_3" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
+                                        <option class="form-control form-control-user" value="">Select 3rd Preference</option>
+                                        <?php foreach ($branch_list as $data) { ?>
+                                            <option class="form-control form-control-user" value="<?= $data['branch_name'] ?>"><?= $data['branch_name'] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <h6>&nbsp;Branch Recommended:</h6>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-12 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="recommended_branch" id="recommended_branch" placeholder="Recommended Branch">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <h6>&nbsp;Branch Allocation:</h6>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-12 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="allocated_branch" id="allocated_branch" placeholder="Branch Allocated">
+                                </div>
+                            </div>
+
+                            <div class="form-group row justify-content-center">
+                                <div class="col-sm-4">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn_branches">
+                                        <!-- <i class="fab fa-google fa-fw"></i>   -->
+                                        save
+                                    </button>
+                                    <span id="show_error_save" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
+                                </div>
+                            </div>
+
+                        </form>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-primary rounded-pill" data-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
 
  <div class="modal fade" id="edit_warning" style="z-index: 2100">
         <!-- <div class="row"> -->
@@ -1160,7 +1379,8 @@
                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_excuses(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#excuses">Excuses</button></td>
                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_observations(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#observations">Observations</button></td>
                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_club(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#clubs">Clubs</button></td>
-                                                <td scope="row" style="text-align:center"><button type="button" class="btn btn-primary btn-user rounded-pill">Branches</button></td>
+
+                                                <td scope="row" style="text-align:center"><button type="button" onclick="view_branches(<?= $data['p_id'] ?>)"  data-toggle="modal" data-target="#branches" class="btn btn-primary btn-user rounded-pill">Branches</button></td>
                                                  <td scope="row" style="text-align:center" onclick="view_warning(<?= $data['p_id'] ?>)" data-toggle="modal" data-target="#warning"><button type="button" class="btn btn-primary btn-user rounded-pill">Warning</button></td>
                                                 <td scope="row" style="display:none"><?= $data['p_id']; ?></td>
 
@@ -1610,6 +1830,83 @@
         });
     }
 
+     function view_branches(id) {
+        // alert('cadet id: ' + id);
+        $.ajax({
+            url: '<?= base_url(); ?>D_O/view_branches_in_dossier',
+            method: 'POST',
+            data: {
+                'id': id
+            },
+            success: function(data) {
+                var result = jQuery.parseJSON(data);
+                var len=result.length;
+             // if(result != null){
+             //    alert('not null');
+             // }
+
+                $("#table_rows_branches").empty();
+                  if (len > 0) {
+                    for (var i = 0; i < len; i++) {
+                        $("#table_rows_branches").append(`<tr>
+                                                        <td>${i+1}</td>
+                                                        <td>${result[i]['option1']}</td>
+                                                        <td>${result[i]['option2']}</td>
+                                                        <td>${result[i]['option3']}</td>
+                                                        <td>${result[i]['branch_recommended']}</td>
+                                                        <td>${result[i]['branch_allocated']}</td>
+                                                        <td data-toggle="modal" data-target="#edit_branches"><a onclick="edit_branches(${result[i]['p_id']})" ><i class="fa fa-edit"></i></a></td>
+                                                    </tr>`);
+                    
+                } }else {
+                    $("#table_rows_branches").append(`<tr>
+                                                    <td>No Data Found</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                   
+                                                    </tr>`);
+                }
+            },
+            async: true
+        });
+    }
+
+         function edit_branches(id) {
+         alert('cadet id: ' + id);
+        $.ajax({
+            url: '<?= base_url(); ?>D_O/edit_branches_data',
+            method: 'POST',
+            data: {
+                'id': id
+            },
+            success: function(data) {
+                var result = jQuery.parseJSON(data);
+                var len = result.length;
+//alert(result['assigned_club']);
+                  $('#oc_num_b').val(result['oc_no']);
+                  $('#id_b').val(result['p_id']);
+                  $('#name_b').val(result['name']);
+                   $('#term_b').val(result['term']);
+                  $('#division_b').val(result['divison_name']);
+                  $('#prefer_1').val(result['option1']);
+                  $('#prefer_2').val(result['option2']);
+                  $('#prefer_3').val(result['option3']);
+                $('#allocated_branch').val(result['branch_allocated']);
+                  $('#recommended_branch').val(result['branch_recommended']);
+                  
+                   $('#club_id').val(result['id']);
+                  
+            },
+            async: true
+        });
+    }
+
+
 function view_warning(id) {
         // alert('cadet id: ' + id);
         $.ajax({
@@ -1733,6 +2030,8 @@ function view_warning(id) {
         });
     }
 
+ 
+
      function edit_club(id) {
         // alert('cadet id: ' + id);
         $.ajax({
@@ -1793,7 +2092,7 @@ function view_warning(id) {
                                                     <td></td>
                                                     </tr>`);
                 }
-                
+
 //alert(result['assigned_club']);
                   
             },
@@ -1939,6 +2238,10 @@ function view_warning(id) {
          $('#cadet_name_heading_w').html('<strong> Cadet Name: ' + $columns[1].innerHTML + '</strong>');
         $('#cadet_oc_no_w').html('<strong> OC No: ' + $columns[2].innerHTML + '</strong>');
         $('#cadet_term_w').html('<strong> Term: ' + $columns[3].innerHTML + '</strong>');
+
+         $('#cadet_name_heading_b').html('<strong> Cadet Name: ' + $columns[1].innerHTML + '</strong>');
+        $('#cadet_oc_no_b').html('<strong> OC No: ' + $columns[2].innerHTML + '</strong>');
+        $('#cadet_term_b').html('<strong> Term: ' + $columns[3].innerHTML + '</strong>');
 
         $('#punish').val($columns[5].innerHTML);
         $('#start_date').val($columns[6].innerHTML);
@@ -2181,4 +2484,37 @@ function view_warning(id) {
             $('#show_error_save').show();
         }
     });
+
+           $('#save_btn_branches').on('click', function() {
+        $('#save_btn_branches').attr('disabled', true);
+        var validate = 0;
+        var allocated_branch = $('#allocated_branch').val();
+        var recommended_branch = $('#offense').val();
+        var allocated_branch=$('#allocated_branch').val();
+        
+
+        if (prefer_1 == '') {
+            validate = 1;
+            $('#prefer_1').addClass('red-border');
+        }
+        if (allocated_branch == '') {
+            validate = 1;
+            $('#allocated_branch').addClass('red-border');
+        }
+        if ( recommended_branch == '') {
+            validate = 1;
+            $('#recommended_branch').addClass('red-border');
+        }
+      
+
+        if (validate == 0) {
+            $('#save_form_branches')[0].submit();
+            $('#show_error_save').hide();
+
+        } else {
+            $('#save_btn_branches').removeAttr('disabled');
+            $('#show_error_save').show();
+        }
+    });
+
 </script>

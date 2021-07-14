@@ -748,7 +748,8 @@ class D_O extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
               $data['club_data'] = $this->db->get('cadet_club')->result_array();
             $data['pn_data'] = $this->db->where('divison_name', 'XYZ')->get('pn_form1s')->result_array();
-           // print_r($data['club_data']);
+            
+          // print_r($data);
             $this->load->view('do/view_dossier', $data);
         }
     }
@@ -970,6 +971,26 @@ class D_O extends CI_Controller
         }
     }
 
+
+        public function edit_branches_data()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $cadet_id = $_POST['id'];
+            //echo $cadet_id;exit;
+            $this->db->select('pr.*, f.*');
+            $this->db->from('branch_allocations pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('f.oc_no = pr.oc_no');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.p_id', $cadet_id);
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
+           // $this->db->where('pr.status', 'Approved');
+            $data['edit_record'] = $this->db->get()->row_array();
+            //print_r($data['edit_record']);exit;
+            echo json_encode($data['edit_record']);
+        }
+    }
+
           public function edit_club_data()
     {
         if ($this->session->has_userdata('user_id')) {
@@ -1099,7 +1120,20 @@ class D_O extends CI_Controller
             echo json_encode($data['club_records']);
         }
     }
-
+  public function view_branches_in_dossier()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $this->db->select('b.*, f.*');
+            $this->db->from('branch_allocations b');
+            $this->db->join('pn_form1s f', 'f.p_id = b.p_id');
+            $this->db->where('b.do_id', $this->session->userdata('user_id'));
+            //$this->db->where('cr.status', 'active');
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $data['branch_records'] = $this->db->get()->result_array();
+            //echo $data['branch_records'];
+            echo json_encode($data['branch_records']);
+        }
+    }
     public function view_milestone_list()
     {
         if ($this->session->has_userdata('user_id')) {
