@@ -76,7 +76,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" id="save_form" action="<?= base_url(); ?>D_O/save_cadet_punishment">
+                        <form class="user" role="form" method="post" id="save_form" action="<?= base_url(); ?>D_O/save_branches_allocation">
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Name:</h6>
@@ -144,7 +144,7 @@
                                 </div>
                                 <div class="col-sm-4 mb-1">
                                     <select class="form-control rounded-pill" name="prefer_2" id="prefer_2" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
-                                        <option class="form-control form-control-user" value="">Select 1st Preference</option>
+                                        <option class="form-control form-control-user" value="">Select 2nd Preference</option>
                                         <?php foreach ($branch_list as $data) { ?>
                                             <option class="form-control form-control-user" value="<?= $data['branch_name'] ?>"><?= $data['branch_name'] ?></option>
                                         <?php } ?>
@@ -152,7 +152,7 @@
                                 </div>
                                 <div class="col-sm-4 mb-1">
                                     <select class="form-control rounded-pill" name="prefer_3" id="prefer_3" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
-                                        <option class="form-control form-control-user" value="">Select 1st Preference</option>
+                                        <option class="form-control form-control-user" value="">Select 3rd Preference</option>
                                         <?php foreach ($branch_list as $data) { ?>
                                             <option class="form-control form-control-user" value="<?= $data['branch_name'] ?>"><?= $data['branch_name'] ?></option>
                                         <?php } ?>
@@ -174,7 +174,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12">
-                                    <h6>&nbsp;Branch Recommended:</h6>
+                                    <h6>&nbsp;Branch Allocation:</h6>
                                 </div>
                             </div>
 
@@ -325,27 +325,24 @@
     $('#save_btn').on('click', function() {
         $('#save_btn').attr('disabled', true);
         var validate = 0;
-        var punish = $('#punish').val();
-        var offense = $('#offense').val();
-        var start_date = $('#start_date').val();
-        var end_date = $('#end_date').val();
+        var allocated_branch = $('#allocated_branch').val();
+        var recommended_branch = $('#offense').val();
+        var allocated_branch=$('#allocated_branch').val();
+        
 
-        if (punish == '') {
+        if (prefer_1 == '') {
             validate = 1;
-            $('#punish').addClass('red-border');
+            $('#prefer_1').addClass('red-border');
         }
-        if (offense == '') {
+        if (allocated_branch == '') {
             validate = 1;
-            $('#offense').addClass('red-border');
+            $('#allocated_branch').addClass('red-border');
         }
-        if (start_date == '') {
+        if ( recommended_branch == '') {
             validate = 1;
-            $('#start_date').addClass('red-border');
+            $('#recommended_branch').addClass('red-border');
         }
-        if (end_date == '') {
-            validate = 1;
-            $('#end_date').addClass('red-border');
-        }
+      
 
         if (validate == 0) {
             $('#save_form')[0].submit();

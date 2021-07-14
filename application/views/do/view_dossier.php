@@ -927,6 +927,7 @@
                                                             <th scope="col">Assigned Club</th>
                                                             <th scope="col">Created Date</th>
                                                             <th>Edit</th>
+                                                             <th>Delete</th>
 
                                                         </tr>
                                                     </thead>
@@ -995,10 +996,10 @@
                             <div class="form-group row">
 
                                 <div class="col-sm-3 mb-1" style="display:none">
-                                    <input type="text" class="" name="oc_num" id="oc_num_ec">
+                                    <input type="text" class="" name="oc_num_ec" id="oc_num_ec">
                                 </div>
                                 <div class="col-sm-3 mb-1" style="display:none">
-                                    <input type="text" class="" name="p_id" id="p_id_ec">
+                                    <input type="text" class="" name="p_id_ec" id="p_id_ec">
                                 </div>
 
                                 <div class="col-sm-3 mb-1">
@@ -1593,6 +1594,7 @@
                                                         <td>${result[i]['assigned_club']}</td>
                                                         <td>${result[i]['created_at']}</td>
                                                          <td data-toggle="modal" data-target="#edit_clubs"><a onclick="edit_club(${result[i]['p_id']})" ><i class="fa fa-edit"></i></a></td>
+                                                          <td ><a onclick="delete_club(${result[i]['p_id']})" ><i class="fa fa-trash"></i></a></td>
                                                     </tr>`);
                     }
                 } else {
@@ -1744,7 +1746,7 @@ function view_warning(id) {
                 var len = result.length;
 //alert(result['assigned_club']);
                   $('#oc_num_ec').val(result['oc_no']);
-                  $('#id_ec').val(result['p_id']);
+                  $('#p_id_ec').val(result['p_id']);
                   $('#name_ec').val(result['name']);
                    $('#term_ec').val(result['term']);
                   $('#division_ec').val(result['divison_name']);
@@ -1757,6 +1759,48 @@ function view_warning(id) {
             async: true
         });
     }
+
+       function delete_club(id) {
+        // alert('cadet id: ' + id);
+        $.ajax({
+            url: '<?= base_url(); ?>D_O/delete_club_data',
+            method: 'POST',
+            data: {
+                'id': id
+            },
+            success: function(data) {
+                var result = jQuery.parseJSON(data);
+                var len = result.length;
+
+
+                $("#table_rows_club").empty();
+                if (len > 0) {
+                    for (var i = 0; i < len; i++) {
+                        $("#table_rows_club").append(`<tr>
+                                                        <td>${i+1}</td>
+                                                        <td>${result[i]['term']}</td>
+                                                        <td>${result[i]['assigned_club']}</td>
+                                                        <td>${result[i]['created_at']}</td>
+                                                         <td data-toggle="modal" data-target="#edit_clubs"><a onclick="edit_club(${result[i]['p_id']})" ><i class="fa fa-edit"></i></a></td>
+                                                          <td ><a onclick="delete_club(${result[i]['p_id']})" ><i class="fa fa-trash"></i></a></td>
+                                                    </tr>`);
+                    }
+                } else {
+                    $("#table_rows_club").append(`<tr>
+                                                    <td>No Data Found</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    </tr>`);
+                }
+                
+//alert(result['assigned_club']);
+                  
+            },
+            async: true
+        });
+    }
+
     function seen(data) {
         // alert('in');
         // alert(data);

@@ -38,10 +38,15 @@ class D_O extends CI_Controller
                 'p_id' => $id,
                 'assigned_club' => $club,
                 'do_id' => $this->session->userdata('user_id'),
+                'status'=>'active',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             );
-
+            
+            $update_array = array(
+                'status' =>  'deleted'
+                 );
+            $this->db->where('p_id',$id)->update('club_records',$update_array);
             $insert = $this->db->insert('club_records', $insert_array);
 
             $cond  = ['oc_no' => $oc_no];
@@ -70,21 +75,41 @@ class D_O extends CI_Controller
            
             $club = $postData['club'];
             $id=$postData['club_id'];
+            $p_id=$postData['p_id_ec'];
+            $oc_num_ec=$postData['oc_num_ec'];
+            //echo "sdfsdf".$p_id;exit;
 
-            $insert_array = array(
-                
-                'assigned_club' => $club,
-                'updated_at' => date('Y-m-d H:i:s')
-            );
-            $cond  = ['id' => $id];
+             //uddate previous club_records with same p_id
+            $cond  = ['p_id' => $p_id];
             $data_update = [
-                'assigned_club' => $club
+                'status'=>'deleted'
             ];
 
             $this->db->where($cond);
             $update = $this->db->update('club_records', $data_update);
 
-            if (!empty($update)) {
+            //uddate in pn_form1s
+             $cond  = ['oc_no' => $oc_num_ec];
+            $data_update1 = [
+                'club' => $club
+            ];
+
+            $this->db->where($cond);
+            $update = $this->db->update('pn_form1s', $data_update1);
+
+
+            $insert_array = array(
+                 'p_id' => $p_id,
+                'assigned_club' => $club,
+                'do_id' => $this->session->userdata('user_id'),
+                'status'=>'active',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            );
+           $insert= $this->db->insert('club_records',$insert_array);
+          
+
+            if (!empty($insert)) {
                 $this->session->set_flashdata('success', 'Cadet Club Updated successfully');
                 redirect('D_O/view_dossier');
             } else {
@@ -648,7 +673,7 @@ class D_O extends CI_Controller
         if ($this->input->post()) {
             $oc_no = $_POST['oc_no'];
             $query = $this->db->where('oc_no', $oc_no)->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->row_array();
-            // print_r($query);
+            //print_r($query);
             echo json_encode($query);
         }
     }
@@ -796,6 +821,45 @@ class D_O extends CI_Controller
             $this->load->view('do/branch_allocation', $data);
         }
     }
+     public function save_branches_allocation(){
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+
+            $id = $postData['id'];
+            $oc_no = $postData['oc_num'];
+            $prefer_1 = $postData['prefer_1'];
+            $prefer_2 = $postData['prefer_2'];
+            // $div_name = $postData['division'];
+            $prefer_3 = $postData['prefer_3'];
+            $recommended_branch = $postData['recommended_branch'];
+            $allocated_branch = $postData['allocated_branch'];
+           
+
+            $insert_array = array(
+                'oc_no' => $oc_no,
+                'p_id' => $id,
+                'option1' => $prefer_1,
+                'option2' => $prefer_2,
+                'option3' => $prefer_3,
+                'branch_recommended'=>$recommended_branch,
+                'branch_allocated'=>$allocated_branch,
+                'do_id' => $this->session->userdata('user_id'),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+
+            );
+            //print_r($insert_array);exit;
+            $insert = $this->db->insert('branch_allocations', $insert_array);
+            //$last_id = $this->db->insert_id();
+            if (!empty($insert)) {
+                $this->session->set_flashdata('success', 'Branch Preferences added successfully');
+                redirect('D_O/add_branch_allocation');
+            } else {
+                $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                redirect('D_O/add_branch_allocation');
+            }
+        }
+    }
 
     public function view_punishment_list()
     {
@@ -917,11 +981,44 @@ class D_O extends CI_Controller
             // $this->db->where('f.oc_no = pr.oc_no');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
+             $this->db->where('pr.status', 'active');
             $this->db->where('f.divison_name', $this->session->userdata('division'));
            // $this->db->where('pr.status', 'Approved');
             $data['edit_record'] = $this->db->get()->row_array();
             //print_r($data['edit_record']);exit;
             echo json_encode($data['edit_record']);
+        }
+    }
+             public function delete_club_data()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $cadet_id = $_POST['id'];
+           // echo $cadet_id;exit;
+          
+            // $this->db->where('f.oc_no = pr.oc_no');
+            $this->db->where('status', 'active');
+            $this->db->set('status','deleted');
+            $this->db->update('club_records');
+
+            $this->db->where('p_id', $cadet_id);
+            $this->db->set('club','');
+            $this->db->update('pn_form1s');
+            
+            //update existing data after deletion
+             $this->db->select('pr.*, f.*');
+            $this->db->from('club_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('f.oc_no = pr.oc_no');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.p_id', $cadet_id);
+             $this->db->where('pr.status', 'active');
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
+
+
+           // $this->db->where('pr.status', 'Approved');
+            $data['edit_record_after_delete'] = $this->db->get()->result_array();
+            //print_r($data['edit_record']);exit;
+            echo json_encode($data['edit_record_after_delete']);
         }
     }
 
@@ -995,6 +1092,7 @@ class D_O extends CI_Controller
             $this->db->from('club_records cr');
             $this->db->join('pn_form1s f', 'f.p_id = cr.p_id');
             $this->db->where('cr.do_id', $this->session->userdata('user_id'));
+             $this->db->where('cr.status', 'active');
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             $data['club_records'] = $this->db->get()->result_array();
             // print_r( $data['milestone_records']);exit;
@@ -1405,6 +1503,7 @@ class D_O extends CI_Controller
             }
 
     }
+
 }
 
 
