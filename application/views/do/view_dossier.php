@@ -1877,7 +1877,7 @@
     }
 
          function edit_branches(id) {
-         alert('cadet id: ' + id);
+        // alert('cadet id: ' + id);
         $.ajax({
             url: '<?= base_url(); ?>D_O/edit_branches_data',
             method: 'POST',
@@ -2489,7 +2489,7 @@ function view_warning(id) {
         $('#save_btn_branches').attr('disabled', true);
         var validate = 0;
         var allocated_branch = $('#allocated_branch').val();
-        var recommended_branch = $('#offense').val();
+        var recommended_branch = $('#recommended_branch').val();
         var allocated_branch=$('#allocated_branch').val();
         
 

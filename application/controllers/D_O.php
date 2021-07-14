@@ -862,6 +862,46 @@ class D_O extends CI_Controller
         }
     }
 
+    public function update_branches_allocation()
+    {
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+
+             $id = $postData['id_b'];
+           //  echo $id;exit;
+            $prefer_1 = $postData['prefer_1'];
+            $prefer_2 = $postData['prefer_2'];
+            // $div_name = $postData['division'];
+            $prefer_3 = $postData['prefer_3'];
+            $recommended_branch = $postData['recommended_branch'];
+            $allocated_branch = $postData['allocated_branch'];
+           
+
+            $update_array = array(
+                'option1' => $prefer_1,
+                'option2' => $prefer_2,
+                'option3' => $prefer_3,
+                'branch_recommended'=>$recommended_branch,
+                'branch_allocated'=>$allocated_branch,
+                'updated_at' => date('Y-m-d H:i:s')
+
+            );
+           // print_r($update_array);exit;
+            $cond  = ['p_id' => $id];
+            $this->db->where($cond);
+            $update = $this->db->update('branch_allocations', $update_array);
+            //$last_id = $this->db->insert_id();
+
+            if (!empty($update)) {
+                            $this->session->set_flashdata('success', 'Branch Allocations updated successfully');
+                            redirect('D_O/view_dossier');
+            } else {
+                            $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                            redirect('D_O/view_dossier');
+                        }
+            }
+        }
+
     public function view_punishment_list()
     {
         if ($this->session->has_userdata('user_id')) {
