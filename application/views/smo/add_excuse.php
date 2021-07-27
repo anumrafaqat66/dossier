@@ -154,7 +154,7 @@
                                     <span id="error_end_date" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;End Date cannot be less than start date</span>
                                 </div>
                                 <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="days" id="days" readonly>
+                                    <input type="text" class="form-control form-control-user" name="days" id="days">
                                 </div>
                             </div>
 
@@ -302,18 +302,18 @@
     $('#save_btn').on('click', function() {
         $('#save_btn').attr('disabled', true);
         var validate = 0;
-        var punish = $('#punish').val();
-        var offense = $('#offense').val();
+        var excuse = $('#excuse').val();
+        var disease = $('#disease').val();
         var start_date = $('#start_date').val();
         var end_date = $('#end_date').val();
 
-        if (punish == '') {
+        if (excuse == '') {
             validate = 1;
-            $('#punish').addClass('red-border');
+            $('#excuse').addClass('red-border');
         }
-        if (offense == '') {
+        if (disease == '') {
             validate = 1;
-            $('#offense').addClass('red-border');
+            $('#disease').addClass('red-border');
         }
         if (start_date == '') {
             validate = 1;
@@ -332,5 +332,27 @@
             $('#save_btn').removeAttr('disabled');
             $('#show_error_save').show();
         }
+    });
+
+    $('#days').on('keyup', function() {
+
+        var days = parseInt($('#days').val());
+
+        var date = new Date(),
+            yr = date.getFullYear(),
+            month = (date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) : (date.getMonth() + 1),
+            day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate(),
+            startDate = yr + '-' + month + '-' + day;
+
+        var date = new Date();
+        date.setDate(date.getDate() + days);
+        var yr = date.getFullYear(),
+            month = (date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) : (date.getMonth() + 1),
+            day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate(),
+            endDate = yr + '-' + month + '-' + day;
+
+        $('#start_date').val(startDate);
+        $('#end_date').val(endDate);
+
     });
 </script>
