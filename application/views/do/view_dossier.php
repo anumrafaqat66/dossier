@@ -65,7 +65,7 @@
                                                             <th scope="col">End Date</th>
                                                             <th scope="col">Days</th>
                                                             <th scope="col">Status</th>
-                                                             <th scope="col">Edit</th>
+                                                            <th scope="col">Edit</th>
 
                                                         </tr>
                                                     </thead>
@@ -92,7 +92,7 @@
         </div>
     </div>
 
- <div class="modal fade" id="edit_punishment">
+    <div class="modal fade" id="edit_punishment">
         <!-- <div class="row"> -->
         <div class="modal-dialog modal-dialog-centered " style="margin-left: 250px;" role="document">
             <div class="modal-content bg-custom3" style="width:1200px;">
@@ -109,100 +109,100 @@
                                 </div>
 
                                 <div class="card-body bg-custom3">
-                                   <form class="user" role="form" method="post" id="save_form" action="<?= base_url(); ?>D_O/update_punishment">
-                            <div class="form-group row">
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Name:</h6>
-                                </div>
+                                    <form class="user" role="form" method="post" id="save_form" action="<?= base_url(); ?>D_O/update_punishment">
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <h6>&nbsp;Name:</h6>
+                                            </div>
 
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Term:</h6>
-                                </div>
+                                            <div class="col-sm-4">
+                                                <h6>&nbsp;Term:</h6>
+                                            </div>
 
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Division:</h6>
-                                </div>
+                                            <div class="col-sm-4">
+                                                <h6>&nbsp;Division:</h6>
+                                            </div>
 
-                            </div>
-                            <div class="form-group row">
+                                        </div>
+                                        <div class="form-group row">
 
-                                <div class="col-sm-4 mb-1" style="display:none">
-                                    <input type="text" class="" name="oc_num_ep" id="oc_num">
-                                </div>
-                                <div class="col-sm-4 mb-1" style="display:none">
-                                    <input type="text" class="" name="id_ep" id="id">
-                                </div>
-                                <input type="hidden" class="form-control form-control-user" name="page" id="page" val="dossier">
-                               
-                               <input type="hidden" class="form-control form-control-user" name="punish_id" id="punish_id" val="">
-                                <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="name" id="name" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
-                                </div>
-                                <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="term" id="term" style="font-weight: bold; font-size:large" placeholder="Term" readonly>
-                                </div>
-                                <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="division" id="division" style="font-weight: bold; font-size:large" placeholder="Division" readonly>
-                                </div>
+                                            <div class="col-sm-4 mb-1" style="display:none">
+                                                <input type="text" class="" name="oc_num_ep" id="oc_num">
+                                            </div>
+                                            <div class="col-sm-4 mb-1" style="display:none">
+                                                <input type="text" class="" name="id_ep" id="id">
+                                            </div>
+                                            <input type="hidden" class="form-control form-control-user" name="page" id="page" val="dossier">
 
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12">
-                                    <h6>&nbsp;Punishment Detail:</h6>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-1">
-                                    <textarea class="form-control form-control-user" name="punish" id="punish" style="border-radius:10px" placeholder="Add Punishment details"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12">
-                                    <h6>&nbsp;Offense:</h6>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-1">
-                                    <textarea class="form-control form-control-user" name="offense" id="offense" style="border-radius:10px" placeholder="Add Offense details"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Start Date:</h6>
-                                </div>
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;End Date:</h6>
-                                </div>
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Total Days:</h6>
-                                </div>
+                                            <input type="hidden" class="form-control form-control-user" name="punish_id" id="punish_id" val="">
+                                            <div class="col-sm-4 mb-1">
+                                                <input type="text" class="form-control form-control-user" name="name" id="name" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
+                                            </div>
+                                            <div class="col-sm-4 mb-1">
+                                                <input type="text" class="form-control form-control-user" name="term" id="term" style="font-weight: bold; font-size:large" placeholder="Term" readonly>
+                                            </div>
+                                            <div class="col-sm-4 mb-1">
+                                                <input type="text" class="form-control form-control-user" name="division" id="division" style="font-weight: bold; font-size:large" placeholder="Division" readonly>
+                                            </div>
 
-                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12">
+                                                <h6>&nbsp;Punishment Detail:</h6>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12 mb-1">
+                                                <textarea class="form-control form-control-user" name="punish" id="punish" style="border-radius:10px" placeholder="Add Punishment details"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12">
+                                                <h6>&nbsp;Offense:</h6>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12 mb-1">
+                                                <textarea class="form-control form-control-user" name="offense" id="offense" style="border-radius:10px" placeholder="Add Offense details"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <h6>&nbsp;Start Date:</h6>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h6>&nbsp;End Date:</h6>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h6>&nbsp;Total Days:</h6>
+                                            </div>
 
-                            <div class="form-group row">
-                                <div class="col-sm-4 mb-1">
-                                    <input type="date" class="form-control form-control-user" name="start_date" id="start_date">
-                                </div>
-                                <div class="col-sm-4 mb-1">
-                                    <input type="date" class="form-control form-control-user" name="end_date" id="end_date">
-                                    <span id="error_end_date" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;End Date cannot be less than start date</span>
-                                </div>
-                                <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="days" id="days">
-                                </div>
-                            </div>
+                                        </div>
 
-                            <div class="form-group row justify-content-center">
-                                <div class="col-sm-4">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn_punishment">
-                                        <!-- <i class="fab fa-google fa-fw"></i>   -->
-                                        Update
-                                    </button>
-                                    <span id="show_error_save" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
-                                </div>
-                            </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4 mb-1">
+                                                <input type="date" class="form-control form-control-user" name="start_date" id="start_date">
+                                            </div>
+                                            <div class="col-sm-4 mb-1">
+                                                <input type="date" class="form-control form-control-user" name="end_date" id="end_date">
+                                                <span id="error_end_date" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;End Date cannot be less than start date</span>
+                                            </div>
+                                            <div class="col-sm-4 mb-1">
+                                                <input type="text" class="form-control form-control-user" name="days" id="days">
+                                            </div>
+                                        </div>
 
-                        </form>
+                                        <div class="form-group row justify-content-center">
+                                            <div class="col-sm-4">
+                                                <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn_punishment">
+                                                    <!-- <i class="fab fa-google fa-fw"></i>   -->
+                                                    Update
+                                                </button>
+                                                <span id="show_error_save" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
+                                            </div>
+                                        </div>
+
+                                    </form>
                                 </div>
                             </div>
 
@@ -327,7 +327,7 @@
                                                             <th scope="col">Date</th>
                                                             <th scope="col">observation</th>
                                                             <th scope="col">Created Date</th>
-                                                            <th scope="col">Edit</th> 
+                                                            <th scope="col">Edit</th>
                                                             <!--  <th scope="col">Days</th>
                                                             <th scope="col">Status</th> -->
                                                         </tr>
@@ -355,7 +355,7 @@
         </div>
     </div>
 
-  <div class="modal fade" id="edit_observation">
+    <div class="modal fade" id="edit_observation">
         <!-- <div class="row"> -->
         <div class="modal-dialog modal-dialog-centered " style="margin-left: 250px;" role="document">
             <div class="modal-content bg-custom3" style="width:1200px;">
@@ -372,67 +372,67 @@
                                 </div>
 
                                 <div class="card-body bg-custom3">
-                                
-                                        <div class="card-body">
-                               <form class="user" role="form" method="post" id="save_form_observation" action="<?= base_url(); ?>D_O/update_cadet_observation">
-                            <div class="form-group row">
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Name:</h6>
-                                </div>
 
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Term:</h6>
-                                </div>
+                                    <div class="card-body">
+                                        <form class="user" role="form" method="post" id="save_form_observation" action="<?= base_url(); ?>D_O/update_cadet_observation">
+                                            <div class="form-group row">
+                                                <div class="col-sm-4">
+                                                    <h6>&nbsp;Name:</h6>
+                                                </div>
 
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Division:</h6>
-                                </div>
+                                                <div class="col-sm-4">
+                                                    <h6>&nbsp;Term:</h6>
+                                                </div>
 
-                            </div>
-                            <div class="form-group row">
+                                                <div class="col-sm-4">
+                                                    <h6>&nbsp;Division:</h6>
+                                                </div>
 
-                                <div class="col-sm-4 mb-1" style="display:none">
-                                    <input type="text" class="" name="oc_num" id="oc_num_eo">
-                                </div>
-                                <div class="col-sm-4 mb-1" style="display:none">
-                                    <input type="text" class="" name="id" id="id_eo">
-                                </div>
-                                  <input type="hidden" class="form-control form-control-user" name="page" id="page1" val="dossier">
+                                            </div>
+                                            <div class="form-group row">
 
-                                <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="name" id="name_eo" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
-                                </div>
-                                <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="term" id="term_eo" style="font-weight: bold; font-size:large" placeholder="Term" readonly>
-                                </div>
-                                <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="division" id="division_eo" style="font-weight: bold; font-size:large" placeholder="Division" readonly>
-                                </div>
-                               <input type="hidden" id="observation_id" name="observation_id">
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12">
-                                    <h6>&nbsp;Add Observation:</h6>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-1">
-                                    <textarea class="form-control form-control-user" name="observation" id="observation_eo" style="border-radius:10px" placeholder="Add Observation"></textarea>
-                                </div>
-                            </div>
+                                                <div class="col-sm-4 mb-1" style="display:none">
+                                                    <input type="text" class="" name="oc_num" id="oc_num_eo">
+                                                </div>
+                                                <div class="col-sm-4 mb-1" style="display:none">
+                                                    <input type="text" class="" name="id" id="id_eo">
+                                                </div>
+                                                <input type="hidden" class="form-control form-control-user" name="page" id="page1" val="dossier">
 
-                            <div class="form-group row justify-content-center">
-                                <div class="col-sm-4">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn_observation">
-                                        <!-- <i class="fab fa-google fa-fw"></i>   -->
-                                        Update
-                                    </button>
-                                    <span id="show_error_save" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
-                                </div>
-                            </div>
+                                                <div class="col-sm-4 mb-1">
+                                                    <input type="text" class="form-control form-control-user" name="name" id="name_eo" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
+                                                </div>
+                                                <div class="col-sm-4 mb-1">
+                                                    <input type="text" class="form-control form-control-user" name="term" id="term_eo" style="font-weight: bold; font-size:large" placeholder="Term" readonly>
+                                                </div>
+                                                <div class="col-sm-4 mb-1">
+                                                    <input type="text" class="form-control form-control-user" name="division" id="division_eo" style="font-weight: bold; font-size:large" placeholder="Division" readonly>
+                                                </div>
+                                                <input type="hidden" id="observation_id" name="observation_id">
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-12">
+                                                    <h6>&nbsp;Add Observation:</h6>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-12 mb-1">
+                                                    <textarea class="form-control form-control-user" name="observation" id="observation_eo" style="border-radius:10px" placeholder="Add Observation"></textarea>
+                                                </div>
+                                            </div>
 
-                        </form>
-                                        </div>
+                                            <div class="form-group row justify-content-center">
+                                                <div class="col-sm-4">
+                                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn_observation">
+                                                        <!-- <i class="fab fa-google fa-fw"></i>   -->
+                                                        Update
+                                                    </button>
+                                                    <span id="show_error_save" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
 
                                     </form>
                                 </div>
@@ -567,8 +567,8 @@
                                                             <th scope="col">Reason</th>
                                                             <th scope="col">Warning Type</th>
                                                             <th scope="col">date</th>
-                                                             <th scope="col">Edit</th>
-                                                         <!--    <th scope="col">Start Date</th>
+                                                            <th scope="col">Edit</th>
+                                                            <!--    <th scope="col">Start Date</th>
                                                             <th scope="col">End Date</th>
                                                             <th scope="col">Days</th>
                                                             <th scope="col">Status</th> -->
@@ -596,7 +596,7 @@
             </div>
         </div>
     </div>
-  <div class="modal fade" id="branches">
+    <div class="modal fade" id="branches">
         <!-- <div class="row"> -->
         <div class="modal-dialog modal-dialog-centered " style="margin-left: 250px;" role="document">
             <div class="modal-content bg-custom3" style="width:1200px;">
@@ -637,7 +637,7 @@
                                                             <th scope="col">3rd Preference</th>
                                                             <th scope="col">Branch Allocated</th>
                                                             <th scope="col">Branch Recommendation</th>
-                                                             <th scope="col">Edit</th>
+                                                            <th scope="col">Edit</th>
 
                                                         </tr>
                                                     </thead>
@@ -681,126 +681,126 @@
                                 </div>
 
                                 <div class="card-body bg-custom3">
-                                   <form class="user" role="form" method="post" id="save_form_branches" action="<?= base_url(); ?>D_O/update_branches_allocation">
-                            <div class="form-group row">
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Name:</h6>
-                                </div>
+                                    <form class="user" role="form" method="post" id="save_form_branches" action="<?= base_url(); ?>D_O/update_branches_allocation">
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <h6>&nbsp;Name:</h6>
+                                            </div>
 
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Term:</h6>
-                                </div>
+                                            <div class="col-sm-4">
+                                                <h6>&nbsp;Term:</h6>
+                                            </div>
 
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Division:</h6>
-                                </div>
+                                            <div class="col-sm-4">
+                                                <h6>&nbsp;Division:</h6>
+                                            </div>
 
-                            </div>
-                            <div class="form-group row">
+                                        </div>
+                                        <div class="form-group row">
 
-                                <div class="col-sm-4 mb-1" style="display:none">
-                                    <input type="text" class="" name="oc_num_b" id="oc_num_b">
-                                </div>
-                                <div class="col-sm-4 mb-1" style="display:none">
-                                    <input type="text" class="" name="id_b" id="id_b">
-                                </div>
+                                            <div class="col-sm-4 mb-1" style="display:none">
+                                                <input type="text" class="" name="oc_num_b" id="oc_num_b">
+                                            </div>
+                                            <div class="col-sm-4 mb-1" style="display:none">
+                                                <input type="text" class="" name="id_b" id="id_b">
+                                            </div>
 
-                                <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="name_b" id="name_b" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
-                                </div>
-                                <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="term_b" id="term_b" style="font-weight: bold; font-size:large" placeholder="Term" readonly>
-                                </div>
-                                <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="division_b" id="division_b" style="font-weight: bold; font-size:large" placeholder="Division" readonly>
-                                </div>
+                                            <div class="col-sm-4 mb-1">
+                                                <input type="text" class="form-control form-control-user" name="name_b" id="name_b" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
+                                            </div>
+                                            <div class="col-sm-4 mb-1">
+                                                <input type="text" class="form-control form-control-user" name="term_b" id="term_b" style="font-weight: bold; font-size:large" placeholder="Term" readonly>
+                                            </div>
+                                            <div class="col-sm-4 mb-1">
+                                                <input type="text" class="form-control form-control-user" name="division_b" id="division_b" style="font-weight: bold; font-size:large" placeholder="Division" readonly>
+                                            </div>
 
-                            </div>
+                                        </div>
 
-                            <div class="form-group row">
-                                <div class="col-sm-12">
-                                    <h5 style="text-decoration:underline">Preference Order by Cadet</h5>
-                                </div>
-                            </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12">
+                                                <h5 style="text-decoration:underline">Preference Order by Cadet</h5>
+                                            </div>
+                                        </div>
 
-                            <div class="form-group row">
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Preference 1:</h6>
-                                </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <h6>&nbsp;Preference 1:</h6>
+                                            </div>
 
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Preference 2:</h6>
-                                </div>
+                                            <div class="col-sm-4">
+                                                <h6>&nbsp;Preference 2:</h6>
+                                            </div>
 
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Preference 3:</h6>
-                                </div>
+                                            <div class="col-sm-4">
+                                                <h6>&nbsp;Preference 3:</h6>
+                                            </div>
 
-                            </div>
-                            <div class="form-group row">
+                                        </div>
+                                        <div class="form-group row">
 
-                                <div class="col-sm-4 mb-1">
-                                    <select class="form-control rounded-pill" name="prefer_1" id="prefer_1" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
-                                        <option class="form-control form-control-user" value="">Select 1st Preference</option>
-                                        <?php  $branch_list = $this->db->get('branch_preference_list')->result_array(); ?>
-                                        <?php foreach ($branch_list as $data) { ?>
-                                            <option class="form-control form-control-user" value="<?= $data['branch_name'] ?>"><?= $data['branch_name'] ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                                <div class="col-sm-4 mb-1">
-                                    <select class="form-control rounded-pill" name="prefer_2" id="prefer_2" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
-                                        <option class="form-control form-control-user" value="">Select 2nd Preference</option>
-                                        <?php foreach ($branch_list as $data) { ?>
-                                            <option class="form-control form-control-user" value="<?= $data['branch_name'] ?>"><?= $data['branch_name'] ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                                <div class="col-sm-4 mb-1">
-                                    <select class="form-control rounded-pill" name="prefer_3" id="prefer_3" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
-                                        <option class="form-control form-control-user" value="">Select 3rd Preference</option>
-                                        <?php foreach ($branch_list as $data) { ?>
-                                            <option class="form-control form-control-user" value="<?= $data['branch_name'] ?>"><?= $data['branch_name'] ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
+                                            <div class="col-sm-4 mb-1">
+                                                <select class="form-control rounded-pill" name="prefer_1" id="prefer_1" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
+                                                    <option class="form-control form-control-user" value="">Select 1st Preference</option>
+                                                    <?php $branch_list = $this->db->get('branch_preference_list')->result_array(); ?>
+                                                    <?php foreach ($branch_list as $data) { ?>
+                                                        <option class="form-control form-control-user" value="<?= $data['branch_name'] ?>"><?= $data['branch_name'] ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-4 mb-1">
+                                                <select class="form-control rounded-pill" name="prefer_2" id="prefer_2" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
+                                                    <option class="form-control form-control-user" value="">Select 2nd Preference</option>
+                                                    <?php foreach ($branch_list as $data) { ?>
+                                                        <option class="form-control form-control-user" value="<?= $data['branch_name'] ?>"><?= $data['branch_name'] ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-4 mb-1">
+                                                <select class="form-control rounded-pill" name="prefer_3" id="prefer_3" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
+                                                    <option class="form-control form-control-user" value="">Select 3rd Preference</option>
+                                                    <?php foreach ($branch_list as $data) { ?>
+                                                        <option class="form-control form-control-user" value="<?= $data['branch_name'] ?>"><?= $data['branch_name'] ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
 
-                            </div>
+                                        </div>
 
-                            <div class="form-group row">
-                                <div class="col-sm-12">
-                                    <h6>&nbsp;Branch Recommended:</h6>
-                                </div>
-                            </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12">
+                                                <h6>&nbsp;Branch Recommended:</h6>
+                                            </div>
+                                        </div>
 
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="recommended_branch" id="recommended_branch" placeholder="Recommended Branch">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12">
-                                    <h6>&nbsp;Branch Allocation:</h6>
-                                </div>
-                            </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12 mb-1">
+                                                <input type="text" class="form-control form-control-user" name="recommended_branch" id="recommended_branch" placeholder="Recommended Branch">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12">
+                                                <h6>&nbsp;Branch Allocation:</h6>
+                                            </div>
+                                        </div>
 
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="allocated_branch" id="allocated_branch" placeholder="Branch Allocated">
-                                </div>
-                            </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12 mb-1">
+                                                <input type="text" class="form-control form-control-user" name="allocated_branch" id="allocated_branch" placeholder="Branch Allocated">
+                                            </div>
+                                        </div>
 
-                            <div class="form-group row justify-content-center">
-                                <div class="col-sm-4">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn_branches">
-                                        <!-- <i class="fab fa-google fa-fw"></i>   -->
-                                        save
-                                    </button>
-                                    <span id="show_error_save" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
-                                </div>
-                            </div>
+                                        <div class="form-group row justify-content-center">
+                                            <div class="col-sm-4">
+                                                <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn_branches">
+                                                    <!-- <i class="fab fa-google fa-fw"></i>   -->
+                                                    save
+                                                </button>
+                                                <span id="show_error_save" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
+                                            </div>
+                                        </div>
 
-                        </form>
+                                    </form>
                                 </div>
                             </div>
 
@@ -816,7 +816,7 @@
     </div>
 
 
- <div class="modal fade" id="edit_warning" style="z-index: 2100">
+    <div class="modal fade" id="edit_warning" style="z-index: 2100">
         <!-- <div class="row"> -->
         <div class="modal-dialog modal-dialog-centered " style="margin-left: 250px;" role="document">
             <div class="modal-content bg-custom3" style="width:1200px;">
@@ -833,8 +833,8 @@
                                 </div>
 
                                 <div class="card-body bg-custom3">
-                                <!--     <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>Project_Officer/insert_project"> -->
-                                       <!--  <div class="form-group row">
+                                    <!--     <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>Project_Officer/insert_project"> -->
+                                    <!--  <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <h3 id="cadet_name_heading_ew"></h3>
                                             </div>
@@ -846,110 +846,110 @@
                                             </div>
                                         </div> -->
 
-                                        <div class="card-body">
-                                           <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>D_O/update_cadet_warning">
-                            <div class="form-group row">
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Name:</h6>
-                                </div>
+                                    <div class="card-body">
+                                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>D_O/update_cadet_warning">
+                                            <div class="form-group row">
+                                                <div class="col-sm-4">
+                                                    <h6>&nbsp;Name:</h6>
+                                                </div>
 
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Term:</h6>
-                                </div>
+                                                <div class="col-sm-4">
+                                                    <h6>&nbsp;Term:</h6>
+                                                </div>
 
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Division:</h6>
-                                </div>
+                                                <div class="col-sm-4">
+                                                    <h6>&nbsp;Division:</h6>
+                                                </div>
 
-                            </div>
-                            <div class="form-group row">
+                                            </div>
+                                            <div class="form-group row">
 
-                                <div class="col-sm-4 mb-1" style="display:none">
-                                    <input type="text" class="" name="oc_num" id="oc_num_ew">
-                                </div>
-                                <div class="col-sm-4 mb-1" style="display:none">
-                                    <input type="text" class="" name="id" id="id_ew">
-                                </div>
+                                                <div class="col-sm-4 mb-1" style="display:none">
+                                                    <input type="text" class="" name="oc_num" id="oc_num_ew">
+                                                </div>
+                                                <div class="col-sm-4 mb-1" style="display:none">
+                                                    <input type="text" class="" name="id" id="id_ew">
+                                                </div>
 
-                                <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="name" id="name" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
-                                </div>
-                                <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="term" id="term" style="font-weight: bold; font-size:large" placeholder="Term" readonly>
-                                </div>
-                                <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="division" id="division" style="font-weight: bold; font-size:large" placeholder="Division" readonly>
-                                </div>
+                                                <div class="col-sm-4 mb-1">
+                                                    <input type="text" class="form-control form-control-user" name="name" id="name" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
+                                                </div>
+                                                <div class="col-sm-4 mb-1">
+                                                    <input type="text" class="form-control form-control-user" name="term" id="term" style="font-weight: bold; font-size:large" placeholder="Term" readonly>
+                                                </div>
+                                                <div class="col-sm-4 mb-1">
+                                                    <input type="text" class="form-control form-control-user" name="division" id="division" style="font-weight: bold; font-size:large" placeholder="Division" readonly>
+                                                </div>
 
-                            </div>
+                                            </div>
 
-                            <div class="form-group row">
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Date:</h6>
-                                </div>
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Issue By:</h6>
-                                </div>
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Warning Type:</h6>
-                                </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-4">
+                                                    <h6>&nbsp;Date:</h6>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <h6>&nbsp;Issue By:</h6>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <h6>&nbsp;Warning Type:</h6>
+                                                </div>
 
-                            </div>
+                                            </div>
 
-                            <div class="form-group row">
-                                <div class="col-sm-4 mb-1">
-                                    <input type="date" class="form-control form-control-user" name="date" id="date">
-                                </div>
-                                <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="issued_by" id="issued_by" placeholder="Issue by">
-                                    <span id="error_end_date" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;End Date cannot be less than start date</span>
-                                </div>
-                                <div class="col-sm-4 mb-1">
-                                    <select class="form-control rounded-pill" name="warning_type" id="warning_type" data-placeholder="Warning Type" style="font-size: 0.8rem; height:50px;">
-                                        <option class="form-control form-control-user" value="">Select Warning Type</option>
-                                        <option class="form-control form-control-user" value="red">Red</option>
-                                        <option class="form-control form-control-user" value="orange">Orange</option>
-                                        <option class="form-control form-control-user" value="yellow">Yellow</option>
-                                        <option class="form-control form-control-user" value="white">White</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12">
-                                    <h6>&nbsp;Reasons:</h6>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-1">
-                                    <textarea class="form-control form-control-user" name="reason" id="reason" style="border-radius:10px" placeholder="Add warning reasons"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12">
-                                    <h6>&nbsp;Upload Warning Letter:</h6>
-                                </div>
-                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-4 mb-1">
+                                                    <input type="date" class="form-control form-control-user" name="date" id="date">
+                                                </div>
+                                                <div class="col-sm-4 mb-1">
+                                                    <input type="text" class="form-control form-control-user" name="issued_by" id="issued_by" placeholder="Issue by">
+                                                    <span id="error_end_date" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;End Date cannot be less than start date</span>
+                                                </div>
+                                                <div class="col-sm-4 mb-1">
+                                                    <select class="form-control rounded-pill" name="warning_type" id="warning_type" data-placeholder="Warning Type" style="font-size: 0.8rem; height:50px;">
+                                                        <option class="form-control form-control-user" value="">Select Warning Type</option>
+                                                        <option class="form-control form-control-user" value="red">Red</option>
+                                                        <option class="form-control form-control-user" value="orange">Orange</option>
+                                                        <option class="form-control form-control-user" value="yellow">Yellow</option>
+                                                        <option class="form-control form-control-user" value="white">White</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-12">
+                                                    <h6>&nbsp;Reasons:</h6>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-12 mb-1">
+                                                    <textarea class="form-control form-control-user" name="reason" id="reason" style="border-radius:10px" placeholder="Add warning reasons"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-12">
+                                                    <h6>&nbsp;Upload Warning Letter:</h6>
+                                                </div>
+                                            </div>
 
-                            <div class="form-group row custom-file-upload">
-                                <div class="col-sm-12 mb-1">
-                                    <input type="file" style="height: 50px; padding:10px !important;" multiple="multiple" class="form-control form-control-user" placeholder="Upload Document" name="file[]" x-model="fileName">
-                                    <label style="color: black;font-weight: bold;" id="file_name"></label>
-                                </div>
-                            </div>
-                            <input type="hidden"  name="old_file" id="old_file">
-                            <div class="form-group row justify-content-center">
-                                <div class="col-sm-4">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn">
-                                        <!-- <i class="fab fa-google fa-fw"></i>   -->
-                                        Update
-                                    </button>
-                                    <span id="show_error_save" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
-                                </div>
-                            </div>
+                                            <div class="form-group row custom-file-upload">
+                                                <div class="col-sm-12 mb-1">
+                                                    <input type="file" style="height: 50px; padding:10px !important;" multiple="multiple" class="form-control form-control-user" placeholder="Upload Document" name="file[]" x-model="fileName">
+                                                    <label style="color: black;font-weight: bold;" id="file_name"></label>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="old_file" id="old_file">
+                                            <div class="form-group row justify-content-center">
+                                                <div class="col-sm-4">
+                                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn">
+                                                        <!-- <i class="fab fa-google fa-fw"></i>   -->
+                                                        Update
+                                                    </button>
+                                                    <span id="show_error_save" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
+                                                </div>
+                                            </div>
 
-                        </form>
-                                    
-                                        </div>
+                                        </form>
+
+                                    </div>
 
                                     </form>
                                 </div>
@@ -1146,7 +1146,7 @@
                                                             <th scope="col">Assigned Club</th>
                                                             <th scope="col">Created Date</th>
                                                             <th>Edit</th>
-                                                             <th>Delete</th>
+                                                            <th>Delete</th>
 
                                                         </tr>
                                                     </thead>
@@ -1173,7 +1173,7 @@
         </div>
     </div>
 
-     <div class="modal fade" id="edit_clubs">
+    <div class="modal fade" id="edit_clubs">
         <!-- <div class="row"> -->
         <div class="modal-dialog modal-dialog-centered " style="margin-left: 250px;" role="document">
             <div class="modal-content bg-custom3" style="width:1200px;">
@@ -1191,70 +1191,70 @@
 
                                 <div class="card-body bg-custom3">
 
-                                        <div class="card-body">
-                                             <form class="user" role="form" method="post" id="save_form_club" action="<?= base_url(); ?>D_O/update_cadet_club">
-                            <div class="form-group row">
-                                <div class="col-sm-3">
-                                    <h6>&nbsp;Name:</h6>
-                                </div>
+                                    <div class="card-body">
+                                        <form class="user" role="form" method="post" id="save_form_club" action="<?= base_url(); ?>D_O/update_cadet_club">
+                                            <div class="form-group row">
+                                                <div class="col-sm-3">
+                                                    <h6>&nbsp;Name:</h6>
+                                                </div>
 
-                                <div class="col-sm-3">
-                                    <h6>&nbsp;Term:</h6>
-                                </div>
+                                                <div class="col-sm-3">
+                                                    <h6>&nbsp;Term:</h6>
+                                                </div>
 
-                                <div class="col-sm-3">
-                                    <h6>&nbsp;Division:</h6>
-                                </div>
+                                                <div class="col-sm-3">
+                                                    <h6>&nbsp;Division:</h6>
+                                                </div>
 
-                                <div class="col-sm-3">
-                                    <h6>&nbsp;Club:</h6>
-                                </div>
-                            </div>
+                                                <div class="col-sm-3">
+                                                    <h6>&nbsp;Club:</h6>
+                                                </div>
+                                            </div>
 
 
-                            <div class="form-group row">
+                                            <div class="form-group row">
 
-                                <div class="col-sm-3 mb-1" style="display:none">
-                                    <input type="text" class="" name="oc_num_ec" id="oc_num_ec">
-                                </div>
-                                <div class="col-sm-3 mb-1" style="display:none">
-                                    <input type="text" class="" name="p_id_ec" id="p_id_ec">
-                                </div>
+                                                <div class="col-sm-3 mb-1" style="display:none">
+                                                    <input type="text" class="" name="oc_num_ec" id="oc_num_ec">
+                                                </div>
+                                                <div class="col-sm-3 mb-1" style="display:none">
+                                                    <input type="text" class="" name="p_id_ec" id="p_id_ec">
+                                                </div>
 
-                                <div class="col-sm-3 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="name" id="name_ec" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
-                                </div>
-                                <div class="col-sm-3 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="term" id="term_ec" style="font-weight: bold; font-size:large" placeholder="Term" readonly>
-                                </div>
-                                <input type="hidden" name="club_id" id="club_id">
-                                <div class="col-sm-3 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="division" id="division_ec" style="font-weight: bold; font-size:large" placeholder="Division" readonly>
-                                </div>
-                                <div class="col-sm-3 mb-1">
-                                    <select class="form-control rounded-pill" name="club" id="club_ec" data-placeholder="Select Club" style="font-size: 0.8rem; height:50px; font-weight: bold; font-size:large">
-                                        <option class="form-control form-control-user" value="">Select Club</option>
-                                          <?php $club_data = $this->db->get('cadet_club')->result_array();?>
-                                        <?php foreach ($club_data as $club) { ?>
-                                            <option class="form-control form-control-user" value="<?= $club['name'] ?>"><?= $club['name'] ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
+                                                <div class="col-sm-3 mb-1">
+                                                    <input type="text" class="form-control form-control-user" name="name" id="name_ec" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
+                                                </div>
+                                                <div class="col-sm-3 mb-1">
+                                                    <input type="text" class="form-control form-control-user" name="term" id="term_ec" style="font-weight: bold; font-size:large" placeholder="Term" readonly>
+                                                </div>
+                                                <input type="hidden" name="club_id" id="club_id">
+                                                <div class="col-sm-3 mb-1">
+                                                    <input type="text" class="form-control form-control-user" name="division" id="division_ec" style="font-weight: bold; font-size:large" placeholder="Division" readonly>
+                                                </div>
+                                                <div class="col-sm-3 mb-1">
+                                                    <select class="form-control rounded-pill" name="club" id="club_ec" data-placeholder="Select Club" style="font-size: 0.8rem; height:50px; font-weight: bold; font-size:large">
+                                                        <option class="form-control form-control-user" value="">Select Club</option>
+                                                        <?php $club_data = $this->db->get('cadet_club')->result_array(); ?>
+                                                        <?php foreach ($club_data as $club) { ?>
+                                                            <option class="form-control form-control-user" value="<?= $club['name'] ?>"><?= $club['name'] ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
 
-                            </div>
+                                            </div>
 
-                            <div class="form-group row justify-content-center">
-                                <div class="col-sm-4">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn_club">
-                                        <!-- <i class="fab fa-google fa-fw"></i>   -->
-                                        save
-                                    </button>
-                                    <span id="show_error_save" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
-                                </div>
-                            </div>
+                                            <div class="form-group row justify-content-center">
+                                                <div class="col-sm-4">
+                                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn_club">
+                                                        <!-- <i class="fab fa-google fa-fw"></i>   -->
+                                                        save
+                                                    </button>
+                                                    <span id="show_error_save" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
+                                                </div>
+                                            </div>
 
-                        </form>
-                                        </div>
+                                        </form>
+                                    </div>
 
                                     </form>
                                 </div>
@@ -1359,7 +1359,7 @@
                                             <th scope="col" style="text-align:center">Observations</th>
                                             <th scope="col" style="text-align:center">Clubs</th>
                                             <th scope="col" style="text-align:center">Branches</th>
-                                             <th scope="col" style="text-align:center">Warning</th>
+                                            <th scope="col" style="text-align:center">Warning</th>
 
                                         </tr>
                                     </thead>
@@ -1372,7 +1372,7 @@
                                                 <td scope="row" style='white-space: nowrap;'><?= $data['name']; ?></td>
                                                 <td scope="row" style='white-space: nowrap;'><?= $data['oc_no']; ?></td>
                                                 <td scope="row" style='white-space: nowrap;'><?= $data['term']; ?></td>
-                                                 <td scope="row" style="display: none" style='white-space: nowrap;'><?= $data['p_id']; ?></td>
+                                                <td scope="row" style="display: none" style='white-space: nowrap;'><?= $data['p_id']; ?></td>
 
                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_physical_milestone(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#milestone">Physical Milestone</button></td>
                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_punishments(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#punishments">Punishments</button></td>
@@ -1380,8 +1380,8 @@
                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_observations(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#observations">Observations</button></td>
                                                 <td scope="row" style="text-align:center"><button type="button" onclick="view_club(<?= $data['p_id'] ?>)" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#clubs">Clubs</button></td>
 
-                                                <td scope="row" style="text-align:center"><button type="button" onclick="view_branches(<?= $data['p_id'] ?>)"  data-toggle="modal" data-target="#branches" class="btn btn-primary btn-user rounded-pill">Branches</button></td>
-                                                 <td scope="row" style="text-align:center" onclick="view_warning(<?= $data['p_id'] ?>)" data-toggle="modal" data-target="#warning"><button type="button" class="btn btn-primary btn-user rounded-pill">Warning</button></td>
+                                                <td scope="row" style="text-align:center"><button type="button" onclick="view_branches(<?= $data['p_id'] ?>)" data-toggle="modal" data-target="#branches" class="btn btn-primary btn-user rounded-pill">Branches</button></td>
+                                                <td scope="row" style="text-align:center" onclick="view_warning(<?= $data['p_id'] ?>)" data-toggle="modal" data-target="#warning"><button type="button" class="btn btn-primary btn-user rounded-pill">Warning</button></td>
                                                 <td scope="row" style="display:none"><?= $data['p_id']; ?></td>
 
                                             </tr>
@@ -1517,7 +1517,7 @@
                                                 <h5>&nbsp;<strong>Show Details</strong></h5>
                                             </div>
                                              <div class="col-sm-2">
-                                                <a type="button" href="<?=base_url(); ?>D_O/add_physical_milestone/<?php echo "dossier" ?>" class="btn btn-primary rounded-pill">Edit Record</a>
+                                                <a type="button" href="<?= base_url(); ?>D_O/add_physical_milestone/<?php echo "dossier" ?>" class="btn btn-primary rounded-pill">Edit Record</a>
                                             </div>
                                         </div>
                                         <hr>
@@ -1830,7 +1830,7 @@
         });
     }
 
-     function view_branches(id) {
+    function view_branches(id) {
         // alert('cadet id: ' + id);
         $.ajax({
             url: '<?= base_url(); ?>D_O/view_branches_in_dossier',
@@ -1840,13 +1840,13 @@
             },
             success: function(data) {
                 var result = jQuery.parseJSON(data);
-                var len=result.length;
-             // if(result != null){
-             //    alert('not null');
-             // }
+                var len = result.length;
+                // if(result != null){
+                //    alert('not null');
+                // }
 
                 $("#table_rows_branches").empty();
-                  if (len > 0) {
+                if (len > 0) {
                     for (var i = 0; i < len; i++) {
                         $("#table_rows_branches").append(`<tr>
                                                         <td>${i+1}</td>
@@ -1857,8 +1857,9 @@
                                                         <td>${result[i]['branch_allocated']}</td>
                                                         <td data-toggle="modal" data-target="#edit_branches"><a onclick="edit_branches(${result[i]['p_id']})" ><i class="fa fa-edit"></i></a></td>
                                                     </tr>`);
-                    
-                } }else {
+
+                    }
+                } else {
                     $("#table_rows_branches").append(`<tr>
                                                     <td>No Data Found</td>
                                                     <td></td>
@@ -1876,7 +1877,7 @@
         });
     }
 
-         function edit_branches(id) {
+    function edit_branches(id) {
         // alert('cadet id: ' + id);
         $.ajax({
             url: '<?= base_url(); ?>D_O/edit_branches_data',
@@ -1887,27 +1888,27 @@
             success: function(data) {
                 var result = jQuery.parseJSON(data);
                 var len = result.length;
-//alert(result['assigned_club']);
-                  $('#oc_num_b').val(result['oc_no']);
-                  $('#id_b').val(result['p_id']);
-                  $('#name_b').val(result['name']);
-                   $('#term_b').val(result['term']);
-                  $('#division_b').val(result['divison_name']);
-                  $('#prefer_1').val(result['option1']);
-                  $('#prefer_2').val(result['option2']);
-                  $('#prefer_3').val(result['option3']);
+                //alert(result['assigned_club']);
+                $('#oc_num_b').val(result['oc_no']);
+                $('#id_b').val(result['p_id']);
+                $('#name_b').val(result['name']);
+                $('#term_b').val(result['term']);
+                $('#division_b').val(result['divison_name']);
+                $('#prefer_1').val(result['option1']);
+                $('#prefer_2').val(result['option2']);
+                $('#prefer_3').val(result['option3']);
                 $('#allocated_branch').val(result['branch_allocated']);
-                  $('#recommended_branch').val(result['branch_recommended']);
-                  
-                   $('#club_id').val(result['id']);
-                  
+                $('#recommended_branch').val(result['branch_recommended']);
+
+                $('#club_id').val(result['id']);
+
             },
             async: true
         });
     }
 
 
-function view_warning(id) {
+    function view_warning(id) {
         // alert('cadet id: ' + id);
         $.ajax({
             url: '<?= base_url(); ?>D_O/view_warning_in_dossier',
@@ -1944,6 +1945,7 @@ function view_warning(id) {
             async: true
         });
     }
+
     function edit_warning(id) {
         // alert('cadet id: ' + id);
         $.ajax({
@@ -1956,23 +1958,24 @@ function view_warning(id) {
                 var result = jQuery.parseJSON(data);
                 var len = result.length;
                 // alert('xczxcx');
-                 //alert(result['name']);
-                  $('#oc_num_ew').val(result['oc_no']);
-                  $('#id_ew').val(result['p_id']);
-                  $('#name').val(result['name']);
-                  $('#division').val(result['divison_name']);
-                  $('#warning_type').val(result['type']);
-                  $('#term').val(result['term']);
-                  $('#date').val(result['date']);
-                  $('#issued_by').val(result['issued_by']);
-                  $('#reason').val(result['reasons']);
-                   $('#file_name').html(result['file'] );
-                    $('#old_file').val(result['file']);
+                //alert(result['name']);
+                $('#oc_num_ew').val(result['oc_no']);
+                $('#id_ew').val(result['p_id']);
+                $('#name').val(result['name']);
+                $('#division').val(result['divison_name']);
+                $('#warning_type').val(result['type']);
+                $('#term').val(result['term']);
+                $('#date').val(result['date']);
+                $('#issued_by').val(result['issued_by']);
+                $('#reason').val(result['reasons']);
+                $('#file_name').html(result['file']);
+                $('#old_file').val(result['file']);
             },
             async: true
         });
     }
-        function edit_punishment(id) {
+
+    function edit_punishment(id) {
         // alert('cadet id: ' + id);
         $.ajax({
             url: '<?= base_url(); ?>D_O/edit_punishment_data',
@@ -1983,27 +1986,27 @@ function view_warning(id) {
             success: function(data) {
                 var result = jQuery.parseJSON(data);
                 var len = result.length;
-                
+
                 //alert(result['name']);
-                  $('#oc_num_ep').val(result['oc_no']);
-                  $('#id_ep').val(result['p_id']);
-                  $('#name').val(result['name']);
-                   $('#term').val(result['term']);
-                  $('#division').val(result['divison_name']);
-                  $('#punish').val(result['punishment_awarded']);
-                  $('#offense').val(result['offence']);
-                  $('#start_date').val(result['start_date']);
-                  $('#end_date').val(result['start_date']);
-                  $('#days').val(result['days']);
-                   $('#punish_id').val(result['id']);
-                     $('#page').val('dossier');
-                  
+                $('#oc_num_ep').val(result['oc_no']);
+                $('#id_ep').val(result['p_id']);
+                $('#name').val(result['name']);
+                $('#term').val(result['term']);
+                $('#division').val(result['divison_name']);
+                $('#punish').val(result['punishment_awarded']);
+                $('#offense').val(result['offence']);
+                $('#start_date').val(result['start_date']);
+                $('#end_date').val(result['start_date']);
+                $('#days').val(result['days']);
+                $('#punish_id').val(result['id']);
+                $('#page').val('dossier');
+
             },
             async: true
         });
     }
-    
-     function edit_observation(id) {
+
+    function edit_observation(id) {
         // alert('cadet id: ' + id);
         $.ajax({
             url: '<?= base_url(); ?>D_O/edit_observation_data',
@@ -2014,25 +2017,25 @@ function view_warning(id) {
             success: function(data) {
                 var result = jQuery.parseJSON(data);
                 var len = result.length;
-//alert(result['name']);
-                  $('#oc_num_eo').val(result['oc_no']);
-                  $('#id_eo').val(result['p_id']);
-                  $('#name_eo').val(result['name']);
-                   $('#term_eo').val(result['term']);
-                  $('#division_eo').val(result['divison_name']);
-                  $('#observation_eo').val(result['observation']);
-                  
-                   $('#observation_id').val(result['id']);
-                     $('#page1').val('dossier');
-                  
+                //alert(result['name']);
+                $('#oc_num_eo').val(result['oc_no']);
+                $('#id_eo').val(result['p_id']);
+                $('#name_eo').val(result['name']);
+                $('#term_eo').val(result['term']);
+                $('#division_eo').val(result['divison_name']);
+                $('#observation_eo').val(result['observation']);
+
+                $('#observation_id').val(result['id']);
+                $('#page1').val('dossier');
+
             },
             async: true
         });
     }
 
- 
 
-     function edit_club(id) {
+
+    function edit_club(id) {
         // alert('cadet id: ' + id);
         $.ajax({
             url: '<?= base_url(); ?>D_O/edit_club_data',
@@ -2043,23 +2046,23 @@ function view_warning(id) {
             success: function(data) {
                 var result = jQuery.parseJSON(data);
                 var len = result.length;
-//alert(result['assigned_club']);
-                  $('#oc_num_ec').val(result['oc_no']);
-                  $('#p_id_ec').val(result['p_id']);
-                  $('#name_ec').val(result['name']);
-                   $('#term_ec').val(result['term']);
-                  $('#division_ec').val(result['divison_name']);
-                  $('#club_ec').val(result['assigned_club']);
-                  $('#observation_ec').val(result['observation']);
-                  
-                   $('#club_id').val(result['id']);
-                  
+                //alert(result['assigned_club']);
+                $('#oc_num_ec').val(result['oc_no']);
+                $('#p_id_ec').val(result['p_id']);
+                $('#name_ec').val(result['name']);
+                $('#term_ec').val(result['term']);
+                $('#division_ec').val(result['divison_name']);
+                $('#club_ec').val(result['assigned_club']);
+                $('#observation_ec').val(result['observation']);
+
+                $('#club_id').val(result['id']);
+
             },
             async: true
         });
     }
 
-       function delete_club(id) {
+    function delete_club(id) {
         // alert('cadet id: ' + id);
         $.ajax({
             url: '<?= base_url(); ?>D_O/delete_club_data',
@@ -2093,8 +2096,8 @@ function view_warning(id) {
                                                     </tr>`);
                 }
 
-//alert(result['assigned_club']);
-                  
+                //alert(result['assigned_club']);
+
             },
             async: true
         });
@@ -2127,7 +2130,7 @@ function view_warning(id) {
         });
     });
 
- $('#save_btn').on('click', function() {
+    $('#save_btn').on('click', function() {
         $('#save_btn').attr('disabled', true);
         var validate = 0;
         var issued_by = $('#issued_by').val();
@@ -2235,11 +2238,11 @@ function view_warning(id) {
         $('#cadet_oc_no_club').html('<strong> OC No: ' + $columns[2].innerHTML + '</strong>');
         $('#cadet_term_club').html('<strong> Term: ' + $columns[3].innerHTML + '</strong>');
 
-         $('#cadet_name_heading_w').html('<strong> Cadet Name: ' + $columns[1].innerHTML + '</strong>');
+        $('#cadet_name_heading_w').html('<strong> Cadet Name: ' + $columns[1].innerHTML + '</strong>');
         $('#cadet_oc_no_w').html('<strong> OC No: ' + $columns[2].innerHTML + '</strong>');
         $('#cadet_term_w').html('<strong> Term: ' + $columns[3].innerHTML + '</strong>');
 
-         $('#cadet_name_heading_b').html('<strong> Cadet Name: ' + $columns[1].innerHTML + '</strong>');
+        $('#cadet_name_heading_b').html('<strong> Cadet Name: ' + $columns[1].innerHTML + '</strong>');
         $('#cadet_oc_no_b').html('<strong> OC No: ' + $columns[2].innerHTML + '</strong>');
         $('#cadet_term_b').html('<strong> Term: ' + $columns[3].innerHTML + '</strong>');
 
@@ -2248,8 +2251,8 @@ function view_warning(id) {
         $('#end_date').val($columns[7].innerHTML);
         $('#days').val((Date.parse($columns[7].innerHTML) - Date.parse($columns[6].innerHTML)) / 1000 / 60 / 60 / 24);
 
-         //var id = $('#p_id').val();
-//alert($columns[4].innerHTML);
+        //var id = $('#p_id').val();
+        //alert($columns[4].innerHTML);
         $.ajax({
             url: '<?= base_url(); ?>D_O/view_PET_I',
             method: 'POST',
@@ -2354,7 +2357,7 @@ function view_warning(id) {
 
     });
 
-     $('#save_btn_punishment').on('click', function() {
+    $('#save_btn_punishment').on('click', function() {
         $('#save_btn').attr('disabled', true);
         var validate = 0;
         var punish = $('#punish').val();
@@ -2444,12 +2447,12 @@ function view_warning(id) {
         $('#days').val(Math.abs(end_date - start_date) / 1000 / 60 / 60 / 24);
     });
 
-       $('#save_btn_observation').on('click', function() {
+    $('#save_btn_observation').on('click', function() {
         $('#save_btn').attr('disabled', true);
         var validate = 0;
         var observation = $('#observation').val();
 
-        
+
         if (observation == '') {
             validate = 1;
             $('#observation').addClass('red-border');
@@ -2465,7 +2468,7 @@ function view_warning(id) {
         }
     });
 
-          $('#save_btn_club').on('click', function() {
+    $('#save_btn_club').on('click', function() {
         // $('#save_btn').attr('disabled', true);
         var validate = 0;
         var club = $('#club').val();
@@ -2485,13 +2488,13 @@ function view_warning(id) {
         }
     });
 
-           $('#save_btn_branches').on('click', function() {
+    $('#save_btn_branches').on('click', function() {
         $('#save_btn_branches').attr('disabled', true);
         var validate = 0;
         var allocated_branch = $('#allocated_branch').val();
         var recommended_branch = $('#recommended_branch').val();
-        var allocated_branch=$('#allocated_branch').val();
-        
+        var allocated_branch = $('#allocated_branch').val();
+
 
         if (prefer_1 == '') {
             validate = 1;
@@ -2501,11 +2504,11 @@ function view_warning(id) {
             validate = 1;
             $('#allocated_branch').addClass('red-border');
         }
-        if ( recommended_branch == '') {
+        if (recommended_branch == '') {
             validate = 1;
             $('#recommended_branch').addClass('red-border');
         }
-      
+
 
         if (validate == 0) {
             $('#save_form_branches')[0].submit();
@@ -2516,5 +2519,4 @@ function view_warning(id) {
             $('#show_error_save').show();
         }
     });
-
 </script>

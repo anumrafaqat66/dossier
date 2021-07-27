@@ -19,7 +19,7 @@
 <!-- Term I Modal -->
 
 <div class="container-fluid my-2">
-  <div class="modal fade" id="term-I">
+    <div class="modal fade" id="term-I">
         <!-- <div class="row"> -->
         <div class="modal-dialog modal-dialog-centered " style="margin-left: 250px;" role="document">
             <div class="modal-content bg-custom3" style="width:1200px;">
@@ -47,44 +47,44 @@
                                             <div class="col-sm-3">
                                                 <h3 id="">Pushups</h3>
                                             </div>
-                                             <div class="col-sm-3">
+                                            <div class="col-sm-3">
                                                 <h3 id="">Rope</h3>
                                             </div>
                                         </div>
-                                         <div class="form-group row">
+                                        <div class="form-group row">
 
-                                <div class="col-sm-4 mb-1" style="display:none">
-                                    <input type="text" class="" name="oc_num1" id="oc_num1">
-                                </div>
-                                <div class="col-sm-4 mb-1" style="display:none">
-                                    <input type="text" class="" name="id1" id="id1">
-                                </div>
+                                            <div class="col-sm-4 mb-1" style="display:none">
+                                                <input type="text" class="" name="oc_num1" id="oc_num1">
+                                            </div>
+                                            <div class="col-sm-4 mb-1" style="display:none">
+                                                <input type="text" class="" name="id1" id="id1">
+                                            </div>
 
-                                <div class="col-sm-3 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="mile_time_I" id="mile_time_I" style="" placeholder="mile time" >
-                                </div>
-                                <div class="col-sm-3 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="Chinups_I" id="Chinups_I"  placeholder="Chinups" >
-                                </div>
-                                <div class="col-sm-3 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="Pushups_I" id="Pushups_I"  placeholder="Pushups" >
-                                </div>
-                                  <div class="col-sm-3 mb-1">
-                                     <select class="form-control rounded-pill" name="Rope_I" id="Rope_I" data-placeholder="Select Grade" style="font-size: 0.8rem; height:50px;">
-                                        <option class="form-control form-control-user" value="">Select Grade</option>
-                                        <option class="form-control form-control-user" value="Alpha">Alpha</option>
-                                        <option class="form-control form-control-user" value="Bravo">Bravo</option>
-                                        <option class="form-control form-control-user" value="Charlie">Charlie</option>
-                                    </select>
-                                </div>
+                                            <div class="col-sm-3 mb-1">
+                                                <input type="text" class="form-control form-control-user" name="mile_time_I" id="mile_time_I" style="" placeholder="mile time">
+                                            </div>
+                                            <div class="col-sm-3 mb-1">
+                                                <input type="text" class="form-control form-control-user" name="Chinups_I" id="Chinups_I" placeholder="Chinups">
+                                            </div>
+                                            <div class="col-sm-3 mb-1">
+                                                <input type="text" class="form-control form-control-user" name="Pushups_I" id="Pushups_I" placeholder="Pushups">
+                                            </div>
+                                            <div class="col-sm-3 mb-1">
+                                                <select class="form-control rounded-pill" name="Rope_I" id="Rope_I" data-placeholder="Select Grade" style="font-size: 0.8rem; height:50px;">
+                                                    <option class="form-control form-control-user" value="">Select Grade</option>
+                                                    <option class="form-control form-control-user" value="Alpha">Alpha</option>
+                                                    <option class="form-control form-control-user" value="Bravo">Bravo</option>
+                                                    <option class="form-control form-control-user" value="Charlie">Charlie</option>
+                                                </select>
+                                            </div>
 
 
-                            </div>
-                     <div class="form-group row">
-                        <button type="button" class="btn btn-primary btn-user rounded-pill col-md-5" id="add_btn_termI" style="margin-left: 300px;" >Save</button>
-                     </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <button type="button" class="btn btn-primary btn-user rounded-pill col-md-5" id="add_btn_termI" style="margin-left: 300px;">Save</button>
+                                        </div>
                                         <div class="card-body">
-                                           
+
                                         </div>
 
                                     </form>
@@ -102,9 +102,9 @@
         </div>
     </div>
 
-<!-- Term II Modal -->
+    <!-- Term II Modal -->
 
-      <div class="modal fade" id="term-II">
+    <div class="modal fade" id="term-II">
         <!-- <div class="row"> -->
         <div class="modal-dialog modal-dialog-centered " style="margin-left: 250px;" role="document">
             <div class="modal-content bg-custom3" style="width:1200px;">
@@ -121,8 +121,8 @@
                                 </div>
 
                                 <div class="card-body bg-custom3">
-                                    <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>D_O/add_termII_details">
-                                       
+                                    <form class="user" role="form" method="post" id="add_form2" action="<?= base_url(); ?>D_O/add_termII_details">
+
                                         <div class="form-group row">
                                             <div class="col-sm-3">
                                                 <h3 id="">Mile Time</h3>
@@ -133,40 +133,40 @@
                                             <div class="col-sm-3">
                                                 <h3 id="">Pushups</h3>
                                             </div>
-                                             <div class="col-sm-3">
+                                            <div class="col-sm-3">
                                                 <h3 id="">Rope</h3>
                                             </div>
                                         </div>
-                                            <div class="form-group row">
+                                        <div class="form-group row">
 
-                                <div class="col-sm-4 mb-1" style="display:none">
-                                    <input type="text" class="" name="oc_num2" id="oc_num2">
-                                </div>
-                                <div class="col-sm-4 mb-1" style="display:none">
-                                    <input type="text" class="" name="id2" id="id2">
-                                </div>
+                                            <div class="col-sm-4 mb-1" style="display:none">
+                                                <input type="text" class="" name="oc_num2" id="oc_num2">
+                                            </div>
+                                            <div class="col-sm-4 mb-1" style="display:none">
+                                                <input type="text" class="" name="id2" id="id2">
+                                            </div>
 
-                                <div class="col-sm-3 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="mile_time_II" id="mile_time_II"  placeholder="mile time">
-                                </div>
-                                <div class="col-sm-3 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="Chinups_II" id="Chinups_II"  placeholder="Chinups">
-                                </div>
-                                <div class="col-sm-3 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="Pushups_II" id="Pushups_II"  placeholder="Pushups">
-                                </div>
-                                <div class="col-sm-3 mb-1">
-                                     <select class="form-control rounded-pill" name="Rope_II" id="Rope_II" data-placeholder="Select Grade" style="font-size: 0.8rem; height:50px;">
-                                        <option class="form-control form-control-user" value="">Select Grade</option>
-                                        <option class="form-control form-control-user" value="Alpha">Alpha</option>
-                                        <option class="form-control form-control-user" value="Bravo">Bravo</option>
-                                        <option class="form-control form-control-user" value="Charlie">Charlie</option>
-                                    </select>
-                                </div>
-                            </div>
-                        <div class="form-group row">
-                        <button type="button" class="btn btn-primary btn-user rounded-pill col-md-5" id="add_btn_termII" style="margin-left: 300px;" >Save</button>
-                        </div>
+                                            <div class="col-sm-3 mb-1">
+                                                <input type="text" class="form-control form-control-user" name="mile_time_II" id="mile_time_II" placeholder="mile time">
+                                            </div>
+                                            <div class="col-sm-3 mb-1">
+                                                <input type="text" class="form-control form-control-user" name="Chinups_II" id="Chinups_II" placeholder="Chinups">
+                                            </div>
+                                            <div class="col-sm-3 mb-1">
+                                                <input type="text" class="form-control form-control-user" name="Pushups_II" id="Pushups_II" placeholder="Pushups">
+                                            </div>
+                                            <div class="col-sm-3 mb-1">
+                                                <select class="form-control rounded-pill" name="Rope_II" id="Rope_II" data-placeholder="Select Grade" style="font-size: 0.8rem; height:50px;">
+                                                    <option class="form-control form-control-user" value="">Select Grade</option>
+                                                    <option class="form-control form-control-user" value="Alpha">Alpha</option>
+                                                    <option class="form-control form-control-user" value="Bravo">Bravo</option>
+                                                    <option class="form-control form-control-user" value="Charlie">Charlie</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <button type="button" class="btn btn-primary btn-user rounded-pill col-md-5" id="add_btn_termII" style="margin-left: 300px;">Save</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -262,9 +262,10 @@
                                 <div class="col-sm-4 mb-1" style="display:none">
                                     <input type="text" class="" name="id" id="id">
                                 </div>
-                                <?php if(isset($page)){ 
-                                    //echo "sdfsdfds";?>
-                                <input type="hidden" name="pagee" id="pagee" value="<?= $page;?>">
+                                <?php if (isset($page)) {
+                                    //echo "sdfsdfds";
+                                ?>
+                                    <input type="hidden" name="pagee" id="pagee" value="<?= $page; ?>">
                                 <?php } ?>
                                 <div class="col-sm-4 mb-1">
                                     <input type="text" class="form-control form-control-user" name="name" id="name" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
@@ -283,7 +284,7 @@
                                 <h1 class="h5">Enter Physical Milestone Information</h1>
                             </div>
 
-                            <div class="form-group row my-3" >
+                            <div class="form-group row my-3">
                                 <div class="col-sm-3">
                                     <h5>&nbsp;<strong>Test Name</strong></h5>
                                 </div>
@@ -366,7 +367,7 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-3 mb-1">
-                                   <button type="button" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#term-I">Add Details</button>
+                                    <button type="button" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#term-I">Add Details</button>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -391,7 +392,7 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-3 mb-1">
-                                   <button type="button" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#term-II">Add Details</button>
+                                    <button type="button" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#term-II">Add Details</button>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -523,7 +524,7 @@
                                     <span id="show_error_save" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
                                 </div>
                             </div>
-                                <input type="hidden" name="milestone_id" id="milestone_id">
+                            <input type="hidden" name="milestone_id" id="milestone_id">
                         </form>
                     </div>
                 </div>
@@ -547,75 +548,75 @@
 
 <?php $this->load->view('common/footer'); ?>
 <script>
-       $('#add_btn_termI').on('click', function() {
-         //alert('javascript working');
-         //  $('#add_btn_bids').attr('disabled', true);
-         var p_id = $('#id1').val();
-         var oc_no = $('#oc_num1').val();
-         var mile_time=  $('#mile_time_I').val();
-         var Pushups=$('#Pushups_I').val();
-         var Chinups=  $('#Chinups_I').val();
-         var rope=$('#Rope_I').val();
+    $('#add_btn_termI').on('click', function() {
+        //alert('javascript working');
+        //  $('#add_btn_bids').attr('disabled', true);
+        var p_id = $('#id1').val();
+        var oc_no = $('#oc_num1').val();
+        var mile_time = $('#mile_time_I').val();
+        var Pushups = $('#Pushups_I').val();
+        var Chinups = $('#Chinups_I').val();
+        var rope = $('#Rope_I').val();
 
-    
-             $.ajax({
-                 url: '<?= base_url(); ?>D_O/add_termI_details',
-                 method: 'POST',
-                 //  type:'json',
-                 data: {
-                     'p_id': p_id,
-                     'oc_no': oc_no,
-                     'mile_time': mile_time,
-                     'Pushups': Pushups,
-                     'Chinups': Chinups,
-                     'rope': rope
-                 },
-                 success: function(response) {
 
-                 },
-                 async: false
-             });
+        $.ajax({
+            url: '<?= base_url(); ?>D_O/add_termI_details',
+            method: 'POST',
+            //  type:'json',
+            data: {
+                'p_id': p_id,
+                'oc_no': oc_no,
+                'mile_time': mile_time,
+                'Pushups': Pushups,
+                'Chinups': Chinups,
+                'rope': rope
+            },
+            success: function(response) {
 
-             //  $('#add_form_bids')[0].submit();
-            // $('#show_error_new').hide();
-             $('#term-I').modal('hide');
-     });
+            },
+            async: false
+        });
 
-            $('#add_btn_termII').on('click', function() {
-         //alert('javascript working');
-         //  $('#add_btn_bids').attr('disabled', true);
-         var validate = 0;
-     
-         var p_id = $('#id2').val();
-         var oc_no = $('#oc_num2').val();
-         var mile_time=  $('#mile_time_II').val();
-         var Pushups=$('#Pushups_II').val();
-         var Chinups=  $('#Chinups_II').val();
-         var rope=$('#Rope_II').val();
+        //  $('#add_form_bids')[0].submit();
+        // $('#show_error_new').hide();
+        $('#term-I').modal('hide');
+    });
 
-             $.ajax({
-                 url: '<?= base_url(); ?>D_O/add_termII_details',
-                 method: 'POST',
-                 //  type:'json',
-                 data: {
-                     'p_id': p_id,
-                     'oc_no': oc_no,
-                     'mile_time': mile_time,
-                     'Pushups': Pushups,
-                     'Chinups': Chinups,
-                     'rope': rope
-                 },
-                 success: function(response) {
+    $('#add_btn_termII').on('click', function() {
+        //alert('javascript working');
+        //  $('#add_btn_bids').attr('disabled', true);
+        var validate = 0;
 
-                 },
-                 async: false
-             });
+        var p_id = $('#id2').val();
+        var oc_no = $('#oc_num2').val();
+        var mile_time = $('#mile_time_II').val();
+        var Pushups = $('#Pushups_II').val();
+        var Chinups = $('#Chinups_II').val();
+        var rope = $('#Rope_II').val();
 
-             //  $('#add_form_bids')[0].submit();
-           //  $('#show_error_new').hide();
-             $('#term-II').modal('hide');
+        $.ajax({
+            url: '<?= base_url(); ?>D_O/add_termII_details',
+            method: 'POST',
+            //  type:'json',
+            data: {
+                'p_id': p_id,
+                'oc_no': oc_no,
+                'mile_time': mile_time,
+                'Pushups': Pushups,
+                'Chinups': Chinups,
+                'rope': rope
+            },
+            success: function(response) {
 
-     });
+            },
+            async: false
+        });
+
+        //  $('#add_form_bids')[0].submit();
+        //  $('#show_error_new').hide();
+        $('#term-II').modal('hide');
+
+    });
 
     function seen(data) {
         // alert('in');
@@ -647,12 +648,8 @@
 
 
     $('#add_btn').on('click', function() {
-        //alert('javascript working');
-        // $('#add_btn').attr('disabled', true);
         var validate = 0;
-
         var oc_no = $('#oc_no').val();
-
 
         if (oc_no == '') {
             validate = 1;
@@ -676,49 +673,42 @@
                         $('#search_cadet').show();
                         $('#no_data').hide();
 
-                        $('#name').val(result['name']);
-                        $('#term').val(result['term']);
-                        $('#division').val(result['divison_name']);
-                        $('#oc_num').val(result['oc_no']);
-                        $('#id').val(result['p_id']);
-                         $('#oc_num1').val(result['oc_no']);
-                        $('#id1').val(result['p_id']);
-                         $('#oc_num2').val(result['oc_no']);
-                        $('#id2').val(result['p_id']);
+                        $('#name').val(result['f_name']);
+                        $('#term').val(result['f_term']);
+                        $('#division').val(result['f_divison_name']);
+                        $('#oc_num').val(result['f_oc_no']);
+                        $('#id').val(result['f_p_id']);
+                        $('#oc_num1').val(result['f_oc_no']);
+                        $('#id1').val(result['f_p_id']);
+                        $('#oc_num2').val(result['f_oc_no']);
+                        $('#id2').val(result['f_p_id']);
                         $('#pst').val(result['PST_result']);
-                         $('#pst_attempt').val(result['PST_attempt']);
-                          $('#sst').val(result['SST_result']);
-                           $('#sst_attempt').val(result['SST_attempt']);
-
+                        $('#pst_attempt').val(result['PST_attempt']);
+                        $('#sst').val(result['SST_result']);
+                        $('#sst_attempt').val(result['SST_attempt']);
                         $('#pet_I').val(result['PET_I_result']);
-                         $('#pet_I_attempt').val(result['PET_I_attempt']);
-                          $('#pet_II').val(result['PET_II_result']);
-                           $('#pet_II_attempt').val(result['PET_II_attempt']);
-
-
-                         $('#assault').val(result['assault_result']);
-                         $('#assault_attempt').val(result['assault_attempt']);
-                          $('#saluting').val(result['saluting_result']);
-                           $('#saluting_attempt').val(result['saluting_attempt']);
-
-                             $('#plx').val(result['PLX_result']);
-                         $('#plx_attempt').val(result['PLX_attempt']);
-                          $('#long_cross').val(result['long_cross_result']);
-                           $('#long_cross_card').val(result['long_cross_card_number']);
-                           $('#mini_cross').val(result['mini_cross_result']);
-                           $('#mini_cross_card').val(result['mini_cross_card_number']);
-                           $('#milestone_id').val(result['id']);
-
-                             $('#mile_time_I').val(result['mile_time']);
-                           $('#Chinups_I').val(result['chinups']);
-                           $('#Pushups_I').val(result['pushups']);
-                            $('#Rope_I').val(result['rope']);
-
-                             $('#mile_time_II').val(result['mile_time_II']);
-                           $('#Chinups_II').val(result['chinups_II']);
-                           $('#Pushups_II').val(result['pushups_II']);
-                            $('#Rope_II').val(result['rope_II']);
-
+                        $('#pet_I_attempt').val(result['PET_I_attempt']);
+                        $('#pet_II').val(result['PET_II_result']);
+                        $('#pet_II_attempt').val(result['PET_II_attempt']);
+                        $('#assault').val(result['assault_result']);
+                        $('#assault_attempt').val(result['assault_attempt']);
+                        $('#saluting').val(result['saluting_result']);
+                        $('#saluting_attempt').val(result['saluting_attempt']);
+                        $('#plx').val(result['PLX_result']);
+                        $('#plx_attempt').val(result['PLX_attempt']);
+                        $('#long_cross').val(result['long_cross_result']);
+                        $('#long_cross_card').val(result['long_cross_card_number']);
+                        $('#mini_cross').val(result['mini_cross_result']);
+                        $('#mini_cross_card').val(result['mini_cross_card_number']);
+                        $('#milestone_id').val(result['id']);
+                        $('#mile_time_I').val(result['mile_time']);
+                        $('#Chinups_I').val(result['chinups']);
+                        $('#Pushups_I').val(result['pushups']);
+                        $('#Rope_I').val(result['rope']);
+                        $('#mile_time_II').val(result['mile_time_II']);
+                        $('#Chinups_II').val(result['chinups_II']);
+                        $('#Pushups_II').val(result['pushups_II']);
+                        $('#Rope_II').val(result['rope_II']);
 
                     } else {
                         $('#no_data').show();

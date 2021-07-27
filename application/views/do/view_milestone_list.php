@@ -392,7 +392,7 @@
                             </div>
                         </div> -->
                         <div id="table_div">
-                            <?php if (isset($milestone_records) ) { ?>
+                            <?php if (isset($milestone_records)) { ?>
                                 <table id="datatable" class="table table-striped" style="color:black; width:auto !important;table-layout:auto !important;">
                                     <thead>
                                         <tr>
@@ -415,41 +415,39 @@
                                             <th scope="col">PLX Result</th> -->
                                             <!-- <th scope="col">Acions</th> -->
                                             <th scope="col">Actions</th>
-                                             <th scope="col">Actions</th>
+                                            <th scope="col">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody id="table_rows">
-                                        <?php $count = 0; ?>
-                                        <td scope="row" style="padding:20px"><?= $milestone_records['id']; ?></td>
-                                        <td scope="row" style="padding:20px; display:none"><?= $milestone_records['p_id']; ?></td>
-                                        <td scope="row" style="padding:20px"><?= $milestone_records['name']; ?></td>
-                                        <td scope="row" style="padding:20px"><?= $milestone_records['term']; ?></td>
-                                        <td scope="row" style="display:none"><?= $milestone_records['PST_result']; ?></td>
-                                        <td scope="row" style="display:none"><?= $milestone_records['PST_attempt']; ?></td>
-                                        <td scope="row" style="display:none"><?= $milestone_records['SST_result']; ?></td>
-                                        <td scope="row" style="display:none"><?= $milestone_records['SST_attempt']; ?></td>
-                                        <td scope="row" style="display:none"><?= $milestone_records['PET_I_result']; ?></td>
-                                        <td scope="row" style="display:none"><?= $milestone_records['PET_I_attempt']; ?></td>
-                                        <td scope="row" style="display:none"><?= $milestone_records['PET_II_result']; ?></td>
-                                        <td scope="row" style="display:none"><?= $milestone_records['PET_II_attempt']; ?></td>
-                                        <td scope="row" style="display:none"><?= $milestone_records['assault_result']; ?></td>
-                                        <td scope="row" style="display:none"><?= $milestone_records['assault_attempt']; ?></td>
-                                        <td scope="row" style="display:none"><?= $milestone_records['saluting_result']; ?></td>
-                                        <td scope="row" style="display:none"><?= $milestone_records['saluting_attempt']; ?></td>
-                                        <td scope="row" style="display:none"><?= $milestone_records['PLX_result']; ?></td>
-                                        <td scope="row" style="display:none"><?= $milestone_records['PLX_attempt']; ?></td>
-                                        <td scope="row" style="display:none"><?= $milestone_records['long_cross_result']; ?></td>
-                                        <td scope="row" style="display:none"><?= $milestone_records['long_cross_card_number']; ?></td>
-                                        <td scope="row" style="display:none"><?= $milestone_records['mini_cross_result']; ?></td>
-                                        <td scope="row" style="display:none"><?= $milestone_records['mini_cross_card_number']; ?></td>
-
-                                        <!-- <td scope="row"><button type="button" class="btn btn-primary btn-user " onclick="view_PET_I(<?= $milestone_records['p_id'] ?>)" style="font-size:12px; background-color:green" data-toggle="modal" data-target="#PET_I"> PET-I Details</button></td> -->
-                                        <!-- <td scope="row"><button type="button" onclick="view_PET_II(<?= $milestone_records['p_id'] ?>)" class="btn btn-primary btn-user " data-toggle="modal" data-target="#PET_II" style="font-size:12px; background-color:green"> PET-II Details</button></td> -->
-                                        <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#view_details"> View Details</button></td>
-                                          <td type="button"  class="edit" scope="row" ><a style="color: black" href="<?=base_url(); ?>D_O/add_physical_milestone/<?php echo "milestone_list" ?>"><i style="" class="fas fa-edit"></i></a></td> 
-
-
-                                        </tr>
+                                        <?php $count = 0;
+                                        foreach ($milestone_records as $data) { ?>
+                                            <tr>
+                                                <td scope="row" style="padding:20px"><?= ++$count; ?></td>
+                                                <td scope="row" style="padding:20px; display:none"><?= $data['p_id']; ?></td>
+                                                <td scope="row" style="padding:20px"><?= $data['name']; ?></td>
+                                                <td scope="row" style="padding:20px"><?= $data['term']; ?></td>
+                                                <td scope="row" style="display:none"><?= $data['PST_result']; ?></td>
+                                                <td scope="row" style="display:none"><?= $data['PST_attempt']; ?></td>
+                                                <td scope="row" style="display:none"><?= $data['SST_result']; ?></td>
+                                                <td scope="row" style="display:none"><?= $data['SST_attempt']; ?></td>
+                                                <td scope="row" style="display:none"><?= $data['PET_I_result']; ?></td>
+                                                <td scope="row" style="display:none"><?= $data['PET_I_attempt']; ?></td>
+                                                <td scope="row" style="display:none"><?= $data['PET_II_result']; ?></td>
+                                                <td scope="row" style="display:none"><?= $data['PET_II_attempt']; ?></td>
+                                                <td scope="row" style="display:none"><?= $data['assault_result']; ?></td>
+                                                <td scope="row" style="display:none"><?= $data['assault_attempt']; ?></td>
+                                                <td scope="row" style="display:none"><?= $data['saluting_result']; ?></td>
+                                                <td scope="row" style="display:none"><?= $data['saluting_attempt']; ?></td>
+                                                <td scope="row" style="display:none"><?= $data['PLX_result']; ?></td>
+                                                <td scope="row" style="display:none"><?= $data['PLX_attempt']; ?></td>
+                                                <td scope="row" style="display:none"><?= $data['long_cross_result']; ?></td>
+                                                <td scope="row" style="display:none"><?= $data['long_cross_card_number']; ?></td>
+                                                <td scope="row" style="display:none"><?= $data['mini_cross_result']; ?></td>
+                                                <td scope="row" style="display:none"><?= $data['mini_cross_card_number']; ?></td>
+                                                <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#view_details"> View Details</button></td>
+                                                <td type="button" class="edit" scope="row"><a style="color: black" href="<?= base_url(); ?>D_O/add_physical_milestone/<?php echo "milestone_list" ?>"><i style="" class="fas fa-edit"></i></a></td>
+                                            </tr>
+                                        <?php } ?>
 
                                     </tbody>
                                 </table>
@@ -503,18 +501,15 @@
 
 
     $('#add_btn').on('click', function() {
-        //alert('javascript working');
-        // $('#add_btn').attr('disabled', true);
         var validate = 0;
-
         var oc_no = $('#oc_no').val();
-
 
         if (oc_no == '') {
             validate = 1;
             $('#oc_no').addClass('red-border');
         }
 
+        alert(oc_no);
         if (validate == 0) {
             // $('#add_form')[0].submit();
             $('#show_error_new').hide();
@@ -624,7 +619,7 @@
         }
         $('#mini_cross_card').html($columns[21].innerHTML);
 
-//alert( $columns[1].innerHTML);
+        //alert( $columns[1].innerHTML);
         $.ajax({
             url: '<?= base_url(); ?>D_O/view_PET_I',
             method: 'POST',
@@ -634,7 +629,7 @@
             success: function(data) {
                 var result = jQuery.parseJSON(data);
                 var len = result.length;
-                
+
                 $('#mile_time1_detail').html(result['mile_time']);
                 $('#pushup1_detail').html(result['pushups']);
                 $('#chinups1_detail').html(result['chinups']);
@@ -653,10 +648,10 @@
                 var result = jQuery.parseJSON(data);
                 var len = result.length;
 
-                $('#mile_time2_detail').html(result['mile_time_II']);
-                $('#pushup2_detail').html(result['pushups_II']);
-                $('#chinups2_detail').html(result['chinups_II']);
-                $('#rope2_detail').html(result['rope_II']);
+                $('#mile_time2_detail').html(result['mile_time']);
+                $('#pushup2_detail').html(result['pushups']);
+                $('#chinups2_detail').html(result['chinups']);
+                $('#rope2_detail').html(result['rope']);
 
 
                 // }

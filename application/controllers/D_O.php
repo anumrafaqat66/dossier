@@ -38,15 +38,15 @@ class D_O extends CI_Controller
                 'p_id' => $id,
                 'assigned_club' => $club,
                 'do_id' => $this->session->userdata('user_id'),
-                'status'=>'active',
+                'status' => 'active',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             );
-            
+
             $update_array = array(
                 'status' =>  'deleted'
-                 );
-            $this->db->where('p_id',$id)->update('club_records',$update_array);
+            );
+            $this->db->where('p_id', $id)->update('club_records', $update_array);
             $insert = $this->db->insert('club_records', $insert_array);
 
             $cond  = ['oc_no' => $oc_no];
@@ -67,29 +67,29 @@ class D_O extends CI_Controller
         }
     }
 
-     public function update_cadet_club()
+    public function update_cadet_club()
     {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
 
-           
+
             $club = $postData['club'];
-            $id=$postData['club_id'];
-            $p_id=$postData['p_id_ec'];
-            $oc_num_ec=$postData['oc_num_ec'];
+            $id = $postData['club_id'];
+            $p_id = $postData['p_id_ec'];
+            $oc_num_ec = $postData['oc_num_ec'];
             //echo "sdfsdf".$p_id;exit;
 
-             //uddate previous club_records with same p_id
+            //uddate previous club_records with same p_id
             $cond  = ['p_id' => $p_id];
             $data_update = [
-                'status'=>'deleted'
+                'status' => 'deleted'
             ];
 
             $this->db->where($cond);
             $update = $this->db->update('club_records', $data_update);
 
             //uddate in pn_form1s
-             $cond  = ['oc_no' => $oc_num_ec];
+            $cond  = ['oc_no' => $oc_num_ec];
             $data_update1 = [
                 'club' => $club
             ];
@@ -99,15 +99,15 @@ class D_O extends CI_Controller
 
 
             $insert_array = array(
-                 'p_id' => $p_id,
+                'p_id' => $p_id,
                 'assigned_club' => $club,
                 'do_id' => $this->session->userdata('user_id'),
-                'status'=>'active',
+                'status' => 'active',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             );
-           $insert= $this->db->insert('club_records',$insert_array);
-          
+            $insert = $this->db->insert('club_records', $insert_array);
+
 
             if (!empty($insert)) {
                 $this->session->set_flashdata('success', 'Cadet Club Updated successfully');
@@ -347,35 +347,35 @@ class D_O extends CI_Controller
             $postData = $this->security->xss_clean($this->input->post());
 
             $id = $postData['punish_id'];
-            $page=$postData['page'];
+            $page = $postData['page'];
             $punish = $postData['punish'];
             $start_date = $postData['start_date'];
             $end_date = $postData['end_date'];
             $days = $postData['days'];
-            if(isset($postData['offense'])){
-            $data_update = [
-                'punishment_awarded' => $punish,
-                'start_date' => $start_date,
-                'date' => date('Y-m-d'),
-                //'date'=>$date,
-                'offence'=> $postData['offense'],
-                'end_date' => $end_date,
-                'days' => $days,
-                 'updated_at' => date('Y-m-d H:i:s')
+            if (isset($postData['offense'])) {
+                $data_update = [
+                    'punishment_awarded' => $punish,
+                    'start_date' => $start_date,
+                    'date' => date('Y-m-d'),
+                    //'date'=>$date,
+                    'offence' => $postData['offense'],
+                    'end_date' => $end_date,
+                    'days' => $days,
+                    'updated_at' => date('Y-m-d H:i:s')
 
-            ];
-            }else{
-                  $data_update = [
-                'punishment_awarded' => $punish,
-                'date' => date('Y-m-d'),
-                'start_date' => $start_date,
-                'end_date' => $end_date,
-                'days' => $days,
-                 'updated_at' => date('Y-m-d H:i:s')
-            ];
+                ];
+            } else {
+                $data_update = [
+                    'punishment_awarded' => $punish,
+                    'date' => date('Y-m-d'),
+                    'start_date' => $start_date,
+                    'end_date' => $end_date,
+                    'days' => $days,
+                    'updated_at' => date('Y-m-d H:i:s')
+                ];
             }
-       
-       //print_r($data_update);exit;
+
+            //print_r($data_update);exit;
             $cond  = ['id' => $id];
 
             $this->db->where($cond);
@@ -383,35 +383,35 @@ class D_O extends CI_Controller
 
             if (!empty($update)) {
                 $this->session->set_flashdata('success', 'Punishment updated successfully');
-                if(isset($postData['offense'])){
-                     if($page=='daily_module'){
-                            redirect('D_O/view_punishment_list');
-                        }elseif($page=='dossier'){
-                            redirect('D_O/view_dossier');
-                        }
-            }else{
-                if($page=='daily_module'){
-                redirect('D_O/view_punishment_list');
-            }elseif($page=='dossier'){
-                redirect('D_O/view_dossier');
-            }
-            }
+                if (isset($postData['offense'])) {
+                    if ($page == 'daily_module') {
+                        redirect('D_O/view_punishment_list');
+                    } elseif ($page == 'dossier') {
+                        redirect('D_O/view_dossier');
+                    }
+                } else {
+                    if ($page == 'daily_module') {
+                        redirect('D_O/view_punishment_list');
+                    } elseif ($page == 'dossier') {
+                        redirect('D_O/view_dossier');
+                    }
+                }
             } else {
                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
-                      if(isset($postData['offense'])){
-                         if($page=='daily_module'){
-                            redirect('D_O/view_punishment_list');
-                        }elseif($page=='dossier'){
-                            redirect('D_O/view_dossier');
-                        }
-            }else{
-                redirect('D_O/view_punishment_list');
-            }
+                if (isset($postData['offense'])) {
+                    if ($page == 'daily_module') {
+                        redirect('D_O/view_punishment_list');
+                    } elseif ($page == 'dossier') {
+                        redirect('D_O/view_dossier');
+                    }
+                } else {
+                    redirect('D_O/view_punishment_list');
+                }
             }
         }
     }
 
-        public function edit_punishment_data()
+    public function edit_punishment_data()
     {
         if ($this->session->has_userdata('user_id')) {
             $cadet_id = $_POST['id'];
@@ -423,13 +423,13 @@ class D_O extends CI_Controller
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
-           // $this->db->where('pr.status', 'Approved');
+            // $this->db->where('pr.status', 'Approved');
             $data['edit_record'] = $this->db->get()->row_array();
-           // echo $data['edit_record']);exit;
+            // echo $data['edit_record']);exit;
             echo json_encode($data['edit_record']);
         }
     }
-    
+
 
     public function save_cadet_excuse()
     {
@@ -514,14 +514,14 @@ class D_O extends CI_Controller
         }
     }
 
- public function update_cadet_observation()
+    public function update_cadet_observation()
     {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
 
-           $page=$postData['page'];
-           //echo "sdfsfsd";
-          // echo "page".$page;exit;
+            $page = $postData['page'];
+            //echo "sdfsfsd";
+            // echo "page".$page;exit;
             $id = $postData['observation_id'];
             // $oc_no = $postData['oc_num'];
             $observation = $postData['observation'];
@@ -531,10 +531,10 @@ class D_O extends CI_Controller
 
             $update_array = array(
                 //  'oc_no' => $oc_no,
-            
+
                 'observation' => $observation,
                 'updated_at' => date('Y-m-d H:i:s'),
-            
+
             );
             $cond  = ['id' => $id];
             $this->db->where($cond);
@@ -542,23 +542,23 @@ class D_O extends CI_Controller
             //$last_id = $this->db->insert_id();
 
             if (!empty($insert)) {
-               
-                if($page=='daily_module'){
-                            $this->session->set_flashdata('success', 'Observation updated successfully');
-                            redirect('D_O/view_observation_list');
-                        }elseif($page=='dossier'){
-                            $this->session->set_flashdata('success', 'Observation updated successfully');
-                            redirect('D_O/view_dossier');
-                        }
+
+                if ($page == 'daily_module') {
+                    $this->session->set_flashdata('success', 'Observation updated successfully');
+                    redirect('D_O/view_observation_list');
+                } elseif ($page == 'dossier') {
+                    $this->session->set_flashdata('success', 'Observation updated successfully');
+                    redirect('D_O/view_dossier');
+                }
             } else {
-                
-                if($page=='daily_module'){
-                            $this->session->set_flashdata('failure', 'Something went wrong, try again.');
-                            redirect('D_O/view_observation_list');
-                        }elseif($page=='dossier'){
-                            $this->session->set_flashdata('failure', 'Something went wrong, try again.');
-                            redirect('D_O/view_dossier');
-                        }
+
+                if ($page == 'daily_module') {
+                    $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                    redirect('D_O/view_observation_list');
+                } elseif ($page == 'dossier') {
+                    $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                    redirect('D_O/view_dossier');
+                }
             }
         }
     }
@@ -567,17 +567,17 @@ class D_O extends CI_Controller
     {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
-//print_r($_FILES['file']['name'][0] != NULL);
-       if($_FILES['file']['name'][0] != NULL){
-            $upload1 = $this->upload_warning($_FILES['file']);
-            if (count($upload1) > 1) {
-                $files = implode(',', $upload1);
+            //print_r($_FILES['file']['name'][0] != NULL);
+            if ($_FILES['file']['name'][0] != NULL) {
+                $upload1 = $this->upload_warning($_FILES['file']);
+                if (count($upload1) > 1) {
+                    $files = implode(',', $upload1);
+                } else {
+                    $files = $upload1[0];
+                }
             } else {
-                $files = $upload1[0];
+                $files = '';
             }
-        }else{
-            $files='';
-        }
 
             $id = $postData['id'];
             $oc_no = $postData['oc_num'];
@@ -586,13 +586,13 @@ class D_O extends CI_Controller
             // $div_name = $postData['division'];
             $type = $postData['warning_type'];
             $reason = $postData['reason'];
-            
-          
+
+
             $insert_array = array(
                 'oc_no' => $oc_no,
                 'p_id' => $id,
                 'date' => date('Y-m-d'),
-                'file'=> $files,
+                'file' => $files,
                 'issued_by' => $issued_by,
                 'type' => $type,
                 'do_id' => $this->session->userdata('user_id'),
@@ -615,21 +615,21 @@ class D_O extends CI_Controller
             }
         }
     }
- public function update_cadet_warning()
+    public function update_cadet_warning()
     {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
-//print_r($_FILES['file']['name'][0] != NULL);
-       if($_FILES['file']['name'][0] != NULL){
-            $upload1 = $this->upload_warning($_FILES['file']);
-            if (count($upload1) > 1) {
-                $files = implode(',', $upload1);
+            //print_r($_FILES['file']['name'][0] != NULL);
+            if ($_FILES['file']['name'][0] != NULL) {
+                $upload1 = $this->upload_warning($_FILES['file']);
+                if (count($upload1) > 1) {
+                    $files = implode(',', $upload1);
+                } else {
+                    $files = $upload1[0];
+                }
             } else {
-                $files = $upload1[0];
+                $files = $postData['old_file'];
             }
-        }else{
-            $files=$postData['old_file'];
-        }
 
             $id = $postData['id'];
             $oc_no = $postData['oc_num'];
@@ -637,13 +637,13 @@ class D_O extends CI_Controller
             $issued_by = $postData['issued_by'];
             $type = $postData['warning_type'];
             $reason = $postData['reason'];
-            
-             $cond  = ['oc_no' => $oc_no];
-             $data_update = array(
+
+            $cond  = ['oc_no' => $oc_no];
+            $data_update = array(
                 'oc_no' => $oc_no,
                 'p_id' => $id,
                 'date' => date('Y-m-d'),
-                'file'=> $files,
+                'file' => $files,
                 'issued_by' => $issued_by,
                 'type' => $type,
                 'do_id' => $this->session->userdata('user_id'),
@@ -654,7 +654,7 @@ class D_O extends CI_Controller
 
             );
 
-           
+
             $this->db->where($cond);
             $update = $this->db->update('warning_records', $data_update);
 
@@ -677,22 +677,23 @@ class D_O extends CI_Controller
             echo json_encode($query);
         }
     }
-       public function search_cadet_physical_milestone()
+    public function search_cadet_physical_milestone()
     {
         if ($this->input->post()) {
-            $oc_no = $_POST['oc_no'];
-              $this->db->select('or.*, f.*, term_i_details.*,term_ii_details.*');
-            $this->db->from('physical_milestone or');
-            $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
-            $this->db->join('term_i_details', 'term_i_details.p_id = or.p_id');
-            $this->db->join('term_ii_details', 'term_ii_details.p_id = or.p_id');
 
-            $this->db->where('or.do_id', $this->session->userdata('user_id'));
+            $oc_no = $_POST['oc_no'];
+
+            $this->db->select('f.oc_no f_oc_no, f.p_id f_p_id, f.term f_term, f.divison_name f_divison_name, f.name f_name, or.*, term_i_details.*,term_ii_details.*');
+            $this->db->from('pn_form1s f');
+            $this->db->join('physical_milestone or', 'f.p_id = or.p_id', 'left');
+            $this->db->join('term_i_details', 'term_i_details.p_id = or.p_id', 'left');
+            $this->db->join('term_ii_details', 'term_ii_details.p_id = or.p_id', 'left');
+            $this->db->where('f.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no',$oc_no);
             $data['milestone_records'] = $this->db->get()->row_array();
-            // print_r( $data['milestone_records']);exit;
-            echo json_encode($data['milestone_records']);
-            //echo json_encode($data);
+            
+            echo json_encode($data['milestone_records']);            
         }
     }
 
@@ -746,10 +747,10 @@ class D_O extends CI_Controller
     public function view_dossier()
     {
         if ($this->session->has_userdata('user_id')) {
-              $data['club_data'] = $this->db->get('cadet_club')->result_array();
+            $data['club_data'] = $this->db->get('cadet_club')->result_array();
             $data['pn_data'] = $this->db->where('divison_name', 'XYZ')->get('pn_form1s')->result_array();
-            
-          // print_r($data);
+
+            // print_r($data);
             $this->load->view('do/view_dossier', $data);
         }
     }
@@ -772,15 +773,15 @@ class D_O extends CI_Controller
             $this->load->view('do/add_punishment');
         }
     }
-    public function add_physical_milestone($page=null)
+    public function add_physical_milestone($page = null)
     {
         if ($this->session->has_userdata('user_id')) {
-           // echo $page;
-            $data['physical_milestone_data']=$this->db->where('p_id',$this->session->has_userdata('user_id'))->get('physical_milestone')->row_array();
-            if($page != null){
-                $data['page']=$page;
+            // echo $page;
+            $data['physical_milestone_data'] = $this->db->where('p_id', $this->session->has_userdata('user_id'))->get('physical_milestone')->row_array();
+            if ($page != null) {
+                $data['page'] = $page;
             }
-            $this->load->view('do/add_physical_milestone',$data);
+            $this->load->view('do/add_physical_milestone', $data);
         }
     }
     public function add_excuse()
@@ -822,7 +823,8 @@ class D_O extends CI_Controller
             $this->load->view('do/branch_allocation', $data);
         }
     }
-     public function save_branches_allocation(){
+    public function save_branches_allocation()
+    {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
 
@@ -834,7 +836,7 @@ class D_O extends CI_Controller
             $prefer_3 = $postData['prefer_3'];
             $recommended_branch = $postData['recommended_branch'];
             $allocated_branch = $postData['allocated_branch'];
-           
+
 
             $insert_array = array(
                 'oc_no' => $oc_no,
@@ -842,8 +844,8 @@ class D_O extends CI_Controller
                 'option1' => $prefer_1,
                 'option2' => $prefer_2,
                 'option3' => $prefer_3,
-                'branch_recommended'=>$recommended_branch,
-                'branch_allocated'=>$allocated_branch,
+                'branch_recommended' => $recommended_branch,
+                'branch_allocated' => $allocated_branch,
                 'do_id' => $this->session->userdata('user_id'),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -867,40 +869,40 @@ class D_O extends CI_Controller
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
 
-             $id = $postData['id_b'];
-           //  echo $id;exit;
+            $id = $postData['id_b'];
+            //  echo $id;exit;
             $prefer_1 = $postData['prefer_1'];
             $prefer_2 = $postData['prefer_2'];
             // $div_name = $postData['division'];
             $prefer_3 = $postData['prefer_3'];
             $recommended_branch = $postData['recommended_branch'];
             $allocated_branch = $postData['allocated_branch'];
-           
+
 
             $update_array = array(
                 'option1' => $prefer_1,
                 'option2' => $prefer_2,
                 'option3' => $prefer_3,
-                'branch_recommended'=>$recommended_branch,
-                'branch_allocated'=>$allocated_branch,
+                'branch_recommended' => $recommended_branch,
+                'branch_allocated' => $allocated_branch,
                 'updated_at' => date('Y-m-d H:i:s')
 
             );
-           // print_r($update_array);exit;
+            // print_r($update_array);exit;
             $cond  = ['p_id' => $id];
             $this->db->where($cond);
             $update = $this->db->update('branch_allocations', $update_array);
             //$last_id = $this->db->insert_id();
 
             if (!empty($update)) {
-                            $this->session->set_flashdata('success', 'Branch Allocations updated successfully');
-                            redirect('D_O/view_dossier');
+                $this->session->set_flashdata('success', 'Branch Allocations updated successfully');
+                redirect('D_O/view_dossier');
             } else {
-                            $this->session->set_flashdata('failure', 'Something went wrong, try again.');
-                            redirect('D_O/view_dossier');
-                        }
+                $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                redirect('D_O/view_dossier');
             }
         }
+    }
 
     public function view_punishment_list()
     {
@@ -974,7 +976,7 @@ class D_O extends CI_Controller
         }
     }
 
-        public function view_warning_in_dossier()
+    public function view_warning_in_dossier()
     {
         if ($this->session->has_userdata('user_id')) {
             $cadet_id = $_POST['id'];
@@ -986,13 +988,13 @@ class D_O extends CI_Controller
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
-           // $this->db->where('pr.status', 'Approved');
+            // $this->db->where('pr.status', 'Approved');
             $data['warning_records'] = $this->db->get()->result_array();
             echo json_encode($data['warning_records']);
         }
     }
 
-        public function edit_warning_data()
+    public function edit_warning_data()
     {
         if ($this->session->has_userdata('user_id')) {
             $cadet_id = $_POST['id'];
@@ -1004,7 +1006,7 @@ class D_O extends CI_Controller
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
-           // $this->db->where('pr.status', 'Approved');
+            // $this->db->where('pr.status', 'Approved');
             $data['edit_record'] = $this->db->get()->row_array();
             //print_r($data['edit_record']);exit;
             echo json_encode($data['edit_record']);
@@ -1012,7 +1014,7 @@ class D_O extends CI_Controller
     }
 
 
-        public function edit_branches_data()
+    public function edit_branches_data()
     {
         if ($this->session->has_userdata('user_id')) {
             $cadet_id = $_POST['id'];
@@ -1024,14 +1026,14 @@ class D_O extends CI_Controller
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
-           // $this->db->where('pr.status', 'Approved');
+            // $this->db->where('pr.status', 'Approved');
             $data['edit_record'] = $this->db->get()->row_array();
             //print_r($data['edit_record']);exit;
             echo json_encode($data['edit_record']);
         }
     }
 
-          public function edit_club_data()
+    public function edit_club_data()
     {
         if ($this->session->has_userdata('user_id')) {
             $cadet_id = $_POST['id'];
@@ -1042,48 +1044,48 @@ class D_O extends CI_Controller
             // $this->db->where('f.oc_no = pr.oc_no');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
-             $this->db->where('pr.status', 'active');
+            $this->db->where('pr.status', 'active');
             $this->db->where('f.divison_name', $this->session->userdata('division'));
-           // $this->db->where('pr.status', 'Approved');
+            // $this->db->where('pr.status', 'Approved');
             $data['edit_record'] = $this->db->get()->row_array();
             //print_r($data['edit_record']);exit;
             echo json_encode($data['edit_record']);
         }
     }
-             public function delete_club_data()
+    public function delete_club_data()
     {
         if ($this->session->has_userdata('user_id')) {
             $cadet_id = $_POST['id'];
-           // echo $cadet_id;exit;
-          
+            // echo $cadet_id;exit;
+
             // $this->db->where('f.oc_no = pr.oc_no');
             $this->db->where('status', 'active');
-            $this->db->set('status','deleted');
+            $this->db->set('status', 'deleted');
             $this->db->update('club_records');
 
             $this->db->where('p_id', $cadet_id);
-            $this->db->set('club','');
+            $this->db->set('club', '');
             $this->db->update('pn_form1s');
-            
+
             //update existing data after deletion
-             $this->db->select('pr.*, f.*');
+            $this->db->select('pr.*, f.*');
             $this->db->from('club_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('f.oc_no = pr.oc_no');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
-             $this->db->where('pr.status', 'active');
+            $this->db->where('pr.status', 'active');
             $this->db->where('f.divison_name', $this->session->userdata('division'));
 
 
-           // $this->db->where('pr.status', 'Approved');
+            // $this->db->where('pr.status', 'Approved');
             $data['edit_record_after_delete'] = $this->db->get()->result_array();
             //print_r($data['edit_record']);exit;
             echo json_encode($data['edit_record_after_delete']);
         }
     }
 
-         public function edit_observation_data()
+    public function edit_observation_data()
     {
         if ($this->session->has_userdata('user_id')) {
             $cadet_id = $_POST['id'];
@@ -1095,7 +1097,7 @@ class D_O extends CI_Controller
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
-           // $this->db->where('pr.status', 'Approved');
+            // $this->db->where('pr.status', 'Approved');
             $data['edit_record'] = $this->db->get()->row_array();
             //print_r($data['edit_record']);exit;
             echo json_encode($data['edit_record']);
@@ -1153,14 +1155,14 @@ class D_O extends CI_Controller
             $this->db->from('club_records cr');
             $this->db->join('pn_form1s f', 'f.p_id = cr.p_id');
             $this->db->where('cr.do_id', $this->session->userdata('user_id'));
-             $this->db->where('cr.status', 'active');
+            $this->db->where('cr.status', 'active');
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             $data['club_records'] = $this->db->get()->result_array();
             // print_r( $data['milestone_records']);exit;
             echo json_encode($data['club_records']);
         }
     }
-  public function view_branches_in_dossier()
+    public function view_branches_in_dossier()
     {
         if ($this->session->has_userdata('user_id')) {
             $this->db->select('b.*, f.*');
@@ -1182,7 +1184,7 @@ class D_O extends CI_Controller
             $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
             $this->db->where('or.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.divison_name', $this->session->userdata('division'));
-            $data['milestone_records'] = $this->db->get()->row_array();
+            $data['milestone_records'] = $this->db->get()->result_array();
             // print_r( $data['milestone_records']);exit;
             $this->load->view('do/view_milestone_list', $data);
         }
@@ -1231,9 +1233,9 @@ class D_O extends CI_Controller
 
     public function search_all_cadets_for_dossier()
     {
-       // echo $this->session->userdata('division');exit;
+        // echo $this->session->userdata('division');exit;
         if ($this->session->has_userdata('user_id')) {
-            $data['pn_data'] = $this->db->where('oc_no', $this->session->userdata('division'))->get('pn_form1s')->result_array();
+            $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->result_array();
             if (count($data['pn_data']) > 0) {
                 $view_page = $this->load->view('do/view_dossier', $data, TRUE);
                 echo $view_page;
@@ -1299,7 +1301,7 @@ class D_O extends CI_Controller
         return $count;
     }
 
-      public function upload_warning($fieldname)
+    public function upload_warning($fieldname)
     {
         //$data = NULL;
         //echo $fieldname;exit;
@@ -1337,10 +1339,10 @@ class D_O extends CI_Controller
     {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
-            //print_r($postData);exit;
-            //echo "pahgg".$postData['pagee'];exit;
+            
             $oc_no = $postData['oc_num'];
             $p_id = $postData['id'];
+            $term = $postData['term'];
             $PST_result = $postData['pst'];
             $PST_attempt = $postData['pst_attempt'];
             $SST_result = $postData['sst'];
@@ -1362,7 +1364,7 @@ class D_O extends CI_Controller
             $mini_cross = $postData['mini_cross'];
             $mini_cross_card = $postData['mini_cross_card'];
 
-            $milestone_id=$postData['milestone_id'];
+            $milestone_id = $postData['milestone_id'];
 
             $insert_array = array(
                 'oc_no' => $oc_no,
@@ -1376,7 +1378,6 @@ class D_O extends CI_Controller
                 'PET_I_attempt' => $PET_I_attempt,
                 'PET_II_result' => $PET_II_result,
                 'PET_II_attempt' => $PET_II_attempt,
-
                 'assault_result' => $assault_result,
                 'assault_attempt' => $assault_attempt,
                 'saluting_result' => $saluting_result,
@@ -1390,32 +1391,30 @@ class D_O extends CI_Controller
                 'date_added' => date('Y-m-d H:i:s')
             );
 
-            $insert = $this->db->where('oc_no',$oc_no)->update('physical_milestone', $insert_array);
-            //$last_id = $this->db->insert_id();
+            
+            $this->db->where('oc_no', $oc_no)->where('p_id', $p_id)-> delete('physical_milestone');
+            $insert = $this->db->insert('physical_milestone', $insert_array);
 
             if (!empty($insert)) {
 
-                if($postData['pagee']=='milestone_list'){
-               $this->session->set_flashdata('success', 'Data Submitted successfully');
-                redirect('D_O/view_milestone_list');
-                }elseif($postData['pagee']=='dossier'){
-                $this->session->set_flashdata('success', 'Data Submitted successfully');
-                redirect('D_O/view_dossier');
-                }else{
-               $this->session->set_flashdata('success', 'Data Submitted successfully');
-                redirect('D_O/add_physical_milestone');
+                if ($postData['pagee'] == 'milestone_list') {
+                    $this->session->set_flashdata('success', 'Data Submitted successfully');
+                    redirect('D_O/view_milestone_list');
+                } elseif ($postData['pagee'] == 'dossier') {
+                    $this->session->set_flashdata('success', 'Data Updated successfully');
+                    redirect('D_O/view_dossier');
+                } else {
+                    $this->session->set_flashdata('success', 'Data Submitted successfully');
+                    redirect('D_O/add_physical_milestone');
                 }
-               
             } else {
-                    if(isset($postData['pagee'])){
-                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
-                redirect('D_O/view_milestone_list');
-                }else{
-                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
-                redirect('D_O/add_physical_milestone');
+                if (isset($postData['pagee'])) {
+                    $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                    redirect('D_O/view_milestone_list');
+                } else {
+                    $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                    redirect('D_O/add_physical_milestone');
                 }
-             
-                
             }
         }
     }
@@ -1458,7 +1457,6 @@ class D_O extends CI_Controller
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
             //print_r($postData);exit;
-
             $oc_no = $postData['oc_no'];
             $p_id = $postData['p_id'];
             $mile_time = $postData['mile_time'];
@@ -1467,21 +1465,18 @@ class D_O extends CI_Controller
             $rope = $postData['rope'];
             $date_added = date('Y-m-d H:i:s');
 
-
-
             $insert_array = array(
                 'oc_no' => $oc_no,
                 'p_id' => $p_id,
                 'do_id' => $this->session->userdata('user_id'),
-                'mile_time_II' => $mile_time,
-                'pushups_II' => $pushups,
-                'chinups_II' => $chinups,
-                'rope_II' => $rope,
+                'mile_time' => $mile_time,
+                'pushups' => $pushups,
+                'chinups' => $chinups,
+                'rope' => $rope,
                 'date_added' => date('Y-m-d H:i:s')
             );
 
             $insert = $this->db->insert('term_ii_details', $insert_array);
-            // redirect('D_O/add_physical_milestone');
         }
     }
 
@@ -1507,15 +1502,16 @@ class D_O extends CI_Controller
         }
     }
 
-    public function save_officer_qualities(){
- if ($this->input->post()) {
+    public function save_officer_qualities()
+    {
+        if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
-           // print_r($postData);exit;
+            // print_r($postData);exit;
 
-           // $oc_no = $postData['oc_num'];
+            // $oc_no = $postData['oc_num'];
             $p_id = $postData['id'];
             $term = $postData['term'];
-        
+
             $insert_array = array(
                 //'oc_no' => $oc_no,
                 'p_id' => $p_id,
@@ -1526,27 +1522,27 @@ class D_O extends CI_Controller
                 'integrity_terminal' => $postData['final_marks'][1],
                 'pride_mid' => $postData['mid_marks'][2],
                 'pride_terminal' => $postData['final_marks'][2],
-                
-                 'courage_mid' => $postData['mid_marks'][3],
+
+                'courage_mid' => $postData['mid_marks'][3],
                 'courage_terminal' => $postData['final_marks'][3],
                 'confidence_mid' => $postData['mid_marks'][4],
                 'confidence_terminal' => $postData['final_marks'][4],
                 'initiative_mid' => $postData['mid_marks'][5],
                 'inititative_terminal' => $postData['final_marks'][5],
 
-                   'command_mid' => $postData['mid_marks'][6],
+                'command_mid' => $postData['mid_marks'][6],
                 'command_terminal' => $postData['final_marks'][6],
                 'discipline_mid' => $postData['mid_marks'][7],
                 'discipline_terminal' => $postData['final_marks'][7],
                 'duty_mid' => $postData['mid_marks'][8],
                 'duty_terminal' => $postData['final_marks'][8],
-                 'reliability_mid' => $postData['mid_marks'][9],
+                'reliability_mid' => $postData['mid_marks'][9],
                 'reliability_terminal' => $postData['final_marks'][9],
                 'appearance_mid' => $postData['mid_marks'][10],
                 'appearance_terminal' => $postData['final_marks'][10],
                 'fitness_mid' => $postData['mid_marks'][11],
                 'fitness_terminal' => $postData['final_marks'][11],
-                 'conduct_mid' => $postData['mid_marks'][12],
+                'conduct_mid' => $postData['mid_marks'][12],
                 'conduct_terminal' => $postData['final_marks'][12],
                 'cs_mid' => $postData['mid_marks'][13],
                 'cs_terminal' => $postData['final_marks'][13],
@@ -1560,24 +1556,20 @@ class D_O extends CI_Controller
                 'terminal_marks' => $postData['final_percentage'],
                 'mid_marks_date' => $postData['mid_exam_date'],
                 'terminal_marks_date' => $postData['final_exam_date'],
-                'created_at'=>date('Y-m-d')
+                'created_at' => date('Y-m-d')
             );
 
             //print_r($insert_array);exit;
             $insert = $this->db->insert('officer_qualities', $insert_array);
         }
-            //$last_id = $this->db->insert_id();
+        //$last_id = $this->db->insert_id();
 
-            if (!empty($insert)) {
-                $this->session->set_flashdata('success', 'Data Submitted successfully');
-                redirect('D_O/add_officer_qualities');
-            } else {
-                $this->session->set_flashdata('failure', 'Something went wrong, try again.');
-                redirect('D_O/add_officer_qualities');
-            }
-
+        if (!empty($insert)) {
+            $this->session->set_flashdata('success', 'Data Submitted successfully');
+            redirect('D_O/add_officer_qualities');
+        } else {
+            $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+            redirect('D_O/add_officer_qualities');
+        }
     }
-
 }
-
-
