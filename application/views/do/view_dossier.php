@@ -1671,7 +1671,7 @@
                                                         <td>${result[i]['end_date']}</td>
                                                         <td>${diff}</td>
                                                         <td>${status}</td>
-                                                        <td data-toggle="modal" data-target="#edit_punishment"><a onclick="edit_punishment(${result[i]['p_id']})" ><i class="fa fa-edit"></i></a></td>
+                                                        <td data-toggle="modal" data-target="#edit_punishment"><a onclick="edit_punishment(${result[i]['id']})" ><i class="fa fa-edit"></i></a></td>
                                                     </tr>`);
                     }
                 } else {

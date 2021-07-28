@@ -346,23 +346,36 @@ class D_O extends CI_Controller
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
 
-            $id = $postData['punish_id'];
-            $page = $postData['page'];
-            $punish = $postData['punish'];
-            $start_date = $postData['start_date'];
-            $end_date = $postData['end_date'];
-            $days = $postData['days'];
+            if (isset($postData['page'])) {
+                $page = $postData['page'];
+            } else if(isset($postData['page_punish'])) {
+                $page = $postData['page_punish'];
+            }
+            
+
+            if ($page == 'daily_module') {
+                $id = $postData['punish_id'];
+                $punish = $postData['punish'];
+                $start_date = $postData['start_date'];
+                $end_date = $postData['end_date'];
+                $days = $postData['days'];
+            } else if ($page == 'update_punishment') {
+                $id = $postData['punish_id_update'];
+                $punish = $postData['punish_update'];
+                $start_date = $postData['start_date_punish'];
+                $end_date = $postData['end_date_punish'];
+                $days = $postData['days_punish'];
+            }
+
             if (isset($postData['offense'])) {
                 $data_update = [
                     'punishment_awarded' => $punish,
                     'start_date' => $start_date,
                     'date' => date('Y-m-d'),
-                    //'date'=>$date,
                     'offence' => $postData['offense'],
                     'end_date' => $end_date,
                     'days' => $days,
                     'updated_at' => date('Y-m-d H:i:s')
-
                 ];
             } else {
                 $data_update = [
@@ -375,38 +388,41 @@ class D_O extends CI_Controller
                 ];
             }
 
-            //print_r($data_update);exit;
+            
             $cond  = ['id' => $id];
-
+            
             $this->db->where($cond);
             $update = $this->db->update('punishment_records', $data_update);
 
             if (!empty($update)) {
                 $this->session->set_flashdata('success', 'Punishment updated successfully');
-                if (isset($postData['offense'])) {
-                    if ($page == 'daily_module') {
-                        redirect('D_O/view_punishment_list');
-                    } elseif ($page == 'dossier') {
-                        redirect('D_O/view_dossier');
-                    }
-                } else {
-                    if ($page == 'daily_module') {
-                        redirect('D_O/view_punishment_list');
-                    } elseif ($page == 'dossier') {
-                        redirect('D_O/view_dossier');
-                    }
+
+                // if (isset($postData['offense'])) {
+                if ($page == 'daily_module' || $page == 'update_punishment') {
+                    redirect('D_O/view_punishment_list');
+                } elseif ($page == 'dossier') {
+                    redirect('D_O/view_dossier');
                 }
+                // } else {
+                //     if ($page == 'daily_module') {
+                //         redirect('D_O/view_punishment_list');
+                //     } elseif ($page == 'dossier') {
+                //         redirect('D_O/view_dossier');
+                //     }
+                // }
+
             } else {
                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
-                if (isset($postData['offense'])) {
-                    if ($page == 'daily_module') {
-                        redirect('D_O/view_punishment_list');
-                    } elseif ($page == 'dossier') {
-                        redirect('D_O/view_dossier');
-                    }
-                } else {
+
+                // if (isset($postData['offense'])) {
+                if ($page == 'daily_module' || $page == 'update_punishment') {
                     redirect('D_O/view_punishment_list');
+                } elseif ($page == 'dossier') {
+                    redirect('D_O/view_dossier');
                 }
+                // } else {
+                //     redirect('D_O/view_punishment_list');
+                // }
             }
         }
     }
@@ -414,14 +430,14 @@ class D_O extends CI_Controller
     public function edit_punishment_data()
     {
         if ($this->session->has_userdata('user_id')) {
-            $cadet_id = $_POST['id'];
+            $punish_id = $_POST['id'];
             //echo $cadet_id;exit;
             $this->db->select('pr.*, f.*');
             $this->db->from('punishment_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('f.oc_no = pr.oc_no');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.p_id', $cadet_id);
+            $this->db->where('pr.id', $punish_id);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             // $this->db->where('pr.status', 'Approved');
             $data['edit_record'] = $this->db->get()->row_array();
@@ -690,10 +706,10 @@ class D_O extends CI_Controller
             $this->db->join('term_ii_details', 'term_ii_details.p_id = or.p_id', 'left');
             $this->db->where('f.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.divison_name', $this->session->userdata('division'));
-            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('f.oc_no', $oc_no);
             $data['milestone_records'] = $this->db->get()->row_array();
-            
-            echo json_encode($data['milestone_records']);            
+
+            echo json_encode($data['milestone_records']);
         }
     }
 
@@ -1339,7 +1355,7 @@ class D_O extends CI_Controller
     {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
-            
+
             $oc_no = $postData['oc_num'];
             $p_id = $postData['id'];
             $term = $postData['term'];
@@ -1391,8 +1407,8 @@ class D_O extends CI_Controller
                 'date_added' => date('Y-m-d H:i:s')
             );
 
-            
-            $this->db->where('oc_no', $oc_no)->where('p_id', $p_id)-> delete('physical_milestone');
+
+            $this->db->where('oc_no', $oc_no)->where('p_id', $p_id)->delete('physical_milestone');
             $insert = $this->db->insert('physical_milestone', $insert_array);
 
             if (!empty($insert)) {

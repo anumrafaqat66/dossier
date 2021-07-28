@@ -355,13 +355,15 @@
         $('#end_date').val($columns[7].innerHTML);
         $('#days').val((Date.parse($columns[7].innerHTML) - Date.parse($columns[6].innerHTML)) / 1000 / 60 / 60 / 24);
 
+        alert(global_col_position);
         var id = $columns[0].innerHTML;
         var status = '';
-        if (global_col_position == 12) {
+        if (global_col_position == 13) {
             status = 'Approved';
-        } else if (global_col_position == 13) {
+        } else if (global_col_position == 14) {
             status = 'Rejected';
         }
+        alert(status);
 
         if (global_col_position == 12 || global_col_position == 13) {
             $('#success_message').modal('show');
