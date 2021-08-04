@@ -760,6 +760,7 @@ class D_O extends CI_Controller
             $this->load->view('do/personal_data', $data);
         }
     }
+
     public function view_dossier()
     {
         if ($this->session->has_userdata('user_id')) {
@@ -770,6 +771,19 @@ class D_O extends CI_Controller
             $this->load->view('do/view_dossier', $data);
         }
     }
+
+    public function view_dossier_folder()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $data['club_data'] = $this->db->get('cadet_club')->result_array();
+            $data['pn_data'] = $this->db->where('divison_name', 'XYZ')->get('pn_form1s')->result_array();
+
+            // print_r($data);
+            $this->load->view('do/view_dossier_folder', $data);
+        }
+    }
+
+
     public function add_club()
     {
         if ($this->session->has_userdata('user_id')) {
@@ -1239,6 +1253,24 @@ class D_O extends CI_Controller
             $data['oc_no_entered'] = $oc_no;
             if (count($data['pn_data']) > 0) {
                 $view_page = $this->load->view('do/view_dossier', $data, TRUE);
+                echo $view_page;
+                json_encode($view_page);
+            } else {
+                echo '0';
+            }
+        }
+    }
+
+    public function search_cadet_for_dossier_folder()
+    {
+        if ($this->session->has_userdata('user_id')) {
+
+
+            $oc_no = $_POST['oc_no'];
+            $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->where('oc_no', $oc_no)->get('pn_form1s')->result_array();
+            $data['oc_no_entered'] = $oc_no;
+            if (count($data['pn_data']) > 0) {
+                $view_page = $this->load->view('do/view_dossier_folder', $data, TRUE);
                 echo $view_page;
                 json_encode($view_page);
             } else {

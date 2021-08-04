@@ -1278,7 +1278,7 @@
         <div class="row my-2">
             <img src='<?= base_url() ?>assets/img/navy_logo-new.png' style="height: 130px; width:100px;">
             <div class="card-body">
-                <h1 style="text-align:center"><strong>CADET'S DOSSIER</strong></h1>
+                <h1 style="text-align:center"><strong>Cadet's Divisonal Analytics</strong></h1>
             </div>
         </div>
     </div>
@@ -1339,7 +1339,7 @@
 
                     <div class="card">
                         <div class="card-header bg-custom1">
-                            <h1 class="h4">Dossiser Record</h1>
+                            <h1 class="h4">Cadet's Records</h1>
                         </div>
 
 

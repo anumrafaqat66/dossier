@@ -54,9 +54,18 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url(); ?>D_O/view_dossier"  aria-expanded="true">
-                    <i class="fas fa-th-list"></i>
+                <a class="nav-link" href="<?php echo base_url(); ?>D_O/view_dossier_folder" aria-expanded="true">
+                    <i class="far fa-newspaper"></i>
                     <span> View Dossiers </span>
+                    <!-- <span>Components</span> -->
+                </a>
+
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url(); ?>D_O/view_dossier" aria-expanded="true">
+                    <i class="fas fa-th-list"></i>
+                    <span> Division Analytics </span>
                     <!-- <span>Components</span> -->
                 </a>
 
@@ -104,8 +113,8 @@
                 </a>
                 <div id="collapse_discipline" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                         <a class="collapse-item" href="<?php echo base_url(); ?>D_O/daily_module">Daily Module</a>
-                    <!--     <a class="collapse-item" href="<?php echo base_url(); ?>D_O/add_observation">Observation Record</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>D_O/daily_module">Daily Module</a>
+                        <!--     <a class="collapse-item" href="<?php echo base_url(); ?>D_O/add_observation">Observation Record</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>D_O/add_punishment">Punishment Record</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>D_O/add_observation_slip">Observation Slips</a>  -->
                     </div>
@@ -161,7 +170,7 @@
                     <span> Officer Like Qualities</span>
                     <!-- <span>Components</span> -->
                 </a>
-                
+
             </li>
 
 
@@ -349,8 +358,7 @@
                 <!-- End of Topbar -->
 
                 <script>
-                   // $('#general').click(function() {
+                    // $('#general').click(function() {
                     //    $('.collapse_general').collapse();
                     //});
-                    
                 </script>
