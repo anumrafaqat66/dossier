@@ -110,35 +110,143 @@
                             <?php } ?>
 
 
-                            <!-- <?php if (count($pn_data) > 0) { ?> -->
-                            <div id="cadet_dossier" class="row">
-                                <div class="col-lg-7" style="text-align:left;font-weight: bold;">
-                                    <ul class="list-group">
-                                        <a href="#" style="color:black" id="gen">
-                                            <li class="list-group-item bg-custom3 custom_list">GENERAL</li>
-                                        </a>
-                                        <a href="#" style="color:black" id="disp">
-                                            <li class="list-group-item bg-custom3 custom_list">DISCIPLINE</li>
-                                        </a>
-                                        <a href="#" style="color:black" id="warn">
-                                            <li class="list-group-item bg-custom3 custom_list">WARNINGS</li>
-                                        </a>
-                                        <a href="#" style="color:black" id="phy">
-                                            <li class="list-group-item bg-custom3 custom_list">PHYSICAL EFFICIENCY</li>
-                                        </a>
-                                        <a href="#" style="color:black" id="acad">
-                                            <li class="list-group-item bg-custom3 custom_list">ACADEMIC RECORD</li>
-                                        </a>
-                                        <a href="#" style="color:black" id="olq">
-                                            <li class="list-group-item bg-custom3 custom_list">OFFICER LIKE QUALITIES</li>
-                                        </a>
-                                        <a href="#" style="color:black" id="assess">
-                                            <li class="list-group-item bg-custom3 custom_list">ASSESSMENT</li>
-                                        </a>
-                                    </ul>
+                            <?php if ($pn_data != null) { ?>
+                                <div id="cadet_dossier" class="row">
+                                    <div class="col-lg-7" style="text-align:left;font-weight: bold;">
+                                        <ul class="list-group">
+                                            <a href="#" style="color:black" id="gen">
+                                                <li class="list-group-item bg-custom3 custom_list">GENERAL</li>
+                                            </a>
+                                            <a href="#" style="color:black" id="disp">
+                                                <li class="list-group-item bg-custom3 custom_list">DISCIPLINE</li>
+                                            </a>
+                                            <a href="#" style="color:black" id="warn">
+                                                <li class="list-group-item bg-custom3 custom_list">WARNINGS</li>
+                                            </a>
+                                            <a href="#" style="color:black" id="phy">
+                                                <li class="list-group-item bg-custom3 custom_list">PHYSICAL EFFICIENCY</li>
+                                            </a>
+                                            <a href="#" style="color:black" id="acad">
+                                                <li class="list-group-item bg-custom3 custom_list">ACADEMIC RECORD</li>
+                                            </a>
+                                            <a href="#" style="color:black" id="olq">
+                                                <li class="list-group-item bg-custom3 custom_list">OFFICER LIKE QUALITIES</li>
+                                            </a>
+                                            <a href="#" style="color:black" id="assess">
+                                                <li class="list-group-item bg-custom3 custom_list">ASSESSMENT</li>
+                                            </a>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="card-header bg-custom1">
+                                            <h1 class="h4">PN Form-I</h1>
+                                        </div>
+
+                                        <div class="card-body bg-custom1">
+                                            <div class="form-group row">
+                                                <div class="col-sm-4">
+                                                    <h6 style="text-decoration:underline"><strong>Name:</strong></h6>
+                                                </div>
+
+                                                <div class="col-sm-4">
+                                                <h6 style="text-decoration:underline"><strong>OC No</h6></strong></h6>
+                                                </div>
+
+                                                <div class="col-sm-4">
+                                                <h6 style="text-decoration:underline"><strong>P.NO</h6></strong></h6>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <div class="col-lg-4 ">
+                                                    <h6><?php if (isset($pn_data['name'])) {
+                                                            echo $pn_data['name'];
+                                                        } ?></h6>
+                                                </div>
+
+                                                <div class="col-lg-4 ">
+                                                    <h6><?php if (isset($pn_data['oc_no'])) {
+                                                            echo $pn_data['oc_no'];
+                                                        } ?></h6>
+                                                </div>
+
+                                                <div class="col-lg-4 ">
+                                                    <h6><?php if (isset($pn_data['p_no'])) {
+                                                            echo $pn_data['p_no'];
+                                                        } ?></h6>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <div class="col-sm-4">
+                                                <h6 style="text-decoration:underline"><strong>ISSB Batch No</strong></h6>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                <h6 style="text-decoration:underline"><strong>Category</strong></h6>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                <h6 style="text-decoration:underline"><strong>Division Name</strong></h6>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <div class="col-lg-4 ">
+                                                    <h6><?php if (isset($pn_data['issb_batch'])) {
+                                                            echo $pn_data['issb_batch'];
+                                                        } ?></h6>
+                                                </div>
+
+                                                <div class="col-lg-4 ">
+                                                    <h6><?php if (isset($pn_data['category'])) {
+                                                            echo $pn_data['category'];
+                                                        } ?></h6>
+                                                </div>
+
+                                                <div class="col-lg-4 ">
+                                                    <h6><?php if (isset($pn_data['divison_name'])) {
+                                                            echo $pn_data['divison_name'];
+                                                        } ?></h6>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <div class="col-sm-4">
+                                                <h6 style="text-decoration:underline"><strong>Class</strong></h6>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                <h6 style="text-decoration:underline"><strong>Term</strong></h6>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                <h6 style="text-decoration:underline"><strong>Club</strong></h6>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <div class="col-lg-4 ">
+                                                    <h6><?php if (isset($pn_data['class'])) {
+                                                            echo $pn_data['class'];
+                                                        } ?></h6>
+                                                </div>
+
+                                                <div class="col-lg-4 ">
+                                                    <h6><?php if (isset($pn_data['term'])) {
+                                                            echo $pn_data['term'];
+                                                        } ?></h6>
+                                                </div>
+
+                                                <div class="col-lg-4 ">
+                                                    <h6><?php if (isset($pn_data['club'])) {
+                                                            echo $pn_data['club'];
+                                                        } ?></h6>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- <?php } ?> -->
+                            <?php } ?>
 
                             <div id="gen_list" class="row" style="display:none ;">
                                 <div class="col-lg-7" style="text-align:left;font-weight: bold;">

@@ -49,7 +49,6 @@
                                 </div>
                             </div>
 
-
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-1">
                                     <input type="text" class="form-control form-control-user" name="oc_no" id="oc_no" placeholder="OC No.">
@@ -104,6 +103,7 @@
                                 </div>
 
                             </div>
+
                             <div class="form-group row">
                                 <div class="col-sm-6">
                                     <h6>&nbsp;Division Name:</h6>
