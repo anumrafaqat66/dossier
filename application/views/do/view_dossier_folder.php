@@ -29,7 +29,7 @@
         <div class="row my-2">
 
 
-            <div class="card-body" style="margin-left:30px">
+            <div class="card-body" style="margin-left:30px; <?php if (!isset($pn_data['name'])) { ?> padding: 0px; height: 40px; <?php } ?>">
                 <h2 style="text-align:center; text-decoration:underline; margin-bottom:20px"><strong>VIEW CADET'S DOSSIER FOLDER</strong></h2>
 
                 <div class="row">
@@ -69,8 +69,6 @@
                         <?php } ?>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
@@ -92,7 +90,7 @@
                         <form class="user" role="form" method="post" id="add_form" action="">
                             <?php if (!isset($pn_data['name'])) { ?>
                                 <div class="form-group row">
-                                    <div class="col-sm-2" style="margin-top:15px">
+                                    <div class="col-sm-1" style="margin-top:15px">
                                         <h6>&nbsp;OC No:</h6>
                                     </div>
 
@@ -107,12 +105,13 @@
                                         </button>
                                     </div>
                                 </div>
+
                             <?php } ?>
 
 
                             <?php if ($pn_data != null) { ?>
                                 <div id="cadet_dossier" class="row">
-                                    <div class="col-lg-7" style="text-align:left;font-weight: bold;">
+                                    <div class="col-lg-4" style="text-align:left;font-weight: bold;">
                                         <ul class="list-group">
                                             <a href="#" style="color:black" id="gen">
                                                 <li class="list-group-item bg-custom3 custom_list">GENERAL</li>
@@ -137,114 +136,7 @@
                                             </a>
                                         </ul>
                                     </div>
-                                    <div class="col-lg-5">
-                                        <div class="card-header bg-custom1">
-                                            <h1 class="h4">PN Form-I</h1>
-                                        </div>
 
-                                        <div class="card-body bg-custom1">
-                                            <div class="form-group row">
-                                                <div class="col-sm-4">
-                                                    <h6 style="text-decoration:underline"><strong>Name:</strong></h6>
-                                                </div>
-
-                                                <div class="col-sm-4">
-                                                <h6 style="text-decoration:underline"><strong>OC No</h6></strong></h6>
-                                                </div>
-
-                                                <div class="col-sm-4">
-                                                <h6 style="text-decoration:underline"><strong>P.NO</h6></strong></h6>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <div class="col-lg-4 ">
-                                                    <h6><?php if (isset($pn_data['name'])) {
-                                                            echo $pn_data['name'];
-                                                        } ?></h6>
-                                                </div>
-
-                                                <div class="col-lg-4 ">
-                                                    <h6><?php if (isset($pn_data['oc_no'])) {
-                                                            echo $pn_data['oc_no'];
-                                                        } ?></h6>
-                                                </div>
-
-                                                <div class="col-lg-4 ">
-                                                    <h6><?php if (isset($pn_data['p_no'])) {
-                                                            echo $pn_data['p_no'];
-                                                        } ?></h6>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <div class="col-sm-4">
-                                                <h6 style="text-decoration:underline"><strong>ISSB Batch No</strong></h6>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                <h6 style="text-decoration:underline"><strong>Category</strong></h6>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                <h6 style="text-decoration:underline"><strong>Division Name</strong></h6>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <div class="col-lg-4 ">
-                                                    <h6><?php if (isset($pn_data['issb_batch'])) {
-                                                            echo $pn_data['issb_batch'];
-                                                        } ?></h6>
-                                                </div>
-
-                                                <div class="col-lg-4 ">
-                                                    <h6><?php if (isset($pn_data['category'])) {
-                                                            echo $pn_data['category'];
-                                                        } ?></h6>
-                                                </div>
-
-                                                <div class="col-lg-4 ">
-                                                    <h6><?php if (isset($pn_data['divison_name'])) {
-                                                            echo $pn_data['divison_name'];
-                                                        } ?></h6>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <div class="col-sm-4">
-                                                <h6 style="text-decoration:underline"><strong>Class</strong></h6>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                <h6 style="text-decoration:underline"><strong>Term</strong></h6>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                <h6 style="text-decoration:underline"><strong>Club</strong></h6>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <div class="col-lg-4 ">
-                                                    <h6><?php if (isset($pn_data['class'])) {
-                                                            echo $pn_data['class'];
-                                                        } ?></h6>
-                                                </div>
-
-                                                <div class="col-lg-4 ">
-                                                    <h6><?php if (isset($pn_data['term'])) {
-                                                            echo $pn_data['term'];
-                                                        } ?></h6>
-                                                </div>
-
-                                                <div class="col-lg-4 ">
-                                                    <h6><?php if (isset($pn_data['club'])) {
-                                                            echo $pn_data['club'];
-                                                        } ?></h6>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             <?php } ?>
 
@@ -388,6 +280,47 @@
                                 </button>
                             </div>
                         </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="no_data" class="row my-2" style="display:none">
+            <div class="col-lg-12 my-5">
+                <h4 style="color:red">No Cadet Found. Please check the OC No.</h4>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="card-body bg-custom3">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+
+                    <div class="card-header bg-custom1">
+                        <h1 class="h4">GENERAL INSTRUCTIONS</h1>
+                    </div>
+
+                    <div class="card-body bg-custom1" style="font-size:small">
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <p>1. PN Form-I is a phase-wise record of the performance given by an under training officer during the entire period of his training. It comprises two sections: Section-I pertaining to common training of trainees as Cadet and Section-II pertaining to branch specific training as Midshipman/Sub Lieutenant.</p>
+                                <p>2. PN Form-I is to be started for every under training officer on the day he joins the Service as a Cadet and is to be completed for each stage of his training.</p>
+                                <p>3. Name and other particulars of the officer recorded clearly in black permanent ink/marker in the specified space on the front outer cover of PN Form-I.</p>
+                                <p>4. PN Form-I is to be kept in the personal custody of the Divisional/Course Officer of the under training officers. He is to religiously complete the relevant portions of the Form and cross out and sign/stamp all pages not required to be completed, e.g. additional pages provided for completion in case of the trainees relegation etc. He is also to record the additional pages, if instead, on the relevant page(s) provided for the purpose. The Commanding Officers/Commandants are to ensure its timely completion and onward dispatch.</p>
+                                <p>5. PNA, after completion of Section-I, is to insert/add to it Section-II according to the branch allocated to each trainee and forward the same to the relevant PN ship.</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p>6. PN Form-1 is to be transferred from unit/ship to unit/ship in conformity with the transfers of the under training officer. Commanding Officers/Commandants are to ensure that the Form is sent to the Commanding Officer/Commandant of the next unit/ship within 20 days of the under training officer’s transfer.</p>
+                                <p>7. A unit/ship receiving PN Form-I is to thoroughly check all entries/signatures/remarks etc in the previous portions and, in case of any deficiency, incomplete or unsigned entries, is to return the Form to the concerned unit/ship within one week for completion/removal of deficiencies detected. Units/Ships accepting an incomplete/unsigned PN Form-I will be responsible for the deficiencies along with the ships/units sending such incomplete Form.</p>
+                                <p>8. OLQs marks will be awarded in accordance with the relevant article(s) of the PBR 697 (1)-C.</p>
+                                <p>9. Gain/loss of seniority will be calculated in accordance with the relevant article(s) of PBR 697 (1)-C.</p>
+                                <p>10. Commanding Officer PNS BAHADUR, Commandant PNS JAUHAR and Officer Incharge School of Logistics & Management are to ensure timely dispatch of the Forms in respect of GL (Ops), GL (ME) and GL (Log) officers, respectively to Naval Headquarters (Trg Dte) through HQ COMKAR within one month of completion of the training.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
