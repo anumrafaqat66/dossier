@@ -1,4 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+use Dompdf\Dompdf;
+use Dompdf\Options;
 class D_O extends CI_Controller
 {
     public function __construct()
@@ -775,14 +777,14 @@ class D_O extends CI_Controller
     public function view_dossier_folder()
     {
         if ($this->session->has_userdata('user_id')) {
-            $data['club_data'] = $this->db->get('cadet_club')->result_array();
-            $data['pn_data'] = $this->db->where('divison_name', 'XYZ')->get('pn_form1s')->result_array();
+            
+            // $data['club_data'] = $this->db->get('cadet_club')->result_array();
+            $data['pn_data'] = $this->db->where('divison_name',  'XYZ')->get('pn_form1s')->row_array();
 
             // print_r($data);
             $this->load->view('do/view_dossier_folder', $data);
         }
     }
-
 
     public function add_club()
     {
@@ -1246,8 +1248,6 @@ class D_O extends CI_Controller
     public function search_cadet_for_dossier()
     {
         if ($this->session->has_userdata('user_id')) {
-
-
             $oc_no = $_POST['oc_no'];
             $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->where('oc_no', $oc_no)->get('pn_form1s')->result_array();
             $data['oc_no_entered'] = $oc_no;
@@ -1264,12 +1264,11 @@ class D_O extends CI_Controller
     public function search_cadet_for_dossier_folder()
     {
         if ($this->session->has_userdata('user_id')) {
-
-
             $oc_no = $_POST['oc_no'];
-            $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->where('oc_no', $oc_no)->get('pn_form1s')->result_array();
+            $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
             $data['oc_no_entered'] = $oc_no;
-            if (count($data['pn_data']) > 0) {
+            // if (count($data['pn_data']) > 0) {
+            if ($data['pn_data']!= null) {
                 $view_page = $this->load->view('do/view_dossier_folder', $data, TRUE);
                 echo $view_page;
                 json_encode($view_page);
@@ -1618,6 +1617,41 @@ class D_O extends CI_Controller
         } else {
             $this->session->set_flashdata('failure', 'Something went wrong, try again.');
             redirect('D_O/add_officer_qualities');
+        }
+    }
+
+    public function punishment_records_report()
+    {
+        if ($this->session->has_userdata('user_id')) {
+
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+
+            $id = $this->session->userdata('user_id');
+
+            $this->db->select('*');
+            $this->db->from('punishment_records');
+            
+            $data['punishment_records'] = $this->db->get()->result_array();
+
+            $html = $this->load->view('do/punishment_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Contractor List Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
         }
     }
 }

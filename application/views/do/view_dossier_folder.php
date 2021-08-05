@@ -27,90 +27,136 @@
     <!-- Page Heading -->
     <div class="card-body" style="padding:10px">
         <div class="row my-2">
-            <img src='<?= base_url() ?>assets/img/navy_logo-new.png' style="height: 130px; width:100px;">
-            <div class="card-body">
-                <h1 style="text-align:center"><strong>VIEW CADET'S DOSSIER FOLDER</strong></h1>
+
+
+            <div class="card-body" style="margin-left:30px">
+                <h2 style="text-align:center; text-decoration:underline; margin-bottom:20px"><strong>VIEW CADET'S DOSSIER FOLDER</strong></h2>
+
+                <div class="row">
+                    <div class="col-lg-1">
+                        <?php if (isset($pn_data['name'])) { ?>
+                            <img src='<?= base_url() ?>assets/img/navy_logo-new.png' style="height:130px;">
+                        <?php } ?>
+                    </div>
+                    <div class="col-lg-9 my-2">
+                        <div class="col-lg-6 ">
+                            <h4><strong><?php if (isset($pn_data['name'])) {
+                                            echo $pn_data['name'];
+                                        } ?></strong></h4>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <h4><?php if (isset($pn_data['term'])) {
+                                    echo $pn_data['term'];
+                                } ?></h4>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <h4><?php if (isset($pn_data['oc_no'])) {
+                                    echo $pn_data['oc_no'];
+                                } ?></h4>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <h4><?php if (isset($pn_data['divison_name'])) {
+                                    echo $pn_data['divison_name'];
+                                } ?></h4>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <?php if (isset($pn_data['name'])) { ?>
+                            <img src='<?= base_url() ?>assets/img/navy_logo-new1.png' style="height:130px; width:100px; border:1px solid black;">
+                        <?php } ?>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
 
     <div class="card-body bg-custom3">
         <!-- Nested Row within Card Body -->
-
         <div class="row">
             <div class="col-lg-12">
-
                 <div class="card">
                     <div class="card-header bg-custom1">
-                        <h1 class="h4">Search Cadet</h1>
+                        <?php if (isset($pn_data['name'])) { ?>
+                            <h1 class="h4">CONTENTS</h1>
+                        <?php } else { ?>
+                            <h1 class="h4">Search Cadet</h1>
+                        <?php } ?>
                     </div>
 
                     <div class="card-body bg-custom3">
                         <form class="user" role="form" method="post" id="add_form" action="">
-                            <div class="form-group row">
-                                <div class="col-sm-2" style="margin-top:15px">
-                                    <h6>&nbsp;OC No:</h6>
-                                </div>
+                            <?php if (!isset($pn_data['name'])) { ?>
+                                <div class="form-group row">
+                                    <div class="col-sm-2" style="margin-top:15px">
+                                        <h6>&nbsp;OC No:</h6>
+                                    </div>
 
-                                <div class="col-sm-3 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="oc_no" id="oc_no" placeholder="Enter OC No." value="<?= $oc_no_entered ?>">
-                                    <span id="error_search" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please enter OC No.</span>
-                                </div>
+                                    <div class="col-sm-3 mb-1">
+                                        <input type="text" class="form-control form-control-user" name="oc_no" id="oc_no" placeholder="Enter OC No." value="<?= $oc_no_entered ?>">
+                                        <span id="error_search" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please enter OC No.</span>
+                                    </div>
 
-                                <div class="col-sm-2 mb-1">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" id="search_btn">
-                                        Search
-                                    </button>
-                                </div>
-                            </div>
-
-                            <?php if (count($pn_data) > 0) { ?>
-                                <div id="cadet_dossier" class="row">
-                                    <div class="col-lg-7" style="text-align:left;font-weight: bold;">
-                                        <ul class="list-group">
-                                            <a href="#" style="color:black" id="gen">
-                                                <li class="list-group-item bg-custom3 custom_list">General</li>
-                                            </a>
-                                            <a href="#" style="color:black" id="disp">
-                                                <li class="list-group-item bg-custom3 custom_list">Discipline</li>
-                                            </a>
-                                            <a href="#" style="color:black" id="warn">
-                                                <li class="list-group-item bg-custom3 custom_list">Warnings</li>
-                                            </a>
-                                            <a href="#" style="color:black" id="phy">
-                                                <li class="list-group-item bg-custom3 custom_list">Physical Efficiency</li>
-                                            </a>
-                                            <a href="#" style="color:black" id="acad">
-                                                <li class="list-group-item bg-custom3 custom_list">Academic Record</li>
-                                            </a>
-                                            <a href="#" style="color:black" id="olq">
-                                                <li class="list-group-item bg-custom3 custom_list">Officer Like Qualities</li>
-                                            </a>
-                                            <a href="#" style="color:black" id="assess">
-                                                <li class="list-group-item bg-custom3 custom_list">Assessment</li>
-                                            </a>
-                                        </ul>
+                                    <div class="col-sm-2 mb-1">
+                                        <button type="button" class="btn btn-primary btn-user btn-block" id="search_btn">
+                                            Search
+                                        </button>
                                     </div>
                                 </div>
                             <?php } ?>
+
+
+                            <!-- <?php if (count($pn_data) > 0) { ?> -->
+                            <div id="cadet_dossier" class="row">
+                                <div class="col-lg-7" style="text-align:left;font-weight: bold;">
+                                    <ul class="list-group">
+                                        <a href="#" style="color:black" id="gen">
+                                            <li class="list-group-item bg-custom3 custom_list">GENERAL</li>
+                                        </a>
+                                        <a href="#" style="color:black" id="disp">
+                                            <li class="list-group-item bg-custom3 custom_list">DISCIPLINE</li>
+                                        </a>
+                                        <a href="#" style="color:black" id="warn">
+                                            <li class="list-group-item bg-custom3 custom_list">WARNINGS</li>
+                                        </a>
+                                        <a href="#" style="color:black" id="phy">
+                                            <li class="list-group-item bg-custom3 custom_list">PHYSICAL EFFICIENCY</li>
+                                        </a>
+                                        <a href="#" style="color:black" id="acad">
+                                            <li class="list-group-item bg-custom3 custom_list">ACADEMIC RECORD</li>
+                                        </a>
+                                        <a href="#" style="color:black" id="olq">
+                                            <li class="list-group-item bg-custom3 custom_list">OFFICER LIKE QUALITIES</li>
+                                        </a>
+                                        <a href="#" style="color:black" id="assess">
+                                            <li class="list-group-item bg-custom3 custom_list">ASSESSMENT</li>
+                                        </a>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- <?php } ?> -->
 
                             <div id="gen_list" class="row" style="display:none ;">
                                 <div class="col-lg-7" style="text-align:left;font-weight: bold;">
                                     <ul class="list-group">
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Inspection Record</li>
+                                            <li class="list-group-item bg-custom3 custom_list">INSPECTION RECORD</li>
                                         </a>
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Record of Divisional Officers</li>
+                                            <li class="list-group-item bg-custom3 custom_list">RECORD OF DIVISIONAL OFFICERS</li>
                                         </a>
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Personal Data</li>
+                                            <li class="list-group-item bg-custom3 custom_list">PERSONAL DATA</li>
                                         </a>
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Cadet’s Auto-Biography</li>
+                                            <li class="list-group-item bg-custom3 custom_list">CADET'S AUTO-BIOGRAPHY</li>
                                         </a>
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Psychologist’s Report</li>
+                                            <li class="list-group-item bg-custom3 custom_list">PSYCHOLOGIST'S REPORT</li>
                                         </a>
                                     </ul>
                                 </div>
@@ -120,25 +166,25 @@
                                 <div class="col-lg-7" style="text-align:left;font-weight: bold;">
                                     <ul class="list-group">
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Record of Observations Term-I</li>
+                                            <li class="list-group-item bg-custom3 custom_list">RECORD OF OBSERVATIONS TERM-I</li>
+                                        </a>
+                                        <a href="<?php echo base_url() ?>/D_O/punishment_records_report" style="color:black">
+                                            <li class="list-group-item bg-custom3 custom_list">RECORD OF PUNISHMENT TERM-I</li>
                                         </a>
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Record of Punishment Term-I</li>
+                                            <li class="list-group-item bg-custom3 custom_list">RECORD OF OBSERVATIONS TERM-II</li>
                                         </a>
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Record of Observations Term-II</li>
+                                            <li class="list-group-item bg-custom3 custom_list">RECORD OF PUNISHMENT TERM-II</li>
                                         </a>
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Record of Punishment Term-II</li>
+                                            <li class="list-group-item bg-custom3 custom_list">RECORD OF OBSERVATIONS TERM-III</li>
                                         </a>
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Record of Observations Term-III</li>
+                                            <li class="list-group-item bg-custom3 custom_list">RECORD OF PUNISHMENT TERM-III</li>
                                         </a>
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Record of Punishment Term-III</li>
-                                        </a>
-                                        <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Observations Slips</li>
+                                            <li class="list-group-item bg-custom3 custom_list">OBSERVATIONS SLIPS</li>
                                         </a>
                                     </ul>
                                 </div>
@@ -148,10 +194,10 @@
                                 <div class="col-lg-7" style="text-align:left;font-weight: bold;">
                                     <ul class="list-group">
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Record of Warnings</li>
+                                            <li class="list-group-item bg-custom3 custom_list">RECORD OF WARNINGS</li>
                                         </a>
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Warnings (Inserted)</li>
+                                            <li class="list-group-item bg-custom3 custom_list">WARNINGS (INSERTED)</li>
                                         </a>
                                     </ul>
                                 </div>
@@ -161,16 +207,16 @@
                                 <div class="col-lg-7" style="text-align:left;font-weight: bold;">
                                     <ul class="list-group">
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Record of Saluting and Swimming</li>
+                                            <li class="list-group-item bg-custom3 custom_list">RECORD OF SALUTING AND SWIMMING</li>
                                         </a>
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Record Physical Efficiency</li>
+                                            <li class="list-group-item bg-custom3 custom_list">RECORD PHYSICAL EFFICIENCY</li>
                                         </a>
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Proficiency in Games</li>
+                                            <li class="list-group-item bg-custom3 custom_list">PROFICIENCY IN GAMES</li>
                                         </a>
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Medical Record</li>
+                                            <li class="list-group-item bg-custom3 custom_list">MEDICAL RECORD</li>
                                         </a>
                                     </ul>
                                 </div>
@@ -180,16 +226,16 @@
                                 <div class="col-lg-7" style="text-align:left;font-weight: bold;">
                                     <ul class="list-group">
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Result (Term I )</li>
+                                            <li class="list-group-item bg-custom3 custom_list">RSEULT (TERM-I)</li>
                                         </a>
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Sea Training Report – Term II</li>
+                                            <li class="list-group-item bg-custom3 custom_list">SEA TRAINING REPORT (TERM-II)</li>
                                         </a>
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Result (Term II)</li>
+                                            <li class="list-group-item bg-custom3 custom_list">RESULT (TERM-II)</li>
                                         </a>
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Result (Term III)</li>
+                                            <li class="list-group-item bg-custom3 custom_list">RESULT (TERM III)</li>
                                         </a>
                                     </ul>
                                 </div>
@@ -199,7 +245,7 @@
                                 <div class="col-lg-7" style="text-align:left;font-weight: bold;">
                                     <ul class="list-group">
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Officer Like Qualities</li>
+                                            <li class="list-group-item bg-custom3 custom_list">OFFICER LIKE QUALITIES</li>
                                         </a>
 
                                     </ul>
@@ -210,19 +256,19 @@
                                 <div class="col-lg-7" style="text-align:left;font-weight: bold;">
                                     <ul class="list-group">
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">General Remarks (Term I to III)</li>
+                                            <li class="list-group-item bg-custom3 custom_list">GENERAL REMARKS (Term I to III)</li>
                                         </a>
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Progress Chart</li>
+                                            <li class="list-group-item bg-custom3 custom_list">PROGRESS CHART</li>
                                         </a>
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Record of Distinctions Achieved</li>
+                                            <li class="list-group-item bg-custom3 custom_list">RECORD OF DISTINCTIONS ACHIEVED</li>
                                         </a>
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Record of Seniority</li>
+                                            <li class="list-group-item bg-custom3 custom_list">RECORD OF SENIORITY</li>
                                         </a>
                                         <a href="" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">Allocation of Branch/Specialisation </li>
+                                            <li class="list-group-item bg-custom3 custom_list">ALLOCAITON OF BRANCH/SPECIALISATION </li>
                                         </a>
 
                                     </ul>
@@ -230,7 +276,7 @@
                             </div>
                             <div class="col-lg-7">
                                 <button type="button" class="btn btn-primary btn-user btn-block my-3" id="back_btn" style="display:none">
-                                    Back
+                                    BACK
                                 </button>
                             </div>
                         </form>
