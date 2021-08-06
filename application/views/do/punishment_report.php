@@ -25,7 +25,7 @@
 <div class="container my-3">
   <div style="text-align:center">
     <h4 style="text-decoration:underline"><strong>RECORD OF PUNISHMENT</strong></h4>
-    <h4 style="text-decoration:underline"><strong>TERM-I</strong></h4>
+    <h4 style="text-decoration:underline"><strong><?php echo $term; ?></strong></h4>
   </div>
 </div>
 

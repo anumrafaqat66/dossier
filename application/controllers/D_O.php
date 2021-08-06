@@ -1266,6 +1266,34 @@ class D_O extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $oc_no = $_POST['oc_no'];
             $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('punishment_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('f.oc_no = pr.oc_no');
+            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('pr.term','Term-I');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $data['pn_punish_data'] = $this->db->get()->result_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('punishment_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('f.oc_no = pr.oc_no');
+            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('pr.term','Term-II');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $data['pn_punish_data_term2'] = $this->db->get()->result_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('punishment_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('f.oc_no = pr.oc_no');
+            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('pr.term','Term-III');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $data['pn_punish_data_term3'] = $this->db->get()->result_array();
+
             $data['oc_no_entered'] = $oc_no;
             // if (count($data['pn_data']) > 0) {
             if ($data['pn_data']!= null) {
@@ -1605,11 +1633,8 @@ class D_O extends CI_Controller
                 'terminal_marks_date' => $postData['final_exam_date'],
                 'created_at' => date('Y-m-d')
             );
-
-            //print_r($insert_array);exit;
             $insert = $this->db->insert('officer_qualities', $insert_array);
         }
-        //$last_id = $this->db->insert_id();
 
         if (!empty($insert)) {
             $this->session->set_flashdata('success', 'Data Submitted successfully');
@@ -1620,7 +1645,7 @@ class D_O extends CI_Controller
         }
     }
 
-    public function punishment_records_report()
+    public function punishment_records_report($oc_no = NULL, $term = NULL)
     {
         if ($this->session->has_userdata('user_id')) {
 
@@ -1637,16 +1662,19 @@ class D_O extends CI_Controller
 
             $this->db->select('*');
             $this->db->from('punishment_records');
+            $this->db->where('oc_no',$oc_no);
+            $this->db->where('term',$term);
             
             $data['punishment_records'] = $this->db->get()->result_array();
-
+            // echo $term; exit;
+            $data['term'] = $term;
             $html = $this->load->view('do/punishment_report', $data, TRUE); //$graph, TRUE);
 
             $dompdf->loadHtml($html);
             $dompdf->render();
 
             $output = $dompdf->output();
-            $doc_name = 'Contractor List Report.pdf';
+            $doc_name = 'Punishment Report.pdf';
             file_put_contents($doc_name, $output);
             redirect($doc_name);
             //exit;
