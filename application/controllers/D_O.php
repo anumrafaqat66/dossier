@@ -1294,6 +1294,35 @@ class D_O extends CI_Controller
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $data['pn_punish_data_term3'] = $this->db->get()->result_array();
 
+            $this->db->select('pr.*, f.*');
+            $this->db->from('observation_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('pr.term','Term-I');
+            $this->db->where('pr.status', 'Approved');
+            $data['pn_obs_data_term1'] = $this->db->get()->result_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('observation_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('pr.term','Term-II');
+            $this->db->where('pr.status', 'Approved');
+            $data['pn_obs_data_term2'] = $this->db->get()->result_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('observation_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('pr.term','Term-III');
+            $this->db->where('pr.status', 'Approved');
+            $data['pn_obs_data_term3'] = $this->db->get()->result_array();
+
+
+
             $data['oc_no_entered'] = $oc_no;
             // if (count($data['pn_data']) > 0) {
             if ($data['pn_data']!= null) {

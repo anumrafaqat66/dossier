@@ -82,7 +82,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
-                    <div class="card-header bg-custom1">
+                    <div class="card-header bg-custom1" id="header_title">
                         <?php if (isset($pn_data['name'])) { ?>
                             <h1 class="h4">CONTENTS</h1>
                         <?php } else { ?>
@@ -577,6 +577,211 @@
         </div>
 
     </div>
+
+    <div class="card-body bg-custom3" style="display:none" id="obs_term1">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/punishment_records_report/<?= $pn_data['oc_no']?>/Term-III'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>RECORD OF OBSERVATION</strong></h4>
+                                <h4 style="text-decoration:underline"><strong>TERM-I</strong></h4>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style=" padding:20px !important">
+                            <?php if (count($pn_obs_data_term1) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="">DATE</th>
+                                            <td scope="" style="width:350px">OBSERVATION</th>
+                                            <td scope="">OBSERVED/CHECKED BY</th>
+                                            <td scope="" style="border-right:1px solid black; white-space:nowrap">REMARKS/ ACTION BY</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
+                                        <?php $count = 0;
+                                        foreach ($pn_obs_data_term1 as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="white-space:nowrap;"><?= $data['date']; ?></td>
+                                                <td scope="" style="height:80px"><?= $data['observation']; ?></td>
+                                                <td scope=""><?= $data['observed_by']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;"><?= $data['action_taken']; ?></td>
+                                            </tr>
+                                        <?php
+                                            $count++;
+                                        } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_obs_term1">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="card-body bg-custom3" style="display:none" id="obs_term2">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/punishment_records_report/<?= $pn_data['oc_no']?>/Term-II'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>RECORD OF OBSERVATION</strong></h4>
+                                <h4 style="text-decoration:underline"><strong>TERM-II</strong></h4>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style=" padding:20px !important">
+                            <?php if (count($pn_obs_data_term2) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="">DATE</th>
+                                            <td scope="" style="width:350px">OBSERVATION</th>
+                                            <td scope="">OBSERVED/CHECKED BY</th>
+                                            <td scope="" style="border-right:1px solid black; white-space:nowrap">REMARKS/ ACTION BY</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
+                                        <?php $count = 0;
+                                        foreach ($pn_obs_data_term2 as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="white-space:nowrap;"><?= $data['date']; ?></td>
+                                                <td scope="" style="height:80px"><?= $data['observation']; ?></td>
+                                                <td scope=""><?= $data['observed_by']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;"><?= $data['action_taken']; ?></td>
+                                            </tr>
+                                        <?php
+                                            $count++;
+                                        } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_obs_term2">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="card-body bg-custom3" style="display:none" id="obs_term3">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/punishment_records_report/<?= $pn_data['oc_no']?>/Term-III'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>RECORD OF OBSERVATION</strong></h4>
+                                <h4 style="text-decoration:underline"><strong>TERM-III</strong></h4>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style=" padding:20px !important">
+                            <?php if (count($pn_obs_data_term3) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="">DATE</th>
+                                            <td scope="" style="width:350px">OBSERVATION</th>
+                                            <td scope="">OBSERVED/CHECKED BY</th>
+                                            <td scope="" style="border-right:1px solid black; white-space:nowrap">REMARKS/ ACTION BY</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
+                                        <?php $count = 0;
+                                        foreach ($pn_obs_data_term1 as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="white-space:nowrap;"><?= $data['date']; ?></td>
+                                                <td scope="" style="height:80px"><?= $data['observation']; ?></td>
+                                                <td scope=""><?= $data['observed_by']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;"><?= $data['action_taken']; ?></td>
+                                            </tr>
+                                        <?php
+                                            $count++;
+                                        } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_obs_term3">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
 </div>
 
 </div>
@@ -649,42 +854,62 @@
         $('#cadet_dossier').hide();
         $('#gen_list').show();
         $('#back_btn').show();
+        $('#header_title').html('<h4>GENERAL</h4>');
     });
 
     $('#disp').on('click', function() {
         $('#cadet_dossier').hide();
         $('#disp_list').show();
         $('#back_btn').show();
+        $('#header_title').html('<h4>DISCIPLINE</h4>');
     });
 
     $('#warn').on('click', function() {
         $('#cadet_dossier').hide();
         $('#warn_list').show();
         $('#back_btn').show();
+        $('#header_title').html('<h4>WARNING</h4>');
     });
 
     $('#phy').on('click', function() {
         $('#cadet_dossier').hide();
         $('#phy_list').show();
         $('#back_btn').show();
+        $('#header_title').html('<h4>PHYSICAL EFFICIENCY</h4>');
     });
 
     $('#acad').on('click', function() {
         $('#cadet_dossier').hide();
         $('#acad_list').show();
         $('#back_btn').show();
+        $('#header_title').html('<h4>ACADEMIC RECORDS</h4>');
     });
 
     $('#olq').on('click', function() {
         $('#cadet_dossier').hide();
         $('#olq_list').show();
         $('#back_btn').show();
+        $('#header_title').html('<h4>OFFICER LIKE QUALITIES</h4>');
     });
 
     $('#assess').on('click', function() {
         $('#cadet_dossier').hide();
         $('#assess_list').show();
         $('#back_btn').show();
+        $('#header_title').html('<h4>ASSESSMENT</h4>');
+    });
+
+    $('#back_btn').on('click', function() {
+        $('#cadet_dossier').show();
+        $('#gen_list').hide();
+        $('#phy_list').hide();
+        $('#warn_list').hide();
+        $('#acad_list').hide();
+        $('#olq_list').hide();
+        $('#disp_list').hide();
+        $('#assess_list').hide();
+        $('#back_btn').hide();
+        $('#header_title').html('<h4>CONTENTS</h4>');
     });
 
     $('#btn_punish_term1').on('click', function() {
@@ -714,11 +939,45 @@
         $('#back_btn_punish').show();
     });
 
+    $('#btn_obs_term1').on('click', function() {
+        $('#main-container').hide();
+        $('#container-2').hide();
+        $('#obs_term1').show();
+        $('#obs_term2').hide();
+        $('#obs_term3').hide();
+        $('#back_btn_punish').show();
+    });
+    $('#btn_obs_term2').on('click', function() {
+        $('#main-container').hide();
+        $('#container-2').hide();
+        $('#obs_term2').show();
+        $('#obs_term1').hide();
+        $('#obs_term3').hide();
+        $('#back_btn_punish').show();
+    });
+    $('#btn_obs_term3').on('click', function() {
+        $('#main-container').hide();
+        $('#container-2').hide();
+        $('#obs_term3').show();
+        $('#obs_term1').hide();
+        $('#obs_term2').hide();
+        $('#back_btn_punish').show();
+    });
+
     $('#back_btn_punish_term1, #back_btn_punish_term2, #back_btn_punish_term3').on('click', function() {
         $('#main-container').show();
         $('#punish_term1').hide();
         $('#punish_term2').hide();
         $('#punish_term3').hide();
+        $('#terms_list_punish').hide();
+        $('#terms_list_obs').hide();
+    });
+
+    $('#back_btn_obs_term1, #back_btn_obs_term2, #back_btn_obs_term3').on('click', function() {
+        $('#main-container').show();
+        $('#obs_term1').hide();
+        $('#obs_term2').hide();
+        $('#obs_term3').hide();
         $('#terms_list_punish').hide();
         $('#terms_list_obs').hide();
     });
@@ -733,15 +992,5 @@
         $('#terms_list_punish').show();
     });
 
-    $('#back_btn').on('click', function() {
-        $('#cadet_dossier').show();
-        $('#gen_list').hide();
-        $('#phy_list').hide();
-        $('#warn_list').hide();
-        $('#acad_list').hide();
-        $('#olq_list').hide();
-        $('#disp_list').hide();
-        $('#assess_list').hide();
-        $('#back_btn').hide();
-    });
+    
 </script>
