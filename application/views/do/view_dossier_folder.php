@@ -230,7 +230,7 @@
                                         <a href="#" style="color:black">
                                             <li class="list-group-item bg-custom3 custom_list">PROFICIENCY IN GAMES</li>
                                         </a>
-                                        <a href="#" style="color:black">
+                                        <a href="#" style="color:black" id="btn_medical_record">
                                             <li class="list-group-item bg-custom3 custom_list">MEDICAL RECORD</li>
                                         </a>
                                     </ul>
@@ -916,6 +916,86 @@
         </form>
 
     </div>
+
+    <div class="card-body bg-custom3" style="display:none" id="medical_record">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/medical_records_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>MEDICAL RECORD</strong></h4>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style=" padding:20px !important">
+                            <?php if (count($pn_medical_data) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="" style="width:70px">DATE</td>
+                                            <td scope="" style="width:70px">TERM</td>
+                                            <td scope="" style="width:70px">DISEASE</td>
+                                            <td scope="" style="width:70px">ADMITTED NAME OF SICK BAY/HOSPITALS</td>
+                                            <td scope="" style="width:70px">MO'S/SMO'S REMARKS</td>
+                                            <td scope="" style="width:70px">SPECIALISTS OPINION</td>
+                                            <td scope="" style="width:70px">INSTRUCTIONAL LOSS (PERIODS/DAYS)</td>
+                                            <td scope="" style="border-right:1px solid black;width:100px !important">REMARKS BY DIVISIONAL OFFICER</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
+                                        <?php $count = 0;
+                                        foreach ($pn_medical_data as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="white-space:nowrap"><?= date('Y-m-d',strtotime($data['date'])); ?></td>
+                                                <td scope="" style="height:80px"><?= $data['term']; ?></td>
+                                                <td scope=""><?= $data['disease']; ?></td>
+                                                <td scope=""><?= $data['admitted']; ?></td>
+                                                <td scope=""><?= $data['mo_remarks']; ?></td>
+                                                <td scope=""><?= $data['specialist_opinion']; ?></td>
+                                                <td scope=""><?= $data['instructional_loss']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;"><?= $data['do_remarks']; ?></td>
+                                            </tr>
+                                        <?php
+                                            $count++;
+                                        } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_medical">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
 </div>
 
 </div>
@@ -1107,7 +1187,7 @@
         $('#terms_list_obs').hide();
     });
 
-    $('#back_btn_obs_term1, #back_btn_obs_term2, #back_btn_obs_term3, #back_btn_warning, #back_btn_inspection' ).on('click', function() {
+    $('#back_btn_obs_term1, #back_btn_obs_term2, #back_btn_obs_term3, #back_btn_warning, #back_btn_inspection, #back_btn_medical' ).on('click', function() {
         $('#main-container').show();
         $('#obs_term1').hide();
         $('#obs_term2').hide();
@@ -1116,6 +1196,7 @@
         $('#terms_list_obs').hide();
         $('#warning_record').hide();
         $('#inspection_record').hide();
+        $('#medical_record').hide();
     });
 
     $('#obs_record').on('click', function() {
@@ -1136,6 +1217,12 @@
 
     $('#btn_inspection_record').on('click', function() {
         $('#inspection_record').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
+
+    $('#btn_medical_record').on('click', function() {
+        $('#medical_record').show();
         $('#main-container').hide();
         $('#container-2').hide();
     });
