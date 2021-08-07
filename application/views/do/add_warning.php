@@ -229,12 +229,8 @@
 
 
     $('#add_btn').on('click', function() {
-        //alert('javascript working');
-        // $('#add_btn').attr('disabled', true);
         var validate = 0;
-
         var oc_no = $('#oc_no').val();
-
 
         if (oc_no == '') {
             validate = 1;
@@ -272,15 +268,10 @@
                 },
                 async: true
             });
-
-
-
         } else {
             $('#add_btn').removeAttr('disabled');
             $('#show_error_new').show();
         }
-
-
     });
 
     $('#end_date').on('focusout', function() {

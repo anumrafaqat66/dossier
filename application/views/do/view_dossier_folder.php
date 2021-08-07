@@ -147,19 +147,19 @@
                             <div id="gen_list" class="row" style="display:none ;">
                                 <div class="col-lg-4" style="text-align:left;font-weight: bold;">
                                     <ul class="list-group">
-                                        <a href="" style="color:black">
+                                        <a href="#" style="color:black" id="btn_inspection_record">
                                             <li class="list-group-item bg-custom3 custom_list">INSPECTION RECORD</li>
                                         </a>
-                                        <a href="" style="color:black">
+                                        <a href="#" style="color:black">
                                             <li class="list-group-item bg-custom3 custom_list">RECORD OF DIVISIONAL OFFICERS</li>
                                         </a>
-                                        <a href="" style="color:black">
+                                        <a href="#" style="color:black">
                                             <li class="list-group-item bg-custom3 custom_list">PERSONAL DATA</li>
                                         </a>
-                                        <a href="" style="color:black">
+                                        <a href="#" style="color:black">
                                             <li class="list-group-item bg-custom3 custom_list">CADET'S AUTO-BIOGRAPHY</li>
                                         </a>
-                                        <a href="" style="color:black">
+                                        <a href="#" style="color:black">
                                             <li class="list-group-item bg-custom3 custom_list">PSYCHOLOGIST'S REPORT</li>
                                         </a>
                                     </ul>
@@ -427,7 +427,6 @@
         </div>
 
     </div>
-
     <div class="card-body bg-custom3" style="display:none" id="punish_term2">
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
@@ -502,7 +501,6 @@
         </div>
 
     </div>
-
     <div class="card-body bg-custom3" style="display:none" id="punish_term3">
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
@@ -853,6 +851,71 @@
         </form>
 
     </div>
+
+    <div class="card-body bg-custom3" style="display:none" id="inspection_record">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/inspection_records_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>INSPECTION RECORD</strong></h4>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style=" padding:20px !important">
+                            <?php if (count($pn_inspection_data) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="" style="width:70px">DATE</th>
+                                            <td scope="" style="width:70px">REMARKS</th>
+                                            <td scope="" style="border-right:1px solid black;width:100px !important">INSPECTION OFFICER'S SIGNATURE</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
+                                        <?php $count = 0;
+                                        foreach ($pn_inspection_data as $data) { ?>
+                                            <tr>
+                                                <td scope=""><?= $data['date']; ?></td>
+                                                <td scope="" style="height:80px"><?= $data['remarks']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;"><?= $data['inspecting_officer_name']; ?></td>
+                                            </tr>
+                                        <?php
+                                            $count++;
+                                        } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_inspection">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
 </div>
 
 </div>
@@ -1044,7 +1107,7 @@
         $('#terms_list_obs').hide();
     });
 
-    $('#back_btn_obs_term1, #back_btn_obs_term2, #back_btn_obs_term3, #back_btn_warning' ).on('click', function() {
+    $('#back_btn_obs_term1, #back_btn_obs_term2, #back_btn_obs_term3, #back_btn_warning, #back_btn_inspection' ).on('click', function() {
         $('#main-container').show();
         $('#obs_term1').hide();
         $('#obs_term2').hide();
@@ -1052,6 +1115,7 @@
         $('#terms_list_punish').hide();
         $('#terms_list_obs').hide();
         $('#warning_record').hide();
+        $('#inspection_record').hide();
     });
 
     $('#obs_record').on('click', function() {
@@ -1066,6 +1130,12 @@
 
     $('#btn_warning').on('click', function() {
         $('#warning_record').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
+
+    $('#btn_inspection_record').on('click', function() {
+        $('#inspection_record').show();
         $('#main-container').hide();
         $('#container-2').hide();
     });

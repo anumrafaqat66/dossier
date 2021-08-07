@@ -19,16 +19,57 @@
 
 <div class="container-fluid my-2">
     <!-- Page Heading -->
-    <div class="card-body" style="padding:10px">
-        <img src='<?= base_url() ?>assets/img/navy_logo-new.png' style="height: 130px; width:100px;">
-        <div class="card-body" style="margin-bottom:20px;float:right; padding:30px; margin-right:500px">
-            <h1 style="text-align:center"><strong>INSPECTION RECORD</strong></h1>
+    <div class="form-group row justify-content-center">
+        <div class="col-lg-1">
+            <img src='<?= base_url() ?>assets/img/navy_logo-new.png' style="height: 130px; width:100px;">
         </div>
+        <div class="col-lg-11">
+            <h1 style="text-align:center; padding:40px"><strong>INSPECTION RECORD</strong></h1>
+        </div>
+
     </div>
 
     <div class="card-body bg-custom3">
         <!-- Nested Row within Card Body -->
+
         <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-header bg-custom1">
+                        <h1 class="h4">Search Cadet</h1>
+                    </div>
+
+                    <div class="card-body bg-custom3">
+                        <form class="user" role="form" method="post" id="" action="">
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Enter OC No:</h6>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-4 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="oc_no" id="oc_no" placeholder="OC No.">
+                                </div>
+
+                                <div class="col-sm-2 mb-1">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" id="add_btn">
+                                        <!-- <i class="fab fa-google fa-fw"></i>   -->
+                                        Search
+                                    </button>
+                                    <span id="show_error_new" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="search_cadet" class="row my-2" style="display:none">
             <div class="col-lg-12">
 
                 <div class="card">
@@ -40,9 +81,38 @@
                         <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>D_O/add_inspection_record">
                             <div class="form-group row">
                                 <div class="col-sm-4">
-                                    <h6>&nbsp;Officer Name:</h6>
+                                    <h6>&nbsp;Name:</h6>
                                 </div>
 
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Term:</h6>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Division:</h6>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-4 mb-1" style="display:none">
+                                    <input type="text" class="" name="oc_num" id="oc_num">
+                                </div>
+                                <div class="col-sm-4 mb-1" style="display:none">
+                                    <input type="text" class="" name="id" id="id">
+                                </div>
+
+                                <div class="col-sm-4 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="name" id="name" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
+                                </div>
+                                <div class="col-sm-4 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="term" id="term" style="font-weight: bold; font-size:large" placeholder="Term" readonly>
+                                </div>
+                                <div class="col-sm-4 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="division" id="division" style="font-weight: bold; font-size:large" placeholder="Division" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Date:</h6>
                                 </div>
@@ -50,19 +120,14 @@
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Inspecting Officer Name:</h6>
                                 </div>
+
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Remarks:</h6>
+                                </div>
                             </div>
 
 
                             <div class="form-group row">
-                                <div class="col-sm-4 mb-1">
-                                    <select class="form-control rounded-pill" name="officer_name" id="officer_name" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
-                                        <option class="form-control form-control-user" value="">Select Officer Name</option>
-                                        <?php foreach($pn_data as $data){ ?>
-                                        <option class="form-control form-control-user" value="<?= $data['p_id'];?>"><?= $data['name']; ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-
                                 <div class="col-sm-4 mb-1">
                                     <input type="date" class="form-control form-control-user" name="date" id="date" placeholder="Date">
                                 </div>
@@ -71,37 +136,32 @@
                                     <input type="text" class="form-control form-control-user" name="inspector_name" id="inspector_name" placeholder="Inpecting Officer Name">
                                 </div>
 
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-sm-12">
-                                    <h6>&nbsp;Remarks:</h6>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-1">
+                                <div class="col-sm-4 mb-1">
                                     <textarea class="form-control " name="remarks" id="remarks" placeholder="Enter Remarks"></textarea>
                                 </div>
+
                             </div>
 
                             <div class="form-group row justify-content-center">
                                 <div class="col-sm-4">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" id="add_btn">
-                                        <!-- <i class="fab fa-google fa-fw"></i>  -->
+                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn">
                                         Submit
                                     </button>
-                                    <span id="show_error_new" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please Fill in required fields*</span>
+                                    <span id="show_error_submit" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please Fill in required fields*</span>
                                 </div>
                             </div>
-
                         </form>
                     </div>
                 </div>
-
-
             </div>
         </div>
+
+        <div id="no_data" class="row my-2" style="display:none">
+            <div class="col-lg-12 my-5">
+                <h4 style="color:red">No Cadet Found. Please check the OC No. entered</h4>
+            </div>
+        </div>
+
     </div>
 
 </div>
@@ -139,19 +199,15 @@
     });
 
 
-    $('#add_btn').on('click', function() {
-        //alert('javascript working');
-        $('#add_btn').attr('disabled', true);
+    $('#save_btn').on('click', function() {
+        $('#save_btn').attr('disabled', true);
         var validate = 0;
 
-        var officer_name = $('#officer_name').val();
+        var officer_name = $('#name').val();
         var date = $('#date').val();
         var inspector_name = $('#inspector_name').val();
+        var remarks = $('#remarks').val();
 
-        if (officer_name == '') {
-            validate = 1;
-        $('#officer_name').addClass('red-border');
-        }
         if (date == '') {
             validate = 1;
             $('#date').addClass('red-border');
@@ -160,12 +216,60 @@
             validate = 1;
             $('#inspector_name').addClass('red-border');
         }
-     
-
+        if (remarks == '') {
+            validate = 1;
+            $('#remarks').addClass('red-border');
+        }
 
         if (validate == 0) {
             $('#add_form')[0].submit();
+            $('#show_error_submit').hide();
+        } else {
+            $('#save_btn').removeAttr('disabled');
+            $('#show_error_submit').show();
+        }
+    });
+
+    $('#add_btn').on('click', function() {
+        var validate = 0;
+        var oc_no = $('#oc_no').val();
+
+        if (oc_no == '') {
+            validate = 1;
+            $('#oc_no').addClass('red-border');
+        }
+
+        if (validate == 0) {
+            // $('#add_form')[0].submit();
             $('#show_error_new').hide();
+
+            $.ajax({
+                url: '<?= base_url(); ?>D_O/search_cadet',
+                method: 'POST',
+                data: {
+                    'oc_no': oc_no
+                },
+                success: function(data) {
+                    var result = jQuery.parseJSON(data);
+
+                    if (result != undefined) {
+                        $('#search_cadet').show();
+                        $('#no_data').hide();
+
+                        $('#name').val(result['name']);
+                        $('#term').val(result['term']);
+                        $('#division').val(result['divison_name']);
+                        $('#oc_num').val(result['oc_no']);
+                        $('#id').val(result['p_id']);
+                    } else {
+                        $('#no_data').show();
+                        $('#search_cadet').hide();
+
+                    }
+
+                },
+                async: true
+            });
         } else {
             $('#add_btn').removeAttr('disabled');
             $('#show_error_new').show();

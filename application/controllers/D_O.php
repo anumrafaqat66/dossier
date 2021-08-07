@@ -168,15 +168,12 @@ class D_O extends CI_Controller
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
 
-            $officer_id = $postData['officer_name'];
+            $officer_id = $postData['id'];
             $date = $postData['date'];
             $inspecting_officer_name = $postData['inspector_name'];
             $remarks = $postData['remarks'];
-            // $id = $this->db->where('name',$officer_name)->get('pn_form1s')->row_array();
-            //echo $officer_id;exit;
 
             $insert_array = array(
-                //'officer_name' => $officer_name,
                 'p_id' => $officer_id,
                 'date' => $date,
                 'inspecting_officer_name' => $inspecting_officer_name,
@@ -184,12 +181,9 @@ class D_O extends CI_Controller
                 'do_id' => $this->session->userdata('user_id'),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
-
-
             );
-            // print_r($insert_array);exit;
+
             $insert = $this->db->insert('inspection_records', $insert_array);
-            //$last_id = $this->db->insert_id();
 
             if (!empty($insert)) {
                 $this->session->set_flashdata('success', 'Data Submitted successfully');
@@ -1326,6 +1320,13 @@ class D_O extends CI_Controller
             $this->db->where('f.oc_no',$oc_no);
             $data['pn_warning_data'] = $this->db->get()->result_array();
 
+            $this->db->select('pr.*, f.*');
+            $this->db->from('inspection_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $data['pn_inspection_data'] = $this->db->get()->result_array();
+
             $data['oc_no_entered'] = $oc_no;
             // if (count($data['pn_data']) > 0) {
             if ($data['pn_data']!= null) {
@@ -1759,18 +1760,14 @@ class D_O extends CI_Controller
     public function warning_records_report($oc_no = NULL)
     {
         if ($this->session->has_userdata('user_id')) {
-
             require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
-
             $options = new Options();
             $options->set('isRemoteEnabled', TRUE);
             $options->set('enable_html5_parser', TRUE);
             $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
             $dompdf = new Dompdf($options);
             $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
-
             $id = $this->session->userdata('user_id');
-
             $this->db->select('pr.*, f.*');
             $this->db->from('warning_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
@@ -1781,6 +1778,42 @@ class D_O extends CI_Controller
             
             $data['term'] = $term;
             $html = $this->load->view('do/warning_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Warning Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
+    public function inspection_records_report($oc_no = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('inspection_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            
+            $data['inspection_records'] = $this->db->get()->result_array();
+            
+            $data['term'] = $term;
+            $html = $this->load->view('do/inspection_report', $data, TRUE); //$graph, TRUE);
 
             $dompdf->loadHtml($html);
             $dompdf->render();
