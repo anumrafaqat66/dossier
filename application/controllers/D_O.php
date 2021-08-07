@@ -1012,15 +1012,13 @@ class D_O extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $cadet_id = $_POST['id'];
-            //echo $cadet_id;exit;
+
             $this->db->select('pr.*, f.*');
             $this->db->from('warning_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            // $this->db->where('f.oc_no = pr.oc_no');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
-            // $this->db->where('pr.status', 'Approved');
             $data['warning_records'] = $this->db->get()->result_array();
             echo json_encode($data['warning_records']);
         }
@@ -1321,7 +1319,12 @@ class D_O extends CI_Controller
             $this->db->where('pr.status', 'Approved');
             $data['pn_obs_data_term3'] = $this->db->get()->result_array();
 
-
+            $this->db->select('pr.*, f.*');
+            $this->db->from('warning_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $data['pn_warning_data'] = $this->db->get()->result_array();
 
             $data['oc_no_entered'] = $oc_no;
             // if (count($data['pn_data']) > 0) {
@@ -1704,6 +1707,86 @@ class D_O extends CI_Controller
 
             $output = $dompdf->output();
             $doc_name = 'Punishment Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
+    public function observation_records_report($oc_no = NULL, $term = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+
+            $id = $this->session->userdata('user_id');
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('observation_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('pr.term',$term);
+            $this->db->where('pr.status', 'Approved');
+            
+            $data['observation_records'] = $this->db->get()->result_array();
+            
+            $data['term'] = $term;
+            $html = $this->load->view('do/observation_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Observation Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
+    public function warning_records_report($oc_no = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+
+            $id = $this->session->userdata('user_id');
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('warning_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            
+            $data['warning_records'] = $this->db->get()->result_array();
+            
+            $data['term'] = $term;
+            $html = $this->load->view('do/warning_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Warning Report.pdf';
             file_put_contents($doc_name, $output);
             redirect($doc_name);
             //exit;

@@ -208,10 +208,10 @@
                             <div id="warn_list" class="row" style="display:none ;">
                                 <div class="col-lg-4" style="text-align:left;font-weight: bold;">
                                     <ul class="list-group">
-                                        <a href="" style="color:black">
+                                        <a href="#" style="color:black" id="btn_warning">
                                             <li class="list-group-item bg-custom3 custom_list">RECORD OF WARNINGS</li>
                                         </a>
-                                        <a href="" style="color:black">
+                                        <a href="#" style="color:black" id="btn_warning_attach">
                                             <li class="list-group-item bg-custom3 custom_list">WARNINGS (INSERTED)</li>
                                         </a>
                                     </ul>
@@ -221,16 +221,16 @@
                             <div id="phy_list" class="row" style="display:none ;">
                                 <div class="col-lg-4" style="text-align:left;font-weight: bold;">
                                     <ul class="list-group">
-                                        <a href="" style="color:black">
+                                        <a href="#" style="color:black">
                                             <li class="list-group-item bg-custom3 custom_list">RECORD OF SALUTING AND SWIMMING</li>
                                         </a>
-                                        <a href="" style="color:black">
+                                        <a href="#" style="color:black">
                                             <li class="list-group-item bg-custom3 custom_list">RECORD PHYSICAL EFFICIENCY</li>
                                         </a>
-                                        <a href="" style="color:black">
+                                        <a href="#" style="color:black">
                                             <li class="list-group-item bg-custom3 custom_list">PROFICIENCY IN GAMES</li>
                                         </a>
-                                        <a href="" style="color:black">
+                                        <a href="#" style="color:black">
                                             <li class="list-group-item bg-custom3 custom_list">MEDICAL RECORD</li>
                                         </a>
                                     </ul>
@@ -240,16 +240,16 @@
                             <div id="acad_list" class="row" style="display:none ;">
                                 <div class="col-lg-4" style="text-align:left;font-weight: bold;">
                                     <ul class="list-group">
-                                        <a href="" style="color:black">
+                                        <a href="#" style="color:black">
                                             <li class="list-group-item bg-custom3 custom_list">RSEULT (TERM-I)</li>
                                         </a>
-                                        <a href="" style="color:black">
+                                        <a href="#" style="color:black">
                                             <li class="list-group-item bg-custom3 custom_list">SEA TRAINING REPORT (TERM-II)</li>
                                         </a>
-                                        <a href="" style="color:black">
+                                        <a href="#" style="color:black">
                                             <li class="list-group-item bg-custom3 custom_list">RESULT (TERM-II)</li>
                                         </a>
-                                        <a href="" style="color:black">
+                                        <a href="#" style="color:black">
                                             <li class="list-group-item bg-custom3 custom_list">RESULT (TERM III)</li>
                                         </a>
                                     </ul>
@@ -259,7 +259,7 @@
                             <div id="olq_list" class="row" style="display:none ;">
                                 <div class="col-lg-4" style="text-align:left;font-weight: bold;">
                                     <ul class="list-group">
-                                        <a href="" style="color:black">
+                                        <a href="#" style="color:black">
                                             <li class="list-group-item bg-custom3 custom_list">OFFICER LIKE QUALITIES</li>
                                         </a>
 
@@ -270,19 +270,19 @@
                             <div id="assess_list" class="row" style="display:none ;">
                                 <div class="col-lg-4" style="text-align:left;font-weight: bold;">
                                     <ul class="list-group">
-                                        <a href="" style="color:black">
+                                        <a href="#" style="color:black">
                                             <li class="list-group-item bg-custom3 custom_list">GENERAL REMARKS (Term I to III)</li>
                                         </a>
-                                        <a href="" style="color:black">
+                                        <a href="#" style="color:black">
                                             <li class="list-group-item bg-custom3 custom_list">PROGRESS CHART</li>
                                         </a>
-                                        <a href="" style="color:black">
+                                        <a href="#" style="color:black">
                                             <li class="list-group-item bg-custom3 custom_list">RECORD OF DISTINCTIONS ACHIEVED</li>
                                         </a>
-                                        <a href="" style="color:black">
+                                        <a href="#" style="color:black">
                                             <li class="list-group-item bg-custom3 custom_list">RECORD OF SENIORITY</li>
                                         </a>
-                                        <a href="" style="color:black">
+                                        <a href="#" style="color:black">
                                             <li class="list-group-item bg-custom3 custom_list">ALLOCAITON OF BRANCH/SPECIALISATION </li>
                                         </a>
 
@@ -357,7 +357,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>/D_O/punishment_records_report/<?= $pn_data['oc_no']?>/Term-I'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/punishment_records_report/<?= $pn_data['oc_no'] ?>/Term-I'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -432,7 +432,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>/D_O/punishment_records_report/<?= $pn_data['oc_no']?>/Term-II'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/punishment_records_report/<?= $pn_data['oc_no'] ?>/Term-II'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -507,7 +507,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>/D_O/punishment_records_report/<?= $pn_data['oc_no']?>/Term-III'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/punishment_records_report/<?= $pn_data['oc_no'] ?>/Term-III'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -582,7 +582,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>/D_O/punishment_records_report/<?= $pn_data['oc_no']?>/Term-III'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/observation_records_report/<?= $pn_data['oc_no'] ?>/Term-I'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -650,7 +650,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>/D_O/punishment_records_report/<?= $pn_data['oc_no']?>/Term-II'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/observation_records_report/<?= $pn_data['oc_no'] ?>/Term-II'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -718,7 +718,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>/D_O/punishment_records_report/<?= $pn_data['oc_no']?>/Term-III'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/observation_records_report/<?= $pn_data['oc_no'] ?>/Term-III'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -736,17 +736,17 @@
                                 <table style="color:black; width:100% !important;">
                                     <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
                                         <tr>
-                                            <td scope="">DATE</th>
-                                            <td scope="" style="width:350px">OBSERVATION</th>
-                                            <td scope="">OBSERVED/CHECKED BY</th>
-                                            <td scope="" style="border-right:1px solid black; white-space:nowrap">REMARKS/ ACTION BY</th>
+                                            <td scope="" style="width:70px">DATE</th>
+                                            <td scope="" style="width:300px">OBSERVATION</th>
+                                            <td scope="" style="width:70px !important">OBSERVED/ CHECKED BY</th>
+                                            <td scope="" style="border-right:1px solid black;width:100px !important">REMARKS/ ACTION TAKEN</th>
                                         </tr>
                                     </thead>
                                     <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
                                         <?php $count = 0;
                                         foreach ($pn_obs_data_term1 as $data) { ?>
                                             <tr>
-                                                <td scope="" style="white-space:nowrap;"><?= $data['date']; ?></td>
+                                                <td scope=""><?= $data['date']; ?></td>
                                                 <td scope="" style="height:80px"><?= $data['observation']; ?></td>
                                                 <td scope=""><?= $data['observed_by']; ?></td>
                                                 <td scope="" style="border-right:1px solid black;"><?= $data['action_taken']; ?></td>
@@ -775,6 +775,77 @@
             <div class="form-group row justify-content-center my-2">
                 <div class="col-sm-4">
                     <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_obs_term3">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="card-body bg-custom3" style="display:none" id="warning_record">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/warning_records_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>RECORD OF WARNING</strong></h4>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style=" padding:20px !important">
+                            <?php if (count($pn_warning_data) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="" style="width:70px">S NO</th>
+                                            <td scope="" style="width:70px">DATE</th>
+                                            <td scope="" style="width:70px">ISSUED BY</th>
+                                            <td scope="" style="width:70px !important">REASONS</th>
+                                            <td scope="" style="border-right:1px solid black;width:100px !important">DO'S SIGNATURE</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
+                                        <?php $count = 0;
+                                        foreach ($pn_warning_data as $data) { ?>
+                                            <tr>
+                                                <td scope=""><?= ++$count; ?></td>
+                                                <td scope=""><?= $data['date']; ?></td>
+                                                <td scope="" style="height:80px"><?= $data['issued_by']; ?></td>
+                                                <td scope=""><?= $data['reasons']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;"></td>
+                                            </tr>
+                                        <?php
+                                            $count++;
+                                        } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_warning">
                         Back
                     </button>
                 </div>
@@ -973,13 +1044,14 @@
         $('#terms_list_obs').hide();
     });
 
-    $('#back_btn_obs_term1, #back_btn_obs_term2, #back_btn_obs_term3').on('click', function() {
+    $('#back_btn_obs_term1, #back_btn_obs_term2, #back_btn_obs_term3, #back_btn_warning' ).on('click', function() {
         $('#main-container').show();
         $('#obs_term1').hide();
         $('#obs_term2').hide();
         $('#obs_term3').hide();
         $('#terms_list_punish').hide();
         $('#terms_list_obs').hide();
+        $('#warning_record').hide();
     });
 
     $('#obs_record').on('click', function() {
@@ -992,5 +1064,9 @@
         $('#terms_list_punish').show();
     });
 
-    
+    $('#btn_warning').on('click', function() {
+        $('#warning_record').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
 </script>
