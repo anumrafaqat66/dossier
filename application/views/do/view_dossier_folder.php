@@ -321,7 +321,7 @@
                             <h1 class="h4">GENERAL INSTRUCTIONS</h1>
                         </div>
 
-                        <div class="card-body bg-custom1" style="font-size:small">
+                        <div class="card-body bg-custom1" style="font-size:small;text-align: justify;">
                             <div class="form-group row">
                                 <div class="col-sm-6">
                                     <p>1. PN Form-I is a phase-wise record of the performance given by an under training officer during the entire period of his training. It comprises two sections: Section-I pertaining to common training of trainees as Cadet and Section-II pertaining to branch specific training as Midshipman/Sub Lieutenant.</p>
