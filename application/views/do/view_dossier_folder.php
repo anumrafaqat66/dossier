@@ -24,7 +24,7 @@
     table,
     th,
     td {
-        border-left: 1px solid black;
+        border-left: 0.5px solid black;
     }
 </style>
 
@@ -221,10 +221,10 @@
                             <div id="phy_list" class="row" style="display:none ;">
                                 <div class="col-lg-4" style="text-align:left;font-weight: bold;">
                                     <ul class="list-group">
-                                        <a href="#" style="color:black">
+                                        <a href="#" style="color:black" id="btn_saluting_swimming_record">
                                             <li class="list-group-item bg-custom3 custom_list">RECORD OF SALUTING AND SWIMMING</li>
                                         </a>
-                                        <a href="#" style="color:black">
+                                        <a href="#" style="color:black" id="btn_physical_record">
                                             <li class="list-group-item bg-custom3 custom_list">RECORD PHYSICAL EFFICIENCY</li>
                                         </a>
                                         <a href="#" style="color:black">
@@ -952,7 +952,7 @@
                                         <?php $count = 0;
                                         foreach ($pn_medical_data as $data) { ?>
                                             <tr>
-                                                <td scope="" style="white-space:nowrap"><?= date('Y-m-d',strtotime($data['date'])); ?></td>
+                                                <td scope="" style="white-space:nowrap"><?= date('Y-m-d', strtotime($data['date'])); ?></td>
                                                 <td scope="" style="height:80px"><?= $data['term']; ?></td>
                                                 <td scope=""><?= $data['disease']; ?></td>
                                                 <td scope=""><?= $data['admitted']; ?></td>
@@ -989,6 +989,482 @@
             <div class="form-group row justify-content-center my-2">
                 <div class="col-sm-4">
                     <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_medical">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="card-body bg-custom3" style="display:none" id="saluting_swimming_record">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/saluting_swimming_records_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>RECORD OF SALUTING AND SWIMMING</strong></h4>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style=" padding:20px !important">
+                            <?php if (count($pn_physical_tests_data) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="" style="width:10px">S NO</td>
+                                            <td scope="" style="width:70px">TESTS</td>
+                                            <td scope="" style="width:70px">DATE</td>
+                                            <td scope="" style="border-right:1px solid black;width:100px !important">RESULT & REMARKS</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
+                                        <?php $count = 0;
+                                        foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">SALUTING</td>
+                                                <td scope="" style="white-space:nowrap"><?= date('Y-m-d', strtotime($data['date_added'])); ?></td>
+                                                <td scope="" style="border-right:1px solid black;"><?= $data['saluting_result']; ?> - ATTEMPT: <?= $data['saluting_attempt']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">PRELIMINARY SWIMMING TEST</td>
+                                                <td scope="" style="white-space:nowrap"><?= date('Y-m-d', strtotime($data['date_added'])); ?></td>
+                                                <td scope="" style="border-right:1px solid black;"><?= $data['PST_result']; ?> - ATTEMPT: <?= $data['PST_attempt']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">STANDARD SWIMMING TEST</td>
+                                                <td scope="" style="white-space:nowrap"><?= date('Y-m-d', strtotime($data['date_added'])); ?></td>
+                                                <td scope="" style="border-right:1px solid black;"><?= $data['SST_result']; ?> - ATTEMPT: <?= $data['SST_attempt']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_saluting_swimming">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="card-body bg-custom3" style="display:none" id="physical_efficiency_record">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/physical_efficiency_records_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>RECORD OF PHYSICAL EFFICIENCY</strong></h4>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style=" padding:20px !important">
+                            <?php if (count($pn_physical_tests_data) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+
+                                    <!-- <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important"> -->
+                                    <?php $count = 0;
+                                    foreach ($pn_physical_tests_data as $data) { ?>
+                                        <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
+                                            <tr>
+                                                <td scope="" Style="width:50px">S NO</td>
+                                                <td scope="" Style="width:180px">EVENT</td>
+                                                <td scope="" colspan="4">TERM-P</td>
+                                                <td scope="" colspan="4">TERM______</td>
+                                                <td scope="" colspan="4">TERM______</td>
+                                                <td scope="" style="border-right:1px solid black;" colspan="4">TERM______</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
+                                            <tr>
+                                                <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">MILE TIME</td>
+                                                <td scope=""></td>
+                                                <td scope=""></td>
+                                                <td scope=""></td>
+                                                <td scope=""></td>
+                                                <td scope=""></td>
+                                                <td scope=""></td>
+                                                <td scope=""></td>
+                                                <td scope=""></td>
+                                                <td scope=""></td>
+                                                <td scope=""></td>
+                                                <td scope=""></td>
+                                                <td scope=""></td>
+                                                <td scope=""></td>
+                                                <td scope=""></td>
+                                                <td scope=""></td>
+                                                <td scope="" style="border-right:1px solid black;"></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black; border-left:1px; border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <thead style="font-weight:bold;padding:5px; text-align:center">
+                                                <tr>
+                                                    <th scope=""></th>
+                                                    <th scope=""></th>
+                                                    <th scope="" colspan="2"></th>
+                                                    <th scope="" colspan="2"></th>
+                                                    <th scope="" colspan="2"></th>
+                                                    <th scope="" colspan="2"></th>
+                                                    <th scope="" colspan="2"></th>
+                                                    <th scope="" colspan="2"></th>
+                                                    <th scope="" style="border-right:1px solid black;" colspan="2"></th>
+                                                </tr>
+                                            </thead>
+                                            <tr>
+                                                <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">ROPE CLASS</td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2" style="border-right:1px solid black;"></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black; border-left:1px; border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">BEAM WORK</td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2" style="border-right:1px solid black;"></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black; border-left:1px; border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">PUSH UPS</td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2" style="border-right:1px solid black;"></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black; border-left:1px; border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">100M SPRINT TIME</td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2" style="border-right:1px solid black;"></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black; border-left:1px; border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">TOTAL PET SCORE</td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2" style="border-right:1px solid black;"></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black; border-left:1px; border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">MINI CROSS COUNTRY ____ KM</td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2" style="border-right:1px solid black;"></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black; border-left:1px; border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">CROSS COUNTRY _______KM</td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2" style="border-right:1px solid black;"></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black; border-left:1px; border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">ASSAULT COURSES TIME</td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2"></td>
+                                                <td scope="" colspan="2" style="border-right:1px solid black;"></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px !important;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black; border-left:1px; border-right:1px solid black;"></td>
+                                        </tr>
+                                        </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_physical_efficiency">
                         Back
                     </button>
                 </div>
@@ -1187,7 +1663,7 @@
         $('#terms_list_obs').hide();
     });
 
-    $('#back_btn_obs_term1, #back_btn_obs_term2, #back_btn_obs_term3, #back_btn_warning, #back_btn_inspection, #back_btn_medical' ).on('click', function() {
+    $('#back_btn_obs_term1, #back_btn_obs_term2, #back_btn_obs_term3, #back_btn_warning, #back_btn_inspection, #back_btn_medical, #back_btn_saluting_swimming, #back_btn_physical_efficiency').on('click', function() {
         $('#main-container').show();
         $('#obs_term1').hide();
         $('#obs_term2').hide();
@@ -1197,6 +1673,7 @@
         $('#warning_record').hide();
         $('#inspection_record').hide();
         $('#medical_record').hide();
+        $('#saluting_swimming_record').hide();
     });
 
     $('#obs_record').on('click', function() {
@@ -1223,6 +1700,18 @@
 
     $('#btn_medical_record').on('click', function() {
         $('#medical_record').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
+
+    $('#btn_saluting_swimming_record').on('click', function() {
+        $('#saluting_swimming_record').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
+
+    $('#btn_physical_record').on('click', function() {
+        $('#physical_efficiency_record').show();
         $('#main-container').hide();
         $('#container-2').hide();
     });
