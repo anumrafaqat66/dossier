@@ -59,6 +59,9 @@
                                             <div class="col-sm-4 mb-1" style="display:none">
                                                 <input type="text" class="" name="id1" id="id1">
                                             </div>
+                                            <div class="col-sm-4 mb-1" style="display:none">
+                                                <input type="text" class="" name="term_pet1" id="term_pet1">
+                                            </div>
 
                                             <div class="col-sm-3 mb-1">
                                                 <input type="text" class="form-control form-control-user" name="mile_time_I" id="mile_time_I" style="" placeholder="mile time">
@@ -144,6 +147,9 @@
                                             </div>
                                             <div class="col-sm-4 mb-1" style="display:none">
                                                 <input type="text" class="" name="id2" id="id2">
+                                            </div>
+                                            <div class="col-sm-4 mb-1" style="display:none">
+                                                <input type="text" class="" name="term_pet2" id="term_pet2">
                                             </div>
 
                                             <div class="col-sm-3 mb-1">
@@ -511,10 +517,6 @@
 
                             </div>
 
-
-
-
-
                             <div class="form-group row justify-content-center">
                                 <div class="col-sm-4">
                                     <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn">
@@ -549,15 +551,13 @@
 <?php $this->load->view('common/footer'); ?>
 <script>
     $('#add_btn_termI').on('click', function() {
-        //alert('javascript working');
-        //  $('#add_btn_bids').attr('disabled', true);
         var p_id = $('#id1').val();
         var oc_no = $('#oc_num1').val();
         var mile_time = $('#mile_time_I').val();
         var Pushups = $('#Pushups_I').val();
         var Chinups = $('#Chinups_I').val();
         var rope = $('#Rope_I').val();
-
+        var term = $('#term_pet1').val();
 
         $.ajax({
             url: '<?= base_url(); ?>D_O/add_termI_details',
@@ -569,22 +569,17 @@
                 'mile_time': mile_time,
                 'Pushups': Pushups,
                 'Chinups': Chinups,
-                'rope': rope
+                'rope': rope,
+                'term': term
             },
             success: function(response) {
-
             },
             async: false
         });
-
-        //  $('#add_form_bids')[0].submit();
-        // $('#show_error_new').hide();
         $('#term-I').modal('hide');
     });
 
-    $('#add_btn_termII').on('click', function() {
-        //alert('javascript working');
-        //  $('#add_btn_bids').attr('disabled', true);
+    $('#add_btn_termII').on('click', function() {        
         var validate = 0;
 
         var p_id = $('#id2').val();
@@ -593,6 +588,7 @@
         var Pushups = $('#Pushups_II').val();
         var Chinups = $('#Chinups_II').val();
         var rope = $('#Rope_II').val();
+        var term = $('#term_pet2').val();
 
         $.ajax({
             url: '<?= base_url(); ?>D_O/add_termII_details',
@@ -604,16 +600,14 @@
                 'mile_time': mile_time,
                 'Pushups': Pushups,
                 'Chinups': Chinups,
-                'rope': rope
+                'rope': rope,
+                'term' : term
             },
             success: function(response) {
-
             },
             async: false
         });
 
-        //  $('#add_form_bids')[0].submit();
-        //  $('#show_error_new').hide();
         $('#term-II').modal('hide');
 
     });
@@ -701,14 +695,18 @@
                         $('#mini_cross').val(result['mini_cross_result']);
                         $('#mini_cross_card').val(result['mini_cross_card_number']);
                         $('#milestone_id').val(result['id']);
+
                         $('#mile_time_I').val(result['mile_time']);
                         $('#Chinups_I').val(result['chinups']);
                         $('#Pushups_I').val(result['pushups']);
                         $('#Rope_I').val(result['rope']);
+                        $('#term_pet1').val(result['f_term']);
+
                         $('#mile_time_II').val(result['mile_time_II']);
                         $('#Chinups_II').val(result['chinups_II']);
                         $('#Pushups_II').val(result['pushups_II']);
                         $('#Rope_II').val(result['rope_II']);
+                        $('#term_pet2').val(result['f_term']);
 
                     } else {
                         $('#no_data').show();

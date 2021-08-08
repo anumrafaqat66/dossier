@@ -2095,18 +2095,12 @@
                                                     <td></td>
                                                     </tr>`);
                 }
-
-                //alert(result['assigned_club']);
-
             },
             async: true
         });
     }
 
     function seen(data) {
-        // alert('in');
-        // alert(data);
-        // var receiver_id=$(this).attr('id');
         $.ajax({
             url: '<?= base_url(); ?>ChatController/seen',
             method: 'POST',
@@ -2280,14 +2274,10 @@
             success: function(data) {
                 var result = jQuery.parseJSON(data);
                 var len = result.length;
-
-                $('#mile_time2_detail').html(result['mile_time_II']);
-                $('#pushup2_detail').html(result['pushups_II']);
-                $('#chinups2_detail').html(result['chinups_II']);
-                $('#rope2_detail').html(result['rope_II']);
-
-
-                // }
+                $('#mile_time2_detail').html(result['mile_time']);
+                $('#pushup2_detail').html(result['pushups']);
+                $('#chinups2_detail').html(result['chinups']);
+                $('#rope2_detail').html(result['rope']);
             },
             async: false
         });

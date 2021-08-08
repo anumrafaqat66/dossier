@@ -36,8 +36,6 @@
 <div id="table_div">
   <?php if (count($test_records) > 0) { ?>
     <table style="color:black; width:100% !important;">
-
-      <!-- <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important"> -->
       <?php $count = 0;
       foreach ($test_records as $data) { ?>
         <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
@@ -54,10 +52,10 @@
           <tr>
             <td scope=""><?= ++$count; ?></td>
             <td scope="">MILE TIME</td>
-            <td scope=""></td>
-            <td scope=""></td>
-            <td scope=""></td>
-            <td scope=""></td>
+            <td scope=""><?= $pn_pet1_data['mile_time']; ?></td>
+            <td scope=""><?= $pn_pet1_data['mile_time']; ?></td>
+            <td scope=""><?= $pn_pet2_data['mile_time']; ?></td>
+            <td scope=""><?= $pn_pet2_data['mile_time']; ?></td>
             <td scope=""></td>
             <td scope=""></td>
             <td scope=""></td>
@@ -109,8 +107,8 @@
           <tr>
             <td scope=""><?= ++$count; ?></td>
             <td scope="">ROPE CLASS</td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
+            <td scope="" colspan="2"><?= $pn_pet1_data['rope']; ?></td>
+            <td scope="" colspan="2"><?= $pn_pet2_data['rope']; ?></td>
             <td scope="" colspan="2"></td>
             <td scope="" colspan="2"></td>
             <td scope="" colspan="2"></td>
@@ -143,8 +141,8 @@
           <tr>
             <td scope=""><?= ++$count; ?></td>
             <td scope="">BEAM WORK</td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
+            <td scope="" colspan="2"><?= $pn_pet1_data['chinups']; ?></td>
+            <td scope="" colspan="2"><?= $pn_pet2_data['chinups']; ?></td>
             <td scope="" colspan="2"></td>
             <td scope="" colspan="2"></td>
             <td scope="" colspan="2"></td>
@@ -177,8 +175,8 @@
           <tr>
             <td scope=""><?= ++$count; ?></td>
             <td scope="">PUSH UPS</td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
+            <td scope="" colspan="2"><?= $pn_pet1_data['pushups']; ?></td>
+            <td scope="" colspan="2"><?= $pn_pet2_data['pushups']; ?></td>
             <td scope="" colspan="2"></td>
             <td scope="" colspan="2"></td>
             <td scope="" colspan="2"></td>
@@ -279,8 +277,8 @@
           <tr>
             <td scope=""><?= ++$count; ?></td>
             <td scope="">MINI CROSS COUNTRY ____ KM</td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
+            <td scope="" colspan="2"><?= $data['mini_cross_result']; ?></td>
+            <td scope="" colspan="2"><?= $data['mini_cross_card_number']; ?></td>
             <td scope="" colspan="2"></td>
             <td scope="" colspan="2"></td>
             <td scope="" colspan="2"></td>
@@ -313,8 +311,8 @@
           <tr>
             <td scope=""><?= ++$count; ?></td>
             <td scope="">CROSS COUNTRY _______KM</td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
+            <td scope="" colspan="2"><?= $data['long_cross_result']; ?></td>
+            <td scope="" colspan="2"><?= $data['long_cross_card_number']; ?></td>
             <td scope="" colspan="2"></td>
             <td scope="" colspan="2"></td>
             <td scope="" colspan="2"></td>
@@ -347,8 +345,8 @@
           <tr>
             <td scope=""><?= ++$count; ?></td>
             <td scope="">ASSAULT COURSES TIME</td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
+            <td scope="" colspan="2"><?= $data['assault_result']; ?></td>
+            <td scope="" colspan="2"><?= $data['assault_attempt']; ?></td>
             <td scope="" colspan="2"></td>
             <td scope="" colspan="2"></td>
             <td scope="" colspan="2"></td>
