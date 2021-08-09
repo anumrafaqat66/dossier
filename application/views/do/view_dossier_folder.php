@@ -21,7 +21,6 @@
         border-radius: 10rem !important;
     }
 
-    table,
     th,
     td {
         border-left: 0.5px solid black;
@@ -259,10 +258,23 @@
                             <div id="olq_list" class="row" style="display:none ;">
                                 <div class="col-lg-4" style="text-align:left;font-weight: bold;">
                                     <ul class="list-group">
-                                        <a href="#" style="color:black">
+                                        <a href="#" style="color:black" ID="btn_olq_record">
                                             <li class="list-group-item bg-custom3 custom_list">OFFICER LIKE QUALITIES</li>
                                         </a>
 
+                                    </ul>
+                                </div>
+                                <div id="terms_olq_record" class="col-lg-2" style="text-align:left;font-weight: bold;display:none">
+                                    <ul class="list-group">
+                                        <a href="#" style="color:black" id="btn_olq_term1">
+                                            <li class="list-group-item bg-custom3 custom_list">TERM-I</li>
+                                        </a>
+                                        <a href="#" style="color:black" id="btn_olq_term2">
+                                            <li class="list-group-item bg-custom3 custom_list">TERM-II</li>
+                                        </a>
+                                        <a href="#" style="color:black" id="btn_olq_term3">
+                                            <li class="list-group-item bg-custom3 custom_list">TERM-III</li>
+                                        </a>
                                     </ul>
                                 </div>
                             </div>
@@ -1183,13 +1195,13 @@
                                                 <td scope="" style="height:80px"><?= ++$count; ?></td>
                                                 <td scope="">ROPE CLASS</td>
                                                 <td scope="" colspan="2"><?php if (isset($pn_pet1_data_tp['rope'])) { echo $pn_pet1_data_tp['rope']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_tp['rope'])) { echo $pn_pet2_data_tp['rope']; }?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_tp['rope'])) { echo $pn_pet2_data_tp['rope']; }?></td>
                                                 <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t1['rope'])) { echo $pn_pet1_data_t1['rope']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t1['rope'])) { echo $pn_pet2_data_t1['rope']; }?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t1['rope'])) { echo $pn_pet2_data_t1['rope']; }?></td>
                                                 <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t2['rope'])) { echo $pn_pet1_data_t2['rope']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t2['rope'])) { echo $pn_pet2_data_t2['rope']; }?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t2['rope'])) { echo $pn_pet2_data_t2['rope']; }?></td>
                                                 <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t3['rope'])) { echo $pn_pet1_data_t3['rope']; }?></td>
-                                                <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_pet1_data_t3['rope'])) { echo $pn_pet2_data_t3['rope']; }?></td>
+                                                <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_pet2_data_t3['rope'])) { echo $pn_pet2_data_t3['rope']; }?></td>
                                             </tr>
                                         <?php } ?>
                                         <tr>
@@ -1217,13 +1229,13 @@
                                                 <td scope="" style="height:80px"><?= ++$count; ?></td>
                                                 <td scope="">BEAM WORK</td>
                                                 <td scope="" colspan="2"><?php if (isset($pn_pet1_data_tp['chinups'])) { echo $pn_pet1_data_tp['chinups']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_tp['chinups'])) { echo $pn_pet2_data_tp['chinups']; }?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_tp['chinups'])) { echo $pn_pet2_data_tp['chinups']; }?></td>
                                                 <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t1['chinups'])) { echo $pn_pet1_data_t1['chinups']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t1['chinups'])) { echo $pn_pet2_data_t1['chinups']; }?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t1['chinups'])) { echo $pn_pet2_data_t1['chinups']; }?></td>
                                                 <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t2['chinups'])) { echo $pn_pet1_data_t2['chinups']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t2['chinups'])) { echo $pn_pet2_data_t2['chinups']; }?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t2['chinups'])) { echo $pn_pet2_data_t2['chinups']; }?></td>
                                                 <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t3['chinups'])) { echo $pn_pet1_data_t3['chinups']; }?></td>
-                                                <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_pet1_data_t3['chinups'])) { echo $pn_pet2_data_t3['chinups']; }?></td>
+                                                <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_pet2_data_t3['chinups'])) { echo $pn_pet2_data_t3['chinups']; }?></td>
                                             </tr>
                                         <?php } ?>
                                         <tr>
@@ -1251,13 +1263,13 @@
                                                 <td scope="" style="height:80px"><?= ++$count; ?></td>
                                                 <td scope="">PUSH UPS</td>
                                                 <td scope="" colspan="2"><?php if (isset($pn_pet1_data_tp['pushups'])) { echo $pn_pet1_data_tp['pushups']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_tp['pushups'])) { echo $pn_pet2_data_tp['pushups']; }?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_tp['pushups'])) { echo $pn_pet2_data_tp['pushups']; }?></td>
                                                 <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t1['pushups'])) { echo $pn_pet1_data_t1['pushups']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t1['pushups'])) { echo $pn_pet2_data_t1['pushups']; }?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t1['pushups'])) { echo $pn_pet2_data_t1['pushups']; }?></td>
                                                 <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t2['pushups'])) { echo $pn_pet1_data_t2['pushups']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t2['pushups'])) { echo $pn_pet2_data_t2['pushups']; }?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t2['pushups'])) { echo $pn_pet2_data_t2['pushups']; }?></td>
                                                 <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t3['pushups'])) { echo $pn_pet1_data_t3['pushups']; }?></td>
-                                                <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_pet1_data_t3['pushups'])) { echo $pn_pet2_data_t3['pushups']; }?></td>
+                                                <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_pet2_data_t3['pushups'])) { echo $pn_pet2_data_t3['pushups']; }?></td>
                                             </tr>
                                         <?php } ?>
                                         <tr>
@@ -1472,6 +1484,1172 @@
         </form>
 
     </div>
+
+    <div class="card-body bg-custom3" style="display:none" id="officer_qualities_record_term1">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/officer_qualities_records_report/<?= $pn_data['oc_no'] ?>/Term-I'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>OFFICER LIKE QUALITIES</strong></h4>
+                                <h4 style="text-decoration:underline"><strong>TERM-I</strong></h4>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style=" padding:20px !important">
+                            <?php if (count($pn_physical_tests_data) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="" style="width:10px;border-top:none !important;border-left:none !important"></td>
+                                            <td scope="" style="width:70px;border-top:none !important;border-left:none !important"></td>
+                                            <td scope="" style="width:70px;border-top:1px solid black;">MAX MARKS</td>
+                                            <td scope="" style="width:70px;border-top:1px solid black;">MID TERM</td>
+                                            <td scope="" style="border-right:1px solid black;width:100px !important;border-top:1px solid black;">TERMINAL</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
+                                        <?php $count = 0;
+                                        foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Truthfulness</td>
+                                                <td scope="" style="text-align:center">20</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['truthfulness_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?=  $pn_officer_qualities_data_t1['truthfulness_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Integrity</td>
+                                                <td scope="" style="text-align:center">25</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['integrity_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['integrity_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Sense of Pride</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['pride_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['pride_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Moral Courage</td>
+                                                <td scope="" style="text-align:center">15</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['courage_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['courage_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Confidence and Behaviour Under Stress</td>
+                                                <td scope="" style="text-align:center">15</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['confidence_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['confidence_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Initiative</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['initiative_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['inititative_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Ability to Command, Control and Assert</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['command_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['command_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Self and General Discipline</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['discipline_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['discipline_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Sense of Duty</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['duty_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['duty_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Reliability</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['reliability_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['reliability_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">General Appearance & Bearing</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['appearance_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['appearance_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Physical Fittness</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['fitness_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['fitness_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Manners and Social Conduct</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['conduct_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['conduct_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Intelligence and Common Sense</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['cs_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['cs_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Cooperation Adaptability and Team Work</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['teamwork_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['teamwork_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Power of Expression (Oral & Written)</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['expression_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['expression_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="height:80px"></td>
+                                            <td scope=""> <strong>Grand Total: </strong> </td>
+                                            <td scope="" style="text-align:center">200</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['total_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['total_terminal']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <tr style="border-left: none;">
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" colspan="" style="border-right:1px solid black;"> MARKS FOR TERM </td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['mid_marks']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['terminal_marks']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <tr style="border-left: none;">
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" colspan="" style="border-right:1px solid black;"> DATE OF ASSESSMENT</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['mid_marks_date']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['terminal_marks_date']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <tr style="border-left: none;">
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" colspan="3" style="border-right:1px solid black;"> DIVISIONAL OFFICER'S SIGNATURE </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <tr style="border-left: none;">
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" colspan="3" style="border-right:1px solid black;"> CAPTAIN TRAINNING'S SIGNATURE </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <tr style="border-left: none;">
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" colspan="3" style="border-right:1px solid black;"> CO/COMMANDANT'S SIGNATURE </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_olq_term1">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="card-body bg-custom3" style="display:none" id="officer_qualities_record_term2">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/officer_qualities_records_report/<?= $pn_data['oc_no'] ?>/Term-II'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>OFFICER LIKE QUALITIES</strong></h4>
+                                <h4 style="text-decoration:underline"><strong>TERM-II</strong></h4>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style=" padding:20px !important">
+                            <?php if (count($pn_physical_tests_data) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="" style="width:10px;border-top:none !important;border-left:none !important"></td>
+                                            <td scope="" style="width:70px;border-top:none !important;border-left:none !important"></td>
+                                            <td scope="" style="width:70px;border-top:1px solid black;">MAX MARKS</td>
+                                            <td scope="" style="width:70px;border-top:1px solid black;">MID TERM</td>
+                                            <td scope="" style="border-right:1px solid black;width:100px !important;border-top:1px solid black;">TERMINAL</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
+                                        <?php $count = 0;
+                                        foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Truthfulness</td>
+                                                <td scope="" style="text-align:center">20</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['truthfulness_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?=  $pn_officer_qualities_data_t2['truthfulness_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Integrity</td>
+                                                <td scope="" style="text-align:center">25</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['integrity_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t2['integrity_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Sense of Pride</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['pride_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t2['pride_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Moral Courage</td>
+                                                <td scope="" style="text-align:center">15</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['courage_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['courage_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Confidence and Behaviour Under Stress</td>
+                                                <td scope="" style="text-align:center">15</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['confidence_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['confidence_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Initiative</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['initiative_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['inititative_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Ability to Command, Control and Assert</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['command_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['command_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Self and General Discipline</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['discipline_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['discipline_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Sense of Duty</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['duty_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['duty_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Reliability</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['reliability_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['reliability_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">General Appearance & Bearing</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['appearance_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['appearance_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Physical Fittness</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['fitness_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['fitness_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Manners and Social Conduct</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['conduct_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['conduct_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Intelligence and Common Sense</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['cs_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['cs_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Cooperation Adaptability and Team Work</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['teamwork_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['teamwork_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Power of Expression (Oral & Written)</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['expression_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['expression_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="height:80px"></td>
+                                            <td scope=""> <strong>Grand Total: </strong> </td>
+                                            <td scope="" style="text-align:center">200</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['total_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['total_terminal']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <tr style="border-left: none;">
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" colspan="" style="border-right:1px solid black;"> MARKS FOR TERM </td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['mid_marks']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['terminal_marks']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <tr style="border-left: none;">
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" colspan="" style="border-right:1px solid black;"> DATE OF ASSESSMENT</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['mid_marks_date']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['terminal_marks_date']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <tr style="border-left: none;">
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" colspan="3" style="border-right:1px solid black;"> DIVISIONAL OFFICER'S SIGNATURE </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <tr style="border-left: none;">
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" colspan="3" style="border-right:1px solid black;"> CAPTAIN TRAINNING'S SIGNATURE </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <tr style="border-left: none;">
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" colspan="3" style="border-right:1px solid black;"> CO/COMMANDANT'S SIGNATURE </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_olq_term2">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="card-body bg-custom3" style="display:none" id="officer_qualities_record_term3">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/officer_qualities_records_report/<?= $pn_data['oc_no'] ?>/Term-III'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>OFFICER LIKE QUALITIES</strong></h4>
+                                <h4 style="text-decoration:underline"><strong>TERM-I</strong></h4>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style=" padding:20px !important">
+                            <?php if (count($pn_physical_tests_data) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="" style="width:10px;border-top:none !important;border-left:none !important"></td>
+                                            <td scope="" style="width:70px;border-top:none !important;border-left:none !important"></td>
+                                            <td scope="" style="width:70px;border-top:1px solid black;">MAX MARKS</td>
+                                            <td scope="" style="width:70px;border-top:1px solid black;">MID TERM</td>
+                                            <td scope="" style="border-right:1px solid black;width:100px !important;border-top:1px solid black;">TERMINAL</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
+                                        <?php $count = 0;
+                                        foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Truthfulness</td>
+                                                <td scope="" style="text-align:center">20</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['truthfulness_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?=  $pn_officer_qualities_data_t1['truthfulness_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Integrity</td>
+                                                <td scope="" style="text-align:center">25</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['integrity_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['integrity_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Sense of Pride</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['pride_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['pride_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Moral Courage</td>
+                                                <td scope="" style="text-align:center">15</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['courage_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['courage_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Confidence and Behaviour Under Stress</td>
+                                                <td scope="" style="text-align:center">15</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['confidence_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['confidence_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Initiative</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['initiative_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['inititative_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Ability to Command, Control and Assert</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['command_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['command_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Self and General Discipline</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['discipline_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['discipline_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Sense of Duty</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['duty_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['duty_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Reliability</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['reliability_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['reliability_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">General Appearance & Bearing</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['appearance_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['appearance_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Physical Fittness</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['fitness_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['fitness_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Manners and Social Conduct</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['conduct_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['conduct_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Intelligence and Common Sense</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['cs_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['cs_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Cooperation Adaptability and Team Work</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['teamwork_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['teamwork_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
+                                            <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                                <td scope="">Power of Expression (Oral & Written)</td>
+                                                <td scope="" style="text-align:center">10</td>
+                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['expression_mid']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['expression_terminal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="height:80px"></td>
+                                            <td scope=""> <strong>Grand Total: </strong> </td>
+                                            <td scope="" style="text-align:center">200</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['total_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['total_terminal']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <tr style="border-left: none;">
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" colspan="" style="border-right:1px solid black;"> MARKS FOR TERM </td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['mid_marks']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['terminal_marks']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <tr style="border-left: none;">
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" colspan="" style="border-right:1px solid black;"> DATE OF ASSESSMENT</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['mid_marks_date']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['terminal_marks_date']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <tr style="border-left: none;">
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" colspan="3" style="border-right:1px solid black;"> DIVISIONAL OFFICER'S SIGNATURE </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <tr style="border-left: none;">
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" colspan="3" style="border-right:1px solid black;"> CAPTAIN TRAINNING'S SIGNATURE </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                        <tr style="border-left: none;">
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" style="height:80px; border-left:none"></td>
+                                            <td scope="" colspan="3" style="border-right:1px solid black;"> CO/COMMANDANT'S SIGNATURE </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-left:none"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_olq_term3">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+
 </div>
 
 </div>
@@ -1663,7 +2841,7 @@
         $('#terms_list_obs').hide();
     });
 
-    $('#back_btn_obs_term1, #back_btn_obs_term2, #back_btn_obs_term3, #back_btn_warning, #back_btn_inspection, #back_btn_medical, #back_btn_saluting_swimming, #back_btn_physical_efficiency').on('click', function() {
+    $('#back_btn_obs_term1, #back_btn_obs_term2, #back_btn_obs_term3, #back_btn_warning, #back_btn_inspection, #back_btn_medical, #back_btn_saluting_swimming, #back_btn_physical_efficiency, #back_btn_olq_term1, #back_btn_olq_term2, #back_btn_olq_term3').on('click', function() {
         $('#main-container').show();
         $('#obs_term1').hide();
         $('#obs_term2').hide();
@@ -1674,6 +2852,9 @@
         $('#inspection_record').hide();
         $('#medical_record').hide();
         $('#saluting_swimming_record').hide();
+        $('#officer_qualities_record_term1').hide();
+        $('#officer_qualities_record_term2').hide();
+        $('#officer_qualities_record_term3').hide();
     });
 
     $('#obs_record').on('click', function() {
@@ -1684,6 +2865,9 @@
     $('#punish_record').on('click', function() {
         $('#terms_list_obs').hide();
         $('#terms_list_punish').show();
+    });
+    $('#btn_olq_record').on('click', function() {
+        $('#terms_olq_record').show();
     });
 
     $('#btn_warning').on('click', function() {
@@ -1712,6 +2896,23 @@
 
     $('#btn_physical_record').on('click', function() {
         $('#physical_efficiency_record').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
+
+    $('#btn_olq_term1').on('click', function() {
+        $('#officer_qualities_record_term1').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
+
+    $('#btn_olq_term2').on('click', function() {
+        $('#officer_qualities_record_term2').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
+    $('#btn_olq_term3').on('click', function() {
+        $('#officer_qualities_record_term3').show();
         $('#main-container').hide();
         $('#container-2').hide();
     });

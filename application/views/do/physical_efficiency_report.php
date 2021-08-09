@@ -50,24 +50,24 @@
         </thead>
         <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
           <tr>
-            <td scope=""><?= ++$count; ?></td>
-            <td scope="">MILE TIME</td>
-            <td scope=""><?= $pn_pet1_data['mile_time']; ?></td>
-            <td scope=""><?= $pn_pet1_data['mile_time']; ?></td>
-            <td scope=""><?= $pn_pet2_data['mile_time']; ?></td>
-            <td scope=""><?= $pn_pet2_data['mile_time']; ?></td>
-            <td scope=""></td>
-            <td scope=""></td>
-            <td scope=""></td>
-            <td scope=""></td>
-            <td scope=""></td>
-            <td scope=""></td>
-            <td scope=""></td>
-            <td scope=""></td>
-            <td scope=""></td>
-            <td scope=""></td>
-            <td scope=""></td>
-            <td scope="" style="border-right:1px solid black;"></td>
+          <td scope="" style="height:80px"><?= ++$count; ?></td>
+          <td scope="">MILE TIME</td>
+          <td scope=""><?php if (isset($pn_pet1_data_tp['mile_time'])) { echo $pn_pet1_data_tp['mile_time']; }?></td>
+          <td scope=""><?php if (isset($pn_pet1_data_tp['mile_time'])) { echo $pn_pet1_data_tp['mile_time']; } ?></td>
+          <td scope=""><?php if (isset($pn_pet1_data_tp['mile_time'])) { echo $pn_pet2_data_tp['mile_time']; }?></td>
+          <td scope=""><?php if (isset($pn_pet1_data_tp['mile_time'])) { echo $pn_pet2_data_tp['mile_time']; }?></td>
+          <td scope=""><?php if (isset($pn_pet1_data_t1['mile_time'])) { echo $pn_pet1_data_t1['mile_time']; }?></td>
+          <td scope=""><?php if (isset($pn_pet1_data_t1['mile_time'])) { echo $pn_pet1_data_t1['mile_time']; }?></td>
+          <td scope=""><?php if (isset($pn_pet1_data_t1['mile_time'])) { echo $pn_pet1_data_t1['mile_time']; }?></td>
+          <td scope=""><?php if (isset($pn_pet1_data_t1['mile_time'])) { echo $pn_pet2_data_t1['mile_time']; }?></td>
+          <td scope=""><?php if (isset($pn_pet1_data_t2['mile_time'])) { echo $pn_pet1_data_t2['mile_time']; }?></td>
+          <td scope=""><?php if (isset($pn_pet1_data_t2['mile_time'])) { echo $pn_pet1_data_t2['mile_time']; }?></td>
+          <td scope=""><?php if (isset($pn_pet1_data_t2['mile_time'])) { echo $pn_pet2_data_t2['mile_time']; }?></td>
+          <td scope=""><?php if (isset($pn_pet1_data_t2['mile_time'])) { echo $pn_pet2_data_t2['mile_time']; }?></td>
+          <td scope=""><?php if (isset($pn_pet1_data_t3['mile_time'])) { echo $pn_pet1_data_t4['mile_time']; }?></td>
+          <td scope=""><?php if (isset($pn_pet1_data_t3['mile_time'])) { echo $pn_pet1_data_t4['mile_time']; }?></td>
+          <td scope=""><?php if (isset($pn_pet1_data_t3['mile_time'])) { echo $pn_pet2_data_t4['mile_time']; }?></td>
+          <td scope="" style="border-right:1px solid black;"><?php if (isset($pn_pet1_data_t3['mile_time'])) { echo $pn_pet2_data_t3['mile_time']; } ?></td>
           </tr>
         <?php } ?>
         <tr>
@@ -105,16 +105,16 @@
             </tr>
           </thead>
           <tr>
-            <td scope=""><?= ++$count; ?></td>
-            <td scope="">ROPE CLASS</td>
-            <td scope="" colspan="2"><?= $pn_pet1_data['rope']; ?></td>
-            <td scope="" colspan="2"><?= $pn_pet2_data['rope']; ?></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2" style="border-right:1px solid black;"></td>
+          <td scope="" style="height:80px"><?= ++$count; ?></td>
+          <td scope="">ROPE CLASS</td>
+          <td scope="" colspan="2"><?php if (isset($pn_pet1_data_tp['rope'])) { echo $pn_pet1_data_tp['rope']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_pet2_data_tp['rope'])) { echo $pn_pet2_data_tp['rope']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t1['rope'])) { echo $pn_pet1_data_t1['rope']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t1['rope'])) { echo $pn_pet2_data_t1['rope']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t2['rope'])) { echo $pn_pet1_data_t2['rope']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t2['rope'])) { echo $pn_pet2_data_t2['rope']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t3['rope'])) { echo $pn_pet1_data_t3['rope']; }?></td>
+          <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_pet2_data_t3['rope'])) { echo $pn_pet2_data_t3['rope']; }?></td>
           </tr>
         <?php } ?>
         <tr>
@@ -139,16 +139,16 @@
         </tr>
         <?php foreach ($test_records as $data) { ?>
           <tr>
-            <td scope=""><?= ++$count; ?></td>
-            <td scope="">BEAM WORK</td>
-            <td scope="" colspan="2"><?= $pn_pet1_data['chinups']; ?></td>
-            <td scope="" colspan="2"><?= $pn_pet2_data['chinups']; ?></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2" style="border-right:1px solid black;"></td>
+          <td scope="" style="height:80px"><?= ++$count; ?></td>
+          <td scope="">BEAM WORK</td>
+          <td scope="" colspan="2"><?php if (isset($pn_pet1_data_tp['chinups'])) { echo $pn_pet1_data_tp['chinups']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_pet2_data_tp['chinups'])) { echo $pn_pet2_data_tp['chinups']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t1['chinups'])) { echo $pn_pet1_data_t1['chinups']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t1['chinups'])) { echo $pn_pet2_data_t1['chinups']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t2['chinups'])) { echo $pn_pet1_data_t2['chinups']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t2['chinups'])) { echo $pn_pet2_data_t2['chinups']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t3['chinups'])) { echo $pn_pet1_data_t3['chinups']; }?></td>
+          <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_pet2_data_t3['chinups'])) { echo $pn_pet2_data_t3['chinups']; }?></td>
           </tr>
         <?php } ?>
         <tr>
@@ -173,16 +173,16 @@
         </tr>
         <?php foreach ($test_records as $data) { ?>
           <tr>
-            <td scope=""><?= ++$count; ?></td>
-            <td scope="">PUSH UPS</td>
-            <td scope="" colspan="2"><?= $pn_pet1_data['pushups']; ?></td>
-            <td scope="" colspan="2"><?= $pn_pet2_data['pushups']; ?></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2" style="border-right:1px solid black;"></td>
+          <td scope="" style="height:80px"><?= ++$count; ?></td>
+          <td scope="">PUSH UPS</td>
+          <td scope="" colspan="2"><?php if (isset($pn_pet1_data_tp['pushups'])) { echo $pn_pet1_data_tp['pushups']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_pet2_data_tp['pushups'])) { echo $pn_pet2_data_tp['pushups']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t1['pushups'])) { echo $pn_pet1_data_t1['pushups']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t1['pushups'])) { echo $pn_pet2_data_t1['pushups']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t2['pushups'])) { echo $pn_pet1_data_t2['pushups']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t2['pushups'])) { echo $pn_pet2_data_t2['pushups']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t3['pushups'])) { echo $pn_pet1_data_t3['pushups']; }?></td>
+          <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_pet2_data_t3['pushups'])) { echo $pn_pet2_data_t3['pushups']; }?></td>
           </tr>
         <?php } ?>
         <tr>
@@ -275,17 +275,16 @@
         </tr>
         <?php foreach ($test_records as $data) { ?>
           <tr>
-            <td scope=""><?= ++$count; ?></td>
-            <td scope="">MINI CROSS COUNTRY ____ KM</td>
-            <td scope="" colspan="2"><?= $data['mini_cross_result']; ?></td>
-            <td scope="" colspan="2"><?= $data['mini_cross_card_number']; ?></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2" style="border-right:1px solid black;"></td>
-          </tr>
+          <td scope="" style="height:80px"><?= ++$count; ?></td>
+          <td scope="">MINI CROSS COUNTRY ____ KM</td>
+          <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_tp['mini_cross_result'])) { echo $pn_physical_tests_data_tp['mini_cross_result']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_tp['mini_cross_card_number'])) { echo $pn_physical_tests_data_tp['mini_cross_card_number']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t1['mini_cross_result'])) { echo $pn_physical_tests_data_t1['mini_cross_result']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t1['mini_cross_card_number'])) { echo $pn_physical_tests_data_t1['mini_cross_card_number']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t2['mini_cross_result'])) { echo $pn_physical_tests_data_t2['mini_cross_result']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t2['mini_cross_card_number'])) { echo $pn_physical_tests_data_t2['mini_cross_card_number']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t3['mini_cross_result'])) { echo $pn_physical_tests_data_t3['mini_cross_result']; }?></td>
+          <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_physical_tests_data_t3['mini_cross_card_number'])) { echo $pn_physical_tests_data_t3['mini_cross_card_number']; }?></td>          </tr>
         <?php } ?>
         <tr>
           <td scope="" style="border-bottom:1px solid black;"></td>
@@ -309,17 +308,16 @@
         </tr>
         <?php foreach ($test_records as $data) { ?>
           <tr>
-            <td scope=""><?= ++$count; ?></td>
-            <td scope="">CROSS COUNTRY _______KM</td>
-            <td scope="" colspan="2"><?= $data['long_cross_result']; ?></td>
-            <td scope="" colspan="2"><?= $data['long_cross_card_number']; ?></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2" style="border-right:1px solid black;"></td>
-          </tr>
+          <td scope="" style="height:80px"><?= ++$count; ?></td>
+          <td scope="">CROSS COUNTRY _______KM</td>
+          <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_tp['long_cross_result'])) { echo $pn_physical_tests_data_tp['long_cross_result']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_tp['long_cross_card_number'])) { echo$pn_physical_tests_data_tp['long_cross_card_number']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t1['long_cross_result'])) { echo $pn_physical_tests_data_t1['long_cross_result']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t1['long_cross_card_number'])) { echo $pn_physical_tests_data_t1['long_cross_card_number']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t2['long_cross_result'])) { echo $pn_physical_tests_data_t2['long_cross_result']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t2['long_cross_card_number'])) { echo $pn_physical_tests_data_t2['long_cross_card_number']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t3['long_cross_result'])) { echo $pn_physical_tests_data_t3['long_cross_result']; }?></td>
+          <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_physical_tests_data_t3['long_cross_card_number'])) { echo $pn_physical_tests_data_t3['long_cross_card_number']; }?></td>          </tr>
         <?php } ?>
         <tr>
           <td scope="" style="border-bottom:1px solid black;"></td>
@@ -343,17 +341,16 @@
         </tr>
         <?php foreach ($test_records as $data) { ?>
           <tr>
-            <td scope=""><?= ++$count; ?></td>
-            <td scope="">ASSAULT COURSES TIME</td>
-            <td scope="" colspan="2"><?= $data['assault_result']; ?></td>
-            <td scope="" colspan="2"><?= $data['assault_attempt']; ?></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2"></td>
-            <td scope="" colspan="2" style="border-right:1px solid black;"></td>
-          </tr>
+          <td scope="" style="height:80px"><?= ++$count; ?></td>
+          <td scope="">ASSAULT COURSES TIME</td>
+          <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_tp['assault_result'])) { echo $pn_physical_tests_data_tp['assault_result']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_tp['assault_attempt'])) { echo $pn_physical_tests_data_tp['assault_attempt']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t1['assault_result'])) { echo $pn_physical_tests_data_t1['assault_result']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t1['assault_attempt'])) { echo $pn_physical_tests_data_t1['assault_attempt']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t2['assault_result'])) { echo $pn_physical_tests_data_t2['assault_result']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t2['assault_attempt'])) { echo $pn_physical_tests_data_t2['assault_attempt']; }?></td>
+          <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t3['assault_result'])) { echo $pn_physical_tests_data_t3['assault_result']; }?></td>
+          <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_physical_tests_data_t3['assault_attempt'])) { echo $pn_physical_tests_data_t3['assault_attempt']; }?></td>          </tr>
         <?php } ?>
         <tr>
           <td scope="" style="border-bottom:1px solid black;"></td>

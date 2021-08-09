@@ -1441,6 +1441,31 @@ class D_O extends CI_Controller
             $this->db->where('pr.term','Term-III');
             $data['pn_pet2_data_t3'] = $this->db->get()->row_array();
 
+            //OLQ
+            $this->db->select('pr.*, f.*');
+            $this->db->from('officer_qualities pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('pr.term','Term-I');
+            $data['pn_officer_qualities_data_t1'] = $this->db->get()->row_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('officer_qualities pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('pr.term','Term-II');
+            $data['pn_officer_qualities_data_t2'] = $this->db->get()->row_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('officer_qualities pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('pr.term','Term-III');
+            $data['pn_officer_qualities_data_t3'] = $this->db->get()->row_array();
+
             $data['oc_no_entered'] = $oc_no;
             
             if ($data['pn_data']!= null) {
@@ -1735,6 +1760,7 @@ class D_O extends CI_Controller
                 //'oc_no' => $oc_no,
                 'p_id' => $p_id,
                 'do_id' => $this->session->userdata('user_id'),
+                'term' => $term,
                 'truthfulness_mid' => $postData['mid_marks'][0],
                 'truthfulness_terminal' => $postData['final_marks'][0],
                 'integrity_mid' => $postData['mid_marks'][1],
@@ -2024,23 +2050,110 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('f.do_id', $this->session->userdata('user_id'));
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('pr.term','Term-I');
             $data['test_records'] = $this->db->get()->result_array();
+
+            //Term-P
+            $this->db->select('pr.*, f.*');
+            $this->db->from('physical_milestone pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('pr.term','Term-P');
+            $data['pn_physical_tests_data_tp'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.oc_no',$oc_no);
-            $data['pn_pet1_data'] = $this->db->get()->row_array();
+            $this->db->where('pr.term','Term-P');
+            $data['pn_pet1_data_tp'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.oc_no',$oc_no);
-            $data['pn_pet2_data'] = $this->db->get()->row_array();
+            $this->db->where('pr.term','Term-P');
+            $data['pn_pet2_data_tp'] = $this->db->get()->row_array();
+
+            //Term-I
+            $this->db->select('pr.*, f.*');
+            $this->db->from('physical_milestone pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('pr.term','Term-I');
+            $data['pn_physical_tests_data_t1'] = $this->db->get()->row_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('term_i_details pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('pr.term','Term-I');
+            $data['pn_pet1_data_t1'] = $this->db->get()->row_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('term_ii_details pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('pr.term','Term-I');
+            $data['pn_pet2_data_t1'] = $this->db->get()->row_array();
+            
+            //term-II
+            $this->db->select('pr.*, f.*');
+            $this->db->from('physical_milestone pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('pr.term','Term-II');
+            $data['pn_physical_tests_data_t2'] = $this->db->get()->row_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('term_i_details pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('pr.term','Term-II');
+            $data['pn_pet1_data_t2'] = $this->db->get()->row_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('term_ii_details pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('pr.term','Term-II');
+            $data['pn_pet2_data_t2'] = $this->db->get()->row_array();
+
+            //Term-III
+            $this->db->select('pr.*, f.*');
+            $this->db->from('physical_milestone pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('pr.term','Term-III');
+            $data['pn_physical_tests_data_t3'] = $this->db->get()->row_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('term_i_details pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('pr.term','Term-III');
+            $data['pn_pet1_data_t3'] = $this->db->get()->row_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('term_ii_details pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('pr.term','Term-III');
+            $data['pn_pet2_data_t3'] = $this->db->get()->row_array();
             
             $html = $this->load->view('do/physical_efficiency_report', $data, TRUE); //$graph, TRUE);
 
@@ -2050,6 +2163,43 @@ class D_O extends CI_Controller
 
             $output = $dompdf->output();
             $doc_name = 'Physical Efficiency Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
+    public function officer_qualities_records_report($oc_no = NULL, $term = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('officer_qualities pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('pr.term',$term);
+            $data['pn_officer_qualities_data'] = $this->db->get()->row_array();
+            $data['term'] = $term;
+            
+            $html = $this->load->view('do/officer_qualities_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            // $dompdf->set_paper('A4', 'landscape');
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Officer Like Qualities Report.pdf';
             file_put_contents($doc_name, $output);
             redirect($doc_name);
             //exit;
