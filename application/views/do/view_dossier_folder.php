@@ -27,10 +27,10 @@
     }
 
     .box {
-        border:1px solid black;
-        height:200px;
+        border: 1px solid black;
+        height: 200px;
         width: 20px;
-        text-align:center;
+        text-align: center;
     }
 </style>
 
@@ -2702,17 +2702,17 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-2 box">
-                                <h5 style="margin-top:90px; text-decoration:underline"><strong>&nbsp;TERM-III</strong></h5>
+                                <h6 style="margin-top:90px; text-decoration:underline"><strong>&nbsp;TERM-III</strong></h6>
                             </div>
                             <div class="col-sm-2">
                             </div>
                             <div class="col-sm-2 box">
-                                <h5 style="margin-top:90px; text-decoration:underline"><strong>&nbsp;TERM-II</strong></h5>
+                                <h6 style="margin-top:90px; text-decoration:underline"><strong>&nbsp;TERM-II</strong></h6>
                             </div>
                             <div class="col-sm-2">
                             </div>
                             <div class="col-sm-2 box">
-                                <h5 style="margin-top:90px; text-decoration:underline"><strong>&nbsp;TERM-I</strong></h5>
+                                <h6 style="margin-top:90px; text-decoration:underline"><strong>&nbsp;TERM-I</strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
@@ -2728,28 +2728,16 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-1">
-                                <h5><strong>1.&nbsp;&nbsp;&nbsp;P NO:</strong></h5>
+                                <h6><strong>1.&nbsp;&nbsp;&nbsp;P NO:</strong></h6>
                             </div>
-                            <div class="col-sm-3" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['p_no']?></strong></h5>
-                            </div>
-                            <div class="col-sm-1">
-                                <h5><strong>2.&nbsp;&nbsp;&nbsp;CLASS:</strong></h5>
-                            </div>
-                            <div class="col-sm-5" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['class']?></strong></h5>
+                            <div class="col-sm-3" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['p_no'] ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
+                                <h6><strong>2.&nbsp;&nbsp;CLASS:</strong></h6>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-1">
-                            </div>
-                            <div class="col-sm-2">
-                                <h5><strong>3.&nbsp;&nbsp;&nbsp;NAME IN FULL:</strong></h5>
-                            </div>
-                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['name']?></strong></h5>
+                            <div class="col-sm-5" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['class'] ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
@@ -2758,10 +2746,22 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-2">
-                                <h5><strong>4.&nbsp;&nbsp;&nbsp;RELIGION:</strong></h5>
+                                <h6><strong>3.&nbsp;&nbsp;&nbsp;NAME IN FULL:</strong></h6>
                             </div>
-                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['religion']?></strong></h5>
+                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['name'] ?></strong></h6>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-2">
+                                <h6><strong>4.&nbsp;&nbsp;&nbsp;RELIGION:</strong></h6>
+                            </div>
+                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['religion'] ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
@@ -2770,34 +2770,10 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-3">
-                                <h5><strong>5.&nbsp;&nbsp;&nbsp;EMERGENCY CONTACT:</strong></h5>
+                                <h6><strong>5.&nbsp;&nbsp;&nbsp;EMERGENCY CONTACT:</strong></h6>
                             </div>
-                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['emergency_contact']?></strong></h5>
-                            </div>
-                            <div class="col-sm-1">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-1">
-                            </div>
-                            <div class="col-sm-2">
-                                <h5><strong>6.&nbsp;&nbsp;&nbsp;TELEPHONE NO:</strong></h5>
-                            </div>
-                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['telephone_no']?></strong></h5>
-                            </div>
-                            <div class="col-sm-1">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-1">
-                            </div>
-                            <div class="col-sm-3">
-                                <h5><strong>7.&nbsp;&nbsp;&nbsp;EX-ARMY NAVY OR PAF:</strong></h5>
-                            </div>
-                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['ex_army']?></strong></h5>
+                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['emergency_contact'] ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
@@ -2806,16 +2782,22 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-2">
-                                <h5><strong>&nbsp;&nbsp;&nbsp;&nbsp;SERVERED FROM:</strong></h5>
+                                <h6><strong>6.&nbsp;&nbsp;&nbsp;TELEPHONE NO:</strong></h6>
                             </div>
-                            <div class="col-sm-4" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['ex_army_from']?></strong></h5>
+                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['telephone_no'] ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
-                                <h5><strong>&nbsp;&nbsp;&nbsp;&nbsp;TO:</strong></h5>
                             </div>
-                            <div class="col-sm-3" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['ex_army_to']?></strong></h5>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-3">
+                                <h6><strong>7.&nbsp;&nbsp;&nbsp;EX-ARMY NAVY OR PAF:</strong></h6>
+                            </div>
+                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['ex_army'] ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
@@ -2824,10 +2806,28 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-2">
-                                <h5><strong>8.&nbsp;&nbsp;&nbsp;FATHER'S NAME:</strong></h5>
+                                <h6><strong>&nbsp;&nbsp;&nbsp;&nbsp;SERVERED FROM:</strong></h6>
                             </div>
-                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            <div class="col-sm-4" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['ex_army_from'] ?></strong></h6>
+                            </div>
+                            <div class="col-sm-1">
+                                <h6><strong>&nbsp;&nbsp;&nbsp;&nbsp;TO:</strong></h6>
+                            </div>
+                            <div class="col-sm-3" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['ex_army_to'] ?></strong></h6>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-2">
+                                <h6><strong>8.&nbsp;&nbsp;&nbsp;FATHER'S NAME:</strong></h6>
+                            </div>
+                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['father_name'] ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
@@ -2836,10 +2836,10 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-3">
-                                <h5><strong>9.&nbsp;&nbsp;&nbsp;FATHER'S OCCUPATION:</strong></h5>
+                                <h6><strong>9.&nbsp;&nbsp;&nbsp;FATHER'S OCCUPATION:</strong></h6>
                             </div>
-                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['father_occupation']?></strong></h5>
+                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['father_occupation'] ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
@@ -2848,31 +2848,23 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-3">
-                                <h5><strong>10.&nbsp;&nbsp;&nbsp;NEXT OF KIN AND ADDRESS:</strong></h5>
+                                <h6><strong>10.&nbsp;&nbsp;&nbsp;NEXT OF KIN AND ADDRESS:</strong></h6>
                             </div>
-                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['next_of_kin']?></strong></h5>
+                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['next_of_kin'] ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
                         </div>
-                        <!-- <div class="form-group row">
-                            <div class="col-sm-1">
-                            </div>
-                            <div class="col-sm-10" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong></strong></h5>
-                            </div>
-                            <div class="col-sm-1">
-                            </div>
-                        </div> -->
+                        
                         <div class="form-group row">
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-4">
-                                <h5><strong>11.&nbsp;&nbsp;&nbsp;NAMES OF BROTHERS AND SISTERS:</strong></h5>
+                                <h6><strong>11.&nbsp;&nbsp;&nbsp;NAMES OF BROTHERS AND SISTERS:</strong></h6>
                             </div>
-                            <div class="col-sm-6" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['next_of_kin']?></strong></h5>
+                            <div class="col-sm-6" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['siblings'] ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
@@ -2881,7 +2873,7 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-10">
-                                <h5><strong>12.&nbsp;&nbsp;&nbsp;NEAR RELATIVES IN DEFENCE SERVICES (TO INCLUDE ONLY 	PARENTS/BROTHERS/SISTERS/REAL UNCLES):</strong></h5>
+                                <h6><strong>12.&nbsp;&nbsp;&nbsp;NEAR RELATIVES IN DEFENCE SERVICES (TO INCLUDE ONLY PARENTS/BROTHERS/SISTERS/REAL UNCLES):</strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
@@ -2890,16 +2882,25 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-2">
-                                <h5 style="text-decoration:underline"><strong>RANK:</strong></h5>
+                                <h6 style="text-decoration:underline"><strong>RANK:</strong></h6>
                             </div>
                             <div class="col-sm-4">
-                                <h5 style="text-decoration:underline"><strong>NAME</strong></h5>
+                                <h6 style="text-decoration:underline"><strong>NAME</strong></h6>
                             </div>
                             <div class="col-sm-2">
-                                <h5 style="text-decoration:underline"><strong>RELATIONSHIP</strong></h5>
+                                <h6 style="text-decoration:underline"><strong>RELATIONSHIP</strong></h6>
                             </div>
                             <div class="col-sm-2">
-                                <h5 style="text-decoration:underline"><strong>UNIT</strong></h5>
+                                <h6 style="text-decoration:underline"><strong>UNIT</strong></h6>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-10" style="border-bottom: 2px solid black; text-align:center;height: 20px;margin-left:10px">
+                                <h6><strong>&nbsp;&nbsp;&nbsp;&nbsp;<?= $pn_personal_data['near_relatives']; ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
@@ -2908,10 +2909,10 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-3">
-                                <h5><strong>13.&nbsp;&nbsp;&nbsp;IDENTIFICATION MARK:</strong></h5>
+                                <h6><strong>13.&nbsp;&nbsp;&nbsp;IDENTIFICATION MARK:</strong></h6>
                             </div>
-                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['identification_marks']; ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
@@ -2920,16 +2921,16 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-2">
-                                <h5><strong>14.&nbsp;&nbsp;&nbsp;HEIGHT:</strong></h5>
+                                <h6><strong>14.&nbsp;&nbsp;&nbsp;HEIGHT:</strong></h6>
                             </div>
-                            <div class="col-sm-3" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['p_no']?></strong></h5>
+                            <div class="col-sm-3" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['height'] ?></strong></h6>
                             </div>
                             <div class="col-sm-2">
-                                <h5><strong>15.&nbsp;&nbsp;&nbsp;WEIGHT:</strong></h5>
+                                <h6><strong>15.&nbsp;&nbsp;&nbsp;WEIGHT:</strong></h6>
                             </div>
-                            <div class="col-sm-3" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['class']?></strong></h5>
+                            <div class="col-sm-3" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['weight'] ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
@@ -2946,10 +2947,10 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-3">
-                                <h5><strong>16.&nbsp;&nbsp;&nbsp;DATE OF JOINING NAVY:</strong></h5>
+                                <h6><strong>16.&nbsp;&nbsp;&nbsp;DATE OF JOINING NAVY:</strong></h6>
                             </div>
-                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['navy_joining_date'] ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
@@ -2958,10 +2959,10 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-2">
-                                <h5><strong>17.&nbsp;&nbsp;&nbsp;MODE OF ENTRY:</strong></h5>
+                                <h6><strong>17.&nbsp;&nbsp;&nbsp;MODE OF ENTRY:</strong></h6>
                             </div>
-                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['entry_mode'] ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
@@ -2970,10 +2971,10 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-3">
-                                <h5><strong>18.&nbsp;&nbsp;&nbsp;SERVICE IDENTITY CARD NO:</strong></h5>
+                                <h6><strong>18.&nbsp;&nbsp;&nbsp;SERVICE IDENTITY CARD NO:</strong></h6>
                             </div>
-                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['service_id'] ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
@@ -2982,22 +2983,10 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-3">
-                                <h5><strong>19.&nbsp;&nbsp;&nbsp;NATIONAL IDENTITY CARD NO:</strong></h5>
+                                <h6><strong>19.&nbsp;&nbsp;&nbsp;NATIONAL IDENTITY CARD NO:</strong></h6>
                             </div>
-                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
-                            </div>
-                            <div class="col-sm-1">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-1">
-                            </div>
-                            <div class="col-sm-2">
-                                <h5><strong>20.&nbsp;&nbsp;&nbsp;BLOOD GROUP:</strong></h5>
-                            </div>
-                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['nic'] ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
@@ -3006,10 +2995,22 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-2">
-                                <h5><strong>21.&nbsp;&nbsp;&nbsp;ADDRESS:</strong></h5>
+                                <h6><strong>20.&nbsp;&nbsp;&nbsp;BLOOD GROUP:</strong></h6>
                             </div>
-                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['blood_group'] ?></strong></h6>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-2">
+                                <h6><strong>21.&nbsp;&nbsp;&nbsp;ADDRESS:</strong></h6>
+                            </div>
+                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['address'] ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
@@ -3018,10 +3019,10 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-4">
-                                <h5><strong>22.&nbsp;&nbsp;&nbsp;KARACHI ADDRESS IF ANY WITH TELE NO:</strong></h5>
+                                <h6><strong>22.&nbsp;&nbsp;&nbsp;KARACHI ADDRESS IF ANY WITH TELE NO:</strong></h6>
                             </div>
-                            <div class="col-sm-6" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            <div class="col-sm-6" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['karachi_address'] ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
@@ -3037,22 +3038,10 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-2">
-                                <h5><strong>23.&nbsp;&nbsp;&nbsp;MATRIC: SCHOOL</strong></h5>
+                                <h6><strong>23.&nbsp;&nbsp;&nbsp;MATRIC: SCHOOL</strong></h6>
                             </div>
-                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
-                            </div>
-                            <div class="col-sm-1">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-1">
-                            </div>
-                            <div class="col-sm-2">
-                                <h5><strong>24.&nbsp;&nbsp;&nbsp;DIVISION/GRADE:</strong></h5>
-                            </div>
-                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['matric_school'] ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
@@ -3061,10 +3050,22 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-2">
-                                <h5><strong>25.&nbsp;&nbsp;&nbsp;SUBJECTS:</strong></h5>
+                                <h6><strong>24.&nbsp;&nbsp;&nbsp;DIVISION/GRADE:</strong></h6>
                             </div>
-                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['matric_division'] ?></strong></h6>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-2">
+                                <h6><strong>25.&nbsp;&nbsp;&nbsp;SUBJECTS:</strong></h6>
+                            </div>
+                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['matric_subjects'] ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
@@ -3073,10 +3074,10 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-3">
-                                <h5><strong>26.&nbsp;&nbsp;&nbsp;INTERMEDIATE: COLLEGE:</strong></h5>
+                                <h6><strong>26.&nbsp;&nbsp;&nbsp;INTERMEDIATE: COLLEGE:</strong></h6>
                             </div>
-                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['intermediate_college'] ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
@@ -3085,10 +3086,10 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-2">
-                                <h5><strong>27.&nbsp;&nbsp;&nbsp;DIVISION/GRADE:</strong></h5>
+                                <h6><strong>27.&nbsp;&nbsp;&nbsp;DIVISION/GRADE:</strong></h6>
                             </div>
-                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['intermediate_division'] ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
@@ -3097,17 +3098,14 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-3">
-                                <h5><strong>28.&nbsp;&nbsp;&nbsp;HET/DIPLOMA (IF APPLICABLE):</strong></h5>
+                                <h6><strong>28.&nbsp;&nbsp;&nbsp;HET/DIPLOMA (IF APPLICABLE):</strong></h6>
                             </div>
-                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center">
-                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center;height: 20px;">
+                                <h6><strong><?= $pn_personal_data['diploma'] ?></strong></h6>
                             </div>
                             <div class="col-sm-1">
                             </div>
                         </div>
-                        
-
-                        
                     </div>
                 </div>
             </div>
@@ -3124,7 +3122,6 @@
         </form>
 
     </div>
-
 
 </div>
 
