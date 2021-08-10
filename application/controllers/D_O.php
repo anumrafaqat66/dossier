@@ -2207,4 +2207,12 @@ class D_O extends CI_Controller
             $this->load->view('userpanel/login');
         }
     }
+
+    public function view_result(){
+        $this->load->view('DO/Results');
+    }
+   public function view_training_report(){
+        $this->load->view('DO/Sea_Training_Report');
+    }
+
 }
