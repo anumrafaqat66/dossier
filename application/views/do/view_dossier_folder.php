@@ -25,6 +25,13 @@
     td {
         border-left: 0.5px solid black;
     }
+
+    .box {
+        border:1px solid black;
+        height:200px;
+        width: 20px;
+        text-align:center;
+    }
 </style>
 
 <div class="container-fluid my-2">
@@ -152,7 +159,7 @@
                                         <a href="#" style="color:black">
                                             <li class="list-group-item bg-custom3 custom_list">RECORD OF DIVISIONAL OFFICERS</li>
                                         </a>
-                                        <a href="#" style="color:black">
+                                        <a href="#" style="color:black" id="btn_personal_record">
                                             <li class="list-group-item bg-custom3 custom_list">PERSONAL DATA</li>
                                         </a>
                                         <a href="#" style="color:black">
@@ -1139,22 +1146,54 @@
                                             <tr>
                                                 <td scope="" style="height:80px"><?= ++$count; ?></td>
                                                 <td scope="">MILE TIME</td>
-                                                <td scope=""><?php if (isset($pn_pet1_data_tp['mile_time'])) { echo $pn_pet1_data_tp['mile_time']; }?></td>
-                                                <td scope=""><?php if (isset($pn_pet1_data_tp['mile_time'])) { echo $pn_pet1_data_tp['mile_time']; } ?></td>
-                                                <td scope=""><?php if (isset($pn_pet1_data_tp['mile_time'])) { echo $pn_pet2_data_tp['mile_time']; }?></td>
-                                                <td scope=""><?php if (isset($pn_pet1_data_tp['mile_time'])) { echo $pn_pet2_data_tp['mile_time']; }?></td>
-                                                <td scope=""><?php if (isset($pn_pet1_data_t1['mile_time'])) { echo $pn_pet1_data_t1['mile_time']; }?></td>
-                                                <td scope=""><?php if (isset($pn_pet1_data_t1['mile_time'])) { echo $pn_pet1_data_t1['mile_time']; }?></td>
-                                                <td scope=""><?php if (isset($pn_pet1_data_t1['mile_time'])) { echo $pn_pet1_data_t1['mile_time']; }?></td>
-                                                <td scope=""><?php if (isset($pn_pet1_data_t1['mile_time'])) { echo $pn_pet2_data_t1['mile_time']; }?></td>
-                                                <td scope=""><?php if (isset($pn_pet1_data_t2['mile_time'])) { echo $pn_pet1_data_t2['mile_time']; }?></td>
-                                                <td scope=""><?php if (isset($pn_pet1_data_t2['mile_time'])) { echo $pn_pet1_data_t2['mile_time']; }?></td>
-                                                <td scope=""><?php if (isset($pn_pet1_data_t2['mile_time'])) { echo $pn_pet2_data_t2['mile_time']; }?></td>
-                                                <td scope=""><?php if (isset($pn_pet1_data_t2['mile_time'])) { echo $pn_pet2_data_t2['mile_time']; }?></td>
-                                                <td scope=""><?php if (isset($pn_pet1_data_t3['mile_time'])) { echo $pn_pet1_data_t4['mile_time']; }?></td>
-                                                <td scope=""><?php if (isset($pn_pet1_data_t3['mile_time'])) { echo $pn_pet1_data_t4['mile_time']; }?></td>
-                                                <td scope=""><?php if (isset($pn_pet1_data_t3['mile_time'])) { echo $pn_pet2_data_t4['mile_time']; }?></td>
-                                                <td scope="" style="border-right:1px solid black;"><?php if (isset($pn_pet1_data_t3['mile_time'])) { echo $pn_pet2_data_t3['mile_time']; } ?></td>
+                                                <td scope=""><?php if (isset($pn_pet1_data_tp['mile_time'])) {
+                                                                    echo $pn_pet1_data_tp['mile_time'];
+                                                                } ?></td>
+                                                <td scope=""><?php if (isset($pn_pet1_data_tp['mile_time'])) {
+                                                                    echo $pn_pet1_data_tp['mile_time'];
+                                                                } ?></td>
+                                                <td scope=""><?php if (isset($pn_pet1_data_tp['mile_time'])) {
+                                                                    echo $pn_pet2_data_tp['mile_time'];
+                                                                } ?></td>
+                                                <td scope=""><?php if (isset($pn_pet1_data_tp['mile_time'])) {
+                                                                    echo $pn_pet2_data_tp['mile_time'];
+                                                                } ?></td>
+                                                <td scope=""><?php if (isset($pn_pet1_data_t1['mile_time'])) {
+                                                                    echo $pn_pet1_data_t1['mile_time'];
+                                                                } ?></td>
+                                                <td scope=""><?php if (isset($pn_pet1_data_t1['mile_time'])) {
+                                                                    echo $pn_pet1_data_t1['mile_time'];
+                                                                } ?></td>
+                                                <td scope=""><?php if (isset($pn_pet1_data_t1['mile_time'])) {
+                                                                    echo $pn_pet1_data_t1['mile_time'];
+                                                                } ?></td>
+                                                <td scope=""><?php if (isset($pn_pet1_data_t1['mile_time'])) {
+                                                                    echo $pn_pet2_data_t1['mile_time'];
+                                                                } ?></td>
+                                                <td scope=""><?php if (isset($pn_pet1_data_t2['mile_time'])) {
+                                                                    echo $pn_pet1_data_t2['mile_time'];
+                                                                } ?></td>
+                                                <td scope=""><?php if (isset($pn_pet1_data_t2['mile_time'])) {
+                                                                    echo $pn_pet1_data_t2['mile_time'];
+                                                                } ?></td>
+                                                <td scope=""><?php if (isset($pn_pet1_data_t2['mile_time'])) {
+                                                                    echo $pn_pet2_data_t2['mile_time'];
+                                                                } ?></td>
+                                                <td scope=""><?php if (isset($pn_pet1_data_t2['mile_time'])) {
+                                                                    echo $pn_pet2_data_t2['mile_time'];
+                                                                } ?></td>
+                                                <td scope=""><?php if (isset($pn_pet1_data_t3['mile_time'])) {
+                                                                    echo $pn_pet1_data_t4['mile_time'];
+                                                                } ?></td>
+                                                <td scope=""><?php if (isset($pn_pet1_data_t3['mile_time'])) {
+                                                                    echo $pn_pet1_data_t4['mile_time'];
+                                                                } ?></td>
+                                                <td scope=""><?php if (isset($pn_pet1_data_t3['mile_time'])) {
+                                                                    echo $pn_pet2_data_t4['mile_time'];
+                                                                } ?></td>
+                                                <td scope="" style="border-right:1px solid black;"><?php if (isset($pn_pet1_data_t3['mile_time'])) {
+                                                                                                        echo $pn_pet2_data_t3['mile_time'];
+                                                                                                    } ?></td>
                                             </tr>
                                         <?php } ?>
                                         <tr>
@@ -1194,14 +1233,30 @@
                                             <tr>
                                                 <td scope="" style="height:80px"><?= ++$count; ?></td>
                                                 <td scope="">ROPE CLASS</td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_tp['rope'])) { echo $pn_pet1_data_tp['rope']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_tp['rope'])) { echo $pn_pet2_data_tp['rope']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t1['rope'])) { echo $pn_pet1_data_t1['rope']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t1['rope'])) { echo $pn_pet2_data_t1['rope']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t2['rope'])) { echo $pn_pet1_data_t2['rope']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t2['rope'])) { echo $pn_pet2_data_t2['rope']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t3['rope'])) { echo $pn_pet1_data_t3['rope']; }?></td>
-                                                <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_pet2_data_t3['rope'])) { echo $pn_pet2_data_t3['rope']; }?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_tp['rope'])) {
+                                                                                echo $pn_pet1_data_tp['rope'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_tp['rope'])) {
+                                                                                echo $pn_pet2_data_tp['rope'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t1['rope'])) {
+                                                                                echo $pn_pet1_data_t1['rope'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t1['rope'])) {
+                                                                                echo $pn_pet2_data_t1['rope'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t2['rope'])) {
+                                                                                echo $pn_pet1_data_t2['rope'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t2['rope'])) {
+                                                                                echo $pn_pet2_data_t2['rope'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t3['rope'])) {
+                                                                                echo $pn_pet1_data_t3['rope'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_pet2_data_t3['rope'])) {
+                                                                                                                    echo $pn_pet2_data_t3['rope'];
+                                                                                                                } ?></td>
                                             </tr>
                                         <?php } ?>
                                         <tr>
@@ -1228,14 +1283,30 @@
                                             <tr>
                                                 <td scope="" style="height:80px"><?= ++$count; ?></td>
                                                 <td scope="">BEAM WORK</td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_tp['chinups'])) { echo $pn_pet1_data_tp['chinups']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_tp['chinups'])) { echo $pn_pet2_data_tp['chinups']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t1['chinups'])) { echo $pn_pet1_data_t1['chinups']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t1['chinups'])) { echo $pn_pet2_data_t1['chinups']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t2['chinups'])) { echo $pn_pet1_data_t2['chinups']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t2['chinups'])) { echo $pn_pet2_data_t2['chinups']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t3['chinups'])) { echo $pn_pet1_data_t3['chinups']; }?></td>
-                                                <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_pet2_data_t3['chinups'])) { echo $pn_pet2_data_t3['chinups']; }?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_tp['chinups'])) {
+                                                                                echo $pn_pet1_data_tp['chinups'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_tp['chinups'])) {
+                                                                                echo $pn_pet2_data_tp['chinups'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t1['chinups'])) {
+                                                                                echo $pn_pet1_data_t1['chinups'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t1['chinups'])) {
+                                                                                echo $pn_pet2_data_t1['chinups'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t2['chinups'])) {
+                                                                                echo $pn_pet1_data_t2['chinups'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t2['chinups'])) {
+                                                                                echo $pn_pet2_data_t2['chinups'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t3['chinups'])) {
+                                                                                echo $pn_pet1_data_t3['chinups'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_pet2_data_t3['chinups'])) {
+                                                                                                                    echo $pn_pet2_data_t3['chinups'];
+                                                                                                                } ?></td>
                                             </tr>
                                         <?php } ?>
                                         <tr>
@@ -1262,14 +1333,30 @@
                                             <tr>
                                                 <td scope="" style="height:80px"><?= ++$count; ?></td>
                                                 <td scope="">PUSH UPS</td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_tp['pushups'])) { echo $pn_pet1_data_tp['pushups']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_tp['pushups'])) { echo $pn_pet2_data_tp['pushups']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t1['pushups'])) { echo $pn_pet1_data_t1['pushups']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t1['pushups'])) { echo $pn_pet2_data_t1['pushups']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t2['pushups'])) { echo $pn_pet1_data_t2['pushups']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t2['pushups'])) { echo $pn_pet2_data_t2['pushups']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t3['pushups'])) { echo $pn_pet1_data_t3['pushups']; }?></td>
-                                                <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_pet2_data_t3['pushups'])) { echo $pn_pet2_data_t3['pushups']; }?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_tp['pushups'])) {
+                                                                                echo $pn_pet1_data_tp['pushups'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_tp['pushups'])) {
+                                                                                echo $pn_pet2_data_tp['pushups'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t1['pushups'])) {
+                                                                                echo $pn_pet1_data_t1['pushups'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t1['pushups'])) {
+                                                                                echo $pn_pet2_data_t1['pushups'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t2['pushups'])) {
+                                                                                echo $pn_pet1_data_t2['pushups'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet2_data_t2['pushups'])) {
+                                                                                echo $pn_pet2_data_t2['pushups'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_pet1_data_t3['pushups'])) {
+                                                                                echo $pn_pet1_data_t3['pushups'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_pet2_data_t3['pushups'])) {
+                                                                                                                    echo $pn_pet2_data_t3['pushups'];
+                                                                                                                } ?></td>
                                             </tr>
                                         <?php } ?>
                                         <tr>
@@ -1364,14 +1451,30 @@
                                             <tr>
                                                 <td scope="" style="height:80px"><?= ++$count; ?></td>
                                                 <td scope="">MINI CROSS COUNTRY ____ KM</td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_tp['mini_cross_result'])) { echo $pn_physical_tests_data_tp['mini_cross_result']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_tp['mini_cross_card_number'])) { echo $pn_physical_tests_data_tp['mini_cross_card_number']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t1['mini_cross_result'])) { echo $pn_physical_tests_data_t1['mini_cross_result']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t1['mini_cross_card_number'])) { echo $pn_physical_tests_data_t1['mini_cross_card_number']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t2['mini_cross_result'])) { echo $pn_physical_tests_data_t2['mini_cross_result']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t2['mini_cross_card_number'])) { echo $pn_physical_tests_data_t2['mini_cross_card_number']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t3['mini_cross_result'])) { echo $pn_physical_tests_data_t3['mini_cross_result']; }?></td>
-                                                <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_physical_tests_data_t3['mini_cross_card_number'])) { echo $pn_physical_tests_data_t3['mini_cross_card_number']; }?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_tp['mini_cross_result'])) {
+                                                                                echo $pn_physical_tests_data_tp['mini_cross_result'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_tp['mini_cross_card_number'])) {
+                                                                                echo $pn_physical_tests_data_tp['mini_cross_card_number'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t1['mini_cross_result'])) {
+                                                                                echo $pn_physical_tests_data_t1['mini_cross_result'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t1['mini_cross_card_number'])) {
+                                                                                echo $pn_physical_tests_data_t1['mini_cross_card_number'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t2['mini_cross_result'])) {
+                                                                                echo $pn_physical_tests_data_t2['mini_cross_result'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t2['mini_cross_card_number'])) {
+                                                                                echo $pn_physical_tests_data_t2['mini_cross_card_number'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t3['mini_cross_result'])) {
+                                                                                echo $pn_physical_tests_data_t3['mini_cross_result'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_physical_tests_data_t3['mini_cross_card_number'])) {
+                                                                                                                    echo $pn_physical_tests_data_t3['mini_cross_card_number'];
+                                                                                                                } ?></td>
                                             </tr>
                                         <?php } ?>
                                         <tr>
@@ -1398,14 +1501,30 @@
                                             <tr>
                                                 <td scope="" style="height:80px"><?= ++$count; ?></td>
                                                 <td scope="">CROSS COUNTRY _______KM</td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_tp['long_cross_result'])) { echo $pn_physical_tests_data_tp['long_cross_result']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_tp['long_cross_card_number'])) { echo$pn_physical_tests_data_tp['long_cross_card_number']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t1['long_cross_result'])) { echo $pn_physical_tests_data_t1['long_cross_result']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t1['long_cross_card_number'])) { echo $pn_physical_tests_data_t1['long_cross_card_number']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t2['long_cross_result'])) { echo $pn_physical_tests_data_t2['long_cross_result']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t2['long_cross_card_number'])) { echo $pn_physical_tests_data_t2['long_cross_card_number']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t3['long_cross_result'])) { echo $pn_physical_tests_data_t3['long_cross_result']; }?></td>
-                                                <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_physical_tests_data_t3['long_cross_card_number'])) { echo $pn_physical_tests_data_t3['long_cross_card_number']; }?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_tp['long_cross_result'])) {
+                                                                                echo $pn_physical_tests_data_tp['long_cross_result'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_tp['long_cross_card_number'])) {
+                                                                                echo $pn_physical_tests_data_tp['long_cross_card_number'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t1['long_cross_result'])) {
+                                                                                echo $pn_physical_tests_data_t1['long_cross_result'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t1['long_cross_card_number'])) {
+                                                                                echo $pn_physical_tests_data_t1['long_cross_card_number'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t2['long_cross_result'])) {
+                                                                                echo $pn_physical_tests_data_t2['long_cross_result'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t2['long_cross_card_number'])) {
+                                                                                echo $pn_physical_tests_data_t2['long_cross_card_number'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t3['long_cross_result'])) {
+                                                                                echo $pn_physical_tests_data_t3['long_cross_result'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_physical_tests_data_t3['long_cross_card_number'])) {
+                                                                                                                    echo $pn_physical_tests_data_t3['long_cross_card_number'];
+                                                                                                                } ?></td>
                                             </tr>
                                         <?php } ?>
                                         <tr>
@@ -1432,14 +1551,30 @@
                                             <tr>
                                                 <td scope="" style="height:80px"><?= ++$count; ?></td>
                                                 <td scope="">ASSAULT COURSES TIME</td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_tp['assault_result'])) { echo $pn_physical_tests_data_tp['assault_result']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_tp['assault_attempt'])) { echo $pn_physical_tests_data_tp['assault_attempt']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t1['assault_result'])) { echo $pn_physical_tests_data_t1['assault_result']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t1['assault_attempt'])) { echo $pn_physical_tests_data_t1['assault_attempt']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t2['assault_result'])) { echo $pn_physical_tests_data_t2['assault_result']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t2['assault_attempt'])) { echo $pn_physical_tests_data_t2['assault_attempt']; }?></td>
-                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t3['assault_result'])) { echo $pn_physical_tests_data_t3['assault_result']; }?></td>
-                                                <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_physical_tests_data_t3['assault_attempt'])) { echo $pn_physical_tests_data_t3['assault_attempt']; }?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_tp['assault_result'])) {
+                                                                                echo $pn_physical_tests_data_tp['assault_result'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_tp['assault_attempt'])) {
+                                                                                echo $pn_physical_tests_data_tp['assault_attempt'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t1['assault_result'])) {
+                                                                                echo $pn_physical_tests_data_t1['assault_result'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t1['assault_attempt'])) {
+                                                                                echo $pn_physical_tests_data_t1['assault_attempt'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t2['assault_result'])) {
+                                                                                echo $pn_physical_tests_data_t2['assault_result'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t2['assault_attempt'])) {
+                                                                                echo $pn_physical_tests_data_t2['assault_attempt'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2"><?php if (isset($pn_physical_tests_data_t3['assault_result'])) {
+                                                                                echo $pn_physical_tests_data_t3['assault_result'];
+                                                                            } ?></td>
+                                                <td scope="" colspan="2" style="border-right:1px solid black;"><?php if (isset($pn_physical_tests_data_t3['assault_attempt'])) {
+                                                                                                                    echo $pn_physical_tests_data_t3['assault_attempt'];
+                                                                                                                } ?></td>
                                             </tr>
                                         <?php } ?>
                                         <tr>
@@ -1503,7 +1638,7 @@
                         </div>
 
                         <div id="table_div" style=" padding:20px !important">
-                            <?php if (count($pn_physical_tests_data) > 0) { ?>
+                            <?php if (isset($pn_officer_qualities_data_t1['term'])) { ?>
                                 <table style="color:black; width:100% !important;">
                                     <thead style="font-weight:bold;padding:5px; text-align:center">
                                         <tr>
@@ -1515,16 +1650,14 @@
                                         </tr>
                                     </thead>
                                     <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
-                                        <?php $count = 0;
-                                        foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
-                                                <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Truthfulness</td>
-                                                <td scope="" style="text-align:center">20</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['truthfulness_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?=  $pn_officer_qualities_data_t1['truthfulness_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                        <?php $count = 0; ?>
+                                        <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                            <td scope="">Truthfulness</td>
+                                            <td scope="" style="text-align:center">20</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['truthfulness_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['truthfulness_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -1532,15 +1665,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Integrity</td>
-                                                <td scope="" style="text-align:center">25</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['integrity_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['integrity_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Integrity</td>
+                                            <td scope="" style="text-align:center">25</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['integrity_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['integrity_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -1548,15 +1679,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Sense of Pride</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['pride_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['pride_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Sense of Pride</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['pride_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['pride_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -1564,15 +1693,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Moral Courage</td>
-                                                <td scope="" style="text-align:center">15</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['courage_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['courage_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Moral Courage</td>
+                                            <td scope="" style="text-align:center">15</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['courage_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['courage_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -1580,15 +1707,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Confidence and Behaviour Under Stress</td>
-                                                <td scope="" style="text-align:center">15</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['confidence_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['confidence_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Confidence and Behaviour Under Stress</td>
+                                            <td scope="" style="text-align:center">15</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['confidence_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['confidence_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -1596,15 +1721,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Initiative</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['initiative_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['inititative_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Initiative</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['initiative_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['inititative_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -1612,15 +1735,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Ability to Command, Control and Assert</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['command_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['command_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Ability to Command, Control and Assert</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['command_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['command_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -1628,15 +1749,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Self and General Discipline</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['discipline_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['discipline_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Self and General Discipline</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['discipline_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['discipline_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -1644,15 +1763,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Sense of Duty</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['duty_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['duty_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Sense of Duty</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['duty_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['duty_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -1660,15 +1777,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Reliability</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['reliability_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['reliability_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Reliability</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['reliability_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['reliability_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -1676,15 +1791,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">General Appearance & Bearing</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['appearance_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['appearance_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">General Appearance & Bearing</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['appearance_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['appearance_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -1692,15 +1805,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Physical Fittness</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['fitness_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['fitness_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Physical Fittness</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['fitness_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['fitness_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -1708,15 +1819,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Manners and Social Conduct</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['conduct_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['conduct_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Manners and Social Conduct</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['conduct_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['conduct_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -1724,15 +1833,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Intelligence and Common Sense</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['cs_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['cs_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Intelligence and Common Sense</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['cs_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['cs_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -1740,15 +1847,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Cooperation Adaptability and Team Work</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['teamwork_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['teamwork_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Cooperation Adaptability and Team Work</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['teamwork_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['teamwork_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -1756,15 +1861,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Power of Expression (Oral & Written)</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['expression_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['expression_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Power of Expression (Oral & Written)</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['expression_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['expression_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -1891,7 +1994,7 @@
                         </div>
 
                         <div id="table_div" style=" padding:20px !important">
-                            <?php if (count($pn_physical_tests_data) > 0) { ?>
+                            <?php if (isset($pn_officer_qualities_data_t2['term'])) { ?>
                                 <table style="color:black; width:100% !important;">
                                     <thead style="font-weight:bold;padding:5px; text-align:center">
                                         <tr>
@@ -1903,16 +2006,14 @@
                                         </tr>
                                     </thead>
                                     <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
-                                        <?php $count = 0;
-                                        foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
-                                                <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Truthfulness</td>
-                                                <td scope="" style="text-align:center">20</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['truthfulness_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?=  $pn_officer_qualities_data_t2['truthfulness_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                        <?php $count = 0; ?>
+                                        <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                            <td scope="">Truthfulness</td>
+                                            <td scope="" style="text-align:center">20</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['truthfulness_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t2['truthfulness_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -1920,15 +2021,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Integrity</td>
-                                                <td scope="" style="text-align:center">25</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['integrity_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t2['integrity_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Integrity</td>
+                                            <td scope="" style="text-align:center">25</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['integrity_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t2['integrity_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -1936,15 +2035,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Sense of Pride</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['pride_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t2['pride_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Sense of Pride</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['pride_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t2['pride_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -1952,15 +2049,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Moral Courage</td>
-                                                <td scope="" style="text-align:center">15</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['courage_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['courage_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Moral Courage</td>
+                                            <td scope="" style="text-align:center">15</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['courage_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t2['courage_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -1968,15 +2063,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Confidence and Behaviour Under Stress</td>
-                                                <td scope="" style="text-align:center">15</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['confidence_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['confidence_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Confidence and Behaviour Under Stress</td>
+                                            <td scope="" style="text-align:center">15</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['confidence_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t2['confidence_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -1984,15 +2077,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Initiative</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['initiative_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['inititative_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Initiative</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['initiative_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t2['inititative_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2000,15 +2091,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Ability to Command, Control and Assert</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['command_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['command_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Ability to Command, Control and Assert</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['command_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t2['command_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2016,15 +2105,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Self and General Discipline</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['discipline_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['discipline_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Self and General Discipline</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['discipline_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t2['discipline_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2032,15 +2119,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Sense of Duty</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['duty_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['duty_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Sense of Duty</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['duty_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t2['duty_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2048,15 +2133,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Reliability</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['reliability_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['reliability_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Reliability</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['reliability_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t2['reliability_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2064,15 +2147,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">General Appearance & Bearing</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['appearance_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['appearance_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">General Appearance & Bearing</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['appearance_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t2['appearance_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2080,15 +2161,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Physical Fittness</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['fitness_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['fitness_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Physical Fittness</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['fitness_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t2['fitness_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2096,15 +2175,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Manners and Social Conduct</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['conduct_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['conduct_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Manners and Social Conduct</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['conduct_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t2['conduct_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2112,15 +2189,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Intelligence and Common Sense</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['cs_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['cs_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Intelligence and Common Sense</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['cs_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t2['cs_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2128,15 +2203,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Cooperation Adaptability and Team Work</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['teamwork_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['teamwork_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Cooperation Adaptability and Team Work</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['teamwork_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t2['teamwork_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2144,15 +2217,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Power of Expression (Oral & Written)</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['expression_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['expression_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Power of Expression (Oral & Written)</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['expression_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t2['expression_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2164,8 +2235,8 @@
                                             <td scope="" style="height:80px"></td>
                                             <td scope=""> <strong>Grand Total: </strong> </td>
                                             <td scope="" style="text-align:center">200</td>
-                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['total_mid']; ?></td>
-                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['total_terminal']; ?></td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['total_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t2['total_terminal']; ?></td>
                                         </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2178,8 +2249,8 @@
                                             <td scope="" style="height:80px; border-left:none"></td>
                                             <td scope="" style="height:80px; border-left:none"></td>
                                             <td scope="" colspan="" style="border-right:1px solid black;"> MARKS FOR TERM </td>
-                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['mid_marks']; ?></td>
-                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['terminal_marks']; ?></td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['mid_marks']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t2['terminal_marks']; ?></td>
                                         </tr>
                                         <tr>
                                             <td scope="" style="border-left:none"></td>
@@ -2192,8 +2263,8 @@
                                             <td scope="" style="height:80px; border-left:none"></td>
                                             <td scope="" style="height:80px; border-left:none"></td>
                                             <td scope="" colspan="" style="border-right:1px solid black;"> DATE OF ASSESSMENT</td>
-                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['mid_marks_date']; ?></td>
-                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['terminal_marks_date']; ?></td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t2['mid_marks_date']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t2['terminal_marks_date']; ?></td>
                                         </tr>
                                         <tr>
                                             <td scope="" style="border-left:none"></td>
@@ -2274,12 +2345,12 @@
                         <div class="container my-3">
                             <div style="text-align:center">
                                 <h4 style="text-decoration:underline"><strong>OFFICER LIKE QUALITIES</strong></h4>
-                                <h4 style="text-decoration:underline"><strong>TERM-I</strong></h4>
+                                <h4 style="text-decoration:underline"><strong>TERM-III</strong></h4>
                             </div>
                         </div>
 
                         <div id="table_div" style=" padding:20px !important">
-                            <?php if (count($pn_physical_tests_data) > 0) { ?>
+                            <?php if (isset($pn_officer_qualities_data_t3['term'])) { ?>
                                 <table style="color:black; width:100% !important;">
                                     <thead style="font-weight:bold;padding:5px; text-align:center">
                                         <tr>
@@ -2291,16 +2362,14 @@
                                         </tr>
                                     </thead>
                                     <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
-                                        <?php $count = 0;
-                                        foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
-                                                <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Truthfulness</td>
-                                                <td scope="" style="text-align:center">20</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['truthfulness_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?=  $pn_officer_qualities_data_t1['truthfulness_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                        <?php $count = 0; ?>
+                                        <tr>
+                                            <td scope="" style="height:80px"><?= ++$count; ?></td>
+                                            <td scope="">Truthfulness</td>
+                                            <td scope="" style="text-align:center">20</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t3['truthfulness_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t3['truthfulness_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2308,15 +2377,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Integrity</td>
-                                                <td scope="" style="text-align:center">25</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['integrity_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['integrity_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Integrity</td>
+                                            <td scope="" style="text-align:center">25</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t3['integrity_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t3['integrity_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2324,15 +2391,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Sense of Pride</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['pride_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['pride_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Sense of Pride</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t3['pride_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t3['pride_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2340,15 +2405,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Moral Courage</td>
-                                                <td scope="" style="text-align:center">15</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['courage_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['courage_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Moral Courage</td>
+                                            <td scope="" style="text-align:center">15</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t3['courage_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t3['courage_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2356,15 +2419,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Confidence and Behaviour Under Stress</td>
-                                                <td scope="" style="text-align:center">15</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['confidence_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['confidence_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Confidence and Behaviour Under Stress</td>
+                                            <td scope="" style="text-align:center">15</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t3['confidence_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t3['confidence_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2372,15 +2433,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Initiative</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['initiative_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['inititative_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Initiative</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t3['initiative_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t3['inititative_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2388,15 +2447,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Ability to Command, Control and Assert</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['command_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['command_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Ability to Command, Control and Assert</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t3['command_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t3['command_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2404,15 +2461,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Self and General Discipline</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['discipline_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['discipline_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Self and General Discipline</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t3['discipline_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t3['discipline_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2420,15 +2475,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Sense of Duty</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['duty_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['duty_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Sense of Duty</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t3['duty_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t3['duty_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2436,15 +2489,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Reliability</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['reliability_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['reliability_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Reliability</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t3['reliability_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t3['reliability_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2452,15 +2503,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">General Appearance & Bearing</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['appearance_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['appearance_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">General Appearance & Bearing</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t3['appearance_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t3['appearance_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2468,15 +2517,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Physical Fittness</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['fitness_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['fitness_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Physical Fittness</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t3['fitness_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t3['fitness_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2484,15 +2531,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Manners and Social Conduct</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['conduct_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['conduct_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Manners and Social Conduct</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t3['conduct_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t3['conduct_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2500,15 +2545,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Intelligence and Common Sense</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['cs_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['cs_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Intelligence and Common Sense</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t3['cs_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t3['cs_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2516,15 +2559,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Cooperation Adaptability and Team Work</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['teamwork_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['teamwork_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Cooperation Adaptability and Team Work</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t3['teamwork_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t3['teamwork_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2532,15 +2573,13 @@
                                             <td scope="" style="border-bottom:1px solid black;border-left:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
                                         </tr>
-                                        <?php foreach ($pn_physical_tests_data as $data) { ?>
-                                            <tr>
+                                        <tr>
                                             <td scope="" style="height:80px"><?= ++$count; ?></td>
-                                                <td scope="">Power of Expression (Oral & Written)</td>
-                                                <td scope="" style="text-align:center">10</td>
-                                                <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['expression_mid']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['expression_terminal']; ?></td>
-                                            </tr>
-                                        <?php } ?>
+                                            <td scope="">Power of Expression (Oral & Written)</td>
+                                            <td scope="" style="text-align:center">10</td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t3['expression_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t3['expression_terminal']; ?></td>
+                                        </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2552,8 +2591,8 @@
                                             <td scope="" style="height:80px"></td>
                                             <td scope=""> <strong>Grand Total: </strong> </td>
                                             <td scope="" style="text-align:center">200</td>
-                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['total_mid']; ?></td>
-                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['total_terminal']; ?></td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t3['total_mid']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t3['total_terminal']; ?></td>
                                         </tr>
                                         <tr>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -2566,8 +2605,8 @@
                                             <td scope="" style="height:80px; border-left:none"></td>
                                             <td scope="" style="height:80px; border-left:none"></td>
                                             <td scope="" colspan="" style="border-right:1px solid black;"> MARKS FOR TERM </td>
-                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['mid_marks']; ?></td>
-                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['terminal_marks']; ?></td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t3['mid_marks']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t3['terminal_marks']; ?></td>
                                         </tr>
                                         <tr>
                                             <td scope="" style="border-left:none"></td>
@@ -2580,8 +2619,8 @@
                                             <td scope="" style="height:80px; border-left:none"></td>
                                             <td scope="" style="height:80px; border-left:none"></td>
                                             <td scope="" colspan="" style="border-right:1px solid black;"> DATE OF ASSESSMENT</td>
-                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t1['mid_marks_date']; ?></td>
-                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t1['terminal_marks_date']; ?></td>
+                                            <td scope="" style="text-align:center"><?= $pn_officer_qualities_data_t3['mid_marks_date']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;text-align:center"><?= $pn_officer_qualities_data_t3['terminal_marks_date']; ?></td>
                                         </tr>
                                         <tr>
                                             <td scope="" style="border-left:none"></td>
@@ -2641,6 +2680,443 @@
             <div class="form-group row justify-content-center my-2">
                 <div class="col-sm-4">
                     <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_olq_term3">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="card-body bg-custom3" style="display:none" id="personal_data_record">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/personal_data_records_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+
+                        <div class="form-group row my-5">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-2 box">
+                                <h5 style="margin-top:90px; text-decoration:underline"><strong>&nbsp;TERM-III</strong></h5>
+                            </div>
+                            <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-2 box">
+                                <h5 style="margin-top:90px; text-decoration:underline"><strong>&nbsp;TERM-II</strong></h5>
+                            </div>
+                            <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-2 box">
+                                <h5 style="margin-top:90px; text-decoration:underline"><strong>&nbsp;TERM-I</strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>PERSONAL DATA</strong></h4>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-1">
+                                <h5><strong>1.&nbsp;&nbsp;&nbsp;P NO:</strong></h5>
+                            </div>
+                            <div class="col-sm-3" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['p_no']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                                <h5><strong>2.&nbsp;&nbsp;&nbsp;CLASS:</strong></h5>
+                            </div>
+                            <div class="col-sm-5" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['class']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-2">
+                                <h5><strong>3.&nbsp;&nbsp;&nbsp;NAME IN FULL:</strong></h5>
+                            </div>
+                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['name']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-2">
+                                <h5><strong>4.&nbsp;&nbsp;&nbsp;RELIGION:</strong></h5>
+                            </div>
+                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['religion']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-3">
+                                <h5><strong>5.&nbsp;&nbsp;&nbsp;EMERGENCY CONTACT:</strong></h5>
+                            </div>
+                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['emergency_contact']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-2">
+                                <h5><strong>6.&nbsp;&nbsp;&nbsp;TELEPHONE NO:</strong></h5>
+                            </div>
+                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['telephone_no']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-3">
+                                <h5><strong>7.&nbsp;&nbsp;&nbsp;EX-ARMY NAVY OR PAF:</strong></h5>
+                            </div>
+                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['ex_army']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-2">
+                                <h5><strong>&nbsp;&nbsp;&nbsp;&nbsp;SERVERED FROM:</strong></h5>
+                            </div>
+                            <div class="col-sm-4" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['ex_army_from']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                                <h5><strong>&nbsp;&nbsp;&nbsp;&nbsp;TO:</strong></h5>
+                            </div>
+                            <div class="col-sm-3" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['ex_army_to']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-2">
+                                <h5><strong>8.&nbsp;&nbsp;&nbsp;FATHER'S NAME:</strong></h5>
+                            </div>
+                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-3">
+                                <h5><strong>9.&nbsp;&nbsp;&nbsp;FATHER'S OCCUPATION:</strong></h5>
+                            </div>
+                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['father_occupation']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-3">
+                                <h5><strong>10.&nbsp;&nbsp;&nbsp;NEXT OF KIN AND ADDRESS:</strong></h5>
+                            </div>
+                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['next_of_kin']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <!-- <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-10" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div> -->
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-4">
+                                <h5><strong>11.&nbsp;&nbsp;&nbsp;NAMES OF BROTHERS AND SISTERS:</strong></h5>
+                            </div>
+                            <div class="col-sm-6" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['next_of_kin']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-10">
+                                <h5><strong>12.&nbsp;&nbsp;&nbsp;NEAR RELATIVES IN DEFENCE SERVICES (TO INCLUDE ONLY 	PARENTS/BROTHERS/SISTERS/REAL UNCLES):</strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-2">
+                                <h5 style="text-decoration:underline"><strong>RANK:</strong></h5>
+                            </div>
+                            <div class="col-sm-4">
+                                <h5 style="text-decoration:underline"><strong>NAME</strong></h5>
+                            </div>
+                            <div class="col-sm-2">
+                                <h5 style="text-decoration:underline"><strong>RELATIONSHIP</strong></h5>
+                            </div>
+                            <div class="col-sm-2">
+                                <h5 style="text-decoration:underline"><strong>UNIT</strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-3">
+                                <h5><strong>13.&nbsp;&nbsp;&nbsp;IDENTIFICATION MARK:</strong></h5>
+                            </div>
+                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-2">
+                                <h5><strong>14.&nbsp;&nbsp;&nbsp;HEIGHT:</strong></h5>
+                            </div>
+                            <div class="col-sm-3" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['p_no']?></strong></h5>
+                            </div>
+                            <div class="col-sm-2">
+                                <h5><strong>15.&nbsp;&nbsp;&nbsp;WEIGHT:</strong></h5>
+                            </div>
+                            <div class="col-sm-3" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['class']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+
+
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>PART-II</strong></h4>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-3">
+                                <h5><strong>16.&nbsp;&nbsp;&nbsp;DATE OF JOINING NAVY:</strong></h5>
+                            </div>
+                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-2">
+                                <h5><strong>17.&nbsp;&nbsp;&nbsp;MODE OF ENTRY:</strong></h5>
+                            </div>
+                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-3">
+                                <h5><strong>18.&nbsp;&nbsp;&nbsp;SERVICE IDENTITY CARD NO:</strong></h5>
+                            </div>
+                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-3">
+                                <h5><strong>19.&nbsp;&nbsp;&nbsp;NATIONAL IDENTITY CARD NO:</strong></h5>
+                            </div>
+                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-2">
+                                <h5><strong>20.&nbsp;&nbsp;&nbsp;BLOOD GROUP:</strong></h5>
+                            </div>
+                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-2">
+                                <h5><strong>21.&nbsp;&nbsp;&nbsp;ADDRESS:</strong></h5>
+                            </div>
+                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-4">
+                                <h5><strong>22.&nbsp;&nbsp;&nbsp;KARACHI ADDRESS IF ANY WITH TELE NO:</strong></h5>
+                            </div>
+                            <div class="col-sm-6" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>PART-III</strong></h4>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-2">
+                                <h5><strong>23.&nbsp;&nbsp;&nbsp;MATRIC: SCHOOL</strong></h5>
+                            </div>
+                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-2">
+                                <h5><strong>24.&nbsp;&nbsp;&nbsp;DIVISION/GRADE:</strong></h5>
+                            </div>
+                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-2">
+                                <h5><strong>25.&nbsp;&nbsp;&nbsp;SUBJECTS:</strong></h5>
+                            </div>
+                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-3">
+                                <h5><strong>26.&nbsp;&nbsp;&nbsp;INTERMEDIATE: COLLEGE:</strong></h5>
+                            </div>
+                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-2">
+                                <h5><strong>27.&nbsp;&nbsp;&nbsp;DIVISION/GRADE:</strong></h5>
+                            </div>
+                            <div class="col-sm-8" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-3">
+                                <h5><strong>28.&nbsp;&nbsp;&nbsp;HET/DIPLOMA (IF APPLICABLE):</strong></h5>
+                            </div>
+                            <div class="col-sm-7" style="border-bottom: 2px solid black; text-align:center">
+                                <h5><strong><?= $pn_personal_data['father_name']?></strong></h5>
+                            </div>
+                            <div class="col-sm-1">
+                            </div>
+                        </div>
+                        
+
+                        
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_personal_record">
                         Back
                     </button>
                 </div>
@@ -2911,8 +3387,15 @@
         $('#main-container').hide();
         $('#container-2').hide();
     });
+
     $('#btn_olq_term3').on('click', function() {
         $('#officer_qualities_record_term3').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
+
+    $('#btn_personal_record').on('click', function() {
+        $('#personal_data_record').show();
         $('#main-container').hide();
         $('#container-2').hide();
     });

@@ -28,6 +28,8 @@
   </div>
 </div>
 
+
+<?php if(isset($pn_officer_qualities_data['term'])) { ?>
 <div id="table_div">
     <table style="color:black; width:100% !important;">
       <thead style="font-weight:bold;padding:5px; text-align:center">
@@ -336,43 +338,46 @@
         <tr style="border-left: none;">
           <td scope="" style=" border-left:none"></td>
           <td scope="" style=" border-left:none"></td>
-          <td scope="" colspan="3" style="border-right:1px solid black;"> DIVISIONAL OFFICER'S SIGNATURE </td>
+          <td scope="" colspan="3" style="border-right:1px solid black; height:70px;"> DIVISIONAL OFFICER'S SIGNATURE </td>
         </tr>
         <tr>
           <td scope="" style="border-left:none"></td>
           <td scope="" style="border-left:none"></td>
           <td scope="" style="border-bottom:1px solid black;"></td>
-          <td scope="" style="border-bottom:1px solid black;"></td>
-          <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+          <td scope="" style="border-bottom:1px solid black;border-left:none;"></td>
+          <td scope="" style="border-bottom:1px solid black;border-left:none;border-right:1px solid black;"></td>
         </tr>
         <tr style="border-left: none;">
           <td scope="" style=" border-left:none"></td>
           <td scope="" style=" border-left:none"></td>
-          <td scope="" colspan="3" style="border-right:1px solid black;"> CAPTAIN TRAINNING'S SIGNATURE </td>
+          <td scope="" colspan="3" style="border-right:1px solid black; height:70px;"> CAPTAIN TRAINNING'S SIGNATURE </td>
         </tr>
         <tr>
           <td scope="" style="border-left:none"></td>
           <td scope="" style="border-left:none"></td>
           <td scope="" style="border-bottom:1px solid black;"></td>
-          <td scope="" style="border-bottom:1px solid black;"></td>
-          <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+          <td scope="" style="border-bottom:1px solid black;border-left:none;"></td>
+          <td scope="" style="border-bottom:1px solid black;border-left:none;border-right:1px solid black;"></td>
         </tr>
         <tr style="border-left: none;">
           <td scope="" style=" border-left:none"></td>
           <td scope="" style=" border-left:none"></td>
-          <td scope="" colspan="3" style="border-right:1px solid black;"> CO/COMMANDANT'S SIGNATURE </td>
+          <td scope="" colspan="3" style="border-right:1px solid black; height:70px;"> CO/COMMANDANT'S SIGNATURE </td>
         </tr>
         <tr>
           <td scope="" style="border-left:none"></td>
           <td scope="" style="border-left:none"></td>
           <td scope="" style="border-bottom:1px solid black;"></td>
-          <td scope="" style="border-bottom:1px solid black;"></td>
-          <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;"></td>
+          <td scope="" style="border-bottom:1px solid black;border-left:none;"></td>
+          <td scope="" style="border-bottom:1px solid black;border-left:none;border-right:1px solid black;"></td>
         </tr>
       </tbody>
     </table>
 
 </div>
+<?php } else { ?>
+  <h5 style="text-decoration:underline"><strong>No Data Found</strong></h5>
+<?php } ?>
 
 
 

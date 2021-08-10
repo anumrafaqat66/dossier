@@ -1166,7 +1166,8 @@ CREATE TABLE `personal_datas` (
   `do_id` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `joto_id` int(11) DEFAULT NULL
+  `joto_id` int(11) DEFAULT NULL,
+  `upload_file` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --

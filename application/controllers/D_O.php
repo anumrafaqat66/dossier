@@ -1466,6 +1466,13 @@ class D_O extends CI_Controller
             $this->db->where('pr.term','Term-III');
             $data['pn_officer_qualities_data_t3'] = $this->db->get()->row_array();
 
+            $this->db->select('pr.*, f.*');
+            $this->db->from('personal_datas pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $data['pn_personal_data'] = $this->db->get()->row_array();
+
             $data['oc_no_entered'] = $oc_no;
             
             if ($data['pn_data']!= null) {
@@ -1516,10 +1523,9 @@ class D_O extends CI_Controller
 
     public function upload($fieldname)
     {
-        //$data = NULL;
-        //echo $fieldname;exit;
+     
         $filesCount = count($_FILES['report']['name']);
-        //print_r($_FILES['reg_cert']['name']);exit;
+     
         for ($i = 0; $i < $filesCount; $i++) {
             $_FILES['file']['name']     = $_FILES['report']['name'][$i];
             $_FILES['file']['type']     = $_FILES['report']['type'][$i];
@@ -1530,21 +1536,16 @@ class D_O extends CI_Controller
             $config['upload_path'] = 'uploads/documents';
             $config['allowed_types']        = 'gif|jpg|png|doc|xls|pdf|xlsx|docx|ppt|pptx';
 
-
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
-            //$data['upload_data'] = '';
             if (!$this->upload->do_upload('file')) {
-                $data = array('msg' => $this->upload->display_errors());
-                //echo "here";exit;
-            } else {
-                //echo $filesCount;exit;
+                $data = array('msg' => $this->upload->display_errors());                
+            } else { 
                 $data = array('msg' => "success");
                 $data['upload_data'] = $this->upload->data();
                 $count[$i] = $data['upload_data']['file_name'];
             }
-        } //end of for
-        //print_r($count);exit();
+        }
         return $count;
     }
 
