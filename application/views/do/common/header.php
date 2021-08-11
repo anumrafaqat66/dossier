@@ -99,7 +99,6 @@
                         <a class="collapse-item" href="<?php echo base_url(); ?>D_O/add_club">Add Club</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>D_O/Inspection_record">Inspection Record</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>D_O/personal_data">Personal Data</a>
-                        <a class="collapse-item" href="#">Obiography</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>D_O/auto_biography">Cadet's Auto-biography</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>D_O/psychologist_report">Psychologist's Report</a>
                     </div>
@@ -155,7 +154,7 @@
                 <div id="collapse_assesment" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="#">General Remarks</a>
-                        <a class="collapse-item" href="#">Performance Report</a>
+                        <!-- <a class="collapse-item" href="#">Performance Report</a> -->
                         <a class="collapse-item" href="#">Progress Chart</a>
                         <a class="collapse-item" href="#">Distictions</a>
                         <a class="collapse-item" href="#">Seniority</a>

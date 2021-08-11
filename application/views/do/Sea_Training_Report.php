@@ -24,7 +24,7 @@
             <img src='<?= base_url() ?>assets/img/navy_logo-new.png' style="height: 130px; width:100px;">
         </div>
         <div class="col-lg-11">
-            <h1 style="text-align:center; padding:40px"><strong>ADD WARNING</strong></h1>
+            <h1 style="text-align:center; padding:40px"><strong>ADD SEA TRAINING REPORT</strong></h1>
         </div>
 
     </div>
