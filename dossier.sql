@@ -490,64 +490,7 @@ CREATE TABLE `general_remarks` (
 INSERT INTO `general_remarks` (`id`, `p_id`, `term`, `assessment`, `remarks`, `form_type`, `do_id`, `phase`, `phase3_type`, `created_at`, `updated_at`, `joto_id`) VALUES
 (1, 1, 'Term-I', 'Mid-term assessment', 'he is good', 'S 1-32', 3, 'Phase 1', NULL, '2020-06-03 20:18:28', '2020-06-03 20:18:28', NULL),
 (2, 1, 'Term-II', 'Terminal assessment', 'he is good', 'S 1-32', 3, 'Phase 1', NULL, '2020-06-03 20:18:43', '2020-06-03 20:18:43', NULL),
-(3, 1, 'Term-II', 'Mid-term assessment', 'he is good', 'S 1-32', 3, 'Phase 1', NULL, '2020-06-03 20:18:58', '2020-06-03 20:18:58', NULL),
-(4, 1, 'Term-II', 'Terminal assessment', 'he is good', 'S 1-32', 3, 'Phase 1', NULL, '2020-06-03 20:19:13', '2020-06-03 20:19:13', NULL),
-(5, 1, 'Term-II', 'Terminal assessment', 'he is good', 'S 1-32', 3, 'Phase 1', NULL, '2020-06-03 20:19:29', '2020-06-03 20:19:29', NULL),
-(6, 1, 'Term-III', 'Mid-term assessment', 'he is good', 'S 1-32', 3, 'Phase 1', NULL, '2020-06-03 20:19:41', '2020-06-03 20:19:41', NULL),
-(7, 1, 'Term-III', 'Terminal assessment', 'he is good', 'S 1-32', 3, 'Phase 1', NULL, '2020-06-03 20:19:57', '2020-06-03 20:19:57', NULL),
-(8, 1, 'Term-IV', 'Mid-term assessment', 'he is good', 'S 1-32', 3, 'Phase 2', NULL, '2020-06-03 20:44:30', '2020-06-03 20:44:30', NULL),
-(9, 1, 'Term-IV', 'Terminal assessment', 'he is good', 'S 1-32', 3, 'Phase 2', NULL, '2020-06-03 20:44:51', '2020-06-03 20:44:51', NULL),
-(10, 1, 'Term-IV', 'Mid-term assessment', 'very intelligent,well diciplined and hard working indiviual. possees a good military bearing and is very good in physicals. has sound knowledge of the military and performs well in the assigned tasks', 'S 1-32', 3, 'Phase 2', NULL, '2020-06-06 07:59:50', '2020-06-06 07:59:50', NULL),
-(11, 1, 'Term-IV', 'Terminal assessment', 'very intelligent,well diciplined and hard working indiviual. possees a good military bearing and is very good in physicals. has sound knowledge of the military and performs well in the assigned tasks', 'S 1-32', 3, 'Phase 2', NULL, '2020-06-06 08:00:25', '2020-06-06 08:00:25', NULL),
-(12, 1, 'Semester-III', 'Mid-term assessment', 'very intelligent,well diciplined and hard working indiviual. possees a good military bearing and is very good in physicals. has sound knowledge of the military and performs well in the assigned tasks', 'S 1-32', 3, 'Phase 3', 'pnec', '2020-06-06 09:02:17', '2020-06-06 09:02:17', NULL),
-(13, 1, 'Semester-III', 'Terminal assessment', 'very intelligent,well diciplined and hard working indiviual. possees a good military bearing and is very good in physicals. has sound knowledge of the military and performs well in the assigned tasks', 'S 1-32', 3, 'Phase 3', 'pnec', '2020-06-06 09:02:34', '2020-06-06 09:02:34', NULL),
-(14, 1, 'Semester-IV', 'Mid-term assessment', 'very intelligent,well diciplined and hard working indiviual. possees a good military bearing and is very good in physicals. has sound knowledge of the military and performs well in the assigned tasks', 'S 1-32', 3, 'Phase 3', 'pnec', '2020-06-06 09:02:51', '2020-06-06 09:02:51', NULL),
-(15, 1, 'Semester-IV', 'Terminal assessment', 'very intelligent,well diciplined and hard working indiviual. possees a good military bearing and is very good in physicals. has sound knowledge of the military and performs well in the assigned tasks', 'S 1-32', 3, 'Phase 3', 'pnec', '2020-06-06 09:03:05', '2020-06-06 09:03:05', NULL),
-(16, 1, 'Semester-V', 'Mid-term assessment', 'very intelligent,well diciplined and hard working indiviual. possees a good military bearing and is very good in physicals. has sound knowledge of the military and performs well in the assigned tasks', 'S 1-32', 3, 'Phase 3', 'pnec', '2020-06-06 09:03:20', '2020-06-06 09:03:20', NULL),
-(17, 1, 'Semester-V', 'Terminal assessment', 'very intelligent,well diciplined and hard working indiviual. possees a good military bearing and is very good in physicals. has sound knowledge of the military and performs well in the assigned tasks', 'S 1-32', 3, 'Phase 3', 'pnec', '2020-06-06 09:03:34', '2020-06-06 09:03:34', NULL),
-(18, 1, 'Semester-VI', 'Mid-term assessment', 'very intelligent,well diciplined and hard working indiviual. possees a good military bearing and is very good in physicals. has sound knowledge of the military and performs well in the assigned tasks', 'S 1-32', 3, 'Phase 3', 'pnec', '2020-06-06 09:03:47', '2020-06-06 09:03:47', NULL),
-(19, 1, 'Semester-VI', 'Mid-term assessment', 'very intelligent,well diciplined and hard working indiviual. possees a good military bearing and is very good in physicals. has sound knowledge of the military and performs well in the assigned tasks', 'S 1-32', 3, 'Phase 3', 'pnec', '2020-06-06 09:04:12', '2020-06-06 09:04:12', NULL),
-(20, 1, 'Semester-VI', 'Terminal assessment', 'very intelligent,well diciplined and hard working indiviual. possees a good military bearing and is very good in physicals. has sound knowledge of the military and performs well in the assigned tasks', 'S 1-32', 3, 'Phase 3', 'pnec', '2020-06-06 09:04:28', '2020-06-06 09:04:28', NULL),
-(21, 1, 'Semester-VII', 'Mid-term assessment', 'very intelligent,well diciplined and hard working indiviual. possees a good military bearing and is very good in physicals. has sound knowledge of the military and performs well in the assigned tasks', 'S 1-32', 3, 'Phase 3', 'pnec', '2020-06-06 09:04:45', '2020-06-06 09:04:45', NULL),
-(22, 1, 'Semester-VII', 'Terminal assessment', 'very intelligent,well diciplined and hard working indiviual. possees a good military bearing and is very good in physicals. has sound knowledge of the military and performs well in the assigned tasks', 'S 1-32', 3, 'Phase 3', 'pnec', '2020-06-06 09:05:00', '2020-06-06 09:05:00', NULL),
-(23, 1, 'Semester-VIII', 'Mid-term assessment', 'very intelligent,well diciplined and hard working indiviual. possees a good military bearing and is very good in physicals. has sound knowledge of the military and performs well in the assigned tasks', 'S 1-32', 3, 'Phase 3', 'pnec', '2020-06-06 09:05:18', '2020-06-06 09:05:18', NULL),
-(24, 1, 'Semester-VIII', 'Terminal assessment', 'very intelligent,well diciplined and hard working indiviual. possees a good military bearing and is very good in physicals. has sound knowledge of the military and performs well in the assigned tasks', 'S 1-32', 3, 'Phase 3', 'pnec', '2020-06-06 09:05:34', '2020-06-06 09:05:34', NULL),
-(25, 1, 'Semester-VIII', 'Terminal assessment', 'very intelligent,well diciplined and hard working indiviual. possees a good military bearing and is very good in physicals. has sound knowledge of the military and performs well in the assigned tasks', 'S 1-32', 3, 'Phase 3', 'pnec', '2020-06-06 09:05:51', '2020-06-06 09:05:51', NULL),
-(26, 4, 'Term-I', 'Mid-term assessment', 'Individual is an overall best cadet.Have high sense of duty and motivated towards training.', 'S 1-32', 1, 'Phase 1', NULL, '2020-06-14 00:13:40', '2020-06-14 00:13:40', NULL),
-(27, 4, 'Term-I', 'Terminal assessment', 'Individual is an overall best cadet.Have high sense of duty and motivated towards training.', 'S 1-32', 1, 'Phase 1', NULL, '2020-06-14 00:13:51', '2020-06-14 00:13:51', NULL),
-(28, 4, 'Term-II', 'Mid-term assessment', 'Individual is an overall best cadet.Have high sense of duty and motivated towards training.', 'S 1-32', 1, 'Phase 1', NULL, '2020-06-14 00:14:03', '2020-06-14 00:14:03', NULL),
-(29, 4, 'Term-II', 'Terminal assessment', 'Individual is an overall best cadet.Have high sense of duty and motivated towards training.', 'S 1-32', 1, 'Phase 1', NULL, '2020-06-14 00:14:16', '2020-06-14 00:14:16', NULL),
-(30, 4, 'Term-III', 'Mid-term assessment', 'Individual is an overall best cadet.Have high sense of duty and motivated towards training.', 'S 1-32', 1, 'Phase 1', NULL, '2020-06-14 00:14:28', '2020-06-14 00:14:28', NULL),
-(31, 4, 'Term-III', 'Terminal assessment', 'Individual is an overall best cadet.Have high sense of duty and motivated towards training.', 'S 1-32', 1, 'Phase 1', NULL, '2020-06-14 00:14:38', '2020-06-14 00:14:38', NULL),
-(32, 4, 'Term-IV', 'Mid-term assessment', 'Hardworking and motivated towards training', 'S 1-32', 1, 'Phase 2', NULL, '2020-06-14 00:30:34', '2020-06-14 00:30:34', NULL),
-(33, 4, 'Term-IV', 'Terminal assessment', 'Punctual,hardworking and motivated towards service.', 'S 1-32', 1, 'Phase 2', NULL, '2020-06-14 00:31:17', '2020-06-14 00:31:17', NULL),
-(34, 4, 'Semester-III', 'Mid-term assessment', 'Hardworking and motivated throughout the tenure.', 'S 1-32', 1, 'Phase 3', 'pnec', '2020-06-14 00:54:57', '2020-06-14 00:54:57', NULL),
-(35, 4, 'Semester-III', 'Terminal assessment', 'Hardworking and motivated throughout the tenure.', 'S 1-32', 1, 'Phase 3', 'pnec', '2020-06-14 00:55:08', '2020-06-14 00:55:08', NULL),
-(36, 4, 'Semester-IV', 'Mid-term assessment', 'Hardworking and motivated throughout the tenure.', 'S 1-32', 1, 'Phase 3', 'pnec', '2020-06-14 00:55:20', '2020-06-14 00:55:20', NULL),
-(37, 4, 'Semester-IV', 'Terminal assessment', 'Hardworking and motivated throughout the tenure.', 'S 1-32', 1, 'Phase 3', 'pnec', '2020-06-14 00:55:30', '2020-06-14 00:55:30', NULL),
-(38, 4, 'Semester-V', 'Mid-term assessment', 'Hardworking and motivated throughout the tenure.', 'S 1-32', 1, 'Phase 3', 'pnec', '2020-06-14 00:55:47', '2020-06-14 00:55:47', NULL),
-(39, 4, 'Semester-V', 'Terminal assessment', 'Hardworking and motivated throughout the tenure.', 'S 1-32', 1, 'Phase 3', 'pnec', '2020-06-14 00:55:57', '2020-06-14 00:55:57', NULL),
-(40, 4, 'Semester-VI', 'Mid-term assessment', 'Hardworking and motivated throughout the tenure.', 'S 1-32', 1, 'Phase 3', 'pnec', '2020-06-14 00:56:08', '2020-06-14 00:56:08', NULL),
-(41, 4, 'Semester-V', 'Terminal assessment', 'Hardworking and motivated throughout the tenure.', 'S 1-32', 1, 'Phase 3', 'pnec', '2020-06-14 00:56:19', '2020-06-14 00:56:19', NULL),
-(42, 4, 'Semester-VI', 'Mid-term assessment', 'Hardworking and motivated throughout the tenure.', 'S 1-32', 1, 'Phase 3', 'pnec', '2020-06-14 00:56:29', '2020-06-14 00:56:29', NULL),
-(43, 4, 'Semester-VI', 'Terminal assessment', 'Hardworking and motivated throughout the tenure.', 'S 1-32', 1, 'Phase 3', 'pnec', '2020-06-14 00:56:43', '2020-06-14 00:56:43', NULL),
-(44, 4, 'Semester-VI', 'Mid-term assessment', 'Hardworking and motivated throughout the tenure.', 'S 1-32', 1, 'Phase 3', 'pnec', '2020-06-14 00:56:53', '2020-06-14 00:56:53', NULL),
-(45, 4, 'Semester-VI', 'Terminal assessment', 'Hardworking and motivated throughout the tenure.', 'S 1-32', 1, 'Phase 3', 'pnec', '2020-06-14 00:57:12', '2020-06-14 00:57:12', NULL),
-(46, 4, 'Semester-VI', 'Mid-term assessment', 'Hardworking and motivated throughout the tenure.', 'S 1-32', 1, 'Phase 3', 'pnec', '2020-06-14 00:57:23', '2020-06-14 00:57:23', NULL),
-(47, 4, 'Semester-VI', 'Terminal assessment', 'Hardworking and motivated throughout the tenure.', 'S 1-32', 1, 'Phase 3', 'pnec', '2020-06-14 00:57:35', '2020-06-14 00:57:35', NULL),
-(48, 4, 'Semester-VII', 'Mid-term assessment', 'Hardworking and motivated throughout the tenure.', 'S 1-32', 1, 'Phase 3', 'pnec', '2020-06-14 00:57:47', '2020-06-14 00:57:47', NULL),
-(49, 4, 'Semester-VII', 'Terminal assessment', 'Hardworking and motivated throughout the tenure.', 'S 1-32', 1, 'Phase 3', 'pnec', '2020-06-14 00:57:58', '2020-06-14 00:57:58', NULL),
-(50, 4, 'Semester-VII', 'Terminal assessment', 'Hardworking and motivated throughout the tenure.', 'S 1-32', 1, 'Phase 3', 'pnec', '2020-06-14 00:58:12', '2020-06-14 00:58:12', NULL),
-(51, 4, 'Semester-VIII', 'Mid-term assessment', 'Hardworking and motivated throughout the tenure.', 'S 1-32', 1, 'Phase 3', 'pnec', '2020-06-14 00:58:24', '2020-06-14 00:58:24', NULL),
-(52, 4, 'Semester-VIII', 'Terminal assessment', 'Hardworking and motivated throughout the tenure.', 'S 1-32', 1, 'Phase 3', 'pnec', '2020-06-14 00:58:35', '2020-06-14 00:58:35', NULL),
-(53, 10, 'Term-IV', 'Mid-term assessment', 'Individual is an overall best cadet.Have high sense of duty and motivated towards training.', 'S 1-32', 1, 'Phase 2', NULL, '2020-06-16 22:24:03', '2020-06-16 22:24:03', NULL),
-(54, 10, 'Term-IV', 'Mid-term assessment', 'sadasd', 'S 1-32', NULL, 'Phase 2', NULL, '2020-12-02 13:35:04', '2020-12-02 13:35:04', 1),
-(55, 31, NULL, 'rer,a,', 'erer,a,', 'S 1-32', 3, 'Phase 1', NULL, '2020-12-15 06:33:18', '2020-12-15 06:33:18', NULL),
-(56, 32, NULL, 'sdfasdfasdfsadf,sdfasdfasdfsadf,', 'asdfasdfasdf,asdfasdfasdf,', 'S 1-32', 3, 'Phase 1', NULL, '2020-12-15 08:02:14', '2020-12-15 08:02:14', NULL),
-(57, 32, NULL, '1,1,', '1,1,', 'S 1-32', 3, 'Phase 1', NULL, '2020-12-15 08:02:45', '2020-12-15 08:02:45', NULL),
-(58, 32, NULL, '1,1,', '2,2,', 'S 1-32', 3, 'Phase 1', NULL, '2020-12-15 08:07:34', '2020-12-15 08:07:34', NULL),
-(59, 32, NULL, '1,2,', '1,2,', 'S 1-32', 3, 'Phase 1', NULL, '2020-12-15 08:07:52', '2020-12-15 08:07:52', NULL),
-(60, 33, 'Term-I', 'Mid-term assessment', 'good', 'S 1-32', 1, 'Phase 1', NULL, '2020-12-15 09:49:40', '2020-12-15 09:49:40', NULL);
+(3, 1, 'Term-II', 'Mid-term assessment', 'he is good', 'S 1-32', 3, 'Phase 1', NULL, '2020-06-03 20:18:58', '2020-06-03 20:18:58', NULL);
 
 -- --------------------------------------------------------
 
@@ -691,30 +634,7 @@ INSERT INTO `medical_records` (`id`, `p_id`, `date`, `term`, `disease`, `admitte
 (6, 4, '2020-06-23 19:00:00', 'Term-II', 'fever', 'sickbay pns rahbar', 'attc 2 days', 'nil', '2 days', 'improving', 1, 'Phase 1', NULL, '2020-06-13 12:25:44', '2020-06-13 12:25:44', NULL, NULL, NULL),
 (7, 4, '2020-06-24 19:00:00', 'Term-III', 'fever', 'sickbay pns rahbar', 'rest 2 days', 'nill', '2 days', 'improving', 1, 'Phase 1', NULL, '2020-06-13 12:26:14', '2020-06-13 12:26:14', NULL, NULL, NULL),
 (8, 4, '2020-06-23 19:00:00', '4', 'fever', 'sickbay pns rahbar', 'rest 2 days', 'nil', '2 days', 'improving', 1, 'Phase 2', NULL, '2020-06-14 00:27:06', '2020-06-14 00:27:06', NULL, NULL, NULL),
-(9, 1, '2020-10-15 19:00:00', 'Term-I', 'a', 'a', 'a', 'a', 'a', 'a', 3, 'Phase 1', NULL, '2020-10-16 08:35:19', '2020-10-16 08:35:19', NULL, NULL, NULL),
-(10, 1, '2020-10-15 19:00:00', 'Term-II', 'a', 'a', 'a', 'a', 'a', 'a', 3, 'Phase 1', NULL, '2020-10-16 08:35:19', '2020-10-16 08:35:19', NULL, NULL, NULL),
-(11, 4, '2020-11-06 17:46:23', 'Term_9', 'hiv', 'yesterday', 'yeah', 'good condition', 'severe', 'nice', 55, '3', NULL, '2020-11-06 12:46:23', '2020-11-06 12:46:23', NULL, NULL, NULL),
-(12, 4, '2020-11-12 15:12:00', 'Term_9', 'hiv', 'yesterday', 'yeah', 'good condition', 'severe', 'nice', 55, '3', NULL, '2020-11-12 10:11:59', '2020-11-12 10:11:59', NULL, NULL, NULL),
-(13, 4, '2020-11-12 15:13:01', 'Term_9', 'hiv', 'yesterday', 'yeah', 'good condition', 'severe', 'nice', 55, '3', NULL, '2020-11-12 10:13:01', '2020-11-12 10:13:01', NULL, NULL, NULL),
-(14, 4, '2020-11-12 15:13:11', 'Term_9', 'hiv', 'yesterday', 'yeah', 'good condition', 'severe', 'nice', 55, '3', NULL, '2020-11-12 10:13:11', '2020-11-12 10:13:11', NULL, NULL, NULL),
-(15, 4, '2020-11-12 16:44:35', 'Term_9', 'hiv', 'yesterday', 'yeah', 'good condition', 'severe', 'nice', 55, '3', NULL, '2020-11-12 11:44:35', '2020-11-12 11:44:35', NULL, NULL, NULL),
-(16, 4, '2020-11-12 17:12:58', 'Term_9', 'hiv', 'yesterday', 'yeah', 'good condition', 'severe', 'nice', 55, '3', NULL, '2020-11-12 12:12:58', '2020-11-12 12:12:58', NULL, NULL, NULL),
-(17, 4, '2020-11-12 17:13:20', 'Term_9', 'hiv', 'yesterday', 'yeah', 'good condition', 'severe', 'nice', 55, '3', NULL, '2020-11-12 12:13:20', '2020-11-12 12:13:20', NULL, NULL, NULL),
-(18, 4, '2020-11-12 17:14:07', 'Term_9', 'hiv', 'yesterday', 'yeah', 'good condition', 'severe', 'nice', 55, '3', NULL, '2020-11-12 12:14:07', '2020-11-12 12:14:07', NULL, NULL, NULL),
-(19, 4, '2020-11-20 12:58:18', 'Term_9', 'hiv', 'yesterday', 'yeah', 'good condition', 'severe', 'nice', 55, '3', NULL, '2020-11-20 07:58:18', '2020-11-20 07:58:18', NULL, NULL, NULL),
-(20, NULL, '2020-11-25 05:12:55', 'Term_9', 'hiv', 'yesterday', 'yeah', 'good condition', 'severe', 'nice', 55, '3', NULL, '2020-11-25 00:12:55', '2020-11-25 00:12:55', NULL, NULL, NULL),
-(23, 1, '2020-11-25 05:37:44', 'Term_11', 'hiv', 'yesterday', 'yeah', 'good condition', 'severe', 'nice', 55, 'Phase 1', NULL, '2020-11-25 00:37:44', '2020-11-25 00:37:44', NULL, NULL, NULL),
-(24, 1, '2020-11-25 05:37:56', 'Term_11', 'hiv', 'yesterday', 'yeah', 'good condition', 'severe', 'nice', 55, 'Phase 1', NULL, '2020-11-25 00:37:56', '2020-11-25 00:37:56', NULL, NULL, NULL),
-(25, 10, '2020-12-02 19:00:00', 'VI', 'asd', 'asd', 'a', 'a', 'a', 'asd', NULL, 'Phase 2', NULL, '2020-12-02 13:32:00', '2020-12-02 13:32:00', 1, NULL, NULL),
-(26, 1, '2020-12-03 07:08:20', 'Term_11', 'hiv', 'yesterday', 'yeah', 'good condition', 'severe', 'nice', 55, 'Phase 1', NULL, '2020-12-03 02:08:20', '2020-12-03 02:08:20', NULL, NULL, NULL),
-(28, NULL, '2020-12-03 07:22:04', 'Term_11', 'hiv', 'yesterday', 'yeah', 'good condition', 'severe', 'nice', 55, 'Phase 1', NULL, '2020-12-03 02:22:04', '2020-12-03 02:22:04', NULL, NULL, 16135),
-(29, NULL, '2020-12-03 07:24:18', 'Term_7', 'aa', 'yesterday', 'yeah aa', 'good condition', 'severe', 'nice', NULL, 'Phase 1', NULL, '2020-12-03 02:24:18', '2020-12-03 02:24:18', NULL, NULL, 16135),
-(30, NULL, '2020-12-03 08:07:38', 'Term_7', 'aa', 'yesterday', 'yeah aa', 'good condition', 'severe', 'nice', NULL, 'Phase 1', NULL, '2020-12-03 03:07:38', '2020-12-03 03:07:38', NULL, NULL, 11),
-(31, NULL, '2020-12-03 08:33:13', 'Term_7', 'bb', 'bb', 'bb', 'bb', 'bb', 'bb', NULL, 'Phase 1', NULL, '2020-12-03 03:33:13', '2020-12-03 03:33:13', NULL, NULL, 11),
-(32, NULL, '2020-12-03 17:06:14', 'Term_6', 'bb', 'bb', 'bb', 'bb', 'bb', 'bb', NULL, 'Phase 1', NULL, '2020-12-03 12:06:14', '2020-12-03 12:06:14', NULL, NULL, 11),
-(33, NULL, '2020-12-12 13:15:26', 'Term_6', 'bb', 'bb', 'bb', 'bb', 'bb', 'bb', NULL, 'Phase 1', NULL, '2020-12-12 08:15:26', '2020-12-12 08:15:26', NULL, NULL, 454),
-(34, NULL, '2020-12-13 09:34:22', 'Term_6', 'cc', 'cc', 'cc', 'cc', 'cc', 'cc', NULL, 'Phase 1', NULL, '2020-12-13 04:34:22', '2020-12-13 04:34:22', NULL, NULL, 454),
-(35, NULL, '2020-12-15 15:05:16', 'Term_6', 'cc', 'cc', 'cc', 'cc', 'cc', 'cc', NULL, 'Phase 1', NULL, '2020-12-15 10:05:16', '2020-12-15 10:05:16', NULL, NULL, 12349);
+(9, 1, '2020-10-15 19:00:00', 'Term-I', 'a', 'a', 'a', 'a', 'a', 'a', 3, 'Phase 1', NULL, '2020-10-16 08:35:19', '2020-10-16 08:35:19', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1962,6 +1882,17 @@ INSERT INTO `branch_preference_list` (`id`, `branch_name`) VALUES
 (2, 'WE'),
 (3, 'LOG');
 
+CREATE TABLE `divisional_officer_records` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `p_id` int(11) NOT NULL,
+  `do_id` int(11) NOT NULL,
+  `rank` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `officer_name` varchar(200) NULL DEFAULT NULL,
+  `date_from` date NULL DEFAULT NULL,
+  `date_to` date NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 
 -- Alter Tables by Awais Ahmad
 
@@ -2340,6 +2271,12 @@ ALTER TABLE `branch_preference_list`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `divisional_officer_records`
+--
+ALTER TABLE `divisional_officer_records`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -2648,6 +2585,12 @@ ALTER TABLE `club_records`
 -- AUTO_INCREMENT for table `branch_preference_list`
 --
 ALTER TABLE `branch_preference_list`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `divisional_officer_records`
+--
+ALTER TABLE `divisional_officer_records`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --

@@ -5,11 +5,14 @@
         border: 1px solid red !important;
     }
 
-    a:hover {
+    /* a:hover {
         color: white !important;
-    }
+        background-color: #000154 !important;
+        border-radius: 50px;
+    } */
 
     .list-group-item:hover {
+        color: white !important;
         background-color: #000154 !important;
         border-radius: 20px;
     }
@@ -156,16 +159,16 @@
                                         <a href="#" style="color:black" id="btn_inspection_record">
                                             <li class="list-group-item bg-custom3 custom_list">INSPECTION RECORD</li>
                                         </a>
-                                        <a href="#" style="color:black">
+                                        <a href="#" style="color:black" id="btn_divisional_officer_record">
                                             <li class="list-group-item bg-custom3 custom_list">RECORD OF DIVISIONAL OFFICERS</li>
                                         </a>
                                         <a href="#" style="color:black" id="btn_personal_record">
                                             <li class="list-group-item bg-custom3 custom_list">PERSONAL DATA</li>
                                         </a>
-                                        <a href="#" style="color:black">
+                                        <a href="#" style="color:black" id="btn_autobiography">
                                             <li class="list-group-item bg-custom3 custom_list">CADET'S AUTO-BIOGRAPHY</li>
                                         </a>
-                                        <a href="#" style="color:black">
+                                        <a href="#" style="color:black" id="btn_psychology">
                                             <li class="list-group-item bg-custom3 custom_list">PSYCHOLOGIST'S REPORT</li>
                                         </a>
                                     </ul>
@@ -3127,6 +3130,215 @@
 
     </div>
 
+    <div class="card-body bg-custom3" style="display:none" id="divisional_officer_record">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/divisional_officer_records_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>RECORD OF DIVISIONAL OFFICERS</strong></h4>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style="padding:20px">
+                            <?php if (count($pn_divisional_officer_data) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="" style="width:230px">RANK & NAME</th>
+                                            <td scope="" colspan="2" style="width:100px;border-bottom:1px solid black;">PERIOD</th>
+                                            <td scope="" style="border-right:1px solid black;width:100px !important">SIGNATURES</th>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="width:230px">
+                                                </th>
+                                            <td scope="" style="width:70px">FROM</th>
+                                            <td scope="" style="width:70px">TO</th>
+                                            <td scope="" style="border-right:1px solid black;width:100px !important">
+                                                </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
+                                        <?php $count = 0;
+                                        foreach ($pn_divisional_officer_data as $data) { ?>
+                                            <tr>
+                                                <td scope=""><?= $data['rank']; ?> <?= $data['officer_name']; ?></td>
+                                                <td scope="" style="height:50px"><?= $data['date_from']; ?></td>
+                                                <td scope="" style="height:50px"><?= $data['date_to']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;"></td>
+                                            </tr>
+                                        <?php
+                                            $count++;
+                                        } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_divisional_officer">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="card-body bg-custom3" style="display:none" id="autobiography_record">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/autobiography_record_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>CADET’S AUTO-BIOGRAPHY</strong></h4>
+                            </div>
+                            <div style="text-align:center">
+                                <h5>(To be inserted under this page)</h5>
+                            </div>
+                        </div>
+                        <div id="table_div" style="padding:20px">
+                            <?php if (count($pn_autobiography_data) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="" style="width:20%">S NO.</th>
+                                            <td scope="" style="width:40%">FILENAME</th>
+                                            <td scope="" style="border-right:1px solid black;width:40%">DOWNLOAD</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
+                                        <?php $count = 0;
+                                        foreach ($pn_autobiography_data as $data) { ?>
+                                            <tr>
+                                                <td scope=""><?= ++$count; ?></td>
+                                                <td scope=""><?= $data['file_name']?></td>
+                                                <td scope="" style="border-right:black 1px solid;text-align:center;width:40%"><a style="color:black;width:100%;text-align:center;hover:black;" href="<?= base_url(); ?>uploads/documents/<?= $data['file_name']; ?>"><i class="fas fa-download"></i></a></td>
+                                            </tr>
+                                        <?php
+                                            $count++;
+                                        } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_autobiography">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="card-body bg-custom3" style="display:none" id="psychology_record">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/psychology_record_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>PSYCHOLOGIST’S REPORT</strong></h4>
+                            </div>
+                            <div style="text-align:center">
+                                <h5>(TO BE PASTED HERE, SEALED)</h5>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style="padding:20px">
+                            <?php if (count($pn_psychologist_data) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="" style="width:20%">S NO.</th>
+                                            <td scope="" style="width:40%">FILENAME</th>
+                                            <td scope="" style="border-right:1px solid black;width:40%">DOWNLOAD</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
+                                        <?php $count = 0;
+                                        foreach ($pn_psychologist_data as $data) { ?>
+                                            <tr>
+                                                <td scope=""><?= ++$count; ?></td>
+                                                <td scope=""><?= $data['file_name']?></td>
+                                                <td scope="" style="border-right:black 1px solid;text-align:center"><a style="color:black;width:100%;text-align:center;hover:black;" href="<?= base_url(); ?>uploads/documents/<?= $data['file_name']; ?>"><i class="fas fa-download"></i></a></td>
+                                            </tr>
+                                        <?php
+                                            $count++;
+                                        } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_psychologhy">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
 </div>
 
 </div>
@@ -3318,7 +3530,7 @@
         $('#terms_list_obs').hide();
     });
 
-    $('#back_btn_obs_term1, #back_btn_obs_term2, #back_btn_obs_term3, #back_btn_warning, #back_btn_inspection, #back_btn_medical, #back_btn_saluting_swimming, #back_btn_physical_efficiency, #back_btn_olq_term1, #back_btn_olq_term2, #back_btn_olq_term3, #back_btn_personal_record').on('click', function() {
+    $('#back_btn_obs_term1, #back_btn_obs_term2, #back_btn_obs_term3, #back_btn_warning, #back_btn_inspection, #back_btn_medical, #back_btn_saluting_swimming, #back_btn_physical_efficiency, #back_btn_olq_term1, #back_btn_olq_term2, #back_btn_olq_term3, #back_btn_personal_record, #back_btn_divisional_officer, #back_btn_autobiography, #back_btn_psychologhy').on('click', function() {
         $('#main-container').show();
         $('#obs_term1').hide();
         $('#obs_term2').hide();
@@ -3333,6 +3545,9 @@
         $('#officer_qualities_record_term2').hide();
         $('#officer_qualities_record_term3').hide();
         $('#personal_data_record').hide();
+        $('#divisional_officer_record').hide();
+        $('#autobiography_record').hide();
+        $('#psychology_record').hide();
     });
 
     $('#obs_record').on('click', function() {
@@ -3398,6 +3613,24 @@
 
     $('#btn_personal_record').on('click', function() {
         $('#personal_data_record').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
+
+    $('#btn_divisional_officer_record').on('click', function() {
+        $('#divisional_officer_record').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
+
+    $('#btn_autobiography').on('click', function() {
+        $('#autobiography_record').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
+
+    $('#btn_psychology').on('click', function() {
+        $('#psychology_record').show();
         $('#main-container').hide();
         $('#container-2').hide();
     });

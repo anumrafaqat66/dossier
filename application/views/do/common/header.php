@@ -101,6 +101,7 @@
                         <a class="collapse-item" href="<?php echo base_url(); ?>D_O/personal_data">Personal Data</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>D_O/auto_biography">Cadet's Auto-biography</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>D_O/psychologist_report">Psychologist's Report</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>D_O/view_record_div_officer">Divisional Officer Record</a>
                     </div>
                 </div>
             </li>
@@ -153,11 +154,11 @@
                 </a>
                 <div id="collapse_assesment" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">General Remarks</a>
+                        <a class="collapse-item"href="<?= base_url();?>D_O/view_general_remarks">General Remarks</a>
                         <!-- <a class="collapse-item" href="#">Performance Report</a> -->
-                        <a class="collapse-item" href="#">Progress Chart</a>
-                        <a class="collapse-item" href="#">Distictions</a>
-                        <a class="collapse-item" href="#">Seniority</a>
+                        <a class="collapse-item" href="<?= base_url();?>D_O/view_progress_chart">Progress Chart</a>
+                        <a class="collapse-item" href="<?= base_url();?>D_O/view_distinction_records">Distictions</a>
+                        <a class="collapse-item" href="<?= base_url();?>D_O/view_seniority_records">Seniority</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>D_O/add_branch_allocation">Branch Allocation</a>
                         <a class="collapse-item" href="#">Degree Complete</a>
                     </div>

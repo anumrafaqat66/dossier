@@ -627,6 +627,39 @@ class D_O extends CI_Controller
             }
         }
     }
+
+    public function save_divisional_officer_records()
+    {
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+            
+            $id = $postData['id']; 
+            $rank = $postData['rank'];
+            $officer_name = $postData['officer_name'];
+            $start_date = $postData['date_from'];
+            $end_date = $postData['date_from'];
+
+            $insert_array = array(
+                'p_id' => $id, 
+                'do_id' => $this->session->userdata('user_id'),
+                'rank' => $rank,
+                'officer_name' => $officer_name,
+                'date_from' => $start_date,
+                'date_to' => $end_date,
+                'updated_at' => date('Y-m-d H:i:s')
+            );
+
+            $insert = $this->db->insert('divisional_officer_records', $insert_array);
+            if (!empty($insert)) {
+                $this->session->set_flashdata('success', 'Divisional Officer Record added successfully');
+                redirect('D_O/view_record_div_officer');
+            } else {
+                $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                redirect('D_O/view_record_div_officer');
+            }
+        }
+    }
+
     public function update_cadet_warning()
     {
         if ($this->input->post()) {
@@ -1473,6 +1506,27 @@ class D_O extends CI_Controller
             $this->db->where('f.oc_no',$oc_no);
             $data['pn_personal_data'] = $this->db->get()->row_array();
 
+            $this->db->select('pr.*, f.*');
+            $this->db->from('divisional_officer_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $data['pn_divisional_officer_data'] = $this->db->get()->result_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('cadets_autobiographies pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $data['pn_autobiography_data'] = $this->db->get()->result_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('psychologist_reports pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $data['pn_psychologist_data'] = $this->db->get()->result_array();
+
             $data['oc_no_entered'] = $oc_no;
             
             if ($data['pn_data']!= null) {
@@ -2244,11 +2298,129 @@ class D_O extends CI_Controller
         }
     }
 
+    public function divisional_officer_records_report($oc_no = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('divisional_officer_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $data['pn_divisional_officer_data'] = $this->db->get()->result_array();
+            
+            $html = $this->load->view('do/divisional_officer_record_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            // $dompdf->set_paper('A4', 'landscape');
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Divisional Officer Records Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+    public function autobiography_record_report($oc_no = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('divisional_officer_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $data['pn_divisional_officer_data'] = $this->db->get()->result_array();
+            
+            $html = $this->load->view('do/autobiography_record_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            // $dompdf->set_paper('A4', 'landscape');
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Autobiography Records Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+    public function psychology_record_report($oc_no = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('divisional_officer_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no',$oc_no);
+            $data['pn_divisional_officer_data'] = $this->db->get()->result_array();
+            
+            $html = $this->load->view('do/psychology_record_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            // $dompdf->set_paper('A4', 'landscape');
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Psychology Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
     public function view_result(){
         $this->load->view('DO/Results');
     }
-   public function view_training_report(){
+    public function view_training_report(){
         $this->load->view('DO/Sea_Training_Report');
+    }
+    public function view_general_remarks(){
+        $this->load->view('DO/add_general_remarks');
+    }
+    public function view_progress_chart(){
+        $this->load->view('DO/add_progress_chart');
+    }
+    public function view_distinction_records(){
+        $this->load->view('DO/add_distinction_records');
+    }
+    public function view_seniority_records(){
+        $this->load->view('DO/add_seniority_records');
+    }
+    public function view_record_div_officer(){
+        $this->load->view('DO/add_divisonal_officer_record');
     }
 
     public function save_psychologist_report(){
