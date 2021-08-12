@@ -63,7 +63,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>Project_Officer/save_psychologist_report">
+                        <form class="user" role="form" method="post" id="add_form_report" enctype="multipart/form-data"  action="<?= base_url(); ?>D_O/save_psychologist_report">
 
                             <div class="form-group row">
                                 <div class="col-sm-4">
@@ -108,13 +108,13 @@
 
                             <div class="form-group row custom-file-upload">
                                 <div class="col-sm-12 mb-1">
-                                    <input type="file" style="height: 50px; padding:10px !important;" class="form-control form-control-user" placeholder="Upload Document" x-model="fileName">
+                                    <input type="file" style="height: 50px; padding:10px !important;" id="psycologist_report" multiple="multiple" class="form-control form-control-user" placeholder="Upload Document" x-model="fileName" name="psycologist_report[]">
                                 </div>
                             </div>
 
                             <div class="form-group row justify-content-center">
                                 <div class="col-sm-4">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" id="add_btn">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" id="add_btn_report">
                                         <!-- <i class="fab fa-google fa-fw"></i>  -->
                                         Submit
                                     </button>
@@ -171,56 +171,25 @@
         });
     });
 
-    $('#add_btn').on('click', function() {
-        //alert('javascript working');
-        $('#add_btn').attr('disabled', true);
+    $('#add_btn_report').on('click', function() {
+        alert('javascript working');
+        $('#add_btn_report').attr('disabled', true);
         var validate = 0;
 
-        var oc_no = $('#oc_no').val();
-        var pno = $('#pno').val();
-        var name = $('#name').val();
-        var class_ = $('#class').val();
-        var batch_no = $('#batch_no').val();
-        var status = $('#status').val();
-        var div_name = $('#div_name').val();
-        var status = $('#status').val();
+       // var file = $('#psycologist_report').val();
+      
 
-        if (oc_no == '') {
-            validate = 1;
-            $('#oc_no').addClass('red-border');
-        }
-        if (pno == '') {
-            validate = 1;
-            $('#pno').addClass('red-border');
-        }
-        if (name == '') {
-            validate = 1;
-            $('#name').addClass('red-border');
-        }
-        if (class_ == '') {
-            validate = 1;
-            $('#class').addClass('red-border');
-        }
-
-        if (batch_no == '') {
-            validate = 1;
-            $('#batch_no').addClass('red-border');
-        }
-        if (status == '') {
-            validate = 1;
-            $('#status').addClass('red-border');
-        }
-        if (div_name == '') {
-            validate = 1;
-            $('#div_name').addClass('red-border');
-        }
-
+        // if (file == '') {
+        //     validate = 1;
+        //     $('#psycologist_report').addClass('red-border');
+        // }
+       
         if (validate == 0) {
-            $('#add_form')[0].submit();
+            $('#add_form_report')[0].submit();
             $('#show_error_new').hide();
         } else {
-            $('#add_btn').removeAttr('disabled');
-            $('#show_error_new').show();
+            $('#add_btn_report').removeAttr('disabled');
+            //$('#show_error_new').show();
         }
     });
 

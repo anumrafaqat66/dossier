@@ -2251,4 +2251,143 @@ class D_O extends CI_Controller
         $this->load->view('DO/Sea_Training_Report');
     }
 
+    public function save_psychologist_report(){
+              if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+            print_r($_FILES['psycologist_report']['size'][0]);
+             $file_size=$_FILES['psycologist_report']['size'][0]." kb";
+            // echo $file_size;exit;
+            $p_id = $postData['id'];
+             $upload1 = $this->upload_psychologist_report($_FILES['psycologist_report']);
+            
+            
+
+            if (count($upload1) > 1) {
+                $files = implode(',', $upload1);
+            } else {
+                $files = $upload1[0];
+                // $file_type=;
+                // $file_path=;
+                // $file_size=;
+            }
+            $iparr = explode(".",$files); 
+              $file_type= $iparr[1];
+            //$term = $postData['term'];
+            $insert_array = array(
+                //'oc_no' => $oc_no,
+                'p_id' => $p_id,
+                'do_id' => $this->session->userdata('user_id'),
+                'file_name' => $files,
+                'file_type' => $file_type,
+                'file_size' => $file_size,
+                'created_at' => date('Y-m-d H:i:s')
+            );
+           // print_r($insert_array);exit;
+            $insert = $this->db->insert('psychologist_reports', $insert_array);
+        }
+
+        if (!empty($insert)) {
+            $this->session->set_flashdata('success', 'Data Submitted successfully');
+            redirect('D_O/psychologist_report');
+        } else {
+            $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+            redirect('D_O/add_officer_qualities');
+        }
+    }
+
+    public function upload_psychologist_report(){
+     $filesCount = count($_FILES['psycologist_report']['name']);
+     
+        for ($i = 0; $i < $filesCount; $i++) {
+            $_FILES['file']['name']     = $_FILES['psycologist_report']['name'][$i];
+            $_FILES['file']['type']     = $_FILES['psycologist_report']['type'][$i];
+            $_FILES['file']['tmp_name'] = $_FILES['psycologist_report']['tmp_name'][$i];
+            $_FILES['file']['error']    = $_FILES['psycologist_report']['error'][$i];
+            $_FILES['file']['size']     = $_FILES['psycologist_report']['size'][$i];
+
+            $config['upload_path'] = 'uploads/documents';
+            $config['allowed_types']        = 'gif|jpg|png|doc|xls|pdf|xlsx|docx|ppt|pptx';
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if (!$this->upload->do_upload('file')) {
+                $data = array('msg' => $this->upload->display_errors());                
+            } else { 
+                $data = array('msg' => "success");
+                $data['upload_data'] = $this->upload->data();
+                $count[$i] = $data['upload_data']['file_name'];
+            }
+        }
+        return $count;
+    }
+ public function save_autobiography(){
+              if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+           // print_r($_FILES['autobiography']['size'][0]);
+             $file_size=$_FILES['autobiography']['size'][0]." kb";
+            // echo $file_size;exit;
+            $p_id = $postData['id'];
+             $upload1 = $this->upload_autobiograhy($_FILES['autobiography']);
+            
+            
+
+            if (count($upload1) > 1) {
+                $files = implode(',', $upload1);
+            } else {
+                $files = $upload1[0];
+                // $file_type=;
+                // $file_path=;
+                // $file_size=;
+            }
+            $iparr = explode(".",$files); 
+              $file_type= $iparr[1];
+            //$term = $postData['term'];
+            $insert_array = array(
+                //'oc_no' => $oc_no,
+                'p_id' => $p_id,
+                'do_id' => $this->session->userdata('user_id'),
+                'file_name' => $files,
+                'file_type' => $file_type,
+                'file_size' => $file_size,
+                'created_at' => date('Y-m-d H:i:s')
+            );
+           // print_r($insert_array);exit;
+            $insert = $this->db->insert('cadets_autobiographies', $insert_array);
+        }
+
+        if (!empty($insert)) {
+            $this->session->set_flashdata('success', 'Data Submitted successfully');
+            redirect('D_O/auto_biography');
+        } else {
+            $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+            redirect('D_O/auto_biography');
+        }
+    }
+
+    public function upload_autobiograhy(){
+     $filesCount = count($_FILES['autobiography']['name']);
+     
+        for ($i = 0; $i < $filesCount; $i++) {
+            $_FILES['file']['name']     = $_FILES['autobiography']['name'][$i];
+            $_FILES['file']['type']     = $_FILES['autobiography']['type'][$i];
+            $_FILES['file']['tmp_name'] = $_FILES['autobiography']['tmp_name'][$i];
+            $_FILES['file']['error']    = $_FILES['autobiography']['error'][$i];
+            $_FILES['file']['size']     = $_FILES['autobiography']['size'][$i];
+
+            $config['upload_path'] = 'uploads/documents';
+            $config['allowed_types']        = 'gif|jpg|png|doc|xls|pdf|xlsx|docx|ppt|pptx';
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if (!$this->upload->do_upload('file')) {
+                $data = array('msg' => $this->upload->display_errors());                
+            } else { 
+                $data = array('msg' => "success");
+                $data['upload_data'] = $this->upload->data();
+                $count[$i] = $data['upload_data']['file_name'];
+            }
+        }
+        return $count;
+    }
+
 }
