@@ -2562,4 +2562,124 @@ class D_O extends CI_Controller
         return $count;
     }
 
+    public function save_general_remarks(){
+           if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+            $asses_type=$postData['assess_type'];
+            $term=$postData['term'];
+            $remarks=$postData['remarks'];
+            $p_id = $postData['id'];
+            
+            //$term = $postData['term'];
+            $insert_array = array(
+                //'oc_no' => $oc_no,
+                'p_id' => $p_id,
+                'do_id' => $this->session->userdata('user_id'),
+                'assessment' => $asses_type,
+                'term'=>$term,
+                'remarks' => $remarks,
+                'created_at' => date('Y-m-d H:i:s')
+            );
+           // print_r($insert_array);exit;
+            $insert = $this->db->insert('general_remarks', $insert_array);
+        }
+
+        if (!empty($insert)) {
+            $this->session->set_flashdata('success', 'Data Submitted successfully');
+            redirect('D_O/view_general_remarks');
+        } else {
+            $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+            redirect('D_O/view_general_remarks');
+        }
+    }
+    
+       public function save_cadet_progress(){
+           if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+            $term=$postData['term'];
+            $academic=$postData['academic'];
+            $olqs=$postData['olqs'];
+            $aggregate=$postData['aggregate'];
+            $p_id = $postData['id'];
+            
+            //$term = $postData['term'];
+            if($term == "Term-I"){
+                 $insert_array = array(
+                //'oc_no' => $oc_no,
+                'p_id' => $p_id,
+                'do_id' => $this->session->userdata('user_id'),
+                'term1_academics' => $academic,
+                'term1_olqs'=>$olqs,
+                'term1_aggregate' => $aggregate,
+                'created_at' => date('Y-m-d H:i:s')
+            );
+              
+            }else if($term == "Term-II"){
+                $insert_array = array(
+                //'oc_no' => $oc_no,
+                'p_id' => $p_id,
+                'do_id' => $this->session->userdata('user_id'),
+                'term2_academics' => $academic,
+                'term2_olqs'=>$olqs,
+                'term2_aggregate' => $aggregate,
+                'created_at' => date('Y-m-d H:i:s')
+            );
+                
+            }else if($term == "Term-III"){
+                 $insert_array = array(
+                //'oc_no' => $oc_no,
+                'p_id' => $p_id,
+                'do_id' => $this->session->userdata('user_id'),
+                'term3_academics' => $academic,
+                'term3_olqs'=>$olqs,
+                'term3_aggregate' => $aggregate,
+                'created_at' => date('Y-m-d H:i:s')
+            );
+                 
+            }
+             $insert = $this->db->insert('progress_charts', $insert_array);       
+        }
+
+        if (!empty($insert)) {
+            $this->session->set_flashdata('success', 'Data Submitted successfully');
+            redirect('D_O/view_progress_chart');
+        } else {
+            $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+            redirect('D_O/view_progress_chart');
+        }
+    }
+
+    
+       public function save_distinction_records(){
+           if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+            $academic=$postData['academic'];
+            $sports=$postData['sports'];
+            $extra_activities=$postData['extra_activites'];
+            $p_id = $postData['id'];
+            
+            //$term = $postData['term'];
+            $insert_array = array(
+                //'oc_no' => $oc_no,
+                'p_id' => $p_id,
+                'do_id' => $this->session->userdata('user_id'),
+                'academic' => $academic,
+                'sports'=>$sports,
+                'extra_curricular_activities' => $extra_activities,
+                'created_at' => date('Y-m-d H:i:s')
+            );
+           // print_r($insert_array);exit;
+            $insert = $this->db->insert('distinctions_records', $insert_array);
+        }
+
+        if (!empty($insert)) {
+            $this->session->set_flashdata('success', 'Data Submitted successfully');
+            redirect('D_O/view_distinction_records');
+        } else {
+            $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+            redirect('D_O/view_distinction_records');
+        }
+    }
+    
+
 }

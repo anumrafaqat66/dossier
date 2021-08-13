@@ -77,7 +77,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>D_O/save_cadet_warning">
+                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>D_O/save_distinction_records">
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Name:</h6>
@@ -141,7 +141,7 @@
 
                             <div class="form-group row justify-content-center">
                                 <div class="col-sm-4">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn_distinctions">
                                         <!-- <i class="fab fa-google fa-fw"></i>   -->
                                         save
                                     </button>
@@ -268,32 +268,32 @@
     });
 
 
-    $('#save_btn').on('click', function() {
-        $('#save_btn').attr('disabled', true);
+    $('#save_btn_distinctions').on('click', function() {
+        $('#save_btn_distinctions').attr('disabled', true);
         var validate = 0;
         var academic = $('#academic').val();
         var sports = $('#sports').val();
         var extra_activites = $('#extra_activites').val();
         
-        if (academic == '') {
-            validate = 1;
-            $('#academic').addClass('red-border');
-        }
-        if (sports == '') {
-            validate = 1;
-            $('#sports').addClass('red-border');
-        }
-        if (extra_activites == '') {
-            validate = 1;
-            $('#extra_activites').addClass('red-border');
-        }
+        // if (academic == '') {
+        //     validate = 1;
+        //     $('#academic').addClass('red-border');
+        // }
+        // if (sports == '') {
+        //     validate = 1;
+        //     $('#sports').addClass('red-border');
+        // }
+        // if (extra_activites == '') {
+        //     validate = 1;
+        //     $('#extra_activites').addClass('red-border');
+        // }
 
         if (validate == 0) {
             $('#save_form')[0].submit();
             $('#show_error_save').hide();
 
         } else {
-            $('#save_btn').removeAttr('disabled');
+            $('#save_btn_distinctions').removeAttr('disabled');
             $('#show_error_save').show();
         }
     });

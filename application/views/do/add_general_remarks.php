@@ -141,7 +141,7 @@
 
                             <div class="form-group row justify-content-center">
                                 <div class="col-sm-4">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn_remarks">
                                         save
                                     </button>
                                     <span id="show_error_save" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
@@ -267,8 +267,8 @@
     });
 
 
-    $('#save_btn').on('click', function() {
-        $('#save_btn').attr('disabled', true);
+    $('#save_btn_remarks').on('click', function() {
+        $('#save_btn_remarks').attr('disabled', true);
         var validate = 0;
         var assess_type = $('#assess_type').val();
         var remarks = $('#remarks').val();
@@ -288,7 +288,7 @@
             $('#show_error_save').hide();
 
         } else {
-            $('#save_btn').removeAttr('disabled');
+            $('#save_btn_remarks').removeAttr('disabled');
             $('#show_error_save').show();
         }
     });

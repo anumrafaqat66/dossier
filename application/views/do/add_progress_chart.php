@@ -77,7 +77,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>D_O/save_cadet_warning">
+                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>D_O/save_cadet_progress">
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Name:</h6>
@@ -141,7 +141,7 @@
 
                             <div class="form-group row justify-content-center">
                                 <div class="col-sm-4">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn_progress">
                                         <!-- <i class="fab fa-google fa-fw"></i>   -->
                                         save
                                     </button>
@@ -268,8 +268,8 @@
     });
 
 
-    $('#save_btn').on('click', function() {
-        $('#save_btn').attr('disabled', true);
+    $('#save_btn_progress').on('click', function() {
+        $('#save_btn_progress').attr('disabled', true);
         var validate = 0;
         var academic = $('#academic').val();
         var olqs = $('#olqs').val();
@@ -293,7 +293,7 @@
             $('#show_error_save').hide();
 
         } else {
-            $('#save_btn').removeAttr('disabled');
+            $('#save_btn_progress').removeAttr('disabled');
             $('#show_error_save').show();
         }
     });
