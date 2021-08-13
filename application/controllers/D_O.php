@@ -1585,6 +1585,13 @@ class D_O extends CI_Controller
             $this->db->where('pr.term', 'Term-III');
             $data['pn_general_remarks_term3_final'] = $this->db->get()->result_array();
 
+            $this->db->select('pr.*, f.*');
+            $this->db->from('progress_charts pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no', $oc_no);
+            $data['pn_progress_chart'] = $this->db->get()->row_array();
+
             $data['oc_no_entered'] = $oc_no;
 
             if ($data['pn_data'] != null) {
@@ -2496,6 +2503,42 @@ class D_O extends CI_Controller
 
             $output = $dompdf->output();
             $doc_name = 'General Remarks Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
+    public function progress_chart_report($oc_no = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+            
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('progress_charts pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no', $oc_no);
+            $data['pn_progress_chart'] = $this->db->get()->row_array();
+            
+            $html = $this->load->view('do/progress_chart_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            // $dompdf->set_paper('A4', 'landscape');
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Progress Chart Report.pdf';
             file_put_contents($doc_name, $output);
             redirect($doc_name);
             //exit;
