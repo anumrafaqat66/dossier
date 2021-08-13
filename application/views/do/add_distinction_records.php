@@ -275,18 +275,18 @@
         var sports = $('#sports').val();
         var extra_activites = $('#extra_activites').val();
         
-        // if (academic == '') {
-        //     validate = 1;
-        //     $('#academic').addClass('red-border');
-        // }
-        // if (sports == '') {
-        //     validate = 1;
-        //     $('#sports').addClass('red-border');
-        // }
-        // if (extra_activites == '') {
-        //     validate = 1;
-        //     $('#extra_activites').addClass('red-border');
-        // }
+        if (academic == '') {
+            validate = 1;
+            $('#academic').addClass('red-border');
+        }
+        if (sports == '') {
+            validate = 1;
+            $('#sports').addClass('red-border');
+        }
+        if (extra_activites == '') {
+            validate = 1;
+            $('#extra_activites').addClass('red-border');
+        }
 
         if (validate == 0) {
             $('#save_form')[0].submit();

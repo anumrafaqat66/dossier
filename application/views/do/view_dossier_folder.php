@@ -292,8 +292,8 @@
                             <div id="assess_list" class="row" style="display:none ;">
                                 <div class="col-lg-4" style="text-align:left;font-weight: bold;">
                                     <ul class="list-group">
-                                        <a href="#" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">GENERAL REMARKS (Term I to III)</li>
+                                        <a href="#" style="color:black" id="btn_general_remarks">
+                                            <li class="list-group-item bg-custom3 custom_list">GENERAL REMARKS</li>
                                         </a>
                                         <a href="#" style="color:black">
                                             <li class="list-group-item bg-custom3 custom_list">PROGRESS CHART</li>
@@ -311,6 +311,60 @@
                                     </ul>
                                 </div>
                             </div>
+
+                            <div id="general_remarks_list" class="row" style="display:none;">
+                                <div class="col-lg-4" style="text-align:left;font-weight:bold;">
+                                    <ul class="list-group">
+                                        <a href="#" style="color:black">
+                                            <li class="list-group-item bg-custom3 custom_list">GENERAL REMARKS</li>
+                                        </a>
+                                    </ul>
+                                </div>
+                                <div id="terms_general_remarks_record" class="col-lg-2" style="text-align:left;font-weight: bold">
+                                    <ul class="list-group">
+                                        <a href="#" style="color:black" id="btn_general_remarks_term1">
+                                            <li class="list-group-item bg-custom3 custom_list">TERM-I</li>
+                                        </a>
+                                        <a href="#" style="color:black" id="btn_general_remarks_term2">
+                                            <li class="list-group-item bg-custom3 custom_list">TERM-II</li>
+                                        </a>
+                                        <a href="#" style="color:black" id="btn_general_remarks_term3">
+                                            <li class="list-group-item bg-custom3 custom_list">TERM-III</li>
+                                        </a>
+                                    </ul>
+                                </div>
+                                <div id="general_remarks_mid_final_term1" class="col-lg-3" style="text-align:left;font-weight: bold;display:none">
+                                    <ul class="list-group">
+                                        <a href="#" style="color:black" id="btn_general_remarks_term1_mid">
+                                            <li class="list-group-item bg-custom3 custom_list">MID TERM ASSESSMENT</li>
+                                        </a>
+                                        <a href="#" style="color:black" id="btn_general_remarks_term1_final">
+                                            <li class="list-group-item bg-custom3 custom_list">FINAL TERM ASSESSMENT</li>
+                                        </a>
+                                    </ul>
+                                </div>
+                                <div id="general_remarks_mid_final_term2" class="col-lg-3" style="text-align:left;font-weight: bold;display:none">
+                                    <ul class="list-group">
+                                        <a href="#" style="color:black" id="btn_general_remarks_term2_mid">
+                                            <li class="list-group-item bg-custom3 custom_list">MID TERM ASSESSMENT</li>
+                                        </a>
+                                        <a href="#" style="color:black" id="btn_general_remarks_term2_final">
+                                            <li class="list-group-item bg-custom3 custom_list">FINAL TERM ASSESSMENT</li>
+                                        </a>
+                                    </ul>
+                                </div>
+                                <div id="general_remarks_mid_final_term3" class="col-lg-3" style="text-align:left;font-weight: bold;display:none">
+                                    <ul class="list-group">
+                                        <a href="#" style="color:black" id="btn_general_remarks_term3_mid">
+                                            <li class="list-group-item bg-custom3 custom_list">MID TERM ASSESSMENT</li>
+                                        </a>
+                                        <a href="#" style="color:black" id="btn_general_remarks_term3_final">
+                                            <li class="list-group-item bg-custom3 custom_list">FINAL TERM ASSESSMENT</li>
+                                        </a>
+                                    </ul>
+                                </div>
+                            </div>
+
                             <div class="col-lg-4">
                                 <button type="button" class="btn btn-primary btn-user btn-block my-3" id="back_btn" style="display:none">
                                     BACK
@@ -3237,7 +3291,7 @@
                                         foreach ($pn_autobiography_data as $data) { ?>
                                             <tr>
                                                 <td scope=""><?= ++$count; ?></td>
-                                                <td scope=""><?= $data['file_name']?></td>
+                                                <td scope=""><?= $data['file_name'] ?></td>
                                                 <td scope="" style="border-right:black 1px solid;text-align:center;width:40%"><a style="color:black;width:100%;text-align:center;hover:black;" href="<?= base_url(); ?>uploads/documents/<?= $data['file_name']; ?>"><i class="fas fa-download"></i></a></td>
                                             </tr>
                                         <?php
@@ -3305,7 +3359,7 @@
                                         foreach ($pn_psychologist_data as $data) { ?>
                                             <tr>
                                                 <td scope=""><?= ++$count; ?></td>
-                                                <td scope=""><?= $data['file_name']?></td>
+                                                <td scope=""><?= $data['file_name'] ?></td>
                                                 <td scope="" style="border-right:black 1px solid;text-align:center"><a style="color:black;width:100%;text-align:center;hover:black;" href="<?= base_url(); ?>uploads/documents/<?= $data['file_name']; ?>"><i class="fas fa-download"></i></a></td>
                                             </tr>
                                         <?php
@@ -3331,6 +3385,394 @@
             <div class="form-group row justify-content-center my-2">
                 <div class="col-sm-4">
                     <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_psychologhy">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="card-body bg-custom3" style="display:none" id="general_remarks_term1_mid">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/general_remarks_report/<?= $pn_data['oc_no'] ?>/Term-I/Mid'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>GENERAL REMARKS</strong></h4>
+                            </div>
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>TERM-I</strong></h4>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style="padding:20px;">
+                            <?php if (count($pn_general_remarks_term1_mid) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="" style="border-right:1px solid black;width:40%">MID TERM ASSESSMENT </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important;">
+                                        <?php $count = 0;
+                                        foreach ($pn_general_remarks_term1_mid as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="border-right:black 1px solid;text-align:center"><?= $data['remarks'] ?></td>
+                                            </tr>
+                                        <?php
+                                            $count++;
+                                        } ?>
+                                        <tr>
+                                            <td scope="" style="border-right:1px solid black;height:500px"></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;text-align:right;padding:60px"><strong>DIVISIONAL OFFICER</strong></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_general_remarks_term1_mid">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="card-body bg-custom3" style="display:none" id="general_remarks_term1_final">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/general_remarks_report/<?= $pn_data['oc_no'] ?>/Term-I/final'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>GENERAL REMARKS</strong></h4>
+                            </div>
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>TERM-I</strong></h4>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style="padding:20px;">
+                            <?php if (count($pn_general_remarks_term1_final) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="" style="border-right:1px solid black;width:40%">TERMINAL ASSESSMENT </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important;">
+                                        <?php $count = 0;
+                                        foreach ($pn_general_remarks_term1_final as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="border-right:black 1px solid;text-align:center"><?= $data['remarks'] ?></td>
+                                            </tr>
+                                        <?php
+                                            $count++;
+                                        } ?>
+                                        <tr>
+                                            <td scope="" style="border-right:1px solid black;height:500px"></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-right:1px solid black;text-align:right;padding:40px"><strong>DIVISIONAL OFFICER</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;text-align:right;padding:40px"><strong>CAPTAIN TRAINING</strong></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_general_remarks_term1_final">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="card-body bg-custom3" style="display:none" id="general_remarks_term2_mid">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/general_remarks_report/<?= $pn_data['oc_no'] ?>/Term-II/Mid'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>GENERAL REMARKS</strong></h4>
+                            </div>
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>TERM-II</strong></h4>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style="padding:20px;">
+                            <?php if (count($pn_general_remarks_term2_mid) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="" style="border-right:1px solid black;width:40%">MID TERM ASSESSMENT </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important;">
+                                        <?php $count = 0;
+                                        foreach ($pn_general_remarks_term2_mid as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="border-right:black 1px solid;text-align:center"><?= $data['remarks'] ?></td>
+                                            </tr>
+                                        <?php
+                                            $count++;
+                                        } ?>
+                                        <tr>
+                                            <td scope="" style="border-right:1px solid black;height:500px"></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;text-align:right;padding:60px"><strong>DIVISIONAL OFFICER</strong></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_general_remarks_term2_mid">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="card-body bg-custom3" style="display:none" id="general_remarks_term2_final">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/general_remarks_report/<?= $pn_data['oc_no'] ?>/Term-II/final'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>GENERAL REMARKS</strong></h4>
+                            </div>
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>TERM-II</strong></h4>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style="padding:20px;">
+                            <?php if (count($pn_general_remarks_term2_final) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="" style="border-right:1px solid black;width:40%">TERMINAL ASSESSMENT </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important;">
+                                        <?php $count = 0;
+                                        foreach ($pn_general_remarks_term2_final as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="border-right:black 1px solid;text-align:center"><?= $data['remarks'] ?></td>
+                                            </tr>
+                                        <?php
+                                            $count++;
+                                        } ?>
+                                        <tr>
+                                            <td scope="" style="border-right:1px solid black;height:500px"></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-right:1px solid black;text-align:right;padding:40px"><strong>DIVISIONAL OFFICER</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;text-align:right;padding:40px"><strong>CAPTAIN TRAINING</strong></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_general_remarks_term2_final">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="card-body bg-custom3" style="display:none" id="general_remarks_term3_mid">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/general_remarks_report/<?= $pn_data['oc_no'] ?>/Term-III/Mid'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>GENERAL REMARKS</strong></h4>
+                            </div>
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>TERM-III</strong></h4>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style="padding:20px;">
+                            <?php if (count($pn_general_remarks_term3_mid) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="" style="border-right:1px solid black;width:40%">MID TERM ASSESSMENT </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important;">
+                                        <?php $count = 0;
+                                        foreach ($pn_general_remarks_term3_mid as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="border-right:black 1px solid;text-align:center"><?= $data['remarks'] ?></td>
+                                            </tr>
+                                        <?php
+                                            $count++;
+                                        } ?>
+                                        <tr>
+                                            <td scope="" style="border-right:1px solid black;height:500px"></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;text-align:right;padding:60px"><strong>DIVISIONAL OFFICER</strong></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_general_remarks_term3_mid">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="card-body bg-custom3" style="display:none" id="general_remarks_term3_final">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/general_remarks_report/<?= $pn_data['oc_no'] ?>/Term-III/final'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>GENERAL REMARKS</strong></h4>
+                            </div>
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>TERM-III</strong></h4>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style="padding:20px;">
+                            <?php if (count($pn_general_remarks_term3_final) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="" style="border-right:1px solid black;width:40%">TERMINAL ASSESSMENT </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important;">
+                                        <?php $count = 0;
+                                        foreach ($pn_general_remarks_term3_final as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="border-right:black 1px solid;text-align:center"><?= $data['remarks'] ?></td>
+                                            </tr>
+                                        <?php
+                                            $count++;
+                                        } ?>
+                                        <tr>
+                                            <td scope="" style="border-right:1px solid black;height:500px"></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-right:1px solid black;text-align:right;padding:40px"><strong>DIVISIONAL OFFICER</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black;text-align:right;padding:40px"><strong>CAPTAIN TRAINING</strong></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_general_remarks_term3_final">
                         Back
                     </button>
                 </div>
@@ -3465,6 +3907,7 @@
         $('#olq_list').hide();
         $('#disp_list').hide();
         $('#assess_list').hide();
+        $('#general_remarks_list').hide();
         $('#back_btn').hide();
         $('#header_title').html('<h4>CONTENTS</h4>');
     });
@@ -3530,7 +3973,7 @@
         $('#terms_list_obs').hide();
     });
 
-    $('#back_btn_obs_term1, #back_btn_obs_term2, #back_btn_obs_term3, #back_btn_warning, #back_btn_inspection, #back_btn_medical, #back_btn_saluting_swimming, #back_btn_physical_efficiency, #back_btn_olq_term1, #back_btn_olq_term2, #back_btn_olq_term3, #back_btn_personal_record, #back_btn_divisional_officer, #back_btn_autobiography, #back_btn_psychologhy').on('click', function() {
+    $('#back_btn_obs_term1, #back_btn_obs_term2, #back_btn_obs_term3, #back_btn_warning, #back_btn_inspection, #back_btn_medical, #back_btn_saluting_swimming, #back_btn_physical_efficiency, #back_btn_olq_term1, #back_btn_olq_term2, #back_btn_olq_term3, #back_btn_personal_record, #back_btn_divisional_officer, #back_btn_autobiography, #back_btn_psychologhy, #back_btn_general_remarks_term1_mid, #back_btn_general_remarks_term1_final, #back_btn_general_remarks_term2_mid, #back_btn_general_remarks_term2_final, #back_btn_general_remarks_term3_mid, #back_btn_general_remarks_term3_final').on('click', function() {
         $('#main-container').show();
         $('#obs_term1').hide();
         $('#obs_term2').hide();
@@ -3548,6 +3991,16 @@
         $('#divisional_officer_record').hide();
         $('#autobiography_record').hide();
         $('#psychology_record').hide();
+        $('#general_remarks_term1_mid').hide();
+        $('#general_remarks_term1_final').hide();
+        $('#general_remarks_term2_mid').hide();
+        $('#general_remarks_term2_final').hide();
+        $('#general_remarks_term3_mid').hide();
+        $('#general_remarks_term3_final').hide();
+        $('#general_remarks_mid_final_term1').hide();
+        $('#general_remarks_mid_final_term2').hide();
+        $('#general_remarks_mid_final_term3').hide();
+        
     });
 
     $('#obs_record').on('click', function() {
@@ -3631,6 +4084,66 @@
 
     $('#btn_psychology').on('click', function() {
         $('#psychology_record').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
+
+
+    $('#btn_general_remarks').on('click', function() {
+        $('#general_remarks_list').show();
+        $('#assess_list').hide();
+    });
+
+    $('#btn_general_remarks_term1').on('click', function() {
+        $('#general_remarks_mid_final_term1').show();
+        $('#general_remarks_mid_final_term2').hide();
+        $('#general_remarks_mid_final_term3').hide();
+        $('#assess_list').hide();
+    });
+
+    $('#btn_general_remarks_term2').on('click', function() {
+        $('#general_remarks_mid_final_term2').show();
+        $('#general_remarks_mid_final_term1').hide();
+        $('#general_remarks_mid_final_term3').hide();
+        $('#assess_list').hide();
+    });
+    $('#btn_general_remarks_term3').on('click', function() {
+        $('#general_remarks_mid_final_term3').show();
+        $('#general_remarks_mid_final_term1').hide();
+        $('#general_remarks_mid_final_term2').hide();
+        $('#assess_list').hide();
+    });
+
+    $('#btn_general_remarks_term1_mid').on('click', function() {
+        $('#general_remarks_term1_mid').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
+
+    $('#btn_general_remarks_term1_final').on('click', function() {
+        $('#general_remarks_term1_final').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
+    $('#btn_general_remarks_term2_mid').on('click', function() {
+        $('#general_remarks_term2_mid').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
+
+    $('#btn_general_remarks_term2_final').on('click', function() {
+        $('#general_remarks_term2_final').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
+    $('#btn_general_remarks_term3_mid').on('click', function() {
+        $('#general_remarks_term3_mid').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
+
+    $('#btn_general_remarks_term3_final').on('click', function() {
+        $('#general_remarks_term3_final').show();
         $('#main-container').hide();
         $('#container-2').hide();
     });

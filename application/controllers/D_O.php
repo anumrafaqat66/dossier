@@ -1,6 +1,8 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
 use Dompdf\Dompdf;
 use Dompdf\Options;
+
 class D_O extends CI_Controller
 {
     public function __construct()
@@ -344,10 +346,10 @@ class D_O extends CI_Controller
 
             if (isset($postData['page'])) {
                 $page = $postData['page'];
-            } else if(isset($postData['page_punish'])) {
+            } else if (isset($postData['page_punish'])) {
                 $page = $postData['page_punish'];
             }
-            
+
 
             if ($page == 'daily_module') {
                 $id = $postData['punish_id'];
@@ -384,9 +386,9 @@ class D_O extends CI_Controller
                 ];
             }
 
-            
+
             $cond  = ['id' => $id];
-            
+
             $this->db->where($cond);
             $update = $this->db->update('punishment_records', $data_update);
 
@@ -632,15 +634,15 @@ class D_O extends CI_Controller
     {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
-            
-            $id = $postData['id']; 
+
+            $id = $postData['id'];
             $rank = $postData['rank'];
             $officer_name = $postData['officer_name'];
             $start_date = $postData['date_from'];
             $end_date = $postData['date_from'];
 
             $insert_array = array(
-                'p_id' => $id, 
+                'p_id' => $id,
                 'do_id' => $this->session->userdata('user_id'),
                 'rank' => $rank,
                 'officer_name' => $officer_name,
@@ -804,7 +806,7 @@ class D_O extends CI_Controller
     public function view_dossier_folder()
     {
         if ($this->session->has_userdata('user_id')) {
-            
+
             // $data['club_data'] = $this->db->get('cadet_club')->result_array();
             $data['pn_data'] = $this->db->where('divison_name',  'XYZ')->get('pn_form1s')->row_array();
 
@@ -1296,8 +1298,8 @@ class D_O extends CI_Controller
             $this->db->from('punishment_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('f.oc_no = pr.oc_no');
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-I');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-I');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $data['pn_punish_data'] = $this->db->get()->result_array();
 
@@ -1305,8 +1307,8 @@ class D_O extends CI_Controller
             $this->db->from('punishment_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('f.oc_no = pr.oc_no');
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-II');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-II');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $data['pn_punish_data_term2'] = $this->db->get()->result_array();
 
@@ -1314,8 +1316,8 @@ class D_O extends CI_Controller
             $this->db->from('punishment_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('f.oc_no = pr.oc_no');
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-III');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-III');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $data['pn_punish_data_term3'] = $this->db->get()->result_array();
 
@@ -1323,8 +1325,8 @@ class D_O extends CI_Controller
             $this->db->from('observation_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-I');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-I');
             $this->db->where('pr.status', 'Approved');
             $data['pn_obs_data_term1'] = $this->db->get()->result_array();
 
@@ -1332,8 +1334,8 @@ class D_O extends CI_Controller
             $this->db->from('observation_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-II');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-II');
             $this->db->where('pr.status', 'Approved');
             $data['pn_obs_data_term2'] = $this->db->get()->result_array();
 
@@ -1341,8 +1343,8 @@ class D_O extends CI_Controller
             $this->db->from('observation_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-III');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-III');
             $this->db->where('pr.status', 'Approved');
             $data['pn_obs_data_term3'] = $this->db->get()->result_array();
 
@@ -1350,28 +1352,28 @@ class D_O extends CI_Controller
             $this->db->from('warning_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('f.oc_no', $oc_no);
             $data['pn_warning_data'] = $this->db->get()->result_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('inspection_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('f.oc_no', $oc_no);
             $data['pn_inspection_data'] = $this->db->get()->result_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('medical_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('f.oc_no', $oc_no);
             $data['pn_medical_data'] = $this->db->get()->result_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-I');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-I');
             $data['pn_physical_tests_data'] = $this->db->get()->result_array();
 
             //Term-P
@@ -1379,24 +1381,24 @@ class D_O extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-P');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-P');
             $data['pn_physical_tests_data_tp'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-P');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-P');
             $data['pn_pet1_data_tp'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-P');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-P');
             $data['pn_pet2_data_tp'] = $this->db->get()->row_array();
 
             //Term-I
@@ -1404,49 +1406,49 @@ class D_O extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-I');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-I');
             $data['pn_physical_tests_data_t1'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-I');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-I');
             $data['pn_pet1_data_t1'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-I');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-I');
             $data['pn_pet2_data_t1'] = $this->db->get()->row_array();
-            
+
             //term-II
             $this->db->select('pr.*, f.*');
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-II');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-II');
             $data['pn_physical_tests_data_t2'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-II');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-II');
             $data['pn_pet1_data_t2'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-II');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-II');
             $data['pn_pet2_data_t2'] = $this->db->get()->row_array();
 
             //Term-III
@@ -1454,24 +1456,24 @@ class D_O extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-III');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-III');
             $data['pn_physical_tests_data_t3'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-III');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-III');
             $data['pn_pet1_data_t3'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-III');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-III');
             $data['pn_pet2_data_t3'] = $this->db->get()->row_array();
 
             //OLQ
@@ -1479,57 +1481,113 @@ class D_O extends CI_Controller
             $this->db->from('officer_qualities pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-I');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-I');
             $data['pn_officer_qualities_data_t1'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('officer_qualities pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-II');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-II');
             $data['pn_officer_qualities_data_t2'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('officer_qualities pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-III');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-III');
             $data['pn_officer_qualities_data_t3'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('personal_datas pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('f.oc_no', $oc_no);
             $data['pn_personal_data'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('divisional_officer_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('f.oc_no', $oc_no);
             $data['pn_divisional_officer_data'] = $this->db->get()->result_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('cadets_autobiographies pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('f.oc_no', $oc_no);
             $data['pn_autobiography_data'] = $this->db->get()->result_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('psychologist_reports pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('f.oc_no', $oc_no);
             $data['pn_psychologist_data'] = $this->db->get()->result_array();
 
+            //General Remarks 
+            //Term 1
+            $this->db->select('pr.*, f.*');
+            $this->db->from('general_remarks pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.assessment', 'Mid Term Assessment');
+            $this->db->where('pr.term', 'Term-I');
+            $data['pn_general_remarks_term1_mid'] = $this->db->get()->result_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('general_remarks pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.assessment', 'Terminal Assessment');
+            $this->db->where('pr.term', 'Term-I');
+            $data['pn_general_remarks_term1_final'] = $this->db->get()->result_array();
+            //Term 2
+            $this->db->select('pr.*, f.*');
+            $this->db->from('general_remarks pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.assessment', 'Mid Term Assessment');
+            $this->db->where('pr.term', 'Term-II');
+            $data['pn_general_remarks_term2_mid'] = $this->db->get()->result_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('general_remarks pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.assessment', 'Terminal Assessment');
+            $this->db->where('pr.term', 'Term-II');
+            $data['pn_general_remarks_term2_final'] = $this->db->get()->result_array();
+            //Term 3
+            $this->db->select('pr.*, f.*');
+            $this->db->from('general_remarks pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.assessment', 'Mid Term Assessment');
+            $this->db->where('pr.term', 'Term-III');
+            $data['pn_general_remarks_term3_mid'] = $this->db->get()->result_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('general_remarks pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.assessment', 'Terminal Assessment');
+            $this->db->where('pr.term', 'Term-III');
+            $data['pn_general_remarks_term3_final'] = $this->db->get()->result_array();
+
             $data['oc_no_entered'] = $oc_no;
-            
-            if ($data['pn_data']!= null) {
+
+            if ($data['pn_data'] != null) {
                 $view_page = $this->load->view('do/view_dossier_folder', $data, TRUE);
                 echo $view_page;
                 json_encode($view_page);
@@ -1577,9 +1635,9 @@ class D_O extends CI_Controller
 
     public function upload($fieldname)
     {
-     
+
         $filesCount = count($_FILES['report']['name']);
-     
+
         for ($i = 0; $i < $filesCount; $i++) {
             $_FILES['file']['name']     = $_FILES['report']['name'][$i];
             $_FILES['file']['type']     = $_FILES['report']['type'][$i];
@@ -1593,8 +1651,8 @@ class D_O extends CI_Controller
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
             if (!$this->upload->do_upload('file')) {
-                $data = array('msg' => $this->upload->display_errors());                
-            } else { 
+                $data = array('msg' => $this->upload->display_errors());
+            } else {
                 $data = array('msg' => "success");
                 $data['upload_data'] = $this->upload->data();
                 $count[$i] = $data['upload_data']['file_name'];
@@ -1795,7 +1853,7 @@ class D_O extends CI_Controller
     public function view_PET_II()
     {
         if ($this->session->has_userdata('user_id')) {
-            $p_id = $_POST['id']; 
+            $p_id = $_POST['id'];
             $data['term_ii_details'] = $this->db->where('p_id', $p_id)->get('term_ii_details')->row_array();
             echo json_encode($data['term_ii_details']);
         }
@@ -1887,9 +1945,9 @@ class D_O extends CI_Controller
 
             $this->db->select('*');
             $this->db->from('punishment_records');
-            $this->db->where('oc_no',$oc_no);
-            $this->db->where('term',$term);
-            
+            $this->db->where('oc_no', $oc_no);
+            $this->db->where('term', $term);
+
             $data['punishment_records'] = $this->db->get()->result_array();
             // echo $term; exit;
             $data['term'] = $term;
@@ -1927,12 +1985,12 @@ class D_O extends CI_Controller
             $this->db->from('observation_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term',$term);
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', $term);
             $this->db->where('pr.status', 'Approved');
-            
+
             $data['observation_records'] = $this->db->get()->result_array();
-            
+
             $data['term'] = $term;
             $html = $this->load->view('do/observation_report', $data, TRUE); //$graph, TRUE);
 
@@ -1964,10 +2022,10 @@ class D_O extends CI_Controller
             $this->db->from('warning_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            
+            $this->db->where('f.oc_no', $oc_no);
+
             $data['warning_records'] = $this->db->get()->result_array();
-            
+
             $data['term'] = $term;
             $html = $this->load->view('do/warning_report', $data, TRUE); //$graph, TRUE);
 
@@ -2000,10 +2058,10 @@ class D_O extends CI_Controller
             $this->db->from('inspection_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            
+            $this->db->where('f.oc_no', $oc_no);
+
             $data['inspection_records'] = $this->db->get()->result_array();
-            
+
             $data['term'] = $term;
             $html = $this->load->view('do/inspection_report', $data, TRUE); //$graph, TRUE);
 
@@ -2036,8 +2094,8 @@ class D_O extends CI_Controller
             $this->db->from('medical_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('f.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            
+            $this->db->where('f.oc_no', $oc_no);
+
             $data['medical_records'] = $this->db->get()->result_array();
             $html = $this->load->view('do/medical_report', $data, TRUE); //$graph, TRUE);
 
@@ -2071,8 +2129,8 @@ class D_O extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('f.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            
+            $this->db->where('f.oc_no', $oc_no);
+
             $data['test_records'] = $this->db->get()->result_array();
             $html = $this->load->view('do/saluting_swimming_report', $data, TRUE); //$graph, TRUE);
 
@@ -2106,8 +2164,8 @@ class D_O extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-I');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-I');
             $data['test_records'] = $this->db->get()->result_array();
 
             //Term-P
@@ -2115,24 +2173,24 @@ class D_O extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-P');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-P');
             $data['pn_physical_tests_data_tp'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-P');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-P');
             $data['pn_pet1_data_tp'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-P');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-P');
             $data['pn_pet2_data_tp'] = $this->db->get()->row_array();
 
             //Term-I
@@ -2140,49 +2198,49 @@ class D_O extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-I');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-I');
             $data['pn_physical_tests_data_t1'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-I');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-I');
             $data['pn_pet1_data_t1'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-I');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-I');
             $data['pn_pet2_data_t1'] = $this->db->get()->row_array();
-            
+
             //term-II
             $this->db->select('pr.*, f.*');
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-II');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-II');
             $data['pn_physical_tests_data_t2'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-II');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-II');
             $data['pn_pet1_data_t2'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-II');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-II');
             $data['pn_pet2_data_t2'] = $this->db->get()->row_array();
 
             //Term-III
@@ -2190,26 +2248,26 @@ class D_O extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-III');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-III');
             $data['pn_physical_tests_data_t3'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-III');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-III');
             $data['pn_pet1_data_t3'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term','Term-III');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-III');
             $data['pn_pet2_data_t3'] = $this->db->get()->row_array();
-            
+
             $html = $this->load->view('do/physical_efficiency_report', $data, TRUE); //$graph, TRUE);
 
             $dompdf->loadHtml($html);
@@ -2242,11 +2300,11 @@ class D_O extends CI_Controller
             $this->db->from('officer_qualities pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
-            $this->db->where('pr.term',$term);
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', $term);
             $data['pn_officer_qualities_data'] = $this->db->get()->row_array();
             $data['term'] = $term;
-            
+
             $html = $this->load->view('do/officer_qualities_report', $data, TRUE); //$graph, TRUE);
 
             $dompdf->loadHtml($html);
@@ -2279,9 +2337,9 @@ class D_O extends CI_Controller
             $this->db->from('personal_datas pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('f.oc_no', $oc_no);
             $data['pn_personal_data'] = $this->db->get()->row_array();
-            
+
             $html = $this->load->view('do/personal_data_report', $data, TRUE); //$graph, TRUE);
 
             $dompdf->loadHtml($html);
@@ -2314,9 +2372,9 @@ class D_O extends CI_Controller
             $this->db->from('divisional_officer_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('f.oc_no', $oc_no);
             $data['pn_divisional_officer_data'] = $this->db->get()->result_array();
-            
+
             $html = $this->load->view('do/divisional_officer_record_report', $data, TRUE); //$graph, TRUE);
 
             $dompdf->loadHtml($html);
@@ -2348,9 +2406,9 @@ class D_O extends CI_Controller
             $this->db->from('divisional_officer_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('f.oc_no', $oc_no);
             $data['pn_divisional_officer_data'] = $this->db->get()->result_array();
-            
+
             $html = $this->load->view('do/autobiography_record_report', $data, TRUE); //$graph, TRUE);
 
             $dompdf->loadHtml($html);
@@ -2382,9 +2440,9 @@ class D_O extends CI_Controller
             $this->db->from('divisional_officer_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.oc_no',$oc_no);
+            $this->db->where('f.oc_no', $oc_no);
             $data['pn_divisional_officer_data'] = $this->db->get()->result_array();
-            
+
             $html = $this->load->view('do/psychology_record_report', $data, TRUE); //$graph, TRUE);
 
             $dompdf->loadHtml($html);
@@ -2401,38 +2459,91 @@ class D_O extends CI_Controller
         }
     }
 
-    public function view_result(){
+    public function general_remarks_report($oc_no = NULL, $term = NULL, $type = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+            $assess = '';
+            if($type == 'Mid'){
+                $assess = 'Mid Term Assessment';
+            } else {
+                $assess = 'Terminal Assessment';
+            }
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('general_remarks pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.assessment', $assess);
+            $this->db->where('pr.term', $term);
+            $data['pn_general_remarks'] = $this->db->get()->result_array();
+            $data['term'] = $term;
+            $data['type'] = $assess;
+
+            $html = $this->load->view('do/general_remarks_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            // $dompdf->set_paper('A4', 'landscape');
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'General Remarks Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
+    public function view_result()
+    {
         $this->load->view('DO/Results');
     }
-    public function view_training_report(){
+    public function view_training_report()
+    {
         $this->load->view('DO/Sea_Training_Report');
     }
-    public function view_general_remarks(){
+    public function view_general_remarks()
+    {
         $this->load->view('DO/add_general_remarks');
     }
-    public function view_progress_chart(){
+    public function view_progress_chart()
+    {
         $this->load->view('DO/add_progress_chart');
     }
-    public function view_distinction_records(){
+    public function view_distinction_records()
+    {
         $this->load->view('DO/add_distinction_records');
     }
-    public function view_seniority_records(){
+    public function view_seniority_records()
+    {
         $this->load->view('DO/add_seniority_records');
     }
-    public function view_record_div_officer(){
+    public function view_record_div_officer()
+    {
         $this->load->view('DO/add_divisonal_officer_record');
     }
 
-    public function save_psychologist_report(){
-              if ($this->input->post()) {
+    public function save_psychologist_report()
+    {
+        if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
             print_r($_FILES['psycologist_report']['size'][0]);
-             $file_size=$_FILES['psycologist_report']['size'][0]." kb";
+            $file_size = $_FILES['psycologist_report']['size'][0] . " kb";
             // echo $file_size;exit;
             $p_id = $postData['id'];
-             $upload1 = $this->upload_psychologist_report($_FILES['psycologist_report']);
-            
-            
+            $upload1 = $this->upload_psychologist_report($_FILES['psycologist_report']);
+
+
 
             if (count($upload1) > 1) {
                 $files = implode(',', $upload1);
@@ -2442,8 +2553,8 @@ class D_O extends CI_Controller
                 // $file_path=;
                 // $file_size=;
             }
-            $iparr = explode(".",$files); 
-              $file_type= $iparr[1];
+            $iparr = explode(".", $files);
+            $file_type = $iparr[1];
             //$term = $postData['term'];
             $insert_array = array(
                 //'oc_no' => $oc_no,
@@ -2454,7 +2565,7 @@ class D_O extends CI_Controller
                 'file_size' => $file_size,
                 'created_at' => date('Y-m-d H:i:s')
             );
-           // print_r($insert_array);exit;
+            // print_r($insert_array);exit;
             $insert = $this->db->insert('psychologist_reports', $insert_array);
         }
 
@@ -2467,9 +2578,10 @@ class D_O extends CI_Controller
         }
     }
 
-    public function upload_psychologist_report(){
-     $filesCount = count($_FILES['psycologist_report']['name']);
-     
+    public function upload_psychologist_report()
+    {
+        $filesCount = count($_FILES['psycologist_report']['name']);
+
         for ($i = 0; $i < $filesCount; $i++) {
             $_FILES['file']['name']     = $_FILES['psycologist_report']['name'][$i];
             $_FILES['file']['type']     = $_FILES['psycologist_report']['type'][$i];
@@ -2483,8 +2595,8 @@ class D_O extends CI_Controller
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
             if (!$this->upload->do_upload('file')) {
-                $data = array('msg' => $this->upload->display_errors());                
-            } else { 
+                $data = array('msg' => $this->upload->display_errors());
+            } else {
                 $data = array('msg' => "success");
                 $data['upload_data'] = $this->upload->data();
                 $count[$i] = $data['upload_data']['file_name'];
@@ -2492,16 +2604,17 @@ class D_O extends CI_Controller
         }
         return $count;
     }
- public function save_autobiography(){
-              if ($this->input->post()) {
+    public function save_autobiography()
+    {
+        if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
-           // print_r($_FILES['autobiography']['size'][0]);
-             $file_size=$_FILES['autobiography']['size'][0]." kb";
+            // print_r($_FILES['autobiography']['size'][0]);
+            $file_size = $_FILES['autobiography']['size'][0] . " kb";
             // echo $file_size;exit;
             $p_id = $postData['id'];
-             $upload1 = $this->upload_autobiograhy($_FILES['autobiography']);
-            
-            
+            $upload1 = $this->upload_autobiograhy($_FILES['autobiography']);
+
+
 
             if (count($upload1) > 1) {
                 $files = implode(',', $upload1);
@@ -2511,8 +2624,8 @@ class D_O extends CI_Controller
                 // $file_path=;
                 // $file_size=;
             }
-            $iparr = explode(".",$files); 
-              $file_type= $iparr[1];
+            $iparr = explode(".", $files);
+            $file_type = $iparr[1];
             //$term = $postData['term'];
             $insert_array = array(
                 //'oc_no' => $oc_no,
@@ -2523,7 +2636,7 @@ class D_O extends CI_Controller
                 'file_size' => $file_size,
                 'created_at' => date('Y-m-d H:i:s')
             );
-           // print_r($insert_array);exit;
+            // print_r($insert_array);exit;
             $insert = $this->db->insert('cadets_autobiographies', $insert_array);
         }
 
@@ -2536,9 +2649,10 @@ class D_O extends CI_Controller
         }
     }
 
-    public function upload_autobiograhy(){
-     $filesCount = count($_FILES['autobiography']['name']);
-     
+    public function upload_autobiograhy()
+    {
+        $filesCount = count($_FILES['autobiography']['name']);
+
         for ($i = 0; $i < $filesCount; $i++) {
             $_FILES['file']['name']     = $_FILES['autobiography']['name'][$i];
             $_FILES['file']['type']     = $_FILES['autobiography']['type'][$i];
@@ -2552,8 +2666,8 @@ class D_O extends CI_Controller
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
             if (!$this->upload->do_upload('file')) {
-                $data = array('msg' => $this->upload->display_errors());                
-            } else { 
+                $data = array('msg' => $this->upload->display_errors());
+            } else {
                 $data = array('msg' => "success");
                 $data['upload_data'] = $this->upload->data();
                 $count[$i] = $data['upload_data']['file_name'];
@@ -2562,25 +2676,26 @@ class D_O extends CI_Controller
         return $count;
     }
 
-    public function save_general_remarks(){
-           if ($this->input->post()) {
+    public function save_general_remarks()
+    {
+        if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
-            $asses_type=$postData['assess_type'];
-            $term=$postData['term'];
-            $remarks=$postData['remarks'];
+            $asses_type = $postData['assess_type'];
+            $term = $postData['term'];
+            $remarks = $postData['remarks'];
             $p_id = $postData['id'];
-            
+
             //$term = $postData['term'];
             $insert_array = array(
                 //'oc_no' => $oc_no,
                 'p_id' => $p_id,
                 'do_id' => $this->session->userdata('user_id'),
                 'assessment' => $asses_type,
-                'term'=>$term,
+                'term' => $term,
                 'remarks' => $remarks,
                 'created_at' => date('Y-m-d H:i:s')
             );
-           // print_r($insert_array);exit;
+            // print_r($insert_array);exit;
             $insert = $this->db->insert('general_remarks', $insert_array);
         }
 
@@ -2592,55 +2707,73 @@ class D_O extends CI_Controller
             redirect('D_O/view_general_remarks');
         }
     }
-    
-       public function save_cadet_progress(){
-           if ($this->input->post()) {
+
+    public function save_cadet_progress()
+    {
+        if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
-            $term=$postData['term'];
-            $academic=$postData['academic'];
-            $olqs=$postData['olqs'];
-            $aggregate=$postData['aggregate'];
+            $term = $postData['term'];
+
+            $academic_t1 = $postData['academic_t1'];
+            $olqs_t1 = $postData['olqs_t1'];
+            $aggregate_t1 = $postData['aggregate_t1'];
+
+            $academic_t2 = $postData['academic_t2'];
+            $olqs_t2 = $postData['olqs_t2'];
+            $aggregate_t2 = $postData['aggregate_t2'];
+
+            $academic_t3 = $postData['academic_t3'];
+            $olqs_t3 = $postData['olqs_t3'];
+            $aggregate_t3 = $postData['aggregate_t3'];
+
             $p_id = $postData['id'];
-            
-            //$term = $postData['term'];
-            if($term == "Term-I"){
-                 $insert_array = array(
-                //'oc_no' => $oc_no,
-                'p_id' => $p_id,
-                'do_id' => $this->session->userdata('user_id'),
-                'term1_academics' => $academic,
-                'term1_olqs'=>$olqs,
-                'term1_aggregate' => $aggregate,
-                'created_at' => date('Y-m-d H:i:s')
-            );
-              
-            }else if($term == "Term-II"){
-                $insert_array = array(
-                //'oc_no' => $oc_no,
-                'p_id' => $p_id,
-                'do_id' => $this->session->userdata('user_id'),
-                'term2_academics' => $academic,
-                'term2_olqs'=>$olqs,
-                'term2_aggregate' => $aggregate,
-                'created_at' => date('Y-m-d H:i:s')
-            );
-                
-            }else if($term == "Term-III"){
-                 $insert_array = array(
-                //'oc_no' => $oc_no,
-                'p_id' => $p_id,
-                'do_id' => $this->session->userdata('user_id'),
-                'term3_academics' => $academic,
-                'term3_olqs'=>$olqs,
-                'term3_aggregate' => $aggregate,
-                'created_at' => date('Y-m-d H:i:s')
-            );
-                 
+
+            $count = $this->db->select('count(*) as row_count')->where('p_id', $p_id)->get('progress_charts')->row_array();
+
+            if ($count['row_count'] > 0) {
+                $action = 'Update';
+            } else {
+                $action = 'Insert';
             }
-             $insert = $this->db->insert('progress_charts', $insert_array);       
+
+            if ($action == 'Insert') {
+                $insert_array = array(
+                    'p_id' => $p_id,
+                    'do_id' => $this->session->userdata('user_id'),
+                    'term1_academics' => $academic_t1,
+                    'term1_olqs' => $olqs_t1,
+                    'term1_aggregate' => $aggregate_t1,
+                    'term2_academics' => $academic_t2,
+                    'term2_olqs' => $olqs_t2,
+                    'term2_aggregate' => $aggregate_t2,
+                    'term3_academics' => $academic_t3,
+                    'term3_olqs' => $olqs_t3,
+                    'term3_aggregate' => $aggregate_t3,
+                    'created_at' => date('Y-m-d H:i:s')
+                );
+                $insert = $this->db->insert('progress_charts', $insert_array);
+            } elseif ($action == 'Update') {
+                $update_array = array(
+                    'do_id' => $this->session->userdata('user_id'),
+                    'term1_academics' => $academic_t1,
+                    'term1_olqs' => $olqs_t1,
+                    'term1_aggregate' => $aggregate_t1,
+                    'term2_academics' => $academic_t2,
+                    'term2_olqs' => $olqs_t2,
+                    'term2_aggregate' => $aggregate_t2,
+                    'term3_academics' => $academic_t3,
+                    'term3_olqs' => $olqs_t3,
+                    'term3_aggregate' => $aggregate_t3,
+                    'created_at' => date('Y-m-d H:i:s')
+                );
+
+                $cond  = ['p_id' => $p_id];
+                $this->db->where($cond);
+                $update = $this->db->update('progress_charts', $update_array);
+            }
         }
 
-        if (!empty($insert)) {
+        if (!empty($insert) || !empty($update)) {
             $this->session->set_flashdata('success', 'Data Submitted successfully');
             redirect('D_O/view_progress_chart');
         } else {
@@ -2649,37 +2782,160 @@ class D_O extends CI_Controller
         }
     }
 
-    
-       public function save_distinction_records(){
-           if ($this->input->post()) {
+    public function save_cadet_seniority_record()
+    {
+        if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
-            $academic=$postData['academic'];
-            $sports=$postData['sports'];
-            $extra_activities=$postData['extra_activites'];
+            $term = $postData['term'];
             $p_id = $postData['id'];
-            
+
+            $marks_t1 = $postData['marks_t1'];
+            $aggregate_t1 = $postData['aggregate_t1'];
+            $relegate_t1 = $postData['relegate_t1'];
+            $failed_subjects_t1 = $postData['failed_subjects_t1'];
+            $seniority_gain_loss_t1 = $postData['seniority_gain_loss_t1'];
+
+            $marks_t2 = $postData['marks_t2'];
+            $aggregate_t2 = $postData['aggregate_t2'];
+            $relegate_t2 = $postData['relegate_t2'];
+            $failed_subjects_t2 = $postData['failed_subjects_t2'];
+            $seniority_gain_loss_t2 = $postData['seniority_gain_loss_t2'];
+
+            $marks_t3 = $postData['marks_t3'];
+            $aggregate_t3 = $postData['aggregate_t3'];
+            $relegate_t3 = $postData['relegate_t3'];
+            $failed_subjects_t3 = $postData['failed_subjects_t3'];
+            $seniority_gain_loss_t3 = $postData['seniority_gain_loss_t3'];
+
+            $net_percentage = $postData['net_percentage'];
+            $seniority_gained = $postData['seniority_gained'];
+            $seniority_lost = $postData['seniority_lost'];
+            $net_seniority = $postData['net_seniority'];
+
+            $count = $this->db->select('count(*) as row_count')->where('p_id', $p_id)->get('seniority_records')->row_array();
+
+            if ($count['row_count'] > 0) {
+                $action = 'Update';
+            } else {
+                $action = 'Insert';
+            }
+
+            if ($action == 'Insert') {
+                $insert_array = array(
+                    'p_id' => $p_id,
+                    'term1_marks' => $marks_t1,
+                    'term1_percentage' => $aggregate_t1,
+                    'term1_relegated' => $relegate_t1,
+                    'term1_subjects_failed'  => $failed_subjects_t1,
+                    'term1_seniority' => $seniority_gain_loss_t1,
+                    'term2_marks' => $marks_t2,
+                    'term2_percentage' => $aggregate_t2,
+                    'term2_relegated' => $relegate_t2,
+                    'term2_subjects_failed' => $failed_subjects_t2,
+                    'term2_seniority' => $seniority_gain_loss_t2,
+                    'term3_marks' => $marks_t3,
+                    'term3_percentage' => $aggregate_t3,
+                    'term3_relegated' => $relegate_t3,
+                    'term3_subjects_failed' => $failed_subjects_t3,
+                    'term3_seniority' => $seniority_gain_loss_t3,
+                    'net_percentage' => $net_percentage,
+                    'seniority_gained' => $seniority_gained,
+                    'seniority_lost' => $seniority_lost,
+                    'net_seniority' => $net_seniority,
+                    'phase' => 'Phase1',
+                    'do_id' => $this->session->userdata('user_id'),
+                    'created_at' => date('Y-m-d H:i:s')
+                );
+                $insert = $this->db->insert('seniority_records', $insert_array);
+            } elseif ($action == 'Update') {
+                $update_array = array(
+                    'do_id' => $this->session->userdata('user_id'),
+                    'term1_marks' => $marks_t1,
+                    'term1_percentage' => $aggregate_t1,
+                    'term1_relegated' => $relegate_t1,
+                    'term1_subjects_failed'  => $failed_subjects_t1,
+                    'term1_seniority' => $seniority_gain_loss_t1,
+                    'term2_marks' => $marks_t2,
+                    'term2_percentage' => $aggregate_t2,
+                    'term2_relegated' => $relegate_t2,
+                    'term2_subjects_failed' => $failed_subjects_t2,
+                    'term2_seniority' => $seniority_gain_loss_t2,
+                    'term3_marks' => $marks_t3,
+                    'term3_percentage' => $aggregate_t3,
+                    'term3_relegated' => $relegate_t3,
+                    'term3_subjects_failed' => $failed_subjects_t3,
+                    'term3_seniority' => $seniority_gain_loss_t3,
+                    'net_percentage' => $net_percentage,
+                    'seniority_gained' => $seniority_gained,
+                    'seniority_lost' => $seniority_lost,
+                    'net_seniority' => $net_seniority,
+                    'phase' => 'Phase1',
+                    'do_id' => $this->session->userdata('user_id'),
+                    'updated_at' => date('Y-m-d H:i:s')
+                );
+
+                $cond  = ['p_id' => $p_id];
+                $this->db->where($cond);
+                $update = $this->db->update('seniority_records', $update_array);
+            }
+        }
+
+        if (!empty($insert) || !empty($update)) {
+            $this->session->set_flashdata('success', 'Data Submitted successfully');
+            redirect('D_O/view_progress_chart');
+        } else {
+            $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+            redirect('D_O/view_progress_chart');
+        }
+    }
+
+    public function save_distinction_records()
+    {
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+            $academic = $postData['academic'];
+            $sports = $postData['sports'];
+            $extra_activities = $postData['extra_activites'];
+            $p_id = $postData['id'];
+
             //$term = $postData['term'];
             $insert_array = array(
                 //'oc_no' => $oc_no,
                 'p_id' => $p_id,
                 'do_id' => $this->session->userdata('user_id'),
                 'academic' => $academic,
-                'sports'=>$sports,
+                'sports' => $sports,
                 'extra_curricular_activities' => $extra_activities,
                 'created_at' => date('Y-m-d H:i:s')
             );
-           // print_r($insert_array);exit;
+            // print_r($insert_array);exit;
             $insert = $this->db->insert('distinctions_records', $insert_array);
         }
 
         if (!empty($insert)) {
             $this->session->set_flashdata('success', 'Data Submitted successfully');
-            redirect('D_O/view_distinction_records');
+            redirect('D_O/add_seniority_records');
         } else {
             $this->session->set_flashdata('failure', 'Something went wrong, try again.');
-            redirect('D_O/view_distinction_records');
+            redirect('D_O/add_seniority_records');
         }
     }
-    
 
+    public function get_progress_chart_values()
+    {
+        if ($this->input->post()) {
+            $p_id = $_POST['p_id'];
+            $query = $this->db->where('p_id', $p_id)->get('progress_charts')->row_array();
+            echo json_encode($query);
+        }
+    }
+
+    public function get_seniority_values()
+    {
+        if ($this->input->post()) {
+            $p_id = $_POST['p_id'];
+            $query = $this->db->where('p_id', $p_id)->get('seniority_records')->row_array();
+            echo json_encode($query);
+        }
+    }
 }
