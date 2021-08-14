@@ -298,10 +298,10 @@
                                         <a href="#" style="color:black" id="btn_progress_chart">
                                             <li class="list-group-item bg-custom3 custom_list">PROGRESS CHART</li>
                                         </a>
-                                        <a href="#" style="color:black">
+                                        <a href="#" style="color:black" id="btn_distinction_achieved">
                                             <li class="list-group-item bg-custom3 custom_list">RECORD OF DISTINCTIONS ACHIEVED</li>
                                         </a>
-                                        <a href="#" style="color:black">
+                                        <a href="#" style="color:black" id="btn_seniority_record">
                                             <li class="list-group-item bg-custom3 custom_list">RECORD OF SENIORITY</li>
                                         </a>
                                         <a href="#" style="color:black">
@@ -3781,7 +3781,6 @@
 
     </div>
 
-
     <div class="card-body bg-custom3" style="display:none" id="progress_chart_record">
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
@@ -3853,6 +3852,194 @@
             <div class="form-group row justify-content-center my-2">
                 <div class="col-sm-4">
                     <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_general_remarks_term3_final">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="card-body bg-custom3" style="display:none" id="distinction_achieved_record">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/distinction_achieved_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>RECORD OF DISTINCTIONS ACHIEVED</strong></h4>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style=" padding:20px !important">
+                            <?php if (count($pn_distinctions_records) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="" style="width:30%">ACADEMIC</th>
+                                            <td scope="" style="width:30%">SPORTS</th>
+                                            <td scope="" style="border-right:1px solid black;width:30%">EXTRA CURRICULAR ACTIVITIES</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
+                                        <?php $count = 0;
+                                        foreach ($pn_distinctions_records as $data) { ?>
+                                            <tr>
+                                                <td scope="" style="height:80px"><?= $data['academic']; ?></td>
+                                                <td scope=""><?= $data['sports']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;"><?= $data['extra_curricular_activities']; ?></td>
+                                            </tr>
+                                        <?php
+                                            $count++;
+                                        } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_distinction_achieved">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+
+    <div class="card-body bg-custom3" style="display:none" id="seniority_record">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/seniority_record_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>RECORD OF SENIORITY</strong></h4>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style=" padding:20px !important">
+                            <?php if (isset($pn_seniority_records)) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="" style="width:10%">TERM</th>
+                                            <td scope="" style="width:18%">MARKS OBTAINED</th>
+                                            <td scope="" style="width:18%">AGGREGATE PERCENTAGE</th>
+                                            <td scope="" style="width:18%">RELEGATED YES/NO</th>
+                                            <td scope="" style="width:18%">NO. OF SUBJECTS FAILED</th>
+                                            <td scope="" style="border-right:1px solid black;width:18%">SENIORITY GAINED/LOST</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
+                                        <tr>
+                                            <td scope="" style="height:40px">TERM-I</td>
+                                            <td scope="" ><?= $pn_seniority_records['term1_marks']; ?></td>
+                                            <td scope="" ><?= $pn_seniority_records['term1_percentage']; ?></td>
+                                            <td scope="" ><?= $pn_seniority_records['term1_relegated']; ?></td>
+                                            <td scope="" ><?= $pn_seniority_records['term1_subjects_failed']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;"><?= $pn_seniority_records['term1_seniority']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="height:40px">TERM-II</td>
+                                            <td scope="" ><?= $pn_seniority_records['term2_marks']; ?></td>
+                                            <td scope="" ><?= $pn_seniority_records['term2_percentage']; ?></td>
+                                            <td scope="" ><?= $pn_seniority_records['term2_relegated']; ?></td>
+                                            <td scope="" ><?= $pn_seniority_records['term2_subjects_failed']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;"><?= $pn_seniority_records['term2_seniority']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="height:40px">TERM-III</td>
+                                            <td scope="" ><?= $pn_seniority_records['term3_marks']; ?></td>
+                                            <td scope="" ><?= $pn_seniority_records['term3_percentage']; ?></td>
+                                            <td scope="" ><?= $pn_seniority_records['term3_relegated']; ?></td>
+                                            <td scope="" ><?= $pn_seniority_records['term3_subjects_failed']; ?></td>
+                                            <td scope="" style="border-right:1px solid black;"><?= $pn_seniority_records['term3_seniority']; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <br><br>
+                                <h6 style="padding:5px; display:flex"><strong>NET PERCENTAGE AT PNA:</strong><p style="width: 270px;border-bottom: 1px solid;margin-left:50px;text-align: center;"><?= $pn_seniority_records['net_percentage']; ?></p></h6>
+                                <h6 style="padding:5px; display:flex"><strong>SENIORITY GAINED:</strong><p style="width: 270px;border-bottom: 1px solid;margin-left:50px;text-align: center;"><?= $pn_seniority_records['seniority_gained']; ?></p></h6>
+                                <h6 style="padding:5px; display:flex"><strong>SENIORITY LOST:</strong><p style="width: 270px;border-bottom: 1px solid;margin-left:50px;text-align: center;"><?= $pn_seniority_records['seniority_lost']; ?></p></h6>
+                                <h6 style="padding:5px; display:flex"><strong>NET SENIORITY:</strong><p style="width: 270px;border-bottom: 1px solid;margin-left:50px;text-align: center;"><?= $pn_seniority_records['net_seniority']; ?></p></h6>
+
+                                <table style="color:black; width:100% !important;border: none;padding:5px;column-gap: 40px;">
+                                    <thead >
+                                        <tr style="column-gap: 40px;">
+                                            <td scope="" style="border-left:none;width:30%;height:180px;padding: 20px;"><div style="width:100%;border-bottom:1px black solid;height: 100%"></div></th>
+                                            <td scope="" style="border-left:none;width:30%;height:180px;padding: 20px;"><div style="width:100%;border-bottom:1px black solid;height: 100%"></div></th>
+                                            <td scope="" style="border-left:none;width:30%;height:180px;padding: 20px;"><div style="width:100%;border-bottom:1px black solid;height: 100%"></div></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="text-align:center;;padding:5px" >
+                                        <tr>
+                                            <td scope="" style="border-left:none">DIVISIONAL OFFICER</td>
+                                            <td scope="" style="border-left:none">CAPTAIN TRAINING</td>
+                                            <td scope="" style="border-left:none">COMMANDANT</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_seniority_record">
                         Back
                     </button>
                 </div>
@@ -4230,6 +4417,18 @@
 
     $('#btn_progress_chart').on('click', function() {
         $('#progress_chart_record').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
+
+    $('#btn_distinction_achieved').on('click', function() {
+        $('#distinction_achieved_record').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
+
+    $('#btn_seniority_record').on('click', function() {
+        $('#seniority_record').show();
         $('#main-container').hide();
         $('#container-2').hide();
     });
