@@ -339,6 +339,61 @@ class D_O extends CI_Controller
         }
     }
 
+    public function save_cadet_result($result_type = NULL)
+    {
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+
+            if ($_FILES['file']['name'][0] != NULL) {
+                $upload1 = $this->upload_result($_FILES['file']);
+                if (count($upload1) > 1) {
+                    $files = implode(',', $upload1);
+                } else {
+                    $files = $upload1[0];
+                }
+            } else {
+                $files = '';
+            }
+            $file_size = $_FILES['file']['size'] . " kb";
+            $file_name = $_FILES['file']['name'];
+            $file_type = $_FILES['file']['type'];
+            $file_path = $_FILES['file']['tmp_name'];
+
+            $id = $postData['id'];
+            $term = $postData['term'];
+
+            $insert_array = array(
+                'file_name' => $file_name,
+                'file_type' => $file_type,
+                'file_path' => $file_path,
+                'file_size' => $file_size,
+                'p_id' => $id,
+                'do_id' => $this->session->userdata('user_id'),
+                'phase' => 'Phase 1',
+                'term' => $term,
+                'doc_name' => $result_type,
+                'doc_type' => $result_type,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            );
+
+            $insert = $this->db->insert('academic_records', $insert_array);
+
+            if (!empty($insert)) {
+                if ($result_type == 'Result') {
+                    $this->session->set_flashdata('success', 'Result added successfully');
+                    redirect('D_O/view_result');
+                } else if ($result_type == 'SeaTraining') {
+                    $this->session->set_flashdata('success', 'Sea Training Report added successfully');
+                    redirect('D_O/view_training_report');
+                }
+            } else {
+                $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                redirect('D_O/view_result');
+            }
+        }
+    }
+
     public function update_punishment()
     {
         if ($this->input->post()) {
@@ -349,7 +404,6 @@ class D_O extends CI_Controller
             } else if (isset($postData['page_punish'])) {
                 $page = $postData['page_punish'];
             }
-
 
             if ($page == 'daily_module') {
                 $id = $postData['punish_id'];
@@ -395,32 +449,19 @@ class D_O extends CI_Controller
             if (!empty($update)) {
                 $this->session->set_flashdata('success', 'Punishment updated successfully');
 
-                // if (isset($postData['offense'])) {
                 if ($page == 'daily_module' || $page == 'update_punishment') {
                     redirect('D_O/view_punishment_list');
                 } elseif ($page == 'dossier') {
                     redirect('D_O/view_dossier');
                 }
-                // } else {
-                //     if ($page == 'daily_module') {
-                //         redirect('D_O/view_punishment_list');
-                //     } elseif ($page == 'dossier') {
-                //         redirect('D_O/view_dossier');
-                //     }
-                // }
-
             } else {
                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
 
-                // if (isset($postData['offense'])) {
                 if ($page == 'daily_module' || $page == 'update_punishment') {
                     redirect('D_O/view_punishment_list');
                 } elseif ($page == 'dossier') {
                     redirect('D_O/view_dossier');
                 }
-                // } else {
-                //     redirect('D_O/view_punishment_list');
-                // }
             }
         }
     }
@@ -1599,15 +1640,23 @@ class D_O extends CI_Controller
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_seniority_records'] = $this->db->get()->row_array();
 
-            $data['oc_no_entered'] = $oc_no;
+            $this->db->select('pr.*, f.*');
+            $this->db->from('branch_allocations pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no', $oc_no);
+            $data['pn_branch_allocations'] = $this->db->get()->row_array();
+
+            
 
             if ($data['pn_data'] != null) {
-                $view_page = $this->load->view('do/view_dossier_folder', $data, TRUE);
-                echo $view_page;
-                json_encode($view_page);
+                $data['oc_no_entered'] = $oc_no;
             } else {
-                echo '0';
+                $data['oc_no_entered'] = NULL;
             }
+            $view_page = $this->load->view('do/view_dossier_folder', $data, TRUE);
+            echo $view_page;
+            json_encode($view_page);
         }
     }
 
@@ -1677,10 +1726,7 @@ class D_O extends CI_Controller
 
     public function upload_warning($fieldname)
     {
-        //$data = NULL;
-        //echo $fieldname;exit;
         $filesCount = count($_FILES['file']['name']);
-        //print_r($_FILES['reg_cert']['name']);exit;
         for ($i = 0; $i < $filesCount; $i++) {
             $_FILES['file']['name']     = $_FILES['file']['name'][$i];
             $_FILES['file']['type']     = $_FILES['file']['type'][$i];
@@ -1689,23 +1735,45 @@ class D_O extends CI_Controller
             $_FILES['file']['size']     = $_FILES['file']['size'][$i];
 
             $config['upload_path'] = 'uploads/warning';
-            $config['allowed_types']        = 'gif|jpg|png|doc|xls|pdf|xlsx|docx|ppt|pptx';
-
+            $config['allowed_types']        = 'gif|jpg|png|doc|xls|pdf|xlsx|docx|ppt|pptx|txt';
 
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
-            //$data['upload_data'] = '';
             if (!$this->upload->do_upload('file')) {
                 $data = array('msg' => $this->upload->display_errors());
-                //echo "here";exit;
             } else {
-                //echo $filesCount;exit;
                 $data = array('msg' => "success");
                 $data['upload_data'] = $this->upload->data();
                 $count[$i] = $data['upload_data']['file_name'];
             }
-        } //end of for
-        //print_r($count);exit();
+        }
+        return $count;
+    }
+
+    public function upload_result($fieldname)
+    {
+        $filesCount = count($_FILES['file']['name']);
+        for ($i = 0; $i < $filesCount; $i++) {
+            $_FILES['file']['name']     = $_FILES['file']['name'][$i];
+            $_FILES['file']['type']     = $_FILES['file']['type'][$i];
+            $_FILES['file']['tmp_name'] = $_FILES['file']['tmp_name'][$i];
+            $_FILES['file']['error']    = $_FILES['file']['error'][$i];
+            $_FILES['file']['size']     = $_FILES['file']['size'][$i];
+
+            $config['upload_path'] = 'uploads/documents';
+            $config['allowed_types']  = 'gif|jpg|png|doc|xls|pdf|xlsx|docx|ppt|pptx|txt';
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+            if (!$this->upload->do_upload('file')) {
+                $data = array('msg' => $this->upload->display_errors());
+            } else {
+                $data = array('msg' => "success");
+                $data['upload_data'] = $this->upload->data();
+                $count[$i] = $data['upload_data']['file_name'];
+            }
+        }
         return $count;
     }
 
@@ -2485,7 +2553,7 @@ class D_O extends CI_Controller
             $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
             $id = $this->session->userdata('user_id');
             $assess = '';
-            if($type == 'Mid'){
+            if ($type == 'Mid') {
                 $assess = 'Mid Term Assessment';
             } else {
                 $assess = 'Terminal Assessment';
@@ -2529,7 +2597,7 @@ class D_O extends CI_Controller
             $dompdf = new Dompdf($options);
             $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
             $id = $this->session->userdata('user_id');
-            
+
 
             $this->db->select('pr.*, f.*');
             $this->db->from('progress_charts pr');
@@ -2537,7 +2605,7 @@ class D_O extends CI_Controller
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_progress_chart'] = $this->db->get()->row_array();
-            
+
             $html = $this->load->view('do/progress_chart_report', $data, TRUE); //$graph, TRUE);
 
             $dompdf->loadHtml($html);
@@ -2565,7 +2633,7 @@ class D_O extends CI_Controller
             $dompdf = new Dompdf($options);
             $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
             $id = $this->session->userdata('user_id');
-            
+
 
             $this->db->select('pr.*, f.*');
             $this->db->from('distinctions_records pr');
@@ -2573,7 +2641,7 @@ class D_O extends CI_Controller
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_distinctions_records'] = $this->db->get()->result_array();
-            
+
             $html = $this->load->view('do/distinction_achieved_report', $data, TRUE); //$graph, TRUE);
 
             $dompdf->loadHtml($html);
@@ -2601,7 +2669,7 @@ class D_O extends CI_Controller
             $dompdf = new Dompdf($options);
             $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
             $id = $this->session->userdata('user_id');
-            
+
 
             $this->db->select('pr.*, f.*');
             $this->db->from('seniority_records pr');
@@ -2609,7 +2677,7 @@ class D_O extends CI_Controller
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_seniority_records'] = $this->db->get()->row_array();
-            
+
             $html = $this->load->view('do/seniority_record_report', $data, TRUE); //$graph, TRUE);
 
             $dompdf->loadHtml($html);
@@ -2621,6 +2689,40 @@ class D_O extends CI_Controller
             file_put_contents($doc_name, $output);
             redirect($doc_name);
             //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
+    public function branch_allocation_report($oc_no = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('branch_allocations pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no', $oc_no);
+            $data['pn_branch_allocations'] = $this->db->get()->row_array();
+
+            $html = $this->load->view('do/branch_allocation_report', $data, TRUE);
+
+            $dompdf->loadHtml($html);
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Branch Allocation Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
         } else {
             $this->load->view('userpanel/login');
         }
@@ -2659,7 +2761,7 @@ class D_O extends CI_Controller
     {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
-            print_r($_FILES['psycologist_report']['size'][0]);
+            // print_r($_FILES['psycologist_report']['size'][0]);
             $file_size = $_FILES['psycologist_report']['size'][0] . " kb";
             // echo $file_size;exit;
             $p_id = $postData['id'];

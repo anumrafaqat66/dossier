@@ -149,8 +149,14 @@
                                             </a>
                                         </ul>
                                     </div>
-
                                 </div>
+
+                                <div class="col-lg-4">
+                                    <button type="button" class="btn btn-primary btn-user btn-block my-3" id="back_btn_main" style="">
+                                        BACK
+                                    </button>
+                                </div>
+
                             <?php } ?>
 
                             <div id="gen_list" class="row" style="display:none ;">
@@ -304,7 +310,7 @@
                                         <a href="#" style="color:black" id="btn_seniority_record">
                                             <li class="list-group-item bg-custom3 custom_list">RECORD OF SENIORITY</li>
                                         </a>
-                                        <a href="#" style="color:black">
+                                        <a href="#" style="color:black" id="btn_branch_allocation">
                                             <li class="list-group-item bg-custom3 custom_list">ALLOCAITON OF BRANCH/SPECIALISATION </li>
                                         </a>
 
@@ -3851,7 +3857,7 @@
         <form class="user" role="form" method="" id="" action="">
             <div class="form-group row justify-content-center my-2">
                 <div class="col-sm-4">
-                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_general_remarks_term3_final">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_progress_chart">
                         Back
                     </button>
                 </div>
@@ -3956,10 +3962,10 @@
                                     <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
                                         <tr>
                                             <td scope="" style="height:40px">TERM-I</td>
-                                            <td scope="" ><?= $pn_seniority_records['term1_marks']; ?></td>
-                                            <td scope="" ><?= $pn_seniority_records['term1_percentage']; ?></td>
-                                            <td scope="" ><?= $pn_seniority_records['term1_relegated']; ?></td>
-                                            <td scope="" ><?= $pn_seniority_records['term1_subjects_failed']; ?></td>
+                                            <td scope=""><?= $pn_seniority_records['term1_marks']; ?></td>
+                                            <td scope=""><?= $pn_seniority_records['term1_percentage']; ?></td>
+                                            <td scope=""><?= $pn_seniority_records['term1_relegated']; ?></td>
+                                            <td scope=""><?= $pn_seniority_records['term1_subjects_failed']; ?></td>
                                             <td scope="" style="border-right:1px solid black;"><?= $pn_seniority_records['term1_seniority']; ?></td>
                                         </tr>
                                         <tr>
@@ -3972,10 +3978,10 @@
                                         </tr>
                                         <tr>
                                             <td scope="" style="height:40px">TERM-II</td>
-                                            <td scope="" ><?= $pn_seniority_records['term2_marks']; ?></td>
-                                            <td scope="" ><?= $pn_seniority_records['term2_percentage']; ?></td>
-                                            <td scope="" ><?= $pn_seniority_records['term2_relegated']; ?></td>
-                                            <td scope="" ><?= $pn_seniority_records['term2_subjects_failed']; ?></td>
+                                            <td scope=""><?= $pn_seniority_records['term2_marks']; ?></td>
+                                            <td scope=""><?= $pn_seniority_records['term2_percentage']; ?></td>
+                                            <td scope=""><?= $pn_seniority_records['term2_relegated']; ?></td>
+                                            <td scope=""><?= $pn_seniority_records['term2_subjects_failed']; ?></td>
                                             <td scope="" style="border-right:1px solid black;"><?= $pn_seniority_records['term2_seniority']; ?></td>
                                         </tr>
                                         <tr>
@@ -3988,10 +3994,10 @@
                                         </tr>
                                         <tr>
                                             <td scope="" style="height:40px">TERM-III</td>
-                                            <td scope="" ><?= $pn_seniority_records['term3_marks']; ?></td>
-                                            <td scope="" ><?= $pn_seniority_records['term3_percentage']; ?></td>
-                                            <td scope="" ><?= $pn_seniority_records['term3_relegated']; ?></td>
-                                            <td scope="" ><?= $pn_seniority_records['term3_subjects_failed']; ?></td>
+                                            <td scope=""><?= $pn_seniority_records['term3_marks']; ?></td>
+                                            <td scope=""><?= $pn_seniority_records['term3_percentage']; ?></td>
+                                            <td scope=""><?= $pn_seniority_records['term3_relegated']; ?></td>
+                                            <td scope=""><?= $pn_seniority_records['term3_subjects_failed']; ?></td>
                                             <td scope="" style="border-right:1px solid black;"><?= $pn_seniority_records['term3_seniority']; ?></td>
                                         </tr>
                                         <tr>
@@ -4006,20 +4012,34 @@
                                 </table>
 
                                 <br><br>
-                                <h6 style="padding:5px; display:flex"><strong>NET PERCENTAGE AT PNA:</strong><p style="width: 270px;border-bottom: 1px solid;margin-left:50px;text-align: center;"><?= $pn_seniority_records['net_percentage']; ?></p></h6>
-                                <h6 style="padding:5px; display:flex"><strong>SENIORITY GAINED:</strong><p style="width: 270px;border-bottom: 1px solid;margin-left:50px;text-align: center;"><?= $pn_seniority_records['seniority_gained']; ?></p></h6>
-                                <h6 style="padding:5px; display:flex"><strong>SENIORITY LOST:</strong><p style="width: 270px;border-bottom: 1px solid;margin-left:50px;text-align: center;"><?= $pn_seniority_records['seniority_lost']; ?></p></h6>
-                                <h6 style="padding:5px; display:flex"><strong>NET SENIORITY:</strong><p style="width: 270px;border-bottom: 1px solid;margin-left:50px;text-align: center;"><?= $pn_seniority_records['net_seniority']; ?></p></h6>
+                                <h6 style="padding:5px; display:flex"><strong>NET PERCENTAGE AT PNA:</strong>
+                                    <p style="width: 270px;border-bottom: 1px solid;margin-left:50px;text-align: center;"><?= $pn_seniority_records['net_percentage']; ?></p>
+                                </h6>
+                                <h6 style="padding:5px; display:flex"><strong>SENIORITY GAINED:</strong>
+                                    <p style="width: 270px;border-bottom: 1px solid;margin-left:50px;text-align: center;"><?= $pn_seniority_records['seniority_gained']; ?></p>
+                                </h6>
+                                <h6 style="padding:5px; display:flex"><strong>SENIORITY LOST:</strong>
+                                    <p style="width: 270px;border-bottom: 1px solid;margin-left:50px;text-align: center;"><?= $pn_seniority_records['seniority_lost']; ?></p>
+                                </h6>
+                                <h6 style="padding:5px; display:flex"><strong>NET SENIORITY:</strong>
+                                    <p style="width: 270px;border-bottom: 1px solid;margin-left:50px;text-align: center;"><?= $pn_seniority_records['net_seniority']; ?></p>
+                                </h6>
 
                                 <table style="color:black; width:100% !important;border: none;padding:5px;column-gap: 40px;">
-                                    <thead >
+                                    <thead>
                                         <tr style="column-gap: 40px;">
-                                            <td scope="" style="border-left:none;width:30%;height:180px;padding: 20px;"><div style="width:100%;border-bottom:1px black solid;height: 100%"></div></th>
-                                            <td scope="" style="border-left:none;width:30%;height:180px;padding: 20px;"><div style="width:100%;border-bottom:1px black solid;height: 100%"></div></th>
-                                            <td scope="" style="border-left:none;width:30%;height:180px;padding: 20px;"><div style="width:100%;border-bottom:1px black solid;height: 100%"></div></th>
+                                            <td scope="" style="border-left:none;width:30%;height:180px;padding: 20px;">
+                                                <div style="width:100%;border-bottom:1px black solid;height: 100%"></div>
+                                                </th>
+                                            <td scope="" style="border-left:none;width:30%;height:180px;padding: 20px;">
+                                                <div style="width:100%;border-bottom:1px black solid;height: 100%"></div>
+                                                </th>
+                                            <td scope="" style="border-left:none;width:30%;height:180px;padding: 20px;">
+                                                <div style="width:100%;border-bottom:1px black solid;height: 100%"></div>
+                                                </th>
                                         </tr>
                                     </thead>
-                                    <tbody id="table_rows_cont" style="text-align:center;;padding:5px" >
+                                    <tbody id="table_rows_cont" style="text-align:center;;padding:5px">
                                         <tr>
                                             <td scope="" style="border-left:none">DIVISIONAL OFFICER</td>
                                             <td scope="" style="border-left:none">CAPTAIN TRAINING</td>
@@ -4040,6 +4060,127 @@
             <div class="form-group row justify-content-center my-2">
                 <div class="col-sm-4">
                     <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_seniority_record">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="card-body bg-custom3" style="display:none" id="branch_allocation_record">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/branch_allocation_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>ALLOCATION OF BRANCH/SPECIALISATION</strong></h4>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style=" padding:20px !important">
+                            <?php if (isset($pn_branch_allocations)) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <tbody id="table_rows_cont" style="border:none; padding:5px;width:100% !important">
+                                        <tr style="border:none">
+                                            <td scope="" style="border:none;width:60%"><strong>OPTION OF CADET IN ORDER OF PREFERENCE</strong></td>
+                                            <td scope="" style="border:none;width:40%">
+
+                                                <table style="color:black; width:100% !important;border:none">
+
+                                                    <tbody id="table_rows_inner" style="border:0.5px solid black; height:100px;width:100% !important;padding:40px">
+                                                        <tr>
+                                                            <td scope="" style="width:20%">1.</td>
+                                                            <td scope="" style="width:80%"><?= $pn_branch_allocations['option1']; ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td scope="" style="border-bottom:0.5px solid black;"></td>
+                                                            <td scope="" style="border-bottom:0.5px solid black;"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td scope="" style="width:20%">2.</td>
+                                                            <td scope="" style="width:80%"><?= $pn_branch_allocations['option2']; ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td scope="" style="border-bottom:0.5px solid black;"></td>
+                                                            <td scope="" style="border-bottom:0.5px solid black;"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td scope="" style="width:20%">3.</td>
+                                                            <td scope="" style="width:80%"><?= $pn_branch_allocations['option3']; ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td scope="" style="border-bottom:0.5px solid black;border-left:none;border-right:none"></td>
+                                                            <td scope="" style="border-bottom:0.5px solid black;border-left:none;border-right:none"></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </td>
+                                        </tr>
+                                        <tr style="border:none;">
+                                            <td scope="" style="border:none;width:60%"></td>
+                                            <td scope="" style="border: none;width: 40%;height: 200px;text-align: center;font-weight: bold;">SIGN OF THE CADET</td>
+                                        </tr>
+                                        <tr style="border:none;">
+                                            <td scope="" style="border:none;width:60%"><strong>BRANCH/SPECIALISATION RECOMMENDED</strong></td>
+                                            <td scope="" style="border: none;width: 40%;">
+                                                <table style="color:black; width:100% !important;border:none">
+
+                                                    <tbody id="table_rows_inner2" style="border:0.5px solid black; height:50px;width:100% !important;padding:40px">
+                                                        <tr>
+                                                            <td scope="" style="width:100%"><?= $pn_branch_allocations['branch_recommended']; ?></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr style="border:none;">
+                                            <td scope="" style="border:none;width:60%"></td>
+                                            <td scope="" style="border: none;width: 40%;height: 200px;text-align: center;font-weight: bold;">SIGN OF PRESIDENT CATEGORISATION BOARD</td>
+                                        </tr>
+                                        <tr style="border:none;">
+                                            <td scope="" style="border:none;width:50%"><strong>BRANCH/SPECIALISATION ALLOCATED BY NHQ</strong></td>
+                                            <td scope="" style="border: none;width: 50%;">
+                                                <table style="color:black; width:100% !important;border:none">
+
+                                                    <tbody id="table_rows_inner2" style="border:0.5px solid black; height:50px;width:100% !important;padding:40px">
+                                                        <tr>
+                                                            <td scope="" style="width:100%"><?= $pn_branch_allocations['branch_allocated']; ?></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr style="border:none;">
+                                            <td scope="" style="border:none;width:60%"></td>
+                                            <td scope="" style="border: none;width: 40%;height: 400px;text-align: center;font-weight: bold;">
+                                                <p><strong>NAVAL HEADQUARTERS</strong></p>
+                                                <p><strong>LETTER NO…………………………</strong></p>
+                                                <p><strong>DATED………………………………</strong></p>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_branch_allocation">
                         Back
                     </button>
                 </div>
@@ -4120,6 +4261,7 @@
         $('#cadet_dossier').hide();
         $('#gen_list').show();
         $('#back_btn').show();
+        $('#back_btn_main').hide();
         $('#header_title').html('<h4>GENERAL</h4>');
     });
 
@@ -4128,6 +4270,7 @@
         $('#disp_list').show();
         $('#back_btn').show();
         $('#header_title').html('<h4>DISCIPLINE</h4>');
+        $('#back_btn_main').hide();
     });
 
     $('#warn').on('click', function() {
@@ -4135,6 +4278,7 @@
         $('#warn_list').show();
         $('#back_btn').show();
         $('#header_title').html('<h4>WARNING</h4>');
+        $('#back_btn_main').hide();
     });
 
     $('#phy').on('click', function() {
@@ -4142,6 +4286,7 @@
         $('#phy_list').show();
         $('#back_btn').show();
         $('#header_title').html('<h4>PHYSICAL EFFICIENCY</h4>');
+        $('#back_btn_main').hide();
     });
 
     $('#acad').on('click', function() {
@@ -4149,6 +4294,7 @@
         $('#acad_list').show();
         $('#back_btn').show();
         $('#header_title').html('<h4>ACADEMIC RECORDS</h4>');
+        $('#back_btn_main').hide();
     });
 
     $('#olq').on('click', function() {
@@ -4156,6 +4302,7 @@
         $('#olq_list').show();
         $('#back_btn').show();
         $('#header_title').html('<h4>OFFICER LIKE QUALITIES</h4>');
+        $('#back_btn_main').hide();
     });
 
     $('#assess').on('click', function() {
@@ -4163,6 +4310,7 @@
         $('#assess_list').show();
         $('#back_btn').show();
         $('#header_title').html('<h4>ASSESSMENT</h4>');
+        $('#back_btn_main').hide();
     });
 
     $('#back_btn').on('click', function() {
@@ -4177,6 +4325,7 @@
         $('#general_remarks_list').hide();
         $('#back_btn').hide();
         $('#header_title').html('<h4>CONTENTS</h4>');
+        $('#back_btn_main').show();
     });
 
     $('#btn_punish_term1').on('click', function() {
@@ -4240,7 +4389,7 @@
         $('#terms_list_obs').hide();
     });
 
-    $('#back_btn_obs_term1, #back_btn_obs_term2, #back_btn_obs_term3, #back_btn_warning, #back_btn_inspection, #back_btn_medical, #back_btn_saluting_swimming, #back_btn_physical_efficiency, #back_btn_olq_term1, #back_btn_olq_term2, #back_btn_olq_term3, #back_btn_personal_record, #back_btn_divisional_officer, #back_btn_autobiography, #back_btn_psychologhy, #back_btn_general_remarks_term1_mid, #back_btn_general_remarks_term1_final, #back_btn_general_remarks_term2_mid, #back_btn_general_remarks_term2_final, #back_btn_general_remarks_term3_mid, #back_btn_general_remarks_term3_final').on('click', function() {
+    $('#back_btn_obs_term1, #back_btn_obs_term2, #back_btn_obs_term3, #back_btn_warning, #back_btn_inspection, #back_btn_medical, #back_btn_saluting_swimming, #back_btn_physical_efficiency, #back_btn_olq_term1, #back_btn_olq_term2, #back_btn_olq_term3, #back_btn_personal_record, #back_btn_divisional_officer, #back_btn_autobiography, #back_btn_psychologhy, #back_btn_general_remarks_term1_mid, #back_btn_general_remarks_term1_final, #back_btn_general_remarks_term2_mid, #back_btn_general_remarks_term2_final, #back_btn_general_remarks_term3_mid, #back_btn_general_remarks_term3_final, #back_btn_distinction_achieved, #back_btn_progress_chart, #back_btn_seniority_record, #back_btn_branch_allocation').on('click', function() {
         $('#main-container').show();
         $('#obs_term1').hide();
         $('#obs_term2').hide();
@@ -4267,6 +4416,10 @@
         $('#general_remarks_mid_final_term1').hide();
         $('#general_remarks_mid_final_term2').hide();
         $('#general_remarks_mid_final_term3').hide();
+        $('#distinction_achieved_record').hide();
+        $('#progress_chart_record').hide();
+        $('#seniority_record').hide();
+        $('#branch_allocation_record').hide();
 
     });
 
@@ -4431,5 +4584,36 @@
         $('#seniority_record').show();
         $('#main-container').hide();
         $('#container-2').hide();
+    });
+
+    $('#btn_branch_allocation').on('click', function() {
+        $('#branch_allocation_record').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });    
+
+    $('#back_btn_main').on('click', function() {
+        var oc_no = '0';
+        $.ajax({
+                url: '<?= base_url(); ?>D_O/search_cadet_for_dossier_folder',
+                method: 'POST',
+                data: {
+                    'oc_no': oc_no
+                },
+                success: function(data) {
+                    if (data != '0') {
+                        var newDoc = document.open("text/html", "replace");
+                        newDoc.write(data);
+                        newDoc.close();
+                    } else {
+                        $('#no_data').show();
+                        $('#cadet_dossier').hide();
+                    }
+                },
+                async: true
+            });
+
+        // $('#main-container').show();
+        // $('#container-2').show();
     });
 </script>
