@@ -654,12 +654,9 @@ class D_O extends CI_Controller
                 'reasons' => $reason,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
-                //'status' => 'Pending'
-
             );
 
             $insert = $this->db->insert('warning_records', $insert_array);
-            //$last_id = $this->db->insert_id();
 
             if (!empty($insert)) {
                 $this->session->set_flashdata('success', 'Warning added successfully');
@@ -1570,6 +1567,13 @@ class D_O extends CI_Controller
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_psychologist_data'] = $this->db->get()->result_array();
 
+            $this->db->select('pr.*, f.*');
+            $this->db->from('warning_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no', $oc_no);
+            $data['pn_warning_records'] = $this->db->get()->result_array();
+
             //General Remarks 
             //Term 1
             $this->db->select('pr.*, f.*');
@@ -1647,8 +1651,6 @@ class D_O extends CI_Controller
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_branch_allocations'] = $this->db->get()->row_array();
 
-            
-
             if ($data['pn_data'] != null) {
                 $data['oc_no_entered'] = $oc_no;
             } else {
@@ -1662,7 +1664,6 @@ class D_O extends CI_Controller
 
     public function search_all_cadets_for_dossier()
     {
-        // echo $this->session->userdata('division');exit;
         if ($this->session->has_userdata('user_id')) {
             $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->result_array();
             if (count($data['pn_data']) > 0) {
@@ -1678,7 +1679,6 @@ class D_O extends CI_Controller
     public function search_punish_by_date()
     {
         if ($this->session->has_userdata('user_id')) {
-
             $date = $_POST['search_date'];
 
             $this->db->select('pr.*, f.*');
@@ -1698,7 +1698,6 @@ class D_O extends CI_Controller
 
     public function upload($fieldname)
     {
-
         $filesCount = count($_FILES['report']['name']);
 
         for ($i = 0; $i < $filesCount; $i++) {
@@ -2728,9 +2727,47 @@ class D_O extends CI_Controller
         }
     }
 
+    public function warning_record_insert_report($oc_no = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('branch_allocations pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.oc_no', $oc_no);
+            $data['pn_branch_allocations'] = $this->db->get()->row_array();
+
+            $html = $this->load->view('do/warning_insert_report',$data, TRUE);
+
+            $dompdf->loadHtml($html);
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Warning Attachment Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
     public function view_result()
     {
         $this->load->view('DO/Results');
+    }
+    public function view_warning_attachment()
+    {
+        $this->load->view('DO/add_warning_attachments');
     }
     public function view_training_report()
     {

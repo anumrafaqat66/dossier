@@ -129,6 +129,7 @@
                 <div id="collapse_warning" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<?php echo base_url(); ?>D_O/add_warning">Add Warning</a>
+                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>D_O/view_warning_attachment">Add Warning Attachment</a> -->
                         <!-- <a class="collapse-item" href="#">Record Attachments</a> -->
                     </div>
                 </div>
