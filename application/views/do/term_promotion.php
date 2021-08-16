@@ -387,7 +387,7 @@
                 if (len > 0) {
                     $('#term_selected').html(`<strong>List of Cadets of ${term}:</strong>`);
                     $("#list_of_cadets").html(`<h6 style="text-decoration:underline"><strong>Cadet Names</strong></h6>`);
-                    $("#cadets_oc_no").append(`<h6 style="text-decoration:underline"><strong> OC No</strong></h6>`);
+                    $("#cadets_oc_no").append(`<h6 style="text-decoration:underline"><strong>OC No</strong></h6>`);
                     $('#promote_all_btn').show();
                     for (var i = 0; i < len; i++) {
                         // alert(result[i]['name']);

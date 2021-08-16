@@ -1426,7 +1426,7 @@ CREATE TABLE `security_info` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `reg_data` timestamp NOT NULL DEFAULT current_timestamp(),
-  `acct_type` enum('do','joto','ct','co','exo','sqc','cao','smo','admin') NOT NULL,
+  `acct_type` enum('do','joto','ct','co','exo','sqc','cao','cao_sec','smo','admin') NOT NULL,
   `status` enum('offline','online') NOT NULL,
   `division` varchar(50) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -1440,7 +1440,8 @@ INSERT INTO `security_info` (`id`, `username`, `password`, `reg_data`, `acct_typ
 (2, 'do', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'do', 'offline', 'Hamza division'),
 (3, 'joto', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'joto', 'offline', 'Hamza division'),
 (4, 'cao', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'cao', 'offline', NULL),
-(5, 'smo', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'smo', 'offline', NULL);
+(5, 'smo', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'smo', 'offline', NULL),
+(6, 'cao_sec', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'cao_sec', 'offline', NULL);
 
 -- --------------------------------------------------------
 

@@ -1,4 +1,4 @@
-<?php $this->load->view('cao/common/header'); ?>
+<?php $this->load->view('cao_sec/common/header'); ?>
 <?php !isset($search_date) ? $search_date = '' : $search_date; ?>
 <style>
     .red-border {
@@ -187,19 +187,13 @@
                                 <table id="datatable" class="table table-striped" style="color:black">
                                     <thead>
                                         <tr>
-                                            <th scope="col">ID</th>
+                                            <th scope="col">S. No.</th>
                                             <th scope="col" style="width:150px">Cadet Name</th>
                                             <th scope="col" style="width:70px">Term</th>
                                             <th scope="col" style="width:120px">Date</th>
                                             <th scope="col">Offense</th>
                                             <th scope="col">Punishment</th>
                                             <th scope="col" style="width:100px">Days left</th>
-                                            <th scope="col" style="text-align:center">Action</th>
-                                            <th scope="col" style="text-align:center">Action</th>
-                                            <th scope="col" style="text-align:center">Status</th>
-                                            <th scope="col" style="text-align:center">Approve</th>
-                                            <th scope="col" style="text-align:center">Reject</th>
-
                                         </tr>
                                     </thead>
                                     <tbody id="table_rows">
@@ -209,10 +203,9 @@
                                         foreach ($punishment_records as $data) {
                                             $diff = date_diff($date1, date_create($data['end_date'])); ?>
                                             <tr>
-
-                                                <td scope="row"><?= $data['id']; ?></td>
+                                                <td scope="row"><?= ++$count; ?></td>
                                                 <td scope="row"><?= $data['name']; ?></td>
-                                                <td scope="row"><?= $data['term']; ?></td>
+                                                <td scope="row" style="white-space:nowrap"><?= $data['term']; ?></td>
                                                 <td scope="row"><?= $data['date']; ?></td>
                                                 <td scope="row"><?= $data['offence']; ?></td>
                                                 <td scope="row"><?= $data['punishment_awarded']; ?></td>
@@ -220,25 +213,6 @@
                                                 <td scope="row" style="display:none"><?= $data['end_date']; ?></td>
                                                 <td scope="row" style="display:none"><?= $data['days']; ?></td>
                                                 <td scope="row"><?php echo $diff->format('%d days'); ?></td>
-                                                <td scope="row"><button onclick="update_punish(<?= $data['days']; ?>)" type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:green" data-toggle="modal" data-target="#reduce_punishment">Reduce</button></td>
-                                                <td scope="row"><button onclick="update_punish(<?= $data['days']; ?>)" type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:red" data-toggle="modal" data-target="#reduce_punishment">Increase</button></td>
-                                                <?php if ($data['status'] == 'Pending') { ?>
-                                                    <td scope="row" style="color:orange;font-weight:bold"><?= $data['status']; ?></td>
-                                                <?php } elseif ($data['status'] == 'Approved') { ?>
-                                                    <td scope="row" style="color:green;font-weight:bold"><?= $data['status']; ?></td>
-                                                <?php } elseif ($data['status'] == 'Rejected') { ?>
-                                                    <td scope="row" style="color:red;font-weight:bold"><?= $data['status']; ?></td>
-                                                <?php } else { ?>
-                                                    <td></td>
-                                                <?php } ?>
-                                                <?php if ($data['status'] == 'Pending') { ?>
-                                                    <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:green; font-weight:bold; border:0px">Approve</button></td>
-                                                    <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:red; font-weight:bold; border:0px">Reject</button></td>
-                                                <?php } else { ?>
-                                                    <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:green; font-weight:bold; border:0px" disabled>Approve</button></td>
-                                                    <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:red; font-weight:bold; border:0px" disabled>Reject</button></td>
-                                                <?php } ?>
-
                                             </tr>
                                         <?php } ?>
                                     </tbody>
@@ -355,7 +329,7 @@
         $('#end_date').val($columns[7].innerHTML);
         $('#days').val((Date.parse($columns[7].innerHTML) - Date.parse($columns[6].innerHTML)) / 1000 / 60 / 60 / 24);
 
-        // alert(global_col_position);
+        alert(global_col_position);
         var id = $columns[0].innerHTML;
         var status = '';
         if (global_col_position == 13) {
@@ -363,7 +337,7 @@
         } else if (global_col_position == 14) {
             status = 'Rejected';
         }
-        // alert(status);
+        alert(status);
 
         if (global_col_position == 12 || global_col_position == 13) {
             $('#success_message').modal('show');
