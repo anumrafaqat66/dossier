@@ -142,8 +142,8 @@
                 </a>
                 <div id="collapse_academic" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?= base_url();?>D_O/view_result">Results (Terms I - III)</a>
-                        <a class="collapse-item" href="<?= base_url();?>D_O/view_training_report">Sea Training Report Term II</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>D_O/view_result">Results (Terms I - III)</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>D_O/view_training_report">Sea Training Report Term II</a>
                     </div>
                 </div>
             </li>
@@ -155,11 +155,11 @@
                 </a>
                 <div id="collapse_assesment" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item"href="<?= base_url();?>D_O/view_general_remarks">General Remarks</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>D_O/view_general_remarks">General Remarks</a>
                         <!-- <a class="collapse-item" href="#">Performance Report</a> -->
-                        <a class="collapse-item" href="<?= base_url();?>D_O/view_progress_chart">Progress Chart</a>
-                        <a class="collapse-item" href="<?= base_url();?>D_O/view_distinction_records">Distictions</a>
-                        <a class="collapse-item" href="<?= base_url();?>D_O/view_seniority_records">Seniority</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>D_O/view_progress_chart">Progress Chart</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>D_O/view_distinction_records">Distictions</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>D_O/view_seniority_records">Seniority</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>D_O/add_branch_allocation">Branch Allocation</a>
                         <a class="collapse-item" href="#">Degree Complete</a>
                     </div>
@@ -169,30 +169,18 @@
                 <a class="nav-link" href="<?php echo base_url(); ?>D_O/add_officer_qualities" aria-expanded="true">
                     <i class="fas fa-medal"></i>
                     <span> Officer Like Qualities</span>
-                    <!-- <span>Components</span> -->
                 </a>
 
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url(); ?>D_O/view_promotion_screen" aria-expanded="true">
+                    <i class="fas fa-award"></i>
+                    <span> Promotion/Relegation</span>                    
+                </a>
             </li>
 
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
-            </li> -->
 
             <!-- Divider -->
             <!-- <hr class="sidebar-divider"> -->

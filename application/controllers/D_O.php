@@ -762,6 +762,16 @@ class D_O extends CI_Controller
             echo json_encode($query);
         }
     }
+
+    public function search_all_cadets_by_term()
+    {
+        if ($this->input->post()) {
+            $term = $_POST['term'];
+            $query = $this->db->where('term', $term)->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->result_array();
+            echo json_encode($query);
+        }
+    }
+
     public function search_cadet_physical_milestone()
     {
         if ($this->input->post()) {
@@ -1000,6 +1010,76 @@ class D_O extends CI_Controller
                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
                 redirect('D_O/view_dossier');
             }
+        }
+    }
+
+    public function update_cadet_term()
+    {
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+
+            $p_id = $_POST['p_id'];
+            $curr_term = $_POST['curr_term'];
+            $action = $_POST['action'];
+            $all = $_POST['all'];
+
+            if ($action == 'promote') {
+                if ($curr_term == 'Term-I') {
+                    $next_term = 'Term-II';
+                } else if ($curr_term == 'Term-II') {
+                    $next_term = 'Term-III';
+                } else if ($curr_term == 'Term-III') {
+                    $next_term = 'Term-III';
+                }
+            }
+
+            if ($action == 'relegate') {
+                if ($curr_term == 'Term-I') {
+                    $next_term = 'Term-I';
+                } else if ($curr_term == 'Term-II') {
+                    $next_term = 'Term-II';
+                } else if ($curr_term == 'Term-III') {
+                    $next_term = 'Term-III';
+                }
+            }
+
+            $update_array = array(
+                'term' => $next_term
+            );
+
+            if ($all == 'no') {
+                $cond  = [
+                    'p_id' => $p_id,
+                    'do_id' => $this->session->userdata('user_id')
+                ];
+            } else {
+                $cond  = [
+                    'do_id' => $this->session->userdata('user_id')
+                ];
+            }
+            $this->db->where($cond);
+            $update = $this->db->update('pn_form1s', $update_array);
+
+            if (!empty($update)) {
+                if ($all == 'no') {
+                    if ($action == 'promote'){
+                        $this->session->set_flashdata('success', 'Cadet Promoted successfully');
+                    } else if ($action =='relegate') {
+                        $this->session->set_flashdata('success', 'Cadet Relegated successfully');
+                    }
+                } else {
+                    $this->session->set_flashdata('success', 'All Cadets for division'. $this->session->userdata('division'). ' promoted successfully');
+                }
+                // redirect('D_O/view_promotion_screen','refresh');
+            } else {
+                $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                // redirect('D_O/view_promotion_screen','refresh');
+            }
+
+            $data = '';
+            $view_page = $this->load->view('do/term_promotion', $data, TRUE);
+            echo $view_page;
+            json_encode($view_page);
         }
     }
 
@@ -1708,7 +1788,7 @@ class D_O extends CI_Controller
             $_FILES['file']['size']     = $_FILES['report']['size'][$i];
 
             $config['upload_path'] = 'uploads/documents';
-            $config['allowed_types']        = 'gif|jpg|png|doc|xls|pdf|xlsx|docx|ppt|pptx';
+            $config['allowed_types']        = 'gif|jpg|png|doc|xls|pdf|xlsx|docx|ppt|pptx|jpeg';
 
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
@@ -1734,7 +1814,7 @@ class D_O extends CI_Controller
             $_FILES['file']['size']     = $_FILES['file']['size'][$i];
 
             $config['upload_path'] = 'uploads/warning';
-            $config['allowed_types']        = 'gif|jpg|png|doc|xls|pdf|xlsx|docx|ppt|pptx|txt';
+            $config['allowed_types']        = 'gif|jpg|png|doc|xls|pdf|xlsx|docx|ppt|pptx|txt|jpeg';
 
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
@@ -1760,7 +1840,7 @@ class D_O extends CI_Controller
             $_FILES['file']['size']     = $_FILES['file']['size'][$i];
 
             $config['upload_path'] = 'uploads/documents';
-            $config['allowed_types']  = 'gif|jpg|png|doc|xls|pdf|xlsx|docx|ppt|pptx|txt';
+            $config['allowed_types']  = 'gif|jpg|png|doc|xls|pdf|xlsx|docx|ppt|pptx|txt|jpeg';
 
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
@@ -2747,7 +2827,7 @@ class D_O extends CI_Controller
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_branch_allocations'] = $this->db->get()->row_array();
 
-            $html = $this->load->view('do/warning_insert_report',$data, TRUE);
+            $html = $this->load->view('do/warning_insert_report', $data, TRUE);
 
             $dompdf->loadHtml($html);
             $dompdf->render();
@@ -2792,6 +2872,10 @@ class D_O extends CI_Controller
     public function view_record_div_officer()
     {
         $this->load->view('DO/add_divisonal_officer_record');
+    }
+    public function view_promotion_screen()
+    {
+        $this->load->view('DO/term_promotion');
     }
 
     public function save_psychologist_report()
@@ -2851,7 +2935,7 @@ class D_O extends CI_Controller
             $_FILES['file']['size']     = $_FILES['psycologist_report']['size'][$i];
 
             $config['upload_path'] = 'uploads/documents';
-            $config['allowed_types']        = 'gif|jpg|png|doc|xls|pdf|xlsx|docx|ppt|pptx';
+            $config['allowed_types']        = 'gif|jpg|png|doc|xls|pdf|xlsx|docx|ppt|pptx|jpeg';
 
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
@@ -2922,7 +3006,7 @@ class D_O extends CI_Controller
             $_FILES['file']['size']     = $_FILES['autobiography']['size'][$i];
 
             $config['upload_path'] = 'uploads/documents';
-            $config['allowed_types']        = 'gif|jpg|png|doc|xls|pdf|xlsx|docx|ppt|pptx';
+            $config['allowed_types']        = 'gif|jpg|png|doc|xls|pdf|xlsx|docx|ppt|pptx|jpeg';
 
             $this->load->library('upload', $config);
             $this->upload->initialize($config);

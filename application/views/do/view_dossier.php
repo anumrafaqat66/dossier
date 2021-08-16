@@ -5,17 +5,6 @@
         border: 1px solid red !important;
     }
 
-    /* .modal {
-        display: none;
-        position: fixed;
-        padding-top: 100px;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        overflow: auto;
-        z-index: 9999;
-    } */
 </style>
 
 <div class="container-fluid my-2">
@@ -1411,7 +1400,6 @@
 <?php $this->load->view('common/footer'); ?>
 <script>
     function view_physical_milestone(id) {
-        // alert('cadet id: ' + id);
         $.ajax({
             url: '<?= base_url(); ?>D_O/view_milestone_in_dossier',
             method: 'POST',

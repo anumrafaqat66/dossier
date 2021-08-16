@@ -3,16 +3,13 @@
 
 <div class="container-fluid my-4">
 
-   
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-black-800"><strong>Welcome Division Officer</strong></h1>
-        
-    </div>
-    <!-- Content Row -->
     <div class="row">
-
-      
+        <div class="col-lg-6">
+            <h1 class="h3 mb-0 text-black-800"><strong>Welcome Division Officer</strong></h1>
+        </div>
+        <div class="col-lg-6" style="text-align:right">
+            <h1 class="h3 mb-0 text-black-800"><strong><?= $this->session->userdata('division'); ?></strong></h1>
+        </div>
     </div>
 
 </div>
@@ -22,9 +19,6 @@
 <?php $this->load->view('common/footer'); ?>
 <script>
     function seen(data) {
-        // alert('in');
-        // alert(data);
-        // var receiver_id=$(this).attr('id');
         $.ajax({
             url: '<?= base_url(); ?>ChatController/seen',
             method: 'POST',
