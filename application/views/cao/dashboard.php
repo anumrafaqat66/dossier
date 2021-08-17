@@ -50,7 +50,6 @@
 </div>
 
 <?php $this->load->view('common/footer'); ?>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script>
     window.onload = function() {
         var chart = new CanvasJS.Chart("chartContainer1", {

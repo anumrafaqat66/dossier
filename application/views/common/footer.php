@@ -43,9 +43,9 @@
         </a>
         <!-- Code begins here -->
 
-        <a href="<?= base_url(); ?>ChatController?sender_id=" class="float">
+
         <a class="float">
-            <i class="fas fa-comment-dots my-float"></i>
+            <a href="<?= base_url(); ?>ChatController?sender_id=" class="float"><i class="fas fa-comment-dots my-float"></i></a>
         </a>
 
 
@@ -69,10 +69,10 @@
         </div>
 
         <!-- canvasjs links-->
-        <!-- <script src="<?php echo base_url(); ?>assets/js/canvasjs.min"></script>
+        <script src="<?php echo base_url(); ?>assets/js/canvasjs.min"></script>
         <script src="<?php echo base_url(); ?>assets/js/canvasjs.react"></script>
         <script src="<?php echo base_url(); ?>assets/js/jquery.canvasjs.min"></script>
-        <script src="<?php echo base_url(); ?>assets/js/canvasjs.min.js"></script> -->
+        <script src="<?php echo base_url(); ?>assets/js/canvasjs.min.js"></script>
 
         <!-- Bootstrap core JavaScript-->
         <script src="<?php echo base_url(); ?>assets/vendor/jquery/jquery.min.js"></script>

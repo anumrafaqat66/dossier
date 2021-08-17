@@ -12,7 +12,6 @@ class ChatController extends CI_Controller
 	public function index()
 	{
 		$input_params = $this->input->get(); // this will give you all parameters
-
 		$data['strTitle'] = '';
 		$data['strsubTitle'] = '';
 		$data['list'] = $this->ClientsListCs();
@@ -282,19 +281,16 @@ class ChatController extends CI_Controller
 <?php
 		endforeach;
 	}
+
 	public function chat_clear_client_cs()
 	{
 		$receiver_id = $this->input->get('receiver_id');
-
 		$messagelist = $this->ChatModel->GetReciverMessageList($receiver_id);
-
 		foreach ($messagelist as $row) {
-
 			if ($row['message'] == 'NULL') {
 				$attachment_name = unlink('uploads/attachment/' . $row['attachment_name']);
 			}
 		}
-
 		$this->ChatModel->TrashById($receiver_id);
 	}
 
