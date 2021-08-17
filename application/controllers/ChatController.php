@@ -230,7 +230,7 @@ class ChatController extends CI_Controller
 					$messageBody .= '</p>';
 
 					$messageBody .= '<div class="pull-' . $classBtn . '">';
-					$messageBody .= '<a download href="' . $document_url . '"><button type="button" id="' . $message_id . '" class="btn btn-primary btn-sm btn-flat btnFileOpen">Open</button></a>';
+					$messageBody .= '<a download href="' . $document_url . '"><button style="margin-top:4px;" type="button" id="' . $message_id . '" class="btn btn-primary btn-sm btn-flat btnFileOpen">Open</button></a>';
 					$messageBody .= '</div>';
 					$messageBody .= '</div>';
 				}

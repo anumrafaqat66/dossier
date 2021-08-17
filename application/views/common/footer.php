@@ -44,9 +44,10 @@
         <!-- Code begins here -->
 
         <!-- <a href="<?= base_url(); ?>ChatController?sender_id=" class="float"> -->
-        <a class="float">
+        <a class="float" href="<?= base_url(); ?>ChatController?sender_id=">
             <i class="fas fa-comment-dots my-float"></i>
         </a>
+
 
 
         <!-- Logout Modal-->
