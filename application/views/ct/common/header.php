@@ -41,8 +41,8 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="<?php echo base_url(); ?><?php if ($this->session->userdata('acct_type') == 'do') {
-                                                                        echo "D_O";
+                <a class="nav-link" href="<?php echo base_url(); ?><?php if ($this->session->userdata('acct_type') == 'ct') {
+                                                                        echo "CT";
                                                                     } ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -63,7 +63,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo base_url(); ?>/D_O/PN_Form" aria-expanded="true">
+                <a class="nav-link collapsed" href="<?php echo base_url(); ?>CT/PN_Form" aria-expanded="true">
                     <i class="fab fa-wpforms"></i>
                     <span>PN Form I</span>
                     <!-- <span>Components</span> -->
@@ -87,13 +87,12 @@
                 </a>
                 <div id="collapse_general" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/add_club">Add Club</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/daily_module">Daily Module</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/Inspection_record">Inspection Record</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/personal_data">Personal Data</a>
-                        <a class="collapse-item" href="#">Obiography</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/auto_biography">Cadet's Auto-biography</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/psychologist_report">Psychologist's Report</a>
+                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>CT/add_club">Add Club</a> -->
+                        <a class="collapse-item" href="<?php echo base_url(); ?>CT/daily_module">Daily Module</a>
+                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>CT/Inspection_record">Inspection Record</a> -->
+                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>CT/personal_data">Personal Data</a> -->
+                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>CT/auto_biography">Cadet's Auto-biography</a> -->
+                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>CT/psychologist_report">Psychologist's Report</a> -->
                     </div>
                 </div>
             </li>
