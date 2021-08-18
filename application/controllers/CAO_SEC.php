@@ -100,6 +100,7 @@ class CAO_SEC extends CI_Controller
             $this->db->select('or.*, f.*');
             $this->db->from('observation_records or');
             $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
+            $this->db->where('or.status', 'Approved');
             $data['observation_records'] = $this->db->get()->result_array();
             $this->load->view('cao_sec/view_observation_list', $data);
         }

@@ -49,27 +49,23 @@
             </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider">
+            <!-- <hr class="sidebar-divider"> -->
 
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="#"  aria-expanded="true">
                     <i class="fas fa-th-list"></i>
                     <span> View Dossiers </span>
-                    <!-- <span>Components</span> -->
                 </a>
-
             </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?php echo base_url(); ?>CT/PN_Form" aria-expanded="true">
                     <i class="fab fa-wpforms"></i>
-                    <span>PN Form I</span>
-                    <!-- <span>Components</span> -->
+                    <span>PN Form I</span>                    
                 </a>
-
-            </li>
+            </li> -->
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -79,11 +75,24 @@
                 PHASE I (Common Tranings)
             </div>
 
+           
+            <!-- <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_discipline" aria-expanded="true">
+                    <i class="fas fa-running"></i>
+                    <span>General</span>
+                </a>
+                <div id="collapse_discipline" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?php echo base_url(); ?>SO_STORE/add_inventory">Observation Record (Terms I-III)</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>SO_STORE/view_projects">Punishment Record</a>
+                        <a class="collapse-item" href="#">Observation Slips</a> 
+                    </div>
+                </div>
+            </li> -->
             <li class="nav-item">
                 <a id="general" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_general" aria-expanded="true">
                     <i class="fas fa-file-alt"></i>
-                    <span> General</span>
-                    <!-- <span>Components</span> -->
+                    <span>Discipline</span>
                 </a>
                 <div id="collapse_general" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -96,25 +105,10 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_discipline" aria-expanded="true">
-                    <i class="fas fa-running"></i>
-                    <span> Discipline</span>
-                    <!-- <span>Components</span> -->
-                </a>
-                <div id="collapse_discipline" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url(); ?>SO_STORE/add_inventory">Observation Record (Terms I-III)</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>SO_STORE/view_projects">Punishment Record</a>
-                        <a class="collapse-item" href="#">Observation Slips</a> 
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_warning" aria-expanded="true">
                     <i class="fas fa-exclamation-circle"></i>
                     <span> Warning</span>
-                    <!-- <span>Components</span> -->
                 </a>
                 <div id="collapse_warning" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -122,12 +116,11 @@
                         <a class="collapse-item" href="#">Record Attachments</a>
                     </div>
                 </div>
-            </li>
-            <li class="nav-item">
+            </li> -->
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_academic" aria-expanded="true">
                     <i class="fas fa-book"></i>
                     <span> Academic Record</span>
-                    <!-- <span>Components</span> -->
                 </a>
                 <div id="collapse_academic" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -135,15 +128,13 @@
                         <a class="collapse-item" href="#">Sea Training Report Term II</a>
                     </div>
                 </div>
-            </li>
-            <li class="nav-item">
+            </li> -->
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_officer" aria-expanded="true">
                     <i class="fas fa-medal"></i>
                     <span> Officer Like Qualities</span>
-                    <!-- <span>Components</span> -->
                 </a>
-                
-            </li>
+            </li> -->
 
 
             <!-- Nav Item - Utilities Collapse Menu -->

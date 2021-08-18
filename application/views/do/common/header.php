@@ -114,7 +114,7 @@
                 <div id="collapse_discipline" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<?php echo base_url(); ?>D_O/daily_module">Daily Module</a>
-                        <!--     <a class="collapse-item" href="<?php echo base_url(); ?>D_O/add_observation">Observation Record</a>
+                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>D_O/add_observation">Observation Record</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>D_O/add_punishment">Punishment Record</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>D_O/add_observation_slip">Observation Slips</a>  -->
                     </div>

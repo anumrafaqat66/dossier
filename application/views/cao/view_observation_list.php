@@ -112,8 +112,8 @@
                                             <th scope="col">Observation</th>
                                             <th scope="col">By Officer</th>
                                             <th scope="col">Status</th>
-                                            <th scope="col">Action</th>
-                                            <th scope="col">Action</th>
+                                            <!-- <th scope="col">Action</th>
+                                            <th scope="col">Action</th> -->
                                         </tr>
                                     </thead>
                                     <tbody id="table_rows">
@@ -137,13 +137,13 @@
                                                 <?php } else { ?>
                                                     <td></td>
                                                 <?php } ?>
-                                                <?php if ($data['status'] == 'Pending') { ?>
+                                                <!-- <?php if ($data['status'] == 'Pending') { ?>
                                                     <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:green; font-weight:bold; border:0px">Approve</button></td>
                                                     <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:red; font-weight:bold; border:0px">Reject</button></td>
                                                 <?php } else { ?>
                                                     <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:green; font-weight:bold; border:0px" disabled>Approve</button></td>
                                                     <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:red; font-weight:bold; border:0px" disabled>Reject</button></td>
-                                                <?php } ?>
+                                                <?php } ?> -->
                                             </tr>
                                         <?php } ?>
                                     </tbody>
