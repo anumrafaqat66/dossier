@@ -1,4 +1,4 @@
-<?php $this->load->view('do/common/header'); ?>
+<?php $this->load->view('ct/common/header'); ?>
 <style>
     .red-border {
         border: 1px solid red !important;
@@ -19,10 +19,12 @@
 
 <div class="container-fluid my-2">
     <!-- Page Heading -->
-    <div class="card-body" style="padding:10px">
-        <img src='<?= base_url() ?>assets/img/navy_logo-new.png' style="height: 130px; width:100px;">
-        <div class="card-body" style="margin-bottom:20px;float:right; padding:30px; margin-right:500px">
-            <h1 style="text-align:center"><strong>DAILY MODULE</strong></h1>
+    <div class="form-group row justify-content-center">
+        <div class="col-lg-1">
+            <img src='<?= base_url() ?>assets/img/navy_logo-new.png' style="height: 130px; width:100px;">
+        </div>
+        <div class="col-lg-11">
+            <h1 style="text-align:center; padding:40px"><strong>DAILY MODULE</strong></h1>
         </div>
     </div>
 
@@ -38,75 +40,42 @@
 
                     <form class="user" role="form" method="post" id="add_form">
                         <div class="card-body bg-custom3">
-                            <div class="form-group row">
+                            <div class="form-group row" >
                                 <!-- <div class="col-sm-6">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>D_O/add_punishment'">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>CT/add_punishment'">
                                         <span><i class="fas fa-radiation-alt" style="font-size:25px;margin:5px"></i></span>
                                         <h4 style="font-weight: bold;display:inline-block">Add Punishment</h4>
                                     </button>
                                 </div> -->
-                                <div class="col-sm-12">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>D_O/view_punishment_list'">
+                                <!-- <div class="col-sm-12">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>CT/view_punishment_list'">
                                         <span><i class="fas fa-exclamation-triangle" style="font-size:25px;margin:5px"></i></span>
                                         <h4 style="font-weight: bold;display:inline-block">View Punishment List</h4>
                                     </button>
-                                </div>
+                                </div> -->
                             </div>
-
                             <div class="form-group row">
                                 <!-- <div class="col-sm-6">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>D_O/add_excuse'">
-                                        <span><i class="fas fa-hand-paper" style="font-size:25px;margin:5px"></i></span>
-                                        <h4 style="font-weight: bold; display:inline-block">Add Excuse</h4>
-                                    </button>
-                                </div> -->
-                                <div class="col-sm-12">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>D_O/view_excuse_list'">
-                                    <span><i class="fas fa-stopwatch" style="font-size:25px;margin:5px"></i></span>
-                                        <h4 style="font-weight: bold;display:inline-block">View Excuse List</h4>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-6">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>D_O/add_observation'">
-                                        <!-- <span><i class="fas fa-hand-paper" style="font-size:25px;margin:5px"></i></span> -->
+                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>CT/add_observation'">
                                         <span><i class="far fa-address-card" style="font-size:25px;margin:5px"></i></span>
                                         <h4 style="font-weight: bold; display:inline-block">Add Observation</h4>
                                     </button>
-                                </div>
-                                <div class="col-sm-6">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>D_O/view_observation_list'">
-                                    <span><i class="far fa-lightbulb" style="font-size:25px;margin:5px"></i></span>
+                                </div> -->
+                                <div class="col-sm-12">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>CT/view_observation_list'">
+                                        <span><i class="far fa-lightbulb" style="font-size:25px;margin:5px"></i></span>
                                         <h4 style="font-weight: bold;display:inline-block">View Observation List</h4>
                                     </button>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <div class="col-sm-6">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>D_O/add_physical_milestone/milestone_list'">
-                                        <span><i class="fas fa-running" style="font-size:25px;margin:5px"></i></span>
-                                        <h4 style="font-weight: bold; display:inline-block">Add Physical Milestone</h4>
-                                    </button>
-                                </div>
-                                <div class="col-sm-6">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" style="height:60px;  box-shadow: 5px 10px #888888;" id="btn_inventory" onclick="location.href='<?php echo base_url(); ?>D_O/view_milestone_list'">
-                                    <span><i class="fas fa-heartbeat" style="font-size:25px;margin:5px"></i></span>
-                                        <h4 style="font-weight: bold;display:inline-block">View Physical Milestones List</h4>
-                                    </button>
-                                </div>
-                            </div>
+                        </div>
+
+
                     </form>
                 </div>
-
             </div>
-
-
         </div>
     </div>
-
-</div>
-
 </div>
 
 </div>

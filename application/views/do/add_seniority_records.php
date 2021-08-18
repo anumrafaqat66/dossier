@@ -76,7 +76,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>D_O/save_cadet_warning">
+                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>D_O/save_cadet_seniority_record">
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Name:</h6>
@@ -146,7 +146,7 @@
                                 </div>
                                 <div class="col-sm-2">
                                     <select class="form-control rounded-pill" name="relegate_t1" id="relegate_t1" data-placeholder="Warning Type" style="font-size: 0.8rem; height:50px;">
-                                        <option class="form-control form-control-user" value="">Select</option>
+                                        <option class="form-control form-control-user" value="" selected>Select</option>
                                         <option class="form-control form-control-user" value="yes">Yes</option>
                                         <option class="form-control form-control-user" value="no">No</option>
                                     </select>
@@ -158,7 +158,6 @@
                                     <input type="text" class="form-control form-control-user" name="seniority_gain_loss_t1" id="seniority_gain_loss_t1" placeholder="Seniority Gained/Lost">
                                 </div>
                             </div>
-
 
                             <div class="form-group row">
                                 <div class="col-sm-2">
@@ -172,7 +171,7 @@
                                 </div>
                                 <div class="col-sm-2">
                                     <select class="form-control rounded-pill" name="relegate_t2" id="relegate_t2" data-placeholder="Warning Type" style="font-size: 0.8rem; height:50px;">
-                                        <option class="form-control form-control-user" value="">Select</option>
+                                        <option class="form-control form-control-user" value="" selected>Select</option>
                                         <option class="form-control form-control-user" value="yes">Yes</option>
                                         <option class="form-control form-control-user" value="no">No</option>
                                     </select>
@@ -197,7 +196,7 @@
                                 </div>
                                 <div class="col-sm-2 mb-1">
                                     <select class="form-control rounded-pill" name="relegate_t3" id="relegate_t3" data-placeholder="Warning Type" style="font-size: 0.8rem; height:50px;">
-                                        <option class="form-control form-control-user" value="">Select</option>
+                                        <option class="form-control form-control-user" value="" selected>Select</option>
                                         <option class="form-control form-control-user" value="yes">Yes</option>
                                         <option class="form-control form-control-user" value="no">No</option>
                                     </select>
@@ -343,8 +342,88 @@
                     }
 
                 },
-                async: true
+                async: false
             });
+
+            if ($('#name').val() != null) {
+                $.ajax({
+                    url: '<?= base_url(); ?>D_O/get_seniority_values',
+                    method: 'POST',
+                    data: {
+                        'p_id': $('#id').val()
+                    },
+                    success: function(data) {
+                        var result = jQuery.parseJSON(data);
+
+                        if (result != undefined) {
+
+                            if (result['term1_marks'] == 0) {
+                                result['term1_marks'] = null
+                            }
+                            if (result['term1_percentage'] == 0) {
+                                result['term1_percentage'] = null
+                            }
+                            if (result['term1_seniority'] == 0) {
+                                result['term1_seniority'] = null
+                            }
+                            if (result['term2_marks'] == 0) {
+                                result['term2_marks'] = null
+                            }
+                            if (result['term2_percentage'] == 0) {
+                                result['term2_percentage'] = null
+                            }
+                            if (result['term2_seniority'] == 0) {
+                                result['term2_seniority'] = null
+                            }
+                            if (result['term3_marks'] == 0) {
+                                result['term3_marks'] = null
+                            }
+                            if (result['term3_percentage'] == 0) {
+                                result['term3_percentage'] = null
+                            }
+                            if (result['term3_seniority'] == 0) {
+                                result['term3_seniority'] = null
+                            }
+                            if (result['net_percentage'] == 0) {
+                                result['net_percentage'] = null
+                            }
+                            if (result['seniority_gained'] == 0) {
+                                result['seniority_gained'] = null
+                            }
+                            if (result['seniority_lost'] == 0) {
+                                result['seniority_lost'] = null
+                            }
+                            if (result['net_seniority'] == 0) {
+                                result['net_seniority'] = null
+                            }
+
+                            $('#marks_t1').val(result['term1_marks']);
+                            $('#aggregate_t1').val(result['term1_percentage']);
+                            $('#relegate_t1').val(result['term1_relegated']);
+                            $('#failed_subjects_t1').val(result['term1_subjects_failed']);
+                            $('#seniority_gain_loss_t1').val(result['term1_seniority']);
+
+                            $('#marks_t2').val(result['term2_marks']);
+                            $('#aggregate_t2').val(result['term2_percentage']);
+                            $('#relegate_t2').val(result['term2_relegated']);
+                            $('#failed_subjects_t2').val(result['term2_subjects_failed']);
+                            $('#seniority_gain_loss_t2').val(result['term2_seniority']);
+
+                            $('#marks_t3').val(result['term3_marks']);
+                            $('#aggregate_t3').val(result['term3_percentage']);
+                            $('#relegate_t3').val(result['term3_relegated']);
+                            $('#failed_subjects_t3').val(result['term3_subjects_failed']);
+                            $('#seniority_gain_loss_t3').val(result['term3_seniority']);
+
+                            $('#net_percentage').val(result['net_percentage']);
+                            $('#seniority_gained').val(result['seniority_gained']);
+                            $('#seniority_lost').val(result['seniority_lost']);
+                            $('#net_seniority').val(result['net_seniority']);   
+                        }
+                    },
+                    async: false
+                });
+            }
         } else {
             $('#add_btn').removeAttr('disabled');
             $('#show_error_new').show();

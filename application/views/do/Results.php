@@ -77,17 +77,20 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>D_O/save_cadet_warning">
+                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>D_O/save_cadet_result/Result">
                             <div class="form-group row">
-                                <div class="col-sm-12">
+                                <div class="col-sm-4">
                                     <h6>&nbsp;Officer Name:</h6>
                                 </div>
-
-                              
-
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Term:</h6>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h6>&nbsp;Division:</h6>
+                                </div>
                             </div>
-                            <div class="form-group row">
 
+                            <div class="form-group row">
                                 <div class="col-sm-4 mb-1" style="display:none">
                                     <input type="text" class="" name="oc_num" id="oc_num">
                                 </div>
@@ -95,27 +98,17 @@
                                     <input type="text" class="" name="id" id="id">
                                 </div>
 
-                                <div class="col-sm-4 mb-1">
+                                <div class="col-sm-4 mb-1" style="display:none">
                                     <input type="text" class="form-control form-control-user" name="name" id="name" style="font-weight: bold; font-size:large; display:none" placeholder="Name" readonly>
                                 </div>
                                 <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="term" id="term" style="display:none;font-weight: bold; font-size:large" placeholder="Term" readonly>
+                                    <input type="text" class="form-control form-control-user" name="officer_name" id="officer_name" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
                                 </div>
                                 <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="division" id="division" style="display:none;font-weight: bold; font-size:large" placeholder="Division" readonly>
+                                    <input type="text" class="form-control form-control-user" name="term" id="term" style="font-weight: bold; font-size:large" placeholder="Term" readonly>
                                 </div>
-                                   <div class="col-sm-12 mb-1">
-                                 <!--   <select class="form-control rounded-pill" name="officer_name" id="officer_name" data-placeholder="Select Name" style="font-size: 0.8rem; height:50px;">
-                                        <option class="form-control form-control-user" value="">Select Officer Name</option>
-                                        <option class="form-control form-control-user" value="red">Red</option>
-                                        <option class="form-control form-control-user" value="orange">Orange</option>
-                                        <option class="form-control form-control-user" value="yellow">Yellow</option>
-                                        <option class="form-control form-control-user" value="white">White</option>
-                                    </select> -->
-                                
-                                    <input type="text" class="form-control form-control-user" name="officer_name" id="officer_name" style="" placeholder="Name" readonly>
-                              
-                            
+                                <div class="col-sm-4 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="division" id="division" style="font-weight: bold; font-size:large" placeholder="Division" readonly>
                                 </div>
 
                             </div>
@@ -124,20 +117,10 @@
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Term:</h6>
                                 </div>
-
                             </div>
 
                             <div class="form-group row">
-                             <!--    <div class="col-sm-12 mb-1">
-                                    <select class="form-control rounded-pill" name="Term" id="Term" data-placeholder="Select Term" style="font-size: 0.8rem; height:50px;">
-                                        <option class="form-control form-control-user" value="">Select Term </option>
-                                        <option class="form-control form-control-user" value="red">Red</option>
-                                        <option class="form-control form-control-user" value="orange">Orange</option>
-                                        <option class="form-control form-control-user" value="yellow">Yellow</option>
-                                        <option class="form-control form-control-user" value="white">White</option>
-                                    </select>
-                                </div> -->
-                                    <div class="col-sm-12 mb-1">
+                                <div class="col-sm-12 mb-1">
                                     <input type="text" class="form-control form-control-user" name="Term" id="Term" style="" placeholder="Term" readonly>
                                 </div>
                             </div>
@@ -148,12 +131,9 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-1">
-                                     
-                                    <input type="file" style="height: 50px; padding:10px !important;" multiple="multiple" class="form-control form-control-user" placeholder="Upload Document" name="result_file[]" id="result_file" x-model="fileName">
+                                    <input type="file" style="height: 50px; padding:10px !important;" multiple="multiple" class="form-control form-control-user" placeholder="Upload Document" name="file[]" id="result_file" x-model="fileName">
                                 </div>
-                                
                             </div>
-            
 
                             <div class="form-group row justify-content-center">
                                 <div class="col-sm-4">
@@ -244,7 +224,7 @@
                         $('#no_data').hide();
 
                         $('#officer_name').val(result['name']);
-                        $('#Term').val(result['term']);
+                        $('#term').val(result['term']);
                         $('#division').val(result['divison_name']);
                         $('#oc_num').val(result['oc_no']);
                         $('#id').val(result['p_id']);
@@ -269,8 +249,8 @@
         $('#save_btn').attr('disabled', true);
         var validate = 0;
         var officer_name = $('#officer_name').val();
-        var term = $('#Term').val();
-        var result_file  = $('#result_file').val();
+        var term = $('#term').val();
+        var result_file = $('#result_file').val();
 
         if (officer_name == '') {
             validate = 1;
@@ -284,7 +264,7 @@
             validate = 1;
             $('#result_file').addClass('red-border');
         }
-        
+
         if (validate == 0) {
             $('#save_form')[0].submit();
             $('#show_error_save').hide();

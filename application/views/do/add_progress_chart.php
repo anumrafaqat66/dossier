@@ -84,7 +84,7 @@
                                 </div>
 
                                 <div class="col-sm-4">
-                                    <h6>&nbsp;Term:</h6>
+                                    <h6>&nbsp;Current Term:</h6>
                                 </div>
 
                                 <div class="col-sm-4">
@@ -113,30 +113,64 @@
 
                             </div>
 
+                            <hr>
                             <div class="form-group row">
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Academics (with out OLQs):</h6>
+                                <div class="col-sm-3">
+                                    <h6>&nbsp;<strong>Term:</strong></h6>
                                 </div>
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;OLQs:</h6>
+                                <div class="col-sm-3">
+                                    <h6>&nbsp;<strong>Academics (with out OLQs):</strong></h6>
                                 </div>
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Aggregate (with OLQs):</h6>
+                                <div class="col-sm-3">
+                                    <h6>&nbsp;<strong>OLQs:</strong></h6>
+                                </div>
+                                <div class="col-sm-3">
+                                    <h6>&nbsp;<strong>Aggregate (with OLQs):</strong></h6>
                                 </div>
 
                             </div>
 
                             <div class="form-group row">
-                                <div class="col-sm-4 mb-1">
-                                    <input type="number" class="form-control form-control-user" name="academic" id="academic" placeholder="Enter Academic Marks">
+                                <div class="col-sm-3 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="term_t1" id="term_t1" value="Term-I" readonly>
                                 </div>
-                                <div class="col-sm-4 mb-1">
-                                    <input type="number" class="form-control form-control-user" name="olqs" id="olqs" placeholder="Enter OLQs Marks">
+                                <div class="col-sm-3 mb-1">
+                                    <input type="number" class="form-control form-control-user" name="academic_t1" id="academic_t1" placeholder="Enter Academic Marks">
                                 </div>
-                                <div class="col-sm-4 mb-1">
-                                    <input type="number" class="form-control form-control-user" name="aggregate" id="aggregate" placeholder="Enter Aggregate">
+                                <div class="col-sm-3 mb-1">
+                                    <input type="number" class="form-control form-control-user" name="olqs_t1" id="olqs_t1" placeholder="Enter OLQs Marks">
                                 </div>
-                                
+                                <div class="col-sm-3 mb-1">
+                                    <input type="number" class="form-control form-control-user" name="aggregate_t1" id="aggregate_t1" placeholder="Enter Aggregate">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="term_t2" id="term_t2" value="Term-II" readonly>
+                                </div>
+                                <div class="col-sm-3 mb-1">
+                                    <input type="number" class="form-control form-control-user" name="academic_t2" id="academic_t2" placeholder="Enter Academic Marks">
+                                </div>
+                                <div class="col-sm-3 mb-1">
+                                    <input type="number" class="form-control form-control-user" name="olqs_t2" id="olqs_t2" placeholder="Enter OLQs Marks">
+                                </div>
+                                <div class="col-sm-3 mb-1">
+                                    <input type="number" class="form-control form-control-user" name="aggregate_t2" id="aggregate_t2" placeholder="Enter Aggregate">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3 mb-1">
+                                    <input type="text" class="form-control form-control-user" name="term_t3" id="term_t3" value="Term-III" readonly>
+                                </div>
+                                <div class="col-sm-3 mb-1">
+                                    <input type="number" class="form-control form-control-user" name="academic_t3" id="academic_t3" placeholder="Enter Academic Marks">
+                                </div>
+                                <div class="col-sm-3 mb-1">
+                                    <input type="number" class="form-control form-control-user" name="olqs_t3" id="olqs_t3" placeholder="Enter OLQs Marks">
+                                </div>
+                                <div class="col-sm-3 mb-1">
+                                    <input type="number" class="form-control form-control-user" name="aggregate_t3" id="aggregate_t3" placeholder="Enter Aggregate">
+                                </div>
                             </div>
 
                             <div class="form-group row justify-content-center">
@@ -211,7 +245,6 @@
         }
 
         if (validate == 0) {
-            // $('#add_form')[0].submit();
             $('#show_error_new').hide();
 
             $.ajax({
@@ -239,8 +272,68 @@
                     }
 
                 },
-                async: true
+                async: false
             });
+
+            if ($('#name').val() != null) {
+                $.ajax({
+                    url: '<?= base_url(); ?>D_O/get_progress_chart_values',
+                    method: 'POST',
+                    data: {
+                        'p_id': $('#id').val()
+                    },
+                    success: function(data) {
+                        var result = jQuery.parseJSON(data);
+
+                        if (result != undefined) {
+
+                            if (result['term3_academics'] == 0) {
+                                result['term3_academics'] = null
+                            }
+                            if (result['term3_olqs'] == 0) {
+                                result['term3_olqs'] = null
+                            }
+                            if (result['term3_aggregate'] == 0) {
+                                result['term3_aggregate'] = null
+                            }
+
+                            if (result['term1_academics'] == 0) {
+                                result['term1_academics'] = null
+                            }
+                            if (result['term1_olqs'] == 0) {
+                                result['term1_olqs'] = null
+                            }
+                            if (result['term1_aggregate'] == 0) {
+                                result['term1_aggregate'] = null
+                            }
+
+                            if (result['term2_academics'] == 0) {
+                                result['term2_academics'] = null
+                            }
+                            if (result['term2_olqs'] == 0) {
+                                result['term2_olqs'] = null
+                            }
+                            if (result['term2_aggregate'] == 0) {
+                                result['term2_aggregate'] = null
+                            }
+
+
+                            $('#academic_t1').val(result['term1_academics']);
+                            $('#olqs_t1').val(result['term1_olqs']);
+                            $('#aggregate_t1').val(result['term1_aggregate']);
+                            $('#academic_t2').val(result['term2_academics']);
+                            $('#olqs_t2').val(result['term2_olqs']);
+                            $('#aggregate_t2').val(result['term2_aggregate']);
+                            $('#academic_t3').val(result['term3_academics']);
+                            $('#olqs_t3').val(result['term3_olqs']);
+                            $('#aggregate_t3').val(result['term3_aggregate']);
+                        }
+
+                    },
+                    async: false
+                });
+            }
+
         } else {
             $('#add_btn').removeAttr('disabled');
             $('#show_error_new').show();
@@ -271,21 +364,57 @@
     $('#save_btn_progress').on('click', function() {
         $('#save_btn_progress').attr('disabled', true);
         var validate = 0;
-        var academic = $('#academic').val();
-        var olqs = $('#olqs').val();
-        var aggregate = $('#aggregate').val();
+        var academic_t1 = $('#academic_t1').val();
+        var olqs_t1 = $('#olqs_t1').val();
+        var aggregate_t1 = $('#aggregate_t1').val();
+        var academic_t2 = $('#academic_t2').val();
+        var olqs_t2 = $('#olqs_t2').val();
+        var aggregate_t2 = $('#aggregate_t2').val();
+        var academic_t3 = $('#academic_t3').val();
+        var olqs_t3 = $('#olqs_t3').val();
+        var aggregate_t3 = $('#aggregate_t3').val();
+        var current_term = $('#term').val();
 
-        if (academic == '') {
-            validate = 1;
-            $('#academic').addClass('red-border');
-        }
-        if (olqs == '') {
-            validate = 1;
-            $('#olqs').addClass('red-border');
-        }
-        if (aggregate == '') {
-            validate = 1;
-            $('#aggregate').addClass('red-border');
+        
+        if (current_term == 'Term-I') {
+            if (academic_t1 == '') {
+                validate = 1;
+                $('#academic_t1').addClass('red-border');
+            }
+            if (olqs_t1 == '') {
+                validate = 1;
+                $('#olqs_t1').addClass('red-border');
+            }
+            if (aggregate_t1 == '') {
+                validate = 1;
+                $('#aggregate_t1').addClass('red-border');
+            }
+        } else if (current_term == 'Term-II') {
+            if (academic_t2 == '') {
+                validate = 1;
+                $('#academic_t2').addClass('red-border');
+            }
+            if (olqs_t2 == '') {
+                validate = 1;
+                $('#olqs_t2').addClass('red-border');
+            }
+            if (aggregate_t2 == '') {
+                validate = 1;
+                $('#aggregate_t2').addClass('red-border');
+            }
+        } else if (current_term == 'Term-III') {
+            if (academic_t3 == '') {
+                validate = 1;
+                $('#academic_t3').addClass('red-border');
+            }
+            if (olqs_t3 == '') {
+                validate = 1;
+                $('#olqs_t3').addClass('red-border');
+            }
+            if (aggregate_t3 == '') {
+                validate = 1;
+                $('#aggregate_t3').addClass('red-border');
+            }
         }
 
         if (validate == 0) {

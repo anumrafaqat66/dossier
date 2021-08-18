@@ -1,4 +1,4 @@
-<?php $this->load->view('do/common/header'); ?>
+<?php $this->load->view('cao_sec/common/header'); ?>
 <style>
     .red-border {
         border: 1px solid red !important;
@@ -24,7 +24,7 @@
             <img src='<?= base_url() ?>assets/img/navy_logo-new.png' style="height: 130px; width:100px;">
         </div>
         <div class="col-lg-11">
-            <h1 style="text-align:center; padding:40px"><strong>ADD RECORDS OF DISTINCTIONS</strong></h1>
+            <h1 style="text-align:center; padding:40px"><strong>ADD EXCUSE</strong></h1>
         </div>
 
     </div>
@@ -73,11 +73,11 @@
 
                 <div class="card">
                     <div class="card-header bg-custom1">
-                        <h1 class="h4">Add Distinction</h1>
+                        <h1 class="h4">Cadet's Information</h1>
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>D_O/save_distinction_records">
+                        <form class="user" role="form" method="post" id="save_form" action="<?= base_url(); ?>CAO/save_cadet_excuse">
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Name:</h6>
@@ -112,36 +112,58 @@
                                 </div>
 
                             </div>
-                            <hr>
-
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <h6>&nbsp;Excuse Detail:</h6>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12 mb-1">
+                                    <textarea class="form-control form-control-user" name="excuse" id="excuse" style="border-radius:10px" placeholder="Add Excuse details"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <h6>&nbsp;Disease:</h6>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12 mb-1">
+                                    <textarea class="form-control form-control-user" name="disease" id="disease" style="border-radius:10px" placeholder="Add Disease details"></textarea>
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <div class="col-sm-4">
-                                    <h6>&nbsp;Academic:</h6>
+                                    <h6>&nbsp;Start Date:</h6>
                                 </div>
                                 <div class="col-sm-4">
-                                    <h6>&nbsp;Sports:</h6>
+                                    <h6>&nbsp;End Date:</h6>
                                 </div>
                                 <div class="col-sm-4">
-                                    <h6>&nbsp;Extra Curricular Activities:</h6>
+                                    <h6>&nbsp;Total Days:</h6>
                                 </div>
 
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="academic" id="academic" placeholder="Academic">
+                                    <input type="date" class="form-control form-control-user" name="start_date" id="start_date">
                                 </div>
                                 <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="sports" id="sports" placeholder="Sports">
+                                    <input type="date" class="form-control form-control-user" name="end_date" id="end_date">
+                                    <span id="error_end_date" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;End Date cannot be less than start date</span>
                                 </div>
                                 <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="extra_activites" id="extra_activites" placeholder="Extra Curricular Activities">
+                                    <input type="text" class="form-control form-control-user" name="days" id="days" readonly>
                                 </div>
                             </div>
+
+
+
 
                             <div class="form-group row justify-content-center">
                                 <div class="col-sm-4">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn_distinctions">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn">
                                         <!-- <i class="fab fa-google fa-fw"></i>   -->
                                         save
                                     </button>
@@ -202,8 +224,12 @@
 
 
     $('#add_btn').on('click', function() {
+        //alert('javascript working');
+        // $('#add_btn').attr('disabled', true);
         var validate = 0;
+
         var oc_no = $('#oc_no').val();
+
 
         if (oc_no == '') {
             validate = 1;
@@ -215,7 +241,7 @@
             $('#show_error_new').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>D_O/search_cadet',
+                url: '<?= base_url(); ?>CAO/search_cadet',
                 method: 'POST',
                 data: {
                     'oc_no': oc_no
@@ -241,10 +267,15 @@
                 },
                 async: true
             });
+
+
+
         } else {
             $('#add_btn').removeAttr('disabled');
             $('#show_error_new').show();
         }
+
+
     });
 
     $('#end_date').on('focusout', function() {
@@ -268,24 +299,29 @@
     });
 
 
-    $('#save_btn_distinctions').on('click', function() {
-        $('#save_btn_distinctions').attr('disabled', true);
+    $('#save_btn').on('click', function() {
+        $('#save_btn').attr('disabled', true);
         var validate = 0;
-        var academic = $('#academic').val();
-        var sports = $('#sports').val();
-        var extra_activites = $('#extra_activites').val();
-        
-        if (academic == '') {
+        var punish = $('#punish').val();
+        var offense = $('#offense').val();
+        var start_date = $('#start_date').val();
+        var end_date = $('#end_date').val();
+
+        if (punish == '') {
             validate = 1;
-            $('#academic').addClass('red-border');
+            $('#punish').addClass('red-border');
         }
-        if (sports == '') {
+        if (offense == '') {
             validate = 1;
-            $('#sports').addClass('red-border');
+            $('#offense').addClass('red-border');
         }
-        if (extra_activites == '') {
+        if (start_date == '') {
             validate = 1;
-            $('#extra_activites').addClass('red-border');
+            $('#start_date').addClass('red-border');
+        }
+        if (end_date == '') {
+            validate = 1;
+            $('#end_date').addClass('red-border');
         }
 
         if (validate == 0) {
@@ -293,7 +329,7 @@
             $('#show_error_save').hide();
 
         } else {
-            $('#save_btn_distinctions').removeAttr('disabled');
+            $('#save_btn').removeAttr('disabled');
             $('#show_error_save').show();
         }
     });

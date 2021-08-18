@@ -41,8 +41,8 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="<?php echo base_url(); ?><?php if ($this->session->userdata('acct_type') == 'ct') {
-                                                                        echo "CT";
+                <a class="nav-link" href="<?php echo base_url(); ?><?php if ($this->session->userdata('acct_type') == 'do') {
+                                                                        echo "CAO_SEC";
                                                                     } ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -51,19 +51,19 @@
             <!-- Divider -->
             <!-- <hr class="sidebar-divider"> -->
 
-
             <!-- Nav Item - Pages Collapse Menu -->
             <!-- <li class="nav-item">
-                <a class="nav-link" href="#"  aria-expanded="true">
+                <a class="nav-link" href="<?php echo base_url(); ?>CAO_SEC/view_dossier" aria-expanded="true">
                     <i class="fas fa-th-list"></i>
-                    <span> View Dossiers </span>
+                    <span> View Dossiers </span>s
                 </a>
-            </li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo base_url(); ?>CT/PN_Form" aria-expanded="true">
+            </li> -->
+
+            <!-- <li class="nav-item">
+                <a class="nav-link collapsed" href="<?php echo base_url(); ?>CAO_SEC/PN_Form" aria-expanded="true">
                     <i class="fab fa-wpforms"></i>
-                    <span>PN Form I</span>                    
+                    <span>PN Form I</span>
                 </a>
             </li> -->
 
@@ -75,33 +75,32 @@
                 PHASE I (Common Tranings)
             </div>
 
-           
             <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_discipline" aria-expanded="true">
-                    <i class="fas fa-running"></i>
-                    <span>General</span>
+                <a id="general" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_general" aria-expanded="true">
+                    <i class="fas fa-file-alt"></i>
+                    <span> General</span>
                 </a>
-                <div id="collapse_discipline" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapse_general" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url(); ?>SO_STORE/add_inventory">Observation Record (Terms I-III)</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>SO_STORE/view_projects">Punishment Record</a>
-                        <a class="collapse-item" href="#">Observation Slips</a> 
+                        <a class="collapse-item" href="<?php echo base_url(); ?>/CAO/add_club">Add Club</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>CAO/daily_module">Daily Module</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>/CAO/Inspection_record">Inspection Record</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>/CAO_SEC/personal_data">Personal Data</a>
+                        <a class="collapse-item" href="#">Obiography</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/auto_biography">Cadet's Auto-biography</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/psychologist_report">Psychologist's Report</a>
                     </div>
                 </div>
             </li> -->
             <li class="nav-item">
-                <a id="general" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_general" aria-expanded="true">
-                    <i class="fas fa-file-alt"></i>
-                    <span>Discipline</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_discipline" aria-expanded="true">
+                    <i class="fas fa-running"></i>
+                    <span> Discipline</span>
+                    <!-- <span>Components</span> -->
                 </a>
-                <div id="collapse_general" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapse_discipline" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>CT/add_club">Add Club</a> -->
-                        <a class="collapse-item" href="<?php echo base_url(); ?>CT/daily_module">Daily Module</a>
-                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>CT/Inspection_record">Inspection Record</a> -->
-                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>CT/personal_data">Personal Data</a> -->
-                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>CT/auto_biography">Cadet's Auto-biography</a> -->
-                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>CT/psychologist_report">Psychologist's Report</a> -->
+                        <a class="collapse-item" href="<?php echo base_url(); ?>CAO_SEC/daily_module">Daily Module</a>
                     </div>
                 </div>
             </li>
@@ -112,8 +111,7 @@
                 </a>
                 <div id="collapse_warning" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Record of Warnings</a>
-                        <a class="collapse-item" href="#">Record Attachments</a>
+                        <a class="collapse-item" href="#">Add Warning</a>
                     </div>
                 </div>
             </li> -->
@@ -324,5 +322,4 @@
                     $('#general').click(function() {
                         $('.collapse_general').collapse();
                     });
-                    
                 </script>

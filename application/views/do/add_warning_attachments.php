@@ -24,7 +24,7 @@
             <img src='<?= base_url() ?>assets/img/navy_logo-new.png' style="height: 130px; width:100px;">
         </div>
         <div class="col-lg-11">
-            <h1 style="text-align:center; padding:40px"><strong>ADD RECORDS OF DISTINCTIONS</strong></h1>
+            <h1 style="text-align:center; padding:40px"><strong>WARNING ATTACHMENTS</strong></h1>
         </div>
 
     </div>
@@ -73,27 +73,24 @@
 
                 <div class="card">
                     <div class="card-header bg-custom1">
-                        <h1 class="h4">Add Distinction</h1>
+                        <h1 class="h4">Result</h1>
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>D_O/save_distinction_records">
+                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>D_O/save_cadet_warning_attacument">
                             <div class="form-group row">
                                 <div class="col-sm-4">
-                                    <h6>&nbsp;Name:</h6>
+                                    <h6>&nbsp;Officer Name:</h6>
                                 </div>
-
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Term:</h6>
                                 </div>
-
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Division:</h6>
                                 </div>
-
                             </div>
-                            <div class="form-group row">
 
+                            <div class="form-group row">
                                 <div class="col-sm-4 mb-1" style="display:none">
                                     <input type="text" class="" name="oc_num" id="oc_num">
                                 </div>
@@ -101,8 +98,11 @@
                                     <input type="text" class="" name="id" id="id">
                                 </div>
 
+                                <div class="col-sm-4 mb-1" style="display:none">
+                                    <input type="text" class="form-control form-control-user" name="name" id="name" style="font-weight: bold; font-size:large; display:none" placeholder="Name" readonly>
+                                </div>
                                 <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="name" id="name" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
+                                    <input type="text" class="form-control form-control-user" name="officer_name" id="officer_name" style="font-weight: bold; font-size:large" placeholder="Name" readonly>
                                 </div>
                                 <div class="col-sm-4 mb-1">
                                     <input type="text" class="form-control form-control-user" name="term" id="term" style="font-weight: bold; font-size:large" placeholder="Term" readonly>
@@ -112,36 +112,21 @@
                                 </div>
 
                             </div>
-                            <hr>
 
                             <div class="form-group row">
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Academic:</h6>
+                                <div class="col-sm-12">
+                                    <h6>&nbsp;Upload Warning Document:</h6>
                                 </div>
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Sports:</h6>
-                                </div>
-                                <div class="col-sm-4">
-                                    <h6>&nbsp;Extra Curricular Activities:</h6>
-                                </div>
-
                             </div>
-
                             <div class="form-group row">
-                                <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="academic" id="academic" placeholder="Academic">
-                                </div>
-                                <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="sports" id="sports" placeholder="Sports">
-                                </div>
-                                <div class="col-sm-4 mb-1">
-                                    <input type="text" class="form-control form-control-user" name="extra_activites" id="extra_activites" placeholder="Extra Curricular Activities">
+                                <div class="col-sm-12 mb-1">
+                                    <input type="file" style="height: 50px; padding:10px !important;" multiple="multiple" class="form-control form-control-user" placeholder="Upload Document" name="file[]" id="result_file" x-model="fileName">
                                 </div>
                             </div>
 
                             <div class="form-group row justify-content-center">
                                 <div class="col-sm-4">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn_distinctions">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn">
                                         <!-- <i class="fab fa-google fa-fw"></i>   -->
                                         save
                                     </button>
@@ -227,7 +212,7 @@
                         $('#search_cadet').show();
                         $('#no_data').hide();
 
-                        $('#name').val(result['name']);
+                        $('#officer_name').val(result['name']);
                         $('#term').val(result['term']);
                         $('#division').val(result['divison_name']);
                         $('#oc_num').val(result['oc_no']);
@@ -247,45 +232,26 @@
         }
     });
 
-    $('#end_date').on('focusout', function() {
-        var start_date = new Date($('#start_date').val());
-        var end_date = new Date($('#end_date').val());
+
+
+    $('#save_btn').on('click', function() {
+        $('#save_btn').attr('disabled', true);
         var validate = 0;
+        var officer_name = $('#officer_name').val();
+        var term = $('#term').val();
+        var result_file = $('#result_file').val();
 
-        if (end_date < start_date) {
-            $('#error_end_date').show();
-            $('#end_date').addClass('red-border');
-            $('#end_date').focus();
-            $('#save_btn').attr('disabled', true);
-        } else {
-            $('#error_end_date').hide();
-            $('#save_btn').removeAttr('disabled');
-            $('#end_date').removeClass('red-border');
-
-        }
-
-        $('#days').val(Math.abs(end_date - start_date) / 1000 / 60 / 60 / 24);
-    });
-
-
-    $('#save_btn_distinctions').on('click', function() {
-        $('#save_btn_distinctions').attr('disabled', true);
-        var validate = 0;
-        var academic = $('#academic').val();
-        var sports = $('#sports').val();
-        var extra_activites = $('#extra_activites').val();
-        
-        if (academic == '') {
+        if (officer_name == '') {
             validate = 1;
-            $('#academic').addClass('red-border');
+            $('#officer_name').addClass('red-border');
         }
-        if (sports == '') {
+        if (term == '') {
             validate = 1;
-            $('#sports').addClass('red-border');
+            $('#Term').addClass('red-border');
         }
-        if (extra_activites == '') {
+        if (result_file == '') {
             validate = 1;
-            $('#extra_activites').addClass('red-border');
+            $('#result_file').addClass('red-border');
         }
 
         if (validate == 0) {
@@ -293,7 +259,7 @@
             $('#show_error_save').hide();
 
         } else {
-            $('#save_btn_distinctions').removeAttr('disabled');
+            $('#save_btn').removeAttr('disabled');
             $('#show_error_save').show();
         }
     });

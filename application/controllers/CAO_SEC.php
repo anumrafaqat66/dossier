@@ -1,5 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
-class CAO extends CI_Controller
+class CAO_SEC extends CI_Controller
 {
     public function __construct()
     {
@@ -11,23 +11,7 @@ class CAO extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
 
-            $data['kashmir_count']= $this->db->select('count(*) as count')->where('divison_name','Kashmir division')->get('pn_form1s')->row_array();
-            $data['tariq_count']= $this->db->select('count(*) as count')->where('divison_name','Tariq division')->get('pn_form1s')->row_array();
-            $data['shamsheer_count']= $this->db->select('count(*) as count')->where('divison_name','Shamsheer division')->get('pn_form1s')->row_array();
-            $data['hamza_count']= $this->db->select('count(*) as count')->where('divison_name','Hamza division')->get('pn_form1s')->row_array();
-            $data['nasr_count']= $this->db->select('count(*) as count')->where('divison_name','Nasr division')->get('pn_form1s')->row_array();
-            $data['khaibar_count']= $this->db->select('count(*) as count')->where('divison_name','Khaibar division')->get('pn_form1s')->row_array();
-            $data['saad_count']= $this->db->select('count(*) as count')->where('divison_name','Saad division')->get('pn_form1s')->row_array();
-            $data['aslat_count']= $this->db->select('count(*) as count')->where('divison_name','Aslat division')->get('pn_form1s')->row_array();
-            $data['zulfiqar_count']= $this->db->select('count(*) as count')->where('divison_name','Zulfiqar division')->get('pn_form1s')->row_array();
-            $data['yarmook_count']= $this->db->select('count(*) as count')->where('divison_name','Yarmook division')->get('pn_form1s')->row_array();
-            $data['alamgir_count']= $this->db->select('count(*) as count')->where('divison_name','Alamgir division')->get('pn_form1s')->row_array();
-            $data['tabuk_count']= $this->db->select('count(*) as count')->where('divison_name','Tabuk division')->get('pn_form1s')->row_array();
-            $data['saif_count']= $this->db->select('count(*) as count')->where('divison_name','Saif division')->get('pn_form1s')->row_array();
-            $data['khalid_count']= $this->db->select('count(*) as count')->where('divison_name','Khalid division')->get('pn_form1s')->row_array();
-            $data['moawin_count']= $this->db->select('count(*) as count')->where('divison_name','Moawin division')->get('pn_form1s')->row_array();
-
-            $this->load->view('cao/dashboard',$data);
+            $this->load->view('cao_sec/dashboard');
         } else {
             $this->load->view('login');
         }
@@ -42,33 +26,35 @@ class CAO extends CI_Controller
     public function daily_module()
     {
         if ($this->session->has_userdata('user_id')) {
-            $this->load->view('cao/daily_module'); //, $data);
+            // $data['club_data'] = $this->db->get('cadet_club')->result_array();
+            $this->load->view('cao_sec/daily_module'); //, $data);
         }
     }
 
     public function add_punishment()
     {
         if ($this->session->has_userdata('user_id')) {
-            $this->load->view('cao/add_punishment'); //, $data);
+            // $data['club_data'] = $this->db->get('cadet_club')->result_array();
+            $this->load->view('cao_sec/add_punishment'); //, $data);
         }
     }
     public function add_excuse()
     {
         if ($this->session->has_userdata('user_id')) {
-            $this->load->view('cao/add_excuse'); //, $data);
+            $this->load->view('cao_sec/add_excuse'); //, $data);
         }
     }
     public function add_observation()
     {
         if ($this->session->has_userdata('user_id')) {
-            $this->load->view('cao/add_observation'); //, $data);
+            $this->load->view('cao_sec/add_observation'); //, $data);
         }
     }
     public function PN_Form()
     {
         if ($this->session->has_userdata('user_id')) {
             $data['divisions'] = $this->db->get('divisions')->result_array();
-            $this->load->view('cao/pn_form1', $data);
+            $this->load->view('cao_sec/pn_form1', $data);
         }
     }
 
@@ -76,7 +62,7 @@ class CAO extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $data['pn_data'] = $this->db->where('divison_name', 'XYZ')->get('pn_form1s')->result_array();
-            $this->load->view('cao/view_dossier', $data);
+            $this->load->view('cao_sec/view_dossier', $data);
         }
     }
 
@@ -87,12 +73,11 @@ class CAO extends CI_Controller
             $this->db->from('punishment_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('f.oc_no = pr.oc_no');
-            //$this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('pr.start_date <=', date('Y-m-d'));
-            // $this->db->where('pr.end_date >=', date('Y-m-d'));
+            $this->db->where('pr.status', 'Approved');
+            
             $data['punishment_records'] = $this->db->get()->result_array();
-            // $data['punishment_records'] = $this->db->where('do_id',$this->session->userdata('user_id'))->get('punishment_records')->result_array();
-            $this->load->view('cao/view_punishment_list', $data);
+            
+            $this->load->view('cao_sec/view_punishment_list', $data);
         }
     }
 
@@ -106,7 +91,7 @@ class CAO extends CI_Controller
             $this->db->where('mr.start_date <=', date('Y-m-d'));
             $this->db->where('mr.end_date >=', date('Y-m-d'));
             $data['medical_records'] = $this->db->get()->result_array();
-            $this->load->view('cao/view_excuse_list', $data);
+            $this->load->view('cao_sec/view_excuse_list', $data);
         }
     }
     public function view_observation_list()
@@ -115,8 +100,9 @@ class CAO extends CI_Controller
             $this->db->select('or.*, f.*');
             $this->db->from('observation_records or');
             $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
+            $this->db->where('or.status', 'Approved');
             $data['observation_records'] = $this->db->get()->result_array();
-            $this->load->view('cao/view_observation_list', $data);
+            $this->load->view('cao_sec/view_observation_list', $data);
         }
     }
     public function search_excuse_by_date()
@@ -133,7 +119,7 @@ class CAO extends CI_Controller
             // $this->db->where('mr.end_date >=',date('Y-m-d'));
             $data['medical_records'] = $this->db->get()->result_array();
             $data['search_date'] = $date;
-            $view_page = $this->load->view('cao/view_excuse_list', $data, TRUE);
+            $view_page = $this->load->view('cao_sec/view_excuse_list', $data, TRUE);
             echo $view_page;
             json_encode($view_page);
         }
@@ -151,7 +137,7 @@ class CAO extends CI_Controller
             $this->db->where('pr.start_date =', $date);
             $data['punishment_records'] = $this->db->get()->result_array();
             $data['search_date'] = $date;
-            $view_page = $this->load->view('cao/view_punishment_list', $data, TRUE);
+            $view_page = $this->load->view('cao_sec/view_punishment_list', $data, TRUE);
             echo $view_page;
             json_encode($view_page);
         }
@@ -186,7 +172,7 @@ class CAO extends CI_Controller
                 'term' => $term,
                 'start_date' => $start_date,
                 'end_date' => $end_date,
-                'status' => 'Approved'
+                'status' => 'Pending'
 
             );
 
@@ -195,10 +181,10 @@ class CAO extends CI_Controller
 
             if (!empty($insert)) {
                 $this->session->set_flashdata('success', 'Punishment added successfully');
-                redirect('CAO/add_punishment');
+                redirect('cao_sec/add_punishment');
             } else {
                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
-                redirect('CAO/add_punishment');
+                redirect('cao_sec/add_punishment');
             }
         }
     }
@@ -240,10 +226,10 @@ class CAO extends CI_Controller
 
             if (!empty($insert)) {
                 $this->session->set_flashdata('success', 'Excuse added successfully');
-                redirect('CAO/add_excuse');
+                redirect('cao_sec/add_excuse');
             } else {
                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
-                redirect('CAO/add_excuse');
+                redirect('cao_sec/add_excuse');
             }
         }
     }
@@ -278,10 +264,10 @@ class CAO extends CI_Controller
 
             if (!empty($insert)) {
                 $this->session->set_flashdata('success', 'Observation added successfully');
-                redirect('CAO/add_observation');
+                redirect('cao_sec/add_observation');
             } else {
                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
-                redirect('CAO/add_observation');
+                redirect('cao_sec/add_observation');
             }
         }
     }
@@ -312,7 +298,7 @@ class CAO extends CI_Controller
             $this->db->from('observation_records or');
             $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
             $data['observation_records'] = $this->db->get()->result_array();
-            $view_page = $this->load->view('cao/view_observation_list', $data, TRUE);
+            $view_page = $this->load->view('cao_sec/view_observation_list', $data, TRUE);
             echo $view_page;
             json_encode($view_page);
         }
@@ -336,7 +322,7 @@ class CAO extends CI_Controller
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('f.oc_no = pr.oc_no');
             $data['punishment_records'] = $this->db->get()->result_array();
-            $view_page = $this->load->view('cao/view_punishment_list', $data, TRUE);
+            $view_page = $this->load->view('cao_sec/view_punishment_list', $data, TRUE);
             echo $view_page;
             json_encode($view_page);
         }
@@ -376,10 +362,10 @@ class CAO extends CI_Controller
 
             if (!empty($insert)) {
                 $this->session->set_flashdata('success', 'Data Submitted successfully');
-                redirect('CAO/PN_Form');
+                redirect('cao_sec/PN_Form');
             } else {
                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
-                redirect('CAO/PN_Form');
+                redirect('cao_sec/PN_Form');
             }
         }
     }
@@ -389,7 +375,7 @@ class CAO extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $data['pn_data'] = $this->db->get('pn_form1s')->result_array();
             if (count($data['pn_data']) > 0) {
-                $view_page = $this->load->view('cao/view_dossier', $data, TRUE);
+                $view_page = $this->load->view('cao_sec/view_dossier', $data, TRUE);
                 echo $view_page;
                 json_encode($view_page);
             } else {
@@ -406,7 +392,7 @@ class CAO extends CI_Controller
             $data['pn_data'] = $this->db->where('oc_no', $oc_no)->get('pn_form1s')->result_array();
             $data['oc_no_entered'] = $oc_no;
             if (count($data['pn_data']) > 0) {
-                $view_page = $this->load->view('cao/view_dossier', $data, TRUE);
+                $view_page = $this->load->view('cao_sec/view_dossier', $data, TRUE);
                 echo $view_page;
                 json_encode($view_page);
             } else {

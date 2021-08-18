@@ -1,4 +1,4 @@
-<?php $this->load->view('cao/common/header'); ?>
+<?php $this->load->view('ct/common/header'); ?>
 
 <style>
     .red-border {
@@ -112,8 +112,9 @@
                                             <th scope="col">Observation</th>
                                             <th scope="col">By Officer</th>
                                             <th scope="col">Status</th>
-                                            <!-- <th scope="col">Action</th>
-                                            <th scope="col">Action</th> -->
+                                            <th scope="col">Progress</th>
+                                            <th scope="col">Approve</th>
+                                            <th scope="col">Reject</th>
                                         </tr>
                                     </thead>
                                     <tbody id="table_rows">
@@ -134,16 +135,20 @@
                                                     <td scope="row" style="color:green;font-weight:bold"><?= $data['status']; ?></td>
                                                 <?php } elseif ($data['status'] == 'Rejected') { ?>
                                                     <td scope="row" style="color:red;font-weight:bold"><?= $data['status']; ?></td>
+                                                <?php } elseif ($data['status'] == 'Progress') { ?>
+                                                    <td scope="row" style="color:chocolate;font-weight:bold"><?= $data['status']; ?></td>
                                                 <?php } else { ?>
                                                     <td></td>
                                                 <?php } ?>
-                                                <!-- <?php if ($data['status'] == 'Pending') { ?>
+                                                <?php if ($data['status'] == 'Pending') { ?>
+                                                    <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:chocolate; font-weight:bold; border:0px">Progress</button></td>
                                                     <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:green; font-weight:bold; border:0px">Approve</button></td>
                                                     <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:red; font-weight:bold; border:0px">Reject</button></td>
                                                 <?php } else { ?>
+                                                    <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:chocolate; font-weight:bold; border:0px" disabled>Progress</button></td>
                                                     <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:green; font-weight:bold; border:0px" disabled>Approve</button></td>
                                                     <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" style="font-size:12px; background-color:red; font-weight:bold; border:0px" disabled>Reject</button></td>
-                                                <?php } ?> -->
+                                                <?php } ?>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
@@ -153,13 +158,9 @@
                             <?php } ?>
                         </div>
                     </div>
-
-
                 </div>
-
             </div>
         </div>
-
     </div>
 
 </div>
@@ -208,17 +209,19 @@
 
         var status = '';
         if (global_col_position == 9) {
-            status = 'Approved';
+            status = 'Progress';
         } else if (global_col_position == 10) {
+            status = 'Approved';
+        } else if (global_col_position == 11) {
             status = 'Rejected';
         }
-        
-        if (global_col_position == 9 || global_col_position == 10) {
+
+        if (global_col_position == 9 || global_col_position == 10 || global_col_position == 11) {
             $('#success_message').modal('show');
             setTimeout(
                 function() {
                     $.ajax({
-                        url: '<?= base_url(); ?>CAO/update_observation_status',
+                        url: '<?= base_url(); ?>CT/update_observation_status',
                         method: 'POST',
                         data: {
                             'id': cadet_id,

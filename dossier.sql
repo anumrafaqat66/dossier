@@ -1426,7 +1426,7 @@ CREATE TABLE `security_info` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `reg_data` timestamp NOT NULL DEFAULT current_timestamp(),
-  `acct_type` enum('do','joto','ct','co','exo','sqc','cao','smo','admin') NOT NULL,
+  `acct_type` enum('do','joto','ct','co','exo','sqc','cao','cao_sec','smo','admin') NOT NULL,
   `status` enum('offline','online') NOT NULL,
   `division` varchar(50) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -1440,7 +1440,9 @@ INSERT INTO `security_info` (`id`, `username`, `password`, `reg_data`, `acct_typ
 (2, 'do', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'do', 'offline', 'Hamza division'),
 (3, 'joto', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'joto', 'offline', 'Hamza division'),
 (4, 'cao', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'cao', 'offline', NULL),
-(5, 'smo', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'smo', 'offline', NULL);
+(5, 'smo', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'smo', 'offline', NULL),
+(6, 'cao_sec', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'cao_sec', 'offline', NULL),
+(7, 'ct', '$2y$10$7ht2URnlOaTf4Phga9oWaOd9t5LdtChLLMUVgkzUFhmeRCbZS9Rpe', '2021-06-29 04:10:11', 'ct', 'offline', NULL);
 
 -- --------------------------------------------------------
 
@@ -1893,6 +1895,45 @@ CREATE TABLE `divisional_officer_records` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Table structure for table `chat`
+--
+
+CREATE TABLE `chat` (
+  `id` int(11) NOT NULL,
+  `sender_id` int(11) NOT NULL,
+  `receiver_id` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `attachment_name` text NOT NULL,
+  `file_ext` text NOT NULL,
+  `mime_type` text NOT NULL,
+  `message_date_time` text NOT NULL,
+  `ip_address` text NOT NULL,
+  `seen` enum('yes','no') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `activity_log`
+--
+
+CREATE TABLE `activity_log` (
+ `id` int(11) NOT NULL,
+ `activity_module` enum('Admin','SO_Store','PO','SO_CW','SO_Record'),
+ `activity_action` enum('add','update','delete') ,
+ `activity_detail` text NULL,
+ `activity_by` varchar(250) NULL,
+ `activity_date` datetime
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `activity_log`
+--
+
+CREATE TABLE `activity_log_seen` (
+ `activity_id` int(11) NOT NULL,
+ `user_id` int(11) NOT NULL,
+ `seen` enum('yes','no') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Alter Tables by Awais Ahmad
 
@@ -1923,6 +1964,20 @@ add column days int(20);
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `chat`
+--
+ALTER TABLE `chat`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `activity_log`
+--  
+ALTER TABLE `activity_log`
+ ADD PRIMARY KEY (`id`);
+
+
 
 --
 -- Indexes for table `academic_records`
@@ -2592,6 +2647,18 @@ ALTER TABLE `branch_preference_list`
 --
 ALTER TABLE `divisional_officer_records`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `chat`
+--
+ALTER TABLE `chat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `activity_log`
+--
+ALTER TABLE `activity_log`
+ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Table structure for table `academic_records`
