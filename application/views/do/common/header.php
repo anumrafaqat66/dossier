@@ -346,8 +346,8 @@
                 </nav>
                 <!-- End of Topbar -->
 
-                <script>
+                <!-- <script>
                     // $('#general').click(function() {
                     //    $('.collapse_general').collapse();
                     //});
-                </script>
+                </script> -->

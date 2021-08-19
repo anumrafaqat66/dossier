@@ -113,7 +113,7 @@
 
                             </div>
 
-                            <div class="form-group row">
+                            <!-- <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Term:</h6>
                                 </div>
@@ -123,7 +123,7 @@
                                 <div class="col-sm-12 mb-1">
                                     <input type="text" class="form-control form-control-user" name="Term" id="Term" style="" placeholder="Term" readonly>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="form-group row">
                                 <div class="col-sm-12">
                                     <h6>&nbsp;Upload Document:</h6>

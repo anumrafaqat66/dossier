@@ -49,8 +49,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
-
-
 */
 
 $route['chat'] = 'ChatController/index';
@@ -67,45 +65,10 @@ $route['update-activity'] = 'ChatController/update_activity';
 $route['D_O/update-activity'] = 'ChatController/update_activity';
 $route['JOTO/update-activity'] = 'ChatController/update_activity';
 
-$route['SO_CW/view_project_progress/update-activity'] = 'ChatController/update_activity';
-$route['SO_CW/view_project_progress/update-notification'] = 'ChatController/update_notification';
-$route['SO_CW/view_project_progress/check-notification'] = 'ChatController/check_notification';
-$route['SO_CW/view_project_progress/check-activity'] = 'ChatController/check_activity';
-
-$route['SO_CW/view_project_schedule/update-activity'] = 'ChatController/update_activity';
-$route['SO_CW/view_project_schedule/update-notification'] = 'ChatController/update_notification';
-$route['SO_CW/view_project_schedule/check-notification'] = 'ChatController/check_notification';
-$route['SO_CW/view_project_schedule/check-activity'] = 'ChatController/check_activity';
-
-$route['Project_Officer/overview/update-activity'] = 'ChatController/update_activity';
-$route['Project_Officer/overview/update-notification'] = 'ChatController/update_notification';
-$route['Project_Officer/overview/check-activity'] = 'ChatController/check_activity';
-$route['Project_Officer/overview/check-notification'] = 'ChatController/check_notification';
-
-$route['Project_Officer/drawing/update-activity'] = 'ChatController/update_activity';
-$route['Project_Officer/drawing/update-notification'] = 'ChatController/update_notification';
-$route['Project_Officer/drawing/check-activity'] = 'ChatController/check_activity';
-$route['Project_Officer/drawing/check-notification'] = 'ChatController/check_notification';
-
-$route['Project_Officer/view_project_ganttchart/update-activity'] = 'ChatController/update_activity';
-$route['Project_Officer/view_project_ganttchart/update-notification'] = 'ChatController/update_notification';
-$route['Project_Officer/view_project_ganttchart/check-activity'] = 'ChatController/check_activity';
-$route['Project_Officer/view_project_ganttchart/check-notification'] = 'ChatController/check_notification';
-
-$route['Project_Officer/view_project_breakdown/update-activity'] = 'ChatController/update_activity';
-$route['Project_Officer/view_project_breakdown/update-notification'] = 'ChatController/update_notification';
-$route['Project_Officer/view_project_breakdown/check-activity'] = 'ChatController/check_activity';
-$route['Project_Officer/view_project_breakdown/check-notification'] = 'ChatController/check_notification';
-
-
-$route['SO_STORE/update-activity'] = 'ChatController/update_activity';
-
 $route['check-notification'] = 'ChatController/check_notification';
 
 $route['D_O/check-notification'] = 'ChatController/check_notification';
 $route['JOTO/check-notification'] = 'ChatController/check_notification';
-
-$route['SO_STORE/check-notification'] = 'ChatController/check_notification';
 
 $route['check-activity'] = 'ChatController/check_activity';
 $route['D_O/check-activity'] = 'ChatController/check_activity';

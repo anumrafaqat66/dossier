@@ -1918,7 +1918,7 @@ CREATE TABLE `chat` (
 
 CREATE TABLE `activity_log` (
  `id` int(11) NOT NULL,
- `activity_module` enum('Admin','SO_Store','PO','SO_CW','SO_Record'),
+ `activity_module` enum('do','joto','ct','co','exo','sqc','cao','cao_sec','smo','admin') NOT NULL,
  `activity_action` enum('add','update','delete') ,
  `activity_detail` text NULL,
  `activity_by` varchar(250) NULL,

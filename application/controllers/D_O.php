@@ -61,6 +61,33 @@ class D_O extends CI_Controller
             $this->db->where($cond);
             $update = $this->db->update('pn_form1s', $data_update);
 
+            if (!empty($insert)) {
+
+                $cadet_name = $this->db->select('name')->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => "Cadet ".$cadet_name['name'] . " has been added to Club: " . $club,
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
+
             if (!empty($update) && !empty($insert)) {
                 $this->session->set_flashdata('success', 'Cadet added to Club successfully');
                 redirect('D_O/add_club');
@@ -112,6 +139,32 @@ class D_O extends CI_Controller
             );
             $insert = $this->db->insert('club_records', $insert_array);
 
+            if (!empty($insert)) {
+
+                $cadet_name = $this->db->select('name')->where('oc_no', $oc_num_ec)->get('pn_form1s')->row_array();
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => "Cadet ".$cadet_name['name'] . " has been updated to Club: " . $club,
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
 
             if (!empty($insert)) {
                 $this->session->set_flashdata('success', 'Cadet Club Updated successfully');
@@ -153,7 +206,33 @@ class D_O extends CI_Controller
             );
 
             $insert = $this->db->insert('pn_form1s', $insert_array);
-            //$last_id = $this->db->insert_id();
+            
+            if (!empty($insert)) {
+
+                $cadet_name = $this->db->select('name')->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => "A New Cadet ".$cadet_name['name'] . " has been added",
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
 
             if (!empty($insert)) {
                 $this->session->set_flashdata('success', 'Data Submitted successfully');
@@ -186,6 +265,33 @@ class D_O extends CI_Controller
             );
 
             $insert = $this->db->insert('inspection_records', $insert_array);
+
+            if (!empty($insert)) {
+
+                $cadet_name = $this->db->select('name')->where('p_id', $officer_id)->get('pn_form1s')->row_array();
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => "Inspection record has been added for Cadet ".$cadet_name['name'] . " by officer " . $inspecting_officer_name,
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
 
             if (!empty($insert)) {
                 $this->session->set_flashdata('success', 'Data Submitted successfully');
@@ -277,9 +383,35 @@ class D_O extends CI_Controller
                 'updated_at' => date('Y-m-d H:i:s'),
                 'upload_file' => $files
             );
-            // print_r($insert_array);exit;
+            
             $insert = $this->db->insert('personal_datas', $insert_array);
-            //$last_id = $this->db->insert_id();
+            
+            if (!empty($insert)) {
+
+                $cadet_name = $this->db->select('name')->where('p_id', $officer_id)->get('pn_form1s')->row_array();
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => "Personal record has been added for Cadet ".$cadet_name['name'],
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
 
             if (!empty($insert)) {
                 $this->session->set_flashdata('success', 'Data Submitted successfully');
@@ -327,7 +459,33 @@ class D_O extends CI_Controller
             );
 
             $insert = $this->db->insert('punishment_records', $insert_array);
-            //$last_id = $this->db->insert_id();
+            
+            if (!empty($insert)) {
+
+                $cadet_name = $this->db->select('name')->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => "Punihsment added for Cadet ".$cadet_name['name'],
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
 
             if (!empty($insert)) {
                 $this->session->set_flashdata('success', 'Punishment added successfully');
@@ -378,6 +536,39 @@ class D_O extends CI_Controller
             );
 
             $insert = $this->db->insert('academic_records', $insert_array);
+
+            if (!empty($insert)) {
+
+                $cadet_name = $this->db->select('name')->where('p_id', $id)->get('pn_form1s')->row_array();
+
+                if ($result_type == 'SeaTraining') {
+                    $display_result = "Sea Training Result";
+                } else if ($result_type == 'Result') {
+                    $display_result = "Result";
+                }
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => $display_result. " has been added for Cadet ".$cadet_name['name'],
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
 
             if (!empty($insert)) {
                 if ($result_type == 'Result') {
@@ -440,11 +631,38 @@ class D_O extends CI_Controller
                 ];
             }
 
-
             $cond  = ['id' => $id];
 
             $this->db->where($cond);
             $update = $this->db->update('punishment_records', $data_update);
+
+            if (!empty($update)) {
+                
+                $p_id = $this->db->select('p_id')->where('id', $id)->get('punishment_records')->row_array();
+                $cadet_name = $this->db->select('name')->where('p_id', $p_id['p_id'])->get('pn_form1s')->row_array();
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => "Punihsment added for Cadet ".$cadet_name['name'],
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
 
             if (!empty($update)) {
                 $this->session->set_flashdata('success', 'Punishment updated successfully');
@@ -470,17 +688,15 @@ class D_O extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $punish_id = $_POST['id'];
-            //echo $cadet_id;exit;
+
             $this->db->select('pr.*, f.*');
             $this->db->from('punishment_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            // $this->db->where('f.oc_no = pr.oc_no');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('pr.id', $punish_id);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
-            // $this->db->where('pr.status', 'Approved');
             $data['edit_record'] = $this->db->get()->row_array();
-            // echo $data['edit_record']);exit;
+            
             echo json_encode($data['edit_record']);
         }
     }
@@ -519,7 +735,33 @@ class D_O extends CI_Controller
             );
 
             $insert = $this->db->insert('medical_records', $insert_array);
-            //$last_id = $this->db->insert_id();
+
+            if (!empty($insert)) {
+
+                $cadet_name = $this->db->select('name')->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => "Excuse has been added for Cadet ".$cadet_name['name'],
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
 
             if (!empty($insert)) {
                 $this->session->set_flashdata('success', 'Excuse added successfully');
@@ -557,7 +799,33 @@ class D_O extends CI_Controller
             );
 
             $insert = $this->db->insert('observation_records', $insert_array);
-            //$last_id = $this->db->insert_id();
+
+            if (!empty($insert)) {
+
+                $cadet_name = $this->db->select('name')->where('p_id', $id)->get('pn_form1s')->row_array();
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => "Observation has been added for Cadet ".$cadet_name['name'],
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
 
             if (!empty($insert)) {
                 $this->session->set_flashdata('success', 'Observation added successfully');
@@ -575,29 +843,48 @@ class D_O extends CI_Controller
             $postData = $this->security->xss_clean($this->input->post());
 
             $page = $postData['page'];
-            //echo "sdfsfsd";
-            // echo "page".$page;exit;
             $id = $postData['observation_id'];
-            // $oc_no = $postData['oc_num'];
             $observation = $postData['observation'];
             $term = $postData['term'];
-            // $awarded_by = $this->session->userdata('username');
-            // $awarded_id = $this->session->userdata('user_id');
 
-            $update_array = array(
-                //  'oc_no' => $oc_no,
-
+            $update_array = array( 
                 'observation' => $observation,
                 'updated_at' => date('Y-m-d H:i:s'),
 
             );
             $cond  = ['id' => $id];
             $this->db->where($cond);
-            $insert = $this->db->update('observation_records', $update_array);
-            //$last_id = $this->db->insert_id();
+            $insert = $this->db->update('observation_records', $update_array); 
 
             if (!empty($insert)) {
 
+                $p_id = $this->db->select('p_id')->where('id', $id)->get('observation_records')->row_array(); 
+                $cadet_name = $this->db->select('name')->where('p_id', $p_id['p_id'])->get('pn_form1s')->row_array(); 
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => "Observation has been updated for Cadet ".$cadet_name['name'],
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
+
+            if (!empty($insert)) {
                 if ($page == 'daily_module') {
                     $this->session->set_flashdata('success', 'Observation updated successfully');
                     redirect('D_O/view_observation_list');
@@ -659,6 +946,33 @@ class D_O extends CI_Controller
             $insert = $this->db->insert('warning_records', $insert_array);
 
             if (!empty($insert)) {
+
+                $cadet_name = $this->db->select('name')->where('oc_no', $oc_no)->get('pn_form1s')->row_array(); 
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => "Warning has been added for Cadet ".$cadet_name['name'],
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
+
+            if (!empty($insert)) {
                 $this->session->set_flashdata('success', 'Warning added successfully');
                 redirect('D_O/add_warning');
             } else {
@@ -690,6 +1004,32 @@ class D_O extends CI_Controller
             );
 
             $insert = $this->db->insert('divisional_officer_records', $insert_array);
+
+            if (!empty($insert)) {
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => "Divisional Officer record has been added by ". $this->session->userdata('username'),
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
+
             if (!empty($insert)) {
                 $this->session->set_flashdata('success', 'Divisional Officer Record added successfully');
                 redirect('D_O/view_record_div_officer');
@@ -739,9 +1079,35 @@ class D_O extends CI_Controller
 
             );
 
-
             $this->db->where($cond);
             $update = $this->db->update('warning_records', $data_update);
+
+            if (!empty($update)) {
+
+                $cadet_name = $this->db->select('name')->where('oc_no', $oc_no)->get('pn_form1s')->row_array(); 
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => "Warning has been updated for Cadet ".$cadet_name['name'],
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
 
             if (!empty($update)) {
                 $this->session->set_flashdata('success', 'Warning updated successfully');
@@ -960,9 +1326,36 @@ class D_O extends CI_Controller
                 'updated_at' => date('Y-m-d H:i:s')
 
             );
-            //print_r($insert_array);exit;
+
             $insert = $this->db->insert('branch_allocations', $insert_array);
-            //$last_id = $this->db->insert_id();
+
+            if (!empty($insert)) {
+
+                $cadet_name = $this->db->select('name')->where('oc_no', $oc_no)->get('pn_form1s')->row_array(); 
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => "Branch Allocation record added for Cadet ". $cadet_name['name'],
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
+
             if (!empty($insert)) {
                 $this->session->set_flashdata('success', 'Branch Preferences added successfully');
                 redirect('D_O/add_branch_allocation');
@@ -979,14 +1372,12 @@ class D_O extends CI_Controller
             $postData = $this->security->xss_clean($this->input->post());
 
             $id = $postData['id_b'];
-            //  echo $id;exit;
+ 
             $prefer_1 = $postData['prefer_1'];
             $prefer_2 = $postData['prefer_2'];
-            // $div_name = $postData['division'];
             $prefer_3 = $postData['prefer_3'];
             $recommended_branch = $postData['recommended_branch'];
             $allocated_branch = $postData['allocated_branch'];
-
 
             $update_array = array(
                 'option1' => $prefer_1,
@@ -997,11 +1388,39 @@ class D_O extends CI_Controller
                 'updated_at' => date('Y-m-d H:i:s')
 
             );
-            // print_r($update_array);exit;
+
             $cond  = ['p_id' => $id];
             $this->db->where($cond);
             $update = $this->db->update('branch_allocations', $update_array);
-            //$last_id = $this->db->insert_id();
+
+            if (!empty($update)) {
+
+                $p_id = $this->db->select('p_id')->where('id', $id)->get('branch_allocations')->row_array(); 
+                $cadet_name = $this->db->select('name')->where('p_id', $p_id['p_id'])->get('pn_form1s')->row_array(); 
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => "Branch Allocation record Updated for cadet ". $cadet_name['name'],
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
+
 
             if (!empty($update)) {
                 $this->session->set_flashdata('success', 'Branch Allocations updated successfully');
@@ -1061,19 +1480,54 @@ class D_O extends CI_Controller
             $update = $this->db->update('pn_form1s', $update_array);
 
             if (!empty($update)) {
+
+                $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array(); 
+
+                if ($all == 'yes') {
+                    $act_desc = 'All Cadets of ' . $this->session->userdata('division') . ' promoted successfully';
+                } else {
+                    if ($action =='relegate') {
+                        $act_desc =  "Cadet ". $cadet_name['name'] . " has been relegated";
+                    } else {
+                        $act_desc =  "Cadet ". $cadet_name['name'] . " has been Promoted";
+                    }
+                }
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => $act_desc,
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
+
+            if (!empty($update)) {
                 if ($all == 'no') {
-                    if ($action == 'promote'){
+                    if ($action == 'promote') {
                         $this->session->set_flashdata('success', 'Cadet Promoted successfully');
-                    } else if ($action =='relegate') {
+                    } else if ($action == 'relegate') {
                         $this->session->set_flashdata('success', 'Cadet Relegated successfully');
                     }
                 } else {
-                    $this->session->set_flashdata('success', 'All Cadets for division'. $this->session->userdata('division'). ' promoted successfully');
+                    $this->session->set_flashdata('success', 'All Cadets for division' . $this->session->userdata('division') . ' promoted successfully');
                 }
-                // redirect('D_O/view_promotion_screen','refresh');
             } else {
                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
-                // redirect('D_O/view_promotion_screen','refresh');
             }
 
             $data = '';
@@ -1095,8 +1549,7 @@ class D_O extends CI_Controller
             $this->db->where('pr.end_date >=', date('Y-m-d'));
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             $data['punishment_records'] = $this->db->get()->result_array();
-            //print_r($data['punishment_records']);exit;
-            // $data['punishment_records'] = $this->db->where('do_id',$this->session->userdata('user_id'))->get('punishment_records')->result_array();
+            
             $this->load->view('do/view_punishment_list', $data);
         }
     }
@@ -1918,6 +2371,33 @@ class D_O extends CI_Controller
 
             if (!empty($insert)) {
 
+                $cadet_name = $this->db->select('name')->where('oc_no', $oc_no)->get('pn_form1s')->row_array(); 
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => "Physical Milestone has been added for cadet ". $cadet_name['name'],
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
+
+            if (!empty($insert)) {
+
                 if ($postData['pagee'] == 'milestone_list') {
                     $this->session->set_flashdata('success', 'Data Submitted successfully');
                     redirect('D_O/view_milestone_list');
@@ -2078,6 +2558,33 @@ class D_O extends CI_Controller
                 'created_at' => date('Y-m-d')
             );
             $insert = $this->db->insert('officer_qualities', $insert_array);
+        }
+
+        if (!empty($insert)) {
+
+            $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array(); 
+
+            $insert_activity = array(
+                'activity_module' => $this->session->userdata('acct_type'),
+                'activity_action' => 'add',
+                'activity_detail' => "Officer Like Qualities added for cadet ". $cadet_name['name'],
+                'activity_by' => $this->session->userdata('username'),
+                'activity_date' => date('Y-m-d H:i:s')
+            );
+
+            $insert_act = $this->db->insert('activity_log', $insert_activity);
+            $last_id = $this->db->insert_id();
+
+            $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+            for ($i = 0; $i < count($query); $i++) {
+                $insert_activity_seen = array(
+                    'activity_id' => $last_id,
+                    'user_id' => $query[$i]['id'],
+                    'seen' => 'no'
+                );
+                $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+            }
         }
 
         if (!empty($insert)) {
@@ -2912,6 +3419,33 @@ class D_O extends CI_Controller
             );
             // print_r($insert_array);exit;
             $insert = $this->db->insert('psychologist_reports', $insert_array);
+
+            if (!empty($insert)) {
+
+                $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array(); 
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => "psychologist report added for cadet ". $cadet_name['name'],
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
         }
 
         if (!empty($insert)) {
@@ -2953,27 +3487,19 @@ class D_O extends CI_Controller
     {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
-            // print_r($_FILES['autobiography']['size'][0]);
             $file_size = $_FILES['autobiography']['size'][0] . " kb";
-            // echo $file_size;exit;
             $p_id = $postData['id'];
             $upload1 = $this->upload_autobiograhy($_FILES['autobiography']);
-
-
 
             if (count($upload1) > 1) {
                 $files = implode(',', $upload1);
             } else {
                 $files = $upload1[0];
-                // $file_type=;
-                // $file_path=;
-                // $file_size=;
             }
             $iparr = explode(".", $files);
             $file_type = $iparr[1];
-            //$term = $postData['term'];
+            
             $insert_array = array(
-                //'oc_no' => $oc_no,
                 'p_id' => $p_id,
                 'do_id' => $this->session->userdata('user_id'),
                 'file_name' => $files,
@@ -2981,8 +3507,34 @@ class D_O extends CI_Controller
                 'file_size' => $file_size,
                 'created_at' => date('Y-m-d H:i:s')
             );
-            // print_r($insert_array);exit;
             $insert = $this->db->insert('cadets_autobiographies', $insert_array);
+        }
+
+        if (!empty($insert)) {
+
+            $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array(); 
+
+            $insert_activity = array(
+                'activity_module' => $this->session->userdata('acct_type'),
+                'activity_action' => 'add',
+                'activity_detail' => "Autobiography added for cadet ". $cadet_name['name'],
+                'activity_by' => $this->session->userdata('username'),
+                'activity_date' => date('Y-m-d H:i:s')
+            );
+
+            $insert_act = $this->db->insert('activity_log', $insert_activity);
+            $last_id = $this->db->insert_id();
+
+            $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+            for ($i = 0; $i < count($query); $i++) {
+                $insert_activity_seen = array(
+                    'activity_id' => $last_id,
+                    'user_id' => $query[$i]['id'],
+                    'seen' => 'no'
+                );
+                $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+            }
         }
 
         if (!empty($insert)) {
@@ -3030,9 +3582,7 @@ class D_O extends CI_Controller
             $remarks = $postData['remarks'];
             $p_id = $postData['id'];
 
-            //$term = $postData['term'];
             $insert_array = array(
-                //'oc_no' => $oc_no,
                 'p_id' => $p_id,
                 'do_id' => $this->session->userdata('user_id'),
                 'assessment' => $asses_type,
@@ -3040,8 +3590,35 @@ class D_O extends CI_Controller
                 'remarks' => $remarks,
                 'created_at' => date('Y-m-d H:i:s')
             );
-            // print_r($insert_array);exit;
+
             $insert = $this->db->insert('general_remarks', $insert_array);
+        }
+
+        if (!empty($insert)) {
+
+            $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array(); 
+
+            $insert_activity = array(
+                'activity_module' => $this->session->userdata('acct_type'),
+                'activity_action' => 'add',
+                'activity_detail' => "General Remarks added for cadet ". $cadet_name['name'],
+                'activity_by' => $this->session->userdata('username'),
+                'activity_date' => date('Y-m-d H:i:s')
+            );
+
+            $insert_act = $this->db->insert('activity_log', $insert_activity);
+            $last_id = $this->db->insert_id();
+
+            $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+            for ($i = 0; $i < count($query); $i++) {
+                $insert_activity_seen = array(
+                    'activity_id' => $last_id,
+                    'user_id' => $query[$i]['id'],
+                    'seen' => 'no'
+                );
+                $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+            }
         }
 
         if (!empty($insert)) {
@@ -3115,6 +3692,33 @@ class D_O extends CI_Controller
                 $cond  = ['p_id' => $p_id];
                 $this->db->where($cond);
                 $update = $this->db->update('progress_charts', $update_array);
+            }
+        }
+
+        if (!empty($update) || !empty($insert)) {
+
+            $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array(); 
+
+            $insert_activity = array(
+                'activity_module' => $this->session->userdata('acct_type'),
+                'activity_action' => 'add',
+                'activity_detail' => "Progress Report added for cadet ". $cadet_name['name'],
+                'activity_by' => $this->session->userdata('username'),
+                'activity_date' => date('Y-m-d H:i:s')
+            );
+
+            $insert_act = $this->db->insert('activity_log', $insert_activity);
+            $last_id = $this->db->insert_id();
+
+            $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+            for ($i = 0; $i < count($query); $i++) {
+                $insert_activity_seen = array(
+                    'activity_id' => $last_id,
+                    'user_id' => $query[$i]['id'],
+                    'seen' => 'no'
+                );
+                $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
             }
         }
 
@@ -3225,12 +3829,39 @@ class D_O extends CI_Controller
             }
         }
 
+        if (!empty($update) || !empty($insert)) {
+
+            $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array(); 
+
+            $insert_activity = array(
+                'activity_module' => $this->session->userdata('acct_type'),
+                'activity_action' => 'add',
+                'activity_detail' => "Seniority Record added for cadet ". $cadet_name['name'],
+                'activity_by' => $this->session->userdata('username'),
+                'activity_date' => date('Y-m-d H:i:s')
+            );
+
+            $insert_act = $this->db->insert('activity_log', $insert_activity);
+            $last_id = $this->db->insert_id();
+
+            $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+            for ($i = 0; $i < count($query); $i++) {
+                $insert_activity_seen = array(
+                    'activity_id' => $last_id,
+                    'user_id' => $query[$i]['id'],
+                    'seen' => 'no'
+                );
+                $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+            }
+        }
+
         if (!empty($insert) || !empty($update)) {
             $this->session->set_flashdata('success', 'Data Submitted successfully');
-            redirect('D_O/view_progress_chart');
+            redirect('D_O/view_seniority_records');
         } else {
             $this->session->set_flashdata('failure', 'Something went wrong, try again.');
-            redirect('D_O/view_progress_chart');
+            redirect('D_O/view_seniority_records');
         }
     }
 
@@ -3243,9 +3874,7 @@ class D_O extends CI_Controller
             $extra_activities = $postData['extra_activites'];
             $p_id = $postData['id'];
 
-            //$term = $postData['term'];
             $insert_array = array(
-                //'oc_no' => $oc_no,
                 'p_id' => $p_id,
                 'do_id' => $this->session->userdata('user_id'),
                 'academic' => $academic,
@@ -3253,16 +3882,43 @@ class D_O extends CI_Controller
                 'extra_curricular_activities' => $extra_activities,
                 'created_at' => date('Y-m-d H:i:s')
             );
-            // print_r($insert_array);exit;
+
             $insert = $this->db->insert('distinctions_records', $insert_array);
         }
 
         if (!empty($insert)) {
+
+            $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array(); 
+
+            $insert_activity = array(
+                'activity_module' => $this->session->userdata('acct_type'),
+                'activity_action' => 'add',
+                'activity_detail' => "Distinction record added for cadet ". $cadet_name['name'],
+                'activity_by' => $this->session->userdata('username'),
+                'activity_date' => date('Y-m-d H:i:s')
+            );
+
+            $insert_act = $this->db->insert('activity_log', $insert_activity);
+            $last_id = $this->db->insert_id();
+
+            $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+            for ($i = 0; $i < count($query); $i++) {
+                $insert_activity_seen = array(
+                    'activity_id' => $last_id,
+                    'user_id' => $query[$i]['id'],
+                    'seen' => 'no'
+                );
+                $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+            }
+        }
+
+        if (!empty($insert)) {
             $this->session->set_flashdata('success', 'Data Submitted successfully');
-            redirect('D_O/add_seniority_records');
+            redirect('D_O/view_distinction_records');
         } else {
             $this->session->set_flashdata('failure', 'Something went wrong, try again.');
-            redirect('D_O/add_seniority_records');
+            redirect('D_O/view_distinction_records');
         }
     }
 
