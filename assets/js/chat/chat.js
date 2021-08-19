@@ -237,25 +237,23 @@ function check_activity() {
 }
 
 
-// setInterval(function () {
-// 	var user_id = $('#user_id').html();
-// 	if ($('#badge_count').html() == undefined) {
+ setInterval(function () {
+ 	var user_id = $('#user_id').html();
+ 	if ($('#badge_count').html() == undefined) {
+ 		check_notification(user_id);
 
-// 		check_notification(user_id);
+ 		if (result != 0) {
+ 			exampleFunction(user_id);
+ 		}
+ 	}
+ }, 3000);
 
-// 		if (result != 0) {
-// 			exampleFunction(user_id);
-// 		}
-// 	}
-// }, 3000);
+ setInterval(function () {
+ 	if ($('#badge_count_activity').html() == undefined) {
 
-// setInterval(function () {
-// 	if ($('#badge_count_activity').html() == undefined) {
+		check_activity();
 
-// 		check_activity();
-
-// 		if (result_activity != 0) {
-// 			update_activity();
-// 		}
-// 	}
-// }, 3000);
+		if (result_activity != 0) {
+ 			update_activity();
+ 		} 	}
+ }, 3000);

@@ -35,7 +35,6 @@ class ChatController extends CI_Controller
 		$this->db->where('sender_id', $id);
 		$this->db->where('receiver_id', $this->session->userdata('user_id'));
 		$this->db->update('chat');
-
 		$data['chat_data'] = $this->db->where('receiver_id', $this->session->userdata('user_id'))->where('sender_id', $id)->where('seen', 'no')->group_by('receiver_id')->get('chat')->result_array();
 		//print_r($chat_data);
 		$view_array = $this->load->view('chat/notification_ajax', $data, TRUE);

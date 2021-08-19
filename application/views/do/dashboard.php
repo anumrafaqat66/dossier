@@ -43,3 +43,4 @@
         });
     });
 </script>
+ <script src="<?= base_url('assets/js/chat/chat.js'); ?>"></script> 
