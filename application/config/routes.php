@@ -59,7 +59,6 @@ $route['get-chat-history-vendor'] = 'ChatController/get_chat_history_by_vendor';
 $route['update-notification'] = 'ChatController/update_notification';
 $route['D_O/update-notification'] = 'ChatController/update_notification';
 $route['JOTO/update-notification'] = 'ChatController/update_notification';
-$route['SO_STORE/update-notification'] = 'ChatController/update_notification';
 
 $route['update-activity'] = 'ChatController/update_activity';
 $route['D_O/update-activity'] = 'ChatController/update_activity';
@@ -73,7 +72,12 @@ $route['JOTO/check-notification'] = 'ChatController/check_notification';
 $route['check-activity'] = 'ChatController/check_activity';
 $route['D_O/check-activity'] = 'ChatController/check_activity';
 $route['JOTO/check-activity'] = 'ChatController/check_activity';
-$route['SO_STORE/check-activity'] = 'ChatController/check_activity';
+
+
+$route['D_O/add_physical_milestone/update-notification'] = 'ChatController/update_notification';
+$route['D_O/add_physical_milestone/update-activity'] = 'ChatController/update_activity';
+$route['D_O/add_physical_milestone/check-notification'] = 'ChatController/check_notification';
+$route['D_O/add_physical_milestone/check-activity'] = 'ChatController/check_activity';
 
 $route['chat-clear'] = 'ChatController/chat_clear_client_cs';
 

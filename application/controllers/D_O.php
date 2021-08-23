@@ -1739,6 +1739,8 @@ class D_O extends CI_Controller
     public function view_excuse_list()
     {
         if ($this->session->has_userdata('user_id')) {
+
+            $p_id = $_POST['id'];
             $this->db->select('mr.*, f.*');
             $this->db->from('medical_records mr');
             $this->db->join('pn_form1s f', 'f.p_id = mr.p_id');
@@ -1747,6 +1749,7 @@ class D_O extends CI_Controller
             $this->db->where('mr.start_date <=', date('Y-m-d'));
             $this->db->where('mr.end_date >=', date('Y-m-d'));
             $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.p_id', $p_id);
             $data['medical_records'] = $this->db->get()->result_array();
             $this->load->view('do/view_excuse_list', $data);
         }
@@ -1754,11 +1757,13 @@ class D_O extends CI_Controller
     public function view_observation_list()
     {
         if ($this->session->has_userdata('user_id')) {
+            $p_id = $_POST['id'];
             $this->db->select('or.*, f.*');
             $this->db->from('observation_records or');
             $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
             $this->db->where('or.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.p_id', $p_id);
             $data['observation_records'] = $this->db->get()->result_array();
             $this->load->view('do/view_observation_list', $data);
         }
@@ -1767,12 +1772,18 @@ class D_O extends CI_Controller
     public function view_milestone_in_dossier()
     {
         if ($this->session->has_userdata('user_id')) {
+
+
+            $p_id = $_POST['id'];
+
             $this->db->select('or.*, f.*');
             $this->db->from('physical_milestone or');
             $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
             $this->db->where('or.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.divison_name', $this->session->userdata('division'));
-            $data['milestone_records'] = $this->db->get()->row_array();
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.p_id', $p_id);
+            $data['milestone_records'] = $this->db->get()->result_array();
             // print_r( $data['milestone_records']);exit;
             echo json_encode($data['milestone_records']);
         }
@@ -1781,12 +1792,15 @@ class D_O extends CI_Controller
     public function view_club_in_dossier()
     {
         if ($this->session->has_userdata('user_id')) {
+
+            $p_id = $_POST['id'];
             $this->db->select('cr.*, f.*');
             $this->db->from('club_records cr');
             $this->db->join('pn_form1s f', 'f.p_id = cr.p_id');
             $this->db->where('cr.do_id', $this->session->userdata('user_id'));
             $this->db->where('cr.status', 'active');
             $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.p_id', $p_id);
             $data['club_records'] = $this->db->get()->result_array();
             // print_r( $data['milestone_records']);exit;
             echo json_encode($data['club_records']);
@@ -1795,12 +1809,15 @@ class D_O extends CI_Controller
     public function view_branches_in_dossier()
     {
         if ($this->session->has_userdata('user_id')) {
+
+            $p_id = $_POST['id'];
             $this->db->select('b.*, f.*');
             $this->db->from('branch_allocations b');
             $this->db->join('pn_form1s f', 'f.p_id = b.p_id');
             $this->db->where('b.do_id', $this->session->userdata('user_id'));
             //$this->db->where('cr.status', 'active');
             $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.p_id', $p_id);
             $data['branch_records'] = $this->db->get()->result_array();
             //echo $data['branch_records'];
             echo json_encode($data['branch_records']);

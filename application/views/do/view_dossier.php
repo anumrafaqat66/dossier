@@ -4,7 +4,6 @@
     .red-border {
         border: 1px solid red !important;
     }
-
 </style>
 
 <div class="container-fluid my-2">
@@ -1400,6 +1399,7 @@
 <?php $this->load->view('common/footer'); ?>
 <script>
     function view_physical_milestone(id) {
+        
         $.ajax({
             url: '<?= base_url(); ?>D_O/view_milestone_in_dossier',
             method: 'POST',
@@ -1410,81 +1410,86 @@
                 var result = jQuery.parseJSON(data);
                 var len = result.length;
 
+                if (len > 0 ) {
                 $("#table_rows_milestone").empty();
 
-                if (result['PST_result'] == 'qualified') {
-                    color_pst = 'green';
-                    value_pst = 'Qualified';
-                } else if (result['PST_result'] == 'disqualified') {
-                    color_pst = 'red';
-                    value_pst = 'Disqualified';
-                }
+                for (var i = 0; i < len; i++) {
 
-                if (result['SST_result'] == 'qualified') {
-                    color_sst = 'green';
-                    value_sst = 'Qualified';
-                } else if (result['SST_result'] == 'disqualified') {
-                    color_sst = 'red';
-                    value_sst = 'Disqualified';
-                }
+                    if (result[i]['PST_result'] == 'qualified') {
+                        color_pst = 'green';
+                        value_pst = 'Qualified';
+                    } else if (result[i]['PST_result'] == 'disqualified') {
+                        color_pst = 'red';
+                        value_pst = 'Disqualified';
+                    }
 
-                if (result['PET_I_result'] == 'qualified') {
-                    color_pet1 = 'green';
-                    value_pet1 = 'Qualified';
-                } else if (result['PET_I_result'] == 'disqualified') {
-                    color_pet1 = 'red';
-                    value_pet1 = 'Disqualified';
-                }
+                    if (result[i]['SST_result'] == 'qualified') {
+                        color_sst = 'green';
+                        value_sst = 'Qualified';
+                    } else if (result[i]['SST_result'] == 'disqualified') {
+                        color_sst = 'red';
+                        value_sst = 'Disqualified';
+                    }
 
-                if (result['PET_II_result'] == 'qualified') {
-                    color_pet2 = 'green';
-                    value_pet2 = 'Qualified';
-                } else if (result['PET_II_result'] == 'disqualified') {
-                    color_pet2 = 'red';
-                    value_pet2 = 'Disqualified';
-                }
+                    if (result[i]['PET_I_result'] == 'qualified') {
+                        color_pet1 = 'green';
+                        value_pet1 = 'Qualified';
+                    } else if (result[i]['PET_I_result'] == 'disqualified') {
+                        color_pet1 = 'red';
+                        value_pet1 = 'Disqualified';
+                    }
 
-                if (result['assault_result'] == 'qualified') {
-                    color_assault = 'green';
-                    value_assault = 'Qualified';
-                } else if (result['assault_result'] == 'disqualified') {
-                    color_assault = 'red';
-                    value_assault = 'Disqualified';
-                }
+                    if (result[i]['PET_II_result'] == 'qualified') {
+                        color_pet2 = 'green';
+                        value_pet2 = 'Qualified';
+                    } else if (result[i]['PET_II_result'] == 'disqualified') {
+                        color_pet2 = 'red';
+                        value_pet2 = 'Disqualified';
+                    }
 
-                if (result['saluting_result'] == 'qualified') {
-                    color_saluting = 'green';
-                    value_saluting = 'Qualified';
-                } else if (result['saluting_result'] == 'disqualified') {
-                    color_saluting = 'red';
-                    value_saluting = 'Disqualified';
-                }
+                    if (result[i]['assault_result'] == 'qualified') {
+                        color_assault = 'green';
+                        value_assault = 'Qualified';
+                    } else if (result[i]['assault_result'] == 'disqualified') {
+                        color_assault = 'red';
+                        value_assault = 'Disqualified';
+                    }
 
-                if (result['PLX_result'] == 'qualified') {
-                    color_plx = 'green';
-                    value_plx = 'Qualified';
-                } else if (result['PLX_result'] == 'disqualified') {
-                    color_plx = 'red';
-                    value_plx = 'Disqualified';
-                }
+                    if (result[i]['saluting_result'] == 'qualified') {
+                        color_saluting = 'green';
+                        value_saluting = 'Qualified';
+                    } else if (result[i]['saluting_result'] == 'disqualified') {
+                        color_saluting = 'red';
+                        value_saluting = 'Disqualified';
+                    }
 
-                if (result['long_cross_result'] == 'qualified') {
-                    color_long_cross = 'green';
-                    value_long_cross = 'Qualified';
-                } else if (result['long_cross_result'] == 'disqualified') {
-                    color_long_cross = 'red';
-                    value_long_cross = 'Disqualified';
-                }
+                    if (result[i]['PLX_result'] == 'qualified') {
+                        color_plx = 'green';
+                        value_plx = 'Qualified';
+                    } else if (result[i]['PLX_result'] == 'disqualified') {
+                        color_plx = 'red';
+                        value_plx = 'Disqualified';
+                    }
 
-                if (result['mini_cross_result'] == 'qualified') {
-                    color_mini_cross = 'green';
-                    value_mini_cross = 'Qualified';
-                } else if (result['mini_cross_result'] == 'disqualified') {
-                    color_mini_cross = 'red';
-                    value_mini_cross = 'Disqualified';
-                }
+                    if (result[i]['long_cross_result'] == 'qualified') {
+                        color_long_cross = 'green';
+                        value_long_cross = 'Qualified';
+                    } else if (result[i]['long_cross_result'] == 'disqualified') {
+                        color_long_cross = 'red';
+                        value_long_cross = 'Disqualified';
+                    }
 
-                $("#milestone_details").html(`<form class="user" role="form" method="post" id="add_form" action="">
+                    if (result[i]['mini_cross_result'] == 'qualified') {
+                        color_mini_cross = 'green';
+                        value_mini_cross = 'Qualified';
+                    } else if (result[i]['mini_cross_result'] == 'disqualified') {
+                        color_mini_cross = 'red';
+                        value_mini_cross = 'Disqualified';
+                    }
+
+                    $("#milestone_details").empty();
+
+                    $("#milestone_details").html(`<form class="user" role="form" method="post" id="add_form" action="">
                                         <div class="form-group row">
                                             <div class="col-sm-12">
                                                 <h4 id="cadet_name_heading"></h4>
@@ -1518,7 +1523,7 @@
                                                 <h6 id="pst_result" style="color:${color_pst}">${value_pst}</h6>
                                             </div>
                                             <div class="col-sm-2" style="text-align:center">
-                                                <h6 id="pst_attempt">${result['PST_attempt']}</h6>
+                                                <h6 id="pst_attempt">${result[i]['PST_attempt']}</h6>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -1529,7 +1534,7 @@
                                                 <h6 id="sst_result" style="color:${color_sst}">${value_sst}</h6>
                                             </div>
                                             <div class="col-sm-2" style="text-align:center">
-                                                <h6 id="sst_attempt">${result['SST_attempt']}</h6>
+                                                <h6 id="sst_attempt">${result[i]['SST_attempt']}</h6>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -1540,7 +1545,7 @@
                                                 <h6 id="pet1_result" style="color:${color_pet1}">${value_pet1}</h6>
                                             </div>
                                             <div class="col-sm-2" style="text-align:center">
-                                                <h6 id="pet1_attempt">${result['PET_I_attempt']}</h6>
+                                                <h6 id="pet1_attempt">${result[i]['PET_I_attempt']}</h6>
                                             </div>
                                             <div class="col-sm-2" style="text-align:center">
                                             <i style="font-size:18px" type="button" class="fas fa-clipboard-list" data-toggle="modal" data-target="#PET_I"></i>
@@ -1554,7 +1559,7 @@
                                                 <h6 id="pet2_result" style="color:${color_pet2}">${value_pet2}</h6>
                                             </div>
                                             <div class="col-sm-2" style="text-align:center">
-                                                <h6 id="pet2_attempt">${result['PET_II_attempt']}</h6>
+                                                <h6 id="pet2_attempt">${result[i]['PET_II_attempt']}</h6>
                                             </div>
                                             <div class="col-sm-2" style="text-align:center">
                                             <i style="font-size:18px" type="button" class="fas fa-clipboard-list" data-toggle="modal" data-target="#PET_II"></i>
@@ -1568,7 +1573,7 @@
                                                 <h6 id="assault_result" style="color:${color_assault}">${value_assault}</h6>
                                             </div>
                                             <div class="col-sm-2" style="text-align:center">
-                                                <h6 id="assault_attempt">${result['assault_attempt']}</h6>
+                                                <h6 id="assault_attempt">${result[i]['assault_attempt']}</h6>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -1579,7 +1584,7 @@
                                                 <h6 id="saluting_result" style="color:${color_saluting}">${value_saluting}</h6>
                                             </div>
                                             <div class="col-sm-2" style="text-align:center">
-                                                <h6 id="saluting_attempt">${result['saluting_attempt']}</h6>
+                                                <h6 id="saluting_attempt">${result[i]['saluting_attempt']}</h6>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -1590,7 +1595,7 @@
                                                 <h6 id="plx_result" style="color:${color_plx}">${value_plx}</h6>
                                             </div>
                                             <div class="col-sm-2" style="text-align:center">
-                                                <h6 id="plx_attempt">${result['PLX_attempt']}</h6>
+                                                <h6 id="plx_attempt">${result[i]['PLX_attempt']}</h6>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -1601,7 +1606,7 @@
                                                 <h6 id="plx_result" style="color:${color_long_cross}">${value_long_cross}</h6>
                                             </div>
                                             <div class="col-sm-2" style="text-align:center">
-                                                <h6 id="plx_attempt">${result['long_cross_card_number']}</h6>
+                                                <h6 id="plx_attempt">${result[i]['long_cross_card_number']}</h6>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -1612,11 +1617,15 @@
                                                 <h6 id="plx_result" style="color:${color_mini_cross}">${value_mini_cross}</h6>
                                             </div>
                                             <div class="col-sm-2" style="text-align:center">
-                                                <h6 id="plx_attempt">${result['mini_cross_card_number']}</h6>
+                                                <h6 id="plx_attempt">${result[i]['mini_cross_card_number']}</h6>
                                             </div>
                                         </div>
 
                                     </form>`);
+                }
+            } else {
+                $("#milestone_details").html(`<strong>NO RESULT FOUND</strong>`);
+            }
             },
 
             async: true
@@ -1801,13 +1810,15 @@
                                                         <td>${result[i]['term']}</td>
                                                         <td>${result[i]['assigned_club']}</td>
                                                         <td>${result[i]['created_at']}</td>
-                                                         <td data-toggle="modal" data-target="#edit_clubs"><a onclick="edit_club(${result[i]['p_id']})" ><i class="fa fa-edit"></i></a></td>
-                                                          <td ><a onclick="delete_club(${result[i]['p_id']})" ><i class="fa fa-trash"></i></a></td>
+                                                        <td data-toggle="modal" data-target="#edit_clubs"><a onclick="edit_club(${result[i]['p_id']})" ><i class="fa fa-edit"></i></a></td>
+                                                        <td ><a onclick="delete_club(${result[i]['p_id']})" ><i class="fa fa-trash"></i></a></td>
                                                     </tr>`);
                     }
                 } else {
                     $("#table_rows_club").append(`<tr>
                                                     <td>No Data Found</td>
+                                                    <td></td>
+                                                    <td></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
