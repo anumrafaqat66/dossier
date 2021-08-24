@@ -1562,7 +1562,7 @@ class D_O extends CI_Controller
             $this->db->from('punishment_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('f.oc_no = pr.oc_no');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('pr.status', 'Approved');
@@ -1888,7 +1888,8 @@ class D_O extends CI_Controller
             $this->db->where('f.oc_no = pr.oc_no');
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('pr.status', 'Approved');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $data['pn_punish_data'] = $this->db->get()->result_array();
 
             $this->db->select('pr.*, f.*');
@@ -1897,7 +1898,8 @@ class D_O extends CI_Controller
             $this->db->where('f.oc_no = pr.oc_no');
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('pr.status', 'Approved');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $data['pn_punish_data_term2'] = $this->db->get()->result_array();
 
             $this->db->select('pr.*, f.*');
@@ -1906,7 +1908,8 @@ class D_O extends CI_Controller
             $this->db->where('f.oc_no = pr.oc_no');
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('pr.status', 'Approved');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $data['pn_punish_data_term3'] = $this->db->get()->result_array();
 
             $this->db->select('pr.*, f.*');
