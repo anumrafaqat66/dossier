@@ -841,10 +841,15 @@ class D_O extends CI_Controller
     {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
+           // print_r($postData);exit;
 
+if(isset($postData['page'])){
             $page = $postData['page'];
+        }else{
+            $page='';
+        }
             $id = $postData['observation_id'];
-            $observation = $postData['observation'];
+            $observation = $postData['observation_1'];
             $term = $postData['term'];
 
             $update_array = array( 
@@ -852,6 +857,8 @@ class D_O extends CI_Controller
                 'updated_at' => date('Y-m-d H:i:s'),
 
             );
+            echo $id;
+           // print_r($update_array);exit;
             $cond  = ['id' => $id];
             $this->db->where($cond);
             $insert = $this->db->update('observation_records', $update_array); 
@@ -892,6 +899,10 @@ class D_O extends CI_Controller
                     $this->session->set_flashdata('success', 'Observation updated successfully');
                     redirect('D_O/view_dossier');
                 }
+                else{
+                    $this->session->set_flashdata('success', 'Observation updated successfully');
+                    redirect('D_O/view_dossier_folder');
+                }
             } else {
 
                 if ($page == 'daily_module') {
@@ -900,6 +911,10 @@ class D_O extends CI_Controller
                 } elseif ($page == 'dossier') {
                     $this->session->set_flashdata('failure', 'Something went wrong, try again.');
                     redirect('D_O/view_dossier');
+                }
+                 else{
+                    $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                    redirect('D_O/view_dossier_folder');
                 }
             }
         }
@@ -1732,6 +1747,22 @@ class D_O extends CI_Controller
             //print_r($data['edit_record']);exit;
             echo json_encode($data['edit_record']);
         }
+    }
+
+    public function view_edit_observation($p_id=null){
+         
+            $cadet_id = $p_id;;
+            $this->db->select('pr.*, f.*');
+            $this->db->from('observation_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('f.oc_no = pr.oc_no');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.p_id', $cadet_id);
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
+             $this->db->where('pr.status', 'Approved');
+            $data['edit_records'] = $this->db->get()->row_array();
+           // print_r($data['edit_records']);
+            $this->load->view('do/edit_observation',$data);
     }
 
 
