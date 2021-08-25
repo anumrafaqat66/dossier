@@ -1,4 +1,4 @@
-<?php $this->load->view('cao/common/header'); ?>
+<?php $this->load->view('smo/common/header'); ?>
 <style>
     .red-border {
         border: 1px solid red !important;

@@ -1,4 +1,4 @@
-<?php $this->load->view('cao/common/header'); ?>
+<?php $this->load->view('smo/common/header'); ?>
 <?php !isset($search_date) ? $search_date = '' : $search_date; ?>
 <style>
     .red-border {

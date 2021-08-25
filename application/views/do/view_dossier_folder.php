@@ -665,7 +665,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                 <a href="<?= base_url();?>D_O/view_edit_observation/<?= $pn_data['p_id']; ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>
+                <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_observation/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/observation_records_report/<?= $pn_data['oc_no'] ?>/Term-I'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
@@ -734,7 +734,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                 <a href="<?= base_url();?>D_O/view_edit_observation/<?= $pn_data['p_id']; ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>
+                <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_observation/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/observation_records_report/<?= $pn_data['oc_no'] ?>/Term-II'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
@@ -803,7 +803,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                 <a href="<?= base_url();?>D_O/view_edit_observation/<?= $pn_data['p_id']; ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>
+                <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_observation/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/observation_records_report/<?= $pn_data['oc_no'] ?>/Term-III'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">

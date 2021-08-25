@@ -1596,7 +1596,7 @@ if(isset($postData['page'])){
             $this->db->from('medical_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('f.oc_no = pr.oc_no');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             $data['excuse_records'] = $this->db->get()->result_array();
@@ -1771,16 +1771,16 @@ if(isset($postData['page'])){
     {
         if ($this->session->has_userdata('user_id')) {
 
-            $p_id = $_POST['id'];
+            // $p_id = $_POST['id'];
             $this->db->select('mr.*, f.*');
             $this->db->from('medical_records mr');
             $this->db->join('pn_form1s f', 'f.p_id = mr.p_id');
             $this->db->where('f.oc_no = mr.oc_no');
-            $this->db->where('mr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('mr.do_id', $this->session->userdata('user_id'));
             $this->db->where('mr.start_date <=', date('Y-m-d'));
             $this->db->where('mr.end_date >=', date('Y-m-d'));
             $this->db->where('f.divison_name', $this->session->userdata('division'));
-            $this->db->where('f.p_id', $p_id);
+
             $data['medical_records'] = $this->db->get()->result_array();
             $this->load->view('do/view_excuse_list', $data);
         }
@@ -1788,13 +1788,11 @@ if(isset($postData['page'])){
     public function view_observation_list()
     {
         if ($this->session->has_userdata('user_id')) {
-            $p_id = $_POST['id'];
             $this->db->select('or.*, f.*');
             $this->db->from('observation_records or');
             $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
             $this->db->where('or.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.divison_name', $this->session->userdata('division'));
-            $this->db->where('f.p_id', $p_id);
             $data['observation_records'] = $this->db->get()->result_array();
             $this->load->view('do/view_observation_list', $data);
         }
@@ -1803,7 +1801,6 @@ if(isset($postData['page'])){
     public function view_milestone_in_dossier()
     {
         if ($this->session->has_userdata('user_id')) {
-
 
             $p_id = $_POST['id'];
 
