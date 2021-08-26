@@ -85,6 +85,17 @@ $route['D_O/view_edit_observation/update-activity'] = 'ChatController/update_act
 $route['D_O/view_edit_observation/check-notification'] = 'ChatController/check_notification';
 $route['D_O/view_edit_observation/check-activity'] = 'ChatController/check_activity';
 
+$route['D_O/view_edit_warning/update-notification'] = 'ChatController/update_notification';
+$route['D_O/view_edit_warning/update-activity'] = 'ChatController/update_activity';
+$route['D_O/view_edit_warning/check-notification'] = 'ChatController/check_notification';
+$route['D_O/view_edit_warning/check-activity'] = 'ChatController/check_activity';
+
+$route['D_O/view_edit_inspection/update-notification'] = 'ChatController/update_notification';
+$route['D_O/view_edit_inspection/update-activity'] = 'ChatController/update_activity';
+$route['D_O/view_edit_inspection/check-notification'] = 'ChatController/check_notification';
+$route['D_O/view_edit_inspection/check-activity'] = 'ChatController/check_activity';
+
+
 $route['chat-clear'] = 'ChatController/chat_clear_client_cs';
 
 

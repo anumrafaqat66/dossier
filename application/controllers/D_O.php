@@ -244,6 +244,15 @@ class D_O extends CI_Controller
         }
     }
 
+public function view_edit_inspection($id=null){
+            $this->db->select('pr.*, f.*');
+            $this->db->from('inspection_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('pr.id', $id);
+            $data['pn_inspection_data'] = $this->db->get()->row_array();
+            $this->load->view('do/edit_inspection_record',$data);
+}
     public function add_inspection_record()
     {
         if ($this->input->post()) {
@@ -299,6 +308,66 @@ class D_O extends CI_Controller
             } else {
                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
                 redirect('D_O/Inspection_record');
+            }
+        }
+    }
+
+      public function update_inspection_record()
+    {
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+
+            $row_id=$postData['row_id'];
+            $officer_id = $postData['id'];
+            $date = $postData['date'];
+            $inspecting_officer_name = $postData['inspector_name'];
+            $remarks = $postData['remarks'];
+
+            $update_array = array(
+                // 'p_id' => $officer_id,
+                'date' => $date,
+                'inspecting_officer_name' => $inspecting_officer_name,
+                'remarks' => $remarks,
+                //'do_id' => $this->session->userdata('user_id'),
+                //'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            );
+            $this->db->where('id',$row_id);
+            $insert = $this->db->update('inspection_records', $update_array);
+
+            if (!empty($insert)) {
+
+                $cadet_name = $this->db->select('name')->where('p_id', $officer_id)->get('pn_form1s')->row_array();
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => "Inspection record has been added for Cadet ".$cadet_name['name'] . " by officer " . $inspecting_officer_name,
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
+
+            if (!empty($insert)) {
+                $this->session->set_flashdata('success', 'Data Updated successfully');
+                redirect('D_O/view_dossier_folder');
+            } else {
+                $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                redirect('D_O/view_dossier_folder');
             }
         }
     }
@@ -841,7 +910,7 @@ class D_O extends CI_Controller
     {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
-           // print_r($postData);exit;
+            //print_r($postData);exit;
 
 if(isset($postData['page'])){
             $page = $postData['page'];
@@ -1055,11 +1124,11 @@ if(isset($postData['page'])){
         }
     }
 
-    public function update_cadet_warning()
+    public function update_cadet_warning($page=null)
     {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
-            //print_r($_FILES['file']['name'][0] != NULL);
+            //print_r($postData);
             if ($_FILES['file']['name'][0] != NULL) {
                 $upload1 = $this->upload_warning($_FILES['file']);
                 if (count($upload1) > 1) {
@@ -1093,6 +1162,7 @@ if(isset($postData['page'])){
                 //'status' => 'Pending'
 
             );
+            //print_r($data_update);exit;
 
             $this->db->where($cond);
             $update = $this->db->update('warning_records', $data_update);
@@ -1125,8 +1195,15 @@ if(isset($postData['page'])){
             }
 
             if (!empty($update)) {
+                if(isset($page)){
+                $this->session->set_flashdata('success', 'Warning updated successfully');
+                redirect('D_O/view_dossier_folder');
+                }
+                else{
                 $this->session->set_flashdata('success', 'Warning updated successfully');
                 redirect('D_O/view_dossier');
+                    }
+               
             } else {
                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
                 redirect('D_O/view_dossier');
@@ -1623,22 +1700,32 @@ if(isset($postData['page'])){
         }
     }
 
-    public function view_warning_in_dossier()
-    {
-        if ($this->session->has_userdata('user_id')) {
-            $cadet_id = $_POST['id'];
+        public function view_warning_in_dossier()
+        {
+            if ($this->session->has_userdata('user_id')) {
+                $cadet_id = $_POST['id'];
 
-            $this->db->select('pr.*, f.*');
-            $this->db->from('warning_records pr');
-            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.p_id', $cadet_id);
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
-            $data['warning_records'] = $this->db->get()->result_array();
-            echo json_encode($data['warning_records']);
+                $this->db->select('pr.*, f.*');
+                $this->db->from('warning_records pr');
+                $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+                $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+                $this->db->where('f.p_id', $cadet_id);
+                $this->db->where('f.divison_name', $this->session->userdata('division'));
+                $data['warning_records'] = $this->db->get()->result_array();
+                echo json_encode($data['warning_records']);
+            }
         }
-    }
-
+        public function view_edit_warning($p_id=null){            
+                    $cadet_id = $p_id;
+                    $this->db->select('pr.*, f.*');
+                    $this->db->from('warning_records pr');
+                    $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+                    $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+                    $this->db->where('f.p_id', $cadet_id);
+                    $this->db->where('f.divison_name', $this->session->userdata('division'));
+                    $data['warning_records'] = $this->db->get()->row_array();
+                   $this->load->view('do/edit_warning',$data);           
+        }
     public function edit_warning_data()
     {
         if ($this->session->has_userdata('user_id')) {
