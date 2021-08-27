@@ -462,6 +462,7 @@
                                             <td scope="" style="width:350px">OFFENCE</th>
                                             <td scope="">PUNISHMENT AWARDED</th>
                                             <td scope="" style="border-right:1px solid black; white-space:nowrap">AWARDED BY</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
@@ -469,9 +470,10 @@
                                         foreach ($pn_punish_data as $data) { ?>
                                             <tr>
                                                 <td scope="" style="white-space:nowrap;"><?= $data['date']; ?></td>
-                                                <td scope="" style="height:80px"><?= $data['offence']; ?></td>
-                                                <td scope=""><?= $data['punishment_awarded']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;"><?= $data['awarded_by']; ?></td>
+                                                <td scope="" style="height:80px;text-align: center;"><?= $data['offence']; ?></td>
+                                                <td scope="" style="text-align: center;"><?= $data['punishment_awarded']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align: center;"><?= $data['awarded_by']; ?></td>
+                                              
                                             </tr>
                                         <?php
                                             $count++;
@@ -665,7 +667,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_observation/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>
+               <!--  <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_observation/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/observation_records_report/<?= $pn_data['oc_no'] ?>/Term-I'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
@@ -688,16 +690,18 @@
                                             <td scope="" style="width:350px">OBSERVATION</th>
                                             <td scope="">OBSERVED/CHECKED BY</th>
                                             <td scope="" style="border-right:1px solid black; white-space:nowrap">REMARKS/ ACTION BY</th>
+                                                <td scope="" style="border-right:1px solid black; white-space:nowrap">EDIT</th>
                                         </tr>
                                     </thead>
                                     <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
                                         <?php $count = 0;
                                         foreach ($pn_obs_data_term1 as $data) { ?>
                                             <tr>
-                                                <td scope="" style="white-space:nowrap;"><?= $data['date']; ?></td>
-                                                <td scope="" style="height:80px"><?= $data['observation']; ?></td>
-                                                <td scope=""><?= $data['observed_by']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;"><?= $data['action_taken']; ?></td>
+                                                <td scope="" style="white-space:nowrap;text-align: center;"><?= $data['date']; ?></td>
+                                                <td scope="" style="height:80px;text-align: center;"><?= $data['observation']; ?></td>
+                                                <td scope="" style="text-align: center;"><?= $data['observed_by']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align: center;"><?= $data['action_taken']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align: center;"><a href="<?=base_url()?>D_O/view_edit_observation/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
                                             </tr>
                                         <?php
                                             $count++;
@@ -707,6 +711,7 @@
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
+                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -734,7 +739,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_observation/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>
+               <!--  <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_observation/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/observation_records_report/<?= $pn_data['oc_no'] ?>/Term-II'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
@@ -757,21 +762,24 @@
                                             <td scope="" style="width:350px">OBSERVATION</th>
                                             <td scope="">OBSERVED/CHECKED BY</th>
                                             <td scope="" style="border-right:1px solid black; white-space:nowrap">REMARKS/ ACTION BY</th>
+                                                <td scope="" style="border-right:1px solid black; white-space:nowrap">EDIT</th>
                                         </tr>
                                     </thead>
                                     <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
                                         <?php $count = 0;
                                         foreach ($pn_obs_data_term2 as $data) { ?>
                                             <tr>
-                                                <td scope="" style="white-space:nowrap;"><?= $data['date']; ?></td>
-                                                <td scope="" style="height:80px"><?= $data['observation']; ?></td>
-                                                <td scope=""><?= $data['observed_by']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;"><?= $data['action_taken']; ?></td>
+                                                <td scope="" style="white-space:nowrap; text-align: center;"><?= $data['date']; ?></td>
+                                                <td scope="" style="height:80px;text-align: center;"><?= $data['observation']; ?></td>
+                                                <td scope="" style="text-align: center;"><?= $data['observed_by']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align: center;"><?= $data['action_taken']; ?></td>
+                                                 <td scope="" style="border-right:1px solid black;text-align: center;"><a href="<?=base_url()?>D_O/view_edit_observation/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
                                             </tr>
                                         <?php
                                             $count++;
                                         } ?>
                                         <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -803,7 +811,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_observation/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>
+               <!--  <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_observation/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/observation_records_report/<?= $pn_data['oc_no'] ?>/Term-III'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
@@ -826,21 +834,24 @@
                                             <td scope="" style="width:300px">OBSERVATION</th>
                                             <td scope="" style="width:70px !important">OBSERVED/ CHECKED BY</th>
                                             <td scope="" style="border-right:1px solid black;width:100px !important">REMARKS/ ACTION TAKEN</th>
+                                                <td scope="" style="border-right:1px solid black;width:100px !important">EDIT</th>
                                         </tr>
                                     </thead>
                                     <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
                                         <?php $count = 0;
                                         foreach ($pn_obs_data_term1 as $data) { ?>
                                             <tr>
-                                                <td scope=""><?= $data['date']; ?></td>
-                                                <td scope="" style="height:80px"><?= $data['observation']; ?></td>
-                                                <td scope=""><?= $data['observed_by']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;"><?= $data['action_taken']; ?></td>
+                                                <td scope="" style="text-align: center;"><?= $data['date']; ?></td>
+                                                <td scope="" style="height:80px;text-align: center;"><?= $data['observation']; ?></td>
+                                                <td scope="" style="text-align: center;"><?= $data['observed_by']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align: center;"><?= $data['action_taken']; ?></td>
+                                                 <td scope="" style="border-right:1px solid black;text-align: center;"><a href="<?=base_url()?>D_O/view_edit_observation/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
                                             </tr>
                                         <?php
                                             $count++;
                                         } ?>
                                         <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -896,22 +907,26 @@
                                             <td scope="" style="width:70px">ISSUED BY</th>
                                             <td scope="" style="width:70px !important">REASONS</th>
                                             <td scope="" style="border-right:1px solid black;width:100px !important">DO'S SIGNATURE</th>
+                                                  <td scope="" style="border-right:1px solid black;width:100px !important">EDIT</th>
                                         </tr>
                                     </thead>
                                     <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
                                         <?php $count = 0;
                                         foreach ($pn_warning_data as $data) { ?>
                                             <tr>
-                                                <td scope=""><?= ++$count; ?></td>
-                                                <td scope=""><?= $data['date']; ?></td>
-                                                <td scope="" style="height:80px"><?= $data['issued_by']; ?></td>
+                                                <td scope="" style="text-align: center;"><?= ++$count; ?></td>
+                                                <td scope="" style="text-align: center;"><?= $data['date']; ?></td>
+                                                <td scope="" style="height:80px;text-align: center;"><?= $data['issued_by']; ?></td>
                                                 <td scope=""><?= $data['reasons']; ?></td>
+                                                 
                                                 <td scope="" style="border-right:1px solid black;"></td>
+                                                 <td scope="" style="border-right:1px solid black;text-align: center;"><a href="<?=base_url()?>D_O/view_edit_warning/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
                                             </tr>
                                         <?php
                                             $count++;
                                         } ?>
                                         <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -3296,12 +3311,14 @@
                                             <td scope="" style="width:230px">RANK & NAME</th>
                                             <td scope="" colspan="2" style="width:100px;border-bottom:1px solid black;">PERIOD</th>
                                             <td scope="" style="border-right:1px solid black;width:100px !important">SIGNATURES</th>
+                                                 <td scope="" style="border-right:1px solid black;width:100px !important">EDIT</th>
                                         </tr>
                                         <tr>
                                             <td scope="" style="width:230px">
                                                 </th>
                                             <td scope="" style="width:70px">FROM</th>
                                             <td scope="" style="width:70px">TO</th>
+                                            <td scope="" style="border-right:1px solid black;width:100px !important">
                                             <td scope="" style="border-right:1px solid black;width:100px !important">
                                                 </th>
                                         </tr>
@@ -3310,10 +3327,12 @@
                                         <?php $count = 0;
                                         foreach ($pn_divisional_officer_data as $data) { ?>
                                             <tr>
-                                                <td scope=""><?= $data['rank']; ?> <?= $data['officer_name']; ?></td>
-                                                <td scope="" style="height:50px"><?= $data['date_from']; ?></td>
-                                                <td scope="" style="height:50px"><?= $data['date_to']; ?></td>
+                                                <td scope="" style="height:50px;text-align: center;"><?= $data['rank']; ?> <?= $data['officer_name']; ?></td>
+                                                <td scope="" style="height:50px;text-align: center;"><?= $data['date_from']; ?></td>
+                                                <td scope="" style="height:50px;text-align: center;"><?= $data['date_to']; ?></td>
+                                                
                                                 <td scope="" style="border-right:1px solid black;"></td>
+                                                 <td scope="" style="height:50px;text-align: center;border-right:1px solid black"><a href="<?= base_url();?>D_O/view_edit_officer_record/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
                                             </tr>
                                         <?php
                                             $count++;
@@ -3322,6 +3341,7 @@
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black"></td>
                                             <td scope="" style="border-bottom:1px solid black;border-right:1px solid black"></td>
                                         </tr>
                                     </tbody>

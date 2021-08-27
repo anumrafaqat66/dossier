@@ -142,7 +142,7 @@
         $('#save_btn_ob').attr('disabled', true);
         var validate = 0;
         var observation = $('#observation_1').val();
-        alert(observation);
+       // alert(observation);
 
         if (observation == '') {
             validate = 1;

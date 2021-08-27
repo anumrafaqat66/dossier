@@ -1066,6 +1066,20 @@ if(isset($postData['page'])){
         }
     }
 
+ public function view_edit_officer_record($row_id=null){
+            
+            $this->db->select('pr.*, f.*');
+            $this->db->from('divisional_officer_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+           // $this->db->where('f.oc_no', $oc_no);
+             $this->db->where('pr.id', $row_id);
+            $data['divisional_officer_data'] = $this->db->get()->row_array();
+           // print_r($data['divisional_officer_data']);exit;
+            $this->load->view('do/edit_officer_record',$data);
+
+    }
+
     public function save_divisional_officer_records()
     {
         if ($this->input->post()) {
@@ -1124,6 +1138,66 @@ if(isset($postData['page'])){
         }
     }
 
+ public function update_divisional_officer_records()
+    {
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+
+            //print_r($postData);exit;
+            //$id = $postData['id'];
+            $row_id=$postData['row_id'];
+            $rank = $postData['rank'];
+            $officer_name = $postData['officer_name'];
+            $start_date = $postData['date_from'];
+            $end_date = $postData['date_to'];
+
+            $update_array = array(
+                // 'p_id' => $id,
+                // 'do_id' => $this->session->userdata('user_id'),
+                'rank' => $rank,
+                'officer_name' => $officer_name,
+                'date_from' => $start_date,
+                'date_to' => $end_date,
+                'updated_at' => date('Y-m-d H:i:s')
+            );
+              //print_r($update_array);exit;
+            $this->db->where('id',$row_id);
+            $update = $this->db->update('divisional_officer_records', $update_array);
+
+            if (!empty($update)) {
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => "Divisional Officer record has been updated by ". $this->session->userdata('username'),
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
+
+            if (!empty($update)) {
+                $this->session->set_flashdata('success', 'Record updated successfully');
+                redirect('D_O/view_dossier_folder');
+            } else {
+                $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                redirect('D_O/view_dossier_folder');
+            }
+        }
+    }
     public function update_cadet_warning($page=null)
     {
         if ($this->input->post()) {
@@ -1715,13 +1789,13 @@ if(isset($postData['page'])){
                 echo json_encode($data['warning_records']);
             }
         }
-        public function view_edit_warning($p_id=null){            
-                    $cadet_id = $p_id;
+        public function view_edit_warning($row_id=null){            
+                    $row_id = $row_id;
                     $this->db->select('pr.*, f.*');
                     $this->db->from('warning_records pr');
                     $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
                     $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-                    $this->db->where('f.p_id', $cadet_id);
+                    $this->db->where('pr.id', $row_id);
                     $this->db->where('f.divison_name', $this->session->userdata('division'));
                     $data['warning_records'] = $this->db->get()->row_array();
                    $this->load->view('do/edit_warning',$data);           
@@ -1836,15 +1910,15 @@ if(isset($postData['page'])){
         }
     }
 
-    public function view_edit_observation($p_id=null){
+    public function view_edit_observation($row_id=null){
          
-            $cadet_id = $p_id;;
+            $row_id = $row_id;;
             $this->db->select('pr.*, f.*');
             $this->db->from('observation_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('f.oc_no = pr.oc_no');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.p_id', $cadet_id);
+            $this->db->where('pr.id', $row_id);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
              $this->db->where('pr.status', 'Approved');
             $data['edit_records'] = $this->db->get()->row_array();
