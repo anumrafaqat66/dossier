@@ -68,7 +68,7 @@ class D_O extends CI_Controller
                 $insert_activity = array(
                     'activity_module' => $this->session->userdata('acct_type'),
                     'activity_action' => 'add',
-                    'activity_detail' => "Cadet ".$cadet_name['name'] . " has been added to Club: " . $club,
+                    'activity_detail' => "Cadet " . $cadet_name['name'] . " has been added to Club: " . $club,
                     'activity_by' => $this->session->userdata('username'),
                     'activity_date' => date('Y-m-d H:i:s')
                 );
@@ -146,7 +146,7 @@ class D_O extends CI_Controller
                 $insert_activity = array(
                     'activity_module' => $this->session->userdata('acct_type'),
                     'activity_action' => 'add',
-                    'activity_detail' => "Cadet ".$cadet_name['name'] . " has been updated to Club: " . $club,
+                    'activity_detail' => "Cadet " . $cadet_name['name'] . " has been updated to Club: " . $club,
                     'activity_by' => $this->session->userdata('username'),
                     'activity_date' => date('Y-m-d H:i:s')
                 );
@@ -206,7 +206,7 @@ class D_O extends CI_Controller
             );
 
             $insert = $this->db->insert('pn_form1s', $insert_array);
-            
+
             if (!empty($insert)) {
 
                 $cadet_name = $this->db->select('name')->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
@@ -214,7 +214,7 @@ class D_O extends CI_Controller
                 $insert_activity = array(
                     'activity_module' => $this->session->userdata('acct_type'),
                     'activity_action' => 'add',
-                    'activity_detail' => "A New Cadet ".$cadet_name['name'] . " has been added",
+                    'activity_detail' => "A New Cadet " . $cadet_name['name'] . " has been added",
                     'activity_by' => $this->session->userdata('username'),
                     'activity_date' => date('Y-m-d H:i:s')
                 );
@@ -244,15 +244,29 @@ class D_O extends CI_Controller
         }
     }
 
-public function view_edit_inspection($id=null){
-            $this->db->select('pr.*, f.*');
-            $this->db->from('inspection_records pr');
-            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('pr.id', $id);
-            $data['pn_inspection_data'] = $this->db->get()->row_array();
-            $this->load->view('do/edit_inspection_record',$data);
-}
+    public function view_edit_inspection($id = null)
+    {
+        $this->db->select('pr.*, f.*');
+        $this->db->from('inspection_records pr');
+        $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+        $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        $this->db->where('pr.id', $id);
+        $data['pn_inspection_data'] = $this->db->get()->row_array();
+        $this->load->view('do/edit_inspection_record', $data);
+    }
+
+    public function view_edit_personal_record($id = null)
+    {
+        $this->db->select('pr.*, f.*');
+        $this->db->from('personal_datas pr');
+        $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+        $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        $this->db->where('pr.p_id', $id);
+        $data['pn_personal_data'] = $this->db->get()->row_array();
+        $this->load->view('do/edit_personal_data', $data);
+    }
+
+
     public function add_inspection_record()
     {
         if ($this->input->post()) {
@@ -282,7 +296,7 @@ public function view_edit_inspection($id=null){
                 $insert_activity = array(
                     'activity_module' => $this->session->userdata('acct_type'),
                     'activity_action' => 'add',
-                    'activity_detail' => "Inspection record has been added for Cadet ".$cadet_name['name'] . " by officer " . $inspecting_officer_name,
+                    'activity_detail' => "Inspection record has been added for Cadet " . $cadet_name['name'] . " by officer " . $inspecting_officer_name,
                     'activity_by' => $this->session->userdata('username'),
                     'activity_date' => date('Y-m-d H:i:s')
                 );
@@ -312,12 +326,12 @@ public function view_edit_inspection($id=null){
         }
     }
 
-      public function update_inspection_record()
+    public function update_inspection_record()
     {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
 
-            $row_id=$postData['row_id'];
+            $row_id = $postData['row_id'];
             $officer_id = $postData['id'];
             $date = $postData['date'];
             $inspecting_officer_name = $postData['inspector_name'];
@@ -332,7 +346,7 @@ public function view_edit_inspection($id=null){
                 //'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             );
-            $this->db->where('id',$row_id);
+            $this->db->where('id', $row_id);
             $insert = $this->db->update('inspection_records', $update_array);
 
             if (!empty($insert)) {
@@ -342,7 +356,7 @@ public function view_edit_inspection($id=null){
                 $insert_activity = array(
                     'activity_module' => $this->session->userdata('acct_type'),
                     'activity_action' => 'add',
-                    'activity_detail' => "Inspection record has been added for Cadet ".$cadet_name['name'] . " by officer " . $inspecting_officer_name,
+                    'activity_detail' => "Inspection record has been added for Cadet " . $cadet_name['name'] . " by officer " . $inspecting_officer_name,
                     'activity_by' => $this->session->userdata('username'),
                     'activity_date' => date('Y-m-d H:i:s')
                 );
@@ -452,9 +466,9 @@ public function view_edit_inspection($id=null){
                 'updated_at' => date('Y-m-d H:i:s'),
                 'upload_file' => $files
             );
-            
+
             $insert = $this->db->insert('personal_datas', $insert_array);
-            
+
             if (!empty($insert)) {
 
                 $cadet_name = $this->db->select('name')->where('p_id', $officer_id)->get('pn_form1s')->row_array();
@@ -462,7 +476,7 @@ public function view_edit_inspection($id=null){
                 $insert_activity = array(
                     'activity_module' => $this->session->userdata('acct_type'),
                     'activity_action' => 'add',
-                    'activity_detail' => "Personal record has been added for Cadet ".$cadet_name['name'],
+                    'activity_detail' => "Personal record has been added for Cadet " . $cadet_name['name'],
                     'activity_by' => $this->session->userdata('username'),
                     'activity_date' => date('Y-m-d H:i:s')
                 );
@@ -528,7 +542,7 @@ public function view_edit_inspection($id=null){
             );
 
             $insert = $this->db->insert('punishment_records', $insert_array);
-            
+
             if (!empty($insert)) {
 
                 $cadet_name = $this->db->select('name')->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
@@ -536,7 +550,7 @@ public function view_edit_inspection($id=null){
                 $insert_activity = array(
                     'activity_module' => $this->session->userdata('acct_type'),
                     'activity_action' => 'add',
-                    'activity_detail' => "Punihsment added for Cadet ".$cadet_name['name'],
+                    'activity_detail' => "Punihsment added for Cadet " . $cadet_name['name'],
                     'activity_by' => $this->session->userdata('username'),
                     'activity_date' => date('Y-m-d H:i:s')
                 );
@@ -619,7 +633,7 @@ public function view_edit_inspection($id=null){
                 $insert_activity = array(
                     'activity_module' => $this->session->userdata('acct_type'),
                     'activity_action' => 'add',
-                    'activity_detail' => $display_result. " has been added for Cadet ".$cadet_name['name'],
+                    'activity_detail' => $display_result . " has been added for Cadet " . $cadet_name['name'],
                     'activity_by' => $this->session->userdata('username'),
                     'activity_date' => date('Y-m-d H:i:s')
                 );
@@ -706,14 +720,14 @@ public function view_edit_inspection($id=null){
             $update = $this->db->update('punishment_records', $data_update);
 
             if (!empty($update)) {
-                
+
                 $p_id = $this->db->select('p_id')->where('id', $id)->get('punishment_records')->row_array();
                 $cadet_name = $this->db->select('name')->where('p_id', $p_id['p_id'])->get('pn_form1s')->row_array();
 
                 $insert_activity = array(
                     'activity_module' => $this->session->userdata('acct_type'),
                     'activity_action' => 'add',
-                    'activity_detail' => "Punihsment added for Cadet ".$cadet_name['name'],
+                    'activity_detail' => "Punihsment added for Cadet " . $cadet_name['name'],
                     'activity_by' => $this->session->userdata('username'),
                     'activity_date' => date('Y-m-d H:i:s')
                 );
@@ -765,7 +779,7 @@ public function view_edit_inspection($id=null){
             $this->db->where('pr.id', $punish_id);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             $data['edit_record'] = $this->db->get()->row_array();
-            
+
             echo json_encode($data['edit_record']);
         }
     }
@@ -812,7 +826,7 @@ public function view_edit_inspection($id=null){
                 $insert_activity = array(
                     'activity_module' => $this->session->userdata('acct_type'),
                     'activity_action' => 'add',
-                    'activity_detail' => "Excuse has been added for Cadet ".$cadet_name['name'],
+                    'activity_detail' => "Excuse has been added for Cadet " . $cadet_name['name'],
                     'activity_by' => $this->session->userdata('username'),
                     'activity_date' => date('Y-m-d H:i:s')
                 );
@@ -876,7 +890,7 @@ public function view_edit_inspection($id=null){
                 $insert_activity = array(
                     'activity_module' => $this->session->userdata('acct_type'),
                     'activity_action' => 'add',
-                    'activity_detail' => "Observation has been added for Cadet ".$cadet_name['name'],
+                    'activity_detail' => "Observation has been added for Cadet " . $cadet_name['name'],
                     'activity_by' => $this->session->userdata('username'),
                     'activity_date' => date('Y-m-d H:i:s')
                 );
@@ -912,35 +926,35 @@ public function view_edit_inspection($id=null){
             $postData = $this->security->xss_clean($this->input->post());
             //print_r($postData);exit;
 
-if(isset($postData['page'])){
-            $page = $postData['page'];
-        }else{
-            $page='';
-        }
+            if (isset($postData['page'])) {
+                $page = $postData['page'];
+            } else {
+                $page = '';
+            }
             $id = $postData['observation_id'];
             $observation = $postData['observation_1'];
             $term = $postData['term'];
 
-            $update_array = array( 
+            $update_array = array(
                 'observation' => $observation,
                 'updated_at' => date('Y-m-d H:i:s'),
 
             );
             echo $id;
-           // print_r($update_array);exit;
+            // print_r($update_array);exit;
             $cond  = ['id' => $id];
             $this->db->where($cond);
-            $insert = $this->db->update('observation_records', $update_array); 
+            $insert = $this->db->update('observation_records', $update_array);
 
             if (!empty($insert)) {
 
-                $p_id = $this->db->select('p_id')->where('id', $id)->get('observation_records')->row_array(); 
-                $cadet_name = $this->db->select('name')->where('p_id', $p_id['p_id'])->get('pn_form1s')->row_array(); 
+                $p_id = $this->db->select('p_id')->where('id', $id)->get('observation_records')->row_array();
+                $cadet_name = $this->db->select('name')->where('p_id', $p_id['p_id'])->get('pn_form1s')->row_array();
 
                 $insert_activity = array(
                     'activity_module' => $this->session->userdata('acct_type'),
                     'activity_action' => 'add',
-                    'activity_detail' => "Observation has been updated for Cadet ".$cadet_name['name'],
+                    'activity_detail' => "Observation has been updated for Cadet " . $cadet_name['name'],
                     'activity_by' => $this->session->userdata('username'),
                     'activity_date' => date('Y-m-d H:i:s')
                 );
@@ -967,8 +981,7 @@ if(isset($postData['page'])){
                 } elseif ($page == 'dossier') {
                     $this->session->set_flashdata('success', 'Observation updated successfully');
                     redirect('D_O/view_dossier');
-                }
-                else{
+                } else {
                     $this->session->set_flashdata('success', 'Observation updated successfully');
                     redirect('D_O/view_dossier_folder');
                 }
@@ -980,8 +993,7 @@ if(isset($postData['page'])){
                 } elseif ($page == 'dossier') {
                     $this->session->set_flashdata('failure', 'Something went wrong, try again.');
                     redirect('D_O/view_dossier');
-                }
-                 else{
+                } else {
                     $this->session->set_flashdata('failure', 'Something went wrong, try again.');
                     redirect('D_O/view_dossier_folder');
                 }
@@ -1031,12 +1043,12 @@ if(isset($postData['page'])){
 
             if (!empty($insert)) {
 
-                $cadet_name = $this->db->select('name')->where('oc_no', $oc_no)->get('pn_form1s')->row_array(); 
+                $cadet_name = $this->db->select('name')->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
 
                 $insert_activity = array(
                     'activity_module' => $this->session->userdata('acct_type'),
                     'activity_action' => 'add',
-                    'activity_detail' => "Warning has been added for Cadet ".$cadet_name['name'],
+                    'activity_detail' => "Warning has been added for Cadet " . $cadet_name['name'],
                     'activity_by' => $this->session->userdata('username'),
                     'activity_date' => date('Y-m-d H:i:s')
                 );
@@ -1066,18 +1078,18 @@ if(isset($postData['page'])){
         }
     }
 
- public function view_edit_officer_record($row_id=null){
-            
-            $this->db->select('pr.*, f.*');
-            $this->db->from('divisional_officer_records pr');
-            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-           // $this->db->where('f.oc_no', $oc_no);
-             $this->db->where('pr.id', $row_id);
-            $data['divisional_officer_data'] = $this->db->get()->row_array();
-           // print_r($data['divisional_officer_data']);exit;
-            $this->load->view('do/edit_officer_record',$data);
+    public function view_edit_officer_record($row_id = null)
+    {
 
+        $this->db->select('pr.*, f.*');
+        $this->db->from('divisional_officer_records pr');
+        $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+        $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        // $this->db->where('f.oc_no', $oc_no);
+        $this->db->where('pr.id', $row_id);
+        $data['divisional_officer_data'] = $this->db->get()->row_array();
+        // print_r($data['divisional_officer_data']);exit;
+        $this->load->view('do/edit_officer_record', $data);
     }
 
     public function save_divisional_officer_records()
@@ -1108,7 +1120,7 @@ if(isset($postData['page'])){
                 $insert_activity = array(
                     'activity_module' => $this->session->userdata('acct_type'),
                     'activity_action' => 'add',
-                    'activity_detail' => "Divisional Officer record has been added by ". $this->session->userdata('username'),
+                    'activity_detail' => "Divisional Officer record has been added by " . $this->session->userdata('username'),
                     'activity_by' => $this->session->userdata('username'),
                     'activity_date' => date('Y-m-d H:i:s')
                 );
@@ -1138,14 +1150,14 @@ if(isset($postData['page'])){
         }
     }
 
- public function update_divisional_officer_records()
+    public function update_divisional_officer_records()
     {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
 
             //print_r($postData);exit;
             //$id = $postData['id'];
-            $row_id=$postData['row_id'];
+            $row_id = $postData['row_id'];
             $rank = $postData['rank'];
             $officer_name = $postData['officer_name'];
             $start_date = $postData['date_from'];
@@ -1160,8 +1172,8 @@ if(isset($postData['page'])){
                 'date_to' => $end_date,
                 'updated_at' => date('Y-m-d H:i:s')
             );
-              //print_r($update_array);exit;
-            $this->db->where('id',$row_id);
+            //print_r($update_array);exit;
+            $this->db->where('id', $row_id);
             $update = $this->db->update('divisional_officer_records', $update_array);
 
             if (!empty($update)) {
@@ -1169,7 +1181,7 @@ if(isset($postData['page'])){
                 $insert_activity = array(
                     'activity_module' => $this->session->userdata('acct_type'),
                     'activity_action' => 'add',
-                    'activity_detail' => "Divisional Officer record has been updated by ". $this->session->userdata('username'),
+                    'activity_detail' => "Divisional Officer record has been updated by " . $this->session->userdata('username'),
                     'activity_by' => $this->session->userdata('username'),
                     'activity_date' => date('Y-m-d H:i:s')
                 );
@@ -1198,7 +1210,7 @@ if(isset($postData['page'])){
             }
         }
     }
-    public function update_cadet_warning($page=null)
+    public function update_cadet_warning($page = null)
     {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
@@ -1243,12 +1255,12 @@ if(isset($postData['page'])){
 
             if (!empty($update)) {
 
-                $cadet_name = $this->db->select('name')->where('oc_no', $oc_no)->get('pn_form1s')->row_array(); 
+                $cadet_name = $this->db->select('name')->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
 
                 $insert_activity = array(
                     'activity_module' => $this->session->userdata('acct_type'),
                     'activity_action' => 'add',
-                    'activity_detail' => "Warning has been updated for Cadet ".$cadet_name['name'],
+                    'activity_detail' => "Warning has been updated for Cadet " . $cadet_name['name'],
                     'activity_by' => $this->session->userdata('username'),
                     'activity_date' => date('Y-m-d H:i:s')
                 );
@@ -1269,15 +1281,13 @@ if(isset($postData['page'])){
             }
 
             if (!empty($update)) {
-                if(isset($page)){
-                $this->session->set_flashdata('success', 'Warning updated successfully');
-                redirect('D_O/view_dossier_folder');
+                if (isset($page)) {
+                    $this->session->set_flashdata('success', 'Warning updated successfully');
+                    redirect('D_O/view_dossier_folder');
+                } else {
+                    $this->session->set_flashdata('success', 'Warning updated successfully');
+                    redirect('D_O/view_dossier');
                 }
-                else{
-                $this->session->set_flashdata('success', 'Warning updated successfully');
-                redirect('D_O/view_dossier');
-                    }
-               
             } else {
                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
                 redirect('D_O/view_dossier');
@@ -1497,12 +1507,12 @@ if(isset($postData['page'])){
 
             if (!empty($insert)) {
 
-                $cadet_name = $this->db->select('name')->where('oc_no', $oc_no)->get('pn_form1s')->row_array(); 
+                $cadet_name = $this->db->select('name')->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
 
                 $insert_activity = array(
                     'activity_module' => $this->session->userdata('acct_type'),
                     'activity_action' => 'add',
-                    'activity_detail' => "Branch Allocation record added for Cadet ". $cadet_name['name'],
+                    'activity_detail' => "Branch Allocation record added for Cadet " . $cadet_name['name'],
                     'activity_by' => $this->session->userdata('username'),
                     'activity_date' => date('Y-m-d H:i:s')
                 );
@@ -1538,7 +1548,7 @@ if(isset($postData['page'])){
             $postData = $this->security->xss_clean($this->input->post());
 
             $id = $postData['id_b'];
- 
+
             $prefer_1 = $postData['prefer_1'];
             $prefer_2 = $postData['prefer_2'];
             $prefer_3 = $postData['prefer_3'];
@@ -1561,13 +1571,13 @@ if(isset($postData['page'])){
 
             if (!empty($update)) {
 
-                $p_id = $this->db->select('p_id')->where('id', $id)->get('branch_allocations')->row_array(); 
-                $cadet_name = $this->db->select('name')->where('p_id', $p_id['p_id'])->get('pn_form1s')->row_array(); 
+                $p_id = $this->db->select('p_id')->where('id', $id)->get('branch_allocations')->row_array();
+                $cadet_name = $this->db->select('name')->where('p_id', $p_id['p_id'])->get('pn_form1s')->row_array();
 
                 $insert_activity = array(
                     'activity_module' => $this->session->userdata('acct_type'),
                     'activity_action' => 'add',
-                    'activity_detail' => "Branch Allocation record Updated for cadet ". $cadet_name['name'],
+                    'activity_detail' => "Branch Allocation record Updated for cadet " . $cadet_name['name'],
                     'activity_by' => $this->session->userdata('username'),
                     'activity_date' => date('Y-m-d H:i:s')
                 );
@@ -1586,7 +1596,6 @@ if(isset($postData['page'])){
                     $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
                 }
             }
-
 
             if (!empty($update)) {
                 $this->session->set_flashdata('success', 'Branch Allocations updated successfully');
@@ -1647,15 +1656,15 @@ if(isset($postData['page'])){
 
             if (!empty($update)) {
 
-                $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array(); 
+                $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array();
 
                 if ($all == 'yes') {
                     $act_desc = 'All Cadets of ' . $this->session->userdata('division') . ' promoted successfully';
                 } else {
-                    if ($action =='relegate') {
-                        $act_desc =  "Cadet ". $cadet_name['name'] . " has been relegated";
+                    if ($action == 'relegate') {
+                        $act_desc =  "Cadet " . $cadet_name['name'] . " has been relegated";
                     } else {
-                        $act_desc =  "Cadet ". $cadet_name['name'] . " has been Promoted";
+                        $act_desc =  "Cadet " . $cadet_name['name'] . " has been Promoted";
                     }
                 }
 
@@ -1715,7 +1724,7 @@ if(isset($postData['page'])){
             $this->db->where('pr.end_date >=', date('Y-m-d'));
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             $data['punishment_records'] = $this->db->get()->result_array();
-            
+
             $this->load->view('do/view_punishment_list', $data);
         }
     }
@@ -1774,32 +1783,35 @@ if(isset($postData['page'])){
         }
     }
 
-        public function view_warning_in_dossier()
-        {
-            if ($this->session->has_userdata('user_id')) {
-                $cadet_id = $_POST['id'];
+    public function view_warning_in_dossier()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $cadet_id = $_POST['id'];
 
-                $this->db->select('pr.*, f.*');
-                $this->db->from('warning_records pr');
-                $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-                $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-                $this->db->where('f.p_id', $cadet_id);
-                $this->db->where('f.divison_name', $this->session->userdata('division'));
-                $data['warning_records'] = $this->db->get()->result_array();
-                echo json_encode($data['warning_records']);
-            }
+            $this->db->select('pr.*, f.*');
+            $this->db->from('warning_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.p_id', $cadet_id);
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $data['warning_records'] = $this->db->get()->result_array();
+            echo json_encode($data['warning_records']);
         }
-        public function view_edit_warning($row_id=null){            
-                    $row_id = $row_id;
-                    $this->db->select('pr.*, f.*');
-                    $this->db->from('warning_records pr');
-                    $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-                    $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-                    $this->db->where('pr.id', $row_id);
-                    $this->db->where('f.divison_name', $this->session->userdata('division'));
-                    $data['warning_records'] = $this->db->get()->row_array();
-                   $this->load->view('do/edit_warning',$data);           
-        }
+    }
+
+    public function view_edit_warning($row_id = null)
+    {
+        $row_id = $row_id;
+        $this->db->select('pr.*, f.*');
+        $this->db->from('warning_records pr');
+        $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+        $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        $this->db->where('pr.id', $row_id);
+        $this->db->where('f.divison_name', $this->session->userdata('division'));
+        $data['warning_records'] = $this->db->get()->row_array();
+        $this->load->view('do/edit_warning', $data);
+    }
+
     public function edit_warning_data()
     {
         if ($this->session->has_userdata('user_id')) {
@@ -1910,20 +1922,21 @@ if(isset($postData['page'])){
         }
     }
 
-    public function view_edit_observation($row_id=null){
-         
-            $row_id = $row_id;;
-            $this->db->select('pr.*, f.*');
-            $this->db->from('observation_records pr');
-            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            // $this->db->where('f.oc_no = pr.oc_no');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('pr.id', $row_id);
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
-             $this->db->where('pr.status', 'Approved');
-            $data['edit_records'] = $this->db->get()->row_array();
-           // print_r($data['edit_records']);
-            $this->load->view('do/edit_observation',$data);
+    public function view_edit_observation($row_id = null)
+    {
+
+        $row_id = $row_id;;
+        $this->db->select('pr.*, f.*');
+        $this->db->from('observation_records pr');
+        $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+        // $this->db->where('f.oc_no = pr.oc_no');
+        $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        $this->db->where('pr.id', $row_id);
+        $this->db->where('f.divison_name', $this->session->userdata('division'));
+        $this->db->where('pr.status', 'Approved');
+        $data['edit_records'] = $this->db->get()->row_array();
+        // print_r($data['edit_records']);
+        $this->load->view('do/edit_observation', $data);
     }
 
 
@@ -2580,12 +2593,12 @@ if(isset($postData['page'])){
 
             if (!empty($insert)) {
 
-                $cadet_name = $this->db->select('name')->where('oc_no', $oc_no)->get('pn_form1s')->row_array(); 
+                $cadet_name = $this->db->select('name')->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
 
                 $insert_activity = array(
                     'activity_module' => $this->session->userdata('acct_type'),
                     'activity_action' => 'add',
-                    'activity_detail' => "Physical Milestone has been added for cadet ". $cadet_name['name'],
+                    'activity_detail' => "Physical Milestone has been added for cadet " . $cadet_name['name'],
                     'activity_by' => $this->session->userdata('username'),
                     'activity_date' => date('Y-m-d H:i:s')
                 );
@@ -2771,12 +2784,12 @@ if(isset($postData['page'])){
 
         if (!empty($insert)) {
 
-            $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array(); 
+            $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array();
 
             $insert_activity = array(
                 'activity_module' => $this->session->userdata('acct_type'),
                 'activity_action' => 'add',
-                'activity_detail' => "Officer Like Qualities added for cadet ". $cadet_name['name'],
+                'activity_detail' => "Officer Like Qualities added for cadet " . $cadet_name['name'],
                 'activity_by' => $this->session->userdata('username'),
                 'activity_date' => date('Y-m-d H:i:s')
             );
@@ -3631,12 +3644,12 @@ if(isset($postData['page'])){
 
             if (!empty($insert)) {
 
-                $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array(); 
+                $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array();
 
                 $insert_activity = array(
                     'activity_module' => $this->session->userdata('acct_type'),
                     'activity_action' => 'add',
-                    'activity_detail' => "psychologist report added for cadet ". $cadet_name['name'],
+                    'activity_detail' => "psychologist report added for cadet " . $cadet_name['name'],
                     'activity_by' => $this->session->userdata('username'),
                     'activity_date' => date('Y-m-d H:i:s')
                 );
@@ -3707,7 +3720,7 @@ if(isset($postData['page'])){
             }
             $iparr = explode(".", $files);
             $file_type = $iparr[1];
-            
+
             $insert_array = array(
                 'p_id' => $p_id,
                 'do_id' => $this->session->userdata('user_id'),
@@ -3721,12 +3734,12 @@ if(isset($postData['page'])){
 
         if (!empty($insert)) {
 
-            $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array(); 
+            $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array();
 
             $insert_activity = array(
                 'activity_module' => $this->session->userdata('acct_type'),
                 'activity_action' => 'add',
-                'activity_detail' => "Autobiography added for cadet ". $cadet_name['name'],
+                'activity_detail' => "Autobiography added for cadet " . $cadet_name['name'],
                 'activity_by' => $this->session->userdata('username'),
                 'activity_date' => date('Y-m-d H:i:s')
             );
@@ -3805,12 +3818,12 @@ if(isset($postData['page'])){
 
         if (!empty($insert)) {
 
-            $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array(); 
+            $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array();
 
             $insert_activity = array(
                 'activity_module' => $this->session->userdata('acct_type'),
                 'activity_action' => 'add',
-                'activity_detail' => "General Remarks added for cadet ". $cadet_name['name'],
+                'activity_detail' => "General Remarks added for cadet " . $cadet_name['name'],
                 'activity_by' => $this->session->userdata('username'),
                 'activity_date' => date('Y-m-d H:i:s')
             );
@@ -3906,12 +3919,12 @@ if(isset($postData['page'])){
 
         if (!empty($update) || !empty($insert)) {
 
-            $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array(); 
+            $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array();
 
             $insert_activity = array(
                 'activity_module' => $this->session->userdata('acct_type'),
                 'activity_action' => 'add',
-                'activity_detail' => "Progress Report added for cadet ". $cadet_name['name'],
+                'activity_detail' => "Progress Report added for cadet " . $cadet_name['name'],
                 'activity_by' => $this->session->userdata('username'),
                 'activity_date' => date('Y-m-d H:i:s')
             );
@@ -4040,12 +4053,12 @@ if(isset($postData['page'])){
 
         if (!empty($update) || !empty($insert)) {
 
-            $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array(); 
+            $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array();
 
             $insert_activity = array(
                 'activity_module' => $this->session->userdata('acct_type'),
                 'activity_action' => 'add',
-                'activity_detail' => "Seniority Record added for cadet ". $cadet_name['name'],
+                'activity_detail' => "Seniority Record added for cadet " . $cadet_name['name'],
                 'activity_by' => $this->session->userdata('username'),
                 'activity_date' => date('Y-m-d H:i:s')
             );
@@ -4097,12 +4110,12 @@ if(isset($postData['page'])){
 
         if (!empty($insert)) {
 
-            $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array(); 
+            $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array();
 
             $insert_activity = array(
                 'activity_module' => $this->session->userdata('acct_type'),
                 'activity_action' => 'add',
-                'activity_detail' => "Distinction record added for cadet ". $cadet_name['name'],
+                'activity_detail' => "Distinction record added for cadet " . $cadet_name['name'],
                 'activity_by' => $this->session->userdata('username'),
                 'activity_date' => date('Y-m-d H:i:s')
             );

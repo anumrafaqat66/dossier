@@ -100,6 +100,11 @@ $route['D_O/view_edit_officer_record/update-activity'] = 'ChatController/update_
 $route['D_O/view_edit_officer_record/check-notification'] = 'ChatController/check_notification';
 $route['D_O/view_edit_officer_record/check-activity'] = 'ChatController/check_activity';
 
+$route['D_O/view_edit_personal_record/update-notification'] = 'ChatController/update_notification';
+$route['D_O/view_edit_personal_record/update-activity'] = 'ChatController/update_activity';
+$route['D_O/view_edit_personal_record/check-notification'] = 'ChatController/check_notification';
+$route['D_O/view_edit_personal_record/check-activity'] = 'ChatController/check_activity';
+
 
 $route['chat-clear'] = 'ChatController/chat_clear_client_cs';
 
