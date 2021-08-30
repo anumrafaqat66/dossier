@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" id="add_form" enctype="multipart/form-data" action="<?= base_url(); ?>D_O/add_personal_record">
+                        <form class="user" role="form" method="post" id="add_form" enctype="multipart/form-data" action="<?= base_url(); ?>D_O/update_personal_record">
                             <nav>
                                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                                     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#step1" role="tab" aria-controls="nav-home" aria-selected="true" style="width:300px;">Part 1</a>
@@ -50,6 +50,8 @@
                                 <div class="tab-pane fade show active" id="step1" role="tabpanel" aria-labelledby="nav-home-tab">
                                     <h2 style="text-align:center; margin-top:15px">PART I</h2>
                                     <hr>
+                                    <input type="hidden" name="row_id" value="<?= $pn_personal_data['id'] ?>">
+                                    <input type="hidden" name="row_pid" value="<?= $pn_personal_data['p_id'] ?>">
                                     <div class="form-group row my-2">
                                         <div class="col-sm-12">
                                             <h6>&nbsp;Officer Name:</h6>

@@ -338,12 +338,9 @@ class D_O extends CI_Controller
             $remarks = $postData['remarks'];
 
             $update_array = array(
-                // 'p_id' => $officer_id,
                 'date' => $date,
                 'inspecting_officer_name' => $inspecting_officer_name,
                 'remarks' => $remarks,
-                //'do_id' => $this->session->userdata('user_id'),
-                //'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             );
             $this->db->where('id', $row_id);
@@ -356,7 +353,7 @@ class D_O extends CI_Controller
                 $insert_activity = array(
                     'activity_module' => $this->session->userdata('acct_type'),
                     'activity_action' => 'add',
-                    'activity_detail' => "Inspection record has been added for Cadet " . $cadet_name['name'] . " by officer " . $inspecting_officer_name,
+                    'activity_detail' => "Inspection record has been updated for Cadet " . $cadet_name['name'] . " by officer " . $inspecting_officer_name,
                     'activity_by' => $this->session->userdata('username'),
                     'activity_date' => date('Y-m-d H:i:s')
                 );
@@ -397,7 +394,6 @@ class D_O extends CI_Controller
             } else {
                 $files = $upload1[0];
             }
-            //echo $files;exit;
 
             $officer_id = $postData['officer_name'];
             $p_no = $postData['pno'];
@@ -502,6 +498,120 @@ class D_O extends CI_Controller
             } else {
                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
                 redirect('D_O/personal_data');
+            }
+        }
+    }
+
+    public function update_personal_record()
+    {
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+
+            $upload1 = $this->upload($_FILES['report']);
+            if (count($upload1) > 1) {
+                $files = implode(',', $upload1);
+            } else {
+                $files = $upload1[0];
+            }
+
+            $row_id = $postData['row_id'];
+            $officer_id = $postData['row_pid'];
+            $p_no = $postData['pno'];
+            $course = $postData['course'];
+            $religion = $postData['religion'];
+            $e_contact = $postData['e_contact'];
+            $telephone_no = $postData['telephone'];
+            $ex_army = $postData['army'];
+            $father_name = $postData['father_name'];
+            $father_occupation = $postData['occupation'];
+            $next_of_kin = $postData['next_of_kin'];
+            $siblings = $postData['siblings'];
+            $near_relatives = $postData['relatives'];
+            $identification_marks = $postData['mark'];
+            $height = $postData['height'];
+            $weight = $postData['weight'];
+            $navy_joining_date = $postData['joining_date'];
+            $entry_mode = $postData['entry_mode'];
+            $service_id = $postData['service_no'];
+            $nic = $postData['cnic'];
+            $blood_group = $postData['blood'];
+            $address = $postData['address'];
+            $karachi_address = $postData['khi_address'];
+            $matric_school = $postData['matric'];
+            $matric_division = $postData['grade_matric'];
+            $intermediate_college = $postData['college'];
+            $intermediate_division = $postData['grade_intermediate'];
+            $diploma = $postData['diploma'];
+
+            $update_array = array(
+                'p_id' => $officer_id,
+                'p_no' => $p_no,
+                'course' => $course,
+                'religion' => $religion,
+                'emergency_contact' => $e_contact,
+                'telephone_no' => $telephone_no,
+                'ex_army' => $ex_army,
+                'father_name' => $father_name,
+                'father_occupation' => $father_occupation,
+                'next_of_kin' => $next_of_kin,
+                'siblings' => $siblings,
+                'near_relatives' => $near_relatives,
+                'identification_marks' => $identification_marks,
+                'height' => $height,
+                'weight' => $weight,
+                'navy_joining_date' => $navy_joining_date,
+                'entry_mode' => $entry_mode,
+                'service_id' => $service_id,
+                'nic' => $nic,
+                'blood_group' => $blood_group,
+                'address' => $address,
+                'karachi_address' => $karachi_address,
+                'matric_school' => $matric_school,
+                'matric_division' => $matric_division,
+                'intermediate_college' => $intermediate_division,
+                'intermediate_division' => $intermediate_division,
+                'diploma' => $diploma,
+                'do_id' => $this->session->userdata('user_id'),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+                'upload_file' => $files
+            );
+            $this->db->where('p_id', $officer_id);
+            $insert = $this->db->update('personal_datas', $update_array);
+
+            if (!empty($insert)) {
+
+                $cadet_name = $this->db->select('name')->where('p_id', $officer_id)->get('pn_form1s')->row_array();
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => "Personal record has been updated for Cadet " . $cadet_name['name'],
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
+
+            if (!empty($insert)) {
+                $this->session->set_flashdata('success', 'Data Updated successfully');
+                redirect('D_O/view_dossier_folder');
+            } else {
+                $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                redirect('D_O/view_dossier_folder');
             }
         }
     }
