@@ -3717,6 +3717,17 @@ class D_O extends CI_Controller
         $this->load->view('DO/term_promotion');
     }
 
+public function view_edit_psychologist_report($id=null){
+            $this->db->select('pr.*, f.*');
+            $this->db->from('psychologist_reports pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('pr.p_id', $id);
+            $data['psychologist_data'] = $this->db->get()->row_array();
+           // print_r($data['psychologist_data']);exit;
+            $this->load->view('do/edit_psychologist_report',$data);
+}
+
     public function save_psychologist_report()
     {
         if ($this->input->post()) {
@@ -3789,6 +3800,82 @@ class D_O extends CI_Controller
         }
     }
 
+     public function update_psychologist_report($id=null)
+    {
+        //echo $id;exit;
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+            // print_r($_FILES['psycologist_report']['size'][0]);
+            $file_size = $_FILES['psycologist_report']['size'][0] . " kb";
+            // echo $file_size;exit;
+            $p_id = $postData['id'];
+            
+
+            if ($_FILES['psycologist_report']['name'][0] != NULL) {
+                $upload1 = $this->upload_psychologist_report($_FILES['psycologist_report']);
+                if (count($upload1) > 1) {
+                    $files = implode(',', $upload1);
+                } else {
+                    $files = $upload1[0];
+                }
+            } else {
+                $files = $postData['old_file'];
+            }
+
+            $iparr = explode(".", $files);
+            $file_type = $iparr[1];
+            //$term = $postData['term'];
+            $insert_array = array(
+                //'oc_no' => $oc_no,
+                //'p_id' => $p_id,
+                //'do_id' => $this->session->userdata('user_id'),
+                'file_name' => $files,
+                'file_type' => $file_type,
+                'file_size' => $file_size,
+                //'created_at' => date('Y-m-d H:i:s')
+            );
+            //print_r($insert_array);exit;
+            $this->db->where('id',$id);
+            $update = $this->db->update('psychologist_reports', $insert_array);
+
+            if (!empty($update)) {
+
+                $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array();
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'update',
+                    'activity_detail' => "psychologist report updated for cadet " . $cadet_name['name'],
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
+        }
+
+        if (!empty($update)) {
+            $this->session->set_flashdata('success', 'Data Updated successfully');
+            redirect('D_O/view_dossier_folder');
+        } else {
+            $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+            redirect('D_O/view_dossier_folder');
+        }
+    }
+
+
     public function upload_psychologist_report()
     {
         $filesCount = count($_FILES['psycologist_report']['name']);
@@ -3814,6 +3901,18 @@ class D_O extends CI_Controller
             }
         }
         return $count;
+    }
+
+    public function view_edit_biography($p_id=null){
+         $this->db->select('pr.*, f.*');
+        $this->db->from('cadets_autobiographies pr');
+        $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+        $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        $this->db->where('pr.p_id', $p_id);
+        $data['biography_data'] = $this->db->get()->row_array();
+        //print_r($data['biography_data']);exit;
+        //$this->load->view('do/edit_inspection_record', $data);
+        $this->load->view('do/edit_cadet_autobiography',$data);
     }
     public function save_autobiography()
     {
@@ -3878,6 +3977,76 @@ class D_O extends CI_Controller
         }
     }
 
+ public function update_autobiography($id=null)
+    {
+        //echo $id;exit;
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+            $file_size = $_FILES['autobiography']['size'][0] . " kb";
+            $p_id = $postData['id'];
+
+               if ($_FILES['autobiography']['name'][0] != NULL) {
+                  $upload1 = $this->upload_autobiograhy($_FILES['autobiography']);
+                if (count($upload1) > 1) {
+                    $files = implode(',', $upload1);
+                } else {
+                    $files = $upload1[0];
+                }
+            } else {
+                $files = $postData['old_file'];
+            }
+
+            $iparr = explode(".", $files);
+            $file_type = $iparr[1];
+
+            $update_array = array(
+               // 'p_id' => $p_id,
+                //'do_id' => $this->session->userdata('user_id'),
+                'file_name' => $files,
+                'file_type' => $file_type,
+                'file_size' => $file_size,
+                //'created_at' => date('Y-m-d H:i:s')
+            );
+           //print_r($update_array);exit;
+            $this->db->where('id',$id);
+            $update = $this->db->update('cadets_autobiographies', $update_array);
+        }
+
+        if (!empty($update)) {
+
+            $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array();
+
+            $insert_activity = array(
+                'activity_module' => $this->session->userdata('acct_type'),
+                'activity_action' => 'update',
+                'activity_detail' => "Autobiography updated for cadet " . $cadet_name['name'],
+                'activity_by' => $this->session->userdata('username'),
+                'activity_date' => date('Y-m-d H:i:s')
+            );
+
+            $insert_act = $this->db->insert('activity_log', $insert_activity);
+            $last_id = $this->db->insert_id();
+
+            $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+            for ($i = 0; $i < count($query); $i++) {
+                $insert_activity_seen = array(
+                    'activity_id' => $last_id,
+                    'user_id' => $query[$i]['id'],
+                    'seen' => 'no'
+                );
+                $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+            }
+        }
+
+        if (!empty($update)) {
+            $this->session->set_flashdata('success', 'Data Updated successfully');
+            redirect('D_O/view_dossier_folder');
+        } else {
+            $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+            redirect('D_O/view_dossier_folder');
+        }
+    }
     public function upload_autobiograhy()
     {
         $filesCount = count($_FILES['autobiography']['name']);

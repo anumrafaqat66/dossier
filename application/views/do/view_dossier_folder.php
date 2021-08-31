@@ -655,6 +655,7 @@
             </div>
         </form>
 
+
         <div id="no_data" class="row my-2" style="display:none;">
             <div class="col-lg-12">
                 <h4 style="color:red;">No Cadet Found. Please check the OC No.</h4>
@@ -3371,6 +3372,8 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                 <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_biography/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> 
+
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/autobiography_record_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
@@ -3437,6 +3440,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                  <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_psychologist_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> 
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/psychology_record_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">

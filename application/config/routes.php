@@ -106,6 +106,18 @@ $route['D_O/view_edit_personal_record/check-notification'] = 'ChatController/che
 $route['D_O/view_edit_personal_record/check-activity'] = 'ChatController/check_activity';
 
 
+$route['D_O/view_edit_biography/update-notification'] = 'ChatController/update_notification';
+$route['D_O/view_edit_biography/update-activity'] = 'ChatController/update_activity';
+$route['D_O/view_edit_biography/check-notification'] = 'ChatController/check_notification';
+$route['D_O/view_edit_biography/check-activity'] = 'ChatController/check_activity';
+
+
+
+$route['D_O/view_edit_psychologist_report/update-notification'] = 'ChatController/update_notification';
+$route['D_O/view_edit_psychologist_report/update-activity'] = 'ChatController/update_activity';
+$route['D_O/view_edit_psychologist_report/check-notification'] = 'ChatController/check_notification';
+$route['D_O/view_edit_psychologist_report/check-activity'] = 'ChatController/check_activity';
+
 $route['chat-clear'] = 'ChatController/chat_clear_client_cs';
 
 
