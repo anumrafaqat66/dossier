@@ -118,6 +118,11 @@ $route['D_O/view_edit_psychologist_report/update-activity'] = 'ChatController/up
 $route['D_O/view_edit_psychologist_report/check-notification'] = 'ChatController/check_notification';
 $route['D_O/view_edit_psychologist_report/check-activity'] = 'ChatController/check_activity';
 
+$route['D_O/view_edit_qualities/(:any)/update-notification'] = 'ChatController/$1/update_notification';
+$route['D_O/view_edit_qualities/(:any)/update-activity'] = 'ChatController/$1/update_activity';
+$route['D_O/view_edit_qualities/(:any)/check-notification'] = 'ChatController/$1/check_notification';
+$route['D_O/view_edit_qualities/(:any)/check-activity'] = 'ChatController/$1/check_activity';
+
 $route['chat-clear'] = 'ChatController/chat_clear_client_cs';
 
 
