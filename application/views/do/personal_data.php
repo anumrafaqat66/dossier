@@ -59,12 +59,13 @@
 
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-1">
-                                            <select class="form-control rounded-pill" name="officer_name" id="officer_name" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                            <!-- <select class="form-control rounded-pill" name="officer_name" id="officer_name" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                                 <option class="form-control form-control-user" value="">Select Officer Name</option>
-                                                <?php foreach($pn_data as $data){ ?>
-                                        <option class="form-control form-control-user" value="<?= $data['p_id'];?>"><?= $data['name']; ?></option>
-                                        <?php } ?>
-                                            </select>
+                                                <?php foreach ($pn_data as $data) { ?>
+                                                <option class="form-control form-control-user" value="<?= $data['p_id']; ?>"><?= $data['name']; ?></option>
+                                                <?php } ?>
+                                            </select> -->
+                                            <input type="text" class="form-control form-control-user" name="name" id="name" placeholder="Name">
                                         </div>
                                     </div>
 
@@ -76,13 +77,13 @@
 
                                     <div class="form-group row custom-file-upload">
                                         <div class="col-sm-12 mb-1">
-                                            <input type="file" style="height: 50px; padding:10px !important;"  multiple="multiple" class="form-control form-control-user" placeholder="Upload Document" name="report[]" x-model="fileName">
+                                            <input type="file" style="height: 50px; padding:10px !important;" multiple="multiple" class="form-control form-control-user" placeholder="Upload Document" name="report[]" x-model="fileName">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <div class="col-sm-6">
-                                            <h6>&nbsp;P.NO:</h6>
+                                            <h6>&nbsp;OC NO:</h6>
                                         </div>
 
                                         <div class="col-sm-6">
@@ -92,12 +93,85 @@
 
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="pno" id="pno" placeholder="P. NO.">
+                                            <input type="text" class="form-control form-control-user" name="oc_no" id="oc_no" placeholder="OC NO.">
                                         </div>
                                         <div class="col-sm-6 mb-1">
                                             <input type="text" class="form-control form-control-user" name="course" id="course" placeholder="Course">
                                         </div>
                                     </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-6">
+                                            <h6>&nbsp;P. NO:</h6>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h6>&nbsp;Class:</h6>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-1">
+                                            <input type="text" class="form-control form-control-user" name="pno" id="pno" placeholder="P. NO.">
+                                        </div>
+                                        <div class="col-sm-6 mb-1">
+                                            <input type="text" class="form-control form-control-user" name="class" id="class" placeholder="class">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-6">
+                                            <h6>&nbsp;ISSB Batch No:</h6>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h6>&nbsp;Category:</h6>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-1">
+                                            <input type="text" class="form-control form-control-user" name="batch_no" id="batch_no" placeholder="Batch No">
+                                        </div>
+
+                                        <div class="col-sm-6 mb-1">
+                                            <select class="form-control rounded-pill" name="category" id="category" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                                <option class="form-control form-control-user" value="">Select Category</option>
+                                                <option class="form-control form-control-user" value="PN-Cadet">PN-Cadet</option>
+                                                <option class="form-control form-control-user" value="SSC Cadet">SSC Cadet</option>
+                                                <option class="form-control form-control-user" value="Allied Cadet">Allied Cadet</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-6">
+                                            <h6>&nbsp;Division Name:</h6>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h6>&nbsp;Term:</h6>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-1">
+                                            <select class="form-control rounded-pill" name="div" id="div" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;" readonly>
+                                                <?php foreach ($divisions as $data) { ?>
+                                                    <option class="form-control form-control-user" value="<?= $data['division_name'] ?>"><?= $data['division_name'] ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6 mb-1">
+                                            <select class="form-control rounded-pill" name="term" id="term" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                                <option class="form-control form-control-user" value="">Select Term</option>
+                                                <option class="form-control form-control-user" value="Term-I">Term-I</option>
+                                                <option class="form-control form-control-user" value="Term-II">Term-II</option>
+                                                <option class="form-control form-control-user" value="Term-III">Term-III</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
                                     <div class="form-group row">
                                         <div class="col-sm-6">
                                             <h6>&nbsp;Religion:</h6>
@@ -310,7 +384,7 @@
                                             <input type="text" class="form-control form-control-user" name="matric" id="matric" placeholder="Matric School">
                                         </div>
                                         <div class="col-sm-6 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="grade_matric" id="grade" placeholder="Matric Grade">
+                                            <input type="text" class="form-control form-control-user" name="grade_matric" id="grade_matric" placeholder="Matric Grade">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -328,7 +402,7 @@
                                             <input type="text" class="form-control form-control-user" name="college" id="college" placeholder="Intermediate College">
                                         </div>
                                         <div class="col-sm-6 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="grade_intermediate" id="grade" placeholder="Intermediate Grade">
+                                            <input type="text" class="form-control form-control-user" name="grade_intermediate" id="grade_intermediate" placeholder="Intermediate Grade">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -413,15 +487,22 @@
         var e_contact = $('#e_contact').val();
         var father_name = $('#father_name').val();
         var religion = $('#religion').val();
+        var oc_no = $('#oc_no').val();
+        var name = $('#name').val();
+        var class_ = $('#class').val();
+        var batch_no = $('#batch_no').val();
+        var category = $('#category').val();
+        var div_name = $('#div').val();
+        var term = $('#term').val();
 
         if (officer_name == '') {
             validate = 1;
             $('#officer_name').addClass('red-border');
         }
-        if (pno == '') {
-            validate = 1;
-            $('#pno').addClass('red-border');
-        }
+        // if (pno == '') {
+        //     validate = 1;
+        //     $('#pno').addClass('red-border');
+        // }
         if (course == '') {
             validate = 1;
             $('#course').addClass('red-border');
@@ -438,7 +519,34 @@
             validate = 1;
             $('#religion').addClass('red-border');
         }
-        
+
+        if (oc_no == '') {
+            validate = 1;
+            $('#oc_no').addClass('red-border');
+        }
+      
+        if (name == '') {
+            validate = 1;
+            $('#name').addClass('red-border');
+        }
+        if (class_ == '') {
+            validate = 1;
+            $('#class').addClass('red-border');
+        }
+
+        if (batch_no == '') {
+            validate = 1;
+            $('#batch_no').addClass('red-border');
+        }
+        if (category == '') {
+            validate = 1;
+            $('#category').addClass('red-border');
+        }
+        if (term == '') {
+            validate = 1;
+            $('#term').addClass('red-border');
+        }
+
         if (validate == 0) {
             $('#add_form')[0].submit();
             $('#show_error_new').hide();

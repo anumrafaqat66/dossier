@@ -263,6 +263,9 @@ class D_O extends CI_Controller
         $this->db->where('pr.do_id', $this->session->userdata('user_id'));
         $this->db->where('pr.p_id', $id);
         $data['pn_personal_data'] = $this->db->get()->row_array();
+
+        $data['divisions'] = $this->db->where('division_name', $this->session->userdata('division'))->get('divisions')->result_array();
+
         $this->load->view('do/edit_personal_data', $data);
     }
 
@@ -388,6 +391,33 @@ class D_O extends CI_Controller
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
 
+            //Insert into PN Form 1 Table
+            $oc_no = $postData['oc_no'];
+            $p_no = $postData['pno'];
+            $name = $postData['name'];
+            $class = $postData['class'];
+            $batch_no = $postData['batch_no'];
+            $category = $postData['category'];
+            $div_name = $postData['div'];
+            $term = $postData['term'];
+
+            $insert_array_pnform = array(
+                'oc_no' => $oc_no,
+                'p_no' => $p_no,
+                'name' => $name,
+                'class' => $class,
+                'issb_batch' => $batch_no,
+                'do_id' => $this->session->userdata('user_id'),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+                'category' => $category,
+                'divison_name' => $div_name,
+                'term' => $term
+            );
+
+            $insert_pnform = $this->db->insert('pn_form1s', $insert_array_pnform);
+            $inserted_officer_id = $this->db->insert_id();
+
             $upload1 = $this->upload($_FILES['report']);
             if (count($upload1) > 1) {
                 $files = implode(',', $upload1);
@@ -395,8 +425,7 @@ class D_O extends CI_Controller
                 $files = $upload1[0];
             }
 
-            $officer_id = $postData['officer_name'];
-            $p_no = $postData['pno'];
+            $officer_id = $inserted_officer_id;
             $course = $postData['course'];
             $religion = $postData['religion'];
             $e_contact = $postData['e_contact'];
@@ -423,13 +452,7 @@ class D_O extends CI_Controller
             $intermediate_division = $postData['grade_intermediate'];
             $diploma = $postData['diploma'];
 
-
-
-            // $id = $this->db->where('name',$officer_name)->get('pn_form1s')->row_array();
-            //echo $officer_id;exit;
-
             $insert_array = array(
-                //'officer_name' => $officer_name,
                 'p_id' => $officer_id,
                 'p_no' => $p_no,
                 'course' => $course,
@@ -454,7 +477,7 @@ class D_O extends CI_Controller
                 'karachi_address' => $karachi_address,
                 'matric_school' => $matric_school,
                 'matric_division' => $matric_division,
-                'intermediate_college' => $intermediate_division,
+                'intermediate_college' => $intermediate_college,
                 'intermediate_division' => $intermediate_division,
                 'diploma' => $diploma,
                 'do_id' => $this->session->userdata('user_id'),
@@ -1488,6 +1511,7 @@ class D_O extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->result_array();
+            $data['divisions'] = $this->db->where('division_name', $this->session->userdata('division'))->get('divisions')->result_array();
             $this->load->view('do/personal_data', $data);
         }
     }

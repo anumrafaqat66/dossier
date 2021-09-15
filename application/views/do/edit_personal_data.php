@@ -60,7 +60,7 @@
 
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="officer_name" id="officer_name" placeholder="Officer Name" value="<?= $pn_personal_data['name']?>" >
+                                            <input type="text" class="form-control form-control-user" name="officer_name" id="officer_name" placeholder="Officer Name" value="<?= $pn_personal_data['name'] ?>">
                                         </div>
                                     </div>
 
@@ -72,13 +72,13 @@
 
                                     <div class="form-group row custom-file-upload">
                                         <div class="col-sm-12 mb-1">
-                                            <input type="file" style="height: 50px; padding:10px !important;"  multiple="multiple" class="form-control form-control-user" placeholder="Upload Document" name="report[]" x-model="fileName">
+                                            <input type="file" style="height: 50px; padding:10px !important;" multiple="multiple" class="form-control form-control-user" placeholder="Upload Document" name="report[]" x-model="fileName">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <div class="col-sm-6">
-                                            <h6>&nbsp;P.NO:</h6>
+                                            <h6>&nbsp;OC NO:</h6>
                                         </div>
 
                                         <div class="col-sm-6">
@@ -88,12 +88,84 @@
 
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="pno" id="pno" placeholder="P. NO." value="<?= $pn_personal_data['p_no']?>">
+                                            <input type="text" class="form-control form-control-user" name="oc_no" id="oc_no" value="<?= $pn_personal_data['oc_no'] ?>">
                                         </div>
                                         <div class="col-sm-6 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="course" id="course" placeholder="Course" value="<?= $pn_personal_data['course']?>">
+                                            <input type="text" class="form-control form-control-user" name="course" id="course" value="<?= $pn_personal_data['course'] ?>">
                                         </div>
                                     </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-6">
+                                            <h6>&nbsp;P. NO:</h6>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h6>&nbsp;Class:</h6>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-1">
+                                            <input type="text" class="form-control form-control-user" name="pno" id="pno" value="<?= $pn_personal_data['p_no'] ?>">
+                                        </div>
+                                        <div class="col-sm-6 mb-1">
+                                            <input type="text" class="form-control form-control-user" name="class" id="class" value="<?= $pn_personal_data['class'] ?>">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-6">
+                                            <h6>&nbsp;ISSB Batch No:</h6>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h6>&nbsp;Category:</h6>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-1">
+                                            <input type="text" class="form-control form-control-user" name="batch_no" id="batch_no" value="<?= $pn_personal_data['issb_batch'] ?>">
+                                        </div>
+
+                                        <div class="col-sm-6 mb-1">
+                                            <select class="form-control rounded-pill" name="category" id="category" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;" value="<?= $pn_personal_data['category'] ?>">
+                                            <!-- <option class="form-control form-control-user" value="">Select Category</option> -->
+                                            <option class="form-control form-control-user" value="PN-Cadet">PN-Cadet</option>
+                                            <option class="form-control form-control-user" value="SSC Cadet">SSC Cadet</option>
+                                            <option class="form-control form-control-user" value="Allied Cadet">Allied Cadet</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-6">
+                                            <h6>&nbsp;Division Name:</h6>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h6>&nbsp;Term:</h6>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-1">
+                                            <select class="form-control rounded-pill" name="div" id="div" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;" readonly>
+                                                <?php foreach ($divisions as $data) { ?>
+                                                    <option class="form-control form-control-user" value="<?= $data['division_name'] ?>"><?= $data['division_name'] ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6 mb-1">
+                                            <select class="form-control rounded-pill" name="term" id="term" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;" value="<?= $pn_personal_data['term'] ?>">
+                                                <!-- <option class="form-control form-control-user" value="">Select Term</option> -->
+                                                <option class="form-control form-control-user" value="Term-I">Term-I</option>
+                                                <option class="form-control form-control-user" value="Term-II">Term-II</option>
+                                                <option class="form-control form-control-user" value="Term-III">Term-III</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group row">
                                         <div class="col-sm-6">
                                             <h6>&nbsp;Religion:</h6>
@@ -106,10 +178,10 @@
 
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="religion" id="religion" placeholder="Religion" value="<?= $pn_personal_data['religion']?>">
+                                            <input type="text" class="form-control form-control-user" name="religion" id="religion" placeholder="Religion" value="<?= $pn_personal_data['religion'] ?>">
                                         </div>
                                         <div class="col-sm-6 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="e_contact" id="e_contact" placeholder="Emergency Contact" value="<?= $pn_personal_data['emergency_contact']?>">
+                                            <input type="text" class="form-control form-control-user" name="e_contact" id="e_contact" placeholder="Emergency Contact" value="<?= $pn_personal_data['emergency_contact'] ?>">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -124,10 +196,10 @@
 
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="telephone" id="telephone" placeholder="Telephone" value="<?= $pn_personal_data['telephone_no']?>">
+                                            <input type="text" class="form-control form-control-user" name="telephone" id="telephone" placeholder="Telephone" value="<?= $pn_personal_data['telephone_no'] ?>">
                                         </div>
                                         <div class="col-sm-6 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="army" id="army" placeholder="Ex-Forces" value="<?= $pn_personal_data['ex_army']?>">
+                                            <input type="text" class="form-control form-control-user" name="army" id="army" placeholder="Ex-Forces" value="<?= $pn_personal_data['ex_army'] ?>">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -142,10 +214,10 @@
 
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="father_name" id="father_name" placeholder="Father's Name" value="<?= $pn_personal_data['father_name']?>">
+                                            <input type="text" class="form-control form-control-user" name="father_name" id="father_name" placeholder="Father's Name" value="<?= $pn_personal_data['father_name'] ?>">
                                         </div>
                                         <div class="col-sm-6 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="occupation" id="occupation" placeholder="Father's Occupation" value="<?= $pn_personal_data['father_occupation']?>">
+                                            <input type="text" class="form-control form-control-user" name="occupation" id="occupation" placeholder="Father's Occupation" value="<?= $pn_personal_data['father_occupation'] ?>">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -156,7 +228,7 @@
 
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="next_of_kin" id="next_of_kin" placeholder="Next of Kin and Address" value="<?= $pn_personal_data['next_of_kin']?>">
+                                            <input type="text" class="form-control form-control-user" name="next_of_kin" id="next_of_kin" placeholder="Next of Kin and Address" value="<?= $pn_personal_data['next_of_kin'] ?>">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -167,7 +239,7 @@
 
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-1">
-                                            <textarea type="text" style="border-radius:10px" class="form-control form-control-user" name="siblings" id="siblings" placeholder="Enter Names"><?= $pn_personal_data['siblings']?></textarea>
+                                            <textarea type="text" style="border-radius:10px" class="form-control form-control-user" name="siblings" id="siblings" placeholder="Enter Names"><?= $pn_personal_data['siblings'] ?></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -178,7 +250,7 @@
 
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-1">
-                                            <textarea type="text" style="border-radius:10px" class="form-control form-control-user" name="relatives" id="relatives" placeholder="Enter Names"><?= $pn_personal_data['near_relatives']?></textarea>
+                                            <textarea type="text" style="border-radius:10px" class="form-control form-control-user" name="relatives" id="relatives" placeholder="Enter Names"><?= $pn_personal_data['near_relatives'] ?></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -189,7 +261,7 @@
 
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="mark" id="mark" placeholder="Identification Mark" value="<?= $pn_personal_data['identification_marks']?>">
+                                            <input type="text" class="form-control form-control-user" name="mark" id="mark" placeholder="Identification Mark" value="<?= $pn_personal_data['identification_marks'] ?>">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -204,10 +276,10 @@
 
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="height" id="height" placeholder="Height" value="<?= $pn_personal_data['height']?>">
+                                            <input type="text" class="form-control form-control-user" name="height" id="height" placeholder="Height" value="<?= $pn_personal_data['height'] ?>">
                                         </div>
                                         <div class="col-sm-6 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="weight" id="weight" placeholder="Weight" value="<?= $pn_personal_data['weight']?>">
+                                            <input type="text" class="form-control form-control-user" name="weight" id="weight" placeholder="Weight" value="<?= $pn_personal_data['weight'] ?>">
                                         </div>
                                     </div>
 
@@ -228,10 +300,10 @@
 
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-1">
-                                            <input type="date" class="form-control form-control-user" name="joining_date" id="joining_date" placeholder="Joining Date" value="<?= $pn_personal_data['navy_joining_date']?>">
+                                            <input type="date" class="form-control form-control-user" name="joining_date" id="joining_date" placeholder="Joining Date" value="<?= $pn_personal_data['navy_joining_date'] ?>">
                                         </div>
                                         <div class="col-sm-6 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="entry_mode" id="entry_mode" placeholder="Mode of Entry" value="<?= $pn_personal_data['entry_mode']?>">
+                                            <input type="text" class="form-control form-control-user" name="entry_mode" id="entry_mode" placeholder="Mode of Entry" value="<?= $pn_personal_data['entry_mode'] ?>">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -246,10 +318,10 @@
 
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="service_no" id="service_no" placeholder="Service No" value="<?= $pn_personal_data['service_id']?>">
+                                            <input type="text" class="form-control form-control-user" name="service_no" id="service_no" placeholder="Service No" value="<?= $pn_personal_data['service_id'] ?>">
                                         </div>
                                         <div class="col-sm-6 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="cnic" id="cnic" placeholder="CNIC" value="<?= $pn_personal_data['nic']?>">
+                                            <input type="text" class="form-control form-control-user" name="cnic" id="cnic" placeholder="CNIC" value="<?= $pn_personal_data['nic'] ?>">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -260,7 +332,7 @@
 
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="blood" id="blood" placeholder="Blood Group" value="<?= $pn_personal_data['blood_group']?>">
+                                            <input type="text" class="form-control form-control-user" name="blood" id="blood" placeholder="Blood Group" value="<?= $pn_personal_data['blood_group'] ?>">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -271,7 +343,7 @@
 
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-1">
-                                            <textarea type="text" style="border-radius:10px" class="form-control form-control-user" name="address" id="address" placeholder="Address"><?= $pn_personal_data['address']?></textarea>
+                                            <textarea type="text" style="border-radius:10px" class="form-control form-control-user" name="address" id="address" placeholder="Address"><?= $pn_personal_data['address'] ?></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -282,7 +354,7 @@
 
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-1">
-                                            <textarea type="text" style="border-radius:10px" class="form-control form-control-user" name="khi_address" id="khi_address" placeholder="Karachi Address with Telephone No." value="<?= $pn_personal_data['karachi_address']?>"><?= $pn_personal_data['karachi_address']?></textarea>
+                                            <textarea type="text" style="border-radius:10px" class="form-control form-control-user" name="khi_address" id="khi_address" placeholder="Karachi Address with Telephone No." value="<?= $pn_personal_data['karachi_address'] ?>"><?= $pn_personal_data['karachi_address'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -303,10 +375,10 @@
 
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="matric" id="matric" placeholder="Matric School" value="<?= $pn_personal_data['matric_school']?>">
+                                            <input type="text" class="form-control form-control-user" name="matric" id="matric" placeholder="Matric School" value="<?= $pn_personal_data['matric_school'] ?>">
                                         </div>
                                         <div class="col-sm-6 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="grade_matric" id="grade" placeholder="Matric Grade" value="<?= $pn_personal_data['matric_division']?>">
+                                            <input type="text" class="form-control form-control-user" name="grade_matric" id="grade" placeholder="Matric Grade" value="<?= $pn_personal_data['matric_division'] ?>">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -321,10 +393,10 @@
 
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="college" id="college" placeholder="Intermediate College" value="<?= $pn_personal_data['intermediate_college']?>">
+                                            <input type="text" class="form-control form-control-user" name="college" id="college" placeholder="Intermediate College" value="<?= $pn_personal_data['intermediate_college'] ?>">
                                         </div>
                                         <div class="col-sm-6 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="grade_intermediate" id="grade" placeholder="Intermediate Grade" value="<?= $pn_personal_data['intermediate_division']?>">
+                                            <input type="text" class="form-control form-control-user" name="grade_intermediate" id="grade" placeholder="Intermediate Grade" value="<?= $pn_personal_data['intermediate_division'] ?>">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -335,7 +407,7 @@
 
                                     <div class="form-group row">
                                         <div class="col-sm-12 mb-1">
-                                            <input type="text" class="form-control form-control-user" name="diploma" id="diploma" placeholder="Dimploma" value="<?= $pn_personal_data['diploma']?>">
+                                            <input type="text" class="form-control form-control-user" name="diploma" id="diploma" placeholder="Dimploma" value="<?= $pn_personal_data['diploma'] ?>">
                                         </div>
                                     </div>
 
@@ -434,7 +506,7 @@
             validate = 1;
             $('#religion').addClass('red-border');
         }
-        
+
         if (validate == 0) {
             $('#add_form')[0].submit();
             $('#show_error_new').hide();
