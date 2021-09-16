@@ -255,16 +255,16 @@
                             <div id="acad_list" class="row" style="display:none ;">
                                 <div class="col-lg-4" style="text-align:left;font-weight: bold;">
                                     <ul class="list-group">
-                                        <a href="#" style="color:black">
-                                            <li class="list-group-item bg-custom3 custom_list">RSEULT (TERM-I)</li>
+                                        <a href="#" style="color:black" id="btn_result_t1">
+                                            <li class="list-group-item bg-custom3 custom_list">RESULT (TERM-I)</li>
                                         </a>
-                                        <a href="#" style="color:black">
+                                        <a href="#" style="color:black" id="btn_sea_training_report">
                                             <li class="list-group-item bg-custom3 custom_list">SEA TRAINING REPORT (TERM-II)</li>
                                         </a>
-                                        <a href="#" style="color:black">
+                                        <a href="#" style="color:black" id="btn_result_t2">
                                             <li class="list-group-item bg-custom3 custom_list">RESULT (TERM-II)</li>
                                         </a>
-                                        <a href="#" style="color:black">
+                                        <a href="#" style="color:black" id="btn_result_t3">
                                             <li class="list-group-item bg-custom3 custom_list">RESULT (TERM III)</li>
                                         </a>
                                     </ul>
@@ -3520,6 +3520,279 @@
 
     </div>
 
+    <div class="card-body bg-custom3" style="display:none" id="result_record_t1">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                  <!-- <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_result_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>  -->
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/result_record_report/<?= $pn_data['oc_no'] ?>/Term-I/Result'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>RESULT REPORT (TERM-I)</strong></h4>
+                            </div>
+                            <div style="text-align:center">
+                                <h5>(TO BE PASTED HERE)</h5>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style="padding:20px">
+                            <?php if (count($pn_result_record_t1) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="" style="width:20%">S NO.</th>
+                                            <td scope="" style="width:40%">FILENAME</th>
+                                            <td scope="" style="border-right:1px solid black;width:40%">DOWNLOAD</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
+                                        <?php $count = 0;
+                                        foreach ($pn_result_record_t1 as $data) { ?>
+                                            <tr>
+                                                <td scope=""><?= ++$count; ?></td>
+                                                <td scope=""><?= $data['file_name'] ?></td>
+                                                <td scope="" style="border-right:black 1px solid;text-align:center"><a style="color:black;width:100%;text-align:center;hover:black;" href="<?= base_url(); ?>uploads/documents/<?= $data['file_name']; ?>"><i class="fas fa-download"></i></a></td>
+                                            </tr>
+                                        <?php
+                                            $count++;
+                                        } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_result_t1">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="card-body bg-custom3" style="display:none" id="result_record_t2">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                  <!-- <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_result_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>  -->
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/result_record_report/<?= $pn_data['oc_no'] ?>/Term-II/Result'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>RESULT REPORT (TERM-II)</strong></h4>
+                            </div>
+                            <div style="text-align:center">
+                                <h5>(TO BE PASTED HERE)</h5>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style="padding:20px">
+                            <?php if (count($pn_result_record_t2) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="" style="width:20%">S NO.</th>
+                                            <td scope="" style="width:40%">FILENAME</th>
+                                            <td scope="" style="border-right:1px solid black;width:40%">DOWNLOAD</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
+                                        <?php $count = 0;
+                                        foreach ($pn_result_record_t2 as $data) { ?>
+                                            <tr>
+                                                <td scope=""><?= ++$count; ?></td>
+                                                <td scope=""><?= $data['file_name'] ?></td>
+                                                <td scope="" style="border-right:black 1px solid;text-align:center"><a style="color:black;width:100%;text-align:center;hover:black;" href="<?= base_url(); ?>uploads/documents/<?= $data['file_name']; ?>"><i class="fas fa-download"></i></a></td>
+                                            </tr>
+                                        <?php
+                                            $count++;
+                                        } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_result_t2">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="card-body bg-custom3" style="display:none" id="result_record_t3">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                  <!-- <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_ressult_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>  -->
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/result_record_report/<?= $pn_data['oc_no'] ?>/Term-III/Result'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>RESULT REPORT (TERM-III)</strong></h4>
+                            </div>
+                            <div style="text-align:center">
+                                <h5>(TO BE PASTED HERE)</h5>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style="padding:20px">
+                            <?php if (count($pn_result_record_t3) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="" style="width:20%">S NO.</th>
+                                            <td scope="" style="width:40%">FILENAME</th>
+                                            <td scope="" style="border-right:1px solid black;width:40%">DOWNLOAD</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
+                                        <?php $count = 0;
+                                        foreach ($pn_result_record_t3 as $data) { ?>
+                                            <tr>
+                                                <td scope=""><?= ++$count; ?></td>
+                                                <td scope=""><?= $data['file_name'] ?></td>
+                                                <td scope="" style="border-right:black 1px solid;text-align:center"><a style="color:black;width:100%;text-align:center;hover:black;" href="<?= base_url(); ?>uploads/documents/<?= $data['file_name']; ?>"><i class="fas fa-download"></i></a></td>
+                                            </tr>
+                                        <?php
+                                            $count++;
+                                        } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_result_t3">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="card-body bg-custom3" style="display:none" id="sea_training_record">
+        <?php if (isset($pn_data['name'])) { ?>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
+                <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
+                  <!-- <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_sea_training_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>  -->
+                <a onclick="location.href='<?php echo base_url() ?>/D_O/result_record_report/<?= $pn_data['oc_no'] ?>/Term-II/SeaTraining'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+
+                        <div class="container my-3">
+                            <div style="text-align:center">
+                                <h4 style="text-decoration:underline"><strong>SEA TRAINING REPORT (TERM-II)</strong></h4>
+                            </div>
+                            <div style="text-align:center">
+                                <h5>(TO BE PASTED HERE)</h5>
+                            </div>
+                        </div>
+
+                        <div id="table_div" style="padding:20px">
+                            <?php if (count($pn_sea_training_record) > 0) { ?>
+                                <table style="color:black; width:100% !important;">
+                                    <thead style="border-top:1px solid black; font-weight:bold;padding:5px; text-align:center">
+                                        <tr>
+                                            <td scope="" style="width:20%">S NO.</th>
+                                            <td scope="" style="width:40%">FILENAME</th>
+                                            <td scope="" style="border-right:1px solid black;width:40%">DOWNLOAD</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
+                                        <?php $count = 0;
+                                        foreach ($pn_sea_training_record as $data) { ?>
+                                            <tr>
+                                                <td scope=""><?= ++$count; ?></td>
+                                                <td scope=""><?= $data['file_name'] ?></td>
+                                                <td scope="" style="border-right:black 1px solid;text-align:center"><a style="color:black;width:100%;text-align:center;hover:black;" href="<?= base_url(); ?>uploads/documents/<?= $data['file_name']; ?>"><i class="fas fa-download"></i></a></td>
+                                            </tr>
+                                        <?php
+                                            $count++;
+                                        } ?>
+                                        <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black"></td>
+                                            <td scope="" style="border-bottom:1px solid black;border-right:1px solid black"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <?php } else { ?>
+                                <a> No Data Available yet </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <form class="user" role="form" method="" id="" action="">
+            <div class="form-group row justify-content-center my-2">
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-user btn-block" id="back_btn_sea_training">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
     <div class="card-body bg-custom3" style="display:none" id="general_remarks_term1_mid">
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
@@ -3583,6 +3856,7 @@
         </form>
 
     </div>
+
     <div class="card-body bg-custom3" style="display:none" id="general_remarks_term1_final">
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
@@ -3712,6 +3986,7 @@
         </form>
 
     </div>
+
     <div class="card-body bg-custom3" style="display:none" id="general_remarks_term2_final">
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
@@ -3778,6 +4053,7 @@
         </form>
 
     </div>
+
     <div class="card-body bg-custom3" style="display:none" id="general_remarks_term3_mid">
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
@@ -3841,6 +4117,7 @@
         </form>
 
     </div>
+
     <div class="card-body bg-custom3" style="display:none" id="general_remarks_term3_final">
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
@@ -4510,7 +4787,7 @@
         $('#terms_list_obs').hide();
     });
 
-    $('#back_btn_obs_term1, #back_btn_obs_term2, #back_btn_obs_term3, #back_btn_warning, #back_btn_inspection, #back_btn_medical, #back_btn_saluting_swimming, #back_btn_physical_efficiency, #back_btn_olq_term1, #back_btn_olq_term2, #back_btn_olq_term3, #back_btn_personal_record, #back_btn_divisional_officer, #back_btn_autobiography, #back_btn_psychologhy, #back_btn_general_remarks_term1_mid, #back_btn_general_remarks_term1_final, #back_btn_general_remarks_term2_mid, #back_btn_general_remarks_term2_final, #back_btn_general_remarks_term3_mid, #back_btn_general_remarks_term3_final, #back_btn_distinction_achieved, #back_btn_progress_chart, #back_btn_seniority_record, #back_btn_branch_allocation, #back_btn_warning_insert').on('click', function() {
+    $('#back_btn_obs_term1, #back_btn_obs_term2, #back_btn_obs_term3, #back_btn_warning, #back_btn_inspection, #back_btn_medical, #back_btn_saluting_swimming, #back_btn_physical_efficiency, #back_btn_olq_term1, #back_btn_olq_term2, #back_btn_olq_term3, #back_btn_personal_record, #back_btn_divisional_officer, #back_btn_autobiography, #back_btn_psychologhy, #back_btn_general_remarks_term1_mid, #back_btn_general_remarks_term1_final, #back_btn_general_remarks_term2_mid, #back_btn_general_remarks_term2_final, #back_btn_general_remarks_term3_mid, #back_btn_general_remarks_term3_final, #back_btn_distinction_achieved, #back_btn_progress_chart, #back_btn_seniority_record, #back_btn_branch_allocation, #back_btn_warning_insert, #back_btn_result_t1, #back_btn_result_t2, #back_btn_result_t3, #back_btn_sea_training').on('click', function() {
         $('#main-container').show();
         $('#obs_term1').hide();
         $('#obs_term2').hide();
@@ -4543,6 +4820,10 @@
         $('#branch_allocation_record').hide();
         $('#physical_efficiency_record').hide();
         $('#warning_record_insert').hide();
+        $('#result_record_t1').hide();
+        $('#result_record_t2').hide();
+        $('#result_record_t3').hide();
+        $('#sea_training_record').hide();
 
     });
 
@@ -4717,6 +4998,29 @@
 
     $('#btn_warning_attach').on('click', function() {
         $('#warning_record_insert').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
+
+    $('#btn_result_t1').on('click', function() {
+        $('#result_record_t1').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
+
+    $('#btn_result_t2').on('click', function() {
+        $('#result_record_t2').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
+
+    $('#btn_result_t3').on('click', function() {
+        $('#result_record_t3').show();
+        $('#main-container').hide();
+        $('#container-2').hide();
+    });
+    $('#btn_sea_training_report').on('click', function() {
+        $('#sea_training_record').show();
         $('#main-container').hide();
         $('#container-2').hide();
     });

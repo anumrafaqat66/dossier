@@ -47,95 +47,93 @@
         <a class="float" href="<?= base_url(); ?>ChatController?sender_id=">
             <i class="fas fa-comment-dots my-float"></i>
 
-        <a class="float">
-            <a href="<?= base_url(); ?>ChatController?sender_id=" class="float"><i class="fas fa-comment-dots my-float"></i></a>
-        </a>
+            <a class="float">
+                <a href="<?= base_url(); ?>ChatController?sender_id=" class="float"><i class="fas fa-comment-dots my-float"></i></a>
+            </a>
 
 
 
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="<?= base_url(); ?>User_Login/logout">Logout</a>
+            <!-- Logout Modal-->
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <a class="btn btn-primary" href="<?= base_url(); ?>User_Login/logout">Logout</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        
-
-        <!-- Bootstrap core JavaScript-->
-        <script src="<?php echo base_url(); ?>assets/vendor/jquery/jquery.min.js"></script>
-        <!-- JS link for calender -->
-        <!-- <script src="<?php echo base_url(); ?>assets/fullcalendar/lib/jquery.min.js"></script> -->
-        <script src="<?php echo base_url(); ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-        <!-- Core plugin JavaScript-->
-        <script src="<?php echo base_url(); ?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-        <!-- Custom scripts for all pages-->
-        <script src="<?php echo base_url(); ?>assets/js/sb-admin-2.min.js"></script>
-
-        <!-- Page level plugins -->
-        <script src="<?php echo base_url(); ?>assets/vendor/chart.js/Chart.min.js"></script>
-
-        <!-- Page level custom scripts -->
-        <script src="<?php echo base_url(); ?>assets/js/demo/chart-area-demo.js"></script>
-        <script src="<?php echo base_url(); ?>assets/js/demo/chart-pie-demo.js"></script>
-
-        <!-- Links for Canlender -->
-        <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>assets/fullcalendar/fullcalendar.min.css" /> -->
-
-        <!-- <script src="<?php echo base_url(); ?>assets/fullcalendar/lib/moment.min.js"></script> -->
-        <!-- <script src="<?php echo base_url(); ?>assets/fullcalendar/fullcalendar.min.js"></script> -->
-
-        <!-- <script src='<?php echo base_url(); ?>assets/fullcalendar/packages/core/main.js'></script> -->
-        <!-- <script src='<?php echo base_url(); ?>assets/fullcalendar/packages/interaction/main.js'></script> -->
-        <!-- <script src='<?php echo base_url(); ?>assets/fullcalendar/packages/daygrid/main.js'></script> -->
-        <script src='<?php echo base_url(); ?>assets/js/chat/chat.js'></script>
-
-        <!-- canvasjs links-->
-        <script src="<?php echo base_url(); ?>assets/js/canvasjs.min"></script>
-        <script src="<?php echo base_url(); ?>assets/js/canvasjs.react"></script>
-        <script src="<?php echo base_url(); ?>assets/js/jquery.canvasjs.min"></script>
-        <script src="<?php echo base_url(); ?>assets/js/canvasjs.min.js"></script>
 
 
-        <script src="<?php echo base_url(); ?>assets/swal/swal.all.min.js"></script>
-        <?php if ($this->session->flashdata('success')) : ?>
-            <script>
-                Swal.fire(
-                    '<?php echo $this->session->flashdata('success'); ?>',
-                    '',
-                    'success'
-                );
-                <?php unset($_SESSION['success']); ?>
-            </script>
-        <?php endif; ?>
+            <!-- canvasjs links-->
+            <script src="<?php echo base_url(); ?>assets/js/canvasjs.min"></script>
+            <script src="<?php echo base_url(); ?>assets/js/canvasjs.react"></script>
+            <script src="<?php echo base_url(); ?>assets/js/jquery.canvasjs.min"></script>
+            <script src="<?php echo base_url(); ?>assets/js/canvasjs.min.js"></script>
 
-        <?php if ($this->session->flashdata('failure')) : ?>
-            <script>
-                Swal.fire(
-                    '<?php echo $this->session->flashdata('failure'); ?>',
-                    '',
-                    'error'
-                );
-                <?php unset($_SESSION['failure']); ?>
-            </script>
-        <?php endif; ?>
+            <!-- Bootstrap core JavaScript-->
+            <script src="<?php echo base_url(); ?>assets/vendor/jquery/jquery.min.js"></script>
+            <!-- JS link for calender -->
+            <!-- <script src="<?php echo base_url(); ?>assets/fullcalendar/lib/jquery.min.js"></script> -->
+            <script src="<?php echo base_url(); ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+            <!-- Core plugin JavaScript-->
+            <script src="<?php echo base_url(); ?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+            <!-- Custom scripts for all pages-->
+            <script src="<?php echo base_url(); ?>assets/js/sb-admin-2.min.js"></script>
+
+            <!-- Page level plugins -->
+            <script src="<?php echo base_url(); ?>assets/vendor/chart.js/Chart.min.js"></script>
+
+            <!-- Page level custom scripts -->
+            <script src="<?php echo base_url(); ?>assets/js/demo/chart-area-demo.js"></script>
+            <script src="<?php echo base_url(); ?>assets/js/demo/chart-pie-demo.js"></script>
+
+            <!-- Links for Canlender -->
+            <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>assets/fullcalendar/fullcalendar.min.css" /> -->
+
+            <!-- <script src="<?php echo base_url(); ?>assets/fullcalendar/lib/moment.min.js"></script> -->
+            <!-- <script src="<?php echo base_url(); ?>assets/fullcalendar/fullcalendar.min.js"></script> -->
+
+            <!-- <script src='<?php echo base_url(); ?>assets/fullcalendar/packages/core/main.js'></script> -->
+            <!-- <script src='<?php echo base_url(); ?>assets/fullcalendar/packages/interaction/main.js'></script> -->
+            <!-- <script src='<?php echo base_url(); ?>assets/fullcalendar/packages/daygrid/main.js'></script> -->
+            <script src='<?php echo base_url(); ?>assets/js/chat/chat.js'></script>
+
+            <script src="<?php echo base_url(); ?>assets/swal/swal.all.min.js"></script>
+            <?php if ($this->session->flashdata('success')) : ?>
+                <script>
+                    Swal.fire(
+                        '<?php echo $this->session->flashdata('success'); ?>',
+                        '',
+                        'success'
+                    );
+                    <?php unset($_SESSION['success']); ?>
+                </script>
+            <?php endif; ?>
+
+            <?php if ($this->session->flashdata('failure')) : ?>
+                <script>
+                    Swal.fire(
+                        '<?php echo $this->session->flashdata('failure'); ?>',
+                        '',
+                        'error'
+                    );
+                    <?php unset($_SESSION['failure']); ?>
+                </script>
+            <?php endif; ?>
 
 
 
-        </body>
+            </body>
 
-        </html>
+            </html>

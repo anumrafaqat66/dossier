@@ -453,7 +453,7 @@ class D_O extends CI_Controller
             $intermediate_college = $postData['college'];
             $intermediate_division = $postData['grade_intermediate'];
             $diploma = $postData['diploma'];
-            
+
 
             $insert_array = array(
                 'p_id' => $officer_id,
@@ -2216,7 +2216,10 @@ class D_O extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $oc_no = $_POST['oc_no'];
             $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
-            $data['pn_personal_data'] = $this->db->where('p_id', $data['pn_data']['p_id'])->get('personal_datas')->row_array();
+
+            if (!isset($oc_no)) {
+                $data['pn_personal_data'] = $this->db->where('p_id', $data['pn_data']['p_id'])->get('personal_datas')->row_array();
+            }
 
             $this->db->select('pr.*, f.*');
             $this->db->from('punishment_records pr');
@@ -2402,6 +2405,38 @@ class D_O extends CI_Controller
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $data['pn_pet2_data_t3'] = $this->db->get()->row_array();
+
+            //Result Term-I
+            $this->db->select('pr.*, f.*');
+            $this->db->from('academic_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-I');
+            $this->db->where('pr.doc_type', 'Result');
+            $data['pn_result_record_t1'] = $this->db->get()->result_array();
+            //Result Term-II
+            $this->db->select('pr.*, f.*');
+            $this->db->from('academic_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-II');
+            $this->db->where('pr.doc_type', 'Result');
+            $data['pn_result_record_t2'] = $this->db->get()->result_array();
+            //Result Term-III
+            $this->db->select('pr.*, f.*');
+            $this->db->from('academic_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-III');
+            $this->db->where('pr.doc_type', 'Result');
+            $data['pn_result_record_t3'] = $this->db->get()->result_array();
+            //Result Sea Report Training
+            $this->db->select('pr.*, f.*');
+            $this->db->from('academic_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.doc_type', 'SeaTraining');
+            $data['pn_sea_training_record'] = $this->db->get()->result_array();
 
             //OLQ
             $this->db->select('pr.*, f.*');
@@ -2856,7 +2891,8 @@ class D_O extends CI_Controller
         }
     }
 
-    public function view_edit_qualities($p_id=null){
+    public function view_edit_qualities($p_id = null)
+    {
         $this->db->select('pr.*, f.*');
         $this->db->from('officer_qualities pr');
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
@@ -2865,7 +2901,7 @@ class D_O extends CI_Controller
         $data['officer_data'] = $this->db->get()->row_array();
         $data['quality_list'] = $this->db->get('quality_list')->result_array();
         //print_r($data['officer_data']);exit
-        $this->load->view('do/edit_officer_like_qualities',$data);
+        $this->load->view('do/edit_officer_like_qualities', $data);
     }
 
     public function save_officer_qualities()
@@ -2963,7 +2999,7 @@ class D_O extends CI_Controller
             redirect('D_O/add_officer_qualities');
         }
     }
-     public function update_officer_qualities()
+    public function update_officer_qualities()
     {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
@@ -3022,7 +3058,7 @@ class D_O extends CI_Controller
                 //'created_at' => date('Y-m-d')
             );
             //print_r($insert_array);exit;
-            $this->db->where('p_id',$p_id);
+            $this->db->where('p_id', $p_id);
             $insert = $this->db->update('officer_qualities', $insert_array);
         }
 
@@ -3593,6 +3629,49 @@ class D_O extends CI_Controller
             $this->load->view('userpanel/login');
         }
     }
+    public function result_record_report($oc_no = NULL, $term = NULL, $doc_type = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+
+            // $this->db->select('pr.*, f.*');
+            // $this->db->from('academic_records pr');
+            // $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.oc_no', $oc_no);
+            // $this->db->where('pr.term', $term);
+            // $this->db->where('pr.doc_type', $doc_type);
+
+            // $data['pn_result_record_data'] = $this->db->get()->result_array();
+            $data['term'] = $term;
+            if ($doc_type == 'SeaTraining') {
+                $data['doc_type'] = 'Sea Training';
+            } else {
+                $data['doc_type'] = $doc_type;
+            }
+
+            $html = $this->load->view('do/result_record_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            // $dompdf->set_paper('A4', 'landscape');
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Result Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
 
     public function general_remarks_report($oc_no = NULL, $term = NULL, $type = NULL)
     {
@@ -3852,16 +3931,17 @@ class D_O extends CI_Controller
         $this->load->view('DO/term_promotion');
     }
 
-public function view_edit_psychologist_report($id=null){
-            $this->db->select('pr.*, f.*');
-            $this->db->from('psychologist_reports pr');
-            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('pr.p_id', $id);
-            $data['psychologist_data'] = $this->db->get()->row_array();
-           // print_r($data['psychologist_data']);exit;
-            $this->load->view('do/edit_psychologist_report',$data);
-}
+    public function view_edit_psychologist_report($id = null)
+    {
+        $this->db->select('pr.*, f.*');
+        $this->db->from('psychologist_reports pr');
+        $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+        $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        $this->db->where('pr.p_id', $id);
+        $data['psychologist_data'] = $this->db->get()->row_array();
+        // print_r($data['psychologist_data']);exit;
+        $this->load->view('do/edit_psychologist_report', $data);
+    }
 
     public function save_psychologist_report()
     {
@@ -3935,7 +4015,7 @@ public function view_edit_psychologist_report($id=null){
         }
     }
 
-     public function update_psychologist_report($id=null)
+    public function update_psychologist_report($id = null)
     {
         //echo $id;exit;
         if ($this->input->post()) {
@@ -3944,7 +4024,7 @@ public function view_edit_psychologist_report($id=null){
             $file_size = $_FILES['psycologist_report']['size'][0] . " kb";
             // echo $file_size;exit;
             $p_id = $postData['id'];
-            
+
 
             if ($_FILES['psycologist_report']['name'][0] != NULL) {
                 $upload1 = $this->upload_psychologist_report($_FILES['psycologist_report']);
@@ -3970,7 +4050,7 @@ public function view_edit_psychologist_report($id=null){
                 //'created_at' => date('Y-m-d H:i:s')
             );
             //print_r($insert_array);exit;
-            $this->db->where('id',$id);
+            $this->db->where('id', $id);
             $update = $this->db->update('psychologist_reports', $insert_array);
 
             if (!empty($update)) {
@@ -4038,8 +4118,9 @@ public function view_edit_psychologist_report($id=null){
         return $count;
     }
 
-    public function view_edit_biography($p_id=null){
-         $this->db->select('pr.*, f.*');
+    public function view_edit_biography($p_id = null)
+    {
+        $this->db->select('pr.*, f.*');
         $this->db->from('cadets_autobiographies pr');
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
         $this->db->where('pr.do_id', $this->session->userdata('user_id'));
@@ -4047,7 +4128,7 @@ public function view_edit_psychologist_report($id=null){
         $data['biography_data'] = $this->db->get()->row_array();
         //print_r($data['biography_data']);exit;
         //$this->load->view('do/edit_inspection_record', $data);
-        $this->load->view('do/edit_cadet_autobiography',$data);
+        $this->load->view('do/edit_cadet_autobiography', $data);
     }
     public function save_autobiography()
     {
@@ -4112,7 +4193,7 @@ public function view_edit_psychologist_report($id=null){
         }
     }
 
- public function update_autobiography($id=null)
+    public function update_autobiography($id = null)
     {
         //echo $id;exit;
         if ($this->input->post()) {
@@ -4120,8 +4201,8 @@ public function view_edit_psychologist_report($id=null){
             $file_size = $_FILES['autobiography']['size'][0] . " kb";
             $p_id = $postData['id'];
 
-               if ($_FILES['autobiography']['name'][0] != NULL) {
-                  $upload1 = $this->upload_autobiograhy($_FILES['autobiography']);
+            if ($_FILES['autobiography']['name'][0] != NULL) {
+                $upload1 = $this->upload_autobiograhy($_FILES['autobiography']);
                 if (count($upload1) > 1) {
                     $files = implode(',', $upload1);
                 } else {
@@ -4135,15 +4216,15 @@ public function view_edit_psychologist_report($id=null){
             $file_type = $iparr[1];
 
             $update_array = array(
-               // 'p_id' => $p_id,
+                // 'p_id' => $p_id,
                 //'do_id' => $this->session->userdata('user_id'),
                 'file_name' => $files,
                 'file_type' => $file_type,
                 'file_size' => $file_size,
                 //'created_at' => date('Y-m-d H:i:s')
             );
-           //print_r($update_array);exit;
-            $this->db->where('id',$id);
+            //print_r($update_array);exit;
+            $this->db->where('id', $id);
             $update = $this->db->update('cadets_autobiographies', $update_array);
         }
 
