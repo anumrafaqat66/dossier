@@ -72,11 +72,7 @@
             </div>
         </div>
 
-        <!-- canvasjs links-->
-        <script src="<?php echo base_url(); ?>assets/js/canvasjs.min"></script>
-        <script src="<?php echo base_url(); ?>assets/js/canvasjs.react"></script>
-        <script src="<?php echo base_url(); ?>assets/js/jquery.canvasjs.min"></script>
-        <script src="<?php echo base_url(); ?>assets/js/canvasjs.min.js"></script>
+        
 
         <!-- Bootstrap core JavaScript-->
         <script src="<?php echo base_url(); ?>assets/vendor/jquery/jquery.min.js"></script>
@@ -107,6 +103,12 @@
         <!-- <script src='<?php echo base_url(); ?>assets/fullcalendar/packages/interaction/main.js'></script> -->
         <!-- <script src='<?php echo base_url(); ?>assets/fullcalendar/packages/daygrid/main.js'></script> -->
         <script src='<?php echo base_url(); ?>assets/js/chat/chat.js'></script>
+
+        <!-- canvasjs links-->
+        <script src="<?php echo base_url(); ?>assets/js/canvasjs.min"></script>
+        <script src="<?php echo base_url(); ?>assets/js/canvasjs.react"></script>
+        <script src="<?php echo base_url(); ?>assets/js/jquery.canvasjs.min"></script>
+        <script src="<?php echo base_url(); ?>assets/js/canvasjs.min.js"></script>
 
 
         <script src="<?php echo base_url(); ?>assets/swal/swal.all.min.js"></script>

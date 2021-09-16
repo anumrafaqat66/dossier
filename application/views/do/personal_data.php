@@ -22,7 +22,7 @@
     <div class="card-body" style="padding:10px">
         <img src='<?= base_url() ?>assets/img/navy_logo-new.png' style="height: 130px; width:100px;">
         <div class="card-body" style="margin-bottom:20px;float:right; padding:30px; margin-right:500px">
-            <h1 style="text-align:center"><strong>PERSONAL DATA</strong></h1>
+            <h1 style="text-align:center"><strong>PN From - I</strong></h1>
         </div>
     </div>
 
@@ -33,7 +33,7 @@
 
                 <div class="card">
                     <div class="card-header bg-custom1">
-                        <h1 class="h4">Personal Data</h1>
+                        <h1 class="h4">PN Form - I</h1>
                     </div>
 
                     <div class="card-body bg-custom3">
@@ -164,10 +164,23 @@
                                         <div class="col-sm-6 mb-1">
                                             <select class="form-control rounded-pill" name="term" id="term" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                                 <option class="form-control form-control-user" value="">Select Term</option>
+                                                <option class="form-control form-control-user" value="Term-Prep">Term-Prep</option>
                                                 <option class="form-control form-control-user" value="Term-I">Term-I</option>
                                                 <option class="form-control form-control-user" value="Term-II">Term-II</option>
                                                 <option class="form-control form-control-user" value="Term-III">Term-III</option>
                                             </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row" id="country_text" style="display:none">
+                                        <div class="col-sm-12">
+                                            <h6>&nbsp;Country:</h6>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row" id="country_val" style="display:none">
+                                        <div class="col-sm-12 mb-1">
+                                            <input type="text" class="form-control form-control-user" name="country" id="country" value="Pakistan">
                                         </div>
                                     </div>
 
@@ -190,6 +203,7 @@
                                             <input type="text" class="form-control form-control-user" name="e_contact" id="e_contact" placeholder="Emergency Contact">
                                         </div>
                                     </div>
+
                                     <div class="form-group row">
                                         <div class="col-sm-6">
                                             <h6>&nbsp;Telephone:</h6>
@@ -475,6 +489,19 @@
         });
     });
 
+    $(function () {
+        $("#category").change(function () {
+            var selectedText = $(this).find("option:selected").text();
+            var selectedValue = $(this).val();
+            if(selectedValue == 'Allied Cadet'){
+                $('#country_text').show();
+                $('#country_val').show();
+            } else {
+                $('#country_text').hide();
+                $('#country_val').hide();
+            }
+        });
+    });
 
     $('#add_btn').on('click', function() {
         //alert('javascript working');
@@ -546,6 +573,8 @@
             validate = 1;
             $('#term').addClass('red-border');
         }
+
+
 
         if (validate == 0) {
             $('#add_form')[0].submit();

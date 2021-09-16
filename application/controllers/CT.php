@@ -66,6 +66,56 @@ class CT extends CI_Controller
         }
     }
 
+    public function view_academy_analytics()
+    {
+        if ($this->session->has_userdata('user_id')) {
+
+            
+            $data['PST_result']= $this->db->select('count(*) as count')->where('PST_result','qualified')->get('physical_milestone')->row_array();
+            $data['SST_result']= $this->db->select('count(*) as count')->where('SST_result','qualified')->get('physical_milestone')->row_array();
+            $data['PET_I_result']= $this->db->select('count(*) as count')->where('PET_I_result','qualified')->get('physical_milestone')->row_array();
+            $data['PET_II_result']= $this->db->select('count(*) as count')->where('PET_II_result','qualified')->get('physical_milestone')->row_array();
+            $data['assault_result']= $this->db->select('count(*) as count')->where('assault_result','qualified')->get('physical_milestone')->row_array();
+            $data['saluting_result']= $this->db->select('count(*) as count')->where('saluting_result','qualified')->get('physical_milestone')->row_array();
+            $data['PLX_result']= $this->db->select('count(*) as count')->where('PLX_result','qualified')->get('physical_milestone')->row_array();
+            $data['long_cross_result']= $this->db->select('count(*) as count')->where('long_cross_result','qualified')->get('physical_milestone')->row_array();
+            $data['mini_cross_result']= $this->db->select('count(*) as count')->where('mini_cross_result','qualified')->get('physical_milestone')->row_array();
+
+            $data['PST_result_t1']= $this->db->select('count(*) as count')->where('PST_result','qualified')->where('term','Term-I')->get('physical_milestone')->row_array();
+            $data['SST_result_t1']= $this->db->select('count(*) as count')->where('SST_result','qualified')->where('term','Term-I')->get('physical_milestone')->row_array();
+            $data['PET_I_result_t1']= $this->db->select('count(*) as count')->where('PET_I_result','qualified')->where('term','Term-I')->get('physical_milestone')->row_array();
+            $data['PET_II_result_t1']= $this->db->select('count(*) as count')->where('PET_II_result','qualified')->where('term','Term-I')->get('physical_milestone')->row_array();
+            $data['assault_result_t1']= $this->db->select('count(*) as count')->where('assault_result','qualified')->where('term','Term-I')->get('physical_milestone')->row_array();
+            $data['saluting_result_t1']= $this->db->select('count(*) as count')->where('saluting_result','qualified')->where('term','Term-I')->get('physical_milestone')->row_array();
+            $data['PLX_result_t1']= $this->db->select('count(*) as count')->where('PLX_result','qualified')->where('term','Term-I')->get('physical_milestone')->row_array();
+            $data['long_cross_result_t1']= $this->db->select('count(*) as count')->where('long_cross_result','qualified')->where('term','Term-I')->get('physical_milestone')->row_array();
+            $data['mini_cross_result_t1']= $this->db->select('count(*) as count')->where('mini_cross_result','qualified')->where('term','Term-I')->get('physical_milestone')->row_array();
+
+            $data['PST_result_t2']= $this->db->select('count(*) as count')->where('PST_result','qualified')->where('term','Term-II')->get('physical_milestone')->row_array();
+            $data['SST_result_t2']= $this->db->select('count(*) as count')->where('SST_result','qualified')->where('term','Term-II')->get('physical_milestone')->row_array();
+            $data['PET_I_result_t2']= $this->db->select('count(*) as count')->where('PET_I_result','qualified')->where('term','Term-II')->get('physical_milestone')->row_array();
+            $data['PET_II_result_t2']= $this->db->select('count(*) as count')->where('PET_II_result','qualified')->where('term','Term-II')->get('physical_milestone')->row_array();
+            $data['assault_result_t2']= $this->db->select('count(*) as count')->where('assault_result','qualified')->where('term','Term-II')->get('physical_milestone')->row_array();
+            $data['saluting_result_t2']= $this->db->select('count(*) as count')->where('saluting_result','qualified')->where('term','Term-II')->get('physical_milestone')->row_array();
+            $data['PLX_result_t2']= $this->db->select('count(*) as count')->where('PLX_result','qualified')->where('term','Term-II')->get('physical_milestone')->row_array();
+            $data['long_cross_result_t2']= $this->db->select('count(*) as count')->where('long_cross_result','qualified')->where('term','Term-II')->get('physical_milestone')->row_array();
+            $data['mini_cross_result_t2']= $this->db->select('count(*) as count')->where('mini_cross_result','qualified')->where('term','Term-II')->get('physical_milestone')->row_array();
+
+            $data['PST_result_t3']= $this->db->select('count(*) as count')->where('PST_result','qualified')->where('term','Term-III')->get('physical_milestone')->row_array();
+            $data['SST_result_t3']= $this->db->select('count(*) as count')->where('SST_result','qualified')->where('term','Term-III')->get('physical_milestone')->row_array();
+            $data['PET_I_result_t3']= $this->db->select('count(*) as count')->where('PET_I_result','qualified')->where('term','Term-III')->get('physical_milestone')->row_array();
+            $data['PET_II_result_t3']= $this->db->select('count(*) as count')->where('PET_II_result','qualified')->where('term','Term-III')->get('physical_milestone')->row_array();
+            $data['assault_result_t3']= $this->db->select('count(*) as count')->where('assault_result','qualified')->where('term','Term-III')->get('physical_milestone')->row_array();
+            $data['saluting_result_t3']= $this->db->select('count(*) as count')->where('saluting_result','qualified')->where('term','Term-III')->get('physical_milestone')->row_array();
+            $data['PLX_result_t3']= $this->db->select('count(*) as count')->where('PLX_result','qualified')->where('term','Term-III')->get('physical_milestone')->row_array();
+            $data['long_cross_result_t3']= $this->db->select('count(*) as count')->where('long_cross_result','qualified')->where('term','Term-III')->get('physical_milestone')->row_array();
+            $data['mini_cross_result_t3']= $this->db->select('count(*) as count')->where('mini_cross_result','qualified')->where('term','Term-III')->get('physical_milestone')->row_array();
+            
+
+            $this->load->view('ct/academy_analytics',$data);
+        }
+    }
+
     public function view_punishment_list()
     {
         if ($this->session->has_userdata('user_id')) {

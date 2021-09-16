@@ -2,8 +2,6 @@
 
 
 <div class="container-fluid my-4">
-
-   
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-black-800"><strong>Welcome Captain Training</strong></h1>
@@ -18,7 +16,7 @@
 
 <?php $this->load->view('common/footer'); ?>
 <script>
-    function seen(data) {        
+    function seen(data) {
         $.ajax({
             url: '<?= base_url(); ?>ChatController/seen',
             method: 'POST',

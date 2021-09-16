@@ -49,18 +49,18 @@
             </li>
 
             <!-- Divider -->
-            <!-- <hr class="sidebar-divider"> -->
+            <hr class="sidebar-divider">
 
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="#"  aria-expanded="true">
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url(); ?>CT/view_academy_analytics"  aria-expanded="true">
                     <i class="fas fa-th-list"></i>
-                    <span> View Dossiers </span>
+                    <span> Academy Analytics </span>
                 </a>
             </li>
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="<?php echo base_url(); ?>CT/PN_Form" aria-expanded="true">
                     <i class="fab fa-wpforms"></i>
                     <span>PN Form I</span>                    
@@ -320,9 +320,8 @@
                 </nav>
                 <!-- End of Topbar -->
 
-                <script>
+                <!-- <script>
                     $('#general').click(function() {
                         $('.collapse_general').collapse();
                     });
-                    
-                </script>
+                </script> -->

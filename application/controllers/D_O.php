@@ -400,6 +400,7 @@ class D_O extends CI_Controller
             $category = $postData['category'];
             $div_name = $postData['div'];
             $term = $postData['term'];
+            $country = $postData['country'];
 
             $insert_array_pnform = array(
                 'oc_no' => $oc_no,
@@ -412,7 +413,8 @@ class D_O extends CI_Controller
                 'updated_at' => date('Y-m-d H:i:s'),
                 'category' => $category,
                 'divison_name' => $div_name,
-                'term' => $term
+                'term' => $term,
+                'bahadur' => $country
             );
 
             $insert_pnform = $this->db->insert('pn_form1s', $insert_array_pnform);
@@ -451,6 +453,7 @@ class D_O extends CI_Controller
             $intermediate_college = $postData['college'];
             $intermediate_division = $postData['grade_intermediate'];
             $diploma = $postData['diploma'];
+            
 
             $insert_array = array(
                 'p_id' => $officer_id,
@@ -1530,11 +1533,7 @@ class D_O extends CI_Controller
     public function view_dossier_folder()
     {
         if ($this->session->has_userdata('user_id')) {
-
-            // $data['club_data'] = $this->db->get('cadet_club')->result_array();
             $data['pn_data'] = $this->db->where('divison_name',  'XYZ')->get('pn_form1s')->row_array();
-
-            // print_r($data);
             $this->load->view('do/view_dossier_folder', $data);
         }
     }
@@ -2217,6 +2216,7 @@ class D_O extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $oc_no = $_POST['oc_no'];
             $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
+            $data['pn_personal_data'] = $this->db->where('p_id', $data['pn_data']['p_id'])->get('personal_datas')->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('punishment_records pr');

@@ -75,7 +75,7 @@
                 <!-- <a class="nav-link collapsed" href="<?php echo base_url(); ?>/D_O/PN_Form" aria-expanded="true"> -->
                 <a class="nav-link collapsed" href="<?php echo base_url(); ?>/D_O/personal_data" aria-expanded="true">
                     <i class="fab fa-wpforms"></i>
-                    <span>Personal Data</span>
+                    <span>PN Form I</span>
                     <!-- <span>Components</span> -->
                 </a>
             </li>

@@ -22,7 +22,7 @@
     <div class="card-body" style="padding:10px">
         <img src='<?= base_url() ?>assets/img/navy_logo-new.png' style="height: 130px; width:100px;">
         <div class="card-body" style="margin-bottom:20px;float:right; padding:30px; margin-right:500px">
-            <h1 style="text-align:center"><strong>EDIT PERSONAL DATA</strong></h1>
+            <h1 style="text-align:center"><strong>EDIT PN Form - I</strong></h1>
         </div>
     </div>
 
@@ -33,7 +33,7 @@
 
                 <div class="card">
                     <div class="card-header bg-custom1">
-                        <h1 class="h4">Personal Data</h1>
+                        <h1 class="h4">PN Form - I</h1>
                     </div>
 
                     <div class="card-body bg-custom3">

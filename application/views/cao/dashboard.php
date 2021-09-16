@@ -10,7 +10,7 @@
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#all_projects"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
     <!-- Content Row -->
-    <div class="card-body bg-custom3">
+    <!-- <div class="card-body bg-custom3">
         <div class="form-group row" style="margin-top:50px;">
             <div class="col-sm-6">
                 <div id="chartContainer1" style="height: 370px; width: 100%;"></div>
@@ -19,7 +19,7 @@
                 <div id="chartContainer2" style="height: 370px; width: 100%;"></div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <?php
     $dataPoints1 = array(
