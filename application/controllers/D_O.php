@@ -2303,7 +2303,7 @@ class D_O extends CI_Controller
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.oc_no', $oc_no);
-            $this->db->where('pr.term', 'Term-I');
+            // $this->db->where('pr.term', 'Term-I');
             $data['pn_physical_tests_data'] = $this->db->get()->result_array();
 
             //Term-P

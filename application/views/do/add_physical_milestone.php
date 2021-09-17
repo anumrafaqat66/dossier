@@ -317,7 +317,7 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                    <input type="number" class="form-control rounded-pill" name="pst_attempt" id="pst_attempt" placeholder="" style="font-size: 0.8rem; height:50px;" >
+                                    <input type="number" class="form-control rounded-pill" name="pst_attempt" id="pst_attempt" placeholder="Attempt No" style="font-size: 0.8rem; height:50px;" >
                                   <!--   <select class="form-control rounded-pill" name="pst_attempt" id="pst_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Attempt</option>
                                         <option class="form-control form-control-user" value="1">1st</option>
@@ -490,7 +490,7 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                  <input type="number" class="form-control rounded-pill" name="long_cross_card" id="long_cross_card" placeholder="Attempt No" style="font-size: 0.8rem; height:50px;" >
+                                  <input type="number" class="form-control rounded-pill" name="long_cross_card" id="long_cross_card" placeholder="Card No" style="font-size: 0.8rem; height:50px;" >
 
                                    <!--  <select class="form-control rounded-pill" name="long_cross_card" id="long_cross_card" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Card Number</option>
@@ -515,7 +515,7 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                      <input type="number" class="form-control rounded-pill" name="mini_cross_card" id="mini_cross_card" placeholder="Attempt No" style="font-size: 0.8rem; height:50px;" >
+                                      <input type="number" class="form-control rounded-pill" name="mini_cross_card" id="mini_cross_card" placeholder="Card No" style="font-size: 0.8rem; height:50px;" >
                                    <!--  <select class="form-control rounded-pill" name="mini_cross_card" id="mini_cross_card" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Card Number</option>
                                         <option class="form-control form-control-user" value="1">1</option>
