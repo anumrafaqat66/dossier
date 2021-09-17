@@ -54,22 +54,18 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url(); ?>CAO/view_dossier" aria-expanded="true">
+                <a class="nav-link" href="<?php echo base_url(); ?>CAO/view_academy_analytics"  aria-expanded="true">
                     <i class="fas fa-th-list"></i>
-                    <span> View Dossiers </span>
-                    <!-- <span>Components</span> -->
+                    <span> Academy Analytics </span>
                 </a>
-
             </li>
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="<?php echo base_url(); ?>/CAO/PN_Form" aria-expanded="true">
                     <i class="fab fa-wpforms"></i>
                     <span>PN Form I</span>
-                    <!-- <span>Components</span> -->
                 </a>
-
-            </li>
+            </li> -->
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -79,29 +75,27 @@
                 PHASE I (Common Tranings)
             </div>
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a id="general" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_general" aria-expanded="true">
                     <i class="fas fa-file-alt"></i>
                     <span> General</span>
-                    <!-- <span>Components</span> -->
                 </a>
                 <div id="collapse_general" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>/CAO/add_club">Add Club</a> -->
-                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>CAO/daily_module">Daily Module</a> -->
-                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>/CAO/Inspection_record">Inspection Record</a> -->
+                        <a class="collapse-item" href="<?php echo base_url(); ?>/CAO/add_club">Add Club</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>CAO/daily_module">Daily Module</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>/CAO/Inspection_record">Inspection Record</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>/CAO/personal_data">Personal Data</a>
-                        <!-- <a class="collapse-item" href="#">Obiography</a> -->
+                        <a class="collapse-item" href="#">Obiography</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/auto_biography">Cadet's Auto-biography</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/psychologist_report">Psychologist's Report</a>
                     </div>
                 </div>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_discipline" aria-expanded="true">
                     <i class="fas fa-running"></i>
                     <span> Discipline</span>
-                    <!-- <span>Components</span> -->
                 </a>
                 <div id="collapse_discipline" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -109,11 +103,10 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_warning" aria-expanded="true">
                     <i class="fas fa-exclamation-circle"></i>
                     <span> Warning</span>
-                    <!-- <span>Components</span> -->
                 </a>
                 <div id="collapse_warning" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -125,7 +118,6 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_academic" aria-expanded="true">
                     <i class="fas fa-book"></i>
                     <span> Academic Record</span>
-                    <!-- <span>Components</span> -->
                 </a>
                 <div id="collapse_academic" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -137,11 +129,9 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_officer" aria-expanded="true">
                     <i class="fas fa-medal"></i>
-                    <span> Officer Like Qualities</span>
-                    <!-- <span>Components</span> -->
+                    <span> Officer Like Qualities</span>                    
                 </a>
-
-            </li>
+            </li> -->
 
 
             <!-- Nav Item - Utilities Collapse Menu -->
