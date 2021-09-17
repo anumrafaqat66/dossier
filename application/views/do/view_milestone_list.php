@@ -5,17 +5,6 @@
         border: 1px solid red !important;
     }
 
-    /* .modal {
-        display: none;
-        position: fixed;
-        padding-top: 100px;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        overflow: auto;
-        z-index: 9999;
-    } */
 </style>
 
 <div class="container-fluid my-2">
@@ -445,7 +434,7 @@
                                                 <td scope="row" style="display:none"><?= $data['mini_cross_result']; ?></td>
                                                 <td scope="row" style="display:none"><?= $data['mini_cross_card_number']; ?></td>
                                                 <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#view_details"> View Details</button></td>
-                                                <td type="button" class="edit" scope="row"><a style="color: black" href="<?= base_url(); ?>D_O/add_physical_milestone/<?php echo "milestone_list" ?>"><i style="" class="fas fa-edit"></i></a></td>
+                                                <td type="button" class="edit" scope="row"><a style="color: black" href="<?= base_url(); ?>D_O/add_physical_milestone/<?php echo "view_dossier_folder" ?>"><i style="" class="fas fa-edit"></i></a></td>
                                             </tr>
                                         <?php } ?>
 

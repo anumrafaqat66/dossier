@@ -2795,6 +2795,10 @@ class D_O extends CI_Controller
                 } elseif ($postData['pagee'] == 'dossier') {
                     $this->session->set_flashdata('success', 'Data Updated successfully');
                     redirect('D_O/view_dossier');
+                } 
+                elseif ($postData['pagee'] == 'view_dossier_folder') {
+                    $this->session->set_flashdata('success', 'Data Updated successfully');
+                    redirect('D_O/view_dossier_folder');
                 } else {
                     $this->session->set_flashdata('success', 'Data Submitted successfully');
                     redirect('D_O/add_physical_milestone');
@@ -2803,7 +2807,10 @@ class D_O extends CI_Controller
                 if (isset($postData['pagee'])) {
                     $this->session->set_flashdata('failure', 'Something went wrong, try again.');
                     redirect('D_O/view_milestone_list');
-                } else {
+                } elseif ($postData['pagee'] == 'view_dossier_folder') {
+                    $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                    redirect('D_O/view_dossier_folder');
+                }  else {
                     $this->session->set_flashdata('failure', 'Something went wrong, try again.');
                     redirect('D_O/add_physical_milestone');
                 }

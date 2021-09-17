@@ -317,14 +317,15 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                    <select class="form-control rounded-pill" name="pst_attempt" id="pst_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                    <input type="number" class="form-control rounded-pill" name="pst_attempt" id="pst_attempt" placeholder="" style="font-size: 0.8rem; height:50px;" >
+                                  <!--   <select class="form-control rounded-pill" name="pst_attempt" id="pst_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Attempt</option>
                                         <option class="form-control form-control-user" value="1">1st</option>
                                         <option class="form-control form-control-user" value="2">2nd</option>
                                         <option class="form-control form-control-user" value="3">3rd</option>
                                         <option class="form-control form-control-user" value="4">4th</option>
                                         <option class="form-control form-control-user" value="5">5th</option>
-                                    </select>
+                                    </select> -->
                                 </div>
 
                             </div>
@@ -340,14 +341,15 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                    <select class="form-control rounded-pill" name="sst_attempt" id="sst_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                     <input type="number" class="form-control rounded-pill" name="sst_attempt" id="sst_attempt" placeholder="Attempt No" style="font-size: 0.8rem; height:50px;" >
+                                   <!--  <select class="form-control rounded-pill" name="sst_attempt" id="sst_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Attempt</option>
                                         <option class="form-control form-control-user" value="1">1st</option>
                                         <option class="form-control form-control-user" value="2">2nd</option>
                                         <option class="form-control form-control-user" value="3">3rd</option>
                                         <option class="form-control form-control-user" value="4">4th</option>
                                         <option class="form-control form-control-user" value="5">5th</option>
-                                    </select>
+                                    </select> -->
                                 </div>
 
                             </div>
@@ -363,14 +365,16 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                    <select class="form-control rounded-pill" name="pet_I_attempt" id="pet_I_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                     <input type="number" class="form-control rounded-pill" name="pet_I_attempt" id="pet_I_attempt" placeholder="Attempt No" style="font-size: 0.8rem; height:50px;" >
+                                   <!--  <select class="form-control rounded-pill" name="pet_I_attempt" id="pet_I_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+
                                         <option class="form-control form-control-user" value="">Attempt</option>
                                         <option class="form-control form-control-user" value="1">1st</option>
                                         <option class="form-control form-control-user" value="2">2nd</option>
                                         <option class="form-control form-control-user" value="3">3rd</option>
                                         <option class="form-control form-control-user" value="4">4th</option>
                                         <option class="form-control form-control-user" value="5">5th</option>
-                                    </select>
+                                    </select> -->
                                 </div>
                                 <div class="col-sm-3 mb-1">
                                     <button type="button" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#term-I">Add Details</button>
@@ -388,14 +392,15 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                    <select class="form-control rounded-pill" name="pet_II_attempt" id="pet_II_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                      <input type="number" class="form-control rounded-pill" name="pet_II_attempt" id="pet_II_attempt" placeholder="Attempt No" style="font-size: 0.8rem; height:50px;" >
+                                    <!-- <select class="form-control rounded-pill" name="pet_II_attempt" id="pet_II_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Attempt</option>
                                         <option class="form-control form-control-user" value="1">1st</option>
                                         <option class="form-control form-control-user" value="2">2nd</option>
                                         <option class="form-control form-control-user" value="3">3rd</option>
                                         <option class="form-control form-control-user" value="4">4th</option>
                                         <option class="form-control form-control-user" value="5">5th</option>
-                                    </select>
+                                    </select> -->
                                 </div>
                                 <div class="col-sm-3 mb-1">
                                     <button type="button" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#term-II">Add Details</button>
@@ -413,14 +418,15 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                    <select class="form-control rounded-pill" name="assault_attempt" id="assault_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                     <input type="number" class="form-control rounded-pill" name="assault_attempt" id="assault_attempt" placeholder="Attempt No" style="font-size: 0.8rem; height:50px;" >
+                                   <!--  <select class="form-control rounded-pill" name="assault_attempt" id="assault_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Attempt</option>
                                         <option class="form-control form-control-user" value="1">1st</option>
                                         <option class="form-control form-control-user" value="2">2nd</option>
                                         <option class="form-control form-control-user" value="3">3rd</option>
                                         <option class="form-control form-control-user" value="4">4th</option>
                                         <option class="form-control form-control-user" value="5">5th</option>
-                                    </select>
+                                    </select> -->
                                 </div>
 
                             </div>
@@ -436,14 +442,15 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                    <select class="form-control rounded-pill" name="saluting_attempt" id="saluting_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                     <input type="number" class="form-control rounded-pill"name="saluting_attempt" id="saluting_attempt" placeholder="Attempt No" style="font-size: 0.8rem; height:50px;" >
+                                   <!--  <select class="form-control rounded-pill" name="saluting_attempt" id="saluting_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Attempt</option>
                                         <option class="form-control form-control-user" value="1">1st</option>
                                         <option class="form-control form-control-user" value="2">2nd</option>
                                         <option class="form-control form-control-user" value="3">3rd</option>
                                         <option class="form-control form-control-user" value="4">4th</option>
                                         <option class="form-control form-control-user" value="5">5th</option>
-                                    </select>
+                                    </select> -->
                                 </div>
 
                             </div>
@@ -459,14 +466,15 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                    <select class="form-control rounded-pill" name="plx_attempt" id="plx_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                     <input type="number" class="form-control rounded-pill" name="plx_attempt" id="plx_attempt" placeholder="Attempt No" style="font-size: 0.8rem; height:50px;" >
+                                   <!--  <select class="form-control rounded-pill" name="plx_attempt" id="plx_attempt" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Attempt</option>
                                         <option class="form-control form-control-user" value="1">1st</option>
                                         <option class="form-control form-control-user" value="2">2nd</option>
                                         <option class="form-control form-control-user" value="3">3rd</option>
                                         <option class="form-control form-control-user" value="4">4th</option>
                                         <option class="form-control form-control-user" value="5">5th</option>
-                                    </select>
+                                    </select> -->
                                 </div>
 
                             </div>
@@ -482,14 +490,16 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                    <select class="form-control rounded-pill" name="long_cross_card" id="long_cross_card" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                  <input type="number" class="form-control rounded-pill" name="long_cross_card" id="long_cross_card" placeholder="Attempt No" style="font-size: 0.8rem; height:50px;" >
+
+                                   <!--  <select class="form-control rounded-pill" name="long_cross_card" id="long_cross_card" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Card Number</option>
                                         <option class="form-control form-control-user" value="1">1</option>
                                         <option class="form-control form-control-user" value="2">2</option>
                                         <option class="form-control form-control-user" value="3">3</option>
                                         <option class="form-control form-control-user" value="4">4</option>
                                         <option class="form-control form-control-user" value="5">5</option>
-                                    </select>
+                                    </select> -->
                                 </div>
 
                             </div>
@@ -505,14 +515,15 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-2 mb-1">
-                                    <select class="form-control rounded-pill" name="mini_cross_card" id="mini_cross_card" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
+                                      <input type="number" class="form-control rounded-pill" name="mini_cross_card" id="mini_cross_card" placeholder="Attempt No" style="font-size: 0.8rem; height:50px;" >
+                                   <!--  <select class="form-control rounded-pill" name="mini_cross_card" id="mini_cross_card" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Card Number</option>
                                         <option class="form-control form-control-user" value="1">1</option>
                                         <option class="form-control form-control-user" value="2">2</option>
                                         <option class="form-control form-control-user" value="3">3</option>
                                         <option class="form-control form-control-user" value="4">4</option>
                                         <option class="form-control form-control-user" value="5">5</option>
-                                    </select>
+                                    </select> -->
                                 </div>
 
                             </div>
