@@ -21,6 +21,14 @@ class JOTO extends CI_Controller
         $this->load->view('Admin/create_user');
     }
 
+    public function view_activity_log()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $data['activity_log'] = $this->db->get('activity_log')->result_array();
+            $this->load->view('joto/activity_log', $data);
+        }
+    }
+
     public function login_process()
     {
         // echo "Sdfsd";exit;

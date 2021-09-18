@@ -39,7 +39,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <!-- <i class="fas fa-laugh-wink"></i> -->
                 </div>
-                <div class="sidebar-brand-text mx-3" style="font-size:small">Dossier System</div>
+                <div class="sidebar-brand-text mx-3" style="font-size:small">E-Dossier</div>
             </a>
 
             <!-- Divider -->
@@ -62,11 +62,10 @@
                 Features
             </div> -->
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true">
                     <i class="fas fa-fw fa-cog"></i>
                     <span> Menu Items </span>
-                    <!-- <span>Components</span> -->
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -77,7 +76,7 @@
                         <a class="collapse-item" href="#">Change Password</a>
                     </div>
                 </div>
-            </li>
+            </li> -->
             <br><br><br>
 
             <!-- Nav Item - Utilities Collapse Menu -->

@@ -59,6 +59,14 @@ class Admin extends CI_Controller
 		redirect('Admin');
 	}
 
+    public function view_activity_log()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $data['activity_log'] = $this->db->get('activity_log')->result_array();
+            $this->load->view('Admin/activity_log', $data);
+        }
+    }
+
     public function add_user()
     {
         if ($this->input->post()) {

@@ -104,6 +104,12 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="<?php echo base_url(); ?>CAO_SEC/view_activity_log" aria-expanded="true">
+                    <i style="font-size:20px" class="far fa-list-alt"></i>
+                    <span> View Activity Log </span>
+                </a>
+            </li>
             <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_warning" aria-expanded="true">
                     <i class="fas fa-exclamation-circle"></i>

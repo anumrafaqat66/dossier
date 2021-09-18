@@ -4,7 +4,6 @@
     .red-border {
         border: 1px solid red !important;
     }
-
 </style>
 
 <div class="container-fluid my-2">
@@ -325,42 +324,12 @@
         </div>
     </div>
 
+
+
     <div class="card-body bg-custom3">
         <!-- Nested Row within Card Body -->
 
-        <div class="row">
-            <div class="col-lg-12">
 
-                <!--       <div class="card">
-                    <div class="card-header bg-custom1">
-                        <h1 class="h4">Search Punishment by Date</h1>
-                    </div>
-
-                    <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" id="add_form" action="">
-                            <div class="form-group row">
-                                <div class="col-sm-2" style="margin-top:15px">
-                                    <h6>&nbsp;Enter Date:</h6>
-                                </div>
-
-                                <div class="col-sm-3 mb-1">
-                                    <input type="date" class="form-control form-control-user" name="search_date" id="search_date" placeholder="Select Date" value="<?= $search_date; ?>">
-                                    <span id="error_search" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please select date</span>
-                                </div>
-
-                                <div class="col-sm-2 mb-1">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" id="search_btn">
-                                        Search
-                                    </button>
-                                </div>
-
-                            </div>
-                        </form>
-                    </div>
-                </div> -->
-
-            </div>
-        </div>
 
         <div class="row">
             <div class="col-lg-12">
@@ -370,16 +339,14 @@
                         <h1 class="h4">Physical Milestone List</h1>
                     </div>
 
+                    <div class="row">
+                        <div class="col-lg-12">
+                        <a onclick="location.href='<?php echo base_url(); ?>D_O/add_physical_milestone/milestone_list'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="float:right;margin-right:4px" data-toggle="modal" data-target="#all_projects"><i class="fas fa-plus-circle fa-sm text-white-60"></i> Add New Record </a>
+                        </div>
+                    </div>
 
                     <div class="card-body">
-                        <!-- <div class="form-group row">
-                            <div class="col-sm-3">
-                                <h3 id="cadet_name_heading"><b>Name: </b> <?= $milestone_records['name']; ?></h3>
-                            </div>
-                            <div class="col-sm-4">
-                                <h3 id="term"> <b>Term: </b><?= $milestone_records['term']; ?></h3>
-                            </div>
-                        </div> -->
+
                         <div id="table_div">
                             <?php if (isset($milestone_records)) { ?>
                                 <table id="datatable" class="table table-striped" style="color:black; width:auto !important;table-layout:auto !important;">
@@ -388,21 +355,6 @@
                                             <th scope="col">ID</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Term</th>
-                                            <!-- <th scope="col">PST Result</th>
-                                            <th scope="col">PST Attempt</th>
-                                            <th scope="col">SST Attempt</th>
-                                            <th scope="col">SST Result</th>
-                                            <th scope="col">PET-I Attempt</th>
-                                            <th scope="col">PET-I Result</th>
-                                            <th scope="col">PET-II Attempt</th>
-                                            <th scope="col">PET-II Result</th>
-                                            <th scope="col">Assault Attempt</th>
-                                            <th scope="col">Assault Result</th>
-                                            <th scope="col">Saluting Attempt</th>
-                                            <th scope="col">Saluting Result</th>
-                                            <th scope="col">PLX Attempt</th>
-                                            <th scope="col">PLX Result</th> -->
-                                            <!-- <th scope="col">Acions</th> -->
                                             <th scope="col">Actions</th>
                                             <th scope="col">Actions</th>
                                         </tr>

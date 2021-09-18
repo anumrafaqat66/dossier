@@ -9,6 +9,16 @@
 <?php !isset($long_cross_result['count']) ? $long_cross_result['count'] = 0 : $long_cross_result['count']; ?>
 <?php !isset($mini_cross_result['count']) ? $mini_cross_result['count'] = 0 : $mini_cross_result['count']; ?>
 
+<?php !isset($PST_result_tp['count']) ? $PST_result_tp['count'] = 0 : $PST_result_tp['count']; ?>
+<?php !isset($SST_result_tp['count']) ? $SST_result_tp['count'] = 0 : $SST_result_tp['count']; ?>
+<?php !isset($PET_I_result_tp['count']) ? $PET_I_result_tp['count'] = 0 : $PET_I_result_tp['count']; ?>
+<?php !isset($PET_II_result_tp['count']) ? $PET_II_result_tp['count'] = 0 : $PET_II_result_tp['count']; ?>
+<?php !isset($assault_result_tp['count']) ? $assault_result_tp['count'] = 0 : $assault_result_tp['count']; ?>
+<?php !isset($saluting_result_tp['count']) ? $saluting_result_tp['count'] = 0 : $saluting_result_tp['count']; ?>
+<?php !isset($PLX_result_tp['count']) ? $PLX_result_tp['count'] = 0 : $PLX_result_tp['count']; ?>
+<?php !isset($long_cross_result_tp['count']) ? $long_cross_result_tp['count'] = 0 : $long_cross_result_tp['count']; ?>
+<?php !isset($mini_cross_result_tp['count']) ? $mini_cross_result_tp['count'] = 0 : $mini_cross_result_tp['count']; ?>
+
 <?php !isset($PST_result_t1['count']) ? $PST_result_t1['count'] = 0 : $PST_result_t1['count']; ?>
 <?php !isset($SST_result_t1['count']) ? $SST_result_t1['count'] = 0 : $SST_result_t1['count']; ?>
 <?php !isset($PET_I_result_t1['count']) ? $PET_I_result_t1['count'] = 0 : $PET_I_result_t1['count']; ?>
@@ -82,19 +92,28 @@
 
     <div class="card-body bg-custom3" id="termwise_graph" style="display:none">
         <div class="form-group row" style="margin-top:50px;">
-            <div class="col-sm-4">
+            <div class="col-sm-6">
+                <div id="chartContainer_tp" style="height: 370px; width: 100%;"></div>
+            </div>
+            <div class="col-sm-6">
                 <div id="chartContainer_t1" style="height: 370px; width: 100%;"></div>
             </div>
-            <div class="col-sm-4">
+        </div>
+        <div class="form-group row" style="margin-top:50px;">
+            <div class="col-sm-6">
                 <div id="chartContainer_t2" style="height: 370px; width: 100%;"></div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div id="chartContainer_t3" style="height: 370px; width: 100%;"></div>
             </div>
         </div>
     </div>
 
+    
     <?php
+    if (!isset($Total_cadet_tp['count']) || $Total_cadet_tp['count'] == 0) {
+        $Total_cadet_tp['count'] = 1;
+    }
     if (!isset($Total_cadet_t1['count']) || $Total_cadet_t1['count'] == 0) {
         $Total_cadet_t1['count'] = 1;
     }
@@ -118,6 +137,18 @@
         array("label" => "PLX Qualified", "y" => ($PLX_result['count'] / $Total_cadet['count']) * 100),
         array("label" => "Long Cross Qualified", "y" => ($long_cross_result['count'] / $Total_cadet['count']) * 100),
         array("label" => "Mini Cross Qualified", "y" => ($mini_cross_result['count'] / $Total_cadet['count']) * 100)
+    );
+
+    $dataPoints_tp = array(
+        array("label" => "PST", "y" => ($PST_result_tp['count'] / $Total_cadet_tp['count']) * 100),
+        array("label" => "SST", "y" => ($SST_result_tp['count'] / $Total_cadet_tp['count']) * 100),
+        array("label" => "PET-I", "y" => ($PET_I_result_tp['count'] / $Total_cadet_tp['count']) * 100),
+        array("label" => "PET-II", "y" => ($PET_II_result_tp['count'] / $Total_cadet_tp['count']) * 100),
+        array("label" => "Assault", "y" => ($assault_result_tp['count'] / $Total_cadet_tp['count']) * 100),
+        array("label" => "Saluting", "y" => ($saluting_result_tp['count'] / $Total_cadet_tp['count']) * 100),
+        array("label" => "PLX", "y" => ($PLX_result_tp['count'] / $Total_cadet_tp['count']) * 100),
+        array("label" => "Long Cross", "y" => ($long_cross_result_tp['count'] / $Total_cadet_tp['count']) * 100),
+        array("label" => "Mini Cross", "y" => ($mini_cross_result_tp['count'] / $Total_cadet_tp['count']) * 100)
     );
 
     $dataPoints_t1 = array(
@@ -222,6 +253,30 @@
 
         } else if (division == 'termwise') {
             setTimeout(function() {
+                var chartp = new CanvasJS.Chart("chartContainer_tp", {
+                    animationEnabled: true,
+                    theme: "light2", // "light1", "light2", "dark1", "dark2"
+                    title: {
+                        text: "Term-Prep"
+                    },
+                    subtitles: [{
+                        text: "Percentage (%)"
+                    }],
+                    axisY: {
+                        title: "Aggregate",
+                        maximum: 100,
+                    },
+                    data: [{
+                        type: "column",
+                        showInLegend: true,
+                        legendMarkerColor: "grey",
+                        legendText: "Total Aggregate",
+                        dataPoints: <?php echo json_encode($dataPoints_tp, JSON_NUMERIC_CHECK); ?>
+                    }]
+                });
+                chartp.render();
+
+                
                 var chart2 = new CanvasJS.Chart("chartContainer_t1", {
                     animationEnabled: true,
                     theme: "light2", // "light1", "light2", "dark1", "dark2"

@@ -94,6 +94,15 @@ class CAO_SEC extends CI_Controller
             $this->load->view('cao_sec/view_excuse_list', $data);
         }
     }
+
+    public function view_activity_log()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $data['activity_log'] = $this->db->get('activity_log')->result_array();
+            $this->load->view('cao_sec/activity_log', $data);
+        }
+    }
+
     public function view_observation_list()
     {
         if ($this->session->has_userdata('user_id')) {

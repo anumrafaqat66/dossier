@@ -121,7 +121,7 @@ class CT extends CI_Controller
 
         echo $data = $this->load->view('ct/academy_analytics', $data, TRUE);
     }
-    
+
 
     public function get_graph_termwise()
     {
@@ -129,6 +129,16 @@ class CT extends CI_Controller
 
         $data['divisions'] = $this->db->get('divisions')->result_array();
         $data['division_set'] = 'termwise';
+
+        $data['PST_result_tp'] = $this->db->select('count(*) as count')->where('PST_result', 'qualified')->where('term', 'Term-P')->get('physical_milestone')->row_array();
+        $data['SST_result_tp'] = $this->db->select('count(*) as count')->where('SST_result', 'qualified')->where('term', 'Term-P')->get('physical_milestone')->row_array();
+        $data['PET_I_result_tp'] = $this->db->select('count(*) as count')->where('PET_I_result', 'qualified')->where('term', 'Term-P')->get('physical_milestone')->row_array();
+        $data['PET_II_result_tp'] = $this->db->select('count(*) as count')->where('PET_II_result', 'qualified')->where('term', 'Term-P')->get('physical_milestone')->row_array();
+        $data['assault_result_tp'] = $this->db->select('count(*) as count')->where('assault_result', 'qualified')->where('term', 'Term-P')->get('physical_milestone')->row_array();
+        $data['saluting_result_tp'] = $this->db->select('count(*) as count')->where('saluting_result', 'qualified')->where('term', 'Term-P')->get('physical_milestone')->row_array();
+        $data['PLX_result_tp'] = $this->db->select('count(*) as count')->where('PLX_result', 'qualified')->where('term', 'Term-P')->get('physical_milestone')->row_array();
+        $data['long_cross_result_tp'] = $this->db->select('count(*) as count')->where('long_cross_result', 'qualified')->where('term', 'Term-P')->get('physical_milestone')->row_array();
+        $data['mini_cross_result_tp'] = $this->db->select('count(*) as count')->where('mini_cross_result', 'qualified')->where('term', 'Term-P')->get('physical_milestone')->row_array();
 
         $data['PST_result_t1'] = $this->db->select('count(*) as count')->where('PST_result', 'qualified')->where('term', 'Term-I')->get('physical_milestone')->row_array();
         $data['SST_result_t1'] = $this->db->select('count(*) as count')->where('SST_result', 'qualified')->where('term', 'Term-I')->get('physical_milestone')->row_array();
@@ -160,11 +170,20 @@ class CT extends CI_Controller
         $data['long_cross_result_t3'] = $this->db->select('count(*) as count')->where('long_cross_result', 'qualified')->where('term', 'Term-III')->get('physical_milestone')->row_array();
         $data['mini_cross_result_t3'] = $this->db->select('count(*) as count')->where('mini_cross_result', 'qualified')->where('term', 'Term-III')->get('physical_milestone')->row_array();
 
+        $data['Total_cadet_tp'] = $this->db->select('count(*) as count')->where('term', 'Term-P')->get('physical_milestone')->row_array();
         $data['Total_cadet_t1'] = $this->db->select('count(*) as count')->where('term', 'Term-I')->get('physical_milestone')->row_array();
         $data['Total_cadet_t2'] = $this->db->select('count(*) as count')->where('term', 'Term-II')->get('physical_milestone')->row_array();
         $data['Total_cadet_t3'] = $this->db->select('count(*) as count')->where('term', 'Term-III')->get('physical_milestone')->row_array();
 
         echo $data = $this->load->view('ct/academy_analytics', $data, TRUE);
+    }
+
+    public function view_activity_log()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $data['activity_log'] = $this->db->get('activity_log')->result_array();
+            $this->load->view('ct/activity_log', $data);
+        }
     }
 
     public function view_punishment_list()

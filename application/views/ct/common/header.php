@@ -71,9 +71,9 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
+            <!-- <div class="sidebar-heading">
                 PHASE I (Common Tranings)
-            </div>
+            </div> -->
 
            
             <!-- <li class="nav-item">
@@ -104,6 +104,12 @@
                         <!-- <a class="collapse-item" href="<?php echo base_url(); ?>CT/psychologist_report">Psychologist's Report</a> -->
                     </div>
                 </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="<?php echo base_url(); ?>CT/view_activity_log" aria-expanded="true">
+                    <i style="font-size:20px" class="far fa-list-alt"></i>
+                    <span> View Activity Log </span>
+                </a>
             </li>
             <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_warning" aria-expanded="true">

@@ -1782,12 +1782,12 @@ class D_O extends CI_Controller
                 $cond  = [
                     'p_id' => $p_id,
                     'do_id' => $this->session->userdata('user_id'),
-                    'term'=> $curr_term
+                    'term' => $curr_term
                 ];
             } else {
                 $cond  = [
                     'do_id' => $this->session->userdata('user_id'),
-                    'term'=> $curr_term
+                    'term' => $curr_term
                 ];
             }
             $this->db->where($cond);
@@ -1857,7 +1857,7 @@ class D_O extends CI_Controller
             $this->db->from('punishment_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('f.oc_no = pr.oc_no');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('pr.start_date <=', date('Y-m-d'));
             $this->db->where('pr.end_date >=', date('Y-m-d'));
             $this->db->where('f.divison_name', $this->session->userdata('division'));
@@ -2163,6 +2163,16 @@ class D_O extends CI_Controller
             echo json_encode($data['club_records']);
         }
     }
+
+
+    public function view_activity_log()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $data['activity_log'] = $this->db->get('activity_log')->result_array();
+            $this->load->view('do/activity_log', $data);
+        }
+    }
+
     public function view_branches_in_dossier()
     {
         if ($this->session->has_userdata('user_id')) {
@@ -2817,8 +2827,7 @@ class D_O extends CI_Controller
                 } elseif ($postData['pagee'] == 'dossier') {
                     $this->session->set_flashdata('success', 'Data Updated successfully');
                     redirect('D_O/view_dossier');
-                } 
-                elseif ($postData['pagee'] == 'view_dossier_folder') {
+                } elseif ($postData['pagee'] == 'view_dossier_folder') {
                     $this->session->set_flashdata('success', 'Data Updated successfully');
                     redirect('D_O/view_dossier_folder');
                 } else {
@@ -2832,7 +2841,7 @@ class D_O extends CI_Controller
                 } elseif ($postData['pagee'] == 'view_dossier_folder') {
                     $this->session->set_flashdata('failure', 'Something went wrong, try again.');
                     redirect('D_O/view_dossier_folder');
-                }  else {
+                } else {
                     $this->session->set_flashdata('failure', 'Something went wrong, try again.');
                     redirect('D_O/add_physical_milestone');
                 }

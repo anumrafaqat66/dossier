@@ -1,5 +1,7 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <?php $this->load->view('chat/common/header'); ?>
+
+
 <?php !isset($selectedSender) ? $selectedSender = 0 : $selectedSender; ?>
 <?php !isset($user_name) ? $user_name = 0 : $user_name; ?>
 <style>

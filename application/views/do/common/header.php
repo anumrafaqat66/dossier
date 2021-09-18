@@ -106,19 +106,20 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_discipline" aria-expanded="true">
+                <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_discipline" aria-expanded="true"> -->
+                <a class="nav-link collapsed" href="<?php echo base_url(); ?>D_O/daily_module" aria-expanded="true">
                     <i class="fas fa-running"></i>
-                    <span> Discipline</span>
+                    <span> Daily Module</span>
                     <!-- <span>Components</span> -->
                 </a>
-                <div id="collapse_discipline" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <!-- <div id="collapse_discipline" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<?php echo base_url(); ?>D_O/daily_module">Daily Module</a>
-                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>D_O/add_observation">Observation Record</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>D_O/add_observation">Observation Record</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>D_O/add_punishment">Punishment Record</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>D_O/add_observation_slip">Observation Slips</a>  -->
+                        <a class="collapse-item" href="<?php echo base_url(); ?>D_O/add_observation_slip">Observation Slips</a> 
                     </div>
-                </div>
+                </div> -->
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_warning" aria-expanded="true">
@@ -176,6 +177,12 @@
                 <a class="nav-link" href="<?php echo base_url(); ?>D_O/view_promotion_screen" aria-expanded="true">
                     <i class="fas fa-award"></i>
                     <span> Promotion/Relegation</span>                    
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="<?php echo base_url(); ?>D_O/view_activity_log" aria-expanded="true">
+                    <i style="font-size:20px" class="far fa-list-alt"></i>
+                    <span> View Activity Log </span>
                 </a>
             </li>
 
