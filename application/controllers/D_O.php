@@ -1751,7 +1751,9 @@ class D_O extends CI_Controller
             $all = $_POST['all'];
 
             if ($action == 'promote') {
-                if ($curr_term == 'Term-I') {
+                if ($curr_term == 'Term-P') {
+                    $next_term = 'Term-I';
+                } else if ($curr_term == 'Term-I') {
                     $next_term = 'Term-II';
                 } else if ($curr_term == 'Term-II') {
                     $next_term = 'Term-III';
@@ -1761,7 +1763,9 @@ class D_O extends CI_Controller
             }
 
             if ($action == 'relegate') {
-                if ($curr_term == 'Term-I') {
+                if ($curr_term == 'Term-P') {
+                    $next_term = 'Term-I';
+                } else if ($curr_term == 'Term-I') {
                     $next_term = 'Term-I';
                 } else if ($curr_term == 'Term-II') {
                     $next_term = 'Term-II';
@@ -1777,18 +1781,19 @@ class D_O extends CI_Controller
             if ($all == 'no') {
                 $cond  = [
                     'p_id' => $p_id,
-                    'do_id' => $this->session->userdata('user_id')
+                    'do_id' => $this->session->userdata('user_id'),
+                    'term'=> $curr_term
                 ];
             } else {
                 $cond  = [
-                    'do_id' => $this->session->userdata('user_id')
+                    'do_id' => $this->session->userdata('user_id'),
+                    'term'=> $curr_term
                 ];
             }
             $this->db->where($cond);
             $update = $this->db->update('pn_form1s', $update_array);
 
             if (!empty($update)) {
-
                 $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array();
 
                 if ($all == 'yes') {
@@ -1832,7 +1837,7 @@ class D_O extends CI_Controller
                         $this->session->set_flashdata('success', 'Cadet Relegated successfully');
                     }
                 } else {
-                    $this->session->set_flashdata('success', 'All Cadets for division' . $this->session->userdata('division') . ' promoted successfully');
+                    $this->session->set_flashdata('success', 'All Cadets for ' . $this->session->userdata('division') . ' promoted successfully');
                 }
             } else {
                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
