@@ -78,7 +78,7 @@
                     </div>
                     <div class="col-lg-2">
                         <?php if (isset($pn_data['name'])) { ?>
-                            <img src='<?= base_url() ?>uploads/documents/<?php echo $pn_personal_data['upload_file']?>' style="height:130px; width:100px; border:1px solid black;">
+                            <img src='<?= base_url() ?>uploads/documents/<?php echo $pn_personal_data['upload_file'] ?>' style="height:130px; width:100px; border:1px solid black;">
                         <?php } ?>
                     </div>
                 </div>
@@ -439,7 +439,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-              <!--   <a onclick="location.href='#'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
+                <!--   <a onclick="location.href='#'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/punishment_records_report/<?= $pn_data['oc_no'] ?>/Term-I'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
@@ -462,7 +462,7 @@
                                             <td scope="" style="width:350px">OFFENCE</th>
                                             <td scope="">PUNISHMENT AWARDED</th>
                                             <td scope="" style="border-right:1px solid black; white-space:nowrap">AWARDED BY</th>
-                                            
+
                                         </tr>
                                     </thead>
                                     <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
@@ -473,7 +473,7 @@
                                                 <td scope="" style="height:80px;text-align: center;"><?= $data['offence']; ?></td>
                                                 <td scope="" style="text-align: center;"><?= $data['punishment_awarded']; ?></td>
                                                 <td scope="" style="border-right:1px solid black;text-align: center;"><?= $data['awarded_by']; ?></td>
-                                              
+
                                             </tr>
                                         <?php
                                             $count++;
@@ -516,7 +516,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-               <!--  <a onclick="location.href='<?= base_url()?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
+                <!--  <a onclick="location.href='<?= base_url() ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/punishment_records_report/<?= $pn_data['oc_no'] ?>/Term-II'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
@@ -591,7 +591,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-            <!--     <a onclick="location.href='#'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
+                <!--     <a onclick="location.href='#'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/punishment_records_report/<?= $pn_data['oc_no'] ?>/Term-III'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
@@ -614,6 +614,7 @@
                                             <td scope="" style="width:350px">OFFENCE</th>
                                             <td scope="">PUNISHMENT AWARDED</th>
                                             <td scope="" style="border-right:1px solid black; white-space:nowrap">AWARDED BY</th>
+                                            <td scope="" style="border-right:1px solid black; white-space:nowrap">EDIT</th>
                                         </tr>
                                     </thead>
                                     <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
@@ -624,11 +625,13 @@
                                                 <td scope="" style="height:80px"><?= $data['offence']; ?></td>
                                                 <td scope=""><?= $data['punishment_awarded']; ?></td>
                                                 <td scope="" style="border-right:1px solid black;"><?= $data['awarded_by']; ?></td>
+                                                <td scope="" style="border-right:1px solid black;text-align: center;"><a href="<?= base_url() ?>D_O/view_edit_punishment/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
                                             </tr>
                                         <?php
                                             $count++;
                                         } ?>
                                         <tr>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
@@ -668,7 +671,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-               <!--  <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_observation/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
+                <!--  <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_observation/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/observation_records_report/<?= $pn_data['oc_no'] ?>/Term-I'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
@@ -691,7 +694,7 @@
                                             <td scope="" style="width:350px">OBSERVATION</th>
                                             <td scope="">OBSERVED/CHECKED BY</th>
                                             <td scope="" style="border-right:1px solid black; white-space:nowrap">REMARKS/ ACTION BY</th>
-                                                <td scope="" style="border-right:1px solid black; white-space:nowrap">EDIT</th>
+                                            <td scope="" style="border-right:1px solid black; white-space:nowrap">EDIT</th>
                                         </tr>
                                     </thead>
                                     <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
@@ -702,7 +705,7 @@
                                                 <td scope="" style="height:80px;text-align: center;"><?= $data['observation']; ?></td>
                                                 <td scope="" style="text-align: center;"><?= $data['observed_by']; ?></td>
                                                 <td scope="" style="border-right:1px solid black;text-align: center;"><?= $data['action_taken']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align: center;"><a href="<?=base_url()?>D_O/view_edit_observation/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
+                                                <td scope="" style="border-right:1px solid black;text-align: center;"><a href="<?= base_url() ?>D_O/view_edit_observation/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
                                             </tr>
                                         <?php
                                             $count++;
@@ -712,7 +715,7 @@
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
-                                             <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -740,7 +743,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-               <!--  <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_observation/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
+                <!--  <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_observation/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/observation_records_report/<?= $pn_data['oc_no'] ?>/Term-II'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
@@ -763,7 +766,7 @@
                                             <td scope="" style="width:350px">OBSERVATION</th>
                                             <td scope="">OBSERVED/CHECKED BY</th>
                                             <td scope="" style="border-right:1px solid black; white-space:nowrap">REMARKS/ ACTION BY</th>
-                                                <td scope="" style="border-right:1px solid black; white-space:nowrap">EDIT</th>
+                                            <td scope="" style="border-right:1px solid black; white-space:nowrap">EDIT</th>
                                         </tr>
                                     </thead>
                                     <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
@@ -774,7 +777,7 @@
                                                 <td scope="" style="height:80px;text-align: center;"><?= $data['observation']; ?></td>
                                                 <td scope="" style="text-align: center;"><?= $data['observed_by']; ?></td>
                                                 <td scope="" style="border-right:1px solid black;text-align: center;"><?= $data['action_taken']; ?></td>
-                                                 <td scope="" style="border-right:1px solid black;text-align: center;"><a href="<?=base_url()?>D_O/view_edit_observation/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
+                                                <td scope="" style="border-right:1px solid black;text-align: center;"><a href="<?= base_url() ?>D_O/view_edit_observation/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
                                             </tr>
                                         <?php
                                             $count++;
@@ -812,7 +815,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-               <!--  <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_observation/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
+                <!--  <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_observation/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/observation_records_report/<?= $pn_data['oc_no'] ?>/Term-III'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
@@ -835,7 +838,7 @@
                                             <td scope="" style="width:300px">OBSERVATION</th>
                                             <td scope="" style="width:70px !important">OBSERVED/ CHECKED BY</th>
                                             <td scope="" style="border-right:1px solid black;width:100px !important">REMARKS/ ACTION TAKEN</th>
-                                                <td scope="" style="border-right:1px solid black;width:100px !important">EDIT</th>
+                                            <td scope="" style="border-right:1px solid black;width:100px !important">EDIT</th>
                                         </tr>
                                     </thead>
                                     <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
@@ -846,7 +849,7 @@
                                                 <td scope="" style="height:80px;text-align: center;"><?= $data['observation']; ?></td>
                                                 <td scope="" style="text-align: center;"><?= $data['observed_by']; ?></td>
                                                 <td scope="" style="border-right:1px solid black;text-align: center;"><?= $data['action_taken']; ?></td>
-                                                 <td scope="" style="border-right:1px solid black;text-align: center;"><a href="<?=base_url()?>D_O/view_edit_observation/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
+                                                <td scope="" style="border-right:1px solid black;text-align: center;"><a href="<?= base_url() ?>D_O/view_edit_observation/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
                                             </tr>
                                         <?php
                                             $count++;
@@ -885,7 +888,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                  <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_warning/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>
+                <!-- <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_warning/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/warning_records_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
@@ -908,7 +911,7 @@
                                             <td scope="" style="width:70px">ISSUED BY</th>
                                             <td scope="" style="width:70px !important">REASONS</th>
                                             <td scope="" style="border-right:1px solid black;width:100px !important">DO'S SIGNATURE</th>
-                                                  <td scope="" style="border-right:1px solid black;width:100px !important">EDIT</th>
+                                            <td scope="" style="border-right:1px solid black;width:100px !important">EDIT</th>
                                         </tr>
                                     </thead>
                                     <tbody id="table_rows_cont" style="border-top:1px solid black; padding:5px;width:100% !important">
@@ -919,9 +922,9 @@
                                                 <td scope="" style="text-align: center;"><?= $data['date']; ?></td>
                                                 <td scope="" style="height:80px;text-align: center;"><?= $data['issued_by']; ?></td>
                                                 <td scope=""><?= $data['reasons']; ?></td>
-                                                 
+
                                                 <td scope="" style="border-right:1px solid black;"></td>
-                                                 <td scope="" style="border-right:1px solid black;text-align: center;"><a href="<?=base_url()?>D_O/view_edit_warning/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
+                                                <td scope="" style="border-right:1px solid black;text-align: center;"><a href="<?= base_url() ?>D_O/view_edit_warning/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
                                             </tr>
                                         <?php
                                             $count++;
@@ -961,7 +964,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                  <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_warning/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>
+                <!-- <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_warning/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/warning_record_insert_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
@@ -1062,7 +1065,7 @@
                                                 <td scope="" style="text-align: center;"><?= $data['date']; ?></td>
                                                 <td scope="" style="height:80px;text-align: center;"><?= $data['remarks']; ?></td>
                                                 <td scope="" style="border-right:1px solid black; text-align: center;"><?= $data['inspecting_officer_name']; ?></td>
-                                                 <td scope="" style="border-right:1px solid black;width:100px !important;text-align: center;"><a style="color: black;"href="<?php echo base_url() ?>D_O/view_edit_inspection/<?= $data['id']; ?>"><i class="fa fa-edit"></i></a></td>>
+                                                <td scope="" style="border-right:1px solid black;width:100px !important;text-align: center;"><a style="color: black;" href="<?php echo base_url() ?>D_O/view_edit_inspection/<?= $data['id']; ?>"><i class="fa fa-edit"></i></a></td>>
                                             </tr>
                                         <?php
                                             $count++;
@@ -1071,7 +1074,7 @@
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
                                             <td scope="" style="border-bottom:1px solid black;"></td>
-                                             <td scope="" style="border-bottom:1px solid black;"></td>
+                                            <td scope="" style="border-bottom:1px solid black;"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1274,8 +1277,8 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-              
-                  <a onclick="location.href='<?= base_url(); ?>D_O/add_physical_milestone/<?php echo "view_dossier_folder" ?>'" style="margin-left: 65%" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit text-white-50"></i> Edit Record</a>
+
+                <a onclick="location.href='<?= base_url(); ?>D_O/add_physical_milestone/<?php echo "view_dossier_folder" ?>'" style="margin-left: 65%" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit text-white-50"></i> Edit Record</a>
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/physical_efficiency_records_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
@@ -2143,7 +2146,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                 <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_qualities/<?= $pn_data['p_id'] ?>/Term-II'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: 65%"><i class="fas fa-edit text-white-50"></i> Edit Record</a>
+                <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_qualities/<?= $pn_data['p_id'] ?>/Term-II'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: 65%"><i class="fas fa-edit text-white-50"></i> Edit Record</a>
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/officer_qualities_records_report/<?= $pn_data['oc_no'] ?>/Term-II'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
@@ -2500,7 +2503,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                 <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_qualities/<?= $pn_data['p_id'] ?>/Term-III'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: 65%"><i class="fas fa-edit text-white-50"></i> Edit Record</a>
+                <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_qualities/<?= $pn_data['p_id'] ?>/Term-III'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: 65%"><i class="fas fa-edit text-white-50"></i> Edit Record</a>
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/officer_qualities_records_report/<?= $pn_data['oc_no'] ?>/Term-III'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
@@ -3329,7 +3332,7 @@
                                             <td scope="" style="width:230px">RANK & NAME</th>
                                             <td scope="" colspan="2" style="width:100px;border-bottom:1px solid black;">PERIOD</th>
                                             <td scope="" style="border-right:1px solid black;width:100px !important">SIGNATURES</th>
-                                                 <td scope="" style="border-right:1px solid black;width:100px !important">EDIT</th>
+                                            <td scope="" style="border-right:1px solid black;width:100px !important">EDIT</th>
                                         </tr>
                                         <tr>
                                             <td scope="" style="width:230px">
@@ -3348,9 +3351,9 @@
                                                 <td scope="" style="height:50px;text-align: center;"><?= $data['rank']; ?> <?= $data['officer_name']; ?></td>
                                                 <td scope="" style="height:50px;text-align: center;"><?= $data['date_from']; ?></td>
                                                 <td scope="" style="height:50px;text-align: center;"><?= $data['date_to']; ?></td>
-                                                
+
                                                 <td scope="" style="border-right:1px solid black;"></td>
-                                                 <td scope="" style="height:50px;text-align: center;border-right:1px solid black"><a href="<?= base_url();?>D_O/view_edit_officer_record/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
+                                                <td scope="" style="height:50px;text-align: center;border-right:1px solid black"><a href="<?= base_url(); ?>D_O/view_edit_officer_record/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
                                             </tr>
                                         <?php
                                             $count++;
@@ -3389,7 +3392,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                 <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_biography/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> 
+                <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_biography/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>
 
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/autobiography_record_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
@@ -3457,7 +3460,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                  <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_psychologist_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> 
+                <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_psychologist_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/psychology_record_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
@@ -3526,7 +3529,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                  <!-- <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_result_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>  -->
+                <!-- <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_result_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>  -->
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/result_record_report/<?= $pn_data['oc_no'] ?>/Term-I/Result'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
@@ -3594,7 +3597,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                  <!-- <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_result_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>  -->
+                <!-- <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_result_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>  -->
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/result_record_report/<?= $pn_data['oc_no'] ?>/Term-II/Result'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
@@ -3662,7 +3665,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                  <!-- <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_ressult_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>  -->
+                <!-- <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_ressult_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>  -->
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/result_record_report/<?= $pn_data['oc_no'] ?>/Term-III/Result'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
@@ -3730,7 +3733,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                  <!-- <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_sea_training_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>  -->
+                <!-- <a onclick="location.href='<?php echo base_url() ?>D_O/view_edit_sea_training_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>  -->
                 <a onclick="location.href='<?php echo base_url() ?>/D_O/result_record_report/<?= $pn_data['oc_no'] ?>/Term-II/SeaTraining'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
@@ -4617,7 +4620,7 @@
                         var newDoc = document.open("text/html", "replace");
                         newDoc.write(data);
                         newDoc.close();
-                         $('#cadet_dossier').show();
+                        $('#cadet_dossier').show();
                     } else {
                         $('#no_data').show();
                         $('#cadet_dossier').hide();

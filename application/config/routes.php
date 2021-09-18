@@ -105,13 +105,10 @@ $route['D_O/view_edit_personal_record/update-activity'] = 'ChatController/update
 $route['D_O/view_edit_personal_record/check-notification'] = 'ChatController/check_notification';
 $route['D_O/view_edit_personal_record/check-activity'] = 'ChatController/check_activity';
 
-
 $route['D_O/view_edit_biography/update-notification'] = 'ChatController/update_notification';
 $route['D_O/view_edit_biography/update-activity'] = 'ChatController/update_activity';
 $route['D_O/view_edit_biography/check-notification'] = 'ChatController/check_notification';
 $route['D_O/view_edit_biography/check-activity'] = 'ChatController/check_activity';
-
-
 
 $route['D_O/view_edit_psychologist_report/update-notification'] = 'ChatController/update_notification';
 $route['D_O/view_edit_psychologist_report/update-activity'] = 'ChatController/update_activity';
@@ -122,6 +119,13 @@ $route['D_O/view_edit_qualities/(:any)/update-notification'] = 'ChatController/$
 $route['D_O/view_edit_qualities/(:any)/update-activity'] = 'ChatController/$1/update_activity';
 $route['D_O/view_edit_qualities/(:any)/check-notification'] = 'ChatController/$1/check_notification';
 $route['D_O/view_edit_qualities/(:any)/check-activity'] = 'ChatController/$1/check_activity';
+
+$route['D_O/view_edit_punishment/update-notification'] = 'ChatController/update_notification';
+$route['D_O/view_edit_punishment/update-activity'] = 'ChatController/update_activity';
+$route['D_O/view_edit_punishment/check-notification'] = 'ChatController/check_notification';
+$route['D_O/view_edit_punishment/check-activity'] = 'ChatController/check_activity';
+
+
 
 $route['chat-clear'] = 'ChatController/chat_clear_client_cs';
 

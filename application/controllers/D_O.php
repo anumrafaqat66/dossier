@@ -2077,6 +2077,23 @@ class D_O extends CI_Controller
         $this->load->view('do/edit_observation', $data);
     }
 
+    public function view_edit_punishment($row_id = null)
+    {
+
+        $row_id = $row_id;;
+        $this->db->select('pr.*, f.*');
+        $this->db->from('punishment_records pr');
+        $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+        $this->db->where('f.oc_no = pr.oc_no');
+        // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        $this->db->where('pr.id', $row_id);
+        // $this->db->where('f.divison_name', $this->session->userdata('division'));
+        // $this->db->where('pr.status', 'Approved');
+        $data['punish_records'] = $this->db->get()->row_array();
+        // print_r($data['punish_records']);exit;
+        $this->load->view('do/edit_punishment', $data);
+    }
+
 
 
     public function view_excuse_list()

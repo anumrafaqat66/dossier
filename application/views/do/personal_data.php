@@ -164,7 +164,7 @@
                                         <div class="col-sm-6 mb-1">
                                             <select class="form-control rounded-pill" name="term" id="term" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                                 <option class="form-control form-control-user" value="">Select Term</option>
-                                                <option class="form-control form-control-user" value="Term-Prep">Term-Prep</option>
+                                                <option class="form-control form-control-user" value="Term-P">Term-Prep</option>
                                                 <option class="form-control form-control-user" value="Term-I">Term-I</option>
                                                 <option class="form-control form-control-user" value="Term-II">Term-II</option>
                                                 <option class="form-control form-control-user" value="Term-III">Term-III</option>
