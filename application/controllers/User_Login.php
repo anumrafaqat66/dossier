@@ -53,7 +53,7 @@ class User_Login extends CI_Controller
 			$username = $postedData['username'];
 			$password = $postedData['password'];
 			$status = $postedData['role'];
-			$query = $this->db->where('username', $username)->where('acct_type', $status)->get('security_info')->row_array();
+			$query = $this->db->where('username', $username)->where('acct_type', $status)->where('is_active','yes')->get('security_info')->row_array();
 			$hash = $query['password'];
 
 			if (!empty($query)) {

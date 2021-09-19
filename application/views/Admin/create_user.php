@@ -40,6 +40,7 @@
                                             <option value="exo">EXO</option>
                                             <option value="sqc">Squadron Commander</option>
                                             <option value="cao">CAO</option>
+                                            <option value="cao_sec">CAO SEC</option>
                                             <option value="smo">SMO</option>
 
                                         </select>

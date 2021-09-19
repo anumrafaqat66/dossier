@@ -10,16 +10,43 @@ class Admin extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
-            
+
             $this->load->view('Admin/admin');
         } else {
             $this->load->view('Admin/login');
         }
     }
 
-    public function add_users(){
+    public function add_users()
+    {
         $data['divisions'] = $this->db->get('divisions')->result_array();
-        $this->load->view('Admin/create_user',$data);
+        $this->load->view('Admin/create_user', $data);
+    }
+
+    public function show_user_list()
+    {
+        $data['users_list'] = $this->db->where('is_active', 'yes')->where_not_in('acct_type', 'admin')->get('security_info')->result_array();
+        $this->load->view('Admin/user_list', $data);
+    }
+
+    public function delete_user($user_id = NULL)
+    {
+
+        $update_array = array(
+            'is_active' => 'no'
+        );
+
+        $cond  = ['id' => $user_id];
+        $this->db->where($cond);
+        $update = $this->db->update('security_info', $update_array);
+
+        if (!empty($update)) {
+            $this->session->set_flashdata('success', 'Account Deleted Successfully');
+            redirect('Admin/show_user_list');
+        } else {
+            $this->session->set_flashdata('failure', 'Error');
+            redirect('Admin/show_user_list');
+        }
     }
 
     public function login_process()
@@ -54,10 +81,10 @@ class Admin extends CI_Controller
     }
 
     public function logout()
-	{
-		$this->session->sess_destroy();
-		redirect('Admin');
-	}
+    {
+        $this->session->sess_destroy();
+        redirect('Admin');
+    }
 
     public function view_activity_log()
     {
@@ -77,20 +104,32 @@ class Admin extends CI_Controller
             $status = $postData['status'];
             $division = $postData['div'];
 
-            $insert_array = array(
-                'username' => $username,
-                'password' => $password,
-                'acct_type' => $status,
-                'division' => $division
-            );
-            
-            $insert = $this->db->insert('security_info', $insert_array);
-            
-            if (!empty($insert)) {
-                $this->session->set_flashdata('success', 'Data Submitted successfully');
-                redirect('Admin/add_users');
+            $row_exist = 0;
+            if ($status == 'do') {
+                $row_exist = $this->db->select('count(*) as count')->where('acct_type', 'do')->where('division', $division)->where('is_active', 'yes')->get('security_info')->row_array();
             } else {
-                $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                $row_exist = 0;
+            }
+
+            if ($row_exist['count'] == 0) {
+                $insert_array = array(
+                    'username' => $username,
+                    'password' => $password,
+                    'acct_type' => $status,
+                    'division' => $division
+                );
+
+                $insert = $this->db->insert('security_info', $insert_array);
+
+                if (!empty($insert)) {
+                    $this->session->set_flashdata('success', 'User Created Submitted successfully');
+                    redirect('Admin/add_users');
+                } else {
+                    $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                    redirect('Admin/add_users');
+                }
+            } else {
+                $this->session->set_flashdata('failure', 'DO Account already exisit for ' . $division);
                 redirect('Admin/add_users');
             }
         } else {
