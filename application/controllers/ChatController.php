@@ -61,6 +61,8 @@ class ChatController extends CI_Controller
 			$messageTxt = reduce_multiples($post['messageTxt'], ' ');
 		}
 
+        date_default_timezone_set('Asia/Karachi'); 
+        //echo date_default_timezone_get();exit;
 		$data = [
 			'sender_id' => $this->session->userdata['user_id'],
 			'receiver_id' => $post['receiver_id'],
