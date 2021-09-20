@@ -28,6 +28,8 @@ class User_Login extends CI_Controller
 				redirect('SMO');
 			} elseif ($acct_type == "cao") {
 				redirect('CAO');
+			} elseif ($acct_type == "co") {
+				redirect('CO');
 			} elseif ($acct_type == "cao_sec") {
 				redirect('CAO_SEC');
 			} elseif ($acct_type == "admin") {
@@ -53,7 +55,7 @@ class User_Login extends CI_Controller
 			$username = $postedData['username'];
 			$password = $postedData['password'];
 			$status = $postedData['role'];
-			$query = $this->db->where('username', $username)->where('acct_type', $status)->where('is_active','yes')->get('security_info')->row_array();
+			$query = $this->db->where('username', $username)->where('acct_type', $status)->where('is_active', 'yes')->get('security_info')->row_array();
 			$hash = $query['password'];
 
 			if (!empty($query)) {
@@ -80,6 +82,38 @@ class User_Login extends CI_Controller
 			}
 		}
 	}
+
+	public function change_password()
+	{
+		$this->load->view('change_password');
+	}
+
+	public function change_password_process()
+	{
+		if ($this->input->post()) {
+			$postData = $this->security->xss_clean($this->input->post());
+
+			$new_password = password_hash($postData['new_password'], PASSWORD_DEFAULT);
+			$id = $this->session->userdata('user_id');
+
+			$cond  = ['ID' => $id];
+			$insert_array = array(
+				'password' => $new_password,
+			);
+
+			$this->db->where($cond);
+			$update = $this->db->update('security_info', $insert_array);
+
+			if (!empty($update)) {
+				$this->session->set_flashdata('success', 'password Changed successfully');
+				redirect('User_Login/change_password');
+			} else {
+				$this->session->set_flashdata('failure', 'Something went wrong, try again.');
+				redirect('User_Login/change_password');
+			}
+		}
+	}
+
 	public function logout()
 	{
 		$this->session->sess_destroy();

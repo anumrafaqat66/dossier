@@ -29,7 +29,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <!-- <i class="fas fa-laugh-wink"></i> -->
                 </div>
@@ -58,11 +58,17 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url(); ?>Admin/show_user_list" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-user"></i>
+                    <i class="fas fa-user-times"></i>
                     <span>Delete User</span>
                 </a>
             </li>
-            
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url(); ?>Admin/show_edit_user" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-user-edit"></i>
+                    <span>Edit User</span>
+                </a>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?php echo base_url(); ?>Admin/view_activity_log" aria-expanded="true">
                     <i style="font-size:20px" class="far fa-list-alt"></i>

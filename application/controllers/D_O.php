@@ -249,7 +249,8 @@ class D_O extends CI_Controller
         $this->db->select('pr.*, f.*');
         $this->db->from('inspection_records pr');
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-        $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        $this->db->where('f.divison_name', $this->session->userdata('division'));
         $this->db->where('pr.id', $id);
         $data['pn_inspection_data'] = $this->db->get()->row_array();
         $this->load->view('do/edit_inspection_record', $data);
@@ -260,7 +261,8 @@ class D_O extends CI_Controller
         $this->db->select('pr.*, f.*');
         $this->db->from('personal_datas pr');
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-        $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        $this->db->where('f.divison_name', $this->session->userdata('division'));
         $this->db->where('pr.p_id', $id);
         $data['pn_personal_data'] = $this->db->get()->row_array();
 
@@ -911,7 +913,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('punishment_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('pr.id', $punish_id);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             $data['edit_record'] = $this->db->get()->row_array();
@@ -1220,7 +1223,8 @@ class D_O extends CI_Controller
         $this->db->select('pr.*, f.*');
         $this->db->from('divisional_officer_records pr');
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-        $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        $this->db->where('f.divison_name', $this->session->userdata('division'));
         // $this->db->where('f.oc_no', $oc_no);
         $this->db->where('pr.id', $row_id);
         $data['divisional_officer_data'] = $this->db->get()->row_array();
@@ -1461,7 +1465,7 @@ class D_O extends CI_Controller
             $this->db->join('physical_milestone or', 'f.p_id = or.p_id', 'left');
             $this->db->join('term_i_details', 'term_i_details.p_id = or.p_id', 'left');
             $this->db->join('term_ii_details', 'term_ii_details.p_id = or.p_id', 'left');
-            $this->db->where('f.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $data['milestone_records'] = $this->db->get()->row_array();
@@ -1912,7 +1916,7 @@ class D_O extends CI_Controller
             $this->db->from('observation_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('f.oc_no = pr.oc_no');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('pr.status', 'Approved');
@@ -1929,7 +1933,7 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('warning_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             $data['warning_records'] = $this->db->get()->result_array();
@@ -1943,7 +1947,7 @@ class D_O extends CI_Controller
         $this->db->select('pr.*, f.*');
         $this->db->from('warning_records pr');
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-        $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
         $this->db->where('pr.id', $row_id);
         $this->db->where('f.divison_name', $this->session->userdata('division'));
         $data['warning_records'] = $this->db->get()->row_array();
@@ -1959,7 +1963,7 @@ class D_O extends CI_Controller
             $this->db->from('warning_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('f.oc_no = pr.oc_no');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             // $this->db->where('pr.status', 'Approved');
@@ -1979,7 +1983,7 @@ class D_O extends CI_Controller
             $this->db->from('branch_allocations pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('f.oc_no = pr.oc_no');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             // $this->db->where('pr.status', 'Approved');
@@ -1998,7 +2002,7 @@ class D_O extends CI_Controller
             $this->db->from('club_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('f.oc_no = pr.oc_no');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
             $this->db->where('pr.status', 'active');
             $this->db->where('f.divison_name', $this->session->userdata('division'));
@@ -2050,7 +2054,7 @@ class D_O extends CI_Controller
             $this->db->from('observation_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('f.oc_no = pr.oc_no');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             // $this->db->where('pr.status', 'Approved');
@@ -2068,7 +2072,7 @@ class D_O extends CI_Controller
         $this->db->from('observation_records pr');
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
         // $this->db->where('f.oc_no = pr.oc_no');
-        $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
         $this->db->where('pr.id', $row_id);
         $this->db->where('f.divison_name', $this->session->userdata('division'));
         $this->db->where('pr.status', 'Approved');
@@ -2087,7 +2091,7 @@ class D_O extends CI_Controller
         $this->db->where('f.oc_no = pr.oc_no');
         // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
         $this->db->where('pr.id', $row_id);
-        // $this->db->where('f.divison_name', $this->session->userdata('division'));
+        $this->db->where('f.divison_name', $this->session->userdata('division'));
         // $this->db->where('pr.status', 'Approved');
         $data['punish_records'] = $this->db->get()->row_array();
         // print_r($data['punish_records']);exit;
@@ -2120,7 +2124,7 @@ class D_O extends CI_Controller
             $this->db->select('or.*, f.*');
             $this->db->from('observation_records or');
             $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
-            $this->db->where('or.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('or.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             $data['observation_records'] = $this->db->get()->result_array();
             $this->load->view('do/view_observation_list', $data);
@@ -2136,8 +2140,7 @@ class D_O extends CI_Controller
             $this->db->select('or.*, f.*');
             $this->db->from('physical_milestone or');
             $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
-            $this->db->where('or.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('or.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.p_id', $p_id);
             $data['milestone_records'] = $this->db->get()->result_array();
@@ -2154,7 +2157,7 @@ class D_O extends CI_Controller
             $this->db->select('cr.*, f.*');
             $this->db->from('club_records cr');
             $this->db->join('pn_form1s f', 'f.p_id = cr.p_id');
-            $this->db->where('cr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('cr.do_id', $this->session->userdata('user_id'));
             $this->db->where('cr.status', 'active');
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.p_id', $p_id);
@@ -2181,7 +2184,7 @@ class D_O extends CI_Controller
             $this->db->select('b.*, f.*');
             $this->db->from('branch_allocations b');
             $this->db->join('pn_form1s f', 'f.p_id = b.p_id');
-            $this->db->where('b.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('b.do_id', $this->session->userdata('user_id'));
             //$this->db->where('cr.status', 'active');
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.p_id', $p_id);
@@ -2196,7 +2199,7 @@ class D_O extends CI_Controller
             $this->db->select('or.*, f.*');
             $this->db->from('physical_milestone or');
             $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
-            $this->db->where('or.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('or.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             $data['milestone_records'] = $this->db->get()->result_array();
             // print_r( $data['milestone_records']);exit;
@@ -2215,7 +2218,7 @@ class D_O extends CI_Controller
             $this->db->from('medical_records mr');
             $this->db->join('pn_form1s f', 'f.p_id = mr.p_id');
             $this->db->where('f.oc_no = mr.oc_no');
-            $this->db->where('mr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('mr.do_id', $this->session->userdata('user_id'));
             $this->db->where('mr.start_date =', $date);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             // $this->db->where('mr.end_date >=',date('Y-m-d'));
@@ -2260,6 +2263,7 @@ class D_O extends CI_Controller
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $this->db->where('pr.status', 'Approved');
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $data['pn_punish_data'] = $this->db->get()->result_array();
 
@@ -2270,6 +2274,7 @@ class D_O extends CI_Controller
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $this->db->where('pr.status', 'Approved');
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $data['pn_punish_data_term2'] = $this->db->get()->result_array();
 
@@ -2280,13 +2285,15 @@ class D_O extends CI_Controller
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $this->db->where('pr.status', 'Approved');
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $data['pn_punish_data_term3'] = $this->db->get()->result_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('observation_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $this->db->where('pr.status', 'Approved');
@@ -2295,7 +2302,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('observation_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $this->db->where('pr.status', 'Approved');
@@ -2304,7 +2312,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('observation_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $this->db->where('pr.status', 'Approved');
@@ -2313,14 +2322,16 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('warning_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_warning_data'] = $this->db->get()->result_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('inspection_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_inspection_data'] = $this->db->get()->result_array();
 
@@ -2333,7 +2344,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             // $this->db->where('pr.term', 'Term-I');
             $data['pn_physical_tests_data'] = $this->db->get()->result_array();
@@ -2342,7 +2354,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-P');
             $data['pn_physical_tests_data_tp'] = $this->db->get()->row_array();
@@ -2350,7 +2363,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-P');
             $data['pn_pet1_data_tp'] = $this->db->get()->row_array();
@@ -2358,7 +2372,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-P');
             $data['pn_pet2_data_tp'] = $this->db->get()->row_array();
@@ -2367,7 +2382,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['pn_physical_tests_data_t1'] = $this->db->get()->row_array();
@@ -2375,7 +2391,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['pn_pet1_data_t1'] = $this->db->get()->row_array();
@@ -2383,7 +2400,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['pn_pet2_data_t1'] = $this->db->get()->row_array();
@@ -2392,7 +2410,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $data['pn_physical_tests_data_t2'] = $this->db->get()->row_array();
@@ -2400,7 +2419,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $data['pn_pet1_data_t2'] = $this->db->get()->row_array();
@@ -2408,7 +2428,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $data['pn_pet2_data_t2'] = $this->db->get()->row_array();
@@ -2417,7 +2438,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $data['pn_physical_tests_data_t3'] = $this->db->get()->row_array();
@@ -2425,7 +2447,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $data['pn_pet1_data_t3'] = $this->db->get()->row_array();
@@ -2433,7 +2456,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $data['pn_pet2_data_t3'] = $this->db->get()->row_array();
@@ -2474,7 +2498,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('officer_qualities pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['pn_officer_qualities_data_t1'] = $this->db->get()->row_array();
@@ -2482,7 +2507,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('officer_qualities pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $data['pn_officer_qualities_data_t2'] = $this->db->get()->row_array();
@@ -2490,7 +2516,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('officer_qualities pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $data['pn_officer_qualities_data_t3'] = $this->db->get()->row_array();
@@ -2498,35 +2525,40 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('personal_datas pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_personal_data'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('divisional_officer_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_divisional_officer_data'] = $this->db->get()->result_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('cadets_autobiographies pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_autobiography_data'] = $this->db->get()->result_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('psychologist_reports pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_psychologist_data'] = $this->db->get()->result_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('warning_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_warning_records'] = $this->db->get()->result_array();
 
@@ -2535,7 +2567,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('general_remarks pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.assessment', 'Mid Term Assessment');
             $this->db->where('pr.term', 'Term-I');
@@ -2544,7 +2577,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('general_remarks pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.assessment', 'Terminal Assessment');
             $this->db->where('pr.term', 'Term-I');
@@ -2553,7 +2587,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('general_remarks pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.assessment', 'Mid Term Assessment');
             $this->db->where('pr.term', 'Term-II');
@@ -2562,7 +2597,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('general_remarks pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.assessment', 'Terminal Assessment');
             $this->db->where('pr.term', 'Term-II');
@@ -2571,7 +2607,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('general_remarks pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.assessment', 'Mid Term Assessment');
             $this->db->where('pr.term', 'Term-III');
@@ -2580,7 +2617,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('general_remarks pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.assessment', 'Terminal Assessment');
             $this->db->where('pr.term', 'Term-III');
@@ -2589,21 +2627,24 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('distinctions_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_distinctions_records'] = $this->db->get()->result_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('seniority_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_seniority_records'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('branch_allocations pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_branch_allocations'] = $this->db->get()->row_array();
 
@@ -2641,7 +2682,7 @@ class D_O extends CI_Controller
             $this->db->from('punishment_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('f.oc_no = pr.oc_no');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('pr.start_date =', $date);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
             $data['punishment_records'] = $this->db->get()->result_array();
@@ -2934,7 +2975,8 @@ class D_O extends CI_Controller
         $this->db->select('pr.*, f.*');
         $this->db->from('officer_qualities pr');
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-        $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        $this->db->where('f.divison_name', $this->session->userdata('division'));
         $this->db->where('pr.p_id', $p_id);
         $data['officer_data'] = $this->db->get()->row_array();
         $data['quality_list'] = $this->db->get('quality_list')->result_array();
@@ -3156,6 +3198,7 @@ class D_O extends CI_Controller
             $this->db->from('punishment_records');
             $this->db->where('oc_no', $oc_no);
             $this->db->where('term', $term);
+            
 
             $data['punishment_records'] = $this->db->get()->result_array();
             // echo $term; exit;
@@ -3193,7 +3236,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('observation_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', $term);
             $this->db->where('pr.status', 'Approved');
@@ -3230,7 +3274,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('warning_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
 
             $data['warning_records'] = $this->db->get()->result_array();
@@ -3266,7 +3311,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('inspection_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
 
             $data['inspection_records'] = $this->db->get()->result_array();
@@ -3302,7 +3348,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('medical_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('f.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
 
             $data['medical_records'] = $this->db->get()->result_array();
@@ -3337,7 +3384,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('f.do_id', $this->session->userdata('user_id'));
+            //$this->db->where('f.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
 
             $data['test_records'] = $this->db->get()->result_array();
@@ -3372,7 +3420,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['test_records'] = $this->db->get()->result_array();
@@ -3381,7 +3430,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-P');
             $data['pn_physical_tests_data_tp'] = $this->db->get()->row_array();
@@ -3389,7 +3439,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-P');
             $data['pn_pet1_data_tp'] = $this->db->get()->row_array();
@@ -3397,7 +3448,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-P');
             $data['pn_pet2_data_tp'] = $this->db->get()->row_array();
@@ -3406,7 +3458,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['pn_physical_tests_data_t1'] = $this->db->get()->row_array();
@@ -3414,7 +3467,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['pn_pet1_data_t1'] = $this->db->get()->row_array();
@@ -3422,7 +3476,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['pn_pet2_data_t1'] = $this->db->get()->row_array();
@@ -3431,7 +3486,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $data['pn_physical_tests_data_t2'] = $this->db->get()->row_array();
@@ -3439,7 +3495,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $data['pn_pet1_data_t2'] = $this->db->get()->row_array();
@@ -3447,7 +3504,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $data['pn_pet2_data_t2'] = $this->db->get()->row_array();
@@ -3456,7 +3514,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $data['pn_physical_tests_data_t3'] = $this->db->get()->row_array();
@@ -3464,7 +3523,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $data['pn_pet1_data_t3'] = $this->db->get()->row_array();
@@ -3472,7 +3532,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $data['pn_pet2_data_t3'] = $this->db->get()->row_array();
@@ -3508,7 +3569,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('officer_qualities pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', $term);
             $data['pn_officer_qualities_data'] = $this->db->get()->row_array();
@@ -3545,7 +3607,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('personal_datas pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_personal_data'] = $this->db->get()->row_array();
 
@@ -3580,7 +3643,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('divisional_officer_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_divisional_officer_data'] = $this->db->get()->result_array();
 
@@ -3614,7 +3678,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('divisional_officer_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_divisional_officer_data'] = $this->db->get()->result_array();
 
@@ -3648,7 +3713,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('divisional_officer_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_divisional_officer_data'] = $this->db->get()->result_array();
 
@@ -3732,7 +3798,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('general_remarks pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.assessment', $assess);
             $this->db->where('pr.term', $term);
@@ -3772,7 +3839,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('progress_charts pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_progress_chart'] = $this->db->get()->row_array();
 
@@ -3808,7 +3876,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('distinctions_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_distinctions_records'] = $this->db->get()->result_array();
 
@@ -3844,7 +3913,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('seniority_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_seniority_records'] = $this->db->get()->row_array();
 
@@ -3880,7 +3950,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('branch_allocations pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_branch_allocations'] = $this->db->get()->row_array();
 
@@ -3914,7 +3985,8 @@ class D_O extends CI_Controller
             $this->db->select('pr.*, f.*');
             $this->db->from('branch_allocations pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_branch_allocations'] = $this->db->get()->row_array();
 
@@ -3974,7 +4046,8 @@ class D_O extends CI_Controller
         $this->db->select('pr.*, f.*');
         $this->db->from('psychologist_reports pr');
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-        $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        $this->db->where('f.divison_name', $this->session->userdata('division'));
         $this->db->where('pr.p_id', $id);
         $data['psychologist_data'] = $this->db->get()->row_array();
         // print_r($data['psychologist_data']);exit;
@@ -4161,7 +4234,8 @@ class D_O extends CI_Controller
         $this->db->select('pr.*, f.*');
         $this->db->from('cadets_autobiographies pr');
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-        $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        $this->db->where('f.divison_name', $this->session->userdata('division'));
         $this->db->where('pr.p_id', $p_id);
         $data['biography_data'] = $this->db->get()->row_array();
         //print_r($data['biography_data']);exit;

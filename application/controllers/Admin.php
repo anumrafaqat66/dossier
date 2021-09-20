@@ -29,6 +29,19 @@ class Admin extends CI_Controller
         $this->load->view('Admin/user_list', $data);
     }
 
+    public function show_edit_user()
+    {
+        $data['users_list'] = $this->db->where('is_active', 'yes')->where_not_in('acct_type', 'admin')->get('security_info')->result_array();
+        $this->load->view('Admin/edit_user_list', $data);
+    }
+
+    public function edit_user_profile($user_id = NULL)
+    {
+        $data['users_data'] = $this->db->where('is_active', 'yes')->where_not_in('acct_type', 'admin')->where('id', $user_id)->get('security_info')->row_array();
+        // print_r($data['users_data']); exit;
+        $this->load->view('Admin/edit_user', $data);
+    }
+
     public function delete_user($user_id = NULL)
     {
 
@@ -49,15 +62,47 @@ class Admin extends CI_Controller
         }
     }
 
+    public function update_user($user_id = NULL)
+    {
+
+        $postData = $this->security->xss_clean($this->input->post());
+
+        $username = $postData['username'];
+        $pass = $postData['password'];
+        $full_name = $postData['fullname'];
+        $phone = $postData['phone'];
+        $email = $postData['email'];
+        $address = $postData['address'];
+        
+
+        $update_array = array(
+            'username' => $username,
+            // 'password' => password_hash($postData['password'], PASSWORD_DEFAULT),
+            'full_name' => $full_name,
+            'phone' => $phone,
+            'email' => $email,
+            'address' => $address
+        );
+
+        $cond  = ['id' => $user_id];
+        $this->db->where($cond);
+        $update = $this->db->update('security_info', $update_array);
+
+        if (!empty($update)) {
+            $this->session->set_flashdata('success', 'User Information Updated Successfully');
+            redirect('Admin/show_edit_user');
+        } else {
+            $this->session->set_flashdata('failure', 'Error');
+            redirect('Admin/show_edit_user');
+        }
+    }
+
     public function login_process()
     {
-        // echo "Sdfsd";exit;
         if ($this->input->post()) {
             $postedData = $this->security->xss_clean($this->input->post());
-            //To create encrypted password use
             $username = $postedData['username'];
             $password = $postedData['password'];
-            //$status = $postedData['optradio'];
             $query = $this->db->where('username', $username)->where('acct_type', 'admin')->get('security_info')->row_array();
             $hash = $query['password'];
 

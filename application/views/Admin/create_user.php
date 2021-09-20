@@ -22,10 +22,27 @@
                             <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>Admin/add_user">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-1">
+                                        <h6>&nbsp;Username:</h6>
+                                    </div>
+                                    <div class="col-sm-6 mb-1">
+                                        <h6>&nbsp;Password:</h6>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-1">
                                         <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="username*">
                                     </div>
                                     <div class="col-sm-6 mb-1">
                                         <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="password*">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-1">
+                                        <h6>&nbsp;Login Account Type:</h6>
+                                    </div>
+                                    <div class="col-sm-6 mb-1">
+                                        <h6>&nbsp;Division:</h6>
                                     </div>
                                 </div>
 

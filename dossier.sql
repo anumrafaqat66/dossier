@@ -1429,7 +1429,11 @@ CREATE TABLE `security_info` (
   `acct_type` enum('do','joto','ct','co','exo','sqc','cao','cao_sec','smo','admin') NOT NULL,
   `status` enum('offline','online') NOT NULL,
   `is_active` enum('yes','no') NOT NULL,
-  `division` varchar(50) NULL
+  `division` varchar(50) NULL,
+  `email` varchar(200) NULL,
+  `phone` varchar(200) NULL,
+  `address` varchar(500) NULL,
+  `full_name` varchar(100) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

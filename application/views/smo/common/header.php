@@ -147,11 +147,16 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?php echo base_url(); ?>SMO/view_activity_log" aria-expanded="true">
-                    <i style="font-size:20px" class="far fa-list-alt"></i>
+                    <i class="far fa-list-alt"></i>
                     <span> View Activity Log </span>
                 </a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="<?php echo base_url(); ?>User_Login/change_password" aria-expanded="true">
+                    <i class="fas fa-unlock-alt"></i>
+                    <span> Change Password </span>
+                </a>
+            </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <!-- <li class="nav-item">
