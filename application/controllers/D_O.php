@@ -267,6 +267,7 @@ class D_O extends CI_Controller
         $data['pn_personal_data'] = $this->db->get()->row_array();
 
         $data['divisions'] = $this->db->where('division_name', $this->session->userdata('division'))->get('divisions')->result_array();
+        //print_r($data['pn_personal_data']);exit;
 
         $this->load->view('do/edit_personal_data', $data);
     }
@@ -534,13 +535,16 @@ class D_O extends CI_Controller
     {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
-
+            if($_FILES['report']['name'][0] != null){
             $upload1 = $this->upload($_FILES['report']);
             if (count($upload1) > 1) {
                 $files = implode(',', $upload1);
             } else {
                 $files = $upload1[0];
             }
+        }else{
+             $files='';
+        }
 
             $row_id = $postData['row_id'];
             $officer_id = $postData['row_pid'];
