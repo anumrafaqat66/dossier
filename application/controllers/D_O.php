@@ -1513,7 +1513,7 @@ class D_O extends CI_Controller
             $this->load->view('do/psychologist_report');
         }
     }
-    
+
     public function auto_biography()
     {
         if ($this->session->has_userdata('user_id')) {
@@ -4012,7 +4012,7 @@ class D_O extends CI_Controller
 
     public function view_result()
     {
-        $this->load->view('DO/Results');
+        $this->load->view('do/Results');
     }
     public function view_warning_attachment()
     {

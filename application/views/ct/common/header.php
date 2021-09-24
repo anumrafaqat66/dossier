@@ -62,7 +62,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url(); ?>CT/view_academy_analytics"  aria-expanded="true">
+                <a class="nav-link" href="<?php echo base_url(); ?>CT/view_academy_analytics" aria-expanded="true">
                     <i class="fas fa-th-list"></i>
                     <span> Academy Analytics </span>
                 </a>
@@ -85,7 +85,7 @@
                 PHASE I (Common Tranings)
             </div>
 
-           
+
             <li class="nav-item">
                 <a id="general" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_general" aria-expanded="true">
                     <i class="fas fa-file-alt"></i>
@@ -129,6 +129,50 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_academic" aria-expanded="true">
+                    <i class="fas fa-book"></i>
+                    <span> Academic Record</span>
+                    <!-- <span>Components</span> -->
+                </a>
+                <div id="collapse_academic" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?= base_url(); ?>CT/view_result">Results (Terms I - III)</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>CT/view_training_report">Sea Training Report Term II</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_assesment" aria-expanded="true">
+                    <i class="fas fa-chart-bar"></i>
+                    <span> Assesment</span>
+                    <!-- <span>Components</span> -->
+                </a>
+                <div id="collapse_assesment" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?= base_url(); ?>CT/view_general_remarks">General Remarks</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>CT/view_progress_chart">Progress Chart</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>CT/view_distinction_records">Distictions</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>CT/view_seniority_records">Seniority</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>CT/add_branch_allocation">Branch Allocation</a>
+                        <a class="collapse-item" href="#">Degree Complete</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url(); ?>CT/add_officer_qualities" aria-expanded="true">
+                    <i class="fas fa-medal"></i>
+                    <span> Officer Like Qualities</span>
+                </a>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url(); ?>CT/view_promotion_screen" aria-expanded="true">
+                    <i class="fas fa-award"></i>
+                    <span> Promotion/Relegation</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="<?php echo base_url(); ?>CT/view_activity_log" aria-expanded="true">
                     <i class="far fa-list-alt"></i>
                     <span> View Activity Log </span>
@@ -140,27 +184,7 @@
                     <span> Change Password </span>
                 </a>
             </li>
-            
 
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
-            </li> -->
 
             <!-- Divider -->
             <!-- <hr class="sidebar-divider"> -->
