@@ -1506,12 +1506,14 @@ class D_O extends CI_Controller
             $this->load->view('do/inspection_record', $data);
         }
     }
+
     public function psychologist_report()
     {
         if ($this->session->has_userdata('user_id')) {
             $this->load->view('do/psychologist_report');
         }
     }
+    
     public function auto_biography()
     {
         if ($this->session->has_userdata('user_id')) {
