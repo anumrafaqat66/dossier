@@ -29,7 +29,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <!-- <i class="fas fa-laugh-wink"></i> -->
                 </div>
@@ -51,6 +51,15 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url(); ?>CO/view_dossier_folder" aria-expanded="true">
+                    <i class="far fa-newspaper"></i>
+                    <span> View Dossiers </span>
+                    <!-- <span>Components</span> -->
+                </a>
+
+            </li>
+
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
@@ -60,13 +69,39 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <!-- <a class="nav-link collapsed" href="<?php echo base_url(); ?>/D_O/PN_Form" aria-expanded="true"> -->
+                <a class="nav-link collapsed" href="<?php echo base_url(); ?>CO/personal_data" aria-expanded="true">
+                    <i class="fab fa-wpforms"></i>
+                    <span>PN Form I</span>
+                    <!-- <span>Components</span> -->
+                </a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <!-- <div class="sidebar-heading">
+            <div class="sidebar-heading">
                 PHASE I (Common Tranings)
-            </div> -->
+            </div>
+
+            <li class="nav-item">
+                <a id="general" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_general" aria-expanded="true">
+                    <i class="fas fa-file-alt"></i>
+                    <span> General</span>
+                    <!-- <span>Components</span> -->
+                </a>
+                <div id="collapse_general" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?php echo base_url(); ?>CO/add_club">Add Club</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>CO/Inspection_record">Inspection Record</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>CO/auto_biography">Cadet's Auto-biography</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>CO/psychologist_report">Psychologist's Report</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>CO/view_record_div_officer">Divisional Officer Record</a>
+                    </div>
+                </div>
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_discipline" aria-expanded="true">
@@ -79,6 +114,64 @@
                     </div>
                 </div>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_warning" aria-expanded="true">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span> Warning</span>
+                    <!-- <span>Components</span> -->
+                </a>
+                <div id="collapse_warning" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?php echo base_url(); ?>CO/add_warning">Add Warning</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_academic" aria-expanded="true">
+                    <i class="fas fa-book"></i>
+                    <span> Academic Record</span>
+                    <!-- <span>Components</span> -->
+                </a>
+                <div id="collapse_academic" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?= base_url(); ?>CO/view_result">Results (Terms I - III)</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>CO/view_training_report">Sea Training Report Term II</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_assesment" aria-expanded="true">
+                    <i class="fas fa-chart-bar"></i>
+                    <span> Assesment</span>
+                    <!-- <span>Components</span> -->
+                </a>
+                <div id="collapse_assesment" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?= base_url(); ?>CO/view_general_remarks">General Remarks</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>CO/view_progress_chart">Progress Chart</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>CO/view_distinction_records">Distictions</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>CO/view_seniority_records">Seniority</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>CO/add_branch_allocation">Branch Allocation</a>
+                        <a class="collapse-item" href="#">Degree Complete</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url(); ?>CO/add_officer_qualities" aria-expanded="true">
+                    <i class="fas fa-medal"></i>
+                    <span> Officer Like Qualities</span>
+                </a>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url(); ?>CO/view_promotion_screen" aria-expanded="true">
+                    <i class="fas fa-award"></i>
+                    <span> Promotion/Relegation</span>
+                </a>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?php echo base_url(); ?>CO/view_activity_log" aria-expanded="true">
                     <i class="far fa-list-alt"></i>

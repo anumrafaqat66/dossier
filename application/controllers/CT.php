@@ -1,5 +1,9 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
+
 class CT extends CI_Controller
 {
     public function __construct()
@@ -2622,5 +2626,959 @@ class CT extends CI_Controller
         }
     }
 
+    public function punishment_records_report($oc_no = NULL, $term = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+
+            $id = $this->session->userdata('user_id');
+
+            $this->db->select('*');
+            $this->db->from('punishment_records');
+            $this->db->where('oc_no', $oc_no);
+            $this->db->where('term', $term);
+            
+
+            $data['punishment_records'] = $this->db->get()->result_array();
+            // echo $term; exit;
+            $data['term'] = $term;
+            $html = $this->load->view('ct/punishment_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Punishment Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
+    public function view_edit_punishment($row_id = null)
+    {
+
+        $row_id = $row_id;;
+        $this->db->select('pr.*, f.*');
+        $this->db->from('punishment_records pr');
+        $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+        $this->db->where('f.oc_no = pr.oc_no');
+        // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        $this->db->where('pr.id', $row_id);
+        // $this->db->where('f.divison_name', $this->session->userdata('division'));
+        // $this->db->where('pr.status', 'Approved');
+        $data['punish_records'] = $this->db->get()->row_array();
+        // print_r($data['punish_records']);exit;
+        $this->load->view('ct/edit_punishment', $data);
+    }
+
+    public function observation_records_report($oc_no = NULL, $term = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+
+            $id = $this->session->userdata('user_id');
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('observation_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', $term);
+            $this->db->where('pr.status', 'Approved');
+
+            $data['observation_records'] = $this->db->get()->result_array();
+
+            $data['term'] = $term;
+            $html = $this->load->view('ct/observation_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Observation Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
+    public function view_edit_observation($row_id = null)
+    {
+
+        $row_id = $row_id;;
+        $this->db->select('pr.*, f.*');
+        $this->db->from('observation_records pr');
+        $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+        // $this->db->where('f.oc_no = pr.oc_no');
+        // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        $this->db->where('pr.id', $row_id);
+        // $this->db->where('f.divison_name', $this->session->userdata('division'));
+        $this->db->where('pr.status', 'Approved');
+        $data['edit_records'] = $this->db->get()->row_array();
+        // print_r($data['edit_records']);
+        $this->load->view('ct/edit_observation', $data);
+    }
+
+    public function warning_records_report($oc_no = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+            $this->db->select('pr.*, f.*');
+            $this->db->from('warning_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+
+            $data['warning_records'] = $this->db->get()->result_array();
+
+            $data['term'] = $term;
+            $html = $this->load->view('ct/warning_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Warning Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
+    public function view_edit_warning($row_id = null)
+    {
+        $row_id = $row_id;
+        $this->db->select('pr.*, f.*');
+        $this->db->from('warning_records pr');
+        $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+        // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        $this->db->where('pr.id', $row_id);
+        // $this->db->where('f.divison_name', $this->session->userdata('division'));
+        $data['warning_records'] = $this->db->get()->row_array();
+        $this->load->view('ct/edit_warning', $data);
+    }
+
+    public function warning_record_insert_report($oc_no = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('branch_allocations pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $data['pn_branch_allocations'] = $this->db->get()->row_array();
+
+            $html = $this->load->view('ct/warning_insert_report', $data, TRUE);
+
+            $dompdf->loadHtml($html);
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Warning Attachment Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
+    public function inspection_records_report($oc_no = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('inspection_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+
+            $data['inspection_records'] = $this->db->get()->result_array();
+
+            $data['term'] = $term;
+            $html = $this->load->view('ct/inspection_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Inspection Record Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
+    public function view_edit_inspection($id = null)
+    {
+        $this->db->select('pr.*, f.*');
+        $this->db->from('inspection_records pr');
+        $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+        // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        // $this->db->where('f.divison_name', $this->session->userdata('division'));
+        $this->db->where('pr.id', $id);
+        $data['pn_inspection_data'] = $this->db->get()->row_array();
+        $this->load->view('ct/edit_inspection_record', $data);
+    }
+
+    public function medical_records_report($oc_no = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('medical_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('f.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+
+            $data['medical_records'] = $this->db->get()->result_array();
+            $html = $this->load->view('ct/medical_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            $dompdf->set_paper('A4', 'landscape');
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Medical Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
+    public function saluting_swimming_records_report($oc_no = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('physical_milestone pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            //$this->db->where('f.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+
+            $data['test_records'] = $this->db->get()->result_array();
+            $html = $this->load->view('ct/saluting_swimming_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            // $dompdf->set_paper('A4', 'landscape');
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Saluting Swimming Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
+    public function physical_efficiency_records_report($oc_no = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('physical_milestone pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-I');
+            $data['test_records'] = $this->db->get()->result_array();
+
+            //Term-P
+            $this->db->select('pr.*, f.*');
+            $this->db->from('physical_milestone pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-P');
+            $data['pn_physical_tests_data_tp'] = $this->db->get()->row_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('term_i_details pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-P');
+            $data['pn_pet1_data_tp'] = $this->db->get()->row_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('term_ii_details pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-P');
+            $data['pn_pet2_data_tp'] = $this->db->get()->row_array();
+
+            //Term-I
+            $this->db->select('pr.*, f.*');
+            $this->db->from('physical_milestone pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-I');
+            $data['pn_physical_tests_data_t1'] = $this->db->get()->row_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('term_i_details pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-I');
+            $data['pn_pet1_data_t1'] = $this->db->get()->row_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('term_ii_details pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-I');
+            $data['pn_pet2_data_t1'] = $this->db->get()->row_array();
+
+            //term-II
+            $this->db->select('pr.*, f.*');
+            $this->db->from('physical_milestone pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-II');
+            $data['pn_physical_tests_data_t2'] = $this->db->get()->row_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('term_i_details pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-II');
+            $data['pn_pet1_data_t2'] = $this->db->get()->row_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('term_ii_details pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-II');
+            $data['pn_pet2_data_t2'] = $this->db->get()->row_array();
+
+            //Term-III
+            $this->db->select('pr.*, f.*');
+            $this->db->from('physical_milestone pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-III');
+            $data['pn_physical_tests_data_t3'] = $this->db->get()->row_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('term_i_details pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-III');
+            $data['pn_pet1_data_t3'] = $this->db->get()->row_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('term_ii_details pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', 'Term-III');
+            $data['pn_pet2_data_t3'] = $this->db->get()->row_array();
+
+            $html = $this->load->view('ct/physical_efficiency_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            // $dompdf->set_paper('A4', 'landscape');
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Physical Efficiency Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
+    public function officer_qualities_records_report($oc_no = NULL, $term = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('officer_qualities pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.term', $term);
+            $data['pn_officer_qualities_data'] = $this->db->get()->row_array();
+            $data['term'] = $term;
+
+            $html = $this->load->view('ct/officer_qualities_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            // $dompdf->set_paper('A4', 'landscape');
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Officer Like Qualities Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
+    public function personal_data_records_report($oc_no = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('personal_datas pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $data['pn_personal_data'] = $this->db->get()->row_array();
+
+            $html = $this->load->view('ct/personal_data_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            // $dompdf->set_paper('A4', 'landscape');
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Personal Data Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
+    public function divisional_officer_records_report($oc_no = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('divisional_officer_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $data['pn_divisional_officer_data'] = $this->db->get()->result_array();
+
+            $html = $this->load->view('ct/divisional_officer_record_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            // $dompdf->set_paper('A4', 'landscape');
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Divisional Officer Records Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+    public function autobiography_record_report($oc_no = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('divisional_officer_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $data['pn_divisional_officer_data'] = $this->db->get()->result_array();
+
+            $html = $this->load->view('ct/autobiography_record_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            // $dompdf->set_paper('A4', 'landscape');
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Autobiography Records Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+    public function psychology_record_report($oc_no = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('divisional_officer_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $data['pn_divisional_officer_data'] = $this->db->get()->result_array();
+
+            $html = $this->load->view('ct/psychology_record_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            // $dompdf->set_paper('A4', 'landscape');
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Psychology Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+    public function result_record_report($oc_no = NULL, $term = NULL, $doc_type = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+
+            // $this->db->select('pr.*, f.*');
+            // $this->db->from('academic_records pr');
+            // $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.oc_no', $oc_no);
+            // $this->db->where('pr.term', $term);
+            // $this->db->where('pr.doc_type', $doc_type);
+
+            // $data['pn_result_record_data'] = $this->db->get()->result_array();
+            $data['term'] = $term;
+            if ($doc_type == 'SeaTraining') {
+                $data['doc_type'] = 'Sea Training';
+            } else {
+                $data['doc_type'] = $doc_type;
+            }
+
+            $html = $this->load->view('ct/result_record_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            // $dompdf->set_paper('A4', 'landscape');
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Result Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
+    public function general_remarks_report($oc_no = NULL, $term = NULL, $type = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+            $assess = '';
+            if ($type == 'Mid') {
+                $assess = 'Mid Term Assessment';
+            } else {
+                $assess = 'Terminal Assessment';
+            }
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('general_remarks pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->where('pr.assessment', $assess);
+            $this->db->where('pr.term', $term);
+            $data['pn_general_remarks'] = $this->db->get()->result_array();
+            $data['term'] = $term;
+            $data['type'] = $assess;
+
+            $html = $this->load->view('ct/general_remarks_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            // $dompdf->set_paper('A4', 'landscape');
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'General Remarks Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
+    public function progress_chart_report($oc_no = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('progress_charts pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $data['pn_progress_chart'] = $this->db->get()->row_array();
+
+            $html = $this->load->view('ct/progress_chart_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            // $dompdf->set_paper('A4', 'landscape');
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Progress Chart Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
+    public function distinction_achieved_report($oc_no = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('distinctions_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $data['pn_distinctions_records'] = $this->db->get()->result_array();
+
+            $html = $this->load->view('ct/distinction_achieved_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            // $dompdf->set_paper('A4', 'landscape');
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Distinction Achieved Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
+    public function seniority_record_report($oc_no = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('seniority_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $data['pn_seniority_records'] = $this->db->get()->row_array();
+
+            $html = $this->load->view('ct/seniority_record_report', $data, TRUE); //$graph, TRUE);
+
+            $dompdf->loadHtml($html);
+            // $dompdf->set_paper('A4', 'landscape');
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Seniority Records Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+            //exit;
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
+    public function branch_allocation_report($oc_no = NULL)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            require_once APPPATH . 'third_party/dompdf/vendor/autoload.php';
+            $options = new Options();
+            $options->set('isRemoteEnabled', TRUE);
+            $options->set('enable_html5_parser', TRUE);
+            $options->set('tempDir', $_SERVER['DOCUMENT_ROOT'] . '/pdf-export/tmp');
+            $dompdf = new Dompdf($options);
+            $dompdf->set_base_path($_SERVER['DOCUMENT_ROOT'] . '');
+            $id = $this->session->userdata('user_id');
+
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('branch_allocations pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $data['pn_branch_allocations'] = $this->db->get()->row_array();
+
+            $html = $this->load->view('ct/branch_allocation_report', $data, TRUE);
+
+            $dompdf->loadHtml($html);
+            $dompdf->render();
+
+            $output = $dompdf->output();
+            $doc_name = 'Branch Allocation Report.pdf';
+            file_put_contents($doc_name, $output);
+            redirect($doc_name);
+        } else {
+            $this->load->view('userpanel/login');
+        }
+    }
+
+    public function view_edit_personal_record($id = null)
+    {
+        $this->db->select('pr.*, f.*');
+        $this->db->from('personal_datas pr');
+        $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+        // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        // $this->db->where('f.divison_name', $this->session->userdata('division'));
+        $this->db->where('pr.p_id', $id);
+        $data['pn_personal_data'] = $this->db->get()->row_array();
+
+        $data['divisions'] = $this->db->where('division_name', $this->session->userdata('division'))->get('divisions')->result_array();
+        //print_r($data['pn_personal_data']);exit;
+
+        $this->load->view('ct/edit_personal_data', $data);
+    }
+
+    public function view_edit_qualities($p_id = null)
+    {
+        $this->db->select('pr.*, f.*');
+        $this->db->from('officer_qualities pr');
+        $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+        // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        // $this->db->where('f.divison_name', $this->session->userdata('division'));
+        $this->db->where('pr.p_id', $p_id);
+        $data['officer_data'] = $this->db->get()->row_array();
+        $data['quality_list'] = $this->db->get('quality_list')->result_array();
+        //print_r($data['officer_data']);exit
+        $this->load->view('ct/edit_officer_like_qualities', $data);
+    }
+
+    public function view_edit_officer_record($row_id = null)
+    {
+
+        $this->db->select('pr.*, f.*');
+        $this->db->from('divisional_officer_records pr');
+        $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+        // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        // $this->db->where('f.divison_name', $this->session->userdata('division'));
+        // $this->db->where('f.oc_no', $oc_no);
+        $this->db->where('pr.id', $row_id);
+        $data['divisional_officer_data'] = $this->db->get()->row_array();
+        // print_r($data['divisional_officer_data']);exit;
+        $this->load->view('ct/edit_officer_record', $data);
+    }
+
+    public function view_edit_biography($p_id = null)
+    {
+        $this->db->select('pr.*, f.*');
+        $this->db->from('cadets_autobiographies pr');
+        $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+        // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        // $this->db->where('f.divison_name', $this->session->userdata('division'));
+        $this->db->where('pr.p_id', $p_id);
+        $data['biography_data'] = $this->db->get()->row_array();
+        
+        $this->load->view('ct/edit_cadet_autobiography', $data);
+    }
+
+    public function view_edit_psychologist_report($id = null)
+    {
+        $this->db->select('pr.*, f.*');
+        $this->db->from('psychologist_reports pr');
+        $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+        // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+        // $this->db->where('f.divison_name', $this->session->userdata('division'));
+        $this->db->where('pr.p_id', $id);
+        $data['psychologist_data'] = $this->db->get()->row_array();
+        // print_r($data['psychologist_data']);exit;
+        $this->load->view('ct/edit_psychologist_report', $data);
+    }
 
 }
