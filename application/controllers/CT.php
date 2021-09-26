@@ -15,8 +15,8 @@ class CT extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
-
-            $this->load->view('ct/dashboard');
+            $data['total_cadets']= $this->db->select('count(*) as count')->where('completed',0)->get('pn_form1s')->row_array();
+            $this->load->view('ct/dashboard', $data);
         } else {
             $this->load->view('login');
         }
@@ -600,6 +600,8 @@ class CT extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $data['pn_data'] = $this->db->where('divison_name',  'XYZ')->get('pn_form1s')->row_array();
+            $data['divisions'] = $this->db->get('divisions')->result_array();
+            
             $this->load->view('ct/view_dossier_folder', $data);
         }
     }
@@ -3579,6 +3581,21 @@ class CT extends CI_Controller
         $data['psychologist_data'] = $this->db->get()->row_array();
         // print_r($data['psychologist_data']);exit;
         $this->load->view('ct/edit_psychologist_report', $data);
+    }
+
+    public function search_cadet_termwise (){
+        if ($this->session->has_userdata('user_id')) {
+            $term = $_POST['term'];
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('personal_datas pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('f.term',$term);
+            
+            $data['cadets'] = $this->db->get()->result_array();
+
+            echo json_encode($data['cadets']);
+        }
     }
 
 }

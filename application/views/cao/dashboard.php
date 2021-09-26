@@ -13,6 +13,14 @@
             <h1 class="h3 mb-0 text-black-800"><strong>PAKISTAN NAVAL ACADEMY</strong></h1>
         </div>
     </div>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <div class="col-lg-6">
+
+        </div>
+        <div class="col-lg-6" style="text-align:right">
+            <h1 class="h3 mb-0 text-black-800"><strong>Total Cadets: <?= $total_cadets['count']; ?></strong></h1>
+        </div>
+    </div>
 
     <?php
     $dataPoints1 = array(
@@ -63,29 +71,29 @@
         chart.render();
 
         var chart = new CanvasJS.Chart("chartContainer2", {
-	    animationEnabled: true,
-	    theme: "light2", // "light1", "light2", "dark1", "dark2"
-	    title:{
-		    text: "Cadet Results"
-	    },
-        subtitles: [{
+            animationEnabled: true,
+            theme: "light2", // "light1", "light2", "dark1", "dark2"
+            title: {
+                text: "Cadet Results"
+            },
+            subtitles: [{
                 text: "Pakistan Navy Academy"
             }],
-	    axisY: {
-		    title: "Aggregate"
-	    },
-	    data: [{        
-		    type: "column",  
-		    showInLegend: true, 
-		    legendMarkerColor: "grey",
-		    legendText: "Total Aggregate",
-		    dataPoints: <?php echo json_encode($dataPoints2, JSON_NUMERIC_CHECK); ?>
-	    }]
-    });
-    chart.render();
+            axisY: {
+                title: "Aggregate"
+            },
+            data: [{
+                type: "column",
+                showInLegend: true,
+                legendMarkerColor: "grey",
+                legendText: "Total Aggregate",
+                dataPoints: <?php echo json_encode($dataPoints2, JSON_NUMERIC_CHECK); ?>
+            }]
+        });
+        chart.render();
     }
 
-    
+
     function seen(data) {
         // alert('in');
         // alert(data);

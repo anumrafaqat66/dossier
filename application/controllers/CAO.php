@@ -30,6 +30,7 @@ class CAO extends CI_Controller
             $data['saif_count']= $this->db->select('count(*) as count')->where('divison_name','Saif division')->get('pn_form1s')->row_array();
             $data['khalid_count']= $this->db->select('count(*) as count')->where('divison_name','Khalid division')->get('pn_form1s')->row_array();
             $data['moawin_count']= $this->db->select('count(*) as count')->where('divison_name','Moawin division')->get('pn_form1s')->row_array();
+            $data['total_cadets']= $this->db->select('count(*) as count')->where('completed',0)->get('pn_form1s')->row_array();
 
             $this->load->view('cao/dashboard',$data);
         } else {

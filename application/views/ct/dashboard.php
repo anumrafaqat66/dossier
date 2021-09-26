@@ -10,6 +10,14 @@
             <h1 class="h3 mb-0 text-black-800"><strong>PAKISTAN NAVAL ACADEMY</strong></h1>
         </div>
     </div>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <div class="col-lg-6">
+
+        </div>
+        <div class="col-lg-6" style="text-align:right">
+            <h1 class="h3 mb-0 text-black-800"><strong>Total Cadets: <?= $total_cadets['count']; ?></strong></h1>
+        </div>
+    </div>
 </div>
 
 </div>

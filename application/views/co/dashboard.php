@@ -3,20 +3,28 @@
 
 <div class="container-fluid my-4">
 
-   
+
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <div class="col-lg-6">
+        <div class="col-lg-6">
             <h1 class="h3 mb-0 text-black-800"><strong>Welcome Commanding Officer!</strong></h1>
         </div>
         <div class="col-lg-6" style="text-align:right">
             <h1 class="h3 mb-0 text-black-800"><strong>PAKISTAN NAVAL ACADEMY</strong></h1>
         </div>
     </div>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <div class="col-lg-6">
+
+        </div>
+        <div class="col-lg-6" style="text-align:right">
+            <h1 class="h3 mb-0 text-black-800"><strong>Total Cadets: <?= $total_cadets['count']; ?></strong></h1>
+        </div>
+    </div>
     <!-- Content Row -->
     <div class="row">
 
-      
+
     </div>
 
 </div>
