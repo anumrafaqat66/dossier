@@ -6,20 +6,13 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-black-800"><strong>Welcome Cheif Admin Officer!</strong></h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#all_projects"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-    </div>
-    <!-- Content Row -->
-    <!-- <div class="card-body bg-custom3">
-        <div class="form-group row" style="margin-top:50px;">
-            <div class="col-sm-6">
-                <div id="chartContainer1" style="height: 370px; width: 100%;"></div>
-            </div>
-            <div class="col-sm-6">
-                <div id="chartContainer2" style="height: 370px; width: 100%;"></div>
-            </div>
+        <div class="col-lg-6">
+            <h1 class="h3 mb-0 text-black-800"><strong>Welcome Cheif Admin Officer!</strong></h1>
         </div>
-    </div> -->
+        <div class="col-lg-6" style="text-align:right">
+            <h1 class="h3 mb-0 text-black-800"><strong>PAKISTAN NAVAL ACADEMY</strong></h1>
+        </div>
+    </div>
 
     <?php
     $dataPoints1 = array(
