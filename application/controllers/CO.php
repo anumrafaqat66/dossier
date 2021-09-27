@@ -15,24 +15,24 @@ class CO extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
 
-            $data['kashmir_count']= $this->db->select('count(*) as count')->where('divison_name','Kashmir division')->get('pn_form1s')->row_array();
-            $data['tariq_count']= $this->db->select('count(*) as count')->where('divison_name','Tariq division')->get('pn_form1s')->row_array();
-            $data['shamsheer_count']= $this->db->select('count(*) as count')->where('divison_name','Shamsheer division')->get('pn_form1s')->row_array();
-            $data['hamza_count']= $this->db->select('count(*) as count')->where('divison_name','Hamza division')->get('pn_form1s')->row_array();
-            $data['nasr_count']= $this->db->select('count(*) as count')->where('divison_name','Nasr division')->get('pn_form1s')->row_array();
-            $data['khaibar_count']= $this->db->select('count(*) as count')->where('divison_name','Khaibar division')->get('pn_form1s')->row_array();
-            $data['saad_count']= $this->db->select('count(*) as count')->where('divison_name','Saad division')->get('pn_form1s')->row_array();
-            $data['aslat_count']= $this->db->select('count(*) as count')->where('divison_name','Aslat division')->get('pn_form1s')->row_array();
-            $data['zulfiqar_count']= $this->db->select('count(*) as count')->where('divison_name','Zulfiqar division')->get('pn_form1s')->row_array();
-            $data['yarmook_count']= $this->db->select('count(*) as count')->where('divison_name','Yarmook division')->get('pn_form1s')->row_array();
-            $data['alamgir_count']= $this->db->select('count(*) as count')->where('divison_name','Alamgir division')->get('pn_form1s')->row_array();
-            $data['tabuk_count']= $this->db->select('count(*) as count')->where('divison_name','Tabuk division')->get('pn_form1s')->row_array();
-            $data['saif_count']= $this->db->select('count(*) as count')->where('divison_name','Saif division')->get('pn_form1s')->row_array();
-            $data['khalid_count']= $this->db->select('count(*) as count')->where('divison_name','Khalid division')->get('pn_form1s')->row_array();
-            $data['moawin_count']= $this->db->select('count(*) as count')->where('divison_name','Moawin division')->get('pn_form1s')->row_array();
-            $data['total_cadets']= $this->db->select('count(*) as count')->where('completed',0)->get('pn_form1s')->row_array();
+            $data['kashmir_count'] = $this->db->select('count(*) as count')->where('divison_name', 'Kashmir division')->get('pn_form1s')->row_array();
+            $data['tariq_count'] = $this->db->select('count(*) as count')->where('divison_name', 'Tariq division')->get('pn_form1s')->row_array();
+            $data['shamsheer_count'] = $this->db->select('count(*) as count')->where('divison_name', 'Shamsheer division')->get('pn_form1s')->row_array();
+            $data['hamza_count'] = $this->db->select('count(*) as count')->where('divison_name', 'Hamza division')->get('pn_form1s')->row_array();
+            $data['nasr_count'] = $this->db->select('count(*) as count')->where('divison_name', 'Nasr division')->get('pn_form1s')->row_array();
+            $data['khaibar_count'] = $this->db->select('count(*) as count')->where('divison_name', 'Khaibar division')->get('pn_form1s')->row_array();
+            $data['saad_count'] = $this->db->select('count(*) as count')->where('divison_name', 'Saad division')->get('pn_form1s')->row_array();
+            $data['aslat_count'] = $this->db->select('count(*) as count')->where('divison_name', 'Aslat division')->get('pn_form1s')->row_array();
+            $data['zulfiqar_count'] = $this->db->select('count(*) as count')->where('divison_name', 'Zulfiqar division')->get('pn_form1s')->row_array();
+            $data['yarmook_count'] = $this->db->select('count(*) as count')->where('divison_name', 'Yarmook division')->get('pn_form1s')->row_array();
+            $data['alamgir_count'] = $this->db->select('count(*) as count')->where('divison_name', 'Alamgir division')->get('pn_form1s')->row_array();
+            $data['tabuk_count'] = $this->db->select('count(*) as count')->where('divison_name', 'Tabuk division')->get('pn_form1s')->row_array();
+            $data['saif_count'] = $this->db->select('count(*) as count')->where('divison_name', 'Saif division')->get('pn_form1s')->row_array();
+            $data['khalid_count'] = $this->db->select('count(*) as count')->where('divison_name', 'Khalid division')->get('pn_form1s')->row_array();
+            $data['moawin_count'] = $this->db->select('count(*) as count')->where('divison_name', 'Moawin division')->get('pn_form1s')->row_array();
+            $data['total_cadets'] = $this->db->select('count(*) as count')->where('completed', 0)->get('pn_form1s')->row_array();
 
-            $this->load->view('co/dashboard',$data);
+            $this->load->view('co/dashboard', $data);
         } else {
             $this->load->view('login');
         }
@@ -149,7 +149,7 @@ class CO extends CI_Controller
             $this->load->view('co/activity_log', $data);
         }
     }
-    
+
 
     public function get_graph_termwise()
     {
@@ -157,7 +157,7 @@ class CO extends CI_Controller
 
         $data['divisions'] = $this->db->get('divisions')->result_array();
         $data['division_set'] = 'termwise';
-        
+
         $data['PST_result_tp'] = $this->db->select('count(*) as count')->where('PST_result', 'qualified')->where('term', 'Term-P')->get('physical_milestone')->row_array();
         $data['SST_result_tp'] = $this->db->select('count(*) as count')->where('SST_result', 'qualified')->where('term', 'Term-P')->get('physical_milestone')->row_array();
         $data['PET_I_result_tp'] = $this->db->select('count(*) as count')->where('PET_I_result', 'qualified')->where('term', 'Term-P')->get('physical_milestone')->row_array();
@@ -617,7 +617,7 @@ class CO extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $data['pn_data'] = $this->db->where('divison_name',  'XYZ')->get('pn_form1s')->row_array();
-             $data['divisions'] = $this->db->get('divisions')->result_array();
+            $data['divisions'] = $this->db->get('divisions')->result_array();
             $this->load->view('co/view_dossier_folder', $data);
         }
     }
@@ -1067,7 +1067,7 @@ class CO extends CI_Controller
             $this->load->view('co/psychologist_report');
         }
     }
-    
+
     public function auto_biography()
     {
         if ($this->session->has_userdata('user_id')) {
@@ -2544,7 +2544,7 @@ class CO extends CI_Controller
             redirect('CO/add_officer_qualities');
         }
     }
-    
+
     public function update_officer_qualities()
     {
         if ($this->input->post()) {
@@ -2663,7 +2663,7 @@ class CO extends CI_Controller
             $this->db->from('punishment_records');
             $this->db->where('oc_no', $oc_no);
             $this->db->where('term', $term);
-            
+
 
             $data['punishment_records'] = $this->db->get()->result_array();
             // echo $term; exit;
@@ -3582,7 +3582,7 @@ class CO extends CI_Controller
         // $this->db->where('f.divison_name', $this->session->userdata('division'));
         $this->db->where('pr.p_id', $p_id);
         $data['biography_data'] = $this->db->get()->row_array();
-        
+
         $this->load->view('co/edit_cadet_autobiography', $data);
     }
 
@@ -3598,38 +3598,52 @@ class CO extends CI_Controller
         // print_r($data['psychologist_data']);exit;
         $this->load->view('co/edit_psychologist_report', $data);
     }
-        public function search_cadet_termwise (){
+
+    public function search_cadet_termwise()
+    {
         if ($this->session->has_userdata('user_id')) {
             $term = $_POST['term'];
+            $division = $_POST['div'];
+            // echo $term;
+            // echo $division;
+            if ($division == null || $division == '') {
+                $this->db->select('pr.*, f.*');
+                $this->db->from('personal_datas pr');
+                $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+                $this->db->where('f.term', $term);
+            } else {
+                $this->db->select('pr.*, f.*');
+                $this->db->from('personal_datas pr');
+                $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+                $this->db->where('f.term', $term);
+                $this->db->where('f.divison_name', $division);
+            }
 
-            $this->db->select('pr.*, f.*');
-            $this->db->from('personal_datas pr');
-            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('f.term',$term);
-            
             $data['cadets'] = $this->db->get()->result_array();
-            // print_r($data['cadets']) ;exit;
-
             echo json_encode($data['cadets']);
         }
     }
 
-      public function search_cadet_divisionwise (){
+    public function search_cadet_divisionwise()
+    {
         if ($this->session->has_userdata('user_id')) {
             $term = $_POST['term'];
-             $division = $_POST['division'];
-             ///echo $term;
-             //echo $division;
+            $division = $_POST['division'];
 
-            $this->db->select('pr.*, f.*');
-            $this->db->from('personal_datas pr');
-            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('f.term',$term);
-             $this->db->where('f.divison_name',$division);
-            
+            if ($term == null || $term == '') {
+                $this->db->select('pr.*, f.*');
+                $this->db->from('personal_datas pr');
+                $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+                $this->db->where('f.divison_name', $division);
+            } else {
+                $this->db->select('pr.*, f.*');
+                $this->db->from('personal_datas pr');
+                $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+                $this->db->where('f.term', $term);
+                $this->db->where('f.divison_name', $division);
+            }
+
             $data['cadets-div'] = $this->db->get()->result_array();
-           // print_r($data['cadets']) ;exit;
-
             echo json_encode($data['cadets-div']);
         }
     }

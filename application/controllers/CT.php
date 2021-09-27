@@ -15,7 +15,7 @@ class CT extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
-            $data['total_cadets']= $this->db->select('count(*) as count')->where('completed',0)->get('pn_form1s')->row_array();
+            $data['total_cadets'] = $this->db->select('count(*) as count')->where('completed', 0)->get('pn_form1s')->row_array();
             $this->load->view('ct/dashboard', $data);
         } else {
             $this->load->view('login');
@@ -601,7 +601,7 @@ class CT extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $data['pn_data'] = $this->db->where('divison_name',  'XYZ')->get('pn_form1s')->row_array();
             $data['divisions'] = $this->db->get('divisions')->result_array();
-            
+
             $this->load->view('ct/view_dossier_folder', $data);
         }
     }
@@ -1051,7 +1051,7 @@ class CT extends CI_Controller
             $this->load->view('ct/psychologist_report');
         }
     }
-    
+
     public function auto_biography()
     {
         if ($this->session->has_userdata('user_id')) {
@@ -2528,7 +2528,7 @@ class CT extends CI_Controller
             redirect('CT/add_officer_qualities');
         }
     }
-    
+
     public function update_officer_qualities()
     {
         if ($this->input->post()) {
@@ -2647,7 +2647,7 @@ class CT extends CI_Controller
             $this->db->from('punishment_records');
             $this->db->where('oc_no', $oc_no);
             $this->db->where('term', $term);
-            
+
 
             $data['punishment_records'] = $this->db->get()->result_array();
             // echo $term; exit;
@@ -3566,7 +3566,7 @@ class CT extends CI_Controller
         // $this->db->where('f.divison_name', $this->session->userdata('division'));
         $this->db->where('pr.p_id', $p_id);
         $data['biography_data'] = $this->db->get()->row_array();
-        
+
         $this->load->view('ct/edit_cadet_autobiography', $data);
     }
 
@@ -3583,41 +3583,52 @@ class CT extends CI_Controller
         $this->load->view('ct/edit_psychologist_report', $data);
     }
 
-    public function search_cadet_termwise (){
+    public function search_cadet_termwise()
+    {
         if ($this->session->has_userdata('user_id')) {
             $term = $_POST['term'];
+            $division = $_POST['div'];
+            // echo $term;
+            // echo $division;
+            if ($division == null || $division == '') {
+                $this->db->select('pr.*, f.*');
+                $this->db->from('personal_datas pr');
+                $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+                $this->db->where('f.term', $term);
+            } else {
+                $this->db->select('pr.*, f.*');
+                $this->db->from('personal_datas pr');
+                $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+                $this->db->where('f.term', $term);
+                $this->db->where('f.divison_name', $division);
+            }
 
-            $this->db->select('pr.*, f.*');
-            $this->db->from('personal_datas pr');
-            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('f.term',$term);
-            
             $data['cadets'] = $this->db->get()->result_array();
-            // print_r($data['cadets']) ;exit;
-
             echo json_encode($data['cadets']);
         }
     }
 
-      public function search_cadet_divisionwise (){
+    public function search_cadet_divisionwise()
+    {
         if ($this->session->has_userdata('user_id')) {
             $term = $_POST['term'];
-             $division = $_POST['division'];
-             ///echo $term;
-             //echo $division;
+            $division = $_POST['division'];
 
-            $this->db->select('pr.*, f.*');
-            $this->db->from('personal_datas pr');
-            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
-            $this->db->where('f.term',$term);
-             $this->db->where('f.divison_name',$division);
-            
+            if ($term == null || $term == '') {
+                $this->db->select('pr.*, f.*');
+                $this->db->from('personal_datas pr');
+                $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+                $this->db->where('f.divison_name', $division);
+            } else {
+                $this->db->select('pr.*, f.*');
+                $this->db->from('personal_datas pr');
+                $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+                $this->db->where('f.term', $term);
+                $this->db->where('f.divison_name', $division);
+            }
+
             $data['cadets-div'] = $this->db->get()->result_array();
-           // print_r($data['cadets']) ;exit;
-
             echo json_encode($data['cadets-div']);
         }
     }
-    
-
 }

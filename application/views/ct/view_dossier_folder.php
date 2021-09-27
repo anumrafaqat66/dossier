@@ -448,9 +448,9 @@
 
 
     </div>
-    <div class="card-body bg-custom3" id="container-2">
+    <div class="card-body bg-custom3" id="cadet_list_container" style="display:none" >
         <?php if (!isset($pn_data['name'])) {
-       ?>
+        ?>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
@@ -5151,12 +5151,16 @@
 
     $('#term_select').on('change', function() {
         var selectedValue = $(this).val();
+        var selectedValuediv = $('#div_select').val();
         // alert(selectedValue);
+        // alert(selectedValuediv);
+        
         $.ajax({
             url: '<?= base_url(); ?>CT/search_cadet_termwise',
             method: 'POST',
             data: {
-                'term': selectedValue
+                'term': selectedValue,
+                'div' : selectedValuediv
             },
             success: function(data) {
                 var result = jQuery.parseJSON(data);
@@ -5166,13 +5170,13 @@
                 if (len > 0) {
                     for (var i = 0; i < len; i++) {
 
-                    $("#list_of_cadets").append(`<tr>
+                        $("#list_of_cadets").append(`<tr>
                                                         <td style="border:none !important">${i+1}</td>
                                                         <td style="border:none !important">${result[i]['name']}</td>
                                                         <td style="border:none !important">${result[i]['oc_no']}</td>
                                                         <td style="border:none !important">${result[i]['term']}</td>
                                                         <td style="border:none !important">${result[i]['divison_name']}</td>
-                                                        <td scope="row" style="border:none !important;text-align:center"><button type="button" onclick="show_cadet(${result[i]['oc_no']})" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#punishments">Veiw Dossier</button></td>
+                                                        <td scope="row" style="border:none !important;text-align:center"><button type="button" onclick="show_cadet(${"'" + result[i]['oc_no'] + "'"})" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#punishments">Veiw Dossier</button></td>
                                                     </tr>`);
                     }
                 } else {
@@ -5188,43 +5192,45 @@
             },
             async: true
         });
+
+        $('#cadet_list_container').show();
     });
 
-        $('#div_select').on('change', function() {
+    $('#div_select').on('change', function() {
         var selectedValueterm = $('#term_select').val();
-        var selectedValuediv= $(this).val();
-         //alert(selectedValueterm);
-         //alert(selectedValuediv);
+        var selectedValuediv = $(this).val();
+        //  alert(selectedValueterm);
+        //alert(selectedValuediv);
 
         $.ajax({
             url: '<?= base_url(); ?>CT/search_cadet_divisionwise',
             method: 'POST',
             data: {
                 'term': selectedValueterm,
-                'division':selectedValuediv
+                'division': selectedValuediv
             },
             success: function(data) {
-               // alert("Successss")
+                // alert("Successss")
                 var result = jQuery.parseJSON(data);
                 var len = result.length;
-               // alert(len);
+                // alert(len);
 
                 $("#list_of_cadets").empty();
                 if (len > 0) {
                     //alert("data exist");
                     for (var i = 0; i < len; i++) {
 
-                    $("#list_of_cadets").append(`<tr>
+                        $("#list_of_cadets").append(`<tr>
                                                         <td style="border:none !important">${i+1}</td>
                                                         <td style="border:none !important">${result[i]['name']}</td>
                                                         <td style="border:none !important">${result[i]['oc_no']}</td>
                                                         <td style="border:none !important">${result[i]['term']}</td>
                                                         <td style="border:none !important">${result[i]['divison_name']}</td>
-                                                        <td scope="row" style="border:none !important;text-align:center"><button type="button" onclick="show_cadet(${result[i]['oc_no']})" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#punishments">Veiw Dossier</button></td>
+                                                        <td scope="row" style="border:none !important;text-align:center"><button type="button" onclick="show_cadet(${ "'"+ result[i]['oc_no'] + "'" })" class="btn btn-primary btn-user rounded-pill" >Veiw Dossier</button></td>
                                                     </tr>`);
                     }
                 } else {
-                     //alert("data not exist");
+                    //alert("data not exist");
                     $("#list_of_cadets").append(`<tr>
                                                     <td style="border:none !important">No Data Found</td>
                                                     <td style="border:none !important"></td>
@@ -5237,28 +5243,31 @@
             },
             async: true
         });
+
+        $('#cadet_list_container').show();
     });
 
 
     function show_cadet(oc_no) {
+        
         $.ajax({
-                url: '<?= base_url(); ?>CT/search_cadet_for_dossier_folder',
-                method: 'POST',
-                data: {
-                    'oc_no': oc_no
-                },
-                success: function(data) {
-                    if (data != '0') {
-                        var newDoc = document.open("text/html", "replace");
-                        newDoc.write(data);
-                        newDoc.close();
-                        $('#cadet_dossier').show();
-                    } else {
-                        $('#no_data').show();
-                        $('#cadet_dossier').hide();
-                    }
-                },
-                async: true
-            });
+            url: '<?= base_url(); ?>CT/search_cadet_for_dossier_folder',
+            method: 'POST',
+            data: {
+                'oc_no': oc_no
+            },
+            success: function(data) {
+                if (data != '0') {
+                    var newDoc = document.open("text/html", "replace");
+                    newDoc.write(data);
+                    newDoc.close();
+                    $('#cadet_dossier').show();
+                } else {
+                    $('#no_data').show();
+                    $('#cadet_dossier').hide();
+                }
+            },
+            async: true
+        });
     }
 </script>
