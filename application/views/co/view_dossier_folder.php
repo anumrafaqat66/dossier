@@ -392,6 +392,106 @@
 
     </div>
 
+    <div class="card-body bg-custom3" id="container-2">
+        <?php if (!isset($pn_data['name'])) { ?>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+
+                        <div class="card-header bg-custom1">
+                            <h1 class="h4">Select Cadet</h1>
+                        </div>
+
+                        <div class="card-body bg-custom2" style="font-size:small;text-align: justify;">
+                            <div class="form-group row">
+                                <div class="col-sm-3">
+                                    <h4><strong>Termwise</strong></h4>
+                                </div>
+                                <div class="col-sm-3">
+                                    <select class="form-control rounded-pill" name="term_select" id="term_select" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:100%;">
+                                        <option class="form-control form-control-user" value="">Select Term</option>
+                                        <option class="form-control form-control-user" value="Term-P">Term-Prep</option>
+                                        <option class="form-control form-control-user" value="Term-I">Term-I</option>
+                                        <option class="form-control form-control-user" value="Term-II">Term-II</option>
+                                        <option class="form-control form-control-user" value="Term-III">Term-III</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+
+                                </div>
+                                <div class="col-sm-6">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3">
+                                    <h4><strong>Divisionwise</strong></h4>
+                                </div>
+                                <div class="col-sm-3">
+                                    <select id="div_select" class="form-control rounded-pill" name="div_select" id="div_select" data-placeholder="Select ship" style="font-size: 0.8rem; height:100%;">
+                                        <option class="form-control form-control-user" value="">Select Division</option>
+                                        <?php foreach ($divisions as $data) { ?>
+                                            <option class="form-control form-control-user" value="<?= $data['division_name'] ?>"><?= $data['division_name'] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        <?php } ?>
+
+
+    </div>
+
+
+     <div class="card-body bg-custom3" id="container-2">
+        <?php if (!isset($pn_data['name'])) {
+       ?>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header bg-custom1">
+                            <h1 class="h4">List of Cadets</h1>
+                        </div>
+                    </div>
+                    <div class="card-body bg-custom2" style="font-size:small;text-align: justify;">
+                        <div class="col-sm-12">
+                            <div class="card-body">
+                                <div id="table_div">
+                                    <table id="datatable" class="table table-striped" style="color:black;">
+                                        <thead>
+                                            <tr>
+                                                <th style="border:none !important" scope="col">Sr. No.</th>
+                                                <th style="border:none !important" scope="col">Cadet Name</th>
+                                                <th style="border:none !important" scope="col">OC No.</th>
+                                                <th style="border:none !important" scope="col">Term</th>
+                                                <th style="border:none !important" scope="col">Division Name</th>
+                                                <th style="border:none !important; text-align:center" scope="col">Action</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody id="list_of_cadets">
+                                            <tr>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        <?php } ?>
+
+
+    </div>
+
 
     <div class="card-body bg-custom3" id="container-2">
         <?php if (!isset($pn_data['name'])) { ?>
@@ -5050,4 +5150,95 @@
             async: true
         });
     });
+
+    $('#term_select').on('change', function() {
+        var selectedValue = $(this).val();
+        // alert(selectedValue);
+        $.ajax({
+            url: '<?= base_url(); ?>CT/search_cadet_termwise',
+            method: 'POST',
+            data: {
+                'term': selectedValue
+            },
+            success: function(data) {
+                var result = jQuery.parseJSON(data);
+                var len = result.length;
+
+                $("#list_of_cadets").empty();
+                if (len > 0) {
+                    for (var i = 0; i < len; i++) {
+
+                    $("#list_of_cadets").append(`<tr>
+                                                        <td style="border:none !important">${i+1}</td>
+                                                        <td style="border:none !important">${result[i]['name']}</td>
+                                                        <td style="border:none !important">${result[i]['oc_no']}</td>
+                                                        <td style="border:none !important">${result[i]['term']}</td>
+                                                        <td style="border:none !important">${result[i]['divison_name']}</td>
+                                                        <td scope="row" style="border:none !important;text-align:center"><button type="button" onclick="show_cadet(${result[i]['oc_no']})" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#punishments">Veiw Dossier</button></td>
+                                                    </tr>`);
+                    }
+                } else {
+                    $("#list_of_cadets").append(`<tr>
+                                                    <td style="border:none !important">No Data Found</td>
+                                                    <td style="border:none !important"></td>
+                                                    <td style="border:none !important"></td>
+                                                    <td style="border:none !important"></td>
+                                                    <td style="border:none !important"></td>
+                                                    <td style="border:none !important"></td>
+                                                    </tr>`);
+                }
+            },
+            async: true
+        });
+    });
+
+        $('#div_select').on('change', function() {
+        var selectedValueterm = $('#term_select').val();
+        var selectedValuediv= $(this).val();
+         //alert(selectedValueterm);
+         //alert(selectedValuediv);
+
+        $.ajax({
+            url: '<?= base_url(); ?>CT/search_cadet_divisionwise',
+            method: 'POST',
+            data: {
+                'term': selectedValueterm,
+                'division':selectedValuediv
+            },
+            success: function(data) {
+               // alert("Successss")
+                var result = jQuery.parseJSON(data);
+                var len = result.length;
+               // alert(len);
+
+                $("#list_of_cadets").empty();
+                if (len > 0) {
+                    //alert("data exist");
+                    for (var i = 0; i < len; i++) {
+
+                    $("#list_of_cadets").append(`<tr>
+                                                        <td style="border:none !important">${i+1}</td>
+                                                        <td style="border:none !important">${result[i]['name']}</td>
+                                                        <td style="border:none !important">${result[i]['oc_no']}</td>
+                                                        <td style="border:none !important">${result[i]['term']}</td>
+                                                        <td style="border:none !important">${result[i]['divison_name']}</td>
+                                                        <td scope="row" style="border:none !important;text-align:center"><button type="button" onclick="show_cadet(${result[i]['oc_no']})" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#punishments">Veiw Dossier</button></td>
+                                                    </tr>`);
+                    }
+                } else {
+                     //alert("data not exist");
+                    $("#list_of_cadets").append(`<tr>
+                                                    <td style="border:none !important">No Data Found</td>
+                                                    <td style="border:none !important"></td>
+                                                    <td style="border:none !important"></td>
+                                                    <td style="border:none !important"></td>
+                                                    <td style="border:none !important"></td>
+                                                    <td style="border:none !important"></td>
+                                                    </tr>`);
+                }
+            },
+            async: true
+        });
+    });
+
 </script>

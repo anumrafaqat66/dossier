@@ -3593,9 +3593,31 @@ class CT extends CI_Controller
             $this->db->where('f.term',$term);
             
             $data['cadets'] = $this->db->get()->result_array();
+            // print_r($data['cadets']) ;exit;
 
             echo json_encode($data['cadets']);
         }
     }
+
+      public function search_cadet_divisionwise (){
+        if ($this->session->has_userdata('user_id')) {
+            $term = $_POST['term'];
+             $division = $_POST['division'];
+             ///echo $term;
+             //echo $division;
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('personal_datas pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('f.term',$term);
+             $this->db->where('f.divison_name',$division);
+            
+            $data['cadets-div'] = $this->db->get()->result_array();
+           // print_r($data['cadets']) ;exit;
+
+            echo json_encode($data['cadets-div']);
+        }
+    }
+    
 
 }
