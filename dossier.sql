@@ -1206,13 +1206,7 @@ CREATE TABLE `pn_form1s` (
 --
 
 INSERT INTO `pn_form1s` (`p_id`, `oc_no`, `p_no`, `name`, `class`, `issb_batch`, `do_id`, `created_at`, `updated_at`, `unit_id`, `joto_id`, `term`, `phase`, `completed`, `isterminated`, `relegate`, `do_nhq`, `nhq_joto`, `joto_nhq`, `do_joto`, `category`, `bahadur`, `relegated_p_id`, `divison_name`) VALUES
-(1, '16135', '96862', 'shahzad ali', '2016A', 'NKIWs', 3, '2020-06-03 19:37:59', '2020-12-13 14:08:25', 3, 5, 'Term I', 'Phase 1', b'0', b'0', b'0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(33, '12349', '34561', 'Asif', 'ABC', '2019A', 3, '2020-12-15 09:33:13', '2020-12-15 11:33:47', 2, 1, 'Term III', 'Phase 3', b'1', b'0', b'0', 2, 4, 2, NULL, 'PN-Cadet', '2', NULL, NULL),
-(34, '11111114', '344', 'sdad', 'asdf', 'asdf', 1, '2020-12-15 10:39:39', '2020-12-15 10:40:01', 1, NULL, 'Term I', 'Phase 1', b'0', b'0', b'1', NULL, NULL, NULL, NULL, 'PN-Cadet', NULL, NULL, NULL),
-(35, '11111114', '344', 'sdad', 'asdf', 'asdf', 1, '2020-12-15 10:40:01', '2020-12-15 10:40:01', 1, NULL, 'Term I', 'Phase 1', b'0', b'0', b'0', NULL, NULL, NULL, NULL, 'PN-Cadet', NULL, 34, NULL),
-(36, '222222222', '3333333', 'aaaaaaaaa', 'aaaaaaaaaa', 'aaaaaaaa', 1, '2020-12-15 10:40:31', '2020-12-15 10:41:01', 1, NULL, 'Term I', 'Phase 1', b'1', b'1', b'0', NULL, NULL, NULL, NULL, 'PN-Cadet', NULL, NULL, NULL),
-(37, '18134', NULL, 'Asif', '2016A', '2018B', 1, '2020-12-21 11:29:21', '2020-12-21 11:31:33', 1, NULL, 'Term II', 'Phase 1', b'0', b'0', b'0', NULL, NULL, NULL, NULL, 'PN-Cadet', NULL, NULL, NULL),
-(38, '12', NULL, 'sc', 'dc', 'e4', 1, '2020-12-23 07:18:25', '2020-12-23 07:18:25', 1, NULL, 'Term I', 'Phase 1', b'0', b'0', b'0', NULL, NULL, NULL, NULL, 'PN-Cadet', NULL, NULL, 'hmaaza');
+(1, '16135', '96862', 'shahzad ali', '2016A', 'NKIWs', 3, '2020-06-03 19:37:59', '2020-12-13 14:08:25', 3, 5, 'Term I', 'Phase 1', b'0', b'0', b'0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2745,19 +2739,23 @@ ALTER TABLE `branch_allocations`
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 /* Insert into units */
-INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Tabuk','NULL','NULL')
-INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Yamook','NULL','NULL')
-INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Aslar','NULL','NULL')
-INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Saif','NULL','NULL')
-INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Shamsheer','NULL','NULL')
-INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Zulfiqar','NULL','NULL')
-INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Alamgir','NULL','NULL')
-INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Moawin','NULL','NULL')
-INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Nasab','NULL','NULL')
-INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Taghaul','NULL','NULL')
-INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PN School of logistics','NULL','NULL')
+INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Tabuk','NULL','NULL');
+INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Yamook','NULL','NULL');
+INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Aslar','NULL','NULL');
+INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Saif','NULL','NULL');
+INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Shamsheer','NULL','NULL');
+INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Zulfiqar','NULL','NULL');
+INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Alamgir','NULL','NULL');
+INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Moawin','NULL','NULL');
+INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Nasab','NULL','NULL');
+INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Taghaul','NULL','NULL');
+INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PN School of logistics','NULL','NULL');
 
-DELETE FROM `navy_units` WHERE `unit_name`='PNSL'
+DELETE FROM `navy_units` WHERE `unit_name`='PNSL';
+DELETE FROM `navy_units` WHERE `unit_name`='PN Fleet';
+DELETE FROM `navy_units` WHERE `unit_name`='PNS Karsaz';
+
+Update `navy_units` set unit_name = 'PNS Rahbar (Pakistan Naval Academy)' WHERE unit_name = 'PNS Rahbar';
 
 /*Alter security_info*/
 

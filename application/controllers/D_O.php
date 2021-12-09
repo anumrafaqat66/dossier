@@ -201,7 +201,8 @@ class D_O extends CI_Controller
                 'updated_at' => date('Y-m-d H:i:s'),
                 'category' => $category,
                 'divison_name' => $div_name,
-                'term' => $term
+                'term' => $term,
+                'unit_id' => 1 //By default Cadet is in unit PNS Rahbar (PNA)
 
             );
 
@@ -417,7 +418,8 @@ class D_O extends CI_Controller
                 'category' => $category,
                 'divison_name' => $div_name,
                 'term' => $term,
-                'bahadur' => $country
+                'bahadur' => $country,
+                'unit_id' => 1 //By default Cadet is in unit PNS Rahbar (PNA)
             );
 
             $insert_pnform = $this->db->insert('pn_form1s', $insert_array_pnform);

@@ -36,13 +36,16 @@
                                         <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="password*">
                                     </div>
                                 </div>
-
+                                <hr>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-1">
                                         <h6>&nbsp;Login Account Type:</h6>
                                     </div>
-                                    <div class="col-sm-6 mb-1">
+                                    <div class="col-sm-6 mb-1" style="display:none" id="div_list_label">
                                         <h6>&nbsp;Division:</h6>
+                                    </div>
+                                    <div class="col-sm-6 mb-1" style="display:none" id="branch_list_label">
+                                        <h6>&nbsp;Branch:</h6>
                                     </div>
                                 </div>
 
@@ -50,20 +53,23 @@
                                     <div class="col-sm-6 mb-1">
                                         <select class="form-control rounded-pill" name="status" id="status" data-placeholder="Select Controller" style="font-size: 0.8rem; height:50px;">\
                                             <option class="form-control form-control-user" value="">Select Role Type</option>
-                                            <option value="do">DO</option>
+                                            <option value="do">DO - Divisional Officer</option>
                                             <option value="joto">JOTO</option>
-                                            <option value="ct">Captain Training</option>
-                                            <option value="co">Commanding Officer</option>
-                                            <option value="exo">EXO</option>
-                                            <option value="sqc">Squadron Commander</option>
-                                            <option value="cao">CAO</option>
-                                            <option value="cao_sec">CAO SEC</option>
-                                            <option value="smo">SMO</option>
+                                            <option value="ct">CT - Captain Training</option>
+                                            <option value="co">CO - Commanding Officer</option>
+                                            <option value="exo">EXO - Executive Officer</option>
+                                            <option value="sqc">SC - Squadron Commander</option>
+                                            <option value="cao">CAO - Cheif Admin Officer</option>
+                                            <option value="cao_sec">CAO SEC - CAO Secretary</option>
+                                            <option value="smo">SMO - Senior Medical Officer</option>
+                                            <option value="dean">DEAN</option>
+                                            <option value="ctmwt">Captain MWT</option>
+                                            <option value="hougp">HOUGP</option>
 
                                         </select>
                                     </div>
 
-                                    <div class="col-sm-6 mb-1">
+                                    <div class="col-sm-6 mb-1" style="display:none" id="div_list">
                                         <select class="form-control rounded-pill" name="div" id="div" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
                                             <option class="form-control form-control-user" value="">Select Division</option>
                                             <?php foreach ($divisions as $data) { ?>
@@ -72,29 +78,25 @@
                                         </select>
                                     </div>
 
-
+                                    <div class="col-sm-6 mb-1" style="display:none" id="branch_list">
+                                        <select class="form-control rounded-pill" name="branch" id="branch" data-placeholder="Select Controller" style="font-size: 0.8rem; height:50px;">
+                                            <option class="form-control form-control-user" value="">Select Branch</option>
+                                            <?php foreach ($branches as $data) { ?>
+                                                <option class="form-control form-control-user" value="<?= $data['branch_name'] ?>"><?= $data['branch_name'] ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
                                 </div>
 
-                               <div class="form-group row">
-                                    <div class="col-sm-6 mb-1">
-                                        <h6>&nbsp;Branch:</h6>
-                                    </div>
+                                <div class="form-group row">
                                     <div class="col-sm-6 mb-1">
                                         <h6>&nbsp;Unit:</h6>
                                     </div>
+                                   
+
                                 </div>
-                                           <div class="form-group row">
-                                    <div class="col-sm-6 mb-1">
-                                        <select class="form-control rounded-pill" name="branch" id="branch" data-placeholder="Select Controller" style="font-size: 0.8rem; height:50px;">
-                                             <option class="form-control form-control-user" value="">Select Branch</option>
-                                    <?php foreach ($branches as $data) { ?>
-                                                <option class="form-control form-control-user" value="<?= $data['branch_name'] ?>"><?= $data['branch_name'] ?></option>
-                                            <?php } ?>
-
-                                        </select>
-                                    </div>
-
-                                    <div class="col-sm-6 mb-1">
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mb-1">
                                         <select class="form-control rounded-pill" name="unit" id="unit" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
                                             <option class="form-control form-control-user" value="">Select Unit</option>
                                             <?php foreach ($units as $data) { ?>
@@ -102,10 +104,9 @@
                                             <?php } ?>
                                         </select>
                                     </div>
-
-
+                                   
                                 </div>
-
+                                <hr>
                                 <div class="form-group row justify-content-center">
                                     <div class="col-sm-4">
                                         <button type="button" class="btn btn-primary btn-user btn-block" id="add_btni">
@@ -138,6 +139,28 @@
         }
     });
 
+    $("#status").on('change', function() {
+        var account = $(this).val();
+        // alert(account);
+
+        if (account == 'do') {
+            $('#div_list').show();
+            $('#div_list_label').show();
+        } else {
+            $('#div_list').hide();
+            $('#div_list_label').hide();
+        }
+
+        if (account == 'dean' || account == 'hougp') {
+            $('#branch_list').show();
+            $('#branch_list_label').show();
+        } else {
+            $('#branch_list').hide();
+            $('#branch_list_label').hide();
+        }
+
+    });
+
     $('#add_btni').on('click', function() {
         //alert('javascript working');
         $('#add_btn').attr('disabled', true);
@@ -147,8 +170,6 @@
         var password = $('#password').val();
         var status = $('#status').val();
         var div = $('#div').val();
-
-
 
         if (username == '') {
             validate = 1;
