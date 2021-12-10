@@ -20,6 +20,8 @@ class Admin extends CI_Controller
     public function add_users()
     {
         $data['divisions'] = $this->db->get('divisions')->result_array();
+        $data['branches']= $this->db->get('branch_preference_list')->result_array();
+        $data['units']=$this->db->get('navy_units')->result_array();
         $this->load->view('Admin/create_user', $data);
     }
 
@@ -38,7 +40,9 @@ class Admin extends CI_Controller
     public function edit_user_profile($user_id = NULL)
     {
         $data['users_data'] = $this->db->where('is_active', 'yes')->where_not_in('acct_type', 'admin')->where('id', $user_id)->get('security_info')->row_array();
-        // print_r($data['users_data']); exit;
+          $data['branches']= $this->db->get('branch_preference_list')->result_array();
+        $data['units']=$this->db->get('navy_units')->result_array();
+       //  print_r($data['branches']); exit;
         $this->load->view('Admin/edit_user', $data);
     }
 
@@ -66,13 +70,14 @@ class Admin extends CI_Controller
     {
 
         $postData = $this->security->xss_clean($this->input->post());
-
         $username = $postData['username'];
         $pass = $postData['password'];
         $full_name = $postData['fullname'];
         $phone = $postData['phone'];
         $email = $postData['email'];
         $address = $postData['address'];
+        $branch=$postData['branch'];
+        $unit=$postData['unit'];
         
 
         $update_array = array(
@@ -81,9 +86,11 @@ class Admin extends CI_Controller
             'full_name' => $full_name,
             'phone' => $phone,
             'email' => $email,
-            'address' => $address
+            'address' => $address,
+            'branch' => $branch,
+            'unit' => $unit
         );
-
+       // print_r($update_array);exit;
         $cond  = ['id' => $user_id];
         $this->db->where($cond);
         $update = $this->db->update('security_info', $update_array);
@@ -148,6 +155,8 @@ class Admin extends CI_Controller
             $password = password_hash($postData['password'], PASSWORD_DEFAULT);
             $status = $postData['status'];
             $division = $postData['div'];
+            $branch = $postData['branch'];
+            $unit = $postData['unit'];
 
             $row_exist = 0;
             if ($status == 'do') {
@@ -161,13 +170,16 @@ class Admin extends CI_Controller
                     'username' => $username,
                     'password' => $password,
                     'acct_type' => $status,
-                    'division' => $division
+                    'division' => $division,
+                    'branch' => $branch,
+                    'unit' => $unit
                 );
 
+                //print_r($insert_array);exit;
                 $insert = $this->db->insert('security_info', $insert_array);
 
                 if (!empty($insert)) {
-                    $this->session->set_flashdata('success', 'User Created Submitted successfully');
+                    $this->session->set_flashdata('success', 'User Created successfully');
                     redirect('Admin/add_users');
                 } else {
                     $this->session->set_flashdata('failure', 'Something went wrong, try again.');

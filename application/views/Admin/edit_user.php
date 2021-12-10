@@ -60,6 +60,35 @@
 
 
                                 </div>
+
+                                   <div class="form-group row">
+                                    <div class="col-sm-6 mb-1">
+                                        <h6>&nbsp;Branch:</h6>
+                                    </div>
+                                    <div class="col-sm-6 mb-1">
+                                        <h6>&nbsp;Unit:</h6>
+                                    </div>
+                                </div>
+                                           <div class="form-group row">
+                                    <div class="col-sm-6 mb-1">
+                                        <select class="form-control rounded-pill" name="branch" id="branch" data-placeholder="Select Controller" style="font-size: 0.8rem; height:50px;">
+                                             <option class="form-control form-control-user" value="">Select Branch</option>
+                                    <?php foreach ($branches as $data) { ?>
+                                                <option class="form-control form-control-user" value="<?= $data['branch_name'] ?>" <?= ($data['branch_name'] == $users_data['branch'])?'selected':'' ?>> <?= $data['branch_name'] ?> </option>
+                                            <?php } ?>
+
+                                        </select>
+                                    </div>
+
+                                    <div class="col-sm-6 mb-1">
+                                        <select class="form-control rounded-pill" name="unit" id="unit" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
+                                            <option class="form-control form-control-user" value="">Select Unit</option>
+                                            <?php foreach ($units as $data) { ?>
+                                                <option class="form-control form-control-user" value="<?= $data['unit_name'] ?>" <?=($data['unit_name']== $users_data['unit'])?'selected':'' ?>> <?= $data['unit_name'] ?> </option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+
                             </div>
                         </div>
 

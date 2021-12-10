@@ -2744,4 +2744,27 @@ ALTER TABLE `branch_allocations`
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
+/* Insert into units */
+INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Tabuk','NULL','NULL')
+INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Yamook','NULL','NULL')
+INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Aslar','NULL','NULL')
+INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Saif','NULL','NULL')
+INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Shamsheer','NULL','NULL')
+INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Zulfiqar','NULL','NULL')
+INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Alamgir','NULL','NULL')
+INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Moawin','NULL','NULL')
+INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Nasab','NULL','NULL')
+INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Taghaul','NULL','NULL')
+INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PN School of logistics','NULL','NULL')
+
+DELETE FROM `navy_units` WHERE `unit_name`='PNSL'
+
+/*Alter security_info*/
+
+alter table security_info
+add COLUMN unit varchar(100) null;
+
+
+alter table security_info
+add COLUMN branch varchar(100) null;
 COMMIT;
