@@ -4046,7 +4046,8 @@ class D_O extends CI_Controller
     }
     public function view_promotion_screen()
     {
-        $this->load->view('DO/term_promotion');
+        $data['units']=$this->db->get('navy_units')->result_array();
+        $this->load->view('DO/term_promotion',$data);
     }
 
     public function view_edit_psychologist_report($id = null)

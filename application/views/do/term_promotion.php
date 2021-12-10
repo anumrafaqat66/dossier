@@ -84,7 +84,7 @@
                                     </select>
                                 </div>
 
-                                <div class="col-sm-2 mb-1">
+                                <div class="col-sm-2 mb-1" id="promote_btn">
                                     <button type="button" class="btn btn-primary btn-user btn-block" id="promote_all_btn" style="background-color:green;display:none">
                                         <strong>Promote ALL</strong>
                                     </button>
@@ -114,8 +114,12 @@
                                     <h6>&nbsp;Name:</h6>
                                 </div>
 
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <h6>&nbsp;Term:</h6>
+                                </div>
+
+                                <div class="col-sm-3" id="unit_list_label">
+                                    <h6>&nbsp;Select Unit:</h6>
                                 </div>
                             </div>
 
@@ -130,15 +134,23 @@
                                 <div class="col-sm-3 mb-1">
                                     <input type="text" class="form-control form-control-user" name="name" id="name" style="font-weight: bold; font-size:medium" placeholder="Name" readonly>
                                 </div>
-                                <div class="col-sm-3 mb-1">
+                                <div class="col-sm-2 mb-1">
                                     <input type="text" class="form-control form-control-user" name="term" id="term" style="font-weight: bold; font-size:medium" placeholder="Term" readonly>
                                 </div>
-                                <div class="col-sm-3 mb-1">
+                                <div class="col-sm-3 mb-1" id="unit_list">
+                                    <select class="form-control rounded-pill" name="unit" id="unit" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
+                                        <option class="form-control form-control-user" value="">Select Unit</option>
+                                        <?php foreach ($units as $data) { ?>
+                                            <option class="form-control form-control-user" value="<?= $data['unit_name'] ?>"><?= $data['unit_name'] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-2 mb-1">
                                     <button type="button" class="btn btn-primary btn-user btn-block" id="promote_btn" style="background-color:green">
                                         <strong>Promote</strong>
                                     </button>
                                 </div>
-                                <div class="col-sm-3 mb-1">
+                                <div class="col-sm-2 mb-1">
                                     <button type="button" class="btn btn-primary btn-user btn-block" id="relegate_btn" style="background-color:red">
                                         <strong>Relegate</strong>
                                     </button>
@@ -177,6 +189,11 @@
                                 <div class="col-sm-3">
                                     <h5 id="term_selected"></h5>
                                 </div>
+                                <div class="col-sm-2">
+                                </div>
+                                <div class="col-sm-3" id="unit_list_label_term3">
+                                    <h5 id="select_unit_label">Select Unit to Promote:</h5>
+                                </div>
 
                             </div>
                             <div class="form-group row">
@@ -184,8 +201,26 @@
                                 <div id="list_of_cadets" class="col-sm-3 mb-1">
                                 </div>
 
-                                <div id="cadets_oc_no" class="col-sm-3 mb-1">
+                                <div id="cadets_oc_no" class="col-sm-2 mb-1">
                                 </div>
+
+                                <div class="col-sm-3 mb-1" id="unit_list_term3">
+                                    <select class="form-control rounded-pill" name="unit" id="unit" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
+                                        <option class="form-control form-control-user" value="">Select Unit</option>
+                                        <?php foreach ($units as $data) { ?>
+                                            <option class="form-control form-control-user" value="<?= $data['unit_name'] ?>"><?= $data['unit_name'] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-3 mb-1" id="promote_btn">
+                                    <button type="button" class="btn btn-primary btn-user btn-block" id="promote_all_btn_term3" style="background-color:green;">
+                                        <strong>Promote to Midshipman</strong>
+                                    </button>
+                                    <span id="show_error_new" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
+                                </div>
+
+
 
                             </div>
 
@@ -277,12 +312,19 @@
                         $('#division').val(result['divison_name']);
                         $('#oc_num').val(result['oc_no']);
                         $('#id').val(result['p_id']);
+
+                        if (result['term'] == 'Term-III') {
+                            $('#unit_list').show();
+                            $('#unit_list_label').show();
+                        } else {
+                            $('#unit_list').hide();
+                            $('#unit_list_label').hide();
+                        }
+
                     } else {
                         $('#no_data').show();
                         $('#search_cadet').hide();
-
                     }
-
                 },
                 async: true
             });
@@ -361,6 +403,25 @@
         $('#show_terms').show();
         $('#show_term_title').show();
         $('#term_list').show();
+
+    });
+
+
+    $("#term_list").on('change', function() {
+        var term = $(this).val();
+        // alert(term);
+
+        if (term == 'Term-III') {
+            $('#promote_btn').hide();
+            $('#promote_all_btn_term3').show();
+            $('#unit_list_term3').show();
+            $('#unit_list_label_term3').show();
+        } else {
+            $('#promote_btn').show();
+            $('#promote_all_btn_term3').hide();
+            $('#unit_list_term3').hide();
+            $('#unit_list_label_term3').hide();
+        }
 
     });
 
