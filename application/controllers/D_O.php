@@ -1447,7 +1447,7 @@ class D_O extends CI_Controller
     {
         if ($this->input->post()) {
             $oc_no = $_POST['oc_no'];
-            $query = $this->db->where('oc_no', $oc_no)->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->row_array();
+            $query = $this->db->where('oc_no', $oc_no)->where('divison_name', $this->session->userdata('division'))->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
             //print_r($query);
             echo json_encode($query);
         }
@@ -1457,7 +1457,7 @@ class D_O extends CI_Controller
     {
         if ($this->input->post()) {
             $term = $_POST['term'];
-            $query = $this->db->where('term', $term)->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->result_array();
+            $query = $this->db->where('term', $term)->where('divison_name', $this->session->userdata('division'))->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->result_array();
             echo json_encode($query);
         }
     }
@@ -1487,7 +1487,7 @@ class D_O extends CI_Controller
     {
         if ($this->input->post()) {
             $oc_no = $_POST['oc_no'];
-            $query = $this->db->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
+            $query = $this->db->where('oc_no', $oc_no)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
             // print_r($query);
             echo json_encode($query);
         }
@@ -1497,7 +1497,7 @@ class D_O extends CI_Controller
     {
         if ($this->input->post()) {
             $oc_no = $_POST['oc_no'];
-            $query = $this->db->where('oc_no', $oc_no)->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->row_array();
+            $query = $this->db->where('oc_no', $oc_no)->where('divison_name', $this->session->userdata('division'))->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
             // print_r($query);
             echo json_encode($query);
         }
@@ -2244,7 +2244,7 @@ class D_O extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $oc_no = $_POST['oc_no'];
-            $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->where('oc_no', $oc_no)->get('pn_form1s')->result_array();
+            $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->where('oc_no', $oc_no)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->result_array();
             $data['oc_no_entered'] = $oc_no;
             if (count($data['pn_data']) > 0) {
                 $view_page = $this->load->view('do/view_dossier', $data, TRUE);
@@ -2260,7 +2260,7 @@ class D_O extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $oc_no = $_POST['oc_no'];
-            $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
+            $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->where('oc_no', $oc_no)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
 
             if (!isset($oc_no)) {
                 $data['pn_personal_data'] = $this->db->where('p_id', $data['pn_data']['p_id'])->get('personal_datas')->row_array();
@@ -2672,7 +2672,7 @@ class D_O extends CI_Controller
     public function search_all_cadets_for_dossier()
     {
         if ($this->session->has_userdata('user_id')) {
-            $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->result_array();
+            $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->result_array();
             if (count($data['pn_data']) > 0) {
                 $view_page = $this->load->view('do/view_dossier', $data, TRUE);
                 echo $view_page;
