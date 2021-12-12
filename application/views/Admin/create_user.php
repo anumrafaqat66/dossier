@@ -170,6 +170,8 @@
         var password = $('#password').val();
         var status = $('#status').val();
         var div = $('#div').val();
+        var branch = $('#branch').val();
+        var unit = $('#unit').val();
 
         if (username == '') {
             validate = 1;
@@ -183,9 +185,21 @@
             validate = 1;
             $('#status').addClass('red-border');
         }
+          if (unit == '') {
+            validate = 1;
+            $('#unit').addClass('red-border');
+        }
         if (div == '' && status == 'do') {
             validate = 1;
             $('#div').addClass('red-border');
+        }
+        if (branch == '' && status == 'hougp') {
+            validate = 1;
+            $('#branch').addClass('red-border');
+        }
+       if (branch == '' && status == 'dean') {
+            validate = 1;
+            $('#branch').addClass('red-border');
         }
 
         if (validate == 0) {

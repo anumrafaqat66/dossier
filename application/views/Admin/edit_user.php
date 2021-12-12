@@ -40,9 +40,15 @@
                                     <div class="col-sm-6 mb-1">
                                         <h6>&nbsp;Account Type:</h6>
                                     </div>
+                                     <?php if($users_data['acct_type'] == 'do'){?>
                                     <div class="col-sm-6 mb-1">
                                         <h6>&nbsp;Division:</h6>
                                     </div>
+                                <?php }elseif($users_data['acct_type'] == 'dean' || $users_data['acct_type'] == 'hougp'){ ?>
+                                <div class="col-sm-6 mb-1">
+                                        <h6>&nbsp;Branch:</h6>
+                                    </div>
+                                <?php } ?>
                                 </div>
 
                                 <div class="form-group row">
@@ -51,26 +57,14 @@
                                             <option class="form-control form-control-user" value="<?= $users_data['acct_type']; ?>"><?= $users_data['acct_type']; ?></option>
                                         </select>
                                     </div>
-
+                                    <?php if($users_data['acct_type'] == 'do'){?>
                                     <div class="col-sm-6 mb-1">
                                         <select class="form-control rounded-pill" name="div" id="div" style="font-size: 0.8rem; height:50px;" readonly>
                                             <option class="form-control form-control-user" value="<?= $users_data['division']; ?>"><?= $users_data['division']; ?></option>
                                         </select>
                                     </div>
-
-
-                                </div>
-
-                                   <div class="form-group row">
-                                    <div class="col-sm-6 mb-1">
-                                        <h6>&nbsp;Branch:</h6>
-                                    </div>
-                                    <div class="col-sm-6 mb-1">
-                                        <h6>&nbsp;Unit:</h6>
-                                    </div>
-                                </div>
-                                           <div class="form-group row">
-                                    <div class="col-sm-6 mb-1">
+                                    <?php }elseif ($users_data['acct_type'] == 'dean' || $users_data['acct_type'] == 'hougp') {?>
+                                         <div class="col-sm-6 mb-1">
                                         <select class="form-control rounded-pill" name="branch" id="branch" data-placeholder="Select Controller" style="font-size: 0.8rem; height:50px;">
                                              <option class="form-control form-control-user" value="">Select Branch</option>
                                     <?php foreach ($branches as $data) { ?>
@@ -80,7 +74,19 @@
                                         </select>
                                     </div>
 
-                                    <div class="col-sm-6 mb-1">
+                                <?php } ?>
+
+                                </div>
+
+                                   <div class="form-group row">
+                                   
+                                    <div class="col-sm-12 mb-1">
+                                        <h6>&nbsp;Unit:</h6>
+                                    </div>
+                                </div>
+                                           <div class="form-group row">
+                                   
+                                    <div class="col-sm-12 mb-1">
                                         <select class="form-control rounded-pill" name="unit" id="unit" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
                                             <option class="form-control form-control-user" value="">Select Unit</option>
                                             <?php foreach ($units as $data) { ?>
@@ -175,6 +181,8 @@
         var password = $('#password').val();
         var status = $('#status').val();
         var div = $('#div').val();
+        var branch = $('#branch').val();
+         var unit = $('#unit').val();
 
 
 
@@ -194,7 +202,18 @@
             validate = 1;
             $('#div').addClass('red-border');
         }
-
+       if (unit == '') {
+            validate = 1;
+            $('#unit').addClass('red-border');
+        }
+        if (branch == '' && status == 'hougp') {
+            validate = 1;
+            $('#branch').addClass('red-border');
+        }
+       if (branch == '' && status == 'dean') {
+            validate = 1;
+            $('#branch').addClass('red-border');
+        }
         if (validate == 0) {
             $('#add_form')[0].submit();
         } else {

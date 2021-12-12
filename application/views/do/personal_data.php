@@ -77,7 +77,7 @@
 
                                     <div class="form-group row custom-file-upload">
                                         <div class="col-sm-12 mb-1">
-                                            <input type="file" style="height: 50px; padding:10px !important;" multiple="multiple" class="form-control form-control-user" placeholder="Upload Document" name="report[]" x-model="fileName">
+                                            <input type="file" id="upload_pic" style="height: 50px; padding:10px !important;" multiple="multiple" class="form-control form-control-user" placeholder="Upload Document" name="report[]" x-model="fileName">
                                         </div>
                                     </div>
 
@@ -522,6 +522,7 @@
         var div_name = $('#div').val();
         var term = $('#term').val();
 
+
         if (officer_name == '') {
             validate = 1;
             $('#officer_name').addClass('red-border');
@@ -573,6 +574,13 @@
             validate = 1;
             $('#term').addClass('red-border');
         }
+
+         if(document.getElementById("upload_pic").value == ""){
+            alert("please select pic");
+             $('#upload_pic').addClass('red-border');
+         }else{
+             alert("selected");
+         }
 
 
 

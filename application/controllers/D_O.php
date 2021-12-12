@@ -418,9 +418,11 @@ class D_O extends CI_Controller
                 'category' => $category,
                 'divison_name' => $div_name,
                 'term' => $term,
+                'phase'=>'Phase 1',
                 'bahadur' => $country,
                 'unit_id' => 1 //By default Cadet is in unit PNS Rahbar (PNA)
             );
+
 
             $insert_pnform = $this->db->insert('pn_form1s', $insert_array_pnform);
             $inserted_officer_id = $this->db->insert_id();
