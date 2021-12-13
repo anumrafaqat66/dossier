@@ -49,6 +49,7 @@ class User_Login extends CI_Controller
 
 	public function login_process()
 	{
+
 		if ($this->input->post()) {
 			$postedData = $this->security->xss_clean($this->input->post());
 			//To create encrypted password use
@@ -66,8 +67,8 @@ class User_Login extends CI_Controller
 					$this->session->set_userdata('division', $query['division']);
 
 					$unit_id = $this->db->where('unit_name',$query['unit'])->get('navy_units')->row_array(); //Added by Awais Dated: 12 Dec 21
+					//echo $unit_id['id'];exit;
 					$this->session->set_userdata('unit_id',$unit_id['id']); 	//added by Awais dated:12 Dec 2021
-					
 					$this->session->set_flashdata('success', 'Login successfully');
 
 					$this->db->set('status', 'online');

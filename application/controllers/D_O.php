@@ -1457,7 +1457,30 @@ class D_O extends CI_Controller
     {
         if ($this->input->post()) {
             $term = $_POST['term'];
-            $query = $this->db->where('term', $term)->where('divison_name', $this->session->userdata('division'))->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->result_array();
+            //echo "dss";
+               //echo $this->session->userdata('unit_id');exit;
+            //$this->session->userdata('unit_id')
+            $query = $this->db->where('term', $term)->where('divison_name', $this->session->userdata('division'))->where('unit_id','1')->where('rank', null)->get('pn_form1s')->result_array();
+
+            echo json_encode($query);
+        }
+    }
+
+    public function  promote_and_search_cadets_by_term(){
+         if ($this->input->post()) {
+            $term = $_POST['term'];
+            $oc_no= $_POST['oc_no'];
+
+             $update_array = array(
+                'rank' => 'midshipman',
+                'phase' => 'Phase 2'
+            );
+             $cond  = ['oc_no' => $oc_no];
+            $this->db->where($cond);
+            $update = $this->db->update('pn_form1s', $update_array);
+
+            $query = $this->db->where('term', $term)->where('divison_name', $this->session->userdata('division'))->where('unit_id','1')->where('rank', null)->get('pn_form1s')->result_array();
+
             echo json_encode($query);
         }
     }
