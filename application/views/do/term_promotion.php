@@ -205,19 +205,19 @@
                                 </div>
 
                                 <div class="col-sm-3 mb-1" id="unit_list_term3">
-                                    <select class="form-control rounded-pill" name="unit" id="unit" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
+                                   <!--  <select class="form-control rounded-pill" name="unit" id="unit" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Unit</option>
                                         <?php foreach ($units as $data) { ?>
                                             <option class="form-control form-control-user" value="<?= $data['unit_name'] ?>"><?= $data['unit_name'] ?></option>
                                         <?php } ?>
-                                    </select>
+                                    </select> -->
                                 </div>
 
-                                <div class="col-sm-3 mb-1" id="promote_btn">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" id="promote_all_btn_term3" style="background-color:green;">
+                                <div class="col-sm-3 mb-1" id="promote_btn_midshipman">
+                                   <!--  <button type="button" class="btn btn-primary btn-user btn-block" id="promote_all_btn_term3" style="background-color:green;">
                                         <strong>Promote to Midshipman</strong>
-                                    </button>
-                                    <span id="show_error_new" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
+                                    </button> -->
+                                    <span id="show_error_new" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please select unit*</span>
                                 </div>
 
 
@@ -447,13 +447,24 @@
 
                 if (len > 0) {
                     $('#term_selected').html(`<strong>List of Cadets of ${term}:</strong>`);
-                    $("#list_of_cadets").html(`<h6 style="text-decoration:underline"><strong>Cadet Names</strong></h6>`);
-                    $("#cadets_oc_no").append(`<h6 style="text-decoration:underline"><strong>OC No</strong></h6>`);
+                    $("#list_of_cadets").html(`<h6 style="text-decoration:underline;margin-bottom:10px;"><strong>Cadet Names</strong></h6>`);
+                    $("#cadets_oc_no").append(`<h6 style="text-decoration:underline;margin-bottom:10px;"><strong>OC No</strong></h6>`);
                     $('#promote_all_btn').show();
                     for (var i = 0; i < len; i++) {
                         // alert(result[i]['name']);
-                        $("#list_of_cadets").append(`<h6><strong>${i+1}  -  ${result[i]['name']}</strong></h6>`);
-                        $("#cadets_oc_no").append(`<h6><strong>${result[i]['oc_no']} </strong></h6>`);
+                        $("#list_of_cadets").append(`<h6 style="margin-bottom:20px;"><strong>${i+1}  -  ${result[i]['name']}</strong></h6>`);
+                        $("#cadets_oc_no").append(`<h6 style="margin-bottom:20px;"><strong>${result[i]['oc_no']} </strong></h6>`);
+                        if(term == "Term-III"){
+                             $("#unit_list_term3").append(` <select class="form-control rounded-pill" name="unit" id="unit-${i}" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;margin-bottom:7px;">
+                                        <option class="form-control form-control-user" value="">Select Unit</option>
+                                        <?php foreach ($units as $data) { ?>
+                                            <option class="form-control form-control-user" value="<?= $data['unit_name'] ?>"><?= $data['unit_name'] ?></option>
+                                        <?php } ?>
+                                    </select>`);
+                              $("#promote_btn_midshipman").append(` <button type="button"  class="btn btn-primary btn-user btn-block" onclick="promote(${i})" id="${i}" style="background-color:green;">
+                                        Promote to Midshipman
+                                    </button>`);
+                        }
                     }
                 } else {
                     $('#term_selected').html(`<strong>No Cadets in ${term}</strong>`);
@@ -463,4 +474,18 @@
         });
 
     });
+
+    function promote(id) {
+   alert("id: "+ id);
+   var unit = $("#unit-"+id).val();
+   if(unit == ''){
+//alert("please seelct");
+$("#unit-"+id).addClass("red-border");
+//$("show_error_new").show();
+   }else{
+   alert(unit);
+   
+}
+}
+
 </script>
