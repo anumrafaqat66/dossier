@@ -418,7 +418,7 @@ class D_O extends CI_Controller
                 'category' => $category,
                 'divison_name' => $div_name,
                 'term' => $term,
-                'phase'=>'Phase 1',
+                'phase' => 'Phase 1',
                 'bahadur' => $country,
                 'unit_id' => 1 //By default Cadet is in unit PNS Rahbar (PNA)
             );
@@ -539,16 +539,16 @@ class D_O extends CI_Controller
     {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
-            if($_FILES['report']['name'][0] != null){
-            $upload1 = $this->upload($_FILES['report']);
-            if (count($upload1) > 1) {
-                $files = implode(',', $upload1);
+            if ($_FILES['report']['name'][0] != null) {
+                $upload1 = $this->upload($_FILES['report']);
+                if (count($upload1) > 1) {
+                    $files = implode(',', $upload1);
+                } else {
+                    $files = $upload1[0];
+                }
             } else {
-                $files = $upload1[0];
+                $files = '';
             }
-        }else{
-             $files='';
-        }
 
             $row_id = $postData['row_id'];
             $officer_id = $postData['row_pid'];
@@ -1458,28 +1458,29 @@ class D_O extends CI_Controller
         if ($this->input->post()) {
             $term = $_POST['term'];
             //echo "dss";
-               //echo $this->session->userdata('unit_id');exit;
+            //echo $this->session->userdata('unit_id');exit;
             //$this->session->userdata('unit_id')
-            $query = $this->db->where('term', $term)->where('divison_name', $this->session->userdata('division'))->where('unit_id','1')->where('rank', null)->get('pn_form1s')->result_array();
+            $query = $this->db->where('term', $term)->where('divison_name', $this->session->userdata('division'))->where('unit_id', '1')->get('pn_form1s')->result_array();
 
             echo json_encode($query);
         }
     }
 
-    public function  promote_and_search_cadets_by_term(){
-         if ($this->input->post()) {
+    public function  promote_and_search_cadets_by_term()
+    {
+        if ($this->input->post()) {
             $term = $_POST['term'];
-            $oc_no= $_POST['oc_no'];
+            $oc_no = $_POST['oc_no'];
 
-             $update_array = array(
+            $update_array = array(
                 'rank' => 'midshipman',
                 'phase' => 'Phase 2'
             );
-             $cond  = ['oc_no' => $oc_no];
+            $cond  = ['oc_no' => $oc_no];
             $this->db->where($cond);
             $update = $this->db->update('pn_form1s', $update_array);
 
-            $query = $this->db->where('term', $term)->where('divison_name', $this->session->userdata('division'))->where('unit_id','1')->where('rank', null)->get('pn_form1s')->result_array();
+            $query = $this->db->where('term', $term)->where('divison_name', $this->session->userdata('division'))->where('unit_id', '1')->where('rank', null)->get('pn_form1s')->result_array();
 
             echo json_encode($query);
         }
@@ -1787,6 +1788,7 @@ class D_O extends CI_Controller
             $action = $_POST['action'];
             $all = $_POST['all'];
 
+
             if ($action == 'promote') {
                 if ($curr_term == 'Term-P') {
                     $next_term = 'Term-I';
@@ -1795,7 +1797,9 @@ class D_O extends CI_Controller
                 } else if ($curr_term == 'Term-II') {
                     $next_term = 'Term-III';
                 } else if ($curr_term == 'Term-III') {
-                    $next_term = 'Term-III';
+                    $next_term = 'Term-IV';
+                    $phase = 'Midshipman'; //Added by Awais Dated: 13 Dec 21
+                    $unit_id = $_POST['unit_id']; //Added by Awais Dated: 13 Dec 21
                 }
             }
 
@@ -1811,9 +1815,17 @@ class D_O extends CI_Controller
                 }
             }
 
-            $update_array = array(
-                'term' => $next_term
-            );
+            if ($curr_term == 'Term-III') {
+                $update_array = array(
+                    'term' => $next_term,
+                    'unit_id' => $unit_id,
+                    'phase' => $phase
+                );
+            } else {
+                $update_array = array(
+                    'term' => $next_term
+                );
+            }
 
             if ($all == 'no') {
                 $cond  = [
@@ -1869,7 +1881,11 @@ class D_O extends CI_Controller
             if (!empty($update)) {
                 if ($all == 'no') {
                     if ($action == 'promote') {
-                        $this->session->set_flashdata('success', 'Cadet Promoted successfully');
+                        if ($curr_term == 'Term-III') {
+                            $this->session->set_flashdata('success', 'Cadet Promoted to Midshipman successfully');
+                        } else {
+                            $this->session->set_flashdata('success', 'Cadet Promoted successfully');
+                        }
                     } else if ($action == 'relegate') {
                         $this->session->set_flashdata('success', 'Cadet Relegated successfully');
                     }
@@ -1880,7 +1896,99 @@ class D_O extends CI_Controller
                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
             }
 
-            $data = '';
+            $data['units'] = $this->db->get('navy_units')->result_array();
+            $view_page = $this->load->view('do/term_promotion', $data, TRUE);
+            echo $view_page;
+            json_encode($view_page);
+        }
+    }
+
+    public function update_cadet_to_midshipman()
+    {
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+
+            $p_id = $_POST['p_id'];
+            $curr_term = $_POST['curr_term'];
+            $action = $_POST['action'];
+            $all = $_POST['all'];
+            $unit_id = $_POST['unit_id'];
+            $phase = 'Midshipman';
+
+
+            $update_array = array(
+                'term' => 'Term-IV',
+                'phase' => $phase,
+                'unit_id' => $unit_id
+            );
+
+            if ($all == 'no') {
+                $cond  = [
+                    'p_id' => $p_id,
+                    'do_id' => $this->session->userdata('user_id'),
+                    'term' => $curr_term
+                ];
+            } else {
+                $cond  = [
+                    'do_id' => $this->session->userdata('user_id'),
+                    'term' => $curr_term
+                ];
+            }
+            $this->db->where($cond);
+            $update = $this->db->update('pn_form1s', $update_array);
+
+            if (!empty($update)) {
+                $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array();
+
+                if ($all == 'yes') {
+                    $act_desc = 'All Cadets of ' . $this->session->userdata('division') . ' promoted to Midshipman successfully';
+                } else {
+                    if ($action == 'relegate') {
+                        $act_desc =  "Cadet " . $cadet_name['name'] . " has been relegated";
+                    } else {
+                        $act_desc =  "Cadet " . $cadet_name['name'] . " has been Promoted to Midshipman";
+                    }
+                }
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => $act_desc,
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
+
+            if (!empty($update)) {
+                if ($all == 'no') {
+                    if ($action == 'promote') {
+                        $this->session->set_flashdata('success', 'Cadet Promoted to Midshipman successfully');
+                    } else if ($action == 'relegate') {
+                        $this->session->set_flashdata('success', 'Cadet Relegated successfully');
+                    }
+                } else {
+                    $this->session->set_flashdata('success', 'All Cadets for ' . $this->session->userdata('division') . ' promoted to Midshipman successfully');
+                }
+            } else {
+                $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+            }
+
+            // $data = '';
+            $data['units'] = $this->db->get('navy_units')->result_array();
             $view_page = $this->load->view('do/term_promotion', $data, TRUE);
             echo $view_page;
             json_encode($view_page);
@@ -3231,7 +3339,7 @@ class D_O extends CI_Controller
             $this->db->from('punishment_records');
             $this->db->where('oc_no', $oc_no);
             $this->db->where('term', $term);
-            
+
 
             $data['punishment_records'] = $this->db->get()->result_array();
             // echo $term; exit;
@@ -4071,8 +4179,8 @@ class D_O extends CI_Controller
     }
     public function view_promotion_screen()
     {
-        $data['units']=$this->db->get('navy_units')->result_array();
-        $this->load->view('DO/term_promotion',$data);
+        $data['units'] = $this->db->get('navy_units')->result_array();
+        $this->load->view('DO/term_promotion', $data);
     }
 
     public function view_edit_psychologist_report($id = null)
