@@ -56,7 +56,7 @@ class User_Login extends CI_Controller
 			$password = $postedData['password'];
 			$status = $postedData['role'];
 			$query = $this->db->where('username', $username)->where('acct_type', $status)->where('is_active', 'yes')->get('security_info')->row_array();
-			$hash = $query['password'];
+			$hash = $query['password'];			
 
 			if (!empty($query)) {
 				if (password_verify($password, $hash)) {
@@ -64,6 +64,10 @@ class User_Login extends CI_Controller
 					$this->session->set_userdata('acct_type', $query['acct_type']);
 					$this->session->set_userdata('username', $query['username']);
 					$this->session->set_userdata('division', $query['division']);
+
+					$unit_id = $this->db->where('unit_name',$query['unit'])->get('navy_units')->row_array(); //Added by Awais Dated: 12 Dec 21
+					$this->session->set_userdata('unit_id',$unit_id['id']); 	//added by Awais dated:12 Dec 2021
+					
 					$this->session->set_flashdata('success', 'Login successfully');
 
 					$this->db->set('status', 'online');

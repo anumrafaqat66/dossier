@@ -489,11 +489,11 @@
         });
     });
 
-    $(function () {
-        $("#category").change(function () {
+    $(function() {
+        $("#category").change(function() {
             var selectedText = $(this).find("option:selected").text();
             var selectedValue = $(this).val();
-            if(selectedValue == 'Allied Cadet'){
+            if (selectedValue == 'Allied Cadet') {
                 $('#country_text').show();
                 $('#country_val').show();
             } else {
@@ -552,7 +552,7 @@
             validate = 1;
             $('#oc_no').addClass('red-border');
         }
-      
+
         if (name == '') {
             validate = 1;
             $('#name').addClass('red-border');
@@ -575,14 +575,10 @@
             $('#term').addClass('red-border');
         }
 
-         if(document.getElementById("upload_pic").value == ""){
-            alert("please select pic");
-             $('#upload_pic').addClass('red-border');
-         }else{
-             alert("selected");
-         }
-
-
+        if (document.getElementById("upload_pic").value == "") {
+            validate = 1;
+            $('#upload_pic').addClass('red-border');
+        }
 
         if (validate == 0) {
             $('#add_form')[0].submit();

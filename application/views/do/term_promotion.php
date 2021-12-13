@@ -410,7 +410,6 @@
     $("#term_list").on('change', function() {
         var term = $(this).val();
         // alert(term);
-
         if (term == 'Term-III') {
             $('#promote_btn').hide();
             $('#promote_all_btn_term3').show();
@@ -422,7 +421,6 @@
             $('#unit_list_term3').hide();
             $('#unit_list_label_term3').hide();
         }
-
     });
 
     $("#term_list").on('change', function() {
