@@ -2739,23 +2739,25 @@ ALTER TABLE `branch_allocations`
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 /* Insert into units */
-INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Tabuk','NULL','NULL');
-INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Yamook','NULL','NULL');
-INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Aslar','NULL','NULL');
-INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Saif','NULL','NULL');
-INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Shamsheer','NULL','NULL');
-INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Zulfiqar','NULL','NULL');
-INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Alamgir','NULL','NULL');
-INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Moawin','NULL','NULL');
-INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Nasab','NULL','NULL');
-INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PNS Taghaul','NULL','NULL');
-INSERT INTO `navy_units`(`id`, `unit_name`, `created_at`, `updated_at`) VALUES ('','PN School of logistics','NULL','NULL');
+INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PNS Tabuk','NULL','NULL');
+INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PNS Yamook','NULL','NULL');
+INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PNS Aslar','NULL','NULL');
+INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PNS Saif','NULL','NULL');
+INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PNS Shamsheer','NULL','NULL');
+INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PNS Zulfiqar','NULL','NULL');
+INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PNS Alamgir','NULL','NULL');
+INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PNS Moawin','NULL','NULL');
+INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PNS Nasab','NULL','NULL');
+INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PNS Taghaul','NULL','NULL');
+INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PN School of logistics','NULL','NULL');
 
 DELETE FROM `navy_units` WHERE `unit_name`='PNSL';
 DELETE FROM `navy_units` WHERE `unit_name`='PN Fleet';
 DELETE FROM `navy_units` WHERE `unit_name`='PNS Karsaz';
 
 Update `navy_units` set unit_name = 'PNS Rahbar (Pakistan Naval Academy)' WHERE unit_name = 'PNS Rahbar';
+
+Update `security_info` set unit = 'PNS Rahbar (Pakistan Naval Academy)' WHERE unit is null;
 
 /*Alter security_info*/
 
@@ -2766,7 +2768,6 @@ add COLUMN unit varchar(100) null;
 alter table security_info
 add COLUMN branch varchar(100) null;
 
-INSERT INTO `branch_preference_list`(`id`, `branch_name`) VALUES ('','ME');
-INSERT INTO `branch_preference_list`(`id`, `branch_name`) VALUES ('','WE');
+INSERT INTO `branch_preference_list`( `branch_name`) VALUES ('ME');
 
 COMMIT;

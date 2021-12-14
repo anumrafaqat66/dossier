@@ -1461,7 +1461,11 @@ class D_O extends CI_Controller
             //echo "dss";
             //echo $this->session->userdata('unit_id');exit;
             //$this->session->userdata('unit_id')
-            $query = $this->db->where('term', $term)->where('divison_name', $this->session->userdata('division'))->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->result_array();
+            if ($this->session->userdata('acct_type') == 'do') {
+                $query = $this->db->where('term', $term)->where('divison_name', $this->session->userdata('division'))->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->result_array();
+            } else {
+                $query = $this->db->where('term', $term)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->result_array();
+            }
 
             echo json_encode($query);
         }
