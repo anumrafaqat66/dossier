@@ -2766,4 +2766,7 @@ add COLUMN unit varchar(100) null;
 alter table security_info
 add COLUMN branch varchar(100) null;
 
+INSERT INTO `branch_preference_list`(`id`, `branch_name`) VALUES ('','ME');
+INSERT INTO `branch_preference_list`(`id`, `branch_name`) VALUES ('','WE');
+
 COMMIT;

@@ -14,7 +14,6 @@ class D_O extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
-
             $this->load->view('do/dashboard');
         } else {
             $this->load->view('login');
@@ -1447,6 +1446,8 @@ class D_O extends CI_Controller
     {
         if ($this->input->post()) {
             $oc_no = $_POST['oc_no'];
+            //echo $this->session->userdata('division');
+            //echo $this->session->userdata('unit_id');exit;
             $query = $this->db->where('oc_no', $oc_no)->where('divison_name', $this->session->userdata('division'))->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
             //print_r($query);
             echo json_encode($query);
@@ -1460,7 +1461,7 @@ class D_O extends CI_Controller
             //echo "dss";
             //echo $this->session->userdata('unit_id');exit;
             //$this->session->userdata('unit_id')
-            $query = $this->db->where('term', $term)->where('divison_name', $this->session->userdata('division'))->where('unit_id', '1')->get('pn_form1s')->result_array();
+            $query = $this->db->where('term', $term)->where('divison_name', $this->session->userdata('division'))->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->result_array();
 
             echo json_encode($query);
         }
@@ -4180,6 +4181,7 @@ class D_O extends CI_Controller
     public function view_promotion_screen()
     {
         $data['units'] = $this->db->get('navy_units')->result_array();
+        $data['branches'] = $this->db->get('branch_preference_list')->result_array();
         $this->load->view('DO/term_promotion', $data);
     }
 

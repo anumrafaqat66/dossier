@@ -62,14 +62,14 @@
 
             </li>
 
-            <li class="nav-item">
+ <!--            <li class="nav-item">
                 <a class="nav-link collapsed" href="<?php echo base_url(); ?>/D_O/PN_Form" aria-expanded="true">
                     <i class="fab fa-wpforms"></i>
                     <span>PN Form I</span>
-                    <!-- <span>Components</span> -->
+                   
                 </a>
 
-            </li>
+            </li> -->
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -144,6 +144,12 @@
                     <!-- <span>Components</span> -->
                 </a>
                 
+            </li>
+              <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url(); ?>D_O/view_promotion_screen" aria-expanded="true">
+                    <i class="fas fa-award"></i>
+                    <span> Promotion/Relegation</span>                    
+                </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?php echo base_url(); ?>JOTO/view_activity_log" aria-expanded="true">

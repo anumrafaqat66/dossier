@@ -11,9 +11,9 @@ class JOTO extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
             
-            $this->load->view('Admin/admin');
+            $this->load->view('joto/dashboard');
         } else {
-            $this->load->view('Admin/login');
+            $this->load->view('login');
         }
     }
 

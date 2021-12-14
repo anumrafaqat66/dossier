@@ -58,7 +58,7 @@ class User_Login extends CI_Controller
 			$status = $postedData['role'];
 			$query = $this->db->where('username', $username)->where('acct_type', $status)->where('is_active', 'yes')->get('security_info')->row_array();
 			$hash = $query['password'];			
-
+//print_r($query);exit;
 			if (!empty($query)) {
 				if (password_verify($password, $hash)) {
 					$this->session->set_userdata('user_id', $query['id']);
