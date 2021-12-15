@@ -170,7 +170,7 @@
                                         <?php } ?>
                                     </select>
 
-                                    <span id="show_error_select_branch_all" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please select branch to Proceed*</span>
+                                    <span id="show_error_select_branch" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please select branch to Proceed*</span>
                                 </div>
 
                                 <div class="col-sm-2 mb-1">
@@ -243,7 +243,7 @@
                                 </div>
 
                                 <div class="col-sm-3 mb-1" id="branch_list_term4">
-                                    <select class="form-control rounded-pill" name="branch_list" id="branch_list" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
+                                    <select class="form-control rounded-pill" name="branchs_list" id="branchs_list" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Branch</option>
                                         <?php foreach ($branches as $data) { ?>
                                             <option class="form-control form-control-user" value="<?= $data['id'] ?>"><?= $data['branch_name'] ?></option>
@@ -500,6 +500,41 @@
                     'action': 'promote',
                     'all': 'yes',
                     'unit_id': unit_id
+                },
+                success: function(data) {
+                    var newDoc = document.open("text/html", "replace");
+                    newDoc.write(data);
+                    newDoc.close();
+                },
+                async: false
+            });
+        }
+    });
+
+    //Added by Awais Dated: 15 Dec 2021
+    $('#promote_all_btn_term4').on('click', function() {
+        var curr_term = $('#term_list').val();
+        var branch_id = $('#branchs_list').val();
+        var validate = 0;
+        
+        if (branch_id == "") {
+            validate = 1;
+            alert('i am inside');
+            $('#branchs_list').addClass('red-border');
+            $('#show_error_select_branch_all').show();
+        }
+
+        if (validate == 0) {
+            $('#show_error_select_branch_all').hide();
+            $.ajax({
+                url: '<?= base_url(); ?>D_O/update_cadet_to_sub_lieutenant',
+                method: 'POST',
+                data: {
+                    'p_id': 0,
+                    'curr_term': curr_term,
+                    'action': 'promote',
+                    'all': 'yes',
+                    'branch_id': branch_id
                 },
                 success: function(data) {
                     var newDoc = document.open("text/html", "replace");

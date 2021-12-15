@@ -2768,6 +2768,9 @@ add COLUMN unit varchar(100) null;
 alter table security_info
 add COLUMN branch varchar(100) null;
 
+alter table pn_form1s
+add COLUMN branch_id bigint(20) null;
+
 INSERT INTO `branch_preference_list`( `branch_name`) VALUES ('ME');
 
 COMMIT;
