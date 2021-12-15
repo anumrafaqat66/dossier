@@ -1448,7 +1448,11 @@ class D_O extends CI_Controller
             $oc_no = $_POST['oc_no'];
             //echo $this->session->userdata('division');
             //echo $this->session->userdata('unit_id');exit;
+            // if($this->session->userdata('acct_type')=='do'){
             $query = $this->db->where('oc_no', $oc_no)->where('divison_name', $this->session->userdata('division'))->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
+        // }else if($this->session->userdata('acct_type')=='joto'){
+        //     $query = $this->db->where('oc_no', $oc_no)->where('divison_name', $this->session->userdata('division'))->where('unit_id', $this->session->userdata('unit_id'))->where('term','Term-IV')->get('pn_form1s')->row_array();
+        // }
             //print_r($query);
             echo json_encode($query);
         }
@@ -1806,6 +1810,11 @@ class D_O extends CI_Controller
                     $phase = 'Midshipman'; //Added by Awais Dated: 13 Dec 21
                     $unit_id = $_POST['unit_id']; //Added by Awais Dated: 13 Dec 21
                 }
+                 else if ($curr_term == 'Term-IV') {
+                    $next_term = 'Term-V';
+                    $phase = 'Sub-Leutinent'; //Added by Awais Dated: 13 Dec 21
+                    $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
+                }
             }
 
             if ($action == 'relegate') {
@@ -1818,6 +1827,9 @@ class D_O extends CI_Controller
                 } else if ($curr_term == 'Term-III') {
                     $next_term = 'Term-III';
                 }
+                else if ($curr_term == 'Term-IV') {
+                    $next_term = 'Term-IV';
+                }
             }
 
             if ($curr_term == 'Term-III') {
@@ -1826,24 +1838,43 @@ class D_O extends CI_Controller
                     'unit_id' => $unit_id,
                     'phase' => $phase
                 );
-            } else {
+            } else if($curr_term == 'Term-IV'){
+               $update_array = array(
+                    'term' => $next_term,
+                    'branch_id' => $branch_id,
+                    'phase' => $phase
+                );
+            }else {
                 $update_array = array(
                     'term' => $next_term
                 );
             }
 
-            if ($all == 'no') {
+            if ($all == 'no' && $this->session->userdata('acct_type')=='do') {
                 $cond  = [
                     'p_id' => $p_id,
                     'do_id' => $this->session->userdata('user_id'),
                     'term' => $curr_term
                 ];
-            } else {
+            } else if($all == 'yes' && $this->session->userdata('acct_type')=='do') {
                 $cond  = [
                     'do_id' => $this->session->userdata('user_id'),
                     'term' => $curr_term
                 ];
             }
+
+                   if ($all == 'no' && $this->session->userdata('acct_type')=='joto') {
+                $cond  = [
+                    'p_id' => $p_id,
+                    'term' => $curr_term
+                ];
+            } else if($all == 'yes' && $this->session->userdata('acct_type')=='joto') {
+                $cond  = [
+                    'term' => $curr_term
+                ];
+            }
+
+           // print_r($update_array);exit;
             $this->db->where($cond);
             $update = $this->db->update('pn_form1s', $update_array);
 
@@ -1888,7 +1919,9 @@ class D_O extends CI_Controller
                     if ($action == 'promote') {
                         if ($curr_term == 'Term-III') {
                             $this->session->set_flashdata('success', 'Cadet Promoted to Midshipman successfully');
-                        } else {
+                        } else if($curr_term == 'Term-IV'){
+                            $this->session->set_flashdata('success', 'Cadet Promoted to Sub-Leutinent successfully');
+                        } else{
                             $this->session->set_flashdata('success', 'Cadet Promoted successfully');
                         }
                     } else if ($action == 'relegate') {
@@ -1902,6 +1935,7 @@ class D_O extends CI_Controller
             }
 
             $data['units'] = $this->db->get('navy_units')->result_array();
+            $data['units'] = $this->db->get('branch_preference_list')->result_array();
             $view_page = $this->load->view('do/term_promotion', $data, TRUE);
             echo $view_page;
             json_encode($view_page);

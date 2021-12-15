@@ -170,7 +170,7 @@
                                         <?php } ?>
                                     </select>
 
-                                    <span id="show_error_select_unit_all" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please select branch to Proceed*</span>
+                                    <span id="show_error_select_branch_all" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please select branch to Proceed*</span>
                                 </div>
 
                                 <div class="col-sm-2 mb-1">
@@ -392,6 +392,8 @@
         var p_id = $('#id').val();
         var curr_term = $('#term').val();
         var unit_id = $('#unit').val();
+        var branch_id=$('#branch').val();
+        alert(branch_id);
         var validate = 0;
 
         if (curr_term == 'Term-III') {
@@ -399,6 +401,13 @@
                 validate = 1;
                 $('#unit').addClass('red-border');
                 $('#show_error_select_unit_all').show();
+            }
+        }
+           if (curr_term == 'Term-IV') {
+            if (branch_id == '') {
+                validate = 1;
+                $('#branch').addClass('red-border');
+                $('#show_error_select_branch_all').show();
             }
         }
 
@@ -412,7 +421,8 @@
                     'curr_term': curr_term,
                     'action': 'promote',
                     'all': 'no',
-                    'unit_id': unit_id
+                    'unit_id': unit_id,
+                    'branch_id':branch_id
                 },
                 success: function(data) {
                     var newDoc = document.open("text/html", "replace");
