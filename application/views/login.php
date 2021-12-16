@@ -63,11 +63,13 @@
                       <option value="joto">JOTO</option>
                       <option value="ct">Captain Training</option>
                       <option value="co">Commanding Officer</option>
-                      <!-- <option value="exo">EXO</option> -->
+                      <option value="exo">EXO</option>
                       <option value="cao_sec">CAO Secretary</option>
                       <!-- <option value="sqc">Squadron Commander</option> -->
                       <option value="smo">SMO</option>
                       <option value="cao">CAO</option>
+                      <option value="dean">DEAN</option>
+                      <option value="hougp">HOUGO</option>
 
                     </select>
                   </div>

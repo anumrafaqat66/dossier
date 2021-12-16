@@ -7,9 +7,15 @@
         <div class="col-lg-6">
             <h1 class="h3 mb-0 text-black-800"><strong>Welcome Division Officer</strong></h1>
         </div>
-        <div class="col-lg-6" style="text-align:right">
-            <h1 class="h3 mb-0 text-black-800"><strong><?= $this->session->userdata('division'); ?></strong></h1>
-        </div>
+        <?php if($this->session->userdata('unit_id') == 1) { ?>
+            <div class="col-lg-6" style="text-align:right">
+                <h1 class="h3 mb-0 text-black-800"><strong><?= $this->session->userdata('division') ?></strong></h1>
+            </div>
+        <?php } else { ?>
+            <div class="col-lg-6" style="text-align:right">
+                <h1 class="h3 mb-0 text-black-800"><strong><?= $this->session->userdata('unit_name') ?></strong></h1>
+            </div>
+        <?php } ?>
     </div>
 
 </div>

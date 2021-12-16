@@ -1,16 +1,15 @@
-<?php $this->load->view('cao_sec/common/header'); ?>
+<?php $this->load->view('exo/common/header'); ?>
 
 
 <div class="container-fluid my-4">
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+
+    <div class="row">
         <div class="col-lg-6">
-            <h1 class="h3 mb-0 text-black-800"><strong>Welcome CAO Secretary!</strong></h1>
+            <h1 class="h3 mb-0 text-black-800"><strong>Welcome EXO!</strong></h1>
         </div>
-        
         <?php if($this->session->userdata('unit_id') == 1) { ?>
             <div class="col-lg-6" style="text-align:right">
-            <h1 class="h3 mb-0 text-black-800"><strong>PAKISTAN NAVAL ACADEMY</strong></h1>
+                <h1 class="h3 mb-0 text-black-800"><strong><?= $this->session->userdata('division') ?></strong></h1>
             </div>
         <?php } else { ?>
             <div class="col-lg-6" style="text-align:right">
@@ -18,11 +17,30 @@
             </div>
         <?php } ?>
     </div>
-    <!-- Content Row -->
-    <div class="row">
 
-      
-    </div>
+<div  style="margin-top:50px;margin-bottom: 50px;">
+<div class="row col-md-12">
+  <div class="col-md-6">
+    <img src="<?= base_url(); ?>assets/img/3.jpg" alt="Snow" style="width:100%; height:100%">
+  </div>
+  <div class="col-md-6">
+    <img src="<?= base_url(); ?>assets/img/Russian1.jpg" alt="Forest" style="width:100%;height:100%">
+  </div>
+
+ 
+</div>
+<div class="row col-md-12" style="margin-top:10px;">
+
+ <div class="col-md-6">
+    <img src="<?= base_url(); ?>assets/img/compak1.jpg" alt="Mountains" style="width:100%;height:100%">
+  </div>
+   <div class="col-md-6">
+    <img src="<?= base_url(); ?>assets/img/compak2.jpg" alt="Mountains" style="width:100%;height:100%">
+  </div>
+</div>
+</div>
+ 
+
 
 </div>
 
@@ -31,9 +49,6 @@
 <?php $this->load->view('common/footer'); ?>
 <script>
     function seen(data) {
-        // alert('in');
-        // alert(data);
-        // var receiver_id=$(this).attr('id');
         $.ajax({
             url: '<?= base_url(); ?>ChatController/seen',
             method: 'POST',
@@ -58,3 +73,4 @@
         });
     });
 </script>
+ <script src="<?= base_url('assets/js/chat/chat.js'); ?>"></script> 

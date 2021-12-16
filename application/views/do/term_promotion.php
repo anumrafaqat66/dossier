@@ -2,6 +2,14 @@
     $this->load->view('do/common/header');
 } else if ($this->session->userdata('acct_type') == 'joto') {
     $this->load->view('joto/common/header');
+} else if ($this->session->userdata('acct_type') == 'exo') {
+    $this->load->view('exo/common/header');
+} else if ($this->session->userdata('acct_type') == 'co') {
+    $this->load->view('co/common/header');
+} else if ($this->session->userdata('acct_type') == 'dean') {
+    $this->load->view('dean/common/header');
+} else if ($this->session->userdata('acct_type') == 'hougp') {
+    $this->load->view('hougp/common/header');
 } ?>
 <style>
     .red-border {
@@ -86,6 +94,8 @@
                                             <option class="form-control form-control-user" value="Term-I">Term-I</option>
                                             <option class="form-control form-control-user" value="Term-II">Term-II</option>
                                             <option class="form-control form-control-user" value="Term-III">Term-III</option>
+                                        <?php } else  if (($this->session->userdata('unit_id') == '3') || ($this->session->userdata('unit_id') == '17')) { ?>
+                                            <option class="form-control form-control-user" value="Term-V">Term-V</option>
                                         <?php } else { ?>
                                             <option class="form-control form-control-user" value="Term-IV">Term-IV</option>
                                         <?php } ?>
@@ -392,8 +402,8 @@
         var p_id = $('#id').val();
         var curr_term = $('#term').val();
         var unit_id = $('#unit').val();
-        var branch_id=$('#branch').val();
-       // alert(branch_id);
+        var branch_id = $('#branch').val();
+        // alert(branch_id);
         var validate = 0;
 
         if (curr_term == 'Term-III') {
@@ -403,7 +413,7 @@
                 $('#show_error_select_unit_all').show();
             }
         }
-           if (curr_term == 'Term-IV') {
+        if (curr_term == 'Term-IV') {
             if (branch_id == '') {
                 validate = 1;
                 $('#branch').addClass('red-border');
@@ -422,7 +432,7 @@
                     'action': 'promote',
                     'all': 'no',
                     'unit_id': unit_id,
-                    'branch_id':branch_id
+                    'branch_id': branch_id
                 },
                 success: function(data) {
                     var newDoc = document.open("text/html", "replace");
@@ -516,10 +526,9 @@
         var curr_term = $('#term_list').val();
         var branch_id = $('#branchs_list').val();
         var validate = 0;
-        
+
         if (branch_id == "") {
             validate = 1;
-            alert('i am inside');
             $('#branchs_list').addClass('red-border');
             $('#show_error_select_branch_all').show();
         }
@@ -612,8 +621,8 @@
                 } else {
                     $('#term_selected').html(`<strong>No Cadets in ${term}</strong>`);
                     $('#promote_all_btn_term3').hide();
-                     $('#promote_all_btn_term4').hide();
-                       $('#branch_list_term4').hide();
+                    $('#promote_all_btn_term4').hide();
+                    $('#branch_list_term4').hide();
                     $('#unit_list_term3').hide();
                     $('#unit_list_label_term3').hide();
                 }

@@ -6,9 +6,15 @@
         <div class="col-lg-6">
             <h1 class="h3 mb-0 text-black-800"><strong>Welcome Captain Training!</strong></h1>
         </div>
-        <div class="col-lg-6" style="text-align:right">
+        <?php if($this->session->userdata('unit_id') == 1) { ?>
+            <div class="col-lg-6" style="text-align:right">
             <h1 class="h3 mb-0 text-black-800"><strong>PAKISTAN NAVAL ACADEMY</strong></h1>
-        </div>
+            </div>
+        <?php } else { ?>
+            <div class="col-lg-6" style="text-align:right">
+                <h1 class="h3 mb-0 text-black-800"><strong><?= $this->session->userdata('unit_name') ?></strong></h1>
+            </div>
+        <?php } ?>
     </div>
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <div class="col-lg-6">

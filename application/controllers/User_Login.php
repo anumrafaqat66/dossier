@@ -32,6 +32,10 @@ class User_Login extends CI_Controller
 				redirect('CO');
 			} elseif ($acct_type == "cao_sec") {
 				redirect('CAO_SEC');
+			} elseif ($acct_type == "dean") {
+				redirect('DEAN');
+			} elseif ($acct_type == "hougp") {
+				redirect('HOUGP');
 			} elseif ($acct_type == "admin") {
 				redirect('Admin');
 			} else {
@@ -65,7 +69,7 @@ class User_Login extends CI_Controller
 					$this->session->set_userdata('acct_type', $query['acct_type']);
 					$this->session->set_userdata('username', $query['username']);
 					$this->session->set_userdata('division', $query['division']);
-
+					$this->session->set_userdata('unit_name', $query['unit']); //Added by Awais Ahmad
 					$unit_id = $this->db->where('unit_name',$query['unit'])->get('navy_units')->row_array(); //Added by Awais Dated: 12 Dec 21
 					//echo $unit_id['id'];exit;
 					$this->session->set_userdata('unit_id',$unit_id['id']); 	//added by Awais dated:12 Dec 2021
