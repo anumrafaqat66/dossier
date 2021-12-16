@@ -13,7 +13,27 @@
     </div>
 
 </div>
+<div  style="margin-top:50px;margin-bottom: 50px;">
+<div class="row col-md-12">
+  <div class="col-md-6">
+    <img src="<?= base_url(); ?>assets/img/3.jpg" alt="Snow" style="width:100%; height:100%">
+  </div>
+  <div class="col-md-6">
+    <img src="<?= base_url(); ?>assets/img/Russian1.jpg" alt="Forest" style="width:100%;height:100%">
+  </div>
 
+ 
+</div>
+<div class="row col-md-12" style="margin-top:10px;">
+
+ <div class="col-md-6">
+    <img src="<?= base_url(); ?>assets/img/compak1.jpg" alt="Mountains" style="width:100%;height:100%">
+  </div>
+   <div class="col-md-6">
+    <img src="<?= base_url(); ?>assets/img/compak2.jpg" alt="Mountains" style="width:100%;height:100%">
+  </div>
+</div>
+</div>
 </div>
 
 <?php $this->load->view('common/footer'); ?>

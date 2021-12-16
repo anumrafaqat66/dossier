@@ -1810,6 +1810,12 @@ class D_O extends CI_Controller
                     $next_term = 'Term-V';
                     $phase = 'Sub-Leutinent'; //Added by Awais Dated: 13 Dec 21
                     $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
+                    $result= $this->db->where('id',$_POST['branch_id'])->get('branch_preference_list')->row_array();
+                    if($result['branch_name']== 'WE' || $result['branch_name'] == 'ME'){
+                        $unit_id='3'; //id of PNS Jauher
+                    }else{
+                        $unit_id='17';  ////id of PNSL
+                    }
                 }
             }
 
@@ -1837,6 +1843,7 @@ class D_O extends CI_Controller
                 $update_array = array(
                     'term' => $next_term,
                     'branch_id' => $branch_id,
+                    'unit_id' => $unit_id,
                     'phase' => $phase
                 );
             } else {
@@ -1932,7 +1939,7 @@ class D_O extends CI_Controller
             $data['units'] = $this->db->get('navy_units')->result_array();
             $data['units'] = $this->db->get('branch_preference_list')->result_array();
             $view_page = $this->load->view('do/term_promotion', $data, TRUE);
-            echo $view_page;
+            //echo $view_page;
             json_encode($view_page);
         }
     }
@@ -2024,7 +2031,7 @@ class D_O extends CI_Controller
             // $data = '';
             $data['units'] = $this->db->get('navy_units')->result_array();
             $view_page = $this->load->view('do/term_promotion', $data, TRUE);
-            echo $view_page;
+           // echo $view_page;
             json_encode($view_page);
         }
     }
@@ -2041,11 +2048,18 @@ class D_O extends CI_Controller
             $branch_id = $_POST['branch_id'];
             $phase = 'Sub-Leutinent';
 
+            $result= $this->db->where('id',$_POST['branch_id'])->get('branch_preference_list')->row_array();
+                    if($result['branch_name']== 'WE' || $result['branch_name'] == 'ME'){
+                        $unit_id='3'; //id of PNS Jauher
+                    }else{
+                        $unit_id='17';  ////id of PNSL
+                    }
 
             $update_array = array(
                 'term' => 'Term-V',
                 'phase' => $phase,
-                'branch_id' => $branch_id
+                'branch_id' => $branch_id,
+                'unit_id' => $unit_id
             );
 
             if ($all == 'no') {
@@ -2116,7 +2130,7 @@ class D_O extends CI_Controller
             // $data = '';
             $data['units'] = $this->db->get('navy_units')->result_array();
             $view_page = $this->load->view('do/term_promotion', $data, TRUE);
-            echo $view_page;
+            //echo $view_page;
             json_encode($view_page);
         }
     }
@@ -4307,6 +4321,7 @@ class D_O extends CI_Controller
     {
         $data['units'] = $this->db->get('navy_units')->result_array();
         $data['branches'] = $this->db->get('branch_preference_list')->result_array();
+        //print_r($data['branches']);exit;
         $this->load->view('DO/term_promotion', $data);
     }
 

@@ -393,7 +393,7 @@
         var curr_term = $('#term').val();
         var unit_id = $('#unit').val();
         var branch_id=$('#branch').val();
-        alert(branch_id);
+       // alert(branch_id);
         var validate = 0;
 
         if (curr_term == 'Term-III') {
@@ -612,6 +612,8 @@
                 } else {
                     $('#term_selected').html(`<strong>No Cadets in ${term}</strong>`);
                     $('#promote_all_btn_term3').hide();
+                     $('#promote_all_btn_term4').hide();
+                       $('#branch_list_term4').hide();
                     $('#unit_list_term3').hide();
                     $('#unit_list_label_term3').hide();
                 }
