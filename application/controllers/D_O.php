@@ -1447,12 +1447,12 @@ class D_O extends CI_Controller
         if ($this->input->post()) {
             $oc_no = $_POST['oc_no'];
             
-            if ($this->session->userdata('acct_type') == 'do') {
-                $query = $this->db->where('oc_no', $oc_no)->where('divison_name', $this->session->userdata('division'))->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
-            } else {
-                $query = $this->db->where('oc_no', $oc_no)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
-            }
-            
+            // if ($this->session->userdata('acct_type') == 'do') {
+                $query = $this->db->where('oc_no', $oc_no)->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->row_array();
+                //where('unit_id','1')->or_where('unit_id','2')->or_where('unit_id','3')->or_where('unit_id','17')
+            // } else {
+            //     $query = $this->db->where('oc_no', $oc_no)->where('unit_id','1')->or_where('unit_id','2')->or_where('unit_id','3')->or_where('unit_id','17')->get('pn_form1s')->row_array();
+            // }
             echo json_encode($query);
         }
     }
@@ -1462,11 +1462,11 @@ class D_O extends CI_Controller
         if ($this->input->post()) {
             $term = $_POST['term'];
             
-            if ($this->session->userdata('acct_type') == 'do') {
+            // if ($this->session->userdata('acct_type') == 'do') {
                 $query = $this->db->where('term', $term)->where('divison_name', $this->session->userdata('division'))->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->result_array();
-            } else {
-                $query = $this->db->where('term', $term)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->result_array();
-            }
+            // } else {
+            //     $query = $this->db->where('term', $term)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->result_array();
+            // }
 
             echo json_encode($query);
         }
@@ -4319,7 +4319,8 @@ class D_O extends CI_Controller
     }
     public function view_promotion_screen()
     {
-        $data['units'] = $this->db->get('navy_units')->result_array();
+        $data['units'] = $this->db->where('id','3')->or_where('id','4')->or_where('id','17')->get('navy_units')->result_array();
+        $data['ships'] = $this->db->where('id','1')->or_where('id','2')->or_where('id','6')->or_where('id','7')->or_where('id','8')->or_where('id','9')->or_where('id','10')->or_where('id','11')->or_where('id','12')->or_where('id','13')->or_where('id','14')->or_where('id','15')->or_where('id','16')->get('navy_units')->result_array();
         $data['branches'] = $this->db->get('branch_preference_list')->result_array();
         //print_r($data['branches']);exit;
         $this->load->view('do/term_promotion', $data);

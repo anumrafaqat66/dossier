@@ -89,15 +89,13 @@
                                 <div id="show_terms" class="col-sm-3 mb-1" style="display:none">
                                     <select class="form-control rounded-pill" name="term_list" id="term_list" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Term</option>
-                                        <?php if ($this->session->userdata('unit_id') == '1') { ?>
+                                        <?php if ($this->session->userdata('unit_id') == '1' || $this->session->userdata('unit_id') == '3' || $this->session->userdata('unit_id') == '2'|| $this->session->userdata('unit_id') == '17') { ?>
                                             <option class="form-control form-control-user" value="Term-P">Term-P</option>
                                             <option class="form-control form-control-user" value="Term-I">Term-I</option>
                                             <option class="form-control form-control-user" value="Term-II">Term-II</option>
                                             <option class="form-control form-control-user" value="Term-III">Term-III</option>
-                                        <?php } else  if (($this->session->userdata('unit_id') == '3') || ($this->session->userdata('unit_id') == '17')) { ?>
-                                            <option class="form-control form-control-user" value="Term-V">Term-V</option>
-                                        <?php } else { ?>
                                             <option class="form-control form-control-user" value="Term-IV">Term-IV</option>
+                                            <option class="form-control form-control-user" value="Term-V">Term-V</option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -128,7 +126,7 @@
                     <div class="card-body bg-custom3">
                         <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>D_O/save_cadet_warning">
                             <div class="form-group row">
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <h6>&nbsp;Name:</h6>
                                 </div>
 
@@ -136,30 +134,47 @@
                                     <h6>&nbsp;Term:</h6>
                                 </div>
 
-                                <div class="col-sm-3" id="unit_list_label" style="display: none">
+                                <div class="col-sm-2" id="ship_list_label" style="display: none">
+                                    <h6>&nbsp;Select Ship:</h6>
+                                </div>
+
+                                <div class="col-sm-2" id="unit_list_label" style="display: none">
                                     <h6>&nbsp;Select Unit:</h6>
                                 </div>
 
-                                <div class="col-sm-3" id="branch_list_label" style="display: none">
+                                <div class="col-sm-2" id="branch_list_label" style="display: none">
                                     <h6>&nbsp;Select Branch:</h6>
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <div class="col-sm-3 mb-1" style="display:none">
+                                <div class="col-sm-2 mb-1" style="display:none">
                                     <input type="text" class="" name="oc_num" id="oc_num">
                                 </div>
-                                <div class="col-sm-3 mb-1" style="display:none">
+                                <div class="col-sm-2 mb-1" style="display:none">
                                     <input type="text" class="" name="id" id="id">
                                 </div>
 
-                                <div class="col-sm-3 mb-1">
+                                <div class="col-sm-2 mb-1">
                                     <input type="text" class="form-control form-control-user" name="name" id="name" style="font-weight: bold; font-size:medium" placeholder="Name" readonly>
                                 </div>
                                 <div class="col-sm-2 mb-1">
                                     <input type="text" class="form-control form-control-user" name="term" id="term" style="font-weight: bold; font-size:medium" placeholder="Term" readonly>
                                 </div>
-                                <div class="col-sm-3 mb-1" id="unit_list" style="display: none">
+                                    <div class="col-sm-2 mb-1" id="ship_list" style="display: none">
+                                    <select class="form-control rounded-pill" name="unit" id="ship" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
+                                        <option class="form-control form-control-user" value="">Select Ship</option>
+                                        <?php foreach ($ships as $data) { ?>
+                                            <option class="form-control form-control-user" value="<?= $data['id'] ?>"><?= $data['unit_name'] ?></option>
+                                        <?php } ?>
+                                    </select>
+
+
+
+                                    <span id="show_error_select_unit_all" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please select unit to Proceed*</span>
+                                </div>
+
+                                <div class="col-sm-2 mb-1" id="unit_list" style="display: none">
                                     <select class="form-control rounded-pill" name="unit" id="unit" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Unit</option>
                                         <?php foreach ($units as $data) { ?>
@@ -171,7 +186,7 @@
 
                                     <span id="show_error_select_unit_all" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please select unit to Proceed*</span>
                                 </div>
-                                <div class="col-sm-3 mb-1" id="branch_list" style="display: none">
+                                <div class="col-sm-2 mb-1" id="branch_list" style="display: none">
 
                                     <select class="form-control rounded-pill" name="branch" id="branch" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select branch</option>
@@ -224,25 +239,25 @@
                     <div class="card-body bg-custom3">
                         <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>D_O/save_cadet_warning">
                             <div class="form-group row">
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <h5 id="term_selected"></h5>
                                 </div>
                                 <div class="col-sm-2">
                                 </div>
-                                <div class="col-sm-3" id="unit_list_label_term3">
+                                <div class="col-sm-2" id="unit_list_label_term3">
                                     <!--  <h5 id="select_unit_label">Select Unit to Promote:</h5> -->
                                 </div>
 
                             </div>
                             <div class="form-group row">
 
-                                <div id="list_of_cadets" class="col-sm-3 mb-1">
+                                <div id="list_of_cadets" class="col-sm-2 mb-1">
                                 </div>
 
                                 <div id="cadets_oc_no" class="col-sm-2 mb-1">
                                 </div>
 
-                                <div class="col-sm-3 mb-1" id="unit_list_term3">
+                                <div class="col-sm-2 mb-1" id="unit_list_term3">
                                     <select class="form-control rounded-pill" name="units_list" id="units_list" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Unit</option>
                                         <?php foreach ($units as $data) { ?>
@@ -252,7 +267,17 @@
                                     <span id="show_error_select_unit_all" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please select unit to Proceed*</span>
                                 </div>
 
-                                <div class="col-sm-3 mb-1" id="branch_list_term4">
+                                   <div class="col-sm-2 mb-1" id="ship_list_term3">
+                                    <select class="form-control rounded-pill" name="ships_list" id="ships_list" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
+                                        <option class="form-control form-control-user" value="">Select Ship</option>
+                                        <?php foreach ($ships as $data) { ?>
+                                            <option class="form-control form-control-user" value="<?= $data['id'] ?>"><?= $data['unit_name'] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                    <span id="show_error_select_unit_all" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please select unit to Proceed*</span>
+                                </div>
+
+                                <div class="col-sm-2 mb-1" id="branch_list_term4">
                                     <select class="form-control rounded-pill" name="branchs_list" id="branchs_list" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Branch</option>
                                         <?php foreach ($branches as $data) { ?>
@@ -333,7 +358,7 @@
     $('#add_btn').on('click', function() {
         var validate = 0;
         var oc_no = $('#oc_no').val();
-        //  alert(oc_no);
+          alert(oc_no);
         $('#promote_btn').show();
 
         if (oc_no == '') {
@@ -370,24 +395,35 @@
                         $('#id').val(result['p_id']);
 
                         if (result['term'] == 'Term-III') {
-                            $('#unit_list').show();
-                            $('#unit_list_label').show();
-                        } else {
-                            $('#unit_list').hide();
-                            $('#unit_list_label').hide();
-                        }
-
-                        if (result['term'] == 'Term-IV') {
+                            $('#ship_list').show();
+                            $('#ship_list_label').show();
                             $('#branch_list').show();
                             $('#branch_list_label').show();
                         } else {
-                            $('#branch_list').hide();
+                             $('#ship_list').hide();
+                             $('#ship_list_label').hide();
+                               $('#branch_list').hide();
                             $('#branch_list_label').hide();
+                        }
+
+
+
+                        if (result['term'] == 'Term-IV') {
+                             $('#unit_list').show();
+                            $('#unit_list_label').show();
+                            $('#branch_list').show();
+                            $('#branch_list_label').show();
+                        } else {
+                             // $('#branch_list').hide();
+                             // $('#branch_list_label').hide();    
+                              $('#unit_list').hide();
+                             $('#unit_list_label').hide();
                         }
 
                     } else {
                         $('#no_data').show();
                         $('#search_cadet').hide();
+                    
                     }
                 },
                 async: true
@@ -567,21 +603,33 @@
 
         if (term == 'Term-III') {
             $('#promote_button').hide();
-            $('#promote_all_btn_term3').show();
-            $('#unit_list_term3').show();
+            $('#promote_all_btn_term3').show(); 
+            $('#promote_btn_midshipman').show();
+            $('#unit_list_term3').hide();
+             $('#ship_list_term3').show();
+             $('#branch_list_term4').show();
             $('#unit_list_label_term3').show();
-            $('#branch_list_term4').hide();
-            $('#branch_list_label_term4').hide();
+            //$('#branch_list_term4').show();
+            $('#branch_list_label_term4').show();
+             $('#promote_all_btn_term4').hide();
+
+             //adding options to select
+     
+
         } else if (term == "Term-IV") {
             $('#promote_button').hide();
             $('#promote_btn_midshipman').hide();
             $('#promote_all_btn_term4').show();
             $('#branch_list_term4').show();
-            $('#unit_list_term3').hide();
-            $('#unit_list_label_term3').hide();
+            $('#unit_list_term3').show();
+             $('#ship_list_term3').hide();
+            $('#unit_list_label_term3').show();
+              $('#branch_list_label_term4').show();
+             $('#promote_all_btn_term3').hide();
         } else {
             $('#promote_button').show();
             $('#promote_all_btn_term3').hide();
+              $('#promote_all_btn_term4').hide();
             $('#unit_list_term3').hide();
             $('#unit_list_label_term3').hide();
             $('#branch_list_term4').hide();
