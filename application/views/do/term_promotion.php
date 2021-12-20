@@ -358,14 +358,12 @@
     $('#add_btn').on('click', function() {
         var validate = 0;
         var oc_no = $('#oc_no').val();
-          alert(oc_no);
+          //alert(oc_no);
         $('#promote_btn').show();
-
         if (oc_no == '') {
             validate = 1;
             $('#oc_no').addClass('red-border');
         }
-
         if (validate == 0) {
             // $('#add_form')[0].submit();
             $('#show_error_new').hide();
@@ -399,26 +397,35 @@
                             $('#ship_list_label').show();
                             $('#branch_list').show();
                             $('#branch_list_label').show();
-                        } else {
-                             $('#ship_list').hide();
-                             $('#ship_list_label').hide();
-                               $('#branch_list').hide();
-                            $('#branch_list_label').hide();
-                        }
-
-
-
-                        if (result['term'] == 'Term-IV') {
-                             $('#unit_list').show();
+                            $('#unit_list').hide();
+                            $('#unit_list_label').hide();
+                        } else if(result['term'] == 'Term-IV') {
+                            $('#unit_list').show();
                             $('#unit_list_label').show();
                             $('#branch_list').show();
                             $('#branch_list_label').show();
-                        } else {
-                             // $('#branch_list').hide();
-                             // $('#branch_list_label').hide();    
-                              $('#unit_list').hide();
-                             $('#unit_list_label').hide();
+                            $('#ship_list').hide();
+                            $('#ship_list_label').hide();
+                            //  $('#ship_list').hide();
+                            //  $('#ship_list_label').hide();
+                            //    $('#branch_list').hide();
+                            // $('#branch_list_label').hide();
                         }
+
+                        // if (result['term'] == 'Term-IV') {
+                        //      $('#unit_list').show();
+                        //     $('#unit_list_label').show();
+                        //     $('#branch_list').show();
+                        //     $('#branch_list_label').show();
+                        // } else {
+                        //      // $('#branch_list').hide();
+                        //      // $('#branch_list_label').hide();    
+                        //       $('#unit_list').hide();
+                        //      $('#unit_list_label').hide();
+                        //        $('#ship_list').hide();
+                        //      $('#ship_list_label').hide();
+                        // }
+                     
 
                     } else {
                         $('#no_data').show();
@@ -437,25 +444,30 @@
     $('#promote_btn').on('click', function() {
         var p_id = $('#id').val();
         var curr_term = $('#term').val();
-        var unit_id = $('#unit').val();
+        var unit_id;
+         if (curr_term == 'Term-III' ) {
+              unit_id = $('#ship').val();
+         }else if(curr_term == 'Term-IV' ){
+              unit_id = $('#unit').val();
+         }
         var branch_id = $('#branch').val();
-        // alert(branch_id);
+        //alert(unit_id);
+        //alert(branch_id);
         var validate = 0;
 
-        if (curr_term == 'Term-III') {
+        if (curr_term == 'Term-III' || curr_term == 'Term-IV' ) {
             if (unit_id == '') {
                 validate = 1;
                 $('#unit').addClass('red-border');
                 $('#show_error_select_unit_all').show();
             }
-        }
-        if (curr_term == 'Term-IV') {
-            if (branch_id == '') {
+              if (branch_id == '') {
                 validate = 1;
                 $('#branch').addClass('red-border');
                 $('#show_error_select_branch_all').show();
             }
         }
+      
 
         if (validate == 0) {
             $('#show_error_select_unit_all').hide();
@@ -526,13 +538,27 @@
     //Added by Awais Dated: 13 Dec 2021
     $('#promote_all_btn_term3').on('click', function() {
         var curr_term = $('#term_list').val();
-        var unit_id = $('#units_list').val();
+        if(curr_term == 'Term-III'){
+             var unit_id = $('#ships_list').val();
+        }else if(curr_term == 'Term-IV'){
+            var unit_id = $('#units_list').val();
+        }
+       // var unit_id = $('#units_list').val();
+        var branch_id= $('#branchs_list').val();
+        alert(curr_term);
+        alert(unit_id);
+        alert(branch_id);
         var validate = 0;
 
         if (unit_id == '') {
             validate = 1;
             $('#units_list').addClass('red-border');
             $('#show_error_select_unit_all').show();
+        }
+         if (branch_id == "") {
+            validate = 1;
+            $('#branchs_list').addClass('red-border');
+            $('#show_error_select_branch_all').show();
         }
 
         if (validate == 0) {
@@ -545,7 +571,8 @@
                     'curr_term': curr_term,
                     'action': 'promote',
                     'all': 'yes',
-                    'unit_id': unit_id
+                    'unit_id': unit_id,
+                     'branch_id': branch_id
                 },
                 success: function(data) {
                     var newDoc = document.open("text/html", "replace");
@@ -560,6 +587,12 @@
     //Added by Awais Dated: 15 Dec 2021
     $('#promote_all_btn_term4').on('click', function() {
         var curr_term = $('#term_list').val();
+          //var unit_id = $('#units_list').val();
+            if(curr_term == 'Term-III'){
+             var unit_id = $('#ships_list').val();
+        }else if(curr_term == 'Term-IV'){
+            var unit_id = $('#units_list').val();
+        }
         var branch_id = $('#branchs_list').val();
         var validate = 0;
 
@@ -567,6 +600,12 @@
             validate = 1;
             $('#branchs_list').addClass('red-border');
             $('#show_error_select_branch_all').show();
+        }
+
+         if (unit_id == "") {
+            validate = 1;
+            $('#units_list').addClass('red-border');
+            $('#show_error_select_unit_all').show();
         }
 
         if (validate == 0) {
@@ -579,7 +618,8 @@
                     'curr_term': curr_term,
                     'action': 'promote',
                     'all': 'yes',
-                    'branch_id': branch_id
+                    'branch_id': branch_id,
+                    'unit_id': unit_id
                 },
                 success: function(data) {
                     var newDoc = document.open("text/html", "replace");
@@ -626,12 +666,24 @@
             $('#unit_list_label_term3').show();
               $('#branch_list_label_term4').show();
              $('#promote_all_btn_term3').hide();
-        } else {
+        } else if (term == "Term-V") {
+            $('#promote_button').hide();
+            $('#promote_btn_midshipman').hide();
+           // $('#promote_all_btn_term4').show();
+            $('#branch_list_term4').show();
+            $('#unit_list_term3').show();
+             $('#ship_list_term3').hide();
+            $('#unit_list_label_term3').show();
+              $('#branch_list_label_term4').show();
+             $('#promote_all_btn_term3').hide();
+        }else  {
             $('#promote_button').show();
             $('#promote_all_btn_term3').hide();
               $('#promote_all_btn_term4').hide();
             $('#unit_list_term3').hide();
             $('#unit_list_label_term3').hide();
+              $('#ship_list_term3').hide();
+            $('#ship_list_label_term3').hide();
             $('#branch_list_term4').hide();
             $('#branch_list_label_term4').hide();
         }
@@ -673,6 +725,8 @@
                     $('#branch_list_term4').hide();
                     $('#unit_list_term3').hide();
                     $('#unit_list_label_term3').hide();
+                    $('#ship_list_term3').hide();
+                    $('#ship_list_label_term3').hide();
                 }
             },
             async: false

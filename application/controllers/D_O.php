@@ -1463,7 +1463,8 @@ class D_O extends CI_Controller
             $term = $_POST['term'];
             
             // if ($this->session->userdata('acct_type') == 'do') {
-                $query = $this->db->where('term', $term)->where('divison_name', $this->session->userdata('division'))->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->result_array();
+                $query = $this->db->where('term', $term)->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->result_array();
+                //->where('unit_id', $this->session->userdata('unit_id'))
             // } else {
             //     $query = $this->db->where('term', $term)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->result_array();
             // }
@@ -1805,17 +1806,21 @@ class D_O extends CI_Controller
                 } else if ($curr_term == 'Term-III') {
                     $next_term = 'Term-IV';
                     $phase = 'Midshipman'; //Added by Awais Dated: 13 Dec 21
-                    $unit_id = $_POST['unit_id']; //Added by Awais Dated: 13 Dec 21
+                    $unit_id = $_POST['unit_id'];
+                    $branch_id= $_POST['branch_id'];//Added by Awais Dated: 13 Dec 21
                 } else if ($curr_term == 'Term-IV') {
                     $next_term = 'Term-V';
                     $phase = 'Sub-Leutinent'; //Added by Awais Dated: 13 Dec 21
+                    $unit_id = $_POST['unit_id'];
                     $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
                     $result= $this->db->where('id',$_POST['branch_id'])->get('branch_preference_list')->row_array();
-                    if($result['branch_name']== 'WE' || $result['branch_name'] == 'ME' || $result['branch_name'] == 'OPS'){
-                        $unit_id='3'; //id of PNS Jauher
-                    }else{
-                        $unit_id='17';  ////id of PNSL
-                    }
+                    // if($result['branch_name']== 'WE' || $result['branch_name'] == 'ME' || $result['branch_name'] == 'OPS'){
+                    //     $unit_id='3'; //id of PNS Jauher
+                    // }else{
+                    //     $unit_id='17';  ////id of PNSL
+                    // }
+                }else if ($curr_term == 'Term-V') {
+                //not specified yet
                 }
             }
 
@@ -1830,6 +1835,8 @@ class D_O extends CI_Controller
                     $next_term = 'Term-III';
                 } else if ($curr_term == 'Term-IV') {
                     $next_term = 'Term-IV';
+                }else if ($curr_term == 'Term-V') {
+                    $next_term = 'Term-V';
                 }
             }
 
@@ -1837,6 +1844,7 @@ class D_O extends CI_Controller
                 $update_array = array(
                     'term' => $next_term,
                     'unit_id' => $unit_id,
+                    'branch_id'=>$branch_id,
                     'phase' => $phase
                 );
             } else if ($curr_term == 'Term-IV') {
@@ -1876,7 +1884,9 @@ class D_O extends CI_Controller
                 ];
             }
 
-            // print_r($update_array);exit;
+              //print_r($cond);exit;
+             // echo $p_id;exit;
+
             $this->db->where($cond);
             $update = $this->db->update('pn_form1s', $update_array);
 
@@ -1936,8 +1946,9 @@ class D_O extends CI_Controller
                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
             }
 
-            $data['units'] = $this->db->get('navy_units')->result_array();
-            $data['units'] = $this->db->get('branch_preference_list')->result_array();
+             $data['units'] = $this->db->where('id','3')->or_where('id','4')->or_where('id','17')->get('navy_units')->result_array();
+        $data['ships'] = $this->db->where('id','1')->or_where('id','2')->or_where('id','6')->or_where('id','7')->or_where('id','8')->or_where('id','9')->or_where('id','10')->or_where('id','11')->or_where('id','12')->or_where('id','13')->or_where('id','14')->or_where('id','15')->or_where('id','16')->get('navy_units')->result_array();
+            $data['branches'] = $this->db->get('branch_preference_list')->result_array();
             $view_page = $this->load->view('do/term_promotion', $data, TRUE);
             echo $view_page;
             json_encode($view_page);
@@ -1954,13 +1965,15 @@ class D_O extends CI_Controller
             $action = $_POST['action'];
             $all = $_POST['all'];
             $unit_id = $_POST['unit_id'];
+            $branch_id=$_POST['branch_id'];
             $phase = 'Midshipman';
 
 
             $update_array = array(
                 'term' => 'Term-IV',
                 'phase' => $phase,
-                'unit_id' => $unit_id
+                'unit_id' => $unit_id,
+                'branch_id'=> $branch_id
             );
 
             if ($all == 'no') {
@@ -2029,7 +2042,8 @@ class D_O extends CI_Controller
             }
 
             // $data = '';
-            $data['units'] = $this->db->get('navy_units')->result_array();
+             $data['units'] = $this->db->where('id','3')->or_where('id','4')->or_where('id','17')->get('navy_units')->result_array();
+             $data['ships'] = $this->db->where('id','1')->or_where('id','2')->or_where('id','6')->or_where('id','7')->or_where('id','8')->or_where('id','9')->or_where('id','10')->or_where('id','11')->or_where('id','12')->or_where('id','13')->or_where('id','14')->or_where('id','15')->or_where('id','16')->get('navy_units')->result_array();
             $view_page = $this->load->view('do/term_promotion', $data, TRUE);
             echo $view_page;
             json_encode($view_page);
@@ -2046,14 +2060,15 @@ class D_O extends CI_Controller
             $action = $_POST['action'];
             $all = $_POST['all'];
             $branch_id = $_POST['branch_id'];
+            $unit_id = $_POST['unit_id'];
             $phase = 'Sub-Leutinent';
 
-            $result= $this->db->where('id',$_POST['branch_id'])->get('branch_preference_list')->row_array();
-                    if($result['branch_name']== 'WE' || $result['branch_name'] == 'ME' || $result['branch_name'] == 'OPS'){
-                        $unit_id='3'; //id of PNS Jauher
-                    }else{
-                        $unit_id='17';  ////id of PNSL
-                    }
+            // $result= $this->db->where('id',$_POST['branch_id'])->get('branch_preference_list')->row_array();
+            //         if($result['branch_name']== 'WE' || $result['branch_name'] == 'ME' || $result['branch_name'] == 'OPS'){
+            //             $unit_id='3'; //id of PNS Jauher
+            //         }else{
+            //             $unit_id='17';  ////id of PNSL
+            //         }
 
             $update_array = array(
                 'term' => 'Term-V',
@@ -2128,7 +2143,9 @@ class D_O extends CI_Controller
             }
 
             // $data = '';
-            $data['units'] = $this->db->get('navy_units')->result_array();
+            //$data['units'] = $this->db->get('navy_units')->result_array();
+             $data['units'] = $this->db->where('id','3')->or_where('id','4')->or_where('id','17')->get('navy_units')->result_array();
+             $data['ships'] = $this->db->where('id','1')->or_where('id','2')->or_where('id','6')->or_where('id','7')->or_where('id','8')->or_where('id','9')->or_where('id','10')->or_where('id','11')->or_where('id','12')->or_where('id','13')->or_where('id','14')->or_where('id','15')->or_where('id','16')->get('navy_units')->result_array();
             $view_page = $this->load->view('do/term_promotion', $data, TRUE);
             echo $view_page;
             json_encode($view_page);
