@@ -1985,14 +1985,26 @@ class D_O extends CI_Controller
             if ($all == 'no') {
                 $cond  = [
                     'p_id' => $p_id,
-                    'do_id' => $this->session->userdata('user_id'),
                     'term' => $curr_term
                 ];
             } else {
-                $cond  = [
-                    'do_id' => $this->session->userdata('user_id'),
-                    'term' => $curr_term
-                ];
+                if ($this->session->userdata('unit_id') != '1') {
+                    $cond  = [
+                        'unit_id' => $this->session->userdata('unit_id'),
+                        'term' => $curr_term
+                    ];
+                } else {
+                    if ($this->session->userdata('acct_type') == 'do') {
+                        $cond  = [
+                            'term' => $curr_term,
+                            'divison_name' => $this->session->userdata('division')
+                        ];
+                    } else {
+                        $cond  = [
+                            'term' => $curr_term                            
+                        ];
+                    }
+                }
             }
             $this->db->where($cond);
             $update = $this->db->update('pn_form1s', $update_array);
