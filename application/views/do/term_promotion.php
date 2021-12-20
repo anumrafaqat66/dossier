@@ -89,13 +89,13 @@
                                 <div id="show_terms" class="col-sm-3 mb-1" style="display:none">
                                     <select class="form-control rounded-pill" name="term_list" id="term_list" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Term</option>
-                                        <?php if ($this->session->userdata('unit_id') == '1' || $this->session->userdata('unit_id') == '3' || $this->session->userdata('unit_id') == '2'|| $this->session->userdata('unit_id') == '17') { ?>
+                                        <?php if ($this->session->userdata('unit_id') == '1' || $this->session->userdata('unit_id') == '3' || $this->session->userdata('unit_id') == '2' || $this->session->userdata('unit_id') == '17') { ?>
                                             <option class="form-control form-control-user" value="Term-P">Term-P</option>
                                             <option class="form-control form-control-user" value="Term-I">Term-I</option>
                                             <option class="form-control form-control-user" value="Term-II">Term-II</option>
                                             <option class="form-control form-control-user" value="Term-III">Term-III</option>
-                                            <option class="form-control form-control-user" value="Term-IV">Term-IV</option>
-                                            <option class="form-control form-control-user" value="Term-V">Term-V</option>
+                                            <option class="form-control form-control-user" value="Term-IV">Midshipman</option>
+                                            <option class="form-control form-control-user" value="Term-V">Sub-Lieutinent</option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -161,17 +161,14 @@
                                 <div class="col-sm-2 mb-1">
                                     <input type="text" class="form-control form-control-user" name="term" id="term" style="font-weight: bold; font-size:medium" placeholder="Term" readonly>
                                 </div>
-                                    <div class="col-sm-2 mb-1" id="ship_list" style="display: none">
-                                    <select class="form-control rounded-pill" name="unit" id="ship" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
+                                <div class="col-sm-2 mb-1" id="ship_list_seperate" style="display: none">
+                                    <select class="form-control rounded-pill" name="ship_ind" id="ship_ind" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Ship</option>
                                         <?php foreach ($ships as $data) { ?>
                                             <option class="form-control form-control-user" value="<?= $data['id'] ?>"><?= $data['unit_name'] ?></option>
                                         <?php } ?>
                                     </select>
-
-
-
-                                    <span id="show_error_select_unit_all" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please select unit to Proceed*</span>
+                                    <span id="show_error_select_ship_one_by_one" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please select ship to Proceed*</span>
                                 </div>
 
                                 <div class="col-sm-2 mb-1" id="unit_list" style="display: none">
@@ -187,7 +184,6 @@
                                     <span id="show_error_select_unit_all" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please select unit to Proceed*</span>
                                 </div>
                                 <div class="col-sm-2 mb-1" id="branch_list" style="display: none">
-
                                     <select class="form-control rounded-pill" name="branch" id="branch" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select branch</option>
                                         <?php foreach ($branches as $data) { ?>
@@ -195,7 +191,7 @@
                                         <?php } ?>
                                     </select>
 
-                                    <span id="show_error_select_branch" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please select branch to Proceed*</span>
+                                    <span id="show_error_select_branch_one_by_one" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please select branch to Proceed*</span>
                                 </div>
 
                                 <div class="col-sm-2 mb-1">
@@ -264,17 +260,17 @@
                                             <option class="form-control form-control-user" value="<?= $data['id'] ?>"><?= $data['unit_name'] ?></option>
                                         <?php } ?>
                                     </select>
-                                    <span id="show_error_select_unit_all" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please select unit to Proceed*</span>
+                                    <span id="show_error_select_unit_all_term3" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please select Unit to Proceed*</span>
                                 </div>
 
-                                   <div class="col-sm-2 mb-1" id="ship_list_term3">
+                                <div class="col-sm-2 mb-1" id="ship_list_term3">
                                     <select class="form-control rounded-pill" name="ships_list" id="ships_list" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Ship</option>
                                         <?php foreach ($ships as $data) { ?>
                                             <option class="form-control form-control-user" value="<?= $data['id'] ?>"><?= $data['unit_name'] ?></option>
                                         <?php } ?>
                                     </select>
-                                    <span id="show_error_select_unit_all" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please select unit to Proceed*</span>
+                                    <span id="show_error_select_ship_all" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please select Ship to Proceed*</span>
                                 </div>
 
                                 <div class="col-sm-2 mb-1" id="branch_list_term4">
@@ -358,7 +354,7 @@
     $('#add_btn').on('click', function() {
         var validate = 0;
         var oc_no = $('#oc_no').val();
-          //alert(oc_no);
+        //alert(oc_no);
         $('#promote_btn').show();
         if (oc_no == '') {
             validate = 1;
@@ -393,44 +389,25 @@
                         $('#id').val(result['p_id']);
 
                         if (result['term'] == 'Term-III') {
-                            $('#ship_list').show();
+                            $('#ship_list_seperate').show();
                             $('#ship_list_label').show();
                             $('#branch_list').show();
                             $('#branch_list_label').show();
                             $('#unit_list').hide();
                             $('#unit_list_label').hide();
-                        } else if(result['term'] == 'Term-IV') {
+                        } else if (result['term'] == 'Term-IV') {
                             $('#unit_list').show();
                             $('#unit_list_label').show();
                             $('#branch_list').show();
                             $('#branch_list_label').show();
-                            $('#ship_list').hide();
+                            $('#ship_list_seperate').hide();
                             $('#ship_list_label').hide();
-                            //  $('#ship_list').hide();
-                            //  $('#ship_list_label').hide();
-                            //    $('#branch_list').hide();
-                            // $('#branch_list_label').hide();
                         }
-
-                        // if (result['term'] == 'Term-IV') {
-                        //      $('#unit_list').show();
-                        //     $('#unit_list_label').show();
-                        //     $('#branch_list').show();
-                        //     $('#branch_list_label').show();
-                        // } else {
-                        //      // $('#branch_list').hide();
-                        //      // $('#branch_list_label').hide();    
-                        //       $('#unit_list').hide();
-                        //      $('#unit_list_label').hide();
-                        //        $('#ship_list').hide();
-                        //      $('#ship_list_label').hide();
-                        // }
-                     
 
                     } else {
                         $('#no_data').show();
                         $('#search_cadet').hide();
-                    
+
                     }
                 },
                 async: true
@@ -445,29 +422,36 @@
         var p_id = $('#id').val();
         var curr_term = $('#term').val();
         var unit_id;
-         if (curr_term == 'Term-III' ) {
-              unit_id = $('#ship').val();
-         }else if(curr_term == 'Term-IV' ){
-              unit_id = $('#unit').val();
-         }
+
+        if (curr_term == 'Term-III') {
+            unit_id = $('#ship_ind').val();
+        } else if (curr_term == 'Term-IV') {
+            unit_id = $('#unit').val();
+        }
+
         var branch_id = $('#branch').val();
         //alert(unit_id);
         //alert(branch_id);
         var validate = 0;
 
-        if (curr_term == 'Term-III' || curr_term == 'Term-IV' ) {
+        if (curr_term == 'Term-III' || curr_term == 'Term-IV') {
             if (unit_id == '') {
                 validate = 1;
-                $('#unit').addClass('red-border');
-                $('#show_error_select_unit_all').show();
+                if (curr_term == 'Term-III') {
+                    $('#ship_ind').addClass('red-border');
+                    $('#show_error_select_ship_one_by_one').show();
+                } else if (curr_term == 'Term-IV') {
+                    $('#unit').addClass('red-border');
+                    $('#units_list').addClass('red-border');
+                    $('#show_error_select_unit_all').show();
+                }
             }
-              if (branch_id == '') {
+            if (branch_id == '') {
                 validate = 1;
                 $('#branch').addClass('red-border');
-                $('#show_error_select_branch_all').show();
+                $('#show_error_select_branch_one_by_one').show();
             }
         }
-      
 
         if (validate == 0) {
             $('#show_error_select_unit_all').hide();
@@ -538,24 +522,27 @@
     //Added by Awais Dated: 13 Dec 2021
     $('#promote_all_btn_term3').on('click', function() {
         var curr_term = $('#term_list').val();
-        if(curr_term == 'Term-III'){
-             var unit_id = $('#ships_list').val();
-        }else if(curr_term == 'Term-IV'){
+        if (curr_term == 'Term-III') {
+            var unit_id = $('#ships_list').val();
+        } else if (curr_term == 'Term-IV') {
             var unit_id = $('#units_list').val();
         }
-       // var unit_id = $('#units_list').val();
-        var branch_id= $('#branchs_list').val();
-        alert(curr_term);
-        alert(unit_id);
-        alert(branch_id);
+
+        var branch_id = $('#branchs_list').val();
+        
         var validate = 0;
 
         if (unit_id == '') {
             validate = 1;
-            $('#units_list').addClass('red-border');
-            $('#show_error_select_unit_all').show();
+            if (curr_term == 'Term-III') {
+                $('#ships_list').addClass('red-border');
+                $('#show_error_select_ship_all').show();
+            } else if (curr_term == 'Term-IV') {
+                $('#units_list').addClass('red-border');
+                $('#show_error_select_unit_all').show();
+            }
         }
-         if (branch_id == "") {
+        if (branch_id == "") {
             validate = 1;
             $('#branchs_list').addClass('red-border');
             $('#show_error_select_branch_all').show();
@@ -563,6 +550,7 @@
 
         if (validate == 0) {
             $('#show_error_select_unit_all').hide();
+            $('#show_error_select_ship_all').hide();
             $.ajax({
                 url: '<?= base_url(); ?>D_O/update_cadet_to_midshipman',
                 method: 'POST',
@@ -572,7 +560,7 @@
                     'action': 'promote',
                     'all': 'yes',
                     'unit_id': unit_id,
-                     'branch_id': branch_id
+                    'branch_id': branch_id
                 },
                 success: function(data) {
                     var newDoc = document.open("text/html", "replace");
@@ -587,10 +575,10 @@
     //Added by Awais Dated: 15 Dec 2021
     $('#promote_all_btn_term4').on('click', function() {
         var curr_term = $('#term_list').val();
-          //var unit_id = $('#units_list').val();
-            if(curr_term == 'Term-III'){
-             var unit_id = $('#ships_list').val();
-        }else if(curr_term == 'Term-IV'){
+        //var unit_id = $('#units_list').val();
+        if (curr_term == 'Term-III') {
+            var unit_id = $('#ships_list').val();
+        } else if (curr_term == 'Term-IV') {
             var unit_id = $('#units_list').val();
         }
         var branch_id = $('#branchs_list').val();
@@ -602,14 +590,17 @@
             $('#show_error_select_branch_all').show();
         }
 
-         if (unit_id == "") {
+        if (unit_id == "") {
             validate = 1;
             $('#units_list').addClass('red-border');
             $('#show_error_select_unit_all').show();
+            $('#show_error_select_unit_all_term3').show();
         }
 
         if (validate == 0) {
             $('#show_error_select_branch_all').hide();
+            // $('#show_error_select_unit_all').hide();
+            $('#show_error_select_unit_all_term3').hide();
             $.ajax({
                 url: '<?= base_url(); ?>D_O/update_cadet_to_sub_lieutenant',
                 method: 'POST',
@@ -643,18 +634,18 @@
 
         if (term == 'Term-III') {
             $('#promote_button').hide();
-            $('#promote_all_btn_term3').show(); 
+            $('#promote_all_btn_term3').show();
             $('#promote_btn_midshipman').show();
             $('#unit_list_term3').hide();
-             $('#ship_list_term3').show();
-             $('#branch_list_term4').show();
+            $('#ship_list_term3').show();
+            $('#branch_list_term4').show();
             $('#unit_list_label_term3').show();
             //$('#branch_list_term4').show();
             $('#branch_list_label_term4').show();
-             $('#promote_all_btn_term4').hide();
+            $('#promote_all_btn_term4').hide();
 
-             //adding options to select
-     
+            //adding options to select
+
 
         } else if (term == "Term-IV") {
             $('#promote_button').hide();
@@ -662,27 +653,27 @@
             $('#promote_all_btn_term4').show();
             $('#branch_list_term4').show();
             $('#unit_list_term3').show();
-             $('#ship_list_term3').hide();
+            $('#ship_list_term3').hide();
             $('#unit_list_label_term3').show();
-              $('#branch_list_label_term4').show();
-             $('#promote_all_btn_term3').hide();
+            $('#branch_list_label_term4').show();
+            $('#promote_all_btn_term3').hide();
         } else if (term == "Term-V") {
             $('#promote_button').hide();
             $('#promote_btn_midshipman').hide();
-           // $('#promote_all_btn_term4').show();
+            // $('#promote_all_btn_term4').show();
             $('#branch_list_term4').show();
             $('#unit_list_term3').show();
-             $('#ship_list_term3').hide();
+            $('#ship_list_term3').hide();
             $('#unit_list_label_term3').show();
-              $('#branch_list_label_term4').show();
-             $('#promote_all_btn_term3').hide();
-        }else  {
+            $('#branch_list_label_term4').show();
+            $('#promote_all_btn_term3').hide();
+        } else {
             $('#promote_button').show();
             $('#promote_all_btn_term3').hide();
-              $('#promote_all_btn_term4').hide();
+            $('#promote_all_btn_term4').hide();
             $('#unit_list_term3').hide();
             $('#unit_list_label_term3').hide();
-              $('#ship_list_term3').hide();
+            $('#ship_list_term3').hide();
             $('#ship_list_label_term3').hide();
             $('#branch_list_term4').hide();
             $('#branch_list_label_term4').hide();

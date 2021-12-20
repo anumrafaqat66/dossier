@@ -61,8 +61,8 @@ class User_Login extends CI_Controller
 			$password = $postedData['password'];
 			$status = $postedData['role'];
 			$query = $this->db->where('username', $username)->where('acct_type', $status)->where('is_active', 'yes')->get('security_info')->row_array();
-			$hash = $query['password'];			
-//print_r($query);exit;
+			$hash = $query['password'];
+			//print_r($query);exit;
 			if (!empty($query)) {
 				if (password_verify($password, $hash)) {
 					$this->session->set_userdata('user_id', $query['id']);
@@ -70,9 +70,9 @@ class User_Login extends CI_Controller
 					$this->session->set_userdata('username', $query['username']);
 					$this->session->set_userdata('division', $query['division']);
 					$this->session->set_userdata('unit_name', $query['unit']); //Added by Awais Ahmad
-					$unit_id = $this->db->where('unit_name',$query['unit'])->get('navy_units')->row_array(); //Added by Awais Dated: 12 Dec 21
+					$unit_id = $this->db->where('unit_name', $query['unit'])->get('navy_units')->row_array(); //Added by Awais Dated: 12 Dec 21
 					//echo $unit_id['id'];exit;
-					$this->session->set_userdata('unit_id',$unit_id['id']); 	//added by Awais dated:12 Dec 2021
+					$this->session->set_userdata('unit_id', $unit_id['id']); 	//added by Awais dated:12 Dec 2021
 					$this->session->set_flashdata('success', 'Login successfully');
 
 					$this->db->set('status', 'online');
