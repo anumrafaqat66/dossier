@@ -20,6 +20,22 @@
 
 </head>
 
+<style>
+    .img-cheif {
+        background: url('<?= base_url() ?>assets/img/img5.jpg');
+        /* background-position: center; */
+        background-position: top;
+        /* background-size: cover; */
+        background-repeat: no-repeat;
+        max-width: 100%;
+        max-height: 100%;
+        background-color: rgb(0, 1, 84);
+        /* opacity: 0.9; */
+        /* display: block; */
+        /* remove extra space below image */
+    }
+</style>
+
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -150,7 +166,7 @@
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column bg-custom2">
+        <div id="content-wrapper" class="d-flex flex-column bg-custom2 img-cheif">
 
             <!-- Main Content -->
             <div id="content">

@@ -1,13 +1,12 @@
 <?php $this->load->view('do/common/header'); ?>
 
-
 <div class="container-fluid my-4">
-
+    <!-- <div class="row" style="background:<?= base_url(); ?>assets/img/img3.jpg"> -->
     <div class="row">
         <div class="col-lg-6">
             <h1 class="h3 mb-0 text-black-800"><strong>Welcome Division Officer</strong></h1>
         </div>
-        <?php if($this->session->userdata('unit_id') == 1) { ?>
+        <?php if ($this->session->userdata('unit_id') == 1) { ?>
             <div class="col-lg-6" style="text-align:right">
                 <h1 class="h3 mb-0 text-black-800"><strong><?= $this->session->userdata('division') ?></strong></h1>
             </div>
@@ -19,26 +18,26 @@
     </div>
 
 </div>
-<div  style="margin-top:50px;margin-bottom: 50px;">
-<div class="row col-md-12">
-  <div class="col-md-6">
-    <img src="<?= base_url(); ?>assets/img/3.jpg" alt="Snow" style="width:100%; height:100%">
-  </div>
-  <div class="col-md-6">
-    <img src="<?= base_url(); ?>assets/img/Russian1.jpg" alt="Forest" style="width:100%;height:100%">
-  </div>
+<div style="margin-top:50px;margin-bottom: 50px;">
+    <div class="row col-md-12">
+        <!-- <div class="col-md-12">
+            <img src="<?= base_url(); ?>assets/img/img3.jpg" alt="Snow" style="width:100%; height:100%">
+        </div> -->
+        <!-- <div class="col-md-6">
+    <img src="<?= base_url(); ?>assets/img/Russian1.jpg" alt="Forest" style="width:100%;height:100%"> -->
+    </div>
 
- 
-</div>
-<div class="row col-md-12" style="margin-top:10px;">
 
- <div class="col-md-6">
-    <img src="<?= base_url(); ?>assets/img/compak1.jpg" alt="Mountains" style="width:100%;height:100%">
-  </div>
-   <div class="col-md-6">
-    <img src="<?= base_url(); ?>assets/img/compak2.jpg" alt="Mountains" style="width:100%;height:100%">
-  </div>
-</div>
+    <!-- </div> -->
+    <!-- <div class="row col-md-12" style="margin-top:10px;">
+
+        <div class="col-md-6">
+            <img src="<?= base_url(); ?>assets/img/compak1.jpg" alt="Mountains" style="width:100%;height:100%">
+        </div>
+        <div class="col-md-6">
+            <img src="<?= base_url(); ?>assets/img/compak2.jpg" alt="Mountains" style="width:100%;height:100%">
+        </div>
+    </div> -->
 </div>
 </div>
 
@@ -69,4 +68,4 @@
         });
     });
 </script>
- <script src="<?= base_url('assets/js/chat/chat.js'); ?>"></script> 
+<script src="<?= base_url('assets/js/chat/chat.js'); ?>"></script>

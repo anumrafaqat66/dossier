@@ -2757,13 +2757,12 @@ DELETE FROM `navy_units` WHERE `unit_name`='PNS Karsaz';
 
 Update `navy_units` set unit_name = 'PNS Rahbar (Pakistan Naval Academy)' WHERE unit_name = 'PNS Rahbar';
 
-Update `security_info` set unit = 'PNS Rahbar (Pakistan Naval Academy)' WHERE unit is null;
-
 /*Alter security_info*/
 
 alter table security_info
 add COLUMN unit varchar(100) null;
 
+Update `security_info` set unit = 'PNS Rahbar (Pakistan Naval Academy)' WHERE unit is null;
 
 alter table security_info
 add COLUMN branch varchar(100) null;
