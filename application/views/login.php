@@ -59,17 +59,18 @@
                   <div class="form-group">
                     <select class="form-control form-control-user" name="role" id="role" style="height:50px;padding:10px">
                       <option value="">Select Role</option>
-                      <option value="do">DO</option>
+                      <option value="do">DO - Divisional Officer</option>
                       <option value="joto">JOTO</option>
-                      <option value="ct">Captain Training</option>
-                      <option value="co">Commanding Officer</option>
-                      <option value="exo">EXO</option>
-                      <option value="cao_sec">CAO Secretary</option>
-                      <!-- <option value="sqc">Squadron Commander</option> -->
-                      <option value="smo">SMO</option>
-                      <option value="cao">CAO</option>
+                      <option value="ct">CT - Captain Training</option>
+                      <option value="co">CO - Commanding Officer</option>
+                      <option value="exo">EXO - Executive Officer</option>
+                      <option value="sqc">SC - Squadron Commander</option>
+                      <option value="cao">CAO - Cheif Admin Officer</option>
+                      <option value="cao_sec">CAO SEC - CAO Secretary</option>
+                      <option value="smo">SMO - Senior Medical Officer</option>
                       <option value="dean">DEAN</option>
-                      <option value="hougp">HOUGO</option>
+                      <option value="ctmwt">Captain MWT</option>
+                      <option value="hougp">HOUGP</option>
 
                     </select>
                   </div>

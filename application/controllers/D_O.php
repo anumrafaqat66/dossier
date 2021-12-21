@@ -1448,7 +1448,7 @@ class D_O extends CI_Controller
             $oc_no = $_POST['oc_no'];
 
             if (($this->session->userdata('unit_id')) != 1) {
-                $query = $this->db->where('oc_no', $oc_no)->where('unit_id', $this->db->userdata('unit_id'))->get('pn_form1s')->row_array();
+                $query = $this->db->where('oc_no', $oc_no)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
             } else {
                 if ($this->session->userdata('acct_type') == 'do') {
                     $query = $this->db->where('oc_no', $oc_no)->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->row_array();

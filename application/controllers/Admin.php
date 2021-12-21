@@ -20,8 +20,8 @@ class Admin extends CI_Controller
     public function add_users()
     {
         $data['divisions'] = $this->db->get('divisions')->result_array();
-        $data['branches']= $this->db->get('branch_preference_list')->result_array();
-        $data['units']=$this->db->get('navy_units')->result_array();
+        $data['branches'] = $this->db->get('branch_preference_list')->result_array();
+        $data['units'] = $this->db->get('navy_units')->result_array();
         $this->load->view('Admin/create_user', $data);
     }
 
@@ -40,9 +40,9 @@ class Admin extends CI_Controller
     public function edit_user_profile($user_id = NULL)
     {
         $data['users_data'] = $this->db->where('is_active', 'yes')->where_not_in('acct_type', 'admin')->where('id', $user_id)->get('security_info')->row_array();
-          $data['branches']= $this->db->get('branch_preference_list')->result_array();
-        $data['units']=$this->db->get('navy_units')->result_array();
-       //  print_r($data['branches']); exit;
+        $data['branches'] = $this->db->get('branch_preference_list')->result_array();
+        $data['units'] = $this->db->get('navy_units')->result_array();
+        //  print_r($data['branches']); exit;
         $this->load->view('Admin/edit_user', $data);
     }
 
@@ -76,9 +76,9 @@ class Admin extends CI_Controller
         $phone = $postData['phone'];
         $email = $postData['email'];
         $address = $postData['address'];
-        $branch=$postData['branch'];
-        $unit=$postData['unit'];
-        
+        $branch = $postData['branch'];
+        $unit = $postData['unit'];
+
 
         $update_array = array(
             'username' => $username,
@@ -90,7 +90,7 @@ class Admin extends CI_Controller
             'branch' => $branch,
             'unit' => $unit
         );
-       // print_r($update_array);exit;
+        // print_r($update_array);exit;
         $cond  = ['id' => $user_id];
         $this->db->where($cond);
         $update = $this->db->update('security_info', $update_array);
@@ -154,7 +154,9 @@ class Admin extends CI_Controller
             $username = $postData['username'];
             $password = password_hash($postData['password'], PASSWORD_DEFAULT);
             $status = $postData['status'];
-            $division = $postData['div'];
+            if (isset($postData['div'])) {
+                $division = $postData['div'];
+            }
             $branch = $postData['branch'];
             $unit = $postData['unit'];
 

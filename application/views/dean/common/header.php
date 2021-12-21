@@ -45,7 +45,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <!-- <i class="fas fa-laugh-wink"></i> -->
                 </div>
@@ -59,7 +59,30 @@
             <li class="nav-item active">
                 <a class="nav-link" href="<?php echo base_url(); ?><?php if ($this->session->userdata('acct_type') == 'do') {
                                                                         echo "D_O";
-                                                                    } ?>">
+                                                                    } else if ($this->session->userdata('acct_type') == 'joto') {
+                                                                        echo "JOTO"; 
+                                                                    } else if ($this->session->userdata('acct_type') == 'ct') {
+                                                                        echo "CT"; 
+                                                                    } else if ($this->session->userdata('acct_type') == 'co') {
+                                                                        echo "CO"; 
+                                                                    } else if ($this->session->userdata('acct_type') == 'cao') {
+                                                                        echo "CAO"; 
+                                                                    } else if ($this->session->userdata('acct_type') == 'dean') {
+                                                                        echo "DEAN"; 
+                                                                    } else if ($this->session->userdata('acct_type') == 'hougp') {
+                                                                        echo "HOUGP"; 
+                                                                    } else if ($this->session->userdata('acct_type') == 'cao_sec') {
+                                                                        echo "CAO_SEC"; 
+                                                                    } else if ($this->session->userdata('acct_type') == 'smo') {
+                                                                        echo "SMO"; 
+                                                                    } else if ($this->session->userdata('acct_type') == 'ctmwt') {
+                                                                        echo "CTMWT"; 
+                                                                    } else if ($this->session->userdata('acct_type') == 'exo') {
+                                                                        echo "EXO"; 
+                                                                    } else if ($this->session->userdata('acct_type') == 'sqc') {
+                                                                        echo "SQC"; 
+                                                                    }
+                                                                        ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -70,22 +93,22 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="#"  aria-expanded="true">
-                    <i class="fas fa-th-list"></i>
+                <a class="nav-link" href="<?php echo base_url(); ?>DEAN/view_dossier_folder" aria-expanded="true">
+                    <i class="far fa-newspaper"></i>
                     <span> View Dossiers </span>
                     <!-- <span>Components</span> -->
                 </a>
 
             </li>
 
- <!--            <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo base_url(); ?>/D_O/PN_Form" aria-expanded="true">
-                    <i class="fab fa-wpforms"></i>
-                    <span>PN Form I</span>
-                   
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url(); ?>DEAN/view_dossier" aria-expanded="true">
+                    <i class="fas fa-th-list"></i>
+                    <span> Division Analytics </span>
+                    <!-- <span>Components</span> -->
                 </a>
 
-            </li> -->
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -103,29 +126,30 @@
                 </a>
                 <div id="collapse_general" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/add_club">Add Club</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/daily_module">Daily Module</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/Inspection_record">Inspection Record</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/personal_data">Personal Data</a>
-                        <a class="collapse-item" href="#">Obiography</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/auto_biography">Cadet's Auto-biography</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/psychologist_report">Psychologist's Report</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>DEAN/add_club">Add Club</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>DEAN/Inspection_record">Inspection Record</a>
+                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>DEAN/personal_data">Personal Data</a> -->
+                        <a class="collapse-item" href="<?php echo base_url(); ?>DEAN/auto_biography">Cadet's Auto-biography</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>DEAN/psychologist_report">Psychologist's Report</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>DEAN/view_record_div_officer">Divisional Officer Record</a>
                     </div>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_discipline" aria-expanded="true">
+                <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_discipline" aria-expanded="true"> -->
+                <a class="nav-link collapsed" href="<?php echo base_url(); ?>DEAN/daily_module" aria-expanded="true">
                     <i class="fas fa-running"></i>
-                    <span> Discipline</span>
+                    <span> Daily Module</span>
                     <!-- <span>Components</span> -->
                 </a>
-                <div id="collapse_discipline" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <!-- <div id="collapse_discipline" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url(); ?>SO_STORE/add_inventory">Observation Record (Terms I-III)</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>SO_STORE/view_projects">Punishment Record</a>
-                        <a class="collapse-item" href="#">Observation Slips</a> 
+                        <a class="collapse-item" href="<?php echo base_url(); ?>DEAN/daily_module">Daily Module</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>DEAN/add_observation">Observation Record</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>DEAN/add_punishment">Punishment Record</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>DEAN/add_observation_slip">Observation Slips</a> 
                     </div>
-                </div>
+                </div> -->
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_warning" aria-expanded="true">
@@ -135,8 +159,9 @@
                 </a>
                 <div id="collapse_warning" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Record of Warnings</a>
-                        <a class="collapse-item" href="#">Record Attachments</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>DEAN/add_warning">Add Warning</a>
+                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>DEAN/view_warning_attachment">Add Warning Attachment</a> -->
+                        <!-- <a class="collapse-item" href="#">Record Attachments</a> -->
                     </div>
                 </div>
             </li>
@@ -148,27 +173,44 @@
                 </a>
                 <div id="collapse_academic" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Results (Terms I - III)</a>
-                        <a class="collapse-item" href="#">Sea Training Report Term II</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>DEAN/view_result">Results (Terms I - III)</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>DEAN/view_training_report">Sea Training Report Term II</a>
                     </div>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_officer" aria-expanded="true">
-                    <i class="fas fa-medal"></i>
-                    <span> Officer Like Qualities</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_assesment" aria-expanded="true">
+                    <i class="fas fa-chart-bar"></i>
+                    <span> Assesment</span>
                     <!-- <span>Components</span> -->
                 </a>
-                
+                <div id="collapse_assesment" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?= base_url(); ?>DEAN/view_general_remarks">General Remarks</a>
+                        <!-- <a class="collapse-item" href="#">Performance Report</a> -->
+                        <a class="collapse-item" href="<?= base_url(); ?>DEAN/view_progress_chart">Progress Chart</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>DEAN/view_distinction_records">Distictions</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>DEAN/view_seniority_records">Seniority</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>DEAN/add_branch_allocation">Branch Allocation</a>
+                        <a class="collapse-item" href="#">Degree Complete</a>
+                    </div>
+                </div>
             </li>
-              <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url(); ?>D_O/view_promotion_screen" aria-expanded="true">
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url(); ?>DEAN/add_officer_qualities" aria-expanded="true">
+                    <i class="fas fa-medal"></i>
+                    <span> Officer Like Qualities</span>
+                </a>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url(); ?>DEAN/view_promotion_screen" aria-expanded="true">
                     <i class="fas fa-award"></i>
-                    <span> Promotion/Relegation</span>                    
+                    <span> Promotion/Relegation</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo base_url(); ?>JOTO/view_activity_log" aria-expanded="true">
+                <a class="nav-link collapsed" href="<?php echo base_url(); ?>DEAN/view_activity_log" aria-expanded="true">
                     <i class="far fa-list-alt"></i>
                     <span> View Activity Log </span>
                 </a>
@@ -179,72 +221,6 @@
                     <span> Change Password </span>
                 </a>
             </li>
-
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
-            </li> -->
-
-            <!-- Divider -->
-            <!-- <hr class="sidebar-divider"> -->
-
-            <!-- Heading -->
-            <!-- <div class="sidebar-heading">
-                Addons
-            </div> -->
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <!--   <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
-                    </div>
-                </div>
-            </li>
- -->
-            <!-- Nav Item - Charts -->
-            <!--    <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li> -->
-
-            <!-- Nav Item - Tables -->
-            <!--   <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li> -->
-
-            <!-- Divider -->
-            <!--  <hr class="sidebar-divider d-none d-md-block"> -->
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -364,9 +340,8 @@
                 </nav>
                 <!-- End of Topbar -->
 
-                <script>
-                    $('#general').click(function() {
-                        $('.collapse_general').collapse();
-                    });
-                    
-                </script>
+                <!-- <script>
+                    // $('#general').click(function() {
+                    //    $('.collapse_general').collapse();
+                    //});
+                </script> -->

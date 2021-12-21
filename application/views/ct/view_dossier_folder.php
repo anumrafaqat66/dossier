@@ -415,6 +415,8 @@
                                         <option class="form-control form-control-user" value="Term-I">Term-I</option>
                                         <option class="form-control form-control-user" value="Term-II">Term-II</option>
                                         <option class="form-control form-control-user" value="Term-III">Term-III</option>
+                                        <option class="form-control form-control-user" value="Term-IV">Midshipman</option>
+                                        <option class="form-control form-control-user" value="Term-V">Sub-Lieutinant</option>
                                     </select>
                                 </div>
 

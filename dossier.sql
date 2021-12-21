@@ -1420,7 +1420,7 @@ CREATE TABLE `security_info` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `reg_data` timestamp NOT NULL DEFAULT current_timestamp(),
-  `acct_type` enum('do','joto','ct','co','exo','sqc','cao','cao_sec','smo','admin') NOT NULL,
+  `acct_type` enum('do','joto','ct','co','exo','sqc','cao','cao_sec','smo','admin','dean','ctmwt','hougp') NOT NULL,
   `status` enum('offline','online') NOT NULL,
   `is_active` enum('yes','no') NOT NULL,
   `division` varchar(50) NULL,
