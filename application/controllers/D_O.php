@@ -1476,7 +1476,7 @@ class D_O extends CI_Controller
             }
 
             echo json_encode($query);
-        }
+        } 
     }
 
     public function  promote_and_search_cadets_by_term()
