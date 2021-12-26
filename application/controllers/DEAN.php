@@ -1447,14 +1447,15 @@ class DEAN extends CI_Controller
     {
         if ($this->input->post()) {
             $oc_no = $_POST['oc_no'];
+            $units_list = array('2','3','17');
 
             if (($this->session->userdata('unit_id')) != 1) {
                 $query = $this->db->where('oc_no', $oc_no)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
             } else {
                 if ($this->session->userdata('acct_type') == 'do') {
-                    $query = $this->db->where('oc_no', $oc_no)->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->row_array();
+                    $query = $this->db->where('oc_no', $oc_no)->where_not_in('unit_id', $units_list)->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->row_array();
                 } else {
-                    $query = $this->db->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
+                    $query = $this->db->where('oc_no', $oc_no)->where_not_in('unit_id', $units_list)->get('pn_form1s')->row_array();
                 }
             }
             echo json_encode($query);
@@ -1465,14 +1466,15 @@ class DEAN extends CI_Controller
     {
         if ($this->input->post()) {
             $term = $_POST['term'];
-
+            $units_list = array('2','3','17');
+            
             if (($this->session->userdata('unit_id')) != 1) {
                 $query = $this->db->where('term', $term)->where('unit_id', $this->db->userdata('unit_id'))->get('pn_form1s')->result_array();
             } else {
                 if ($this->session->userdata('acct_type') == 'do') {
-                    $query = $this->db->where('term', $term)->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->result_array();
+                    $query = $this->db->where('term', $term)->where_not_in('unit_id', $units_list)->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->result_array();
                 } else {
-                    $query = $this->db->where('term', $term)->get('pn_form1s')->result_array();
+                    $query = $this->db->where('term', $term)->where_not_in('unit_id', $units_list)->get('pn_form1s')->result_array();
                 }
             }
 
@@ -2559,14 +2561,15 @@ class DEAN extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $oc_no = $_POST['oc_no'];
+            $units_list = array('2','3','17');
 
             if (($this->session->userdata('unit_id')) != 1) {
                 $data['pn_data'] = $this->db->where('oc_no', $oc_no)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->result_array();
             } else {
                 if ($this->session->userdata('acct_type') == 'do') {
-                    $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->where('oc_no', $oc_no)->get('pn_form1s')->result_array();
+                    $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->where_not_in('unit_id', $units_list)->where('oc_no', $oc_no)->get('pn_form1s')->result_array();
                 } else {
-                    $data['pn_data'] = $this->db->where('oc_no', $oc_no)->get('pn_form1s')->result_array();
+                    $data['pn_data'] = $this->db->where('oc_no', $oc_no)->where_not_in('unit_id', $units_list)->get('pn_form1s')->result_array();
                 }
             }
 
@@ -2586,14 +2589,15 @@ class DEAN extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $oc_no = $_POST['oc_no'];
+            $units_list = array('2','3','17');
 
             if (($this->session->userdata('unit_id')) != 1) {
                 $data['pn_data'] = $this->db->where('oc_no', $oc_no)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
             } else {
                 if ($this->session->userdata('acct_type') == 'do') {
-                    $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
+                    $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->where_not_in('unit_id', $units_list)->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
                 } else {
-                    $data['pn_data'] = $this->db->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
+                    $data['pn_data'] = $this->db->where('oc_no', $oc_no)->where_not_in('unit_id', $units_list)->get('pn_form1s')->row_array();
                 }
             }
 
@@ -3006,15 +3010,16 @@ class DEAN extends CI_Controller
 
     public function search_all_cadets_for_dossier()
     {
+        $units_list = array('2','3','17');
         if ($this->session->has_userdata('user_id')) {
 
             if ($this->session->userdata('unit_id') != '1') {
                 $data['pn_data'] = $this->db->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->result_array();
             } else {
                 if ($this->session->userdata('acct_type') == 'do') {
-                    $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->result_array();
+                    $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->where_not_in('unit_id', $units_list)->get('pn_form1s')->result_array();
                 } else {
-                    $data['pn_data'] = $this->db->get('pn_form1s')->result_array();
+                    $data['pn_data'] = $this->db->where_not_in('unit_id', $units_list)->get('pn_form1s')->result_array();
                 }
             }
 

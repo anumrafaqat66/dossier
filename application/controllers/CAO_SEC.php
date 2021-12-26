@@ -285,7 +285,16 @@ class CAO_SEC extends CI_Controller
     {
         if ($this->input->post()) {
             $oc_no = $_POST['oc_no'];
-            $query = $this->db->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
+            $units_list = array('2', '3', '17');
+            if ($this->session->userdata('unit_id') != 1) {  //All other Units than Navy Academy
+                $query = $this->db->where('oc_no', $oc_no)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
+            } else { //Search in Pak Navy Academy 
+                if ($this->session->userdata('acct_type') == 'do') {
+                    $query = $this->db->where('oc_no', $oc_no)->where('divison_name', $this->session->userdata('division'))->where_not_in('unit_id', $units_list)->get('pn_form1s')->row_array();
+                } else {
+                    $query = $this->db->where('oc_no', $oc_no)->where_not_in('unit_id', $units_list)->get('pn_form1s')->row_array();
+                }
+            }
             echo json_encode($query);
         }
     }
@@ -382,7 +391,18 @@ class CAO_SEC extends CI_Controller
     public function search_all_cadets_for_dossier()
     {
         if ($this->session->has_userdata('user_id')) {
-            $data['pn_data'] = $this->db->get('pn_form1s')->result_array();
+            $units_list = array('2', '3', '17');
+
+            if (($this->session->userdata('unit_id')) != 1) {
+                $data['pn_data'] = $this->db->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->result_array();
+            } else {
+                if ($this->session->userdata('acct_type') == 'do') {
+                    $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->where_not_in('unit_id', $units_list)->get('pn_form1s')->result_array();
+                } else {
+                    $data['pn_data'] = $this->db->where_not_in('unit_id', $units_list)->get('pn_form1s')->result_array();
+                }
+            }
+
             if (count($data['pn_data']) > 0) {
                 $view_page = $this->load->view('cao_sec/view_dossier', $data, TRUE);
                 echo $view_page;
@@ -398,7 +418,17 @@ class CAO_SEC extends CI_Controller
         if ($this->session->has_userdata('user_id')) {
 
             $oc_no = $_POST['oc_no'];
-            $data['pn_data'] = $this->db->where('oc_no', $oc_no)->get('pn_form1s')->result_array();
+            $units_list = array('2', '3', '17');
+
+            if (($this->session->userdata('unit_id')) != 1) {
+                $data['pn_data'] = $this->db->where('oc_no', $oc_no)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->result_array();
+            } else {
+                if ($this->session->userdata('acct_type') == 'do') {
+                    $data['pn_data'] = $this->db->where('divison_name', $this->session->userdata('division'))->where_not_in('unit_id', $units_list)->where('oc_no', $oc_no)->get('pn_form1s')->result_array();
+                } else {
+                    $data['pn_data'] = $this->db->where('oc_no', $oc_no)->where_not_in('unit_id', $units_list)->get('pn_form1s')->result_array();
+                }
+            }
             $data['oc_no_entered'] = $oc_no;
             if (count($data['pn_data']) > 0) {
                 $view_page = $this->load->view('cao_sec/view_dossier', $data, TRUE);

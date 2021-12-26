@@ -146,7 +146,7 @@
             $('#show_error_new').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>D_O/search_cadet',
+                url: '<?= base_url(); ?>SMO/search_cadet',
                 method: 'POST',
                 data: {
                     'oc_no': oc_no
