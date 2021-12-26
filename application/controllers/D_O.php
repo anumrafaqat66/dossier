@@ -1456,7 +1456,7 @@ class D_O extends CI_Controller
                 } else {
                     $query = $this->db->where('oc_no', $oc_no)->where_not_in('unit_id', $units_list)->get('pn_form1s')->row_array();
                 }
-            } 
+            }
             echo json_encode($query);
         }
     }
@@ -1468,7 +1468,7 @@ class D_O extends CI_Controller
             $units_list = array('2', '3', '17');
 
             if (($this->session->userdata('unit_id')) != 1) {
-                $query = $this->db->where('term', $term)->where('unit_id', $this->db->userdata('unit_id'))->get('pn_form1s')->result_array();
+                $query = $this->db->where('term', $term)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->result_array();
             } else {
                 if ($this->session->userdata('acct_type') == 'do') {
                     $query = $this->db->where('term', $term)->where_not_in('unit_id', $units_list)->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->result_array();
@@ -1801,7 +1801,7 @@ class D_O extends CI_Controller
             $curr_term = $_POST['curr_term'];
             $action = $_POST['action'];
             $all = $_POST['all'];
-
+            $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
 
             if ($action == 'promote') {
                 if ($curr_term == 'Term-P') {
@@ -1814,20 +1814,56 @@ class D_O extends CI_Controller
                     $next_term = 'Term-IV';
                     $phase = 'Midshipman'; //Added by Awais Dated: 13 Dec 21
                     $unit_id = $_POST['unit_id'];
-                    $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
                 } else if ($curr_term == 'Term-IV') {
-                    $next_term = 'Term-V';
-                    $phase = 'Sub-Leutinent'; //Added by Awais Dated: 13 Dec 21
-                    $unit_id = $_POST['unit_id'];
-                    $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
-                    $result = $this->db->where('id', $_POST['branch_id'])->get('branch_preference_list')->row_array();
-                    // if($result['branch_name']== 'WE' || $result['branch_name'] == 'ME' || $result['branch_name'] == 'OPS'){
-                    //     $unit_id='3'; //id of PNS Jauher
-                    // }else{
-                    //     $unit_id='17';  ////id of PNSL
-                    // }
-                } else if ($curr_term == 'Term-V') {
-                    //not specified yet
+
+                    if ($branch_id == '2') {  //ME 
+                        if ($curr_term == 'Term-IV') {
+                            $next_term = '4ME';
+                        } else if ($curr_term == '4ME') {
+                            $next_term = '5ME';
+                        } else if ($curr_term == '5ME') {
+                            $next_term = '6ME';
+                        } else if ($curr_term == '6ME') {
+                            $next_term = '7ME';
+                        } else if ($curr_term == '8ME') {
+                            $next_term = '8ME';
+                        }
+                    } else if ($branch_id == '4') { //WE 
+                        if ($curr_term == 'Term-IV') {
+                            $next_term = '4WE';
+                        } else if ($curr_term == '4WE') {
+                            $next_term = '5WE';
+                        } else if ($curr_term == '5WE') {
+                            $next_term = '6WE';
+                        } else if ($curr_term == '6WE') {
+                            $next_term = '7WE';
+                        } else if ($curr_term == '8WE') {
+                            $next_term = '8WE';
+                        }
+                    } else if ($branch_id == '1') { //OPS
+                        if ($curr_term == 'Term-IV') {
+                            $next_term = '5MS';
+                        } else if ($curr_term == '5MS') {
+                            $next_term = '6MS';
+                        } else if ($curr_term == '6MS') {
+                            $unit_id = '2'; //Promoted Bahadur
+                            $next_term = 'GLOPS';
+                        }
+                    } else if ($branch_id == '3') { //LOG //PNSL
+                        if ($curr_term == 'Term-IV') {
+                            $next_term = '3LOG';
+                        } else if ($curr_term == '3LOG') {
+                            $next_term = '4LOG';
+                        } else if ($curr_term == '4LOG') {
+                            $next_term = '5LOG';
+                        } else if ($curr_term == '5LOG') {
+                            $next_term = '6LOG';
+                        } else if ($curr_term == '6LOG') {
+                            $next_term = '7LOG';
+                        } else if ($curr_term == '7LOG') {
+                            $next_term = '8LOG';
+                        }
+                    }
                 }
             }
 
@@ -1854,16 +1890,10 @@ class D_O extends CI_Controller
                     'branch_id' => $branch_id,
                     'phase' => $phase
                 );
-            } else if ($curr_term == 'Term-IV') {
-                $update_array = array(
-                    'term' => $next_term,
-                    'branch_id' => $branch_id,
-                    'unit_id' => $unit_id,
-                    'phase' => $phase
-                );
             } else {
                 $update_array = array(
-                    'term' => $next_term
+                    'term' => $next_term,
+                    'unit_id' => $unit_id
                 );
             }
 
@@ -1953,7 +1983,7 @@ class D_O extends CI_Controller
                 $this->session->set_flashdata('failure', 'Something went wrong, try again.');
             }
 
-            $data['units'] = $this->db->where('id', '2')->or_where('id', '3')->or_where('id', '17')->get('navy_units')->result_array();
+            $data['units'] = $this->db->where('id', '3')->or_where('id', '17')->get('navy_units')->result_array();
             $data['ships'] = $this->db->where('id', '6')->or_where('id', '7')->or_where('id', '8')->or_where('id', '9')->or_where('id', '10')->or_where('id', '11')->or_where('id', '12')->or_where('id', '13')->or_where('id', '14')->or_where('id', '15')->or_where('id', '16')->get('navy_units')->result_array();
             $data['branches'] = $this->db->get('branch_preference_list')->result_array();
             $view_page = $this->load->view('do/term_promotion', $data, TRUE);
@@ -2061,7 +2091,7 @@ class D_O extends CI_Controller
             }
 
             // $data = '';
-            $data['units'] = $this->db->where('id', '2')->or_where('id', '3')->or_where('id', '17')->get('navy_units')->result_array();
+            $data['units'] = $this->db->where('id', '3')->or_where('id', '17')->get('navy_units')->result_array();
             $data['ships'] = $this->db->where('id', '6')->or_where('id', '7')->or_where('id', '8')->or_where('id', '9')->or_where('id', '10')->or_where('id', '11')->or_where('id', '12')->or_where('id', '13')->or_where('id', '14')->or_where('id', '15')->or_where('id', '16')->get('navy_units')->result_array();
             $data['branches'] = $this->db->get('branch_preference_list')->result_array();
             $view_page = $this->load->view('do/term_promotion', $data, TRUE);
@@ -2083,8 +2113,57 @@ class D_O extends CI_Controller
             $unit_id = $_POST['unit_id'];
             $phase = 'Sub-Leutinent';
 
+            if ($branch_id == '2') {  //ME 
+                if ($curr_term == 'Term-IV') {
+                    $next_term = '4ME';
+                } else if ($curr_term == '4ME') {
+                    $next_term = '5ME';
+                } else if ($curr_term == '5ME') {
+                    $next_term = '6ME';
+                } else if ($curr_term == '6ME') {
+                    $next_term = '7ME';
+                } else if ($curr_term == '7ME') {
+                    $next_term = '8ME';
+                }
+            } else if ($branch_id == '4') { //WE 
+                if ($curr_term == 'Term-IV') {
+                    $next_term = '4WE';
+                } else if ($curr_term == '4WE') {
+                    $next_term = '5WE';
+                } else if ($curr_term == '5WE') {
+                    $next_term = '6WE';
+                } else if ($curr_term == '6WE') {
+                    $next_term = '7WE';
+                } else if ($curr_term == '7WE') {
+                    $next_term = '8WE';
+                }
+            } else if ($branch_id == '1') { //OPS
+                if ($curr_term == 'Term-IV') {
+                    $next_term = '5MS';
+                } else if ($curr_term == '5MS') {
+                    $next_term = '6MS';
+                } else if ($curr_term == '6MS') {
+                    $unit_id = '2'; //Promoted Bahadur
+                    $next_term = 'GLOPS';
+                }
+            } else if ($branch_id == '3') { //LOG //PNSL
+                if ($curr_term == 'Term-IV') {
+                    $next_term = '3LOG';
+                } else if ($curr_term == '3LOG') {
+                    $next_term = '4LOG';
+                } else if ($curr_term == '4LOG') {
+                    $next_term = '5LOG';
+                } else if ($curr_term == '5LOG') {
+                    $next_term = '6LOG';
+                } else if ($curr_term == '6LOG') {
+                    $next_term = '7LOG';
+                } else if ($curr_term == '7LOG') {
+                    $next_term = '8LOG';
+                }
+            }
+
             $update_array = array(
-                'term' => 'Term-V',
+                'term' => $next_term,
                 'phase' => $phase,
                 'branch_id' => $branch_id,
                 'unit_id' => $unit_id
@@ -2170,7 +2249,7 @@ class D_O extends CI_Controller
 
             // $data = '';
             //$data['units'] = $this->db->get('navy_units')->result_array();
-            $data['units'] = $this->db->where('id', '2')->or_where('id', '3')->or_where('id', '4')->or_where('id', '17')->get('navy_units')->result_array();
+            $data['units'] = $this->db->where('id', '3')->or_where('id', '17')->get('navy_units')->result_array();
             $data['ships'] = $this->db->where('id', '6')->or_where('id', '7')->or_where('id', '8')->or_where('id', '9')->or_where('id', '10')->or_where('id', '11')->or_where('id', '12')->or_where('id', '13')->or_where('id', '14')->or_where('id', '15')->or_where('id', '16')->get('navy_units')->result_array();
             $data['branches'] = $this->db->get('branch_preference_list')->result_array();
             $view_page = $this->load->view('do/term_promotion', $data, TRUE);
@@ -2559,7 +2638,7 @@ class D_O extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $oc_no = $_POST['oc_no'];
-            $units_list = array('2','3','17');
+            $units_list = array('2', '3', '17');
 
             if (($this->session->userdata('unit_id')) != 1) {
                 $data['pn_data'] = $this->db->where('oc_no', $oc_no)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->result_array();
@@ -2587,7 +2666,7 @@ class D_O extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $oc_no = $_POST['oc_no'];
-            $units_list = array('2','3','17');
+            $units_list = array('2', '3', '17');
 
             if (($this->session->userdata('unit_id')) != 1) {
                 $data['pn_data'] = $this->db->where('oc_no', $oc_no)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
@@ -3000,6 +3079,7 @@ class D_O extends CI_Controller
             } else {
                 $data['oc_no_entered'] = NULL;
             }
+
             $view_page = $this->load->view('do/view_dossier_folder', $data, TRUE);
             echo $view_page;
             json_encode($view_page);
@@ -3008,7 +3088,7 @@ class D_O extends CI_Controller
 
     public function search_all_cadets_for_dossier()
     {
-        $units_list = array('2','3','17');
+        $units_list = array('2', '3', '17');
         if ($this->session->has_userdata('user_id')) {
 
             if ($this->session->userdata('unit_id') != '1') {
@@ -4396,7 +4476,7 @@ class D_O extends CI_Controller
     }
     public function view_promotion_screen()
     {
-        $data['units'] = $this->db->where('id', '2')->or_where('id', '3')->or_where('id', '4')->or_where('id', '17')->get('navy_units')->result_array();
+        $data['units'] = $this->db->where('id', '3')->or_where('id', '4')->or_where('id', '17')->get('navy_units')->result_array();
         $data['ships'] = $this->db->where('id', '6')->or_where('id', '7')->or_where('id', '8')->or_where('id', '9')->or_where('id', '10')->or_where('id', '11')->or_where('id', '12')->or_where('id', '13')->or_where('id', '14')->or_where('id', '15')->or_where('id', '16')->get('navy_units')->result_array();
         $data['branches'] = $this->db->get('branch_preference_list')->result_array();
         //print_r($data['branches']);exit;

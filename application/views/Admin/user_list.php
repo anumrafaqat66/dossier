@@ -28,6 +28,7 @@
                                                 <th scope="col">User Name</th>
                                                 <th scope="col">Account Type</th>
                                                 <th scope="col">Division</th>
+                                                <th scope="col">Unit Name</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
@@ -39,6 +40,7 @@
                                                     <td scope="row"><?= $data['username']; ?></td>
                                                     <td scope="row"><?= $data['acct_type']; ?></td>
                                                     <td scope="row"><?= $data['division']; ?></td>
+                                                    <td scope="row"><?= $data['unit']; ?></td>
                                                     <td type="button" scope="row"><a type="button" class="btn btn-primary btn-user rounded-pill" href="<?= base_url(); ?>Admin/Delete_user/<?= $data['id'];?>"> Delete Account</a></td>
                                                 </tr>
                                             <?php } ?>

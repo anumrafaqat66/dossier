@@ -83,6 +83,14 @@
                         </div>
 
                         <div class="col-lg-6">
+                            <h4><?php if (isset($pn_data['phase'])) {
+                                    if ($pn_data['phase'] != 'Phase-I') {
+                                        echo $pn_data['phase'];
+                                    }
+                                } ?></h4>
+                        </div>
+
+                        <div class="col-lg-6">
                             <h4><?php if (isset($pn_data['term'])) {
                                     echo $pn_data['term'];
                                 } ?></h4>

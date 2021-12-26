@@ -14,7 +14,7 @@ class JOTO extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
-            
+
             $this->load->view('joto/dashboard');
         } else {
             $this->load->view('login');
@@ -1447,7 +1447,7 @@ class JOTO extends CI_Controller
     {
         if ($this->input->post()) {
             $oc_no = $_POST['oc_no'];
-            $units_list = array('2','3','17');
+            $units_list = array('2', '3', '17');
             if (($this->session->userdata('unit_id')) != 1) {
                 $query = $this->db->where('oc_no', $oc_no)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
             } else {
@@ -1465,17 +1465,19 @@ class JOTO extends CI_Controller
     {
         if ($this->input->post()) {
             $term = $_POST['term'];
-            $units_list = array('2','3','17');
+            $branch_id = $_POST['branch_id'];
+            $semester = $_POST['semester'];
+
+            $units_list = array('2', '3', '17');
             if (($this->session->userdata('unit_id')) != 1) {
-                $query = $this->db->where('term', $term)->where('unit_id', $this->db->userdata('unit_id'))->get('pn_form1s')->result_array();
+                $query = $this->db->where('phase', $term)->where('unit_id', $this->session->userdata('unit_id'))->where('branch_id', $branch_id)->where('term',$semester)->get('pn_form1s')->result_array();
             } else {
                 if ($this->session->userdata('acct_type') == 'do') {
-                    $query = $this->db->where('term', $term)->where_not_in('unit_id', $units_list)->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->result_array();
+                    $query = $this->db->where_not_in('unit_id', $units_list)->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->result_array();
                 } else {
-                    $query = $this->db->where('term', $term)->where_not_in('unit_id', $units_list)->get('pn_form1s')->result_array();
+                    $query = $this->db->where_not_in('unit_id', $units_list)->get('pn_form1s')->result_array();
                 }
             }
-
             echo json_encode($query);
         }
     }
@@ -1792,6 +1794,22 @@ class JOTO extends CI_Controller
         }
     }
 
+    public function get_semester_list()
+    {
+        $branch_id = $_POST['branch_id'];
+        if ($branch_id == 2) {
+            $semster_list = array('4WE', '5WE', '6WE', '7WE', '8WE');
+        } else if ($branch_id == 4) {
+            $semster_list = array('4ME', '5ME', '6ME', '7ME', '8ME');
+        } else if ($branch_id == 1) {
+            $semster_list = array('5MS', '6MS', 'GLOPS');
+        } else if ($branch_id == 3) {
+            $semster_list = array('3LOG', '4LOG', '5LOG', '6LOG', '7LOG', '8LOG');
+        }
+
+        echo json_encode($semster_list);
+    }
+
     public function update_cadet_term()
     {
         if ($this->input->post()) {
@@ -1801,7 +1819,9 @@ class JOTO extends CI_Controller
             $curr_term = $_POST['curr_term'];
             $action = $_POST['action'];
             $all = $_POST['all'];
-
+            $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
+            $next_term = '';
+            $unit_id = $this->session->userdata('unit_id');
 
             if ($action == 'promote') {
                 if ($curr_term == 'Term-P') {
@@ -1814,20 +1834,55 @@ class JOTO extends CI_Controller
                     $next_term = 'Term-IV';
                     $phase = 'Midshipman'; //Added by Awais Dated: 13 Dec 21
                     $unit_id = $_POST['unit_id'];
-                    $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
-                } else if ($curr_term == 'Term-IV') {
-                    $next_term = 'Term-V';
-                    $phase = 'Sub-Leutinent'; //Added by Awais Dated: 13 Dec 21
-                    $unit_id = $_POST['unit_id'];
-                    $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
-                    $result = $this->db->where('id', $_POST['branch_id'])->get('branch_preference_list')->row_array();
-                    // if($result['branch_name']== 'WE' || $result['branch_name'] == 'ME' || $result['branch_name'] == 'OPS'){
-                    //     $unit_id='3'; //id of PNS Jauher
-                    // }else{
-                    //     $unit_id='17';  ////id of PNSL
-                    // }
-                } else if ($curr_term == 'Term-V') {
-                    //not specified yet
+                } else {
+                    if ($branch_id == '4') {  //ME 
+                        if ($curr_term == 'Term-IV') {
+                            $next_term = '4ME';
+                        } else if ($curr_term == '4ME') {
+                            $next_term = '5ME';
+                        } else if ($curr_term == '5ME') {
+                            $next_term = '6ME';
+                        } else if ($curr_term == '6ME') {
+                            $next_term = '7ME';
+                        } else if ($curr_term == '8ME') {
+                            $next_term = '8ME';
+                        }
+                    } else if ($branch_id == '2') { //WE 
+                        if ($curr_term == 'Term-IV') {
+                            $next_term = '4WE';
+                        } else if ($curr_term == '4WE') {
+                            $next_term = '5WE';
+                        } else if ($curr_term == '5WE') {
+                            $next_term = '6WE';
+                        } else if ($curr_term == '6WE') {
+                            $next_term = '7WE';
+                        } else if ($curr_term == '8WE') {
+                            $next_term = '8WE';
+                        }
+                    } else if ($branch_id == '1') { //OPS
+                        if ($curr_term == 'Term-IV') {
+                            $next_term = '5MS';
+                        } else if ($curr_term == '5MS') {
+                            $next_term = '6MS';
+                        } else if ($curr_term == '6MS') {
+                            $unit_id = '2'; //Promoted Bahadur
+                            $next_term = 'GLOPS';
+                        }
+                    } else if ($branch_id == '3') { //LOG //PNSL
+                        if ($curr_term == 'Term-IV') {
+                            $next_term = '3LOG';
+                        } else if ($curr_term == '3LOG') {
+                            $next_term = '4LOG';
+                        } else if ($curr_term == '4LOG') {
+                            $next_term = '5LOG';
+                        } else if ($curr_term == '5LOG') {
+                            $next_term = '6LOG';
+                        } else if ($curr_term == '6LOG') {
+                            $next_term = '7LOG';
+                        } else if ($curr_term == '7LOG') {
+                            $next_term = '8LOG';
+                        }
+                    }
                 }
             }
 
@@ -1854,45 +1909,25 @@ class JOTO extends CI_Controller
                     'branch_id' => $branch_id,
                     'phase' => $phase
                 );
-            } else if ($curr_term == 'Term-IV') {
-                $update_array = array(
-                    'term' => $next_term,
-                    'branch_id' => $branch_id,
-                    'unit_id' => $unit_id,
-                    'phase' => $phase
-                );
             } else {
                 $update_array = array(
-                    'term' => $next_term
+                    'term' => $next_term,
+                    'unit_id' => $unit_id,
                 );
             }
 
-            if ($all == 'no' && $this->session->userdata('acct_type') == 'do') {
+            if ($all == 'no') {
                 $cond  = [
                     'p_id' => $p_id,
-                    'do_id' => $this->session->userdata('user_id'),
+                    'unit_id' => $this->session->userdata('unit_id'),
                     'term' => $curr_term
                 ];
-            } else if ($all == 'yes' && $this->session->userdata('acct_type') == 'do') {
+            } else if ($all == 'yes') {
                 $cond  = [
-                    'do_id' => $this->session->userdata('user_id'),
+                    'unit_id' => $this->session->userdata('unit_id'),
                     'term' => $curr_term
                 ];
             }
-
-            if ($all == 'no' && $this->session->userdata('acct_type') == 'joto') {
-                $cond  = [
-                    'p_id' => $p_id,
-                    'term' => $curr_term
-                ];
-            } else if ($all == 'yes' && $this->session->userdata('acct_type') == 'joto') {
-                $cond  = [
-                    'term' => $curr_term
-                ];
-            }
-
-            //print_r($cond);exit;
-            // echo $p_id;exit;
 
             $this->db->where($cond);
             $update = $this->db->update('pn_form1s', $update_array);
@@ -2002,7 +2037,7 @@ class JOTO extends CI_Controller
                         ];
                     } else {
                         $cond  = [
-                            'term' => $curr_term                            
+                            'term' => $curr_term
                         ];
                     }
                 }
@@ -2109,7 +2144,7 @@ class JOTO extends CI_Controller
                         ];
                     } else {
                         $cond  = [
-                            'term' => $curr_term                            
+                            'term' => $curr_term
                         ];
                     }
                 }
@@ -2559,7 +2594,7 @@ class JOTO extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $oc_no = $_POST['oc_no'];
-            $units_list = array('2','3','17');
+            $units_list = array('2', '3', '17');
             if (($this->session->userdata('unit_id')) != 1) {
                 $data['pn_data'] = $this->db->where('oc_no', $oc_no)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->result_array();
             } else {
@@ -2586,7 +2621,7 @@ class JOTO extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $oc_no = $_POST['oc_no'];
-            $units_list = array('2','3','17');
+            $units_list = array('2', '3', '17');
             if (($this->session->userdata('unit_id')) != 1) {
                 $data['pn_data'] = $this->db->where('oc_no', $oc_no)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
             } else {
@@ -3006,7 +3041,7 @@ class JOTO extends CI_Controller
 
     public function search_all_cadets_for_dossier()
     {
-        $units_list = array('2','3','17');
+        $units_list = array('2', '3', '17');
         if ($this->session->has_userdata('user_id')) {
 
             if ($this->session->userdata('unit_id') != '1') {

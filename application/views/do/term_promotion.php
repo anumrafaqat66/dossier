@@ -682,7 +682,6 @@
 
     $("#term_list").on('change', function() {
         var term = $(this).val();
-        // alert("sdsad");
 
         $.ajax({
             url: '<?= base_url(); ?>D_O/search_all_cadets_by_term',

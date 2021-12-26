@@ -27,6 +27,7 @@
                                             <th scope="col">User Name</th>
                                             <th scope="col">Account Type</th>
                                             <th scope="col">Division</th>
+                                            <th scope="col">Unit</th>
                                             <th scope="col">Officer Name</th>
                                             <th scope="col">Contact No</th>
                                             <th scope="col">Action</th>
@@ -40,6 +41,7 @@
                                                 <td scope="row"><?= $data['username']; ?></td>
                                                 <td scope="row"><?= $data['acct_type']; ?></td>
                                                 <td scope="row"><?= $data['division']; ?></td>
+                                                <td scope="row"><?= $data['unit']; ?></td>
                                                 <td scope="row"><?= $data['full_name']; ?></td>
                                                 <td scope="row"><?= $data['phone']; ?></td>
                                                 <td type="button" scope="row"><a type="button" class="btn btn-primary btn-user rounded-pill" href="<?= base_url(); ?>Admin/edit_user_profile/<?= $data['id']; ?>"> Edit User</a></td>

@@ -1,5 +1,6 @@
 <?php $this->load->view('do/common/header'); ?>
 <?php !isset($oc_no_entered) ? $oc_no_entered = '' : $oc_no_entered; ?>
+<?php !isset($pn_data) ? $pn_data = '' : $pn_data; ?>
 <style>
     .red-border {
         border: 1px solid red !important;
@@ -56,6 +57,14 @@
                             <h4><strong><?php if (isset($pn_data['name'])) {
                                             echo $pn_data['name'];
                                         } ?></strong></h4>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <h4><?php if (isset($pn_data['phase'])) {
+                                    if ($pn_data['phase'] != 'Phase-I') {
+                                        echo $pn_data['phase'];
+                                    }
+                                } ?></h4>
                         </div>
 
                         <div class="col-lg-6">
@@ -383,11 +392,13 @@
             </div>
         </div>
 
-        <div id="no_data" class="row my-2" style="display:none">
+
+        <div id="no_data" class="row my-2">
             <div class="col-lg-12 my-5">
                 <h4 style="color:red">No Cadet Found. Please check the OC No.</h4>
             </div>
         </div>
+
 
 
     </div>
@@ -4634,7 +4645,6 @@
         }
 
     });
-
 
     function seen(data) {
         $.ajax({
