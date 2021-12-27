@@ -217,7 +217,11 @@
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column bg-custom2 img-cheif">
+        <?php if($this->uri->segment(2) != null) {?>
+             <div id="content-wrapper" class="d-flex flex-column bg-custom2">
+        <?php }else{ ?>
+           <div id="content-wrapper" class="d-flex flex-column bg-custom2 img-cheif">
+           <?php } ?> 
 
             <!-- Main Content -->
             <div id="content">
