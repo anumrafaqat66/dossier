@@ -1832,7 +1832,7 @@ class D_O extends CI_Controller
                             $next_term = '6ME';
                         } else if ($curr_term == '6ME') {
                             $next_term = '7ME';
-                        } else if ($curr_term == '8ME') {
+                        } else if ($curr_term == '7ME') {
                             $next_term = '8ME';
                         }
                     } else if ($branch_id == '2') { //WE 
@@ -1844,7 +1844,7 @@ class D_O extends CI_Controller
                             $next_term = '6WE';
                         } else if ($curr_term == '6WE') {
                             $next_term = '7WE';
-                        } else if ($curr_term == '8WE') {
+                        } else if ($curr_term == '7WE') {
                             $next_term = '8WE';
                         }
                     } else if ($branch_id == '1') { //OPS
@@ -1858,8 +1858,6 @@ class D_O extends CI_Controller
                         }
                     } else if ($branch_id == '3') { //LOG //PNSL
                         if ($curr_term == 'Term-IV') {
-                            $next_term = '3LOG';
-                        } else if ($curr_term == '3LOG') {
                             $next_term = '4LOG';
                         } else if ($curr_term == '4LOG') {
                             $next_term = '5LOG';
@@ -3087,13 +3085,24 @@ class D_O extends CI_Controller
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_branch_allocations'] = $this->db->get()->row_array();
 
+            if (isset($_POST['back_press'])) {
+                $ispress = $_POST['back_press'];
+            } else {
+                $ispress = 'No';
+            }
             if ($data['pn_data'] != null) {
                 $data['oc_no_entered'] = $oc_no;
+                $view_page = $this->load->view('do/view_dossier_folder', $data, TRUE);
             } else {
-                $data['oc_no_entered'] = NULL;
+                if ($ispress == 'Yes') {
+                    $data['oc_no_entered'] = NULL;
+                    $view_page = $this->load->view('do/view_dossier_folder', $data, TRUE);
+                } else {
+                    $data['oc_no_entered'] = NULL;
+                    $view_page = 0;
+                }
             }
-
-            $view_page = $this->load->view('do/view_dossier_folder', $data, TRUE);
+            
             echo $view_page;
             json_encode($view_page);
         }

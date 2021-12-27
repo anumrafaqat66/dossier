@@ -656,7 +656,7 @@ class CO extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $oc_no = $_POST['oc_no'];
-            
+
             $units_list = array('2', '3', '17');
 
             if (($this->session->userdata('unit_id')) != 1) {
@@ -1065,12 +1065,24 @@ class CO extends CI_Controller
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_branch_allocations'] = $this->db->get()->row_array();
 
+            if (isset($_POST['back_press'])) {
+                $ispress = $_POST['back_press'];
+            } else {
+                $ispress = 'No';
+            }
             if ($data['pn_data'] != null) {
                 $data['oc_no_entered'] = $oc_no;
+                $view_page = $this->load->view('co/view_dossier_folder', $data, TRUE);
             } else {
-                $data['oc_no_entered'] = NULL;
+                if ($ispress == 'Yes') {
+                    $data['oc_no_entered'] = NULL;
+                    $view_page = $this->load->view('co/view_dossier_folder', $data, TRUE);
+                } else {
+                    $data['oc_no_entered'] = NULL;
+                    $view_page = 0;
+                }
             }
-            $view_page = $this->load->view('co/view_dossier_folder', $data, TRUE);
+
             echo $view_page;
             json_encode($view_page);
         }
@@ -2288,16 +2300,16 @@ class CO extends CI_Controller
 
     public function update_cadet_term()
     {
-         if ($this->input->post()) {
+        if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
 
             $p_id = $_POST['p_id'];
             $curr_term = $_POST['curr_term'];
             $action = $_POST['action'];
             $all = $_POST['all'];
-            
+
             $next_term = '';
-            $unit_id = $this->session->userdata('unit_id'); 
+            $unit_id = $this->session->userdata('unit_id');
 
             if ($action == 'promote') {
                 if ($curr_term == 'Term-P') {
@@ -2315,7 +2327,7 @@ class CO extends CI_Controller
                     $unit_id = $_POST['unit_id'];
                     $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
                 } else {
-                    $phase='Sub-Lieutenant';
+                    $phase = 'Sub-Lieutenant';
                     // $unit_id = $_POST['unit_id'];
                     $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
                     if ($branch_id == '4') {  //ME 
@@ -2327,7 +2339,7 @@ class CO extends CI_Controller
                             $next_term = '6ME';
                         } else if ($curr_term == '6ME') {
                             $next_term = '7ME';
-                        } else if ($curr_term == '8ME') {
+                        } else if ($curr_term == '7ME') {
                             $next_term = '8ME';
                         }
                     } else if ($branch_id == '2') { //WE 
@@ -2339,7 +2351,7 @@ class CO extends CI_Controller
                             $next_term = '6WE';
                         } else if ($curr_term == '6WE') {
                             $next_term = '7WE';
-                        } else if ($curr_term == '8WE') {
+                        } else if ($curr_term == '7WE') {
                             $next_term = '8WE';
                         }
                     } else if ($branch_id == '1') { //OPS
@@ -2353,8 +2365,6 @@ class CO extends CI_Controller
                         }
                     } else if ($branch_id == '3') { //LOG //PNSL
                         if ($curr_term == 'Term-IV') {
-                            $next_term = '3LOG';
-                        } else if ($curr_term == '3LOG') {
                             $next_term = '4LOG';
                         } else if ($curr_term == '4LOG') {
                             $next_term = '5LOG';
@@ -2416,7 +2426,7 @@ class CO extends CI_Controller
                     'unit_id' => $this->session->userdata('unit_id'),
                     'term' => $curr_term
                 ];
-            } 
+            }
 
             $this->db->where($cond);
             $update = $this->db->update('pn_form1s', $update_array);
@@ -2483,9 +2493,10 @@ class CO extends CI_Controller
             $view_page = $this->load->view('hougp/term_promotion', $data, TRUE);
             echo $view_page;
             json_encode($view_page);
-        }  
+        }
     }
- public function update_cadet_to_midshipman()
+    
+    public function update_cadet_to_midshipman()
     {
         if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
@@ -2523,7 +2534,7 @@ class CO extends CI_Controller
                             'term' => $curr_term,
                             'divison_name' => $this->session->userdata('division')
                         ];
-                    }else {
+                    } else {
                         $cond  = [
                             'term' => $curr_term
                         ];
@@ -2595,7 +2606,7 @@ class CO extends CI_Controller
 
     public function update_cadet_to_sub_lieutenant()
     {
-         if ($this->input->post()) {
+        if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
 
             $p_id = $_POST['p_id'];
@@ -2701,14 +2712,16 @@ class CO extends CI_Controller
             json_encode($view_page);
         }
     }
+    
     public function search_all_cadets_by_term()
     {
         if ($this->input->post()) {
             $term = $_POST['term'];
+            $semester = $_POST['semester'];
             $units_list = array('2', '3', '17');
 
             if (($this->session->userdata('unit_id')) != 1) {
-                $query = $this->db->where('term', $term)->where('unit_id', $this->db->userdata('unit_id'))->get('pn_form1s')->result_array();
+                $query = $this->db->where('term', $semester)->where('unit_id', $this->session->userdata('unit_id'))->where('branch_id', $this->session->userdata('branch_id'))->get('pn_form1s')->result_array();
             } else {
                 if ($this->session->userdata('acct_type') == 'do') {
                     $query = $this->db->where('term', $term)->where_not_in('unit_id', $units_list)->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->result_array();
@@ -2716,6 +2729,7 @@ class CO extends CI_Controller
                     $query = $this->db->where('term', $term)->where_not_in('unit_id', $units_list)->get('pn_form1s')->result_array();
                 }
             }
+
             echo json_encode($query);
         }
     }

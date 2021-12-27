@@ -1,4 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
@@ -1469,7 +1470,7 @@ class SMO extends CI_Controller
             $units_list = array('2', '3', '17');
 
             if (($this->session->userdata('unit_id')) != 1) {
-                $query = $this->db->where('term', $term)->where('unit_id', $this->db->userdata('unit_id'))->get('pn_form1s')->result_array();
+                $query = $this->db->where('term', $term)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->result_array();
             } else {
                 if ($this->session->userdata('acct_type') == 'do') {
                     $query = $this->db->where('term', $term)->where_not_in('unit_id', $units_list)->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->result_array();
@@ -2560,7 +2561,7 @@ class SMO extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $oc_no = $_POST['oc_no'];
-            $units_list = array('2','3','17');
+            $units_list = array('2', '3', '17');
 
             if (($this->session->userdata('unit_id')) != 1) {
                 $data['pn_data'] = $this->db->where('oc_no', $oc_no)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->result_array();
@@ -2588,7 +2589,7 @@ class SMO extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $oc_no = $_POST['oc_no'];
-            $units_list = array('2','3','17');
+            $units_list = array('2', '3', '17');
 
             if (($this->session->userdata('unit_id')) != 1) {
                 $data['pn_data'] = $this->db->where('oc_no', $oc_no)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
@@ -2996,12 +2997,23 @@ class SMO extends CI_Controller
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_branch_allocations'] = $this->db->get()->row_array();
 
+            if (isset($_POST['back_press'])) {
+                $ispress = $_POST['back_press'];
+            } else {
+                $ispress = 'No';
+            }
             if ($data['pn_data'] != null) {
                 $data['oc_no_entered'] = $oc_no;
+                $view_page = $this->load->view('smo/view_dossier_folder', $data, TRUE);
             } else {
-                $data['oc_no_entered'] = NULL;
+                if ($ispress == 'Yes') {
+                    $data['oc_no_entered'] = NULL;
+                    $view_page = $this->load->view('smo/view_dossier_folder', $data, TRUE);
+                } else {
+                    $data['oc_no_entered'] = NULL;
+                    $view_page = 0;
+                }
             }
-            $view_page = $this->load->view('smo/view_dossier_folder', $data, TRUE);
             echo $view_page;
             json_encode($view_page);
         }
@@ -3009,7 +3021,7 @@ class SMO extends CI_Controller
 
     public function search_all_cadets_for_dossier()
     {
-        $units_list = array('2','3','17');
+        $units_list = array('2', '3', '17');
         if ($this->session->has_userdata('user_id')) {
 
             if ($this->session->userdata('unit_id') != '1') {

@@ -122,9 +122,12 @@
                                 <div class="col-sm-2 mb-1" id="select_branch_list" style="display:none">
                                     <select class="form-control rounded-pill" name="select_branches" id="select_branches" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Branch</option>
-                                        <?php foreach ($branches as $data) { ?>
-                                            <option class="form-control form-control-user" value="<?= $data['id'] ?>"><?= $data['branch_name'] ?></option>
-                                        <?php } ?>
+                                        <!-- <?php //foreach ($branches as $data) { 
+                                                ?> -->
+                                        <!-- <option class="form-control form-control-user" value="<?= $data['id'] ?>"><?= $data['branch_name'] ?></option> -->
+                                        <option class="form-control form-control-user" value="<?= $this->session->userdata('branch_id'); ?>"><?= $this->session->userdata('branch_name'); ?></option>
+                                        <!-- <?php //} 
+                                                ?> -->
                                     </select>
                                     <span id="show_error_select_branch_list" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please select branch to Proceed*</span>
                                 </div>
@@ -136,7 +139,7 @@
                                     </select>
                                 </div>
 
-                                
+
 
                             </div>
 
@@ -168,7 +171,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>JOTO/save_cadet_warning">
+                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>CO/save_cadet_warning">
                             <div class="form-group row">
                                 <div class="col-sm-2">
                                     <h6>&nbsp;Name:</h6>
@@ -279,7 +282,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>JOTO/save_cadet_warning">
+                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>CO/save_cadet_warning">
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h5 id="term_selected"></h5>
@@ -408,7 +411,7 @@
             $('#show_error_new').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>JOTO/search_cadet',
+                url: '<?= base_url(); ?>CO/search_cadet',
                 method: 'POST',
                 data: {
                     'oc_no': oc_no
@@ -416,15 +419,19 @@
                 success: function(data) {
                     var result = jQuery.parseJSON(data);
 
-                    if (result != undefined) {
-                        $('#search_cadet').show();
-                        $('#no_data').hide();
-                        $('#term_list').hide();
-                        $('#show_all_cadets').hide();
-                        $('#show_terms').hide();
-                        $('#show_term_title').hide();
-                        $('#promote_all_btn').hide();
+                    $('#search_cadet').show();
+                    $('#no_data').hide();
+                    $('#term_list').hide();
+                    $('#show_all_cadets').hide();
+                    $('#show_terms').hide();
+                    $('#show_semesters').hide();
+                    $('#select_branch_list').hide();
+                    $('#show_term_title').hide();
+                    $('#show_select_branch_title').hide();
+                    $('#show_select_semester_title').hide();
+                    $('#promote_all_btn').hide();
 
+                    if (result != undefined) {
                         $('#name').val(result['name']);
                         $('#term').val(result['term']);
                         $('#branch_in').val(result['branch_id']);
@@ -499,7 +506,7 @@
         if (validate == 0) {
             $('#show_error_select_unit_all').hide();
             $.ajax({
-                url: '<?= base_url(); ?>JOTO/update_cadet_term',
+                url: '<?= base_url(); ?>CO/update_cadet_term',
                 method: 'POST',
                 data: {
                     'p_id': p_id,
@@ -524,7 +531,7 @@
         var curr_term = $('#term').val();
 
         $.ajax({
-            url: '<?= base_url(); ?>JOTO/update_cadet_term',
+            url: '<?= base_url(); ?>CO/update_cadet_term',
             method: 'POST',
             data: {
                 'p_id': p_id,
@@ -547,7 +554,7 @@
         var semester = $('#show_semester_list').val();
 
         $.ajax({
-            url: '<?= base_url(); ?>JOTO/update_cadet_term',
+            url: '<?= base_url(); ?>CO/update_cadet_term',
             method: 'POST',
             data: {
                 'p_id': 0,
@@ -598,7 +605,7 @@
             $('#show_error_select_unit_all').hide();
             $('#show_error_select_ship_all').hide();
             $.ajax({
-                url: '<?= base_url(); ?>JOTO/update_cadet_to_midshipman',
+                url: '<?= base_url(); ?>CO/update_cadet_to_midshipman',
                 method: 'POST',
                 data: {
                     'p_id': 0,
@@ -648,7 +655,7 @@
             // $('#show_error_select_unit_all').hide();
             $('#show_error_select_unit_all_term3').hide();
             $.ajax({
-                url: '<?= base_url(); ?>JOTO/update_cadet_to_sub_lieutenant',
+                url: '<?= base_url(); ?>CO/update_cadet_to_sub_lieutenant',
                 method: 'POST',
                 data: {
                     'p_id': 0,
@@ -680,7 +687,7 @@
         var branch = $(this).val();
 
         $.ajax({
-            url: '<?= base_url(); ?>JOTO/get_semester_list',
+            url: '<?= base_url(); ?>CO/get_semester_list',
             method: 'POST',
             data: {
                 'branch_id': branch
@@ -733,26 +740,26 @@
             $('#unit_list_label_term3').show();
             $('#branch_list_label_term4').show();
             $('#promote_all_btn_term3').hide();
-        // } else if (term == "Term-V") {
-        //     $('#promote_button').hide();
-        //     $('#promote_btn_midshipman').hide();
-        //     // $('#promote_all_btn_term4').show();
-        //     $('#branch_list_term4').show();
-        //     $('#unit_list_term3').show();
-        //     $('#ship_list_term3').hide();
-        //     $('#unit_list_label_term3').show();
-        //     $('#branch_list_label_term4').show();
-        //     $('#promote_all_btn_term3').hide();
-        // } else {
-        //     $('#promote_button').show();
-        //     $('#promote_all_btn_term3').hide();
-        //     $('#promote_all_btn_term4').hide();
-        //     $('#unit_list_term3').hide();
-        //     $('#unit_list_label_term3').hide();
-        //     $('#ship_list_term3').hide();
-        //     $('#ship_list_label_term3').hide();
-        //     $('#branch_list_term4').hide();
-        //     $('#branch_list_label_term4').hide();
+            // } else if (term == "Term-V") {
+            //     $('#promote_button').hide();
+            //     $('#promote_btn_midshipman').hide();
+            //     // $('#promote_all_btn_term4').show();
+            //     $('#branch_list_term4').show();
+            //     $('#unit_list_term3').show();
+            //     $('#ship_list_term3').hide();
+            //     $('#unit_list_label_term3').show();
+            //     $('#branch_list_label_term4').show();
+            //     $('#promote_all_btn_term3').hide();
+            // } else {
+            //     $('#promote_button').show();
+            //     $('#promote_all_btn_term3').hide();
+            //     $('#promote_all_btn_term4').hide();
+            //     $('#unit_list_term3').hide();
+            //     $('#unit_list_label_term3').hide();
+            //     $('#ship_list_term3').hide();
+            //     $('#ship_list_label_term3').hide();
+            //     $('#branch_list_term4').hide();
+            //     $('#branch_list_label_term4').hide();
         }
     });
 
@@ -761,12 +768,12 @@
         var branch = $('#select_branches').val();
         var semester = $(this).val();
         $.ajax({
-            url: '<?= base_url(); ?>JOTO/search_all_cadets_by_term',
+            url: '<?= base_url(); ?>CO/search_all_cadets_by_term',
             method: 'POST',
             data: {
                 'term': term,
                 'branch_id': branch,
-                'semester' : semester
+                'semester': semester
             },
             success: function(data) {
                 $('#search_cadet').hide();

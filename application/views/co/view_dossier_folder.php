@@ -59,6 +59,14 @@
                         </div>
 
                         <div class="col-lg-6">
+                            <h4><?php if (isset($pn_data['phase'])) {
+                                    if ($pn_data['phase'] != 'Phase-I') {
+                                        echo $pn_data['phase'];
+                                    }
+                                } ?></h4>
+                        </div>
+
+                        <div class="col-lg-6">
                             <h4><?php if (isset($pn_data['term'])) {
                                     echo $pn_data['term'];
                                 } ?></h4>
@@ -5137,7 +5145,8 @@
             url: '<?= base_url(); ?>CO/search_cadet_for_dossier_folder',
             method: 'POST',
             data: {
-                'oc_no': oc_no
+                'oc_no': oc_no,
+                'back_press': 'Yes'
             },
             success: function(data) {
                 if (data != '0') {

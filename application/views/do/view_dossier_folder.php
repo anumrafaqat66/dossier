@@ -5046,7 +5046,8 @@
             url: '<?= base_url(); ?>D_O/search_cadet_for_dossier_folder',
             method: 'POST',
             data: {
-                'oc_no': oc_no
+                'oc_no': oc_no,
+                'back_press': 'Yes'
             },
             success: function(data) {
                 if (data != '0') {

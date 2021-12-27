@@ -83,6 +83,14 @@
                         </div>
 
                         <div class="col-lg-6">
+                            <h4><?php if (isset($pn_data['phase'])) {
+                                    if ($pn_data['phase'] != 'Phase-I') {
+                                        echo $pn_data['phase'];
+                                    }
+                                } ?></h4>
+                        </div>
+
+                        <div class="col-lg-6">
                             <h4><?php if (isset($pn_data['term'])) {
                                     echo $pn_data['term'];
                                 } ?></h4>
@@ -566,7 +574,7 @@
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
                 <!--   <a onclick="location.href='#'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
-                <a onclick="location.href='<?php echo base_url() ?>/CT/punishment_records_report/<?= $pn_data['oc_no'] ?>/Term-I'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/punishment_records_report/<?= $pn_data['oc_no'] ?>/Term-I'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -643,7 +651,7 @@
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
                 <!--  <a onclick="location.href='<?= base_url() ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
-                <a onclick="location.href='<?php echo base_url() ?>/CT/punishment_records_report/<?= $pn_data['oc_no'] ?>/Term-II'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/punishment_records_report/<?= $pn_data['oc_no'] ?>/Term-II'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -718,7 +726,7 @@
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
                 <!--     <a onclick="location.href='#'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
-                <a onclick="location.href='<?php echo base_url() ?>/CT/punishment_records_report/<?= $pn_data['oc_no'] ?>/Term-III'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/punishment_records_report/<?= $pn_data['oc_no'] ?>/Term-III'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -751,7 +759,7 @@
                                                 <td scope="" style="height:80px"><?= $data['offence']; ?></td>
                                                 <td scope=""><?= $data['punishment_awarded']; ?></td>
                                                 <td scope="" style="border-right:1px solid black;"><?= $data['awarded_by']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align: center;"><a href="<?= base_url() ?>CT/view_edit_punishment/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
+                                                <td scope="" style="border-right:1px solid black;text-align: center;"><a href="<?= base_url() ?>CTMWT/view_edit_punishment/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
                                             </tr>
                                         <?php
                                             $count++;
@@ -797,8 +805,8 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <!--  <a onclick="location.href='<?php echo base_url() ?>CT/view_edit_observation/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
-                <a onclick="location.href='<?php echo base_url() ?>/CT/observation_records_report/<?= $pn_data['oc_no'] ?>/Term-I'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <!--  <a onclick="location.href='<?php echo base_url() ?>CTMWT/view_edit_observation/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/observation_records_report/<?= $pn_data['oc_no'] ?>/Term-I'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -831,7 +839,7 @@
                                                 <td scope="" style="height:80px;text-align: center;"><?= $data['observation']; ?></td>
                                                 <td scope="" style="text-align: center;"><?= $data['observed_by']; ?></td>
                                                 <td scope="" style="border-right:1px solid black;text-align: center;"><?= $data['action_taken']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align: center;"><a href="<?= base_url() ?>CT/view_edit_observation/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
+                                                <td scope="" style="border-right:1px solid black;text-align: center;"><a href="<?= base_url() ?>CTMWT/view_edit_observation/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
                                             </tr>
                                         <?php
                                             $count++;
@@ -869,8 +877,8 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <!--  <a onclick="location.href='<?php echo base_url() ?>CT/view_edit_observation/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
-                <a onclick="location.href='<?php echo base_url() ?>/CT/observation_records_report/<?= $pn_data['oc_no'] ?>/Term-II'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <!--  <a onclick="location.href='<?php echo base_url() ?>CTMWT/view_edit_observation/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/observation_records_report/<?= $pn_data['oc_no'] ?>/Term-II'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -903,7 +911,7 @@
                                                 <td scope="" style="height:80px;text-align: center;"><?= $data['observation']; ?></td>
                                                 <td scope="" style="text-align: center;"><?= $data['observed_by']; ?></td>
                                                 <td scope="" style="border-right:1px solid black;text-align: center;"><?= $data['action_taken']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align: center;"><a href="<?= base_url() ?>CT/view_edit_observation/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
+                                                <td scope="" style="border-right:1px solid black;text-align: center;"><a href="<?= base_url() ?>CTMWT/view_edit_observation/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
                                             </tr>
                                         <?php
                                             $count++;
@@ -941,8 +949,8 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <!--  <a onclick="location.href='<?php echo base_url() ?>CT/view_edit_observation/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
-                <a onclick="location.href='<?php echo base_url() ?>/CT/observation_records_report/<?= $pn_data['oc_no'] ?>/Term-III'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <!--  <a onclick="location.href='<?php echo base_url() ?>CTMWT/view_edit_observation/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:60%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/observation_records_report/<?= $pn_data['oc_no'] ?>/Term-III'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -975,7 +983,7 @@
                                                 <td scope="" style="height:80px;text-align: center;"><?= $data['observation']; ?></td>
                                                 <td scope="" style="text-align: center;"><?= $data['observed_by']; ?></td>
                                                 <td scope="" style="border-right:1px solid black;text-align: center;"><?= $data['action_taken']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;text-align: center;"><a href="<?= base_url() ?>CT/view_edit_observation/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
+                                                <td scope="" style="border-right:1px solid black;text-align: center;"><a href="<?= base_url() ?>CTMWT/view_edit_observation/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
                                             </tr>
                                         <?php
                                             $count++;
@@ -1014,8 +1022,8 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <!-- <a onclick="location.href='<?php echo base_url() ?>CT/view_edit_warning/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
-                <a onclick="location.href='<?php echo base_url() ?>/CT/warning_records_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <!-- <a onclick="location.href='<?php echo base_url() ?>CTMWT/view_edit_warning/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/warning_records_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -1050,7 +1058,7 @@
                                                 <td scope=""><?= $data['reasons']; ?></td>
 
                                                 <td scope="" style="border-right:1px solid black;"></td>
-                                                <td scope="" style="border-right:1px solid black;text-align: center;"><a href="<?= base_url() ?>CT/view_edit_warning/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
+                                                <td scope="" style="border-right:1px solid black;text-align: center;"><a href="<?= base_url() ?>CTMWT/view_edit_warning/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
                                             </tr>
                                         <?php
                                             $count++;
@@ -1090,8 +1098,8 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <!-- <a onclick="location.href='<?php echo base_url() ?>CT/view_edit_warning/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
-                <a onclick="location.href='<?php echo base_url() ?>/CT/warning_record_insert_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <!-- <a onclick="location.href='<?php echo base_url() ?>CTMWT/view_edit_warning/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a> -->
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/warning_record_insert_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -1160,7 +1168,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>/CT/inspection_records_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/inspection_records_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -1190,7 +1198,7 @@
                                                 <td scope="" style="text-align: center;"><?= $data['date']; ?></td>
                                                 <td scope="" style="height:80px;text-align: center;"><?= $data['remarks']; ?></td>
                                                 <td scope="" style="border-right:1px solid black; text-align: center;"><?= $data['inspecting_officer_name']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;width:100px !important;text-align: center;"><a style="color: black;" href="<?php echo base_url() ?>CT/view_edit_inspection/<?= $data['id']; ?>"><i class="fa fa-edit"></i></a></td>>
+                                                <td scope="" style="border-right:1px solid black;width:100px !important;text-align: center;"><a style="color: black;" href="<?php echo base_url() ?>CTMWT/view_edit_inspection/<?= $data['id']; ?>"><i class="fa fa-edit"></i></a></td>>
                                             </tr>
                                         <?php
                                             $count++;
@@ -1228,7 +1236,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>/CT/medical_records_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/medical_records_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -1308,7 +1316,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>/CT/saluting_swimming_records_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/saluting_swimming_records_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -1403,8 +1411,8 @@
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
 
-                <a onclick="location.href='<?= base_url(); ?>CT/add_physical_milestone/<?php echo "view_dossier_folder" ?>'" style="margin-left: 65%" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit text-white-50"></i> Edit Record</a>
-                <a onclick="location.href='<?php echo base_url() ?>/CT/physical_efficiency_records_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?= base_url(); ?>CTMWT/add_physical_milestone/<?php echo "view_dossier_folder" ?>'" style="margin-left: 65%" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit text-white-50"></i> Edit Record</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/physical_efficiency_records_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -1914,8 +1922,8 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>CT/view_edit_qualities/<?= $pn_data['p_id'] ?>/Term-I'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: 65%"><i class="fas fa-edit text-white-50"></i> Edit Record</a>
-                <a onclick="location.href='<?php echo base_url() ?>/CT/officer_qualities_records_report/<?= $pn_data['oc_no'] ?>/Term-I'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>CTMWT/view_edit_qualities/<?= $pn_data['p_id'] ?>/Term-I'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: 65%"><i class="fas fa-edit text-white-50"></i> Edit Record</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/officer_qualities_records_report/<?= $pn_data['oc_no'] ?>/Term-I'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -2271,8 +2279,8 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>CT/view_edit_qualities/<?= $pn_data['p_id'] ?>/Term-II'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: 65%"><i class="fas fa-edit text-white-50"></i> Edit Record</a>
-                <a onclick="location.href='<?php echo base_url() ?>/CT/officer_qualities_records_report/<?= $pn_data['oc_no'] ?>/Term-II'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>CTMWT/view_edit_qualities/<?= $pn_data['p_id'] ?>/Term-II'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: 65%"><i class="fas fa-edit text-white-50"></i> Edit Record</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/officer_qualities_records_report/<?= $pn_data['oc_no'] ?>/Term-II'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -2628,8 +2636,8 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>CT/view_edit_qualities/<?= $pn_data['p_id'] ?>/Term-III'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: 65%"><i class="fas fa-edit text-white-50"></i> Edit Record</a>
-                <a onclick="location.href='<?php echo base_url() ?>/CT/officer_qualities_records_report/<?= $pn_data['oc_no'] ?>/Term-III'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>CTMWT/view_edit_qualities/<?= $pn_data['p_id'] ?>/Term-III'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: 65%"><i class="fas fa-edit text-white-50"></i> Edit Record</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/officer_qualities_records_report/<?= $pn_data['oc_no'] ?>/Term-III'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -2985,8 +2993,8 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>CT/view_edit_personal_record/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>
-                <a onclick="location.href='<?php echo base_url() ?>/CT/personal_data_records_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>CTMWT/view_edit_personal_record/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/personal_data_records_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <?php if (isset($pn_personal_data['p_no'])) { ?>
                 <div class="row">
@@ -3437,7 +3445,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>/CT/divisional_officer_records_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/divisional_officer_records_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -3478,7 +3486,7 @@
                                                 <td scope="" style="height:50px;text-align: center;"><?= $data['date_to']; ?></td>
 
                                                 <td scope="" style="border-right:1px solid black;"></td>
-                                                <td scope="" style="height:50px;text-align: center;border-right:1px solid black"><a href="<?= base_url(); ?>CT/view_edit_officer_record/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
+                                                <td scope="" style="height:50px;text-align: center;border-right:1px solid black"><a href="<?= base_url(); ?>CTMWT/view_edit_officer_record/<?= $data['id'] ?>" style="color: black"><i class="fa fa-edit"></i></a></td>
                                             </tr>
                                         <?php
                                             $count++;
@@ -3517,9 +3525,9 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>CT/view_edit_biography/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>
+                <a onclick="location.href='<?php echo base_url() ?>CTMWT/view_edit_biography/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>
 
-                <a onclick="location.href='<?php echo base_url() ?>/CT/autobiography_record_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/autobiography_record_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -3585,8 +3593,8 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>CT/view_edit_psychologist_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>
-                <a onclick="location.href='<?php echo base_url() ?>/CT/psychology_record_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>CTMWT/view_edit_psychologist_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/psychology_record_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -3654,8 +3662,8 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <!-- <a onclick="location.href='<?php echo base_url() ?>CT/view_edit_result_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>  -->
-                <a onclick="location.href='<?php echo base_url() ?>/CT/result_record_report/<?= $pn_data['oc_no'] ?>/Term-I/Result'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <!-- <a onclick="location.href='<?php echo base_url() ?>CTMWT/view_edit_result_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>  -->
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/result_record_report/<?= $pn_data['oc_no'] ?>/Term-I/Result'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -3722,8 +3730,8 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <!-- <a onclick="location.href='<?php echo base_url() ?>CT/view_edit_result_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>  -->
-                <a onclick="location.href='<?php echo base_url() ?>/CT/result_record_report/<?= $pn_data['oc_no'] ?>/Term-II/Result'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <!-- <a onclick="location.href='<?php echo base_url() ?>CTMWT/view_edit_result_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>  -->
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/result_record_report/<?= $pn_data['oc_no'] ?>/Term-II/Result'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -3790,8 +3798,8 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <!-- <a onclick="location.href='<?php echo base_url() ?>CT/view_edit_ressult_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>  -->
-                <a onclick="location.href='<?php echo base_url() ?>/CT/result_record_report/<?= $pn_data['oc_no'] ?>/Term-III/Result'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <!-- <a onclick="location.href='<?php echo base_url() ?>CTMWT/view_edit_ressult_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>  -->
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/result_record_report/<?= $pn_data['oc_no'] ?>/Term-III/Result'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -3858,8 +3866,8 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <!-- <a onclick="location.href='<?php echo base_url() ?>CT/view_edit_sea_training_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>  -->
-                <a onclick="location.href='<?php echo base_url() ?>/CT/result_record_report/<?= $pn_data['oc_no'] ?>/Term-II/SeaTraining'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <!-- <a onclick="location.href='<?php echo base_url() ?>CTMWT/view_edit_sea_training_report/<?= $pn_data['p_id']; ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left:65%; margin-right:1%;"><i class="far fa-edit"></i> Edit Record</a>  -->
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/result_record_report/<?= $pn_data['oc_no'] ?>/Term-II/SeaTraining'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -3927,7 +3935,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>/CT/general_remarks_report/<?= $pn_data['oc_no'] ?>/Term-I/Mid'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/general_remarks_report/<?= $pn_data['oc_no'] ?>/Term-I/Mid'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -3991,7 +3999,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>/CT/general_remarks_report/<?= $pn_data['oc_no'] ?>/Term-I/final'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/general_remarks_report/<?= $pn_data['oc_no'] ?>/Term-I/final'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -4057,7 +4065,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>/CT/general_remarks_report/<?= $pn_data['oc_no'] ?>/Term-II/Mid'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/general_remarks_report/<?= $pn_data['oc_no'] ?>/Term-II/Mid'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -4121,7 +4129,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>/CT/general_remarks_report/<?= $pn_data['oc_no'] ?>/Term-II/final'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/general_remarks_report/<?= $pn_data['oc_no'] ?>/Term-II/final'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -4188,7 +4196,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>/CT/general_remarks_report/<?= $pn_data['oc_no'] ?>/Term-III/Mid'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/general_remarks_report/<?= $pn_data['oc_no'] ?>/Term-III/Mid'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -4252,7 +4260,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>/CT/general_remarks_report/<?= $pn_data['oc_no'] ?>/Term-III/final'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/general_remarks_report/<?= $pn_data['oc_no'] ?>/Term-III/final'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -4319,7 +4327,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>/CT/progress_chart_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/progress_chart_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -4398,7 +4406,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>/CT/distinction_achieved_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/distinction_achieved_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -4462,7 +4470,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>/CT/seniority_record_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/seniority_record_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -4599,7 +4607,7 @@
         <?php if (isset($pn_data['name'])) { ?>
             <div class="d-sm-flex align-items-center justify-content-between mb-4 my-2">
                 <h1 class="h3 mb-0 text-black-800"><strong> DOSSIER FOLDER </strong></h1>
-                <a onclick="location.href='<?php echo base_url() ?>/CT/branch_allocation_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
+                <a onclick="location.href='<?php echo base_url() ?>/CTMWT/branch_allocation_report/<?= $pn_data['oc_no'] ?>'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print text-white-50"></i> Print Page</a>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -4735,7 +4743,7 @@
             $('#error_search').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>CT/search_cadet_for_dossier_folder',
+                url: '<?= base_url(); ?>CTMWT/search_cadet_for_dossier_folder',
                 method: 'POST',
                 data: {
                     'oc_no': oc_no
@@ -5274,10 +5282,11 @@
     function show_cadet(oc_no) {
         
         $.ajax({
-            url: '<?= base_url(); ?>CT/search_cadet_for_dossier_folder',
+            url: '<?= base_url(); ?>CTMWT/search_cadet_for_dossier_folder',
             method: 'POST',
             data: {
-                'oc_no': oc_no
+                'oc_no': oc_no,
+                'back_press': 'Yes'
             },
             success: function(data) {
                 if (data != '0') {

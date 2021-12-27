@@ -37,6 +37,7 @@
         <?php } else { ?>
             <div class="col-lg-6" style="text-align:right">
                 <h1 class="h3 mb-0 text-black-800"><strong><?= $this->session->userdata('unit_name') ?></strong></h1>
+                <h1 class="h3 mb-0 text-black-800"><strong>Branch: <?= $this->session->userdata('branch_name') ?></strong></h1>
             </div>
         <?php } ?>
     </div>
