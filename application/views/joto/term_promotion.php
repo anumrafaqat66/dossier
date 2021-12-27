@@ -109,12 +109,12 @@
                                     <select class="form-control rounded-pill" name="term_list" id="term_list" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Term</option>
                                         <?php if ($this->session->userdata('unit_id') == '1' || $this->session->userdata('unit_id') == '3' || $this->session->userdata('unit_id') == '2' || $this->session->userdata('unit_id') == '17') { ?>
-                                            <option class="form-control form-control-user" value="Term-P">Term-P</option>
+                                            <!-- <option class="form-control form-control-user" value="Term-P">Term-P</option>
                                             <option class="form-control form-control-user" value="Term-I">Term-I</option>
                                             <option class="form-control form-control-user" value="Term-II">Term-II</option>
                                             <option class="form-control form-control-user" value="Term-III">Term-III</option>
-                                            <option class="form-control form-control-user" value="Midshipman">Midshipman</option>
-                                            <option class="form-control form-control-user" value="Sub-Leutinent">Sub-Lieutinent</option>
+                                            <option class="form-control form-control-user" value="Midshipman">Midshipman</option> -->
+                                            <option class="form-control form-control-user" value="Sub-Lieutenant">Sub-Lieutinent</option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -544,13 +544,14 @@
     $('#promote_all_btn').on('click', function() {
         var curr_term = $('#term_list').val();
         var branch = $('#select_branches').val();
+        var semester = $('#show_semester_list').val();
 
         $.ajax({
             url: '<?= base_url(); ?>JOTO/update_cadet_term',
             method: 'POST',
             data: {
                 'p_id': 0,
-                'curr_term': curr_term,
+                'curr_term': semester,
                 'branch_id': branch,
                 'action': 'promote',
                 'all': 'yes'
@@ -687,6 +688,8 @@
             success: function(data) {
                 var result = jQuery.parseJSON(data);
                 var len = result.length;
+                $("#show_semester_list").empty();
+                $("#show_semester_list").append(` <option class="form-control form-control-user" value="">Select Semester</option>`);
                 if (len > 0) {
                     for (var i = 0; i < len; i++) {
                         $("#show_semester_list").append(` <option class="form-control form-control-user" value="${result[i]}">${result[i]}</option>`);
@@ -757,7 +760,6 @@
         var term = $('#term_list').val();
         var branch = $('#select_branches').val();
         var semester = $(this).val();
-
         $.ajax({
             url: '<?= base_url(); ?>JOTO/search_all_cadets_by_term',
             method: 'POST',
@@ -773,6 +775,7 @@
                 $('#promote_button').show();
                 $("#list_of_cadets").empty();
                 $("#cadets_oc_no").empty();
+                $('#cadets_semester').empty();
 
                 var result = jQuery.parseJSON(data);
                 var len = result.length;

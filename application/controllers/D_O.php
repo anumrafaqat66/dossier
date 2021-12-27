@@ -1801,9 +1801,9 @@ class D_O extends CI_Controller
             $curr_term = $_POST['curr_term'];
             $action = $_POST['action'];
             $all = $_POST['all'];
-            $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
+            
             $unit_id = $this->session->userdata('unit_id');
-
+            
             if ($action == 'promote') {
                 if ($curr_term == 'Term-P') {
                     $next_term = 'Term-I';
@@ -1818,8 +1818,11 @@ class D_O extends CI_Controller
                     $next_term = 'Term-IV';
                     $phase = 'Midshipman'; //Added by Awais Dated: 13 Dec 21
                     $unit_id = $_POST['unit_id'];
+                    $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
                 } else {
+                    $unit_id = $_POST['unit_id'];
                     $phase='Sub-Lieutenant';
+                    $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
                     if ($branch_id == '4') {  //ME 
                         if ($curr_term == 'Term-IV') {
                             $next_term = '4ME';
@@ -1894,12 +1897,16 @@ class D_O extends CI_Controller
                     'branch_id' => $branch_id,
                     'phase' => $phase
                 );
-            } else {
+            } else if ($curr_term == 'Term-IV'){
                 $update_array = array(
                     'term' => $next_term,
                     'unit_id' => $unit_id,
                     'branch_id' => $branch_id,
                     'phase' => $phase
+                );
+            } else {
+                $update_array = array(
+                    'term' => $next_term,
                 );
             }
 

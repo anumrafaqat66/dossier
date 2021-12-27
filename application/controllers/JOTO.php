@@ -1819,9 +1819,9 @@ class JOTO extends CI_Controller
             $curr_term = $_POST['curr_term'];
             $action = $_POST['action'];
             $all = $_POST['all'];
-            $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
+            
             $next_term = '';
-            $unit_id = $this->session->userdata('unit_id');
+            $unit_id = $this->session->userdata('unit_id'); 
 
             if ($action == 'promote') {
                 if ($curr_term == 'Term-P') {
@@ -1837,8 +1837,11 @@ class JOTO extends CI_Controller
                     $next_term = 'Term-IV';
                     $phase = 'Midshipman'; //Added by Awais Dated: 13 Dec 21
                     $unit_id = $_POST['unit_id'];
+                    $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
                 } else {
                     $phase='Sub-Lieutenant';
+                    // $unit_id = $_POST['unit_id'];
+                    $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
                     if ($branch_id == '4') {  //ME 
                         if ($curr_term == 'Term-IV') {
                             $next_term = '4ME';
@@ -1913,12 +1916,16 @@ class JOTO extends CI_Controller
                     'branch_id' => $branch_id,
                     'phase' => $phase
                 );
-            } else {
+            } else if ($curr_term == 'Term-IV') {
                 $update_array = array(
                     'term' => $next_term,
                     'unit_id' => $unit_id,
                     'branch_id' => $branch_id,
                     'phase' => $phase
+                );
+            } else {
+                $update_array = array(
+                    'term' => $next_term,
                 );
             }
 
@@ -1933,7 +1940,7 @@ class JOTO extends CI_Controller
                     'unit_id' => $this->session->userdata('unit_id'),
                     'term' => $curr_term
                 ];
-            }
+            } 
 
             $this->db->where($cond);
             $update = $this->db->update('pn_form1s', $update_array);
