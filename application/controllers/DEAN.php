@@ -1796,40 +1796,84 @@ class DEAN extends CI_Controller
 
     public function update_cadet_term()
     {
-        if ($this->input->post()) {
+                    if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
 
             $p_id = $_POST['p_id'];
             $curr_term = $_POST['curr_term'];
             $action = $_POST['action'];
             $all = $_POST['all'];
-
+            
+            $next_term = '';
+            $unit_id = $this->session->userdata('unit_id'); 
 
             if ($action == 'promote') {
                 if ($curr_term == 'Term-P') {
                     $next_term = 'Term-I';
+                    $phase = 'Phase-I';
                 } else if ($curr_term == 'Term-I') {
                     $next_term = 'Term-II';
+                    $phase = 'Phase-I';
                 } else if ($curr_term == 'Term-II') {
                     $next_term = 'Term-III';
+                    $phase = 'Phase-I';
                 } else if ($curr_term == 'Term-III') {
                     $next_term = 'Term-IV';
                     $phase = 'Midshipman'; //Added by Awais Dated: 13 Dec 21
                     $unit_id = $_POST['unit_id'];
                     $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
-                } else if ($curr_term == 'Term-IV') {
-                    $next_term = 'Term-V';
-                    $phase = 'Sub-Lieutenant'; //Added by Awais Dated: 13 Dec 21
-                    $unit_id = $_POST['unit_id'];
+                } else {
+                    $phase='Sub-Lieutenant';
+                    // $unit_id = $_POST['unit_id'];
                     $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
-                    $result = $this->db->where('id', $_POST['branch_id'])->get('branch_preference_list')->row_array();
-                    // if($result['branch_name']== 'WE' || $result['branch_name'] == 'ME' || $result['branch_name'] == 'OPS'){
-                    //     $unit_id='3'; //id of PNS Jauher
-                    // }else{
-                    //     $unit_id='17';  ////id of PNSL
-                    // }
-                } else if ($curr_term == 'Term-V') {
-                    //not specified yet
+                    if ($branch_id == '4') {  //ME 
+                        if ($curr_term == 'Term-IV') {
+                            $next_term = '4ME';
+                        } else if ($curr_term == '4ME') {
+                            $next_term = '5ME';
+                        } else if ($curr_term == '5ME') {
+                            $next_term = '6ME';
+                        } else if ($curr_term == '6ME') {
+                            $next_term = '7ME';
+                        } else if ($curr_term == '8ME') {
+                            $next_term = '8ME';
+                        }
+                    } else if ($branch_id == '2') { //WE 
+                        if ($curr_term == 'Term-IV') {
+                            $next_term = '4WE';
+                        } else if ($curr_term == '4WE') {
+                            $next_term = '5WE';
+                        } else if ($curr_term == '5WE') {
+                            $next_term = '6WE';
+                        } else if ($curr_term == '6WE') {
+                            $next_term = '7WE';
+                        } else if ($curr_term == '8WE') {
+                            $next_term = '8WE';
+                        }
+                    } else if ($branch_id == '1') { //OPS
+                        if ($curr_term == 'Term-IV') {
+                            $next_term = '5MS';
+                        } else if ($curr_term == '5MS') {
+                            $next_term = '6MS';
+                        } else if ($curr_term == '6MS') {
+                            $unit_id = '2'; //Promoted Bahadur
+                            $next_term = 'GLOPS';
+                        }
+                    } else if ($branch_id == '3') { //LOG //PNSL
+                        if ($curr_term == 'Term-IV') {
+                            $next_term = '3LOG';
+                        } else if ($curr_term == '3LOG') {
+                            $next_term = '4LOG';
+                        } else if ($curr_term == '4LOG') {
+                            $next_term = '5LOG';
+                        } else if ($curr_term == '5LOG') {
+                            $next_term = '6LOG';
+                        } else if ($curr_term == '6LOG') {
+                            $next_term = '7LOG';
+                        } else if ($curr_term == '7LOG') {
+                            $next_term = '8LOG';
+                        }
+                    }
                 }
             }
 
@@ -1859,42 +1903,28 @@ class DEAN extends CI_Controller
             } else if ($curr_term == 'Term-IV') {
                 $update_array = array(
                     'term' => $next_term,
-                    'branch_id' => $branch_id,
                     'unit_id' => $unit_id,
+                    'branch_id' => $branch_id,
                     'phase' => $phase
                 );
             } else {
                 $update_array = array(
-                    'term' => $next_term
+                    'term' => $next_term,
                 );
             }
 
-            if ($all == 'no' && $this->session->userdata('acct_type') == 'do') {
+            if ($all == 'no') {
                 $cond  = [
                     'p_id' => $p_id,
-                    'do_id' => $this->session->userdata('user_id'),
+                    'unit_id' => $this->session->userdata('unit_id'),
                     'term' => $curr_term
                 ];
-            } else if ($all == 'yes' && $this->session->userdata('acct_type') == 'do') {
+            } else if ($all == 'yes') {
                 $cond  = [
-                    'do_id' => $this->session->userdata('user_id'),
+                    'unit_id' => $this->session->userdata('unit_id'),
                     'term' => $curr_term
                 ];
-            }
-
-            if ($all == 'no' && $this->session->userdata('acct_type') == 'joto') {
-                $cond  = [
-                    'p_id' => $p_id,
-                    'term' => $curr_term
-                ];
-            } else if ($all == 'yes' && $this->session->userdata('acct_type') == 'joto') {
-                $cond  = [
-                    'term' => $curr_term
-                ];
-            }
-
-            //print_r($cond);exit;
-            // echo $p_id;exit;
+            } 
 
             $this->db->where($cond);
             $update = $this->db->update('pn_form1s', $update_array);
@@ -1958,10 +1988,10 @@ class DEAN extends CI_Controller
             $data['units'] = $this->db->where('id', '2')->or_where('id', '3')->or_where('id', '17')->get('navy_units')->result_array();
             $data['ships'] = $this->db->where('id', '6')->or_where('id', '7')->or_where('id', '8')->or_where('id', '9')->or_where('id', '10')->or_where('id', '11')->or_where('id', '12')->or_where('id', '13')->or_where('id', '14')->or_where('id', '15')->or_where('id', '16')->get('navy_units')->result_array();
             $data['branches'] = $this->db->get('branch_preference_list')->result_array();
-            $view_page = $this->load->view('dean/term_promotion', $data, TRUE);
+            $view_page = $this->load->view('hougp/term_promotion', $data, TRUE);
             echo $view_page;
             json_encode($view_page);
-        }
+        }  
     }
 
     public function update_cadet_to_midshipman()
@@ -2002,9 +2032,9 @@ class DEAN extends CI_Controller
                             'term' => $curr_term,
                             'divison_name' => $this->session->userdata('division')
                         ];
-                    } else {
+                    }else {
                         $cond  = [
-                            'term' => $curr_term                            
+                            'term' => $curr_term
                         ];
                     }
                 }
@@ -2066,7 +2096,7 @@ class DEAN extends CI_Controller
             $data['units'] = $this->db->where('id', '2')->or_where('id', '3')->or_where('id', '17')->get('navy_units')->result_array();
             $data['ships'] = $this->db->where('id', '6')->or_where('id', '7')->or_where('id', '8')->or_where('id', '9')->or_where('id', '10')->or_where('id', '11')->or_where('id', '12')->or_where('id', '13')->or_where('id', '14')->or_where('id', '15')->or_where('id', '16')->get('navy_units')->result_array();
             $data['branches'] = $this->db->get('branch_preference_list')->result_array();
-            $view_page = $this->load->view('dean/term_promotion', $data, TRUE);
+            $view_page = $this->load->view('hougp/term_promotion', $data, TRUE);
             echo $view_page;
             json_encode($view_page);
         }
@@ -2074,111 +2104,7 @@ class DEAN extends CI_Controller
 
     public function update_cadet_to_sub_lieutenant()
     {
-        if ($this->input->post()) {
-            $postData = $this->security->xss_clean($this->input->post());
-
-            $p_id = $_POST['p_id'];
-            $curr_term = $_POST['curr_term'];
-            $action = $_POST['action'];
-            $all = $_POST['all'];
-            $branch_id = $_POST['branch_id'];
-            $unit_id = $_POST['unit_id'];
-            $phase = 'Sub-Lieutenant';
-
-            $update_array = array(
-                'term' => 'Term-V',
-                'phase' => $phase,
-                'branch_id' => $branch_id,
-                'unit_id' => $unit_id
-            );
-
-            if ($all == 'no') {
-                $cond  = [
-                    'p_id' => $p_id,
-                    'term' => $curr_term
-                ];
-            } else {
-                if ($this->session->userdata('unit_id') != '1') {
-                    $cond  = [
-                        'unit_id' => $this->session->userdata('unit_id'),
-                        'term' => $curr_term
-                    ];
-                } else {
-                    if ($this->session->userdata('acct_type') == 'do') {
-                        $cond  = [
-                            'term' => $curr_term,
-                            'divison_name' => $this->session->userdata('division')
-                        ];
-                    } else {
-                        $cond  = [
-                            'term' => $curr_term                            
-                        ];
-                    }
-                }
-            }
-
-            $this->db->where($cond);
-            $update = $this->db->update('pn_form1s', $update_array);
-
-            if (!empty($update)) {
-                $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array();
-
-                if ($all == 'yes') {
-                    $act_desc = 'All Cadets of ' . $this->session->userdata('division') . ' promoted to Sub-Lietinant successfully';
-                } else {
-                    if ($action == 'relegate') {
-                        $act_desc =  "Cadet " . $cadet_name['name'] . " has been relegated";
-                    } else {
-                        $act_desc =  "Cadet " . $cadet_name['name'] . " has been Promoted to Sub-Lietinant";
-                    }
-                }
-
-                $insert_activity = array(
-                    'activity_module' => $this->session->userdata('acct_type'),
-                    'activity_action' => 'add',
-                    'activity_detail' => $act_desc,
-                    'activity_by' => $this->session->userdata('username'),
-                    'activity_date' => date('Y-m-d H:i:s')
-                );
-
-                $insert_act = $this->db->insert('activity_log', $insert_activity);
-                $last_id = $this->db->insert_id();
-
-                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
-
-                for ($i = 0; $i < count($query); $i++) {
-                    $insert_activity_seen = array(
-                        'activity_id' => $last_id,
-                        'user_id' => $query[$i]['id'],
-                        'seen' => 'no'
-                    );
-                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
-                }
-            }
-
-            if (!empty($update)) {
-                if ($all == 'no') {
-                    if ($action == 'promote') {
-                        $this->session->set_flashdata('success', 'Cadet Promoted to Sub-Lietinant successfully');
-                    } else if ($action == 'relegate') {
-                        $this->session->set_flashdata('success', 'Cadet Relegated successfully');
-                    }
-                } else {
-                    $this->session->set_flashdata('success', 'All Cadets promoted to Sub-Lietinant successfully');
-                }
-            } else {
-                $this->session->set_flashdata('failure', 'Something went wrong, try again.');
-            }
-
-            // $data = '';
-            //$data['units'] = $this->db->get('navy_units')->result_array();
-            $data['units'] = $this->db->where('id', '2')->or_where('id', '3')->or_where('id', '4')->or_where('id', '17')->get('navy_units')->result_array();
-            $data['ships'] = $this->db->where('id', '6')->or_where('id', '7')->or_where('id', '8')->or_where('id', '9')->or_where('id', '10')->or_where('id', '11')->or_where('id', '12')->or_where('id', '13')->or_where('id', '14')->or_where('id', '15')->or_where('id', '16')->get('navy_units')->result_array();
-            $data['branches'] = $this->db->get('branch_preference_list')->result_array();
-            $view_page = $this->load->view('dean/term_promotion', $data, TRUE);
-            echo $view_page;
-            json_encode($view_page);
-        }
+        
     }
 
     public function view_punishment_list()
@@ -2559,10 +2485,9 @@ class DEAN extends CI_Controller
 
     public function search_cadet_for_dossier()
     {
-        if ($this->session->has_userdata('user_id')) {
+         if ($this->session->has_userdata('user_id')) {
             $oc_no = $_POST['oc_no'];
-            $units_list = array('2','3','17');
-
+            $units_list = array('2', '3', '17');
             if (($this->session->userdata('unit_id')) != 1) {
                 $data['pn_data'] = $this->db->where('oc_no', $oc_no)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->result_array();
             } else {
@@ -2576,7 +2501,7 @@ class DEAN extends CI_Controller
             $data['oc_no_entered'] = $oc_no;
 
             if (count($data['pn_data']) > 0) {
-                $view_page = $this->load->view('dean/view_dossier', $data, TRUE);
+                $view_page = $this->load->view('joto/view_dossier', $data, TRUE);
                 echo $view_page;
                 json_encode($view_page);
             } else {
