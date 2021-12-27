@@ -1826,15 +1826,19 @@ class JOTO extends CI_Controller
             if ($action == 'promote') {
                 if ($curr_term == 'Term-P') {
                     $next_term = 'Term-I';
+                    $phase = 'Phase-I';
                 } else if ($curr_term == 'Term-I') {
                     $next_term = 'Term-II';
+                    $phase = 'Phase-I';
                 } else if ($curr_term == 'Term-II') {
                     $next_term = 'Term-III';
+                    $phase = 'Phase-I';
                 } else if ($curr_term == 'Term-III') {
                     $next_term = 'Term-IV';
                     $phase = 'Midshipman'; //Added by Awais Dated: 13 Dec 21
                     $unit_id = $_POST['unit_id'];
                 } else {
+                    $phase='Sub-Lieutenant';
                     if ($branch_id == '4') {  //ME 
                         if ($curr_term == 'Term-IV') {
                             $next_term = '4ME';
@@ -1913,6 +1917,8 @@ class JOTO extends CI_Controller
                 $update_array = array(
                     'term' => $next_term,
                     'unit_id' => $unit_id,
+                    'branch_id' => $branch_id,
+                    'phase' => $phase
                 );
             }
 
@@ -1974,7 +1980,7 @@ class JOTO extends CI_Controller
                         if ($curr_term == 'Term-III') {
                             $this->session->set_flashdata('success', 'Cadet Promoted to Midshipman successfully');
                         } else if ($curr_term == 'Term-IV') {
-                            $this->session->set_flashdata('success', 'Cadet Promoted to Sub-Leutinent successfully');
+                            $this->session->set_flashdata('success', 'Cadet Promoted to Sub-Lieutenant successfully');
                         } else {
                             $this->session->set_flashdata('success', 'Cadet Promoted successfully');
                         }
@@ -2116,7 +2122,7 @@ class JOTO extends CI_Controller
             $all = $_POST['all'];
             $branch_id = $_POST['branch_id'];
             $unit_id = $_POST['unit_id'];
-            $phase = 'Sub-Leutinent';
+            $phase = 'Sub-Lieutenant';
 
             $update_array = array(
                 'term' => 'Term-V',

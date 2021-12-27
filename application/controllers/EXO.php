@@ -1818,7 +1818,7 @@ class EXO extends CI_Controller
                     $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
                 } else if ($curr_term == 'Term-IV') {
                     $next_term = 'Term-V';
-                    $phase = 'Sub-Leutinent'; //Added by Awais Dated: 13 Dec 21
+                    $phase = 'Sub-Lieutenant'; //Added by Awais Dated: 13 Dec 21
                     $unit_id = $_POST['unit_id'];
                     $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
                     $result = $this->db->where('id', $_POST['branch_id'])->get('branch_preference_list')->row_array();
@@ -1940,7 +1940,7 @@ class EXO extends CI_Controller
                         if ($curr_term == 'Term-III') {
                             $this->session->set_flashdata('success', 'Cadet Promoted to Midshipman successfully');
                         } else if ($curr_term == 'Term-IV') {
-                            $this->session->set_flashdata('success', 'Cadet Promoted to Sub-Leutinent successfully');
+                            $this->session->set_flashdata('success', 'Cadet Promoted to Sub-Lieutenant successfully');
                         } else {
                             $this->session->set_flashdata('success', 'Cadet Promoted successfully');
                         }
@@ -2082,7 +2082,7 @@ class EXO extends CI_Controller
             $all = $_POST['all'];
             $branch_id = $_POST['branch_id'];
             $unit_id = $_POST['unit_id'];
-            $phase = 'Sub-Leutinent';
+            $phase = 'Sub-Lieutenant';
 
             $update_array = array(
                 'term' => 'Term-V',

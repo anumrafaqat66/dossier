@@ -235,7 +235,7 @@
                     <div class="card-body bg-custom3">
                         <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>D_O/save_cadet_warning">
                             <div class="form-group row">
-                                <div class="col-sm-2">
+                                <div class="col-sm-4">
                                     <h5 id="term_selected"></h5>
                                 </div>
                                 <div class="col-sm-2">

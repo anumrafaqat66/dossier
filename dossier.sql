@@ -2741,13 +2741,13 @@ ALTER TABLE `branch_allocations`
 /* Insert into units */
 INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PNS Tabuk','NULL','NULL');
 INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PNS Yamook','NULL','NULL');
-INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PNS Aslar','NULL','NULL');
+INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PNS Aslat','NULL','NULL');
 INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PNS Saif','NULL','NULL');
 INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PNS Shamsheer','NULL','NULL');
 INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PNS Zulfiqar','NULL','NULL');
 INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PNS Alamgir','NULL','NULL');
 INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PNS Moawin','NULL','NULL');
-INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PNS Nasab','NULL','NULL');
+INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PNS Nasr','NULL','NULL');
 INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PNS Taghaul','NULL','NULL');
 INSERT INTO `navy_units`( `unit_name`, `created_at`, `updated_at`) VALUES ('PN School of logistics','NULL','NULL');
 
@@ -2771,5 +2771,14 @@ INSERT INTO `branch_preference_list`( `branch_name`) VALUES ('ME');
 
 alter table pn_form1s
 add COLUMN branch_id int(11) null;
+
+/* Update S/LT in db xisting records */
+UPDATE `pn_form1s` SET `phase`='Sub-Lieutenant' WHERE `phase`='Sub-Leutinent';
+
+/* Update units in db existing records */
+UPDATE `navy_units` SET `unit_name`='PNS Aslat' WHERE `unit_name`='PNS Aslar';
+
+UPDATE `navy_units` SET `unit_name`='PNS Nasr' WHERE `unit_name`='PNS Nasab';
+
 
 COMMIT;
