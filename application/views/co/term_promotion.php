@@ -109,11 +109,11 @@
                                     <select class="form-control rounded-pill" name="term_list" id="term_list" data-placeholder="Select Contractor" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Term</option>
                                         <?php if ($this->session->userdata('unit_id') == '1' || $this->session->userdata('unit_id') == '3' || $this->session->userdata('unit_id') == '2' || $this->session->userdata('unit_id') == '17') { ?>
-                                            <!-- <option class="form-control form-control-user" value="Term-P">Term-P</option>
+                                            <option class="form-control form-control-user" value="Term-P">Term-P</option>
                                             <option class="form-control form-control-user" value="Term-I">Term-I</option>
                                             <option class="form-control form-control-user" value="Term-II">Term-II</option>
                                             <option class="form-control form-control-user" value="Term-III">Term-III</option>
-                                            <option class="form-control form-control-user" value="Midshipman">Midshipman</option> -->
+                                            <option class="form-control form-control-user" value="Midshipman">Midshipman</option>
                                             <option class="form-control form-control-user" value="Sub-Lieutenant">Sub-Lieutinent</option>
                                         <?php } ?>
                                     </select>
@@ -122,12 +122,11 @@
                                 <div class="col-sm-2 mb-1" id="select_branch_list" style="display:none">
                                     <select class="form-control rounded-pill" name="select_branches" id="select_branches" data-placeholder="Select ship" style="font-size: 0.8rem; height:50px;">
                                         <option class="form-control form-control-user" value="">Select Branch</option>
-                                        <!-- <?php //foreach ($branches as $data) { 
-                                                ?> -->
-                                        <!-- <option class="form-control form-control-user" value="<?= $data['id'] ?>"><?= $data['branch_name'] ?></option> -->
-                                        <option class="form-control form-control-user" value="<?= $this->session->userdata('branch_id'); ?>"><?= $this->session->userdata('branch_name'); ?></option>
-                                        <!-- <?php //} 
-                                                ?> -->
+                                        <?php foreach ($branches as $data) {
+                                        ?>
+                                            <option class="form-control form-control-user" value="<?= $data['id'] ?>"><?= $data['branch_name'] ?></option>
+                                        <?php }
+                                        ?>
                                     </select>
                                     <span id="show_error_select_branch_list" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please select branch to Proceed*</span>
                                 </div>
