@@ -1909,9 +1909,16 @@ class D_O extends CI_Controller
                     'phase' => $phase
                 );
             } else {
-                $update_array = array(
-                    'term' => $next_term,
-                );
+                if (($branch_id == '1') && ($curr_term == '6MS')) {
+                    $update_array = array(
+                        'term' => $next_term,
+                        'unit_id' => $unit_id
+                    );
+                } else {
+                    $update_array = array(
+                        'term' => $next_term
+                    );
+                }
             }
 
             if ($all == 'no' && $this->session->userdata('acct_type') == 'do') {

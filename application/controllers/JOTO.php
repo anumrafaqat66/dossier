@@ -1861,11 +1861,11 @@ class JOTO extends CI_Controller
                     $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
                 } else {
                     $phase = 'Sub-Lieutenant';
-                    
+
                     if (isset($_POST['unit_id'])) {
                         $unit_id = $_POST['unit_id'];
                     }
-                    
+
                     $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
                     if ($branch_id == '4') {  //ME 
                         if ($curr_term == 'Term-IV') {
@@ -1947,9 +1947,16 @@ class JOTO extends CI_Controller
                     'phase' => $phase
                 );
             } else {
-                $update_array = array(
-                    'term' => $next_term,
-                );
+                if (($branch_id == '1') && ($curr_term == '6MS')) {
+                    $update_array = array(
+                        'term' => $next_term,
+                        'unit_id' => $unit_id
+                    );
+                } else {
+                    $update_array = array(
+                        'term' => $next_term
+                    );
+                }
             }
 
             if ($all == 'no') {

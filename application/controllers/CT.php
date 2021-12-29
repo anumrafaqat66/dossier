@@ -211,7 +211,7 @@ class CT extends CI_Controller
             $this->db->from('medical_records mr');
             $this->db->join('pn_form1s f', 'f.p_id = mr.p_id');
             $this->db->where('f.oc_no = mr.oc_no');
-            $this->db->where('f.unit_id',$this->session->userdata('unit_id'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('mr.start_date <=', date('Y-m-d'));
             $this->db->where('mr.end_date >=', date('Y-m-d'));
             $data['medical_records'] = $this->db->get()->result_array();
@@ -224,7 +224,7 @@ class CT extends CI_Controller
             $this->db->select('or.*, f.*');
             $this->db->from('observation_records or');
             $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
-            $this->db->where('f.unit_id',$this->session->userdata('unit_id'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('or.status !=', 'Rejected');
             $data['observation_records'] = $this->db->get()->result_array();
             $this->load->view('ct/view_observation_list', $data);
@@ -259,7 +259,7 @@ class CT extends CI_Controller
             $this->db->from('punishment_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('f.oc_no = pr.oc_no');
-            $this->db->where('f.unit_id',$this->session->userdata('unit_id'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('pr.start_date =', $date);
             $data['punishment_records'] = $this->db->get()->result_array();
             $data['search_date'] = $date;
@@ -643,7 +643,7 @@ class CT extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $oc_no = $_POST['oc_no'];
-            
+
             $units_list = array('2', '3', '17');
 
             if (($this->session->userdata('unit_id')) != 1) {
@@ -1069,7 +1069,7 @@ class CT extends CI_Controller
                     $view_page = 0;
                 }
             }
-            
+
             echo $view_page;
             json_encode($view_page);
         }
@@ -2399,9 +2399,16 @@ class CT extends CI_Controller
                     'phase' => $phase
                 );
             } else {
-                $update_array = array(
-                    'term' => $next_term,
-                );
+                if (($branch_id == '1') && ($curr_term == '6MS')) {
+                    $update_array = array(
+                        'term' => $next_term,
+                        'unit_id' => $unit_id
+                    );
+                } else {
+                    $update_array = array(
+                        'term' => $next_term
+                    );
+                }
             }
 
             if ($all == 'no') {
