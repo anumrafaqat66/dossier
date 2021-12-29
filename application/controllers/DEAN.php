@@ -1841,7 +1841,9 @@ class DEAN extends CI_Controller
                     $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
                 } else {
                     $phase = 'Sub-Lieutenant';
-                    // $unit_id = $_POST['unit_id'];
+                    if (isset($_POST['unit_id'])) {
+                        $unit_id = $_POST['unit_id'];
+                    }
                     $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
                     if ($branch_id == '4') {  //ME 
                         if ($curr_term == 'Term-IV') {

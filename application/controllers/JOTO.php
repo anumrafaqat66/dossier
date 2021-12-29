@@ -1473,7 +1473,7 @@ class JOTO extends CI_Controller
 
             $units_list = array('2', '3', '17');
             if (($this->session->userdata('unit_id')) != 1) {
-                $query = $this->db->where('phase', $term)->where('unit_id', $this->session->userdata('unit_id'))->where('branch_id', $branch_id)->where('term',$semester)->get('pn_form1s')->result_array();
+                $query = $this->db->where('phase', $term)->where('unit_id', $this->session->userdata('unit_id'))->where('branch_id', $branch_id)->where('term', $semester)->get('pn_form1s')->result_array();
             } else {
                 if ($this->session->userdata('acct_type') == 'do') {
                     $query = $this->db->where_not_in('unit_id', $units_list)->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->result_array();
@@ -1539,7 +1539,7 @@ class JOTO extends CI_Controller
                 } else {
                     $query = $this->db->where('oc_no', $oc_no)->where_not_in('unit_id', $units_list)->get('pn_form1s')->row_array();
                 }
-            }  
+            }
             echo json_encode($query);
         }
     }
@@ -1558,7 +1558,7 @@ class JOTO extends CI_Controller
                 } else {
                     $query = $this->db->where('oc_no', $oc_no)->where_not_in('unit_id', $units_list)->get('pn_form1s')->row_array();
                 }
-            }  
+            }
 
             echo json_encode($query);
         }
@@ -1840,9 +1840,9 @@ class JOTO extends CI_Controller
             $curr_term = $_POST['curr_term'];
             $action = $_POST['action'];
             $all = $_POST['all'];
-            
+
             $next_term = '';
-            $unit_id = $this->session->userdata('unit_id'); 
+            $unit_id = $this->session->userdata('unit_id');
 
             if ($action == 'promote') {
                 if ($curr_term == 'Term-P') {
@@ -1860,8 +1860,12 @@ class JOTO extends CI_Controller
                     $unit_id = $_POST['unit_id'];
                     $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
                 } else {
-                    $phase='Sub-Lieutenant';
-                    // $unit_id = $_POST['unit_id'];
+                    $phase = 'Sub-Lieutenant';
+                    
+                    if (isset($_POST['unit_id'])) {
+                        $unit_id = $_POST['unit_id'];
+                    }
+                    
                     $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
                     if ($branch_id == '4') {  //ME 
                         if ($curr_term == 'Term-IV') {
@@ -1959,7 +1963,7 @@ class JOTO extends CI_Controller
                     'unit_id' => $this->session->userdata('unit_id'),
                     'term' => $curr_term
                 ];
-            } 
+            }
 
             $this->db->where($cond);
             $update = $this->db->update('pn_form1s', $update_array);
