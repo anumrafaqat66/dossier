@@ -1,5 +1,5 @@
 <?php if ($this->session->userdata('acct_type') == 'do') {
-    $this->load->view('do/common/header');
+    $this->load->view('hougp/common/header');
 } else if ($this->session->userdata('acct_type') == 'joto') {
     $this->load->view('joto/common/header');
 } else if ($this->session->userdata('acct_type') == 'exo') {

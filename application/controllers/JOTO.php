@@ -1456,7 +1456,7 @@ class JOTO extends CI_Controller
                 } else {
                     $query = $this->db->where('oc_no', $oc_no)->where_not_in('unit_id', $units_list)->get('pn_form1s')->row_array();
                 }
-            }
+            }  //echo $this->db->last_query();exit;
             echo json_encode($query);
         }
     }

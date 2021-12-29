@@ -1457,6 +1457,8 @@ class D_O extends CI_Controller
                     $query = $this->db->where('oc_no', $oc_no)->where_not_in('unit_id', $units_list)->get('pn_form1s')->row_array();
                 }
             }
+
+           // print_r($query);exit;
             echo json_encode($query);
         }
     }
@@ -1559,7 +1561,7 @@ class D_O extends CI_Controller
     public function auto_biography()
     {
         if ($this->session->has_userdata('user_id')) {
-            $this->load->view('do/biography');
+    $this->load->view('do/biography');
         }
     }
     public function personal_data()
@@ -3191,7 +3193,7 @@ class D_O extends CI_Controller
             $_FILES['file']['size']     = $_FILES['file']['size'][$i];
 
             $config['upload_path'] = 'uploads/warning';
-            $config['allowed_types']        = 'gif|jpg|png|doc|xls|pdf|xlsx|docx|ppt|pptx|txt|jpeg';
+            $config['allowed_types']        = 'gif|jpg|png|doc|xls|pdf|xlsx|docx|ppt|pptx|txt|jpeg|PNG';
 
             $this->load->library('upload', $config);
             $this->upload->initialize($config);

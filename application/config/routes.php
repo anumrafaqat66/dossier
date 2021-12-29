@@ -125,6 +125,11 @@ $route['D_O/view_edit_punishment/update-activity'] = 'ChatController/update_acti
 $route['D_O/view_edit_punishment/check-notification'] = 'ChatController/check_notification';
 $route['D_O/view_edit_punishment/check-activity'] = 'ChatController/check_activity';
 
+$route['JOTO/view_edit_warning/update-notification'] = 'ChatController/update_notification';
+$route['JOTO/view_edit_warning/update-activity'] = 'ChatController/update_activity';
+$route['JOTO/view_edit_warning/check-notification'] = 'ChatController/check_notification';
+$route['JOTO/view_edit_warning/check-activity'] = 'ChatController/check_activity';
+
 $route['Admin/update-notification'] = 'ChatController/update_notification';
 $route['Admin/update-activity'] = 'ChatController/update_activity';
 $route['Admin/check-notification'] = 'ChatController/check_notification';

@@ -1,4 +1,28 @@
-<?php $this->load->view('do/common/header'); ?>
+<?php if ($this->session->userdata('acct_type') == 'do') {
+    $this->load->view('do/common/header');
+} else if ($this->session->userdata('acct_type') == 'joto') {
+    $this->load->view('joto/common/header');
+} else if ($this->session->userdata('acct_type') == 'exo') {
+    $this->load->view('exo/common/header');
+} else if ($this->session->userdata('acct_type') == 'co') {
+    $this->load->view('co/common/header');
+} else if ($this->session->userdata('acct_type') == 'ct') {
+    $this->load->view('ct/common/header');
+} else if ($this->session->userdata('acct_type') == 'sqc') {
+    $this->load->view('sqc/common/header');
+} else if ($this->session->userdata('acct_type') == 'cao') {
+    $this->load->view('cao/common/header');
+} else if ($this->session->userdata('acct_type') == 'cao_sec') {
+    $this->load->view('cao_sec/common/header');
+} else if ($this->session->userdata('acct_type') == 'smo') {
+    $this->load->view('smo/common/header');
+} else if ($this->session->userdata('acct_type') == 'ctmwt') {
+    $this->load->view('ctmwt/common/header');
+} else if ($this->session->userdata('acct_type') == 'dean') {
+    $this->load->view('dean/common/header');
+} else if ($this->session->userdata('acct_type') == 'hougp') {
+    $this->load->view('hougp/common/header');
+} ?>
 <style>
     .red-border {
         border: 1px solid red !important;

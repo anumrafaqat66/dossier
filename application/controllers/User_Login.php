@@ -83,7 +83,7 @@ class User_Login extends CI_Controller
 					$this->db->set('status', 'online');
 					$this->db->where('id', $query['id']);
 					$this->db->update('security_info');
-
+				   // echo $this->session->userdata('acct_type');exit;
 					redirect('User_Login');
 				} else {
 					$this->session->set_flashdata('failure', 'No such user exist. Kindly create New User using Admin panel');

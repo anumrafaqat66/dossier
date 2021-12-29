@@ -3,7 +3,6 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
-
 <style>
   .img-logo {
     background: url('<?= base_url() ?>assets/img/navy_logo.png');

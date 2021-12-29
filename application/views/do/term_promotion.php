@@ -6,6 +6,18 @@
     $this->load->view('exo/common/header');
 } else if ($this->session->userdata('acct_type') == 'co') {
     $this->load->view('co/common/header');
+} else if ($this->session->userdata('acct_type') == 'ct') {
+    $this->load->view('ct/common/header');
+} else if ($this->session->userdata('acct_type') == 'sqc') {
+    $this->load->view('sqc/common/header');
+} else if ($this->session->userdata('acct_type') == 'cao') {
+    $this->load->view('cao/common/header');
+} else if ($this->session->userdata('acct_type') == 'cao_sec') {
+    $this->load->view('cao_sec/common/header');
+} else if ($this->session->userdata('acct_type') == 'smo') {
+    $this->load->view('smo/common/header');
+} else if ($this->session->userdata('acct_type') == 'ctmwt') {
+    $this->load->view('ctmwt/common/header');
 } else if ($this->session->userdata('acct_type') == 'dean') {
     $this->load->view('dean/common/header');
 } else if ($this->session->userdata('acct_type') == 'hougp') {
