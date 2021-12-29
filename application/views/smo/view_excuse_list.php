@@ -192,7 +192,7 @@
             $('#show_error_new').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>D_O/search_excuse_by_date',
+                url: '<?= base_url(); ?>SMO/search_excuse_by_date',
                 method: 'POST',
                 data: {
                     'search_date': search_date

@@ -14,7 +14,6 @@ class JOTO extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
-
             $this->load->view('joto/dashboard');
         } else {
             $this->load->view('login');
@@ -2708,6 +2707,61 @@ class JOTO extends CI_Controller
             $data['pn_punish_data_term3'] = $this->db->get()->result_array();
 
             $this->db->select('pr.*, f.*');
+            $this->db->from('punishment_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('f.oc_no = pr.oc_no');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->like('pr.term', '4');
+            $this->db->where('pr.status', 'Approved');
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $data['pn_punish_data_term4'] = $this->db->get()->result_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('punishment_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('f.oc_no = pr.oc_no');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->like('pr.term', '5');
+            $this->db->where('pr.status', 'Approved');
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $data['pn_punish_data_term5'] = $this->db->get()->result_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('punishment_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('f.oc_no = pr.oc_no');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->like('pr.term', '6');
+            $this->db->where('pr.status', 'Approved');
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $data['pn_punish_data_term6'] = $this->db->get()->result_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('punishment_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('f.oc_no = pr.oc_no');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->like('pr.term', '7');
+            $this->db->where('pr.status', 'Approved');
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $data['pn_punish_data_term7'] = $this->db->get()->result_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('punishment_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            $this->db->where('f.oc_no = pr.oc_no');
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->like('pr.term', '8');
+            $this->db->where('pr.status', 'Approved');
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $data['pn_punish_data_term8'] = $this->db->get()->result_array();
+
+            $this->db->select('pr.*, f.*');
             $this->db->from('observation_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
@@ -2736,6 +2790,56 @@ class JOTO extends CI_Controller
             $this->db->where('pr.term', 'Term-III');
             $this->db->where('pr.status', 'Approved');
             $data['pn_obs_data_term3'] = $this->db->get()->result_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('observation_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->like('pr.term', '4');
+            $this->db->where('pr.status', 'Approved');
+            $data['pn_obs_data_term4'] = $this->db->get()->result_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('observation_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->like('pr.term', '5');
+            $this->db->where('pr.status', 'Approved');
+            $data['pn_obs_data_term5'] = $this->db->get()->result_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('observation_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->like('pr.term', '6');
+            $this->db->where('pr.status', 'Approved');
+            $data['pn_obs_data_term6'] = $this->db->get()->result_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('observation_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->like('pr.term', '7');
+            $this->db->where('pr.status', 'Approved');
+            $data['pn_obs_data_term7'] = $this->db->get()->result_array();
+
+            $this->db->select('pr.*, f.*');
+            $this->db->from('observation_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
+            $this->db->where('f.oc_no', $oc_no);
+            $this->db->like('pr.term', '8');
+            $this->db->where('pr.status', 'Approved');
+            $data['pn_obs_data_term8'] = $this->db->get()->result_array();
 
             $this->db->select('pr.*, f.*');
             $this->db->from('warning_records pr');
@@ -3637,8 +3741,7 @@ class JOTO extends CI_Controller
             $this->db->select('*');
             $this->db->from('punishment_records');
             $this->db->where('oc_no', $oc_no);
-            $this->db->where('term', $term);
-
+            $this->db->like('term', $term);
 
             $data['punishment_records'] = $this->db->get()->result_array();
             // echo $term; exit;
@@ -3679,7 +3782,7 @@ class JOTO extends CI_Controller
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
-            $this->db->where('pr.term', $term);
+            $this->db->like('pr.term', $term);
             $this->db->where('pr.status', 'Approved');
 
             $data['observation_records'] = $this->db->get()->result_array();

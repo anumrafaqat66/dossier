@@ -10,7 +10,9 @@
         <div class="col-lg-4">
             <?php if ($this->session->userdata('unit_id') == 1) { ?>
                 <h1 class="h3 mb-0 text-black-800" style="text-align:center;text-decoration:underline"><strong>PHASE-I</strong></h1>
-            <?php } else if ($this->session->userdata('unit_id') == 2) { ?>
+            <?php } else if ($this->session->userdata('unit_id') == 2) { ?> 
+                <h1 class="h3 mb-0 text-black-800" style="text-align:center;text-decoration:underline"><strong>PHASE-IV</strong></h1>
+            <?php } else if (($this->session->userdata('unit_id') == 3) || ($this->session->userdata('unit_id') == 17)) { ?>
                 <h1 class="h3 mb-0 text-black-800" style="text-align:center;text-decoration:underline"><strong>PHASE-III</strong></h1>
             <?php } else { ?>
                 <h1 class="h3 mb-0 text-black-800" style="text-align:center;text-decoration:underline"><strong>PHASE-II</strong></h1>
