@@ -211,6 +211,7 @@ class CT extends CI_Controller
             $this->db->from('medical_records mr');
             $this->db->join('pn_form1s f', 'f.p_id = mr.p_id');
             $this->db->where('f.oc_no = mr.oc_no');
+            $this->db->where('f.unit_id',$this->session->userdata('unit_id'));
             $this->db->where('mr.start_date <=', date('Y-m-d'));
             $this->db->where('mr.end_date >=', date('Y-m-d'));
             $data['medical_records'] = $this->db->get()->result_array();
@@ -223,6 +224,7 @@ class CT extends CI_Controller
             $this->db->select('or.*, f.*');
             $this->db->from('observation_records or');
             $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
+            $this->db->where('f.unit_id',$this->session->userdata('unit_id'));
             $this->db->where('or.status !=', 'Rejected');
             $data['observation_records'] = $this->db->get()->result_array();
             $this->load->view('ct/view_observation_list', $data);
@@ -257,6 +259,7 @@ class CT extends CI_Controller
             $this->db->from('punishment_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('f.oc_no = pr.oc_no');
+            $this->db->where('f.unit_id',$this->session->userdata('unit_id'));
             $this->db->where('pr.start_date =', $date);
             $data['punishment_records'] = $this->db->get()->result_array();
             $data['search_date'] = $date;
