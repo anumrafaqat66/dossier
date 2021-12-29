@@ -61,7 +61,7 @@
                                 </div>
 
                                 <div class="card-body bg-custom3">
-                                    <form class="user" role="form" method="post" id="save_form" action="<?= base_url(); ?>D_O/update_punishment">
+                                    <form class="user" role="form" method="post" id="save_form" action="<?= base_url(); ?>JOTO/update_punishment">
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <h6>&nbsp;Name:</h6>
@@ -187,7 +187,7 @@
                                 </div>
 
                                 <div class="card-body bg-custom3">
-                                    <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>D_O/update_punishment">
+                                    <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>JOTO/update_punishment">
                                         <div class="form-group row">
                                             <div class="col-sm-12">
                                                 <h3 id="cadet_name_heading"></h3>
@@ -457,7 +457,7 @@
             $('#error_search').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>D_O/search_punish_by_date',
+                url: '<?= base_url(); ?>JOTO/search_punish_by_date',
                 method: 'POST',
                 data: {
                     'search_date': search_date
@@ -554,7 +554,7 @@
     function edit_punishment(id) {
         // alert('punish id: ' + id);
         $.ajax({
-            url: '<?= base_url(); ?>D_O/edit_punishment_data',
+            url: '<?= base_url(); ?>JOTO/edit_punishment_data',
             method: 'POST',
             data: {
                 'id': id

@@ -79,6 +79,10 @@ $route['D_O/add_physical_milestone/update-activity'] = 'ChatController/update_ac
 $route['D_O/add_physical_milestone/check-notification'] = 'ChatController/check_notification';
 $route['D_O/add_physical_milestone/check-activity'] = 'ChatController/check_activity';
 
+$route['JOTO/add_physical_milestone/update-notification'] = 'ChatController/update_notification';
+$route['JOTO/add_physical_milestone/update-activity'] = 'ChatController/update_activity';
+$route['JOTO/add_physical_milestone/check-notification'] = 'ChatController/check_notification';
+$route['JOTO/add_physical_milestone/check-activity'] = 'ChatController/check_activity';
 
 $route['D_O/view_edit_observation/update-notification'] = 'ChatController/update_notification';
 $route['D_O/view_edit_observation/update-activity'] = 'ChatController/update_activity';
@@ -129,6 +133,7 @@ $route['JOTO/view_edit_warning/update-notification'] = 'ChatController/update_no
 $route['JOTO/view_edit_warning/update-activity'] = 'ChatController/update_activity';
 $route['JOTO/view_edit_warning/check-notification'] = 'ChatController/check_notification';
 $route['JOTO/view_edit_warning/check-activity'] = 'ChatController/check_activity';
+
 
 $route['Admin/update-notification'] = 'ChatController/update_notification';
 $route['Admin/update-activity'] = 'ChatController/update_activity';

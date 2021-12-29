@@ -102,7 +102,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>D_O/add_inspection_record">
+                        <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>JOTO/add_inspection_record">
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Name:</h6>
@@ -268,7 +268,7 @@
             $('#show_error_new').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>D_O/search_cadet',
+                url: '<?= base_url(); ?>JOTO/search_cadet',
                 method: 'POST',
                 data: {
                     'oc_no': oc_no

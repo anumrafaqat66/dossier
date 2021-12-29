@@ -50,7 +50,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" id="add_form_report" enctype="multipart/form-data"  action="<?= base_url(); ?>D_O/update_psychologist_report/<?= $psychologist_data['id'];?>">
+                        <form class="user" role="form" method="post" id="add_form_report" enctype="multipart/form-data"  action="<?= base_url(); ?>JOTO/update_psychologist_report/<?= $psychologist_data['id'];?>">
 
                             <div class="form-group row">
                                 <div class="col-sm-4">

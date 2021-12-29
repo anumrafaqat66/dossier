@@ -66,7 +66,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" id="save_form" action="<?= base_url(); ?>D_O/update_officer_qualities">
+                        <form class="user" role="form" method="post" id="save_form" action="<?= base_url(); ?>JOTO/update_officer_qualities">
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Name:</h6>

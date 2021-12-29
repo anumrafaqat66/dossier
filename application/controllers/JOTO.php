@@ -251,7 +251,8 @@ class JOTO extends CI_Controller
         $this->db->from('inspection_records pr');
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
         // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-        $this->db->where('f.divison_name', $this->session->userdata('division'));
+        // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
+        $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
         $this->db->where('pr.id', $id);
         $data['pn_inspection_data'] = $this->db->get()->row_array();
         $this->load->view('joto/edit_inspection_record', $data);
@@ -263,7 +264,8 @@ class JOTO extends CI_Controller
         $this->db->from('personal_datas pr');
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
         // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-        $this->db->where('f.divison_name', $this->session->userdata('division'));
+        // $this->db->where('f.divison_name', $this->session->userdata('division'));
+        $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
         $this->db->where('pr.p_id', $id);
         $data['pn_personal_data'] = $this->db->get()->row_array();
 
@@ -922,9 +924,10 @@ class JOTO extends CI_Controller
             $this->db->from('punishment_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('pr.id', $punish_id);
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
             $data['edit_record'] = $this->db->get()->row_array();
 
             echo json_encode($data['edit_record']);
@@ -1232,7 +1235,8 @@ class JOTO extends CI_Controller
         $this->db->from('divisional_officer_records pr');
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
         // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-        $this->db->where('f.divison_name', $this->session->userdata('division'));
+        // $this->db->where('f.divison_name', $this->session->userdata('division'));
+        $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
         // $this->db->where('f.oc_no', $oc_no);
         $this->db->where('pr.id', $row_id);
         $data['divisional_officer_data'] = $this->db->get()->row_array();
@@ -1514,7 +1518,7 @@ class JOTO extends CI_Controller
             $this->db->join('term_i_details', 'term_i_details.p_id = or.p_id', 'left');
             $this->db->join('term_ii_details', 'term_ii_details.p_id = or.p_id', 'left');
             // $this->db->where('f.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.oc_no', $oc_no);
             $data['milestone_records'] = $this->db->get()->row_array();
 
@@ -1527,8 +1531,16 @@ class JOTO extends CI_Controller
     {
         if ($this->input->post()) {
             $oc_no = $_POST['oc_no'];
-            $query = $this->db->where('oc_no', $oc_no)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
-            // print_r($query);
+            $units_list = array('2', '3', '17');
+            if (($this->session->userdata('unit_id')) != 1) {
+                $query = $this->db->where('oc_no', $oc_no)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
+            } else {
+                if ($this->session->userdata('acct_type') == 'do') {
+                    $query = $this->db->where('oc_no', $oc_no)->where_not_in('unit_id', $units_list)->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->row_array();
+                } else {
+                    $query = $this->db->where('oc_no', $oc_no)->where_not_in('unit_id', $units_list)->get('pn_form1s')->row_array();
+                }
+            }  
             echo json_encode($query);
         }
     }
@@ -1537,8 +1549,18 @@ class JOTO extends CI_Controller
     {
         if ($this->input->post()) {
             $oc_no = $_POST['oc_no'];
-            $query = $this->db->where('oc_no', $oc_no)->where('divison_name', $this->session->userdata('division'))->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
-            // print_r($query);
+
+            $units_list = array('2', '3', '17');
+            if (($this->session->userdata('unit_id')) != 1) {
+                $query = $this->db->where('oc_no', $oc_no)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
+            } else {
+                if ($this->session->userdata('acct_type') == 'do') {
+                    $query = $this->db->where('oc_no', $oc_no)->where_not_in('unit_id', $units_list)->where('divison_name', $this->session->userdata('division'))->get('pn_form1s')->row_array();
+                } else {
+                    $query = $this->db->where('oc_no', $oc_no)->where_not_in('unit_id', $units_list)->get('pn_form1s')->row_array();
+                }
+            }  
+
             echo json_encode($query);
         }
     }
@@ -2235,7 +2257,8 @@ class JOTO extends CI_Controller
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('pr.start_date <=', date('Y-m-d'));
             $this->db->where('pr.end_date >=', date('Y-m-d'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $data['punishment_records'] = $this->db->get()->result_array();
 
             $this->load->view('joto/view_punishment_list', $data);
@@ -2253,6 +2276,7 @@ class JOTO extends CI_Controller
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
             $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('pr.status', 'Approved');
             $data['punishment_records'] = $this->db->get()->result_array();
 
@@ -2271,7 +2295,8 @@ class JOTO extends CI_Controller
             $this->db->where('f.oc_no = pr.oc_no');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $data['excuse_records'] = $this->db->get()->result_array();
 
             echo json_encode($data['excuse_records']);
@@ -2289,7 +2314,8 @@ class JOTO extends CI_Controller
             // $this->db->where('f.oc_no = pr.oc_no');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('pr.status', 'Approved');
             $data['observation_records'] = $this->db->get()->result_array();
             echo json_encode($data['observation_records']);
@@ -2306,7 +2332,7 @@ class JOTO extends CI_Controller
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $data['warning_records'] = $this->db->get()->result_array();
             echo json_encode($data['warning_records']);
         }
@@ -2320,7 +2346,7 @@ class JOTO extends CI_Controller
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
         // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
         $this->db->where('pr.id', $row_id);
-        $this->db->where('f.divison_name', $this->session->userdata('division'));
+        $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
         $data['warning_records'] = $this->db->get()->row_array();
         $this->load->view('joto/edit_warning', $data);
     }
@@ -2336,7 +2362,7 @@ class JOTO extends CI_Controller
             // $this->db->where('f.oc_no = pr.oc_no');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             // $this->db->where('pr.status', 'Approved');
             $data['edit_record'] = $this->db->get()->row_array();
             //print_r($data['edit_record']);exit;
@@ -2356,7 +2382,7 @@ class JOTO extends CI_Controller
             // $this->db->where('f.oc_no = pr.oc_no');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             // $this->db->where('pr.status', 'Approved');
             $data['edit_record'] = $this->db->get()->row_array();
             //print_r($data['edit_record']);exit;
@@ -2376,7 +2402,7 @@ class JOTO extends CI_Controller
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
             $this->db->where('pr.status', 'active');
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             // $this->db->where('pr.status', 'Approved');
             $data['edit_record'] = $this->db->get()->row_array();
             //print_r($data['edit_record']);exit;
@@ -2406,7 +2432,7 @@ class JOTO extends CI_Controller
             $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
             $this->db->where('pr.status', 'active');
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
 
 
             // $this->db->where('pr.status', 'Approved');
@@ -2427,7 +2453,7 @@ class JOTO extends CI_Controller
             // $this->db->where('f.oc_no = pr.oc_no');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             // $this->db->where('pr.status', 'Approved');
             $data['edit_record'] = $this->db->get()->row_array();
             //print_r($data['edit_record']);exit;
@@ -2445,7 +2471,7 @@ class JOTO extends CI_Controller
         // $this->db->where('f.oc_no = pr.oc_no');
         // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
         $this->db->where('pr.id', $row_id);
-        $this->db->where('f.divison_name', $this->session->userdata('division'));
+        $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
         $this->db->where('pr.status', 'Approved');
         $data['edit_records'] = $this->db->get()->row_array();
         // print_r($data['edit_records']);
@@ -2462,7 +2488,7 @@ class JOTO extends CI_Controller
         $this->db->where('f.oc_no = pr.oc_no');
         // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
         $this->db->where('pr.id', $row_id);
-        $this->db->where('f.divison_name', $this->session->userdata('division'));
+        $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
         // $this->db->where('pr.status', 'Approved');
         $data['punish_records'] = $this->db->get()->row_array();
         // print_r($data['punish_records']);exit;
@@ -2483,7 +2509,7 @@ class JOTO extends CI_Controller
             // $this->db->where('mr.do_id', $this->session->userdata('user_id'));
             $this->db->where('mr.start_date <=', date('Y-m-d'));
             $this->db->where('mr.end_date >=', date('Y-m-d'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
 
             $data['medical_records'] = $this->db->get()->result_array();
             $this->load->view('joto/view_excuse_list', $data);
@@ -2496,7 +2522,8 @@ class JOTO extends CI_Controller
             $this->db->from('observation_records or');
             $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
             // $this->db->where('or.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $data['observation_records'] = $this->db->get()->result_array();
             $this->load->view('joto/view_observation_list', $data);
         }
@@ -2512,7 +2539,7 @@ class JOTO extends CI_Controller
             $this->db->from('physical_milestone or');
             $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
             // $this->db->where('or.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.p_id', $p_id);
             $data['milestone_records'] = $this->db->get()->result_array();
             // print_r( $data['milestone_records']);exit;
@@ -2530,7 +2557,7 @@ class JOTO extends CI_Controller
             $this->db->join('pn_form1s f', 'f.p_id = cr.p_id');
             // $this->db->where('cr.do_id', $this->session->userdata('user_id'));
             $this->db->where('cr.status', 'active');
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.p_id', $p_id);
             $data['club_records'] = $this->db->get()->result_array();
             // print_r( $data['milestone_records']);exit;
@@ -2557,7 +2584,7 @@ class JOTO extends CI_Controller
             $this->db->join('pn_form1s f', 'f.p_id = b.p_id');
             // $this->db->where('b.do_id', $this->session->userdata('user_id'));
             //$this->db->where('cr.status', 'active');
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.p_id', $p_id);
             $data['branch_records'] = $this->db->get()->result_array();
             //echo $data['branch_records'];
@@ -2571,7 +2598,7 @@ class JOTO extends CI_Controller
             $this->db->from('physical_milestone or');
             $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
             // $this->db->where('or.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $data['milestone_records'] = $this->db->get()->result_array();
             // print_r( $data['milestone_records']);exit;
             $this->load->view('joto/view_milestone_list', $data);
@@ -2591,7 +2618,7 @@ class JOTO extends CI_Controller
             $this->db->where('f.oc_no = mr.oc_no');
             // $this->db->where('mr.do_id', $this->session->userdata('user_id'));
             $this->db->where('mr.start_date =', $date);
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             // $this->db->where('mr.end_date >=',date('Y-m-d'));
             $data['medical_records'] = $this->db->get()->result_array();
             $data['search_date'] = $date;
@@ -2654,7 +2681,7 @@ class JOTO extends CI_Controller
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $this->db->where('pr.status', 'Approved');
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $data['pn_punish_data'] = $this->db->get()->result_array();
 
@@ -2665,7 +2692,7 @@ class JOTO extends CI_Controller
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $this->db->where('pr.status', 'Approved');
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $data['pn_punish_data_term2'] = $this->db->get()->result_array();
 
@@ -2676,7 +2703,7 @@ class JOTO extends CI_Controller
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $this->db->where('pr.status', 'Approved');
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $data['pn_punish_data_term3'] = $this->db->get()->result_array();
 
@@ -2684,7 +2711,7 @@ class JOTO extends CI_Controller
             $this->db->from('observation_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $this->db->where('pr.status', 'Approved');
@@ -2694,7 +2721,7 @@ class JOTO extends CI_Controller
             $this->db->from('observation_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $this->db->where('pr.status', 'Approved');
@@ -2704,7 +2731,7 @@ class JOTO extends CI_Controller
             $this->db->from('observation_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $this->db->where('pr.status', 'Approved');
@@ -2714,7 +2741,7 @@ class JOTO extends CI_Controller
             $this->db->from('warning_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_warning_data'] = $this->db->get()->result_array();
 
@@ -2722,7 +2749,7 @@ class JOTO extends CI_Controller
             $this->db->from('inspection_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_inspection_data'] = $this->db->get()->result_array();
 
@@ -2736,7 +2763,7 @@ class JOTO extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             // $this->db->where('pr.term', 'Term-I');
             $data['pn_physical_tests_data'] = $this->db->get()->result_array();
@@ -2746,7 +2773,7 @@ class JOTO extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-P');
             $data['pn_physical_tests_data_tp'] = $this->db->get()->row_array();
@@ -2755,7 +2782,7 @@ class JOTO extends CI_Controller
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-P');
             $data['pn_pet1_data_tp'] = $this->db->get()->row_array();
@@ -2764,7 +2791,7 @@ class JOTO extends CI_Controller
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-P');
             $data['pn_pet2_data_tp'] = $this->db->get()->row_array();
@@ -2774,7 +2801,7 @@ class JOTO extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['pn_physical_tests_data_t1'] = $this->db->get()->row_array();
@@ -2783,7 +2810,7 @@ class JOTO extends CI_Controller
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['pn_pet1_data_t1'] = $this->db->get()->row_array();
@@ -2792,7 +2819,7 @@ class JOTO extends CI_Controller
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['pn_pet2_data_t1'] = $this->db->get()->row_array();
@@ -2802,7 +2829,7 @@ class JOTO extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $data['pn_physical_tests_data_t2'] = $this->db->get()->row_array();
@@ -2811,7 +2838,7 @@ class JOTO extends CI_Controller
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $data['pn_pet1_data_t2'] = $this->db->get()->row_array();
@@ -2820,7 +2847,7 @@ class JOTO extends CI_Controller
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $data['pn_pet2_data_t2'] = $this->db->get()->row_array();
@@ -2830,7 +2857,7 @@ class JOTO extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $data['pn_physical_tests_data_t3'] = $this->db->get()->row_array();
@@ -2839,7 +2866,7 @@ class JOTO extends CI_Controller
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $data['pn_pet1_data_t3'] = $this->db->get()->row_array();
@@ -2848,7 +2875,7 @@ class JOTO extends CI_Controller
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $data['pn_pet2_data_t3'] = $this->db->get()->row_array();
@@ -2890,7 +2917,7 @@ class JOTO extends CI_Controller
             $this->db->from('officer_qualities pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['pn_officer_qualities_data_t1'] = $this->db->get()->row_array();
@@ -2899,7 +2926,7 @@ class JOTO extends CI_Controller
             $this->db->from('officer_qualities pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $data['pn_officer_qualities_data_t2'] = $this->db->get()->row_array();
@@ -2908,7 +2935,7 @@ class JOTO extends CI_Controller
             $this->db->from('officer_qualities pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $data['pn_officer_qualities_data_t3'] = $this->db->get()->row_array();
@@ -2917,7 +2944,7 @@ class JOTO extends CI_Controller
             $this->db->from('personal_datas pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_personal_data'] = $this->db->get()->row_array();
 
@@ -2925,7 +2952,7 @@ class JOTO extends CI_Controller
             $this->db->from('divisional_officer_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_divisional_officer_data'] = $this->db->get()->result_array();
 
@@ -2933,7 +2960,7 @@ class JOTO extends CI_Controller
             $this->db->from('cadets_autobiographies pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_autobiography_data'] = $this->db->get()->result_array();
 
@@ -2941,7 +2968,7 @@ class JOTO extends CI_Controller
             $this->db->from('psychologist_reports pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_psychologist_data'] = $this->db->get()->result_array();
 
@@ -2949,7 +2976,7 @@ class JOTO extends CI_Controller
             $this->db->from('warning_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_warning_records'] = $this->db->get()->result_array();
 
@@ -2959,7 +2986,7 @@ class JOTO extends CI_Controller
             $this->db->from('general_remarks pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.assessment', 'Mid Term Assessment');
             $this->db->where('pr.term', 'Term-I');
@@ -2969,7 +2996,7 @@ class JOTO extends CI_Controller
             $this->db->from('general_remarks pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.assessment', 'Terminal Assessment');
             $this->db->where('pr.term', 'Term-I');
@@ -2979,7 +3006,7 @@ class JOTO extends CI_Controller
             $this->db->from('general_remarks pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.assessment', 'Mid Term Assessment');
             $this->db->where('pr.term', 'Term-II');
@@ -2989,7 +3016,7 @@ class JOTO extends CI_Controller
             $this->db->from('general_remarks pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.assessment', 'Terminal Assessment');
             $this->db->where('pr.term', 'Term-II');
@@ -2999,7 +3026,7 @@ class JOTO extends CI_Controller
             $this->db->from('general_remarks pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.assessment', 'Mid Term Assessment');
             $this->db->where('pr.term', 'Term-III');
@@ -3009,7 +3036,7 @@ class JOTO extends CI_Controller
             $this->db->from('general_remarks pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.assessment', 'Terminal Assessment');
             $this->db->where('pr.term', 'Term-III');
@@ -3019,7 +3046,7 @@ class JOTO extends CI_Controller
             $this->db->from('distinctions_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_distinctions_records'] = $this->db->get()->result_array();
 
@@ -3027,7 +3054,7 @@ class JOTO extends CI_Controller
             $this->db->from('seniority_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_seniority_records'] = $this->db->get()->row_array();
 
@@ -3035,7 +3062,7 @@ class JOTO extends CI_Controller
             $this->db->from('branch_allocations pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_branch_allocations'] = $this->db->get()->row_array();
 
@@ -3097,7 +3124,7 @@ class JOTO extends CI_Controller
             $this->db->where('f.oc_no = pr.oc_no');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('pr.start_date =', $date);
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $data['punishment_records'] = $this->db->get()->result_array();
             $data['search_date'] = $date;
             $view_page = $this->load->view('joto/view_punishment_list', $data, TRUE);
@@ -3389,7 +3416,7 @@ class JOTO extends CI_Controller
         $this->db->from('officer_qualities pr');
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
         // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-        $this->db->where('f.divison_name', $this->session->userdata('division'));
+        $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
         $this->db->where('pr.p_id', $p_id);
         $data['officer_data'] = $this->db->get()->row_array();
         $data['quality_list'] = $this->db->get('quality_list')->result_array();
@@ -3650,7 +3677,7 @@ class JOTO extends CI_Controller
             $this->db->from('observation_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', $term);
             $this->db->where('pr.status', 'Approved');
@@ -3688,7 +3715,7 @@ class JOTO extends CI_Controller
             $this->db->from('warning_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
 
             $data['warning_records'] = $this->db->get()->result_array();
@@ -3725,7 +3752,7 @@ class JOTO extends CI_Controller
             $this->db->from('inspection_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
 
             $data['inspection_records'] = $this->db->get()->result_array();
@@ -3762,7 +3789,7 @@ class JOTO extends CI_Controller
             $this->db->from('medical_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('f.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
 
             $data['medical_records'] = $this->db->get()->result_array();
@@ -3798,7 +3825,7 @@ class JOTO extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             //$this->db->where('f.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
 
             $data['test_records'] = $this->db->get()->result_array();
@@ -3834,7 +3861,7 @@ class JOTO extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['test_records'] = $this->db->get()->result_array();
@@ -3844,7 +3871,7 @@ class JOTO extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-P');
             $data['pn_physical_tests_data_tp'] = $this->db->get()->row_array();
@@ -3853,7 +3880,7 @@ class JOTO extends CI_Controller
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-P');
             $data['pn_pet1_data_tp'] = $this->db->get()->row_array();
@@ -3862,7 +3889,7 @@ class JOTO extends CI_Controller
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-P');
             $data['pn_pet2_data_tp'] = $this->db->get()->row_array();
@@ -3872,7 +3899,7 @@ class JOTO extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['pn_physical_tests_data_t1'] = $this->db->get()->row_array();
@@ -3881,7 +3908,7 @@ class JOTO extends CI_Controller
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['pn_pet1_data_t1'] = $this->db->get()->row_array();
@@ -3890,7 +3917,7 @@ class JOTO extends CI_Controller
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['pn_pet2_data_t1'] = $this->db->get()->row_array();
@@ -3900,7 +3927,7 @@ class JOTO extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $data['pn_physical_tests_data_t2'] = $this->db->get()->row_array();
@@ -3909,7 +3936,7 @@ class JOTO extends CI_Controller
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $data['pn_pet1_data_t2'] = $this->db->get()->row_array();
@@ -3918,7 +3945,7 @@ class JOTO extends CI_Controller
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $data['pn_pet2_data_t2'] = $this->db->get()->row_array();
@@ -3928,7 +3955,7 @@ class JOTO extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $data['pn_physical_tests_data_t3'] = $this->db->get()->row_array();
@@ -3937,7 +3964,7 @@ class JOTO extends CI_Controller
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $data['pn_pet1_data_t3'] = $this->db->get()->row_array();
@@ -3946,7 +3973,7 @@ class JOTO extends CI_Controller
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $data['pn_pet2_data_t3'] = $this->db->get()->row_array();
@@ -3983,7 +4010,7 @@ class JOTO extends CI_Controller
             $this->db->from('officer_qualities pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', $term);
             $data['pn_officer_qualities_data'] = $this->db->get()->row_array();
@@ -4021,7 +4048,7 @@ class JOTO extends CI_Controller
             $this->db->from('personal_datas pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_personal_data'] = $this->db->get()->row_array();
 
@@ -4057,7 +4084,7 @@ class JOTO extends CI_Controller
             $this->db->from('divisional_officer_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_divisional_officer_data'] = $this->db->get()->result_array();
 
@@ -4092,7 +4119,7 @@ class JOTO extends CI_Controller
             $this->db->from('divisional_officer_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_divisional_officer_data'] = $this->db->get()->result_array();
 
@@ -4127,7 +4154,7 @@ class JOTO extends CI_Controller
             $this->db->from('divisional_officer_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_divisional_officer_data'] = $this->db->get()->result_array();
 
@@ -4212,7 +4239,7 @@ class JOTO extends CI_Controller
             $this->db->from('general_remarks pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.assessment', $assess);
             $this->db->where('pr.term', $term);
@@ -4253,7 +4280,7 @@ class JOTO extends CI_Controller
             $this->db->from('progress_charts pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_progress_chart'] = $this->db->get()->row_array();
 
@@ -4290,7 +4317,7 @@ class JOTO extends CI_Controller
             $this->db->from('distinctions_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_distinctions_records'] = $this->db->get()->result_array();
 
@@ -4327,7 +4354,7 @@ class JOTO extends CI_Controller
             $this->db->from('seniority_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_seniority_records'] = $this->db->get()->row_array();
 
@@ -4364,7 +4391,7 @@ class JOTO extends CI_Controller
             $this->db->from('branch_allocations pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_branch_allocations'] = $this->db->get()->row_array();
 
@@ -4399,7 +4426,7 @@ class JOTO extends CI_Controller
             $this->db->from('branch_allocations pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_branch_allocations'] = $this->db->get()->row_array();
 
@@ -4464,7 +4491,7 @@ class JOTO extends CI_Controller
         $this->db->from('psychologist_reports pr');
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
         // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-        $this->db->where('f.divison_name', $this->session->userdata('division'));
+        $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
         $this->db->where('pr.p_id', $id);
         $data['psychologist_data'] = $this->db->get()->row_array();
         // print_r($data['psychologist_data']);exit;
@@ -4652,7 +4679,7 @@ class JOTO extends CI_Controller
         $this->db->from('cadets_autobiographies pr');
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
         // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-        $this->db->where('f.divison_name', $this->session->userdata('division'));
+        $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
         $this->db->where('pr.p_id', $p_id);
         $data['biography_data'] = $this->db->get()->row_array();
         //print_r($data['biography_data']);exit;

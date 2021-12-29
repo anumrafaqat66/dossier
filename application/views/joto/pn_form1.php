@@ -62,7 +62,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>D_O/add_PN_Form">
+                        <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>JOTO/add_PN_Form">
                             <div class="form-group row">
                                 <div class="col-sm-6">
                                     <h6>&nbsp;OC NO:</h6>

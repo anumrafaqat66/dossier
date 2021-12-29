@@ -50,7 +50,7 @@
                                 <div class="card-body bg-custom3">
 
                                     <div class="card-body">
-                                        <form class="user" role="form" method="post" id="save_form_observation" action="<?= base_url(); ?>D_O/update_cadet_observation">
+                                        <form class="user" role="form" method="post" id="save_form_observation" action="<?= base_url(); ?>JOTO/update_cadet_observation">
                                             <div class="form-group row">
                                                 <div class="col-sm-4">
                                                     <h6>&nbsp;Name:</h6>
@@ -270,7 +270,7 @@
     function edit_observation(id) {
         // alert('cadet id: ' + id);
         $.ajax({
-            url: '<?= base_url(); ?>D_O/edit_observation_data',
+            url: '<?= base_url(); ?>JOTO/edit_observation_data',
             method: 'POST',
             data: {
                 'id': id

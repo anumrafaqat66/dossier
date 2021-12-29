@@ -98,7 +98,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" enctype="multipart/form-data"  method="post" id="add_form_autobiography" action="<?= base_url(); ?>D_O/save_autobiography">
+                        <form class="user" role="form" enctype="multipart/form-data"  method="post" id="add_form_autobiography" action="<?= base_url(); ?>JOTO/save_autobiography">
 
                             <div class="form-group row">
                                 <div class="col-sm-4">
@@ -220,7 +220,7 @@
             $('#show_error_new').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>D_O/search_cadet',
+                url: '<?= base_url(); ?>JOTO/search_cadet',
                 method: 'POST',
                 data: {
                     'oc_no': oc_no

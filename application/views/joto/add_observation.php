@@ -101,7 +101,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" id="save_form" action="<?= base_url(); ?>D_O/save_cadet_observation">
+                        <form class="user" role="form" method="post" id="save_form" action="<?= base_url(); ?>JOTO/save_cadet_observation">
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Name:</h6>
@@ -210,12 +210,8 @@
 
 
     $('#add_btn').on('click', function() {
-        //alert('javascript working');
-        // $('#add_btn').attr('disabled', true);
         var validate = 0;
-
         var oc_no = $('#oc_no').val();
-
 
         if (oc_no == '') {
             validate = 1;
@@ -227,7 +223,7 @@
             $('#show_error_new').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>D_O/search_cadet_for_observation',
+                url: '<?= base_url(); ?>JOTO/search_cadet_for_observation',
                 method: 'POST',
                 data: {
                     'oc_no': oc_no

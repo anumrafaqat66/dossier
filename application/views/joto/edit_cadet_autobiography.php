@@ -62,7 +62,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" enctype="multipart/form-data"  method="post" id="add_form_autobiography" action="<?= base_url(); ?>D_O/update_autobiography/<?= $biography_data['id']  ?>">
+                        <form class="user" role="form" enctype="multipart/form-data"  method="post" id="add_form_autobiography" action="<?= base_url(); ?>JOTO/update_autobiography/<?= $biography_data['id']  ?>">
 
                             <div class="form-group row">
                                 <div class="col-sm-4">

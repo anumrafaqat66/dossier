@@ -27,15 +27,24 @@
 <div class="container-fluid my-4">
     <!-- <div class="row" style="background:<?= base_url(); ?>assets/img/img3.jpg"> -->
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <h1 class="h3 mb-0 text-black-800"><strong>Welcome Division Officer</strong></h1>
         </div>
+        <div class="col-lg-4">
+            <?php if ($this->session->userdata('unit_id') == 1) { ?>
+                <h1 class="h3 mb-0 text-black-800" style="text-align:center;text-decoration:underline"><strong>PHASE-I</strong></h1>
+            <?php } else if ($this->session->userdata('unit_id') == 2) { ?>
+                <h1 class="h3 mb-0 text-black-800" style="text-align:center;text-decoration:underline"><strong>PHASE-III</strong></h1>
+            <?php } else { ?>
+                <h1 class="h3 mb-0 text-black-800" style="text-align:center;text-decoration:underline"><strong>PHASE-II</strong></h1>
+            <?php } ?>
+        </div>
         <?php if ($this->session->userdata('unit_id') == 1) { ?>
-            <div class="col-lg-6" style="text-align:right">
+            <div class="col-lg-4" style="text-align:right">
                 <h1 class="h3 mb-0 text-black-800"><strong><?= $this->session->userdata('division') ?></strong></h1>
             </div>
         <?php } else { ?>
-            <div class="col-lg-6" style="text-align:right">
+            <div class="col-lg-4" style="text-align:right">
                 <h1 class="h3 mb-0 text-black-800"><strong><?= $this->session->userdata('unit_name') ?></strong></h1>
             </div>
         <?php } ?>
