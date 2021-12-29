@@ -67,7 +67,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>D_O/update_inspection_record">
+                        <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>HOUGP/update_inspection_record">
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Name:</h6>

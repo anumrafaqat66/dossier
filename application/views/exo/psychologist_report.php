@@ -87,7 +87,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" id="add_form_report" enctype="multipart/form-data"  action="<?= base_url(); ?>D_O/save_psychologist_report">
+                        <form class="user" role="form" method="post" id="add_form_report" enctype="multipart/form-data"  action="<?= base_url(); ?>EXO/save_psychologist_report">
 
                             <div class="form-group row">
                                 <div class="col-sm-4">
@@ -231,7 +231,7 @@
             $('#show_error_new').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>D_O/search_cadet',
+                url: '<?= base_url(); ?>EXO/search_cadet',
                 method: 'POST',
                 data: {
                     'oc_no': oc_no

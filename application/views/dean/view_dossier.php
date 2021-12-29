@@ -121,7 +121,7 @@
                                 </div>
 
                                 <div class="card-body bg-custom3">
-                                    <form class="user" role="form" method="post" id="save_form" action="<?= base_url(); ?>D_O/update_punishment">
+                                    <form class="user" role="form" method="post" id="save_form" action="<?= base_url(); ?>DEAN/update_punishment">
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <h6>&nbsp;Name:</h6>
@@ -386,7 +386,7 @@
                                 <div class="card-body bg-custom3">
 
                                     <div class="card-body">
-                                        <form class="user" role="form" method="post" id="save_form_observation" action="<?= base_url(); ?>D_O/update_cadet_observation">
+                                        <form class="user" role="form" method="post" id="save_form_observation" action="<?= base_url(); ?>DEAN/update_cadet_observation">
                                             <div class="form-group row">
                                                 <div class="col-sm-4">
                                                     <h6>&nbsp;Name:</h6>
@@ -693,7 +693,7 @@
                                 </div>
 
                                 <div class="card-body bg-custom3">
-                                    <form class="user" role="form" method="post" id="save_form_branches" action="<?= base_url(); ?>D_O/update_branches_allocation">
+                                    <form class="user" role="form" method="post" id="save_form_branches" action="<?= base_url(); ?>DEAN/update_branches_allocation">
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <h6>&nbsp;Name:</h6>
@@ -859,7 +859,7 @@
                                         </div> -->
 
                                     <div class="card-body">
-                                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>D_O/update_cadet_warning">
+                                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>DEAN/update_cadet_warning">
                                             <div class="form-group row">
                                                 <div class="col-sm-4">
                                                     <h6>&nbsp;Name:</h6>
@@ -1204,7 +1204,7 @@
                                 <div class="card-body bg-custom3">
 
                                     <div class="card-body">
-                                        <form class="user" role="form" method="post" id="save_form_club" action="<?= base_url(); ?>D_O/update_cadet_club">
+                                        <form class="user" role="form" method="post" id="save_form_club" action="<?= base_url(); ?>DEAN/update_cadet_club">
                                             <div class="form-group row">
                                                 <div class="col-sm-3">
                                                     <h6>&nbsp;Name:</h6>
@@ -1425,7 +1425,7 @@
     function view_physical_milestone(id) {
         
         $.ajax({
-            url: '<?= base_url(); ?>D_O/view_milestone_in_dossier',
+            url: '<?= base_url(); ?>DEAN/view_milestone_in_dossier',
             method: 'POST',
             data: {
                 'id': id
@@ -1534,7 +1534,7 @@
                                                 <h5>&nbsp;<strong>Show Details</strong></h5>
                                             </div>
                                              <div class="col-sm-2">
-                                                <a type="button" href="<?= base_url(); ?>D_O/add_physical_milestone/<?php echo "dossier" ?>" class="btn btn-primary rounded-pill">Edit Record</a>
+                                                <a type="button" href="<?= base_url(); ?>DEAN/add_physical_milestone/<?php echo "dossier" ?>" class="btn btn-primary rounded-pill">Edit Record</a>
                                             </div>
                                         </div>
                                         <hr>
@@ -1659,7 +1659,7 @@
     function view_punishments(id) {
         // alert('cadet id: ' + id);
         $.ajax({
-            url: '<?= base_url(); ?>D_O/view_punishments_in_dossier',
+            url: '<?= base_url(); ?>DEAN/view_punishments_in_dossier',
             method: 'POST',
             data: {
                 'id': id
@@ -1717,7 +1717,7 @@
     function view_excuses(id) {
         // alert('cadet id: ' + id);
         $.ajax({
-            url: '<?= base_url(); ?>D_O/view_excuses_in_dossier',
+            url: '<?= base_url(); ?>DEAN/view_excuses_in_dossier',
             method: 'POST',
             data: {
                 'id': id
@@ -1774,7 +1774,7 @@
     function view_observations(id) {
         // alert('cadet id: ' + id);
         $.ajax({
-            url: '<?= base_url(); ?>D_O/view_observation_in_dossier',
+            url: '<?= base_url(); ?>DEAN/view_observation_in_dossier',
             method: 'POST',
             data: {
                 'id': id
@@ -1817,7 +1817,7 @@
     function view_club(id) {
         // alert('cadet id: ' + id);
         $.ajax({
-            url: '<?= base_url(); ?>D_O/view_club_in_dossier',
+            url: '<?= base_url(); ?>DEAN/view_club_in_dossier',
             method: 'POST',
             data: {
                 'id': id
@@ -1856,7 +1856,7 @@
     function view_branches(id) {
         // alert('cadet id: ' + id);
         $.ajax({
-            url: '<?= base_url(); ?>D_O/view_branches_in_dossier',
+            url: '<?= base_url(); ?>DEAN/view_branches_in_dossier',
             method: 'POST',
             data: {
                 'id': id
@@ -1903,7 +1903,7 @@
     function edit_branches(id) {
         // alert('cadet id: ' + id);
         $.ajax({
-            url: '<?= base_url(); ?>D_O/edit_branches_data',
+            url: '<?= base_url(); ?>DEAN/edit_branches_data',
             method: 'POST',
             data: {
                 'id': id
@@ -1934,7 +1934,7 @@
     function view_warning(id) {
         // alert('cadet id: ' + id);
         $.ajax({
-            url: '<?= base_url(); ?>D_O/view_warning_in_dossier',
+            url: '<?= base_url(); ?>DEAN/view_warning_in_dossier',
             method: 'POST',
             data: {
                 'id': id
@@ -1972,7 +1972,7 @@
     function edit_warning(id) {
         // alert('cadet id: ' + id);
         $.ajax({
-            url: '<?= base_url(); ?>D_O/edit_warning_data',
+            url: '<?= base_url(); ?>DEAN/edit_warning_data',
             method: 'POST',
             data: {
                 'id': id
@@ -2001,7 +2001,7 @@
     function edit_punishment(id) {
         // alert('cadet id: ' + id);
         $.ajax({
-            url: '<?= base_url(); ?>D_O/edit_punishment_data',
+            url: '<?= base_url(); ?>DEAN/edit_punishment_data',
             method: 'POST',
             data: {
                 'id': id
@@ -2032,7 +2032,7 @@
     function edit_observation(id) {
         // alert('cadet id: ' + id);
         $.ajax({
-            url: '<?= base_url(); ?>D_O/edit_observation_data',
+            url: '<?= base_url(); ?>DEAN/edit_observation_data',
             method: 'POST',
             data: {
                 'id': id
@@ -2061,7 +2061,7 @@
     function edit_club(id) {
         // alert('cadet id: ' + id);
         $.ajax({
-            url: '<?= base_url(); ?>D_O/edit_club_data',
+            url: '<?= base_url(); ?>DEAN/edit_club_data',
             method: 'POST',
             data: {
                 'id': id
@@ -2088,7 +2088,7 @@
     function delete_club(id) {
         // alert('cadet id: ' + id);
         $.ajax({
-            url: '<?= base_url(); ?>D_O/delete_club_data',
+            url: '<?= base_url(); ?>DEAN/delete_club_data',
             method: 'POST',
             data: {
                 'id': id
@@ -2200,7 +2200,7 @@
             $('#show_error_new').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>D_O/search_cadet',
+                url: '<?= base_url(); ?>DEAN/search_cadet',
                 method: 'POST',
                 data: {
                     'oc_no': oc_no
@@ -2271,7 +2271,7 @@
         //var id = $('#p_id').val();
         //alert($columns[4].innerHTML);
         $.ajax({
-            url: '<?= base_url(); ?>D_O/view_PET_I',
+            url: '<?= base_url(); ?>DEAN/view_PET_I',
             method: 'POST',
             data: {
                 'id': $columns[4].innerHTML
@@ -2289,7 +2289,7 @@
         });
 
         $.ajax({
-            url: '<?= base_url(); ?>D_O/view_PET_II',
+            url: '<?= base_url(); ?>DEAN/view_PET_II',
             method: 'POST',
             data: {
                 'id': $columns[4].innerHTML
@@ -2320,7 +2320,7 @@
             $('#error_search').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>D_O/search_cadet_for_dossier',
+                url: '<?= base_url(); ?>DEAN/search_cadet_for_dossier',
                 method: 'POST',
                 data: {
                     'oc_no': oc_no
@@ -2350,7 +2350,7 @@
         if (validate == 0) {
             $('#error_search').hide();
             $.ajax({
-                url: '<?= base_url(); ?>D_O/search_all_cadets_for_dossier',
+                url: '<?= base_url(); ?>DEAN/search_all_cadets_for_dossier',
                 method: 'POST',
                 success: function(data) {
                     if (data != '0') {

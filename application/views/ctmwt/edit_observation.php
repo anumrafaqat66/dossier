@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="card-body bg-custom3">
-                    <form class="user" role="form" method="post" id="save_form_ob" action="<?= base_url(); ?>D_O/update_cadet_observation">
+                    <form class="user" role="form" method="post" id="save_form_ob" action="<?= base_url(); ?>CTMWT/update_cadet_observation">
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <h6>&nbsp;Name:</h6>

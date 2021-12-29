@@ -101,7 +101,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" id="save_form" action="<?= base_url(); ?>D_O/save_cadet_punishment">
+                        <form class="user" role="form" method="post" id="save_form" action="<?= base_url(); ?>DEAN/save_cadet_punishment">
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Name:</h6>
@@ -262,7 +262,7 @@
             $('#show_error_new').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>D_O/search_cadet_for_punishment',
+                url: '<?= base_url(); ?>DEAN/search_cadet_for_punishment',
                 method: 'POST',
                 data: {
                     'oc_no': oc_no

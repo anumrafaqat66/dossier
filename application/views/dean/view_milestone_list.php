@@ -365,7 +365,7 @@
 
                     <div class="row">
                         <div class="col-lg-12">
-                        <a onclick="location.href='<?php echo base_url(); ?>D_O/add_physical_milestone/milestone_list'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="float:right;margin-right:4px" data-toggle="modal" data-target="#all_projects"><i class="fas fa-plus-circle fa-sm text-white-60"></i> Add New Record </a>
+                        <a onclick="location.href='<?php echo base_url(); ?>DEAN/add_physical_milestone/milestone_list'" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="float:right;margin-right:4px" data-toggle="modal" data-target="#all_projects"><i class="fas fa-plus-circle fa-sm text-white-60"></i> Add New Record </a>
                         </div>
                     </div>
 
@@ -410,7 +410,7 @@
                                                 <td scope="row" style="display:none"><?= $data['mini_cross_result']; ?></td>
                                                 <td scope="row" style="display:none"><?= $data['mini_cross_card_number']; ?></td>
                                                 <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#view_details"> View Details</button></td>
-                                                <td type="button" class="edit" scope="row"><a style="color: black" href="<?= base_url(); ?>D_O/add_physical_milestone/<?php echo "view_dossier_folder" ?>"><i style="" class="fas fa-edit"></i></a></td>
+                                                <td type="button" class="edit" scope="row"><a style="color: black" href="<?= base_url(); ?>DEAN/add_physical_milestone/<?php echo "view_dossier_folder" ?>"><i style="" class="fas fa-edit"></i></a></td>
                                             </tr>
                                         <?php } ?>
 
@@ -480,7 +480,7 @@
             $('#show_error_new').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>D_O/search_cadet',
+                url: '<?= base_url(); ?>DEAN/search_cadet',
                 method: 'POST',
                 data: {
                     'oc_no': oc_no
@@ -586,7 +586,7 @@
 
         //alert( $columns[1].innerHTML);
         $.ajax({
-            url: '<?= base_url(); ?>D_O/view_PET_I',
+            url: '<?= base_url(); ?>DEAN/view_PET_I',
             method: 'POST',
             data: {
                 'id': $columns[1].innerHTML
@@ -604,7 +604,7 @@
         });
 
         $.ajax({
-            url: '<?= base_url(); ?>D_O/view_PET_II',
+            url: '<?= base_url(); ?>DEAN/view_PET_II',
             method: 'POST',
             data: {
                 'id': $columns[1].innerHTML
@@ -640,7 +640,7 @@
             $('#error_search').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>D_O/search_punish_by_date',
+                url: '<?= base_url(); ?>DEAN/search_punish_by_date',
                 method: 'POST',
                 data: {
                     'search_date': search_date
@@ -718,7 +718,7 @@
     function view_PET_I(id) {
         // alert('cadet id: ' + id);
         $.ajax({
-            url: '<?= base_url(); ?>D_O/view_PET_I',
+            url: '<?= base_url(); ?>DEAN/view_PET_I',
             method: 'POST',
             data: {
                 'id': id
@@ -738,7 +738,7 @@
     function view_PET_II(id) {
         // alert('cadet id: ' + id);
         $.ajax({
-            url: '<?= base_url(); ?>D_O/view_PET_II',
+            url: '<?= base_url(); ?>DEAN/view_PET_II',
             method: 'POST',
             data: {
                 'id': id

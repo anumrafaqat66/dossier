@@ -60,7 +60,7 @@
                                 </div>
 
                                 <div class="card-body bg-custom3">
-                                    <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>D_O/add_termI_details">
+                                    <form class="user" role="form" method="post" id="add_form" action="<?= base_url(); ?>EXO/add_termI_details">
                                         <div class="form-group row">
                                             <div class="col-sm-3">
                                                 <h3 id="">Mile Time</h3>
@@ -148,7 +148,7 @@
                                 </div>
 
                                 <div class="card-body bg-custom3">
-                                    <form class="user" role="form" method="post" id="add_form2" action="<?= base_url(); ?>D_O/add_termII_details">
+                                    <form class="user" role="form" method="post" id="add_form2" action="<?= base_url(); ?>EXO/add_termII_details">
 
                                         <div class="form-group row">
                                             <div class="col-sm-3">
@@ -269,7 +269,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" id="save_form" action="<?= base_url(); ?>D_O/save_physical_milestone">
+                        <form class="user" role="form" method="post" id="save_form" action="<?= base_url(); ?>EXO/save_physical_milestone">
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Name:</h6>
@@ -595,7 +595,7 @@
         var term = $('#term_pet1').val();
 
         $.ajax({
-            url: '<?= base_url(); ?>D_O/add_termI_details',
+            url: '<?= base_url(); ?>EXO/add_termI_details',
             method: 'POST',
             //  type:'json',
             data: {
@@ -626,7 +626,7 @@
         var term = $('#term_pet2').val();
 
         $.ajax({
-            url: '<?= base_url(); ?>D_O/add_termII_details',
+            url: '<?= base_url(); ?>EXO/add_termII_details',
             method: 'POST',
             //  type:'json',
             data: {
@@ -690,7 +690,7 @@
             $('#show_error_new').hide();
             //alert('validate');
             $.ajax({
-                url: '<?= base_url(); ?>D_O/search_cadet_physical_milestone',
+                url: '<?= base_url(); ?>EXO/search_cadet_physical_milestone',
                 method: 'POST',
                 data: {
                     'oc_no': oc_no

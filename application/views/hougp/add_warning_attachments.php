@@ -101,7 +101,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>D_O/save_cadet_warning_attacument">
+                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>HOUGP/save_cadet_warning_attacument">
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Officer Name:</h6>
@@ -224,7 +224,7 @@
             $('#show_error_new').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>D_O/search_cadet',
+                url: '<?= base_url(); ?>HOUGP/search_cadet',
                 method: 'POST',
                 data: {
                     'oc_no': oc_no

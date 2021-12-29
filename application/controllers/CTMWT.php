@@ -680,7 +680,7 @@ class CTMWT extends CI_Controller
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $this->db->where('pr.status', 'Approved');
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $data['pn_punish_data'] = $this->db->get()->result_array();
 
@@ -691,7 +691,7 @@ class CTMWT extends CI_Controller
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $this->db->where('pr.status', 'Approved');
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $data['pn_punish_data_term2'] = $this->db->get()->result_array();
 
@@ -702,7 +702,7 @@ class CTMWT extends CI_Controller
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $this->db->where('pr.status', 'Approved');
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $data['pn_punish_data_term3'] = $this->db->get()->result_array();
 
@@ -710,7 +710,7 @@ class CTMWT extends CI_Controller
             $this->db->from('observation_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $this->db->where('pr.status', 'Approved');
@@ -720,7 +720,7 @@ class CTMWT extends CI_Controller
             $this->db->from('observation_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $this->db->where('pr.status', 'Approved');
@@ -730,7 +730,7 @@ class CTMWT extends CI_Controller
             $this->db->from('observation_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $this->db->where('pr.status', 'Approved');
@@ -740,7 +740,7 @@ class CTMWT extends CI_Controller
             $this->db->from('warning_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_warning_data'] = $this->db->get()->result_array();
 
@@ -748,7 +748,7 @@ class CTMWT extends CI_Controller
             $this->db->from('inspection_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_inspection_data'] = $this->db->get()->result_array();
 
@@ -762,7 +762,7 @@ class CTMWT extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             // $this->db->where('pr.term', 'Term-I');
             $data['pn_physical_tests_data'] = $this->db->get()->result_array();
@@ -772,7 +772,7 @@ class CTMWT extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-P');
             $data['pn_physical_tests_data_tp'] = $this->db->get()->row_array();
@@ -781,7 +781,7 @@ class CTMWT extends CI_Controller
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-P');
             $data['pn_pet1_data_tp'] = $this->db->get()->row_array();
@@ -790,7 +790,7 @@ class CTMWT extends CI_Controller
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-P');
             $data['pn_pet2_data_tp'] = $this->db->get()->row_array();
@@ -800,7 +800,7 @@ class CTMWT extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['pn_physical_tests_data_t1'] = $this->db->get()->row_array();
@@ -809,7 +809,7 @@ class CTMWT extends CI_Controller
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['pn_pet1_data_t1'] = $this->db->get()->row_array();
@@ -818,7 +818,7 @@ class CTMWT extends CI_Controller
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['pn_pet2_data_t1'] = $this->db->get()->row_array();
@@ -828,7 +828,7 @@ class CTMWT extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $data['pn_physical_tests_data_t2'] = $this->db->get()->row_array();
@@ -837,7 +837,7 @@ class CTMWT extends CI_Controller
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $data['pn_pet1_data_t2'] = $this->db->get()->row_array();
@@ -846,7 +846,7 @@ class CTMWT extends CI_Controller
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $data['pn_pet2_data_t2'] = $this->db->get()->row_array();
@@ -856,7 +856,7 @@ class CTMWT extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $data['pn_physical_tests_data_t3'] = $this->db->get()->row_array();
@@ -865,7 +865,7 @@ class CTMWT extends CI_Controller
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $data['pn_pet1_data_t3'] = $this->db->get()->row_array();
@@ -874,7 +874,7 @@ class CTMWT extends CI_Controller
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $data['pn_pet2_data_t3'] = $this->db->get()->row_array();
@@ -916,7 +916,7 @@ class CTMWT extends CI_Controller
             $this->db->from('officer_qualities pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['pn_officer_qualities_data_t1'] = $this->db->get()->row_array();
@@ -925,7 +925,7 @@ class CTMWT extends CI_Controller
             $this->db->from('officer_qualities pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $data['pn_officer_qualities_data_t2'] = $this->db->get()->row_array();
@@ -934,7 +934,7 @@ class CTMWT extends CI_Controller
             $this->db->from('officer_qualities pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $data['pn_officer_qualities_data_t3'] = $this->db->get()->row_array();
@@ -943,7 +943,7 @@ class CTMWT extends CI_Controller
             $this->db->from('personal_datas pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_personal_data'] = $this->db->get()->row_array();
 
@@ -951,7 +951,7 @@ class CTMWT extends CI_Controller
             $this->db->from('divisional_officer_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_divisional_officer_data'] = $this->db->get()->result_array();
 
@@ -959,7 +959,7 @@ class CTMWT extends CI_Controller
             $this->db->from('cadets_autobiographies pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_autobiography_data'] = $this->db->get()->result_array();
 
@@ -967,7 +967,7 @@ class CTMWT extends CI_Controller
             $this->db->from('psychologist_reports pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_psychologist_data'] = $this->db->get()->result_array();
 
@@ -975,7 +975,7 @@ class CTMWT extends CI_Controller
             $this->db->from('warning_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_warning_records'] = $this->db->get()->result_array();
 
@@ -985,7 +985,7 @@ class CTMWT extends CI_Controller
             $this->db->from('general_remarks pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.assessment', 'Mid Term Assessment');
             $this->db->where('pr.term', 'Term-I');
@@ -995,7 +995,7 @@ class CTMWT extends CI_Controller
             $this->db->from('general_remarks pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.assessment', 'Terminal Assessment');
             $this->db->where('pr.term', 'Term-I');
@@ -1005,7 +1005,7 @@ class CTMWT extends CI_Controller
             $this->db->from('general_remarks pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.assessment', 'Mid Term Assessment');
             $this->db->where('pr.term', 'Term-II');
@@ -1015,7 +1015,7 @@ class CTMWT extends CI_Controller
             $this->db->from('general_remarks pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.assessment', 'Terminal Assessment');
             $this->db->where('pr.term', 'Term-II');
@@ -1025,7 +1025,7 @@ class CTMWT extends CI_Controller
             $this->db->from('general_remarks pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.assessment', 'Mid Term Assessment');
             $this->db->where('pr.term', 'Term-III');
@@ -1035,7 +1035,7 @@ class CTMWT extends CI_Controller
             $this->db->from('general_remarks pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.assessment', 'Terminal Assessment');
             $this->db->where('pr.term', 'Term-III');
@@ -1045,7 +1045,7 @@ class CTMWT extends CI_Controller
             $this->db->from('distinctions_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_distinctions_records'] = $this->db->get()->result_array();
 
@@ -1053,7 +1053,7 @@ class CTMWT extends CI_Controller
             $this->db->from('seniority_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_seniority_records'] = $this->db->get()->row_array();
 
@@ -1061,7 +1061,7 @@ class CTMWT extends CI_Controller
             $this->db->from('branch_allocations pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            //$this->db->where('f.divison_name', $this->session->userdata('division'));
+            //$this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_branch_allocations'] = $this->db->get()->row_array();
 
@@ -3059,7 +3059,7 @@ class CTMWT extends CI_Controller
         $this->db->where('f.oc_no = pr.oc_no');
         // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
         $this->db->where('pr.id', $row_id);
-        // $this->db->where('f.divison_name', $this->session->userdata('division'));
+        // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
         // $this->db->where('pr.status', 'Approved');
         $data['punish_records'] = $this->db->get()->row_array();
         // print_r($data['punish_records']);exit;
@@ -3085,7 +3085,7 @@ class CTMWT extends CI_Controller
             $this->db->from('observation_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', $term);
             $this->db->where('pr.status', 'Approved');
@@ -3118,7 +3118,7 @@ class CTMWT extends CI_Controller
         // $this->db->where('f.oc_no = pr.oc_no');
         // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
         $this->db->where('pr.id', $row_id);
-        // $this->db->where('f.divison_name', $this->session->userdata('division'));
+        // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
         $this->db->where('pr.status', 'Approved');
         $data['edit_records'] = $this->db->get()->row_array();
         // print_r($data['edit_records']);
@@ -3140,7 +3140,7 @@ class CTMWT extends CI_Controller
             $this->db->from('warning_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
 
             $data['warning_records'] = $this->db->get()->result_array();
@@ -3169,7 +3169,7 @@ class CTMWT extends CI_Controller
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
         // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
         $this->db->where('pr.id', $row_id);
-        // $this->db->where('f.divison_name', $this->session->userdata('division'));
+        // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
         $data['warning_records'] = $this->db->get()->row_array();
         $this->load->view('ctmwt/edit_warning', $data);
     }
@@ -3191,7 +3191,7 @@ class CTMWT extends CI_Controller
             $this->db->from('branch_allocations pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_branch_allocations'] = $this->db->get()->row_array();
 
@@ -3225,7 +3225,7 @@ class CTMWT extends CI_Controller
             $this->db->from('inspection_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
 
             $data['inspection_records'] = $this->db->get()->result_array();
@@ -3252,7 +3252,7 @@ class CTMWT extends CI_Controller
         $this->db->from('inspection_records pr');
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
         // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-        // $this->db->where('f.divison_name', $this->session->userdata('division'));
+        // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
         $this->db->where('pr.id', $id);
         $data['pn_inspection_data'] = $this->db->get()->row_array();
         $this->load->view('ctmwt/edit_inspection_record', $data);
@@ -3274,7 +3274,7 @@ class CTMWT extends CI_Controller
             $this->db->from('medical_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('f.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
 
             $data['medical_records'] = $this->db->get()->result_array();
@@ -3310,7 +3310,7 @@ class CTMWT extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             //$this->db->where('f.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
 
             $data['test_records'] = $this->db->get()->result_array();
@@ -3346,7 +3346,7 @@ class CTMWT extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['test_records'] = $this->db->get()->result_array();
@@ -3356,7 +3356,7 @@ class CTMWT extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-P');
             $data['pn_physical_tests_data_tp'] = $this->db->get()->row_array();
@@ -3365,7 +3365,7 @@ class CTMWT extends CI_Controller
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-P');
             $data['pn_pet1_data_tp'] = $this->db->get()->row_array();
@@ -3374,7 +3374,7 @@ class CTMWT extends CI_Controller
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-P');
             $data['pn_pet2_data_tp'] = $this->db->get()->row_array();
@@ -3384,7 +3384,7 @@ class CTMWT extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['pn_physical_tests_data_t1'] = $this->db->get()->row_array();
@@ -3393,7 +3393,7 @@ class CTMWT extends CI_Controller
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['pn_pet1_data_t1'] = $this->db->get()->row_array();
@@ -3402,7 +3402,7 @@ class CTMWT extends CI_Controller
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-I');
             $data['pn_pet2_data_t1'] = $this->db->get()->row_array();
@@ -3412,7 +3412,7 @@ class CTMWT extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $data['pn_physical_tests_data_t2'] = $this->db->get()->row_array();
@@ -3421,7 +3421,7 @@ class CTMWT extends CI_Controller
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $data['pn_pet1_data_t2'] = $this->db->get()->row_array();
@@ -3430,7 +3430,7 @@ class CTMWT extends CI_Controller
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-II');
             $data['pn_pet2_data_t2'] = $this->db->get()->row_array();
@@ -3440,7 +3440,7 @@ class CTMWT extends CI_Controller
             $this->db->from('physical_milestone pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $data['pn_physical_tests_data_t3'] = $this->db->get()->row_array();
@@ -3449,7 +3449,7 @@ class CTMWT extends CI_Controller
             $this->db->from('term_i_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $data['pn_pet1_data_t3'] = $this->db->get()->row_array();
@@ -3458,7 +3458,7 @@ class CTMWT extends CI_Controller
             $this->db->from('term_ii_details pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-III');
             $data['pn_pet2_data_t3'] = $this->db->get()->row_array();
@@ -3495,7 +3495,7 @@ class CTMWT extends CI_Controller
             $this->db->from('officer_qualities pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', $term);
             $data['pn_officer_qualities_data'] = $this->db->get()->row_array();
@@ -3533,7 +3533,7 @@ class CTMWT extends CI_Controller
             $this->db->from('personal_datas pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_personal_data'] = $this->db->get()->row_array();
 
@@ -3569,7 +3569,7 @@ class CTMWT extends CI_Controller
             $this->db->from('divisional_officer_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_divisional_officer_data'] = $this->db->get()->result_array();
 
@@ -3604,7 +3604,7 @@ class CTMWT extends CI_Controller
             $this->db->from('divisional_officer_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_divisional_officer_data'] = $this->db->get()->result_array();
 
@@ -3639,7 +3639,7 @@ class CTMWT extends CI_Controller
             $this->db->from('divisional_officer_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_divisional_officer_data'] = $this->db->get()->result_array();
 
@@ -3724,7 +3724,7 @@ class CTMWT extends CI_Controller
             $this->db->from('general_remarks pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.assessment', $assess);
             $this->db->where('pr.term', $term);
@@ -3765,7 +3765,7 @@ class CTMWT extends CI_Controller
             $this->db->from('progress_charts pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_progress_chart'] = $this->db->get()->row_array();
 
@@ -3802,7 +3802,7 @@ class CTMWT extends CI_Controller
             $this->db->from('distinctions_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_distinctions_records'] = $this->db->get()->result_array();
 
@@ -3839,7 +3839,7 @@ class CTMWT extends CI_Controller
             $this->db->from('seniority_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_seniority_records'] = $this->db->get()->row_array();
 
@@ -3876,7 +3876,7 @@ class CTMWT extends CI_Controller
             $this->db->from('branch_allocations pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $data['pn_branch_allocations'] = $this->db->get()->row_array();
 
@@ -3900,7 +3900,7 @@ class CTMWT extends CI_Controller
         $this->db->from('personal_datas pr');
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
         // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-        // $this->db->where('f.divison_name', $this->session->userdata('division'));
+        // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
         $this->db->where('pr.p_id', $id);
         $data['pn_personal_data'] = $this->db->get()->row_array();
 
@@ -3916,7 +3916,7 @@ class CTMWT extends CI_Controller
         $this->db->from('officer_qualities pr');
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
         // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-        // $this->db->where('f.divison_name', $this->session->userdata('division'));
+        // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
         $this->db->where('pr.p_id', $p_id);
         $data['officer_data'] = $this->db->get()->row_array();
         $data['quality_list'] = $this->db->get('quality_list')->result_array();
@@ -3931,7 +3931,7 @@ class CTMWT extends CI_Controller
         $this->db->from('divisional_officer_records pr');
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
         // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-        // $this->db->where('f.divison_name', $this->session->userdata('division'));
+        // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
         // $this->db->where('f.oc_no', $oc_no);
         $this->db->where('pr.id', $row_id);
         $data['divisional_officer_data'] = $this->db->get()->row_array();
@@ -3945,7 +3945,7 @@ class CTMWT extends CI_Controller
         $this->db->from('cadets_autobiographies pr');
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
         // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-        // $this->db->where('f.divison_name', $this->session->userdata('division'));
+        // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
         $this->db->where('pr.p_id', $p_id);
         $data['biography_data'] = $this->db->get()->row_array();
 
@@ -3958,7 +3958,7 @@ class CTMWT extends CI_Controller
         $this->db->from('psychologist_reports pr');
         $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
         // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-        // $this->db->where('f.divison_name', $this->session->userdata('division'));
+        // $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
         $this->db->where('pr.p_id', $id);
         $data['psychologist_data'] = $this->db->get()->row_array();
         // print_r($data['psychologist_data']);exit;

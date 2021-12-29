@@ -134,6 +134,422 @@ $route['JOTO/view_edit_warning/update-activity'] = 'ChatController/update_activi
 $route['JOTO/view_edit_warning/check-notification'] = 'ChatController/check_notification';
 $route['JOTO/view_edit_warning/check-activity'] = 'ChatController/check_activity';
 
+$route['JOTO/view_edit_observation/update-notification'] = 'ChatController/update_notification';
+$route['JOTO/view_edit_observation/update-activity'] = 'ChatController/update_activity';
+$route['JOTO/view_edit_observation/check-notification'] = 'ChatController/check_notification';
+$route['JOTO/view_edit_observation/check-activity'] = 'ChatController/check_activity';
+
+$route['JOTO/view_edit_warning/update-notification'] = 'ChatController/update_notification';
+$route['JOTO/view_edit_warning/update-activity'] = 'ChatController/update_activity';
+$route['JOTO/view_edit_warning/check-notification'] = 'ChatController/check_notification';
+$route['JOTO/view_edit_warning/check-activity'] = 'ChatController/check_activity';
+
+$route['JOTO/view_edit_inspection/update-notification'] = 'ChatController/update_notification';
+$route['JOTO/view_edit_inspection/update-activity'] = 'ChatController/update_activity';
+$route['JOTO/view_edit_inspection/check-notification'] = 'ChatController/check_notification';
+$route['JOTO/view_edit_inspection/check-activity'] = 'ChatController/check_activity';
+
+$route['JOTO/view_edit_officer_record/update-notification'] = 'ChatController/update_notification';
+$route['JOTO/view_edit_officer_record/update-activity'] = 'ChatController/update_activity';
+$route['JOTO/view_edit_officer_record/check-notification'] = 'ChatController/check_notification';
+$route['JOTO/view_edit_officer_record/check-activity'] = 'ChatController/check_activity';
+
+$route['JOTO/view_edit_personal_record/update-notification'] = 'ChatController/update_notification';
+$route['JOTO/view_edit_personal_record/update-activity'] = 'ChatController/update_activity';
+$route['JOTO/view_edit_personal_record/check-notification'] = 'ChatController/check_notification';
+$route['JOTO/view_edit_personal_record/check-activity'] = 'ChatController/check_activity';
+
+$route['JOTO/view_edit_biography/update-notification'] = 'ChatController/update_notification';
+$route['JOTO/view_edit_biography/update-activity'] = 'ChatController/update_activity';
+$route['JOTO/view_edit_biography/check-notification'] = 'ChatController/check_notification';
+$route['JOTO/view_edit_biography/check-activity'] = 'ChatController/check_activity';
+
+$route['JOTO/view_edit_psychologist_report/update-notification'] = 'ChatController/update_notification';
+$route['JOTO/view_edit_psychologist_report/update-activity'] = 'ChatController/update_activity';
+$route['JOTO/view_edit_psychologist_report/check-notification'] = 'ChatController/check_notification';
+$route['JOTO/view_edit_psychologist_report/check-activity'] = 'ChatController/check_activity';
+
+$route['JOTO/view_edit_qualities/(:any)/update-notification'] = 'ChatController/$1/update_notification';
+$route['JOTO/view_edit_qualities/(:any)/update-activity'] = 'ChatController/$1/update_activity';
+$route['JOTO/view_edit_qualities/(:any)/check-notification'] = 'ChatController/$1/check_notification';
+$route['JOTO/view_edit_qualities/(:any)/check-activity'] = 'ChatController/$1/check_activity';
+
+$route['JOTO/view_edit_punishment/update-notification'] = 'ChatController/update_notification';
+$route['JOTO/view_edit_punishment/update-activity'] = 'ChatController/update_activity';
+$route['JOTO/view_edit_punishment/check-notification'] = 'ChatController/check_notification';
+$route['JOTO/view_edit_punishment/check-activity'] = 'ChatController/check_activity';
+
+$route['EXO/check-notification'] = 'ChatController/check_notification';
+$route['EXO/check-activity'] = 'ChatController/check_activity';
+
+$route['EXO/add_physical_milestone/update-notification'] = 'ChatController/update_notification';
+$route['EXO/add_physical_milestone/update-activity'] = 'ChatController/update_activity';
+$route['EXO/add_physical_milestone/check-notification'] = 'ChatController/check_notification';
+$route['EXO/add_physical_milestone/check-activity'] = 'ChatController/check_activity';
+
+$route['EXO/view_edit_observation/update-notification'] = 'ChatController/update_notification';
+$route['EXO/view_edit_observation/update-activity'] = 'ChatController/update_activity';
+$route['EXO/view_edit_observation/check-notification'] = 'ChatController/check_notification';
+$route['EXO/view_edit_observation/check-activity'] = 'ChatController/check_activity';
+
+$route['EXO/view_edit_warning/update-notification'] = 'ChatController/update_notification';
+$route['EXO/view_edit_warning/update-activity'] = 'ChatController/update_activity';
+$route['EXO/view_edit_warning/check-notification'] = 'ChatController/check_notification';
+$route['EXO/view_edit_warning/check-activity'] = 'ChatController/check_activity';
+
+$route['EXO/view_edit_inspection/update-notification'] = 'ChatController/update_notification';
+$route['EXO/view_edit_inspection/update-activity'] = 'ChatController/update_activity';
+$route['EXO/view_edit_inspection/check-notification'] = 'ChatController/check_notification';
+$route['EXO/view_edit_inspection/check-activity'] = 'ChatController/check_activity';
+
+$route['EXO/view_edit_officer_record/update-notification'] = 'ChatController/update_notification';
+$route['EXO/view_edit_officer_record/update-activity'] = 'ChatController/update_activity';
+$route['EXO/view_edit_officer_record/check-notification'] = 'ChatController/check_notification';
+$route['EXO/view_edit_officer_record/check-activity'] = 'ChatController/check_activity';
+
+$route['EXO/view_edit_personal_record/update-notification'] = 'ChatController/update_notification';
+$route['EXO/view_edit_personal_record/update-activity'] = 'ChatController/update_activity';
+$route['EXO/view_edit_personal_record/check-notification'] = 'ChatController/check_notification';
+$route['EXO/view_edit_personal_record/check-activity'] = 'ChatController/check_activity';
+
+$route['EXO/view_edit_biography/update-notification'] = 'ChatController/update_notification';
+$route['EXO/view_edit_biography/update-activity'] = 'ChatController/update_activity';
+$route['EXO/view_edit_biography/check-notification'] = 'ChatController/check_notification';
+$route['EXO/view_edit_biography/check-activity'] = 'ChatController/check_activity';
+
+$route['EXO/view_edit_psychologist_report/update-notification'] = 'ChatController/update_notification';
+$route['EXO/view_edit_psychologist_report/update-activity'] = 'ChatController/update_activity';
+$route['EXO/view_edit_psychologist_report/check-notification'] = 'ChatController/check_notification';
+$route['EXO/view_edit_psychologist_report/check-activity'] = 'ChatController/check_activity';
+
+$route['EXO/view_edit_qualities/(:any)/update-notification'] = 'ChatController/$1/update_notification';
+$route['EXO/view_edit_qualities/(:any)/update-activity'] = 'ChatController/$1/update_activity';
+$route['EXO/view_edit_qualities/(:any)/check-notification'] = 'ChatController/$1/check_notification';
+$route['EXO/view_edit_qualities/(:any)/check-activity'] = 'ChatController/$1/check_activity';
+
+$route['EXO/view_edit_punishment/update-notification'] = 'ChatController/update_notification';
+$route['EXO/view_edit_punishment/update-activity'] = 'ChatController/update_activity';
+$route['EXO/view_edit_punishment/check-notification'] = 'ChatController/check_notification';
+$route['EXO/view_edit_punishment/check-activity'] = 'ChatController/check_activity';
+
+$route['DEAN/check-notification'] = 'ChatController/check_notification';
+$route['DEAN/check-activity'] = 'ChatController/check_activity';
+
+$route['DEAN/add_physical_milestone/update-notification'] = 'ChatController/update_notification';
+$route['DEAN/add_physical_milestone/update-activity'] = 'ChatController/update_activity';
+$route['DEAN/add_physical_milestone/check-notification'] = 'ChatController/check_notification';
+$route['DEAN/add_physical_milestone/check-activity'] = 'ChatController/check_activity';
+
+$route['DEAN/view_edit_observation/update-notification'] = 'ChatController/update_notification';
+$route['DEAN/view_edit_observation/update-activity'] = 'ChatController/update_activity';
+$route['DEAN/view_edit_observation/check-notification'] = 'ChatController/check_notification';
+$route['DEAN/view_edit_observation/check-activity'] = 'ChatController/check_activity';
+
+$route['DEAN/view_edit_warning/update-notification'] = 'ChatController/update_notification';
+$route['DEAN/view_edit_warning/update-activity'] = 'ChatController/update_activity';
+$route['DEAN/view_edit_warning/check-notification'] = 'ChatController/check_notification';
+$route['DEAN/view_edit_warning/check-activity'] = 'ChatController/check_activity';
+
+$route['DEAN/view_edit_inspection/update-notification'] = 'ChatController/update_notification';
+$route['DEAN/view_edit_inspection/update-activity'] = 'ChatController/update_activity';
+$route['DEAN/view_edit_inspection/check-notification'] = 'ChatController/check_notification';
+$route['DEAN/view_edit_inspection/check-activity'] = 'ChatController/check_activity';
+
+$route['DEAN/view_edit_officer_record/update-notification'] = 'ChatController/update_notification';
+$route['DEAN/view_edit_officer_record/update-activity'] = 'ChatController/update_activity';
+$route['DEAN/view_edit_officer_record/check-notification'] = 'ChatController/check_notification';
+$route['DEAN/view_edit_officer_record/check-activity'] = 'ChatController/check_activity';
+
+$route['DEAN/view_edit_personal_record/update-notification'] = 'ChatController/update_notification';
+$route['DEAN/view_edit_personal_record/update-activity'] = 'ChatController/update_activity';
+$route['DEAN/view_edit_personal_record/check-notification'] = 'ChatController/check_notification';
+$route['DEAN/view_edit_personal_record/check-activity'] = 'ChatController/check_activity';
+
+$route['DEAN/view_edit_biography/update-notification'] = 'ChatController/update_notification';
+$route['DEAN/view_edit_biography/update-activity'] = 'ChatController/update_activity';
+$route['DEAN/view_edit_biography/check-notification'] = 'ChatController/check_notification';
+$route['DEAN/view_edit_biography/check-activity'] = 'ChatController/check_activity';
+
+$route['DEAN/view_edit_psychologist_report/update-notification'] = 'ChatController/update_notification';
+$route['DEAN/view_edit_psychologist_report/update-activity'] = 'ChatController/update_activity';
+$route['DEAN/view_edit_psychologist_report/check-notification'] = 'ChatController/check_notification';
+$route['DEAN/view_edit_psychologist_report/check-activity'] = 'ChatController/check_activity';
+
+$route['DEAN/view_edit_qualities/(:any)/update-notification'] = 'ChatController/$1/update_notification';
+$route['DEAN/view_edit_qualities/(:any)/update-activity'] = 'ChatController/$1/update_activity';
+$route['DEAN/view_edit_qualities/(:any)/check-notification'] = 'ChatController/$1/check_notification';
+$route['DEAN/view_edit_qualities/(:any)/check-activity'] = 'ChatController/$1/check_activity';
+
+$route['DEAN/view_edit_punishment/update-notification'] = 'ChatController/update_notification';
+$route['DEAN/view_edit_punishment/update-activity'] = 'ChatController/update_activity';
+$route['DEAN/view_edit_punishment/check-notification'] = 'ChatController/check_notification';
+$route['DEAN/view_edit_punishment/check-activity'] = 'ChatController/check_activity';
+
+$route['HOUGP/check-notification'] = 'ChatController/check_notification';
+$route['HOUGP/check-activity'] = 'ChatController/check_activity';
+
+$route['HOUGP/add_physical_milestone/update-notification'] = 'ChatController/update_notification';
+$route['HOUGP/add_physical_milestone/update-activity'] = 'ChatController/update_activity';
+$route['HOUGP/add_physical_milestone/check-notification'] = 'ChatController/check_notification';
+$route['HOUGP/add_physical_milestone/check-activity'] = 'ChatController/check_activity';
+
+$route['HOUGP/view_edit_observation/update-notification'] = 'ChatController/update_notification';
+$route['HOUGP/view_edit_observation/update-activity'] = 'ChatController/update_activity';
+$route['HOUGP/view_edit_observation/check-notification'] = 'ChatController/check_notification';
+$route['HOUGP/view_edit_observation/check-activity'] = 'ChatController/check_activity';
+
+$route['HOUGP/view_edit_warning/update-notification'] = 'ChatController/update_notification';
+$route['HOUGP/view_edit_warning/update-activity'] = 'ChatController/update_activity';
+$route['HOUGP/view_edit_warning/check-notification'] = 'ChatController/check_notification';
+$route['HOUGP/view_edit_warning/check-activity'] = 'ChatController/check_activity';
+
+$route['HOUGP/view_edit_inspection/update-notification'] = 'ChatController/update_notification';
+$route['HOUGP/view_edit_inspection/update-activity'] = 'ChatController/update_activity';
+$route['HOUGP/view_edit_inspection/check-notification'] = 'ChatController/check_notification';
+$route['HOUGP/view_edit_inspection/check-activity'] = 'ChatController/check_activity';
+
+$route['HOUGP/view_edit_officer_record/update-notification'] = 'ChatController/update_notification';
+$route['HOUGP/view_edit_officer_record/update-activity'] = 'ChatController/update_activity';
+$route['HOUGP/view_edit_officer_record/check-notification'] = 'ChatController/check_notification';
+$route['HOUGP/view_edit_officer_record/check-activity'] = 'ChatController/check_activity';
+
+$route['HOUGP/view_edit_personal_record/update-notification'] = 'ChatController/update_notification';
+$route['HOUGP/view_edit_personal_record/update-activity'] = 'ChatController/update_activity';
+$route['HOUGP/view_edit_personal_record/check-notification'] = 'ChatController/check_notification';
+$route['HOUGP/view_edit_personal_record/check-activity'] = 'ChatController/check_activity';
+
+$route['HOUGP/view_edit_biography/update-notification'] = 'ChatController/update_notification';
+$route['HOUGP/view_edit_biography/update-activity'] = 'ChatController/update_activity';
+$route['HOUGP/view_edit_biography/check-notification'] = 'ChatController/check_notification';
+$route['HOUGP/view_edit_biography/check-activity'] = 'ChatController/check_activity';
+
+$route['HOUGP/view_edit_psychologist_report/update-notification'] = 'ChatController/update_notification';
+$route['HOUGP/view_edit_psychologist_report/update-activity'] = 'ChatController/update_activity';
+$route['HOUGP/view_edit_psychologist_report/check-notification'] = 'ChatController/check_notification';
+$route['HOUGP/view_edit_psychologist_report/check-activity'] = 'ChatController/check_activity';
+
+$route['HOUGP/view_edit_qualities/(:any)/update-notification'] = 'ChatController/$1/update_notification';
+$route['HOUGP/view_edit_qualities/(:any)/update-activity'] = 'ChatController/$1/update_activity';
+$route['HOUGP/view_edit_qualities/(:any)/check-notification'] = 'ChatController/$1/check_notification';
+$route['HOUGP/view_edit_qualities/(:any)/check-activity'] = 'ChatController/$1/check_activity';
+
+$route['HOUGP/view_edit_punishment/update-notification'] = 'ChatController/update_notification';
+$route['HOUGP/view_edit_punishment/update-activity'] = 'ChatController/update_activity';
+$route['HOUGP/view_edit_punishment/check-notification'] = 'ChatController/check_notification';
+$route['HOUGP/view_edit_punishment/check-activity'] = 'ChatController/check_activity';
+
+$route['CTMWT/check-notification'] = 'ChatController/check_notification';
+$route['CTMWT/check-activity'] = 'ChatController/check_activity';
+
+$route['CTMWT/add_physical_milestone/update-notification'] = 'ChatController/update_notification';
+$route['CTMWT/add_physical_milestone/update-activity'] = 'ChatController/update_activity';
+$route['CTMWT/add_physical_milestone/check-notification'] = 'ChatController/check_notification';
+$route['CTMWT/add_physical_milestone/check-activity'] = 'ChatController/check_activity';
+
+$route['CTMWT/view_edit_observation/update-notification'] = 'ChatController/update_notification';
+$route['CTMWT/view_edit_observation/update-activity'] = 'ChatController/update_activity';
+$route['CTMWT/view_edit_observation/check-notification'] = 'ChatController/check_notification';
+$route['CTMWT/view_edit_observation/check-activity'] = 'ChatController/check_activity';
+
+$route['CTMWT/view_edit_warning/update-notification'] = 'ChatController/update_notification';
+$route['CTMWT/view_edit_warning/update-activity'] = 'ChatController/update_activity';
+$route['CTMWT/view_edit_warning/check-notification'] = 'ChatController/check_notification';
+$route['CTMWT/view_edit_warning/check-activity'] = 'ChatController/check_activity';
+
+$route['CTMWT/view_edit_inspection/update-notification'] = 'ChatController/update_notification';
+$route['CTMWT/view_edit_inspection/update-activity'] = 'ChatController/update_activity';
+$route['CTMWT/view_edit_inspection/check-notification'] = 'ChatController/check_notification';
+$route['CTMWT/view_edit_inspection/check-activity'] = 'ChatController/check_activity';
+
+$route['CTMWT/view_edit_officer_record/update-notification'] = 'ChatController/update_notification';
+$route['CTMWT/view_edit_officer_record/update-activity'] = 'ChatController/update_activity';
+$route['CTMWT/view_edit_officer_record/check-notification'] = 'ChatController/check_notification';
+$route['CTMWT/view_edit_officer_record/check-activity'] = 'ChatController/check_activity';
+
+$route['CTMWT/view_edit_personal_record/update-notification'] = 'ChatController/update_notification';
+$route['CTMWT/view_edit_personal_record/update-activity'] = 'ChatController/update_activity';
+$route['CTMWT/view_edit_personal_record/check-notification'] = 'ChatController/check_notification';
+$route['CTMWT/view_edit_personal_record/check-activity'] = 'ChatController/check_activity';
+
+$route['CTMWT/view_edit_biography/update-notification'] = 'ChatController/update_notification';
+$route['CTMWT/view_edit_biography/update-activity'] = 'ChatController/update_activity';
+$route['CTMWT/view_edit_biography/check-notification'] = 'ChatController/check_notification';
+$route['CTMWT/view_edit_biography/check-activity'] = 'ChatController/check_activity';
+
+$route['CTMWT/view_edit_psychologist_report/update-notification'] = 'ChatController/update_notification';
+$route['CTMWT/view_edit_psychologist_report/update-activity'] = 'ChatController/update_activity';
+$route['CTMWT/view_edit_psychologist_report/check-notification'] = 'ChatController/check_notification';
+$route['CTMWT/view_edit_psychologist_report/check-activity'] = 'ChatController/check_activity';
+
+$route['CTMWT/view_edit_qualities/(:any)/update-notification'] = 'ChatController/$1/update_notification';
+$route['CTMWT/view_edit_qualities/(:any)/update-activity'] = 'ChatController/$1/update_activity';
+$route['CTMWT/view_edit_qualities/(:any)/check-notification'] = 'ChatController/$1/check_notification';
+$route['CTMWT/view_edit_qualities/(:any)/check-activity'] = 'ChatController/$1/check_activity';
+
+$route['CTMWT/view_edit_punishment/update-notification'] = 'ChatController/update_notification';
+$route['CTMWT/view_edit_punishment/update-activity'] = 'ChatController/update_activity';
+$route['CTMWT/view_edit_punishment/check-notification'] = 'ChatController/check_notification';
+$route['CTMWT/view_edit_punishment/check-activity'] = 'ChatController/check_activity';
+
+$route['CT/check-notification'] = 'ChatController/check_notification';
+$route['CT/check-activity'] = 'ChatController/check_activity';
+
+$route['CT/add_physical_milestone/update-notification'] = 'ChatController/update_notification';
+$route['CT/add_physical_milestone/update-activity'] = 'ChatController/update_activity';
+$route['CT/add_physical_milestone/check-notification'] = 'ChatController/check_notification';
+$route['CT/add_physical_milestone/check-activity'] = 'ChatController/check_activity';
+
+$route['CT/view_edit_observation/update-notification'] = 'ChatController/update_notification';
+$route['CT/view_edit_observation/update-activity'] = 'ChatController/update_activity';
+$route['CT/view_edit_observation/check-notification'] = 'ChatController/check_notification';
+$route['CT/view_edit_observation/check-activity'] = 'ChatController/check_activity';
+
+$route['CT/view_edit_warning/update-notification'] = 'ChatController/update_notification';
+$route['CT/view_edit_warning/update-activity'] = 'ChatController/update_activity';
+$route['CT/view_edit_warning/check-notification'] = 'ChatController/check_notification';
+$route['CT/view_edit_warning/check-activity'] = 'ChatController/check_activity';
+
+$route['CT/view_edit_inspection/update-notification'] = 'ChatController/update_notification';
+$route['CT/view_edit_inspection/update-activity'] = 'ChatController/update_activity';
+$route['CT/view_edit_inspection/check-notification'] = 'ChatController/check_notification';
+$route['CT/view_edit_inspection/check-activity'] = 'ChatController/check_activity';
+
+$route['CT/view_edit_officer_record/update-notification'] = 'ChatController/update_notification';
+$route['CT/view_edit_officer_record/update-activity'] = 'ChatController/update_activity';
+$route['CT/view_edit_officer_record/check-notification'] = 'ChatController/check_notification';
+$route['CT/view_edit_officer_record/check-activity'] = 'ChatController/check_activity';
+
+$route['CT/view_edit_personal_record/update-notification'] = 'ChatController/update_notification';
+$route['CT/view_edit_personal_record/update-activity'] = 'ChatController/update_activity';
+$route['CT/view_edit_personal_record/check-notification'] = 'ChatController/check_notification';
+$route['CT/view_edit_personal_record/check-activity'] = 'ChatController/check_activity';
+
+$route['CT/view_edit_biography/update-notification'] = 'ChatController/update_notification';
+$route['CT/view_edit_biography/update-activity'] = 'ChatController/update_activity';
+$route['CT/view_edit_biography/check-notification'] = 'ChatController/check_notification';
+$route['CT/view_edit_biography/check-activity'] = 'ChatController/check_activity';
+
+$route['CT/view_edit_psychologist_report/update-notification'] = 'ChatController/update_notification';
+$route['CT/view_edit_psychologist_report/update-activity'] = 'ChatController/update_activity';
+$route['CT/view_edit_psychologist_report/check-notification'] = 'ChatController/check_notification';
+$route['CT/view_edit_psychologist_report/check-activity'] = 'ChatController/check_activity';
+
+$route['CT/view_edit_qualities/(:any)/update-notification'] = 'ChatController/$1/update_notification';
+$route['CT/view_edit_qualities/(:any)/update-activity'] = 'ChatController/$1/update_activity';
+$route['CT/view_edit_qualities/(:any)/check-notification'] = 'ChatController/$1/check_notification';
+$route['CT/view_edit_qualities/(:any)/check-activity'] = 'ChatController/$1/check_activity';
+
+$route['CT/view_edit_punishment/update-notification'] = 'ChatController/update_notification';
+$route['CT/view_edit_punishment/update-activity'] = 'ChatController/update_activity';
+$route['CT/view_edit_punishment/check-notification'] = 'ChatController/check_notification';
+$route['CT/view_edit_punishment/check-activity'] = 'ChatController/check_activity';
+
+$route['CO/check-notification'] = 'ChatController/check_notification';
+$route['CO/check-activity'] = 'ChatController/check_activity';
+
+$route['CO/add_physical_milestone/update-notification'] = 'ChatController/update_notification';
+$route['CO/add_physical_milestone/update-activity'] = 'ChatController/update_activity';
+$route['CO/add_physical_milestone/check-notification'] = 'ChatController/check_notification';
+$route['CO/add_physical_milestone/check-activity'] = 'ChatController/check_activity';
+
+$route['CO/view_edit_observation/update-notification'] = 'ChatController/update_notification';
+$route['CO/view_edit_observation/update-activity'] = 'ChatController/update_activity';
+$route['CO/view_edit_observation/check-notification'] = 'ChatController/check_notification';
+$route['CO/view_edit_observation/check-activity'] = 'ChatController/check_activity';
+
+$route['CO/view_edit_warning/update-notification'] = 'ChatController/update_notification';
+$route['CO/view_edit_warning/update-activity'] = 'ChatController/update_activity';
+$route['CO/view_edit_warning/check-notification'] = 'ChatController/check_notification';
+$route['CO/view_edit_warning/check-activity'] = 'ChatController/check_activity';
+
+$route['CO/view_edit_inspection/update-notification'] = 'ChatController/update_notification';
+$route['CO/view_edit_inspection/update-activity'] = 'ChatController/update_activity';
+$route['CO/view_edit_inspection/check-notification'] = 'ChatController/check_notification';
+$route['CO/view_edit_inspection/check-activity'] = 'ChatController/check_activity';
+
+$route['CO/view_edit_officer_record/update-notification'] = 'ChatController/update_notification';
+$route['CO/view_edit_officer_record/update-activity'] = 'ChatController/update_activity';
+$route['CO/view_edit_officer_record/check-notification'] = 'ChatController/check_notification';
+$route['CO/view_edit_officer_record/check-activity'] = 'ChatController/check_activity';
+
+$route['CO/view_edit_personal_record/update-notification'] = 'ChatController/update_notification';
+$route['CO/view_edit_personal_record/update-activity'] = 'ChatController/update_activity';
+$route['CO/view_edit_personal_record/check-notification'] = 'ChatController/check_notification';
+$route['CO/view_edit_personal_record/check-activity'] = 'ChatController/check_activity';
+
+$route['CO/view_edit_biography/update-notification'] = 'ChatController/update_notification';
+$route['CO/view_edit_biography/update-activity'] = 'ChatController/update_activity';
+$route['CO/view_edit_biography/check-notification'] = 'ChatController/check_notification';
+$route['CO/view_edit_biography/check-activity'] = 'ChatController/check_activity';
+
+$route['CO/view_edit_psychologist_report/update-notification'] = 'ChatController/update_notification';
+$route['CO/view_edit_psychologist_report/update-activity'] = 'ChatController/update_activity';
+$route['CO/view_edit_psychologist_report/check-notification'] = 'ChatController/check_notification';
+$route['CO/view_edit_psychologist_report/check-activity'] = 'ChatController/check_activity';
+
+$route['CO/view_edit_qualities/(:any)/update-notification'] = 'ChatController/$1/update_notification';
+$route['CO/view_edit_qualities/(:any)/update-activity'] = 'ChatController/$1/update_activity';
+$route['CO/view_edit_qualities/(:any)/check-notification'] = 'ChatController/$1/check_notification';
+$route['CO/view_edit_qualities/(:any)/check-activity'] = 'ChatController/$1/check_activity';
+
+$route['CO/view_edit_punishment/update-notification'] = 'ChatController/update_notification';
+$route['CO/view_edit_punishment/update-activity'] = 'ChatController/update_activity';
+$route['CO/view_edit_punishment/check-notification'] = 'ChatController/check_notification';
+$route['CO/view_edit_punishment/check-activity'] = 'ChatController/check_activity';
+
+$route['CAO/check-notification'] = 'ChatController/check_notification';
+$route['CAO/check-activity'] = 'ChatController/check_activity';
+
+$route['CAO/add_physical_milestone/update-notification'] = 'ChatController/update_notification';
+$route['CAO/add_physical_milestone/update-activity'] = 'ChatController/update_activity';
+$route['CAO/add_physical_milestone/check-notification'] = 'ChatController/check_notification';
+$route['CAO/add_physical_milestone/check-activity'] = 'ChatController/check_activity';
+
+$route['CAO/view_edit_observation/update-notification'] = 'ChatController/update_notification';
+$route['CAO/view_edit_observation/update-activity'] = 'ChatController/update_activity';
+$route['CAO/view_edit_observation/check-notification'] = 'ChatController/check_notification';
+$route['CAO/view_edit_observation/check-activity'] = 'ChatController/check_activity';
+
+$route['CAO/view_edit_warning/update-notification'] = 'ChatController/update_notification';
+$route['CAO/view_edit_warning/update-activity'] = 'ChatController/update_activity';
+$route['CAO/view_edit_warning/check-notification'] = 'ChatController/check_notification';
+$route['CAO/view_edit_warning/check-activity'] = 'ChatController/check_activity';
+
+$route['CAO/view_edit_inspection/update-notification'] = 'ChatController/update_notification';
+$route['CAO/view_edit_inspection/update-activity'] = 'ChatController/update_activity';
+$route['CAO/view_edit_inspection/check-notification'] = 'ChatController/check_notification';
+$route['CAO/view_edit_inspection/check-activity'] = 'ChatController/check_activity';
+
+$route['CAO/view_edit_officer_record/update-notification'] = 'ChatController/update_notification';
+$route['CAO/view_edit_officer_record/update-activity'] = 'ChatController/update_activity';
+$route['CAO/view_edit_officer_record/check-notification'] = 'ChatController/check_notification';
+$route['CAO/view_edit_officer_record/check-activity'] = 'ChatController/check_activity';
+
+$route['CAO/view_edit_personal_record/update-notification'] = 'ChatController/update_notification';
+$route['CAO/view_edit_personal_record/update-activity'] = 'ChatController/update_activity';
+$route['CAO/view_edit_personal_record/check-notification'] = 'ChatController/check_notification';
+$route['CAO/view_edit_personal_record/check-activity'] = 'ChatController/check_activity';
+
+$route['CAO/view_edit_biography/update-notification'] = 'ChatController/update_notification';
+$route['CAO/view_edit_biography/update-activity'] = 'ChatController/update_activity';
+$route['CAO/view_edit_biography/check-notification'] = 'ChatController/check_notification';
+$route['CAO/view_edit_biography/check-activity'] = 'ChatController/check_activity';
+
+$route['CAO/view_edit_psychologist_report/update-notification'] = 'ChatController/update_notification';
+$route['CAO/view_edit_psychologist_report/update-activity'] = 'ChatController/update_activity';
+$route['CAO/view_edit_psychologist_report/check-notification'] = 'ChatController/check_notification';
+$route['CAO/view_edit_psychologist_report/check-activity'] = 'ChatController/check_activity';
+
+$route['CAO/view_edit_qualities/(:any)/update-notification'] = 'ChatController/$1/update_notification';
+$route['CAO/view_edit_qualities/(:any)/update-activity'] = 'ChatController/$1/update_activity';
+$route['CAO/view_edit_qualities/(:any)/check-notification'] = 'ChatController/$1/check_notification';
+$route['CAO/view_edit_qualities/(:any)/check-activity'] = 'ChatController/$1/check_activity';
+
+$route['CAO/view_edit_punishment/update-notification'] = 'ChatController/update_notification';
+$route['CAO/view_edit_punishment/update-activity'] = 'ChatController/update_activity';
+$route['CAO/view_edit_punishment/check-notification'] = 'ChatController/check_notification';
+$route['CAO/view_edit_punishment/check-activity'] = 'ChatController/check_activity';
+
 
 $route['Admin/update-notification'] = 'ChatController/update_notification';
 $route['Admin/update-activity'] = 'ChatController/update_activity';
