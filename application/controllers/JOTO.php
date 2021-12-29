@@ -1696,6 +1696,16 @@ class JOTO extends CI_Controller
             $recommended_branch = $postData['recommended_branch'];
             $allocated_branch = $postData['allocated_branch'];
 
+            if($this->session->userdata('unit_id') == '1') {
+                $phase = 'Phase-I';
+            } else if($this->session->userdata('unit_id') == '2') {
+                $phase = 'Phase-IV';
+            } else if (($this->session->userdata('unit_id') == 3) || ($this->session->userdata('unit_id') == 17)) {
+                $phase = 'Phase-III';
+            } else {
+                $phase = 'Phase-II';
+            }
+
 
             $insert_array = array(
                 'oc_no' => $oc_no,
@@ -1706,6 +1716,7 @@ class JOTO extends CI_Controller
                 'branch_recommended' => $recommended_branch,
                 'branch_allocated' => $allocated_branch,
                 'do_id' => $this->session->userdata('user_id'),
+                'phase' => $phase,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
 
@@ -2283,9 +2294,7 @@ class JOTO extends CI_Controller
             $this->db->from('punishment_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('f.oc_no = pr.oc_no');
-            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.p_id', $cadet_id);
-            $this->db->where('f.divison_name', $this->session->userdata('division'));
             $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('pr.status', 'Approved');
             $data['punishment_records'] = $this->db->get()->result_array();
@@ -4564,31 +4573,31 @@ class JOTO extends CI_Controller
     }
     public function view_warning_attachment()
     {
-        $this->load->view('DO/add_warning_attachments');
+        $this->load->view('joto/add_warning_attachments');
     }
     public function view_training_report()
     {
-        $this->load->view('DO/Sea_Training_Report');
+        $this->load->view('joto/Sea_Training_Report');
     }
     public function view_general_remarks()
     {
-        $this->load->view('DO/add_general_remarks');
+        $this->load->view('joto/add_general_remarks');
     }
     public function view_progress_chart()
     {
-        $this->load->view('DO/add_progress_chart');
+        $this->load->view('joto/add_progress_chart');
     }
     public function view_distinction_records()
     {
-        $this->load->view('DO/add_distinction_records');
+        $this->load->view('joto/add_distinction_records');
     }
     public function view_seniority_records()
     {
-        $this->load->view('DO/add_seniority_records');
+        $this->load->view('joto/add_seniority_records');
     }
     public function view_record_div_officer()
     {
-        $this->load->view('DO/add_divisonal_officer_record');
+        $this->load->view('joto/add_divisonal_officer_record');
     }
     public function view_promotion_screen()
     {
@@ -4772,7 +4781,7 @@ class JOTO extends CI_Controller
             $_FILES['file']['size']     = $_FILES['psycologist_report']['size'][$i];
 
             $config['upload_path'] = 'uploads/documents';
-            $config['allowed_types']        = 'gif|jpg|png|doc|xls|pdf|xlsx|docx|ppt|pptx|jpeg';
+            $config['allowed_types']        = 'gif|jpg|png|doc|xls|pdf|xlsx|docx|ppt|pptx|jpeg|txt';
 
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
@@ -5045,6 +5054,16 @@ class JOTO extends CI_Controller
                 $action = 'Insert';
             }
 
+            if($this->session->userdata('unit_id') == '1') {
+                $phase = 'Phase-I';
+            } else if($this->session->userdata('unit_id') == '2') {
+                $phase = 'Phase-IV';
+            } else if (($this->session->userdata('unit_id') == 3) || ($this->session->userdata('unit_id') == 17)) {
+                $phase = 'Phase-III';
+            } else {
+                $phase = 'Phase-II';
+            }
+
             if ($action == 'Insert') {
                 $insert_array = array(
                     'p_id' => $p_id,
@@ -5058,6 +5077,7 @@ class JOTO extends CI_Controller
                     'term3_academics' => $academic_t3,
                     'term3_olqs' => $olqs_t3,
                     'term3_aggregate' => $aggregate_t3,
+                    'phase' => $phase,
                     'created_at' => date('Y-m-d H:i:s')
                 );
                 $insert = $this->db->insert('progress_charts', $insert_array);
@@ -5261,12 +5281,23 @@ class JOTO extends CI_Controller
             $extra_activities = $postData['extra_activites'];
             $p_id = $postData['id'];
 
+            if($this->session->userdata('unit_id') == '1') {
+                $phase = 'Phase-I';
+            } else if($this->session->userdata('unit_id') == '2') {
+                $phase = 'Phase-IV';
+            } else if (($this->session->userdata('unit_id') == 3) || ($this->session->userdata('unit_id') == 17)) {
+                $phase = 'Phase-III';
+            } else {
+                $phase = 'Phase-II';
+            }
+
             $insert_array = array(
                 'p_id' => $p_id,
                 'do_id' => $this->session->userdata('user_id'),
                 'academic' => $academic,
                 'sports' => $sports,
                 'extra_curricular_activities' => $extra_activities,
+                'phase' => $phase,
                 'created_at' => date('Y-m-d H:i:s')
             );
 

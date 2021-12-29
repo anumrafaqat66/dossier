@@ -432,6 +432,7 @@ class CT extends CI_Controller
             $this->db->select('or.*, f.*');
             $this->db->from('observation_records or');
             $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
+            $this->db->where('f.unit_id',$this->session->userdata('unit_id'));
             $data['observation_records'] = $this->db->get()->result_array();
             $view_page = $this->load->view('ct/view_observation_list', $data, TRUE);
             echo $view_page;
@@ -488,6 +489,7 @@ class CT extends CI_Controller
                 'updated_at' => date('Y-m-d H:i:s'),
                 'category' => $category,
                 'divison_name' => $div_name,
+                'unit_id' => $this->session->userdata('unit_id'),
                 'term' => $term
 
             );
@@ -1360,6 +1362,7 @@ class CT extends CI_Controller
                 'category' => $category,
                 'divison_name' => $div_name,
                 'term' => $term,
+                'unit_id' => $this->session->userdata('unit_id'),
                 'bahadur' => $country
             );
 
