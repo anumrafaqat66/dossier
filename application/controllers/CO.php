@@ -142,6 +142,18 @@ class CO extends CI_Controller
         echo $data = $this->load->view('co/academy_analytics', $data, TRUE);
     }
 
+    public function get_semester_results_values()
+    {
+        if ($this->input->post()) {
+            $p_id = $_POST['p_id'];
+            $data['gpa'] = $this->db->where('p_id', $p_id)->get('semester_results')->row_array();
+            $data['cadet_data'] = $this->db->where('p_id', $p_id)->get('pn_form1s')->row_array();
+            $view_page = $this->load->view('co/view_semester_result_graph', $data, false);
+            // echo $view_page;
+            json_encode($view_page);
+        }
+    }
+
     public function view_activity_log()
     {
         if ($this->session->has_userdata('user_id')) {
@@ -1726,6 +1738,11 @@ class CO extends CI_Controller
     public function view_result()
     {
         $this->load->view('co/Results');
+    }
+
+    public function view_semester_result()
+    {
+        $this->load->view('co/view_semester_result_graph', false);
     }
 
     public function save_cadet_result($result_type = NULL)

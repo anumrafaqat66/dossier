@@ -4481,6 +4481,10 @@ class D_O extends CI_Controller
     {
         $this->load->view('do/Results');
     }
+    public function view_semester_result()
+    {
+        $this->load->view('do/add_semester_result');
+    }
     public function view_warning_attachment()
     {
         $this->load->view('DO/add_warning_attachments');
@@ -5037,6 +5041,160 @@ class D_O extends CI_Controller
         }
     }
 
+
+    public function save_cadet_semester_result()
+    {
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+            $term = $postData['term'];
+            $p_id = $postData['id'];
+            $unit_id = $postData['unit_id'];
+
+            $gpa_t1 = (float)$postData['gpa_t1'];
+            $gpa_t2 = (float)$postData['gpa_t2'];
+            $gpa_t3 = (float)$postData['gpa_t3'];
+            $gpa_t4 = (float)$postData['gpa_t4'];
+            $gpa_t5 = (float)$postData['gpa_t5'];
+            $gpa_t6 = (float)$postData['gpa_t6'];
+            $gpa_t7 = (float)$postData['gpa_t7'];
+            $gpa_t8 = (float)$postData['gpa_t8'];
+
+            $denominator_count = 8;
+
+            if (!isset($gpa_t1) || is_null($gpa_t1) || $gpa_t1 == 0.00) {
+                $gpa_t1 = 0.00;
+                $denominator_count--;
+            }
+            if (!isset($gpa_t2) || is_null($gpa_t2) || $gpa_t2 == 0.00) {
+                $gpa_t2 = 0.00;
+                $denominator_count--;
+            }
+            
+            if (!isset($gpa_t3) || is_null($gpa_t3) || $gpa_t3 == 0.00) {
+                $gpa_t3 = 0.00;
+                $denominator_count--;
+            }
+            if (!isset($gpa_t4) || is_null($gpa_t4) || $gpa_t4 == 0.00) {
+                $gpa_t4 = 0.00;
+                $denominator_count--;
+            }
+            if (!isset($gpa_t5) || is_null($gpa_t5) || $gpa_t5 == 0.00) {
+                $gpa_t5 = 0.00;
+                $denominator_count--;
+            }
+            if (!isset($gpa_t6) || is_null($gpa_t6) || $gpa_t6 == 0.00) {
+                $gpa_t6 = 0.00;
+                $denominator_count--;
+            }
+            if (!isset($gpa_t7) || is_null($gpa_t7) || $gpa_t7 == 0.00) {
+                $gpa_t7 = 0.00;
+                $denominator_count--;
+            }
+            if (!isset($gpa_t8) || is_null($gpa_t8) || $gpa_t8 == 0.00) {
+                $gpa_t8 = 0.00;
+                $denominator_count--;
+            }
+
+            if($denominator_count == 0) {
+                $denominator_count = 1;
+            } 
+
+            $cgpa = ($gpa_t1 + $gpa_t2 + $gpa_t3 + $gpa_t4 + $gpa_t5 + $gpa_t6 + $gpa_t7 + $gpa_t8) / $denominator_count; 
+
+            $count = $this->db->select('count(*) as row_count')->where('p_id', $p_id)->get('semester_results')->row_array();
+
+            if ($count['row_count'] > 0) {
+                $action = 'Update';
+            } else {
+                $action = 'Insert';
+            }
+
+            if($this->session->userdata('unit_id') == '1') {
+                $phase = 'Phase-I';
+            } else if($this->session->userdata('unit_id') == '2') {
+                $phase = 'Phase-IV';
+            } else if (($this->session->userdata('unit_id') == 3) || ($this->session->userdata('unit_id') == 17)) {
+                $phase = 'Phase-III';
+            } else {
+                $phase = 'Phase-II';
+            }
+
+            if ($action == 'Insert') {
+                $insert_array = array(
+                    'p_id' => $p_id,
+                    'user_id' => $this->session->userdata('user_id'),
+                    'unit_id' => $unit_id,
+                    'gpa_t2' => $gpa_t1,
+                    'gpa_t1' => $gpa_t2,
+                    'gpa_t3' => $gpa_t3,
+                    'gpa_t4' => $gpa_t4,
+                    'gpa_t5' => $gpa_t5,
+                    'gpa_t6' => $gpa_t6,
+                    'gpa_t7' => $gpa_t7,
+                    'gpa_t8' => $gpa_t8,
+                    'cgpa' => $cgpa,
+                    'phase' => $phase,
+                    'created_at' => date('Y-m-d H:i:s')
+                );
+                $insert = $this->db->insert('semester_results', $insert_array);
+            } elseif ($action == 'Update') {
+                $update_array = array(
+                    'user_id' => $this->session->userdata('user_id'),
+                    'unit_id' => $unit_id,
+                    'gpa_t2' => $gpa_t1,
+                    'gpa_t1' => $gpa_t2,
+                    'gpa_t3' => $gpa_t3,
+                    'gpa_t4' => $gpa_t4,
+                    'gpa_t5' => $gpa_t5,
+                    'gpa_t6' => $gpa_t6,
+                    'gpa_t7' => $gpa_t7,
+                    'gpa_t8' => $gpa_t8,
+                    'cgpa' => $cgpa,
+                    'created_at' => date('Y-m-d H:i:s')
+                );
+
+                $cond  = ['p_id' => $p_id];
+                $this->db->where($cond);
+                $update = $this->db->update('semester_results', $update_array);
+            }
+        }
+
+        if (!empty($update) || !empty($insert)) {
+
+            $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array();
+
+            $insert_activity = array(
+                'activity_module' => $this->session->userdata('acct_type'),
+                'activity_action' => 'add',
+                'activity_detail' => "Semester Results added for cadet " . $cadet_name['name'],
+                'activity_by' => $this->session->userdata('username'),
+                'activity_date' => date('Y-m-d H:i:s')
+            );
+
+            $insert_act = $this->db->insert('activity_log', $insert_activity);
+            $last_id = $this->db->insert_id();
+
+            $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+            for ($i = 0; $i < count($query); $i++) {
+                $insert_activity_seen = array(
+                    'activity_id' => $last_id,
+                    'user_id' => $query[$i]['id'],
+                    'seen' => 'no'
+                );
+                $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+            }
+        }
+
+        if (!empty($insert) || !empty($update)) {
+            $this->session->set_flashdata('success', 'Data Submitted successfully');
+            redirect('D_O/view_semester_result');
+        } else {
+            $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+            redirect('D_O/view_semester_result');
+        }
+    }
+
     public function save_cadet_seniority_record()
     {
         if ($this->input->post()) {
@@ -5233,6 +5391,15 @@ class D_O extends CI_Controller
         if ($this->input->post()) {
             $p_id = $_POST['p_id'];
             $query = $this->db->where('p_id', $p_id)->get('progress_charts')->row_array();
+            echo json_encode($query);
+        }
+    }
+
+    public function get_semester_results_values()
+    {
+        if ($this->input->post()) {
+            $p_id = $_POST['p_id'];
+            $query = $this->db->where('p_id', $p_id)->get('semester_results')->row_array();
             echo json_encode($query);
         }
     }

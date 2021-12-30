@@ -159,7 +159,7 @@
                 </a>
                 <div id="collapse_academic" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?= base_url(); ?>D_O/view_result">Results (Terms I - III)</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>D_O/view_semester_result">Results (Terms I - III)</a>
                         <a class="collapse-item" href="<?= base_url(); ?>D_O/view_training_report">Sea Training Report Term II</a>
                     </div>
                 </div>
