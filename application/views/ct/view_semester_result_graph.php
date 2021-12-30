@@ -1,28 +1,14 @@
-<?php if ($this->session->userdata('acct_type') == 'do') {
-    $this->load->view('do/common/header');
-} else if ($this->session->userdata('acct_type') == 'joto') {
-    $this->load->view('joto/common/header');
-} else if ($this->session->userdata('acct_type') == 'exo') {
-    $this->load->view('exo/common/header');
-} else if ($this->session->userdata('acct_type') == 'co') {
-    $this->load->view('co/common/header');
-} else if ($this->session->userdata('acct_type') == 'ct') {
-    $this->load->view('ct/common/header');
-} else if ($this->session->userdata('acct_type') == 'sqc') {
-    $this->load->view('sqc/common/header');
-} else if ($this->session->userdata('acct_type') == 'cao') {
-    $this->load->view('cao/common/header');
-} else if ($this->session->userdata('acct_type') == 'cao_sec') {
-    $this->load->view('cao_sec/common/header');
-} else if ($this->session->userdata('acct_type') == 'smo') {
-    $this->load->view('smo/common/header');
-} else if ($this->session->userdata('acct_type') == 'ctmwt') {
-    $this->load->view('ctmwt/common/header');
-} else if ($this->session->userdata('acct_type') == 'dean') {
-    $this->load->view('dean/common/header');
-} else if ($this->session->userdata('acct_type') == 'hougp') {
-    $this->load->view('hougp/common/header');
-} ?>
+<?php $this->load->view('ct/common/header'); ?>
+<?php !isset($gpa['gpa_t1']) ? $gpa['gpa_t1'] = 0 : $gpa['gpa_t1']; ?>
+<?php !isset($gpa['gpa_t2']) ? $gpa['gpa_t2'] = 0 : $gpa['gpa_t2']; ?>
+<?php !isset($gpa['gpa_t3']) ? $gpa['gpa_t3'] = 0 : $gpa['gpa_t3']; ?>
+<?php !isset($gpa['gpa_t4']) ? $gpa['gpa_t4'] = 0 : $gpa['gpa_t4']; ?>
+<?php !isset($gpa['gpa_t5']) ? $gpa['gpa_t5'] = 0 : $gpa['gpa_t5']; ?>
+<?php !isset($gpa['gpa_t6']) ? $gpa['gpa_t6'] = 0 : $gpa['gpa_t6']; ?>
+<?php !isset($gpa['gpa_t7']) ? $gpa['gpa_t7'] = 0 : $gpa['gpa_t7']; ?>
+<?php !isset($gpa['gpa_t8']) ? $gpa['gpa_t8'] = 0 : $gpa['gpa_t8']; ?>
+
+
 <style>
     .red-border {
         border: 1px solid red !important;
@@ -48,7 +34,12 @@
             <img src='<?= base_url() ?>assets/img/navy_logo-new.png' style="height: 130px; width:100px;">
         </div>
         <div class="col-lg-11">
-            <h1 style="text-align:center; padding:40px"><strong>ADD RESULTS</strong></h1>
+            <h1 style="text-align:center; padding:40px"><strong>SEMESTER RESULTS (GRAPH)</strong></h1>
+        </div>
+
+        <div class="row" style="height:20px">
+            <input type="text" class="form-control form-control-user" name="cadet_name" id="cadet_name" value="<?php if(isset($cadet_data['name'])) { echo $cadet_data['name']; }; ?>" style="display:none">
+            <input type="text" class="form-control form-control-user" name="cadet_term" id="cadet_term" value="<?php if(isset($cadet_data['term'])) { echo $cadet_data['term']; }; ?>" style="display:none">
         </div>
 
     </div>
@@ -101,7 +92,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>JOTO/save_cadet_result/Result">
+                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>CT/save_cadet_result/Result">
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Officer Name:</h6>
@@ -136,32 +127,12 @@
                                 </div>
 
                             </div>
-                         
-                            <div class="form-group row">
-                                <div class="col-sm-12">
-                                    <h6>&nbsp;Upload Document:</h6>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-1">
-                                    <input type="file" style="height: 50px; padding:10px !important;" multiple="multiple" class="form-control form-control-user" placeholder="Upload Document" name="file[]" id="result_file" x-model="fileName">
-                                </div>
-                            </div>
 
-                            <div class="form-group row justify-content-center">
-                                <div class="col-sm-4">
-                                    <button type="button" class="btn btn-primary btn-user btn-block" id="save_btn">
-                                        <!-- <i class="fab fa-google fa-fw"></i>   -->
-                                        save
-                                    </button>
-                                    <span id="show_error_save" style="font-size:10px; color:red; display:none">&nbsp;&nbsp;Please check errors*</span>
-                                </div>
-                            </div>
+
 
                         </form>
                     </div>
                 </div>
-
 
             </div>
         </div>
@@ -175,12 +146,73 @@
         </div>
     </div>
 
+    <div class="card-body bg-custom3" id="overall_graph" style="display:none">
+        <div class="form-group row" style="margin-top:50px;">
+            <div class="col-sm-12">
+                <div id="chartContainer2" style="height: 370px; width: 100%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <?php
+
+    $dataPoints1 = array(
+        array("label" => "Term-I", "y" => ($gpa['gpa_t1'])),
+        array("label" => "Term-II", "y" => ($gpa['gpa_t2'])),
+        array("label" => "Term-III", "y" => ($gpa['gpa_t3'])),
+        array("label" => "Term-IV", "y" => ($gpa['gpa_t4'])),
+        array("label" => "Term-V", "y" => ($gpa['gpa_t5'])),
+        array("label" => "Term-VI", "y" => ($gpa['gpa_t6'])),
+        array("label" => "Term-VII", "y" => ($gpa['gpa_t7'])),
+        array("label" => "Term-VIII", "y" => ($gpa['gpa_t8'])),
+    );
+    ?>
+
 </div>
 
 </div>
 
 <?php $this->load->view('common/footer'); ?>
 <script>
+    window.onload = function() {
+
+        var cadet_name = $('#cadet_name').val();
+        var cadet_term = $('#cadet_term').val();
+
+        CanvasJS.addColorSet("blueShades",
+                ["rgb(0, 1, 84)"]);
+
+        var chart1 = new CanvasJS.Chart("chartContainer2", {
+            animationEnabled: true,
+            theme: "light2", // "light1", "light2", "dark1", "dark2"
+            colorSet: "blueShades",
+            title: {
+                text: "Cadet Name: " + cadet_name + " Term: " + cadet_term,
+                fontColor: 'rgb(0, 1, 84)',
+                horizontalAlign: "center"
+
+            },
+            subtitles: [{
+                text: "GPA Termwise"
+            }],
+            axisY: {
+                title: "GPA",
+                maximum: 4,
+                color:'blue'
+            },
+            data: [{
+                type: "area",
+                showInLegend: true,
+                legendMarkerColor: "black",
+                legendText: "GPA (x-axis)",
+                dataPoints: <?php echo json_encode($dataPoints1, JSON_NUMERIC_CHECK); ?>
+            }]
+        });
+        chart1.render();
+        // $('#overall_graph').show();
+    }
+
+
     function seen(data) {
         // alert('in');
         // alert(data);
@@ -224,7 +256,7 @@
             $('#show_error_new').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>JOTO/search_cadet',
+                url: '<?= base_url(); ?>CT/search_cadet',
                 method: 'POST',
                 data: {
                     'oc_no': oc_no
@@ -248,8 +280,29 @@
                     }
 
                 },
-                async: true
+                async: false
             });
+
+
+            if ($('#officer_name').val() != null) {
+                // alert($('#id').val());
+                $.ajax({
+                    url: '<?= base_url(); ?>CT/get_semester_results_values',
+                    method: 'POST',
+                    data: {
+                        'p_id': $('#id').val()
+                    },
+                    success: function(data) {
+                        var newDoc = document.open("text/html", "replace");
+                        newDoc.write(data);
+                        newDoc.close();
+                    },
+                    async: false
+                });
+
+                $('#overall_graph').show();
+            }
+
         } else {
             $('#add_btn').removeAttr('disabled');
             $('#show_error_new').show();

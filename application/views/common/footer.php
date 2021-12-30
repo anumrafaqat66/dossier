@@ -74,9 +74,9 @@
 
 
             <!-- canvasjs links-->
-            <script src="<?php echo base_url(); ?>assets/js/canvasjs.min"></script>
-            <script src="<?php echo base_url(); ?>assets/js/canvasjs.react"></script>
-            <script src="<?php echo base_url(); ?>assets/js/jquery.canvasjs.min"></script>
+            <script src="<?php echo base_url(); ?>assets/js/canvasjs.min.js"></script>
+            <script src="<?php echo base_url(); ?>assets/js/canvasjs.react.js"></script>
+            <script src="<?php echo base_url(); ?>assets/js/jquery.canvasjs.min.js"></script>
             <script src="<?php echo base_url(); ?>assets/js/canvasjs.min.js"></script>
 
             <!-- Bootstrap core JavaScript-->

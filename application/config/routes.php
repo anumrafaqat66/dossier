@@ -181,6 +181,8 @@ $route['JOTO/view_edit_punishment/check-activity'] = 'ChatController/check_activ
 
 $route['EXO/check-notification'] = 'ChatController/check_notification';
 $route['EXO/check-activity'] = 'ChatController/check_activity';
+$route['EXO/update-notification'] = 'ChatController/update_notification';
+$route['EXO/update-activity'] = 'ChatController/update_activity';
 
 $route['EXO/add_physical_milestone/update-notification'] = 'ChatController/update_notification';
 $route['EXO/add_physical_milestone/update-activity'] = 'ChatController/update_activity';
@@ -234,6 +236,8 @@ $route['EXO/view_edit_punishment/check-activity'] = 'ChatController/check_activi
 
 $route['DEAN/check-notification'] = 'ChatController/check_notification';
 $route['DEAN/check-activity'] = 'ChatController/check_activity';
+$route['DEAN/update-notification'] = 'ChatController/update_notification';
+$route['DEAN/update-activity'] = 'ChatController/update_activity';
 
 $route['DEAN/add_physical_milestone/update-notification'] = 'ChatController/update_notification';
 $route['DEAN/add_physical_milestone/update-activity'] = 'ChatController/update_activity';
@@ -287,6 +291,8 @@ $route['DEAN/view_edit_punishment/check-activity'] = 'ChatController/check_activ
 
 $route['HOUGP/check-notification'] = 'ChatController/check_notification';
 $route['HOUGP/check-activity'] = 'ChatController/check_activity';
+$route['HOUGP/update-notification'] = 'ChatController/update_notification';
+$route['HOUGP/update-activity'] = 'ChatController/update_activity';
 
 $route['HOUGP/add_physical_milestone/update-notification'] = 'ChatController/update_notification';
 $route['HOUGP/add_physical_milestone/update-activity'] = 'ChatController/update_activity';
@@ -340,6 +346,8 @@ $route['HOUGP/view_edit_punishment/check-activity'] = 'ChatController/check_acti
 
 $route['CTMWT/check-notification'] = 'ChatController/check_notification';
 $route['CTMWT/check-activity'] = 'ChatController/check_activity';
+$route['CTMWT/update-notification'] = 'ChatController/update_notification';
+$route['CTMWT/update-activity'] = 'ChatController/update_activity';
 
 $route['CTMWT/add_physical_milestone/update-notification'] = 'ChatController/update_notification';
 $route['CTMWT/add_physical_milestone/update-activity'] = 'ChatController/update_activity';
@@ -393,6 +401,8 @@ $route['CTMWT/view_edit_punishment/check-activity'] = 'ChatController/check_acti
 
 $route['CT/check-notification'] = 'ChatController/check_notification';
 $route['CT/check-activity'] = 'ChatController/check_activity';
+$route['CT/update-notification'] = 'ChatController/update_notification';
+$route['CT/update-activity'] = 'ChatController/update_activity';
 
 $route['CT/add_physical_milestone/update-notification'] = 'ChatController/update_notification';
 $route['CT/add_physical_milestone/update-activity'] = 'ChatController/update_activity';
@@ -444,8 +454,15 @@ $route['CT/view_edit_punishment/update-activity'] = 'ChatController/update_activ
 $route['CT/view_edit_punishment/check-notification'] = 'ChatController/check_notification';
 $route['CT/view_edit_punishment/check-activity'] = 'ChatController/check_activity';
 
+$route['CT/view_result/update-notification'] = 'ChatController/update_notification';
+$route['CT/view_result/update-activity'] = 'ChatController/update_activity';
+$route['CT/view_result/check-notification'] = 'ChatController/check_notification';
+$route['CT/view_result/check-activity'] = 'ChatController/check_activity';
+
 $route['CO/check-notification'] = 'ChatController/check_notification';
 $route['CO/check-activity'] = 'ChatController/check_activity';
+$route['CO/update-notification'] = 'ChatController/update_notification';
+$route['CO/update-activity'] = 'ChatController/update_activity';
 
 $route['CO/add_physical_milestone/update-notification'] = 'ChatController/update_notification';
 $route['CO/add_physical_milestone/update-activity'] = 'ChatController/update_activity';

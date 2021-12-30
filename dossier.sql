@@ -1233,6 +1233,30 @@ CREATE TABLE `progress_charts` (
   `joto_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+
+--
+-- Table structure for table `semester_results`
+--
+
+CREATE TABLE `semester_results` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `p_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `unit_id` int(11) NOT NULL,
+  `gpa_t1` decimal(10,2) DEFAULT 0.00,
+  `gpa_t2` decimal(10,2) DEFAULT 0.00,
+  `gpa_t3` decimal(10,2) DEFAULT 0.00,
+  `gpa_t4` decimal(10,2) DEFAULT 0.00,
+  `gpa_t5` decimal(10,2) DEFAULT 0.00,
+  `gpa_t6` decimal(10,2) DEFAULT 0.00,
+  `gpa_t7` decimal(10,2) DEFAULT 0.00,
+  `gpa_t8` decimal(10,2) DEFAULT 0.00,
+  `cgpa` decimal(10,2) DEFAULT 0.00,
+  `phase` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 --
 -- Dumping data for table `progress_charts`
 --
@@ -2197,6 +2221,12 @@ ALTER TABLE `progress_charts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `semester_results`
+--
+ALTER TABLE `semester_results`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `progress_chart_phase3s`
 --
 ALTER TABLE `progress_chart_phase3s`
@@ -2518,6 +2548,12 @@ ALTER TABLE `pn_form1s`
 -- AUTO_INCREMENT for table `progress_charts`
 --
 ALTER TABLE `progress_charts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `semester_results`
+--
+ALTER TABLE `semester_results`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
