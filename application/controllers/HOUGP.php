@@ -1819,7 +1819,7 @@ class HOUGP extends CI_Controller
             $curr_term = $_POST['curr_term'];
             $action = $_POST['action'];
             $all = $_POST['all'];
-            
+            $branch_id ='';
             $next_term = '';
             $unit_id = $this->session->userdata('unit_id'); 
 
@@ -2228,7 +2228,7 @@ class HOUGP extends CI_Controller
             $data['units'] = $this->db->where('id', '2')->or_where('id', '3')->or_where('id', '4')->or_where('id', '17')->get('navy_units')->result_array();
             $data['ships'] = $this->db->where('id', '6')->or_where('id', '7')->or_where('id', '8')->or_where('id', '9')->or_where('id', '10')->or_where('id', '11')->or_where('id', '12')->or_where('id', '13')->or_where('id', '14')->or_where('id', '15')->or_where('id', '16')->get('navy_units')->result_array();
             $data['branches'] = $this->db->get('branch_preference_list')->result_array();
-            $view_page = $this->load->view('joto/term_promotion', $data, TRUE);
+            $view_page = $this->load->view('hougp/term_promotion', $data, TRUE);
             echo $view_page;
             json_encode($view_page);
         }
@@ -2628,7 +2628,7 @@ class HOUGP extends CI_Controller
             $data['oc_no_entered'] = $oc_no;
 
             if (count($data['pn_data']) > 0) {
-                $view_page = $this->load->view('joto/view_dossier', $data, TRUE);
+                $view_page = $this->load->view('hougp/view_dossier', $data, TRUE);
                 echo $view_page;
                 json_encode($view_page);
             } else {
@@ -4449,31 +4449,31 @@ class HOUGP extends CI_Controller
     }
     public function view_warning_attachment()
     {
-        $this->load->view('DO/add_warning_attachments');
+        $this->load->view('hougp/add_warning_attachments');
     }
     public function view_training_report()
     {
-        $this->load->view('DO/Sea_Training_Report');
+        $this->load->view('hougp/Sea_Training_Report');
     }
     public function view_general_remarks()
     {
-        $this->load->view('DO/add_general_remarks');
+        $this->load->view('hougp/add_general_remarks');
     }
     public function view_progress_chart()
     {
-        $this->load->view('DO/add_progress_chart');
+        $this->load->view('hougp/add_progress_chart');
     }
     public function view_distinction_records()
     {
-        $this->load->view('DO/add_distinction_records');
+        $this->load->view('hougp/add_distinction_records');
     }
     public function view_seniority_records()
     {
-        $this->load->view('DO/add_seniority_records');
+        $this->load->view('hougp/add_seniority_records');
     }
     public function view_record_div_officer()
     {
-        $this->load->view('DO/add_divisonal_officer_record');
+        $this->load->view('hougp/add_divisonal_officer_record');
     }
     public function view_promotion_screen()
     {
