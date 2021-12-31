@@ -102,7 +102,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-12 mb-1">
-                                <textarea class="form-control form-control-user" name="observation_1" id="observation_1" style="border-radius:10px" placeholder="Edit Observation"><?= $edit_records['observation'] ?></textarea>
+                                <textarea class="form-control form-control-user" name="observation" id="observation_1" style="border-radius:10px" placeholder="Edit Observation"><?= $edit_records['observation'] ?></textarea>
                             </div>
                         </div>
 

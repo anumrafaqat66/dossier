@@ -3137,6 +3137,24 @@ class CO extends CI_Controller
         }
     }
 
+    public function edit_observation_data()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $row_id = $_POST['id'];
+            //echo $cadet_id;exit;
+            $this->db->select('pr.*, f.*');
+            $this->db->from('observation_records pr');
+            $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
+            // $this->db->where('f.oc_no = pr.oc_no');
+            // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
+            $this->db->where('pr.id', $row_id);
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
+            // $this->db->where('pr.status', 'Approved');
+            $data['edit_record'] = $this->db->get()->row_array();
+            //print_r($data['edit_record']);exit;
+            echo json_encode($data['edit_record']);
+        }
+    }
     public function view_edit_observation($row_id = null)
     {
 

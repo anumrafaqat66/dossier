@@ -101,14 +101,14 @@
 
             </li>
 
-            <li class="nav-item">
+         <!--    <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url(); ?>DEAN/view_dossier" aria-expanded="true">
                     <i class="fas fa-th-list"></i>
-                    <span> Division Analytics </span>
+                    <span> Division Analytics </span> -->
                     <!-- <span>Components</span> -->
-                </a>
+              <!--   </a>
 
-            </li>
+            </li> -->
 
             <!-- Divider -->
             <hr class="sidebar-divider">

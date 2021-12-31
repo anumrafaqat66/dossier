@@ -215,7 +215,7 @@
                                                 <?php } else { ?>
                                                     <td></td>
                                                 <?php } ?>
-                                                <td type="button" id="edit<?= $data['id']; ?>" class="edit" scope="row" data-toggle="modal" data-target="#edit_observation" onclick="edit_observation(<?= $data['p_id'] ?>)"><i style="" class="fas fa-edit"></i></td>
+                                                <td type="button" id="edit<?= $data['id']; ?>" class="edit" scope="row" data-toggle="modal" data-target="#edit_observation" onclick="edit_observation(<?= $data['id'] ?>)"><i style="" class="fas fa-edit"></i></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>

@@ -1820,7 +1820,7 @@ class DEAN extends CI_Controller
             $curr_term = $_POST['curr_term'];
             $action = $_POST['action'];
             $all = $_POST['all'];
-
+            $branch_id ='';
             $next_term = '';
             $unit_id = $this->session->userdata('unit_id');
 
@@ -1964,6 +1964,8 @@ class DEAN extends CI_Controller
                     } else {
                         $act_desc =  "Cadet " . $cadet_name['name'] . " has been Promoted";
                     }
+
+                    
                 }
 
                 $insert_activity = array(
@@ -2323,15 +2325,15 @@ class DEAN extends CI_Controller
 
     public function edit_observation_data()
     {
-        if ($this->session->has_userdata('user_id')) {
-            $cadet_id = $_POST['id'];
+            if ($this->session->has_userdata('user_id')) {
+            $row_id = $_POST['id'];
             //echo $cadet_id;exit;
             $this->db->select('pr.*, f.*');
             $this->db->from('observation_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('f.oc_no = pr.oc_no');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.p_id', $cadet_id);
+            $this->db->where('pr.id', $row_id);
             $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             // $this->db->where('pr.status', 'Approved');
             $data['edit_record'] = $this->db->get()->row_array();
@@ -3207,6 +3209,9 @@ class DEAN extends CI_Controller
                 } elseif ($postData['pagee'] == 'view_dossier_folder') {
                     $this->session->set_flashdata('success', 'Data Updated successfully');
                     redirect('DEAN/view_dossier_folder');
+                }  elseif ($postData['pagee'] == 'daily_module') {
+                    $this->session->set_flashdata('success', 'Data Submitted successfully');
+                    redirect('DEAN/daily_module');
                 } else {
                     $this->session->set_flashdata('success', 'Data Submitted successfully');
                     redirect('DEAN/add_physical_milestone');
@@ -4346,31 +4351,31 @@ class DEAN extends CI_Controller
     }
     public function view_warning_attachment()
     {
-        $this->load->view('DO/add_warning_attachments');
+        $this->load->view('dean/add_warning_attachments');
     }
     public function view_training_report()
     {
-        $this->load->view('DO/Sea_Training_Report');
+        $this->load->view('dean/Sea_Training_Report');
     }
     public function view_general_remarks()
     {
-        $this->load->view('DO/add_general_remarks');
+        $this->load->view('dean/add_general_remarks');
     }
     public function view_progress_chart()
     {
-        $this->load->view('DO/add_progress_chart');
+        $this->load->view('dean/add_progress_chart');
     }
     public function view_distinction_records()
     {
-        $this->load->view('DO/add_distinction_records');
+        $this->load->view('dean/add_distinction_records');
     }
     public function view_seniority_records()
     {
-        $this->load->view('DO/add_seniority_records');
+        $this->load->view('dean/add_seniority_records');
     }
     public function view_record_div_officer()
     {
-        $this->load->view('DO/add_divisonal_officer_record');
+        $this->load->view('dean/add_divisonal_officer_record');
     }
     public function view_promotion_screen()
     {

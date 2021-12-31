@@ -93,7 +93,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url(); ?>HOUGP/view_dossier_folder" aria-expanded="true">
+                <a class="nav-link" href="<?php echo base_url(); ?>EXO/view_dossier_folder" aria-expanded="true">
                     <i class="far fa-newspaper"></i>
                     <span> View Dossiers </span>
                     <!-- <span>Components</span> -->
@@ -101,14 +101,14 @@
 
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url(); ?>HOUGP/view_dossier" aria-expanded="true">
+        <!--     <li class="nav-item"> -->
+         <!--        <a class="nav-link" href="<?php echo base_url(); ?>EXO/view_dossier" aria-expanded="true">
                     <i class="fas fa-th-list"></i>
-                    <span> Division Analytics </span>
+                    <span> Division Analytics </span> -->
                     <!-- <span>Components</span> -->
-                </a>
+            <!--     </a>
 
-            </li>
+            </li> -->
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -126,28 +126,28 @@
                 </a>
                 <div id="collapse_general" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url(); ?>HOUGP/add_club">Add Club</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>HOUGP/Inspection_record">Inspection Record</a>
-                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>HOUGP/personal_data">Personal Data</a> -->
-                        <a class="collapse-item" href="<?php echo base_url(); ?>HOUGP/auto_biography">Cadet's Auto-biography</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>HOUGP/psychologist_report">Psychologist's Report</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>HOUGP/view_record_div_officer">Divisional Officer Record</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>EXO/add_club">Add Club</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>EXO/Inspection_record">Inspection Record</a>
+                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>EXO/personal_data">Personal Data</a> -->
+                        <a class="collapse-item" href="<?php echo base_url(); ?>EXO/auto_biography">Cadet's Auto-biography</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>EXO/psychologist_report">Psychologist's Report</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>EXO/view_record_div_officer">Divisional Officer Record</a>
                     </div>
                 </div>
             </li>
             <li class="nav-item">
                 <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_discipline" aria-expanded="true"> -->
-                <a class="nav-link collapsed" href="<?php echo base_url(); ?>HOUGP/daily_module" aria-expanded="true">
+                <a class="nav-link collapsed" href="<?php echo base_url(); ?>EXO/daily_module" aria-expanded="true">
                     <i class="fas fa-running"></i>
                     <span> Daily Module</span>
                     <!-- <span>Components</span> -->
                 </a>
                 <!-- <div id="collapse_discipline" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url(); ?>HOUGP/daily_module">Daily Module</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>HOUGP/add_observation">Observation Record</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>HOUGP/add_punishment">Punishment Record</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>HOUGP/add_observation_slip">Observation Slips</a> 
+                        <a class="collapse-item" href="<?php echo base_url(); ?>EXO/daily_module">Daily Module</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>EXO/add_observation">Observation Record</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>EXO/add_punishment">Punishment Record</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>EXO/add_observation_slip">Observation Slips</a> 
                     </div>
                 </div> -->
             </li>
@@ -159,8 +159,8 @@
                 </a>
                 <div id="collapse_warning" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url(); ?>HOUGP/add_warning">Add Warning</a>
-                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>HOUGP/view_warning_attachment">Add Warning Attachment</a> -->
+                        <a class="collapse-item" href="<?php echo base_url(); ?>EXO/add_warning">Add Warning</a>
+                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>EXO/view_warning_attachment">Add Warning Attachment</a> -->
                         <!-- <a class="collapse-item" href="#">Record Attachments</a> -->
                     </div>
                 </div>
@@ -173,8 +173,8 @@
                 </a>
                 <div id="collapse_academic" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?= base_url(); ?>HOUGP/view_result">Results (Terms I - III)</a>
-                        <a class="collapse-item" href="<?= base_url(); ?>HOUGP/view_training_report">Sea Training Report Term II</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>EXO/view_result">Results (Terms I - III)</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>EXO/view_training_report">Sea Training Report Term II</a>
                     </div>
                 </div>
             </li>
@@ -186,31 +186,31 @@
                 </a>
                 <div id="collapse_assesment" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?= base_url(); ?>HOUGP/view_general_remarks">General Remarks</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>EXO/view_general_remarks">General Remarks</a>
                         <!-- <a class="collapse-item" href="#">Performance Report</a> -->
-                        <a class="collapse-item" href="<?= base_url(); ?>HOUGP/view_progress_chart">Progress Chart</a>
-                        <a class="collapse-item" href="<?= base_url(); ?>HOUGP/view_distinction_records">Distictions</a>
-                        <a class="collapse-item" href="<?= base_url(); ?>HOUGP/view_seniority_records">Seniority</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>HOUGP/add_branch_allocation">Branch Allocation</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>EXO/view_progress_chart">Progress Chart</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>EXO/view_distinction_records">Distictions</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>EXO/view_seniority_records">Seniority</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>EXO/add_branch_allocation">Branch Allocation</a>
                         <a class="collapse-item" href="#">Degree Complete</a>
                     </div>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url(); ?>HOUGP/add_officer_qualities" aria-expanded="true">
+                <a class="nav-link" href="<?php echo base_url(); ?>EXO/add_officer_qualities" aria-expanded="true">
                     <i class="fas fa-medal"></i>
                     <span> Officer Like Qualities</span>
                 </a>
 
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url(); ?>HOUGP/view_promotion_screen" aria-expanded="true">
+                <a class="nav-link" href="<?php echo base_url(); ?>EXO/view_promotion_screen" aria-expanded="true">
                     <i class="fas fa-award"></i>
                     <span> Promotion/Relegation</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo base_url(); ?>HOUGP/view_activity_log" aria-expanded="true">
+                <a class="nav-link collapsed" href="<?php echo base_url(); ?>EXO/view_activity_log" aria-expanded="true">
                     <i class="far fa-list-alt"></i>
                     <span> View Activity Log </span>
                 </a>

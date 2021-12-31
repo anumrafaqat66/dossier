@@ -408,7 +408,7 @@
             $('#show_error_new').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>JOTO/search_cadet',
+                url: '<?= base_url(); ?>EXO/search_cadet',
                 method: 'POST',
                 data: {
                     'oc_no': oc_no
@@ -499,7 +499,7 @@
         if (validate == 0) {
             $('#show_error_select_unit_all').hide();
             $.ajax({
-                url: '<?= base_url(); ?>JOTO/update_cadet_term',
+                url: '<?= base_url(); ?>EXO/update_cadet_term',
                 method: 'POST',
                 data: {
                     'p_id': p_id,
@@ -524,7 +524,7 @@
         var curr_term = $('#term').val();
 
         $.ajax({
-            url: '<?= base_url(); ?>JOTO/update_cadet_term',
+            url: '<?= base_url(); ?>EXO/update_cadet_term',
             method: 'POST',
             data: {
                 'p_id': p_id,
@@ -547,7 +547,7 @@
         var semester = $('#show_semester_list').val();
 
         $.ajax({
-            url: '<?= base_url(); ?>JOTO/update_cadet_term',
+            url: '<?= base_url(); ?>EXO/update_cadet_term',
             method: 'POST',
             data: {
                 'p_id': 0,
@@ -598,7 +598,7 @@
             $('#show_error_select_unit_all').hide();
             $('#show_error_select_ship_all').hide();
             $.ajax({
-                url: '<?= base_url(); ?>JOTO/update_cadet_to_midshipman',
+                url: '<?= base_url(); ?>EXO/update_cadet_to_midshipman',
                 method: 'POST',
                 data: {
                     'p_id': 0,
@@ -648,7 +648,7 @@
             // $('#show_error_select_unit_all').hide();
             $('#show_error_select_unit_all_term3').hide();
             $.ajax({
-                url: '<?= base_url(); ?>JOTO/update_cadet_to_sub_lieutenant',
+                url: '<?= base_url(); ?>EXO/update_cadet_to_sub_lieutenant',
                 method: 'POST',
                 data: {
                     'p_id': 0,
@@ -680,7 +680,7 @@
         var branch = $(this).val();
 
         $.ajax({
-            url: '<?= base_url(); ?>JOTO/get_semester_list',
+            url: '<?= base_url(); ?>EXO/get_semester_list',
             method: 'POST',
             data: {
                 'branch_id': branch
@@ -761,7 +761,7 @@
         var branch = $('#select_branches').val();
         var semester = $(this).val();
         $.ajax({
-            url: '<?= base_url(); ?>JOTO/search_all_cadets_by_term',
+            url: '<?= base_url(); ?>EXO/search_all_cadets_by_term',
             method: 'POST',
             data: {
                 'term': term,

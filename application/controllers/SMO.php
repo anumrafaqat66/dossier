@@ -14,13 +14,27 @@ class SMO extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
-
+          //echo $this->session->userdata('unit_id');exit;
             $this->load->view('smo/dashboard');
         } else {
             $this->load->view('login');
         }
     }
+ public function get_semester_list()
+    {
+        $branch_id = $_POST['branch_id'];
+        if ($branch_id == 2) {
+            $semster_list = array('4WE', '5WE', '6WE', '7WE', '8WE');
+        } else if ($branch_id == 4) {
+            $semster_list = array('4ME', '5ME', '6ME', '7ME', '8ME');
+        } else if ($branch_id == 1) {
+            $semster_list = array('5MS', '6MS', 'GLOPS');
+        } else if ($branch_id == 3) {
+            $semster_list = array('3LOG', '4LOG', '5LOG', '6LOG', '7LOG', '8LOG');
+        }
 
+        echo json_encode($semster_list);
+    }
     public function PN_Form()
     {
         if ($this->session->has_userdata('user_id')) {
@@ -1079,7 +1093,7 @@ class SMO extends CI_Controller
                 $page = '';
             }
             $id = $postData['observation_id'];
-            $observation = $postData['observation_1'];
+            $observation = $postData['observation'];
             $term = $postData['term'];
 
             $update_array = array(
@@ -1088,10 +1102,11 @@ class SMO extends CI_Controller
 
             );
             echo $id;
-            // print_r($update_array);exit;
+             print_r($update_array);
             $cond  = ['id' => $id];
             $this->db->where($cond);
             $insert = $this->db->update('observation_records', $update_array);
+            //echo $this->db->last_query();exit;
 
             if (!empty($insert)) {
 
@@ -1458,7 +1473,7 @@ class SMO extends CI_Controller
                     $query = $this->db->where('oc_no', $oc_no)->where_not_in('unit_id', $units_list)->get('pn_form1s')->row_array();
                 }
             }
-
+            //echo $this->db->last_query();exit;
             echo json_encode($query);
         }
     }
@@ -1537,7 +1552,7 @@ class SMO extends CI_Controller
     {
         if ($this->input->post()) {
             $oc_no = $_POST['oc_no'];
-            $query = $this->db->where('oc_no', $oc_no)->where('divison_name', $this->session->userdata('division'))->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
+            $query = $this->db->where('oc_no', $oc_no)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
             // print_r($query);
             echo json_encode($query);
         }
@@ -1804,6 +1819,8 @@ class SMO extends CI_Controller
             $action = $_POST['action'];
             $all = $_POST['all'];
 
+           $branch_id ='';
+           $next_term = '';
 
             if ($action == 'promote') {
                 if ($curr_term == 'Term-P') {
@@ -1869,15 +1886,15 @@ class SMO extends CI_Controller
                 );
             }
 
-            if ($all == 'no' && $this->session->userdata('acct_type') == 'do') {
+            if ($all == 'no') {
                 $cond  = [
                     'p_id' => $p_id,
-                    'do_id' => $this->session->userdata('user_id'),
+                    'unit_id' => $this->session->userdata('unit_id'),
                     'term' => $curr_term
                 ];
-            } else if ($all == 'yes' && $this->session->userdata('acct_type') == 'do') {
+            } else if ($all == 'yes') {
                 $cond  = [
-                    'do_id' => $this->session->userdata('user_id'),
+                    'unit_id' => $this->session->userdata('unit_id'),
                     'term' => $curr_term
                 ];
             }
@@ -2374,15 +2391,15 @@ class SMO extends CI_Controller
 
     public function edit_observation_data()
     {
-        if ($this->session->has_userdata('user_id')) {
-            $cadet_id = $_POST['id'];
+              if ($this->session->has_userdata('user_id')) {
+            $row_id = $_POST['id'];
             //echo $cadet_id;exit;
             $this->db->select('pr.*, f.*');
             $this->db->from('observation_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             // $this->db->where('f.oc_no = pr.oc_no');
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
-            $this->db->where('f.p_id', $cadet_id);
+            $this->db->where('pr.id', $row_id);
             $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             // $this->db->where('pr.status', 'Approved');
             $data['edit_record'] = $this->db->get()->row_array();
@@ -4382,31 +4399,31 @@ class SMO extends CI_Controller
     }
     public function view_warning_attachment()
     {
-        $this->load->view('DO/add_warning_attachments');
+        $this->load->view('smo/add_warning_attachments');
     }
     public function view_training_report()
     {
-        $this->load->view('DO/Sea_Training_Report');
+        $this->load->view('smo/Sea_Training_Report');
     }
     public function view_general_remarks()
     {
-        $this->load->view('DO/add_general_remarks');
+        $this->load->view('smo/add_general_remarks');
     }
     public function view_progress_chart()
     {
-        $this->load->view('DO/add_progress_chart');
+        $this->load->view('smo/add_progress_chart');
     }
     public function view_distinction_records()
     {
-        $this->load->view('DO/add_distinction_records');
+        $this->load->view('smo/add_distinction_records');
     }
     public function view_seniority_records()
     {
-        $this->load->view('DO/add_seniority_records');
+        $this->load->view('smo/add_seniority_records');
     }
     public function view_record_div_officer()
     {
-        $this->load->view('DO/add_divisonal_officer_record');
+        $this->load->view('smo/add_divisonal_officer_record');
     }
     public function view_promotion_screen()
     {

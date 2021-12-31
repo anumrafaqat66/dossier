@@ -410,7 +410,7 @@
                                                 <td scope="row" style="display:none"><?= $data['mini_cross_result']; ?></td>
                                                 <td scope="row" style="display:none"><?= $data['mini_cross_card_number']; ?></td>
                                                 <td scope="row"><button type="button" class="btn btn-primary btn-user rounded-pill" data-toggle="modal" data-target="#view_details"> View Details</button></td>
-                                                <td type="button" class="edit" scope="row"><a style="color: black" href="<?= base_url(); ?>EXO/add_physical_milestone/<?php echo "view_dossier_folder" ?>"><i style="" class="fas fa-edit"></i></a></td>
+                                                <td type="button" class="edit" scope="row"><a style="color: black" href="<?= base_url(); ?>EXO/add_physical_milestone/<?php echo "daily_module" ?>"><i style="" class="fas fa-edit"></i></a></td>
                                             </tr>
                                         <?php } ?>
 

@@ -70,22 +70,22 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="#"  aria-expanded="true">
+                <a class="nav-link" href="<?php echo base_url(); ?>SMO/view_dossier_folder"  aria-expanded="true">
                     <i class="fas fa-th-list"></i>
                     <span> View Dossiers </span>
                     <!-- <span>Components</span> -->
                 </a>
 
             </li>
-
+<!-- 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?php echo base_url(); ?>/D_O/PN_Form" aria-expanded="true">
                     <i class="fab fa-wpforms"></i>
                     <span>PN Form I</span>
-                    <!-- <span>Components</span> -->
+                   
                 </a>
 
-            </li>
+            </li> -->
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -94,8 +94,7 @@
             <div class="sidebar-heading">
                 PHASE I (Common Tranings)
             </div>
-
-            <li class="nav-item">
+<li class="nav-item">
                 <a id="general" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_general" aria-expanded="true">
                     <i class="fas fa-file-alt"></i>
                     <span> General</span>
@@ -103,29 +102,30 @@
                 </a>
                 <div id="collapse_general" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/add_club">Add Club</a> -->
-                        <a class="collapse-item" href="<?php echo base_url(); ?>/SMO/daily_module">Daily Module</a>
-                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/Inspection_record">Inspection Record</a> -->
-                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/personal_data">Personal Data</a> -->
-                        <!-- <a class="collapse-item" href="#">Obiography</a> -->
-                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/auto_biography">Cadet's Auto-biography</a> -->
-                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>/D_O/psychologist_report">Psychologist's Report</a> -->
+                        <a class="collapse-item" href="<?php echo base_url(); ?>SMO/add_club">Add Club</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>SMO/Inspection_record">Inspection Record</a>
+                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>SMO/personal_data">Personal Data</a> -->
+                        <a class="collapse-item" href="<?php echo base_url(); ?>SMO/auto_biography">Cadet's Auto-biography</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>SMO/psychologist_report">Psychologist's Report</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>SMO/view_record_div_officer">Divisional Officer Record</a>
                     </div>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_discipline" aria-expanded="true">
+                <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_discipline" aria-expanded="true"> -->
+                <a class="nav-link collapsed" href="<?php echo base_url(); ?>SMO/daily_module" aria-expanded="true">
                     <i class="fas fa-running"></i>
-                    <span> Discipline</span>
+                    <span> Daily Module</span>
                     <!-- <span>Components</span> -->
                 </a>
-                <div id="collapse_discipline" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <!-- <div id="collapse_discipline" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url(); ?>SO_STORE/add_inventory">Observation Record (Terms I-III)</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>SO_STORE/view_projects">Punishment Record</a>
-                        <a class="collapse-item" href="#">Observation Slips</a> 
+                        <a class="collapse-item" href="<?php echo base_url(); ?>SMO/daily_module">Daily Module</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>SMO/add_observation">Observation Record</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>SMO/add_punishment">Punishment Record</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>SMO/add_observation_slip">Observation Slips</a> 
                     </div>
-                </div>
+                </div> -->
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_warning" aria-expanded="true">
@@ -135,8 +135,9 @@
                 </a>
                 <div id="collapse_warning" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Record of Warnings</a>
-                        <a class="collapse-item" href="#">Record Attachments</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>SMO/add_warning">Add Warning</a>
+                        <!-- <a class="collapse-item" href="<?php echo base_url(); ?>SMO/view_warning_attachment">Add Warning Attachment</a> -->
+                        <!-- <a class="collapse-item" href="#">Record Attachments</a> -->
                     </div>
                 </div>
             </li>
@@ -148,18 +149,42 @@
                 </a>
                 <div id="collapse_academic" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Results (Terms I - III)</a>
-                        <a class="collapse-item" href="#">Sea Training Report Term II</a>
+                        <!-- <a class="collapse-item" href="<?= base_url(); ?>SMO/view_result">Results (Terms I - III)</a> -->
+                        <a class="collapse-item" href="<?= base_url(); ?>SMO/view_semester_result">Results (Terms I - VIII)</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>SMO/view_training_report">Sea Training Report Term II</a>
                     </div>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_officer" aria-expanded="true">
-                    <i class="fas fa-medal"></i>
-                    <span> Officer Like Qualities</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_assesment" aria-expanded="true">
+                    <i class="fas fa-chart-bar"></i>
+                    <span> Assesment</span>
                     <!-- <span>Components</span> -->
                 </a>
-                
+                <div id="collapse_assesment" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?= base_url(); ?>SMO/view_general_remarks">General Remarks</a>
+                        <!-- <a class="collapse-item" href="#">Performance Report</a> -->
+                        <a class="collapse-item" href="<?= base_url(); ?>SMO/view_progress_chart">Progress Chart</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>SMO/view_distinction_records">Distictions</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>SMO/view_seniority_records">Seniority</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>SMO/add_branch_allocation">Branch Allocation</a>
+                        <a class="collapse-item" href="#">Degree Complete</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url(); ?>SMO/add_officer_qualities" aria-expanded="true">
+                    <i class="fas fa-medal"></i>
+                    <span> Officer Like Qualities</span>
+                </a>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url(); ?>SMO/view_promotion_screen" aria-expanded="true">
+                    <i class="fas fa-award"></i>
+                    <span> Promotion/Relegation</span>
+                </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?php echo base_url(); ?>SMO/view_activity_log" aria-expanded="true">
@@ -174,81 +199,21 @@
                 </a>
             </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
-            </li> -->
-
-            <!-- Divider -->
-            <!-- <hr class="sidebar-divider"> -->
-
-            <!-- Heading -->
-            <!-- <div class="sidebar-heading">
-                Addons
-            </div> -->
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <!--   <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
-                    </div>
-                </div>
-            </li>
- -->
-            <!-- Nav Item - Charts -->
-            <!--    <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li> -->
-
-            <!-- Nav Item - Tables -->
-            <!--   <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li> -->
-
-            <!-- Divider -->
-            <!--  <hr class="sidebar-divider d-none d-md-block"> -->
-
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
+
         </ul>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column bg-custom2 img-cheif">
+          <?php if ($this->uri->segment(2) != null) { ?>
+            <div id="content-wrapper" class="d-flex flex-column bg-custom2">
+            <?php } else { ?>
+                <div id="content-wrapper" class="d-flex flex-column bg-custom2 img-cheif">
+                <?php } ?>
 
             <!-- Main Content -->
             <div id="content">
@@ -356,10 +321,10 @@
 
                 </nav>
                 <!-- End of Topbar -->
-
+<!-- 
                 <script>
                     $('#general').click(function() {
                         $('.collapse_general').collapse();
                     });
                     
-                </script>
+                </script> -->
