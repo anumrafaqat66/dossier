@@ -2901,6 +2901,7 @@ $branch_id='';
             $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-P');
+            // $this->db->where('pr.term', $data['pn_data']['term']); //kk9
             $data['pn_physical_tests_data_tp'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
@@ -2910,6 +2911,7 @@ $branch_id='';
             $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-P');
+            // $this->db->where('pr.term', $data['pn_data']['term']); //kk9
             $data['pn_pet1_data_tp'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
@@ -2919,6 +2921,7 @@ $branch_id='';
             $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.term', 'Term-P');
+            // $this->db->where('pr.term', $data['pn_data']['term']); //kk9
             $data['pn_pet2_data_tp'] = $this->db->get()->row_array();
 
             //Term-I
@@ -3196,8 +3199,10 @@ $branch_id='';
             } else {
                 $ispress = 'No';
             }
+            
             if ($data['pn_data'] != null) {
                 $data['oc_no_entered'] = $oc_no;
+                // $data['term_entered'] = $data['pn_data']['term'];
                 $view_page = $this->load->view('joto/view_dossier_folder', $data, TRUE);
             } else {
                 if ($ispress == 'Yes') {
