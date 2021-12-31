@@ -74,7 +74,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" enctype="multipart/form-data"  method="post" id="add_form_autobiography" action="<?= base_url(); ?>CT/save_autobiography">
+                        <form class="user" role="form" enctype="multipart/form-data"  method="post" id="add_form_autobiography" action="<?= base_url(); ?>CAO/save_autobiography">
 
                             <div class="form-group row">
                                 <div class="col-sm-4">

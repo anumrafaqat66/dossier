@@ -168,7 +168,7 @@
                 </a>
                 <div id="collapse_academic" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?= base_url(); ?>CTMWT/view_result">Results (Terms I - III)</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>CTMWT/view_result"><?php if($this->session->userdata('unit_id') != '1') { ?>Results (Terms VI - VIII)<?php } else { ?> Results (Terms I - III) <?php }?></a>
                         <a class="collapse-item" href="<?= base_url(); ?>CTMWT/view_training_report">Sea Training Report Term II</a>
                     </div>
                 </div>

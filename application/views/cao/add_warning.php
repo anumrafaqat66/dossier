@@ -77,7 +77,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>CT/save_cadet_warning">
+                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>CAO/save_cadet_warning">
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Name:</h6>

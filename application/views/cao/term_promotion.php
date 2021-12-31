@@ -108,7 +108,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>CT/save_cadet_warning">
+                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>CAO/save_cadet_warning">
                             <div class="form-group row">
                                 <div class="col-sm-3">
                                     <h6>&nbsp;Name:</h6>
@@ -172,7 +172,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>CT/save_cadet_warning">
+                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>CAO/save_cadet_warning">
                             <div class="form-group row">
                                 <div class="col-sm-3">
                                     <h5 id="term_selected"></h5>
@@ -255,7 +255,7 @@
             $('#show_error_new').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>CT/search_cadet',
+                url: '<?= base_url(); ?>CAO/search_cadet',
                 method: 'POST',
                 data: {
                     'oc_no': oc_no
@@ -297,7 +297,7 @@
         var curr_term = $('#term').val();
 
         $.ajax({
-            url: '<?= base_url(); ?>CT/update_cadet_term',
+            url: '<?= base_url(); ?>CAO/update_cadet_term',
             method: 'POST',
             data: {
                 'p_id': p_id,
@@ -319,7 +319,7 @@
         var curr_term = $('#term').val();
 
         $.ajax({
-            url: '<?= base_url(); ?>CT/update_cadet_term',
+            url: '<?= base_url(); ?>CAO/update_cadet_term',
             method: 'POST',
             data: {
                 'p_id': p_id,
@@ -340,7 +340,7 @@
         var curr_term = $('#term_list').val();
 
         $.ajax({
-            url: '<?= base_url(); ?>CT/update_cadet_term',
+            url: '<?= base_url(); ?>CAO/update_cadet_term',
             method: 'POST',
             data: {
                 'p_id': 0,
@@ -369,7 +369,7 @@
 
 
         $.ajax({
-            url: '<?= base_url(); ?>CT/search_all_cadets_by_term',
+            url: '<?= base_url(); ?>CAO/search_all_cadets_by_term',
             method: 'POST',
             data: {
                 'term': term

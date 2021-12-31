@@ -15,7 +15,7 @@ class CT extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
-            $data['total_cadets'] = $this->db->select('count(*) as count')->where('completed', 0)->get('pn_form1s')->row_array();
+            $data['total_cadets'] = $this->db->select('count(*) as count')->where('completed', 0)->where('unit_id',$this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
             $this->load->view('ct/dashboard', $data);
         } else {
             $this->load->view('login');

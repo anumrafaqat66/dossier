@@ -63,7 +63,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" id="add_form_report" enctype="multipart/form-data"  action="<?= base_url(); ?>CT/save_psychologist_report">
+                        <form class="user" role="form" method="post" id="add_form_report" enctype="multipart/form-data"  action="<?= base_url(); ?>CO/save_psychologist_report">
 
                             <div class="form-group row">
                                 <div class="col-sm-4">

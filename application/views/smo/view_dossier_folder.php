@@ -5429,7 +5429,7 @@
             $('#error_search').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>SMO/search_cadet_for_dossier_folder',
+                url: '<?php echo base_url(); ?>SMO/search_cadet_for_dossier_folder',
                 method: 'POST',
                 data: {
                     'oc_no': oc_no
