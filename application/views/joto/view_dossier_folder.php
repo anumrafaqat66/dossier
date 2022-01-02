@@ -320,18 +320,27 @@
                             <div id="acad_list" class="row" style="display:none ;">
                                 <div class="col-lg-4" style="text-align:left;font-weight: bold;">
                                     <ul class="list-group">
-                                        <a href="#" style="color:black" id="btn_result_t1">
-                                            <li class="list-group-item bg-custom3 custom_list">RESULT (TERM-I)</li>
-                                        </a>
-                                        <a href="#" style="color:black" id="btn_sea_training_report">
-                                            <li class="list-group-item bg-custom3 custom_list">SEA TRAINING REPORT (TERM-II)</li>
-                                        </a>
-                                        <a href="#" style="color:black" id="btn_result_t2">
-                                            <li class="list-group-item bg-custom3 custom_list">RESULT (TERM-II)</li>
-                                        </a>
-                                        <a href="#" style="color:black" id="btn_result_t3">
-                                            <li class="list-group-item bg-custom3 custom_list">RESULT (TERM III)</li>
-                                        </a>
+                                        <?php if ($this->session->userdata('unit_id') == '1') { ?>
+                                            <a href="#" style="color:black" id="btn_result_t1">
+                                                <li class="list-group-item bg-custom3 custom_list">RESULT (TERM-I)</li>
+                                            </a>
+                                            <a href="#" style="color:black" id="btn_sea_training_report">
+                                                <li class="list-group-item bg-custom3 custom_list">SEA TRAINING REPORT (TERM-II)</li>
+                                            </a>
+                                            <a href="#" style="color:black" id="btn_result_t2">
+                                                <li class="list-group-item bg-custom3 custom_list">RESULT (TERM-II)</li>
+                                            </a>
+                                            <a href="#" style="color:black" id="btn_result_t3">
+                                                <li class="list-group-item bg-custom3 custom_list">RESULT (TERM III)</li>
+                                            </a>
+                                        <?php } else { ?>
+                                            <a href="#" style="color:black" id="btn_result_t1">
+                                                <li class="list-group-item bg-custom3 custom_list">RESULT (<?php echo $pn_data['term'] ?>)</li>
+                                            </a>
+                                            <a href="#" style="color:black" id="btn_sea_training_report">
+                                                <li class="list-group-item bg-custom3 custom_list">SEA TRAINING REPORT (TERM-II)</li>
+                                            </a>
+                                        <?php } ?>
                                     </ul>
                                 </div>
                             </div>
@@ -347,15 +356,21 @@
                                 </div>
                                 <div id="terms_olq_record" class="col-lg-2" style="text-align:left;font-weight: bold;display:none">
                                     <ul class="list-group">
-                                        <a href="#" style="color:black" id="btn_olq_term1">
-                                            <li class="list-group-item bg-custom3 custom_list">TERM-I</li>
-                                        </a>
-                                        <a href="#" style="color:black" id="btn_olq_term2">
-                                            <li class="list-group-item bg-custom3 custom_list">TERM-II</li>
-                                        </a>
-                                        <a href="#" style="color:black" id="btn_olq_term3">
-                                            <li class="list-group-item bg-custom3 custom_list">TERM-III</li>
-                                        </a>
+                                        <?php if ($this->session->userdata('unit_id') == '1') { ?>
+                                            <a href="#" style="color:black" id="btn_olq_term1">
+                                                <li class="list-group-item bg-custom3 custom_list">TERM-I</li>
+                                            </a>
+                                            <a href="#" style="color:black" id="btn_olq_term2">
+                                                <li class="list-group-item bg-custom3 custom_list">TERM-II</li>
+                                            </a>
+                                            <a href="#" style="color:black" id="btn_olq_term3">
+                                                <li class="list-group-item bg-custom3 custom_list">TERM-III</li>
+                                            </a>
+                                        <?php } else { ?>
+                                            <a href="#" style="color:black" id="btn_olq_term1">
+                                                <li class="list-group-item bg-custom3 custom_list">TERM-<?php echo $pn_data['term']; ?></li>
+                                            </a>
+                                        <?php } ?>
                                     </ul>
                                 </div>
                             </div>
@@ -393,15 +408,21 @@
                                 </div>
                                 <div id="terms_general_remarks_record" class="col-lg-2" style="text-align:left;font-weight: bold">
                                     <ul class="list-group">
-                                        <a href="#" style="color:black" id="btn_general_remarks_term1">
-                                            <li class="list-group-item bg-custom3 custom_list">TERM-I</li>
-                                        </a>
-                                        <a href="#" style="color:black" id="btn_general_remarks_term2">
-                                            <li class="list-group-item bg-custom3 custom_list">TERM-II</li>
-                                        </a>
-                                        <a href="#" style="color:black" id="btn_general_remarks_term3">
-                                            <li class="list-group-item bg-custom3 custom_list">TERM-III</li>
-                                        </a>
+                                        <?php if ($this->session->userdata('unit_id') == '1') { ?>
+                                            <a href="#" style="color:black" id="btn_general_remarks_term1">
+                                                <li class="list-group-item bg-custom3 custom_list">TERM-I</li>
+                                            </a>
+                                            <a href="#" style="color:black" id="btn_general_remarks_term2">
+                                                <li class="list-group-item bg-custom3 custom_list">TERM-II</li>
+                                            </a>
+                                            <a href="#" style="color:black" id="btn_general_remarks_term3">
+                                                <li class="list-group-item bg-custom3 custom_list">TERM-III</li>
+                                            </a>
+                                        <?php } else { ?>
+                                            <a href="#" style="color:black" id="btn_general_remarks_term1">
+                                                <li class="list-group-item bg-custom3 custom_list">TERM-<?php echo $pn_data['term']; ?></li>
+                                            </a>
+                                        <?php } ?>
                                     </ul>
                                 </div>
                                 <div id="general_remarks_mid_final_term1" class="col-lg-3" style="text-align:left;font-weight: bold;display:none">
@@ -1865,7 +1886,6 @@
                                 <h4 style="text-decoration:underline"><strong>INSPECTION RECORD</strong></h4>
                             </div>
                         </div>
-
                         <div id="table_div" style=" padding:20px !important">
                             <?php if (count($pn_inspection_data) > 0) { ?>
                                 <table style="color:black; width:100% !important;">
@@ -1885,7 +1905,7 @@
                                                 <td scope="" style="text-align: center;"><?= $data['date']; ?></td>
                                                 <td scope="" style="height:80px;text-align: center;"><?= $data['remarks']; ?></td>
                                                 <td scope="" style="border-right:1px solid black; text-align: center;"><?= $data['inspecting_officer_name']; ?></td>
-                                                <td scope="" style="border-right:1px solid black;width:100px !important;text-align: center;"><a style="color: black;" href="<?php echo base_url() ?>JOTO/view_edit_inspection/<?= $data['id']; ?>"><i class="fa fa-edit"></i></a></td>>
+                                                <td scope="" style="border-right:1px solid black;width:100px !important;text-align: center;"><a style="color: black;" href="<?php echo base_url() ?>JOTO/view_edit_inspection/<?= $data['id']; ?>"><i class="fa fa-edit"></i></a></td>
                                             </tr>
                                         <?php
                                             $count++;
@@ -2619,7 +2639,11 @@
                         <div class="container my-3">
                             <div style="text-align:center">
                                 <h4 style="text-decoration:underline"><strong>OFFICER LIKE QUALITIES</strong></h4>
-                                <h4 style="text-decoration:underline"><strong>TERM-I</strong></h4>
+                                <?php if ($this->session->userdata('unit_id') == '1') { ?>
+                                    <h4 style="text-decoration:underline"><strong>TERM-I</strong></h4>
+                                <?php } else { ?>
+                                    <h4 style="text-decoration:underline"><strong>TERM-<?php echo $pn_data['term']; ?></strong></h4>
+                                <?php } ?>
                             </div>
                         </div>
 
@@ -4358,7 +4382,11 @@
 
                         <div class="container my-3">
                             <div style="text-align:center">
-                                <h4 style="text-decoration:underline"><strong>RESULT REPORT (TERM-I)</strong></h4>
+                                <?php if ($this->session->userdata('unit_id') == '1') { ?>
+                                    <h4 style="text-decoration:underline"><strong>RESULT REPORT (TERM-I)</strong></h4>
+                                <?php } else { ?>
+                                    <h4 style="text-decoration:underline"><strong>RESULT REPORT (<?php echo $pn_data['term'] ?>)</strong></h4>
+                                <?php } ?>
                             </div>
                             <div style="text-align:center">
                                 <h5>(TO BE PASTED HERE)</h5>
@@ -4632,7 +4660,11 @@
                                 <h4 style="text-decoration:underline"><strong>GENERAL REMARKS</strong></h4>
                             </div>
                             <div style="text-align:center">
-                                <h4 style="text-decoration:underline"><strong>TERM-I</strong></h4>
+                                <?php if ($this->session->userdata('unit_id') == '1') { ?>
+                                    <h4 style="text-decoration:underline"><strong>TERM-I</strong></h4>
+                                <?php } else { ?>
+                                    <h4 style="text-decoration:underline"><strong>TERM-<?php echo $pn_data['term']; ?></strong></h4>
+                                <?php } ?>
                             </div>
                         </div>
 
@@ -4696,7 +4728,11 @@
                                 <h4 style="text-decoration:underline"><strong>GENERAL REMARKS</strong></h4>
                             </div>
                             <div style="text-align:center">
-                                <h4 style="text-decoration:underline"><strong>TERM-I</strong></h4>
+                                <?php if ($this->session->userdata('unit_id') == '1') { ?>
+                                    <h4 style="text-decoration:underline"><strong>TERM-I</strong></h4>
+                                <?php } else { ?>
+                                    <h4 style="text-decoration:underline"><strong>TERM-<?php echo $pn_data['term']; ?></strong></h4>
+                                <?php } ?>
                             </div>
                         </div>
 

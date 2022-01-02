@@ -1696,9 +1696,9 @@ class JOTO extends CI_Controller
             $recommended_branch = $postData['recommended_branch'];
             $allocated_branch = $postData['allocated_branch'];
 
-            if($this->session->userdata('unit_id') == '1') {
+            if ($this->session->userdata('unit_id') == '1') {
                 $phase = 'Phase-I';
-            } else if($this->session->userdata('unit_id') == '2') {
+            } else if ($this->session->userdata('unit_id') == '2') {
                 $phase = 'Phase-IV';
             } else if (($this->session->userdata('unit_id') == 3) || ($this->session->userdata('unit_id') == 17)) {
                 $phase = 'Phase-III';
@@ -1852,7 +1852,7 @@ class JOTO extends CI_Controller
             $action = $_POST['action'];
             $all = $_POST['all'];
 
-$branch_id='';
+            $branch_id = '';
             $next_term = '';
             $unit_id = $this->session->userdata('unit_id');
 
@@ -3013,7 +3013,13 @@ $branch_id='';
             $this->db->from('academic_records pr');
             $this->db->join('pn_form1s f', 'f.p_id = pr.p_id');
             $this->db->where('f.oc_no', $oc_no);
-            $this->db->where('pr.term', 'Term-I');
+            if ($this->session->userdata('unit_id') == '1') {
+                $this->db->where('pr.term', 'Term-I');
+            } else {
+                if (isset($data['pn_data'])) {
+                    $this->db->like('pr.term', $data['pn_data']['term']);
+                }
+            }
             $this->db->where('pr.doc_type', 'Result');
             $data['pn_result_record_t1'] = $this->db->get()->result_array();
             //Result Term-II
@@ -3047,7 +3053,13 @@ $branch_id='';
             // $this->db->where('pr.do_id', $this->session->userdata('user_id'));
             $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
-            $this->db->where('pr.term', 'Term-I');
+            if ($this->session->userdata('unit_id') == '1') {
+                $this->db->where('pr.term', 'Term-I');
+            } else {
+                if (isset($data['pn_data'])) {
+                    $this->db->like('pr.term', $data['pn_data']['term']);
+                }
+            }
             $data['pn_officer_qualities_data_t1'] = $this->db->get()->row_array();
 
             $this->db->select('pr.*, f.*');
@@ -3117,7 +3129,13 @@ $branch_id='';
             $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.assessment', 'Mid Term Assessment');
-            $this->db->where('pr.term', 'Term-I');
+            if ($this->session->userdata('unit_id') == '1') {
+                $this->db->where('pr.term', 'Term-I');
+            } else {
+                if (isset($data['pn_data'])) {
+                    $this->db->like('pr.term', $data['pn_data']['term']);
+                }
+            }
             $data['pn_general_remarks_term1_mid'] = $this->db->get()->result_array();
 
             $this->db->select('pr.*, f.*');
@@ -3127,7 +3145,13 @@ $branch_id='';
             $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $this->db->where('f.oc_no', $oc_no);
             $this->db->where('pr.assessment', 'Terminal Assessment');
-            $this->db->where('pr.term', 'Term-I');
+            if ($this->session->userdata('unit_id') == '1') {
+                $this->db->where('pr.term', 'Term-I');
+            } else {
+                if (isset($data['pn_data'])) {
+                    $this->db->like('pr.term', $data['pn_data']['term']);
+                }
+            }
             $data['pn_general_remarks_term1_final'] = $this->db->get()->result_array();
             //Term 2
             $this->db->select('pr.*, f.*');
@@ -3199,7 +3223,7 @@ $branch_id='';
             } else {
                 $ispress = 'No';
             }
-            
+
             if ($data['pn_data'] != null) {
                 $data['oc_no_entered'] = $oc_no;
                 // $data['term_entered'] = $data['pn_data']['term'];
@@ -5064,9 +5088,9 @@ $branch_id='';
                 $action = 'Insert';
             }
 
-            if($this->session->userdata('unit_id') == '1') {
+            if ($this->session->userdata('unit_id') == '1') {
                 $phase = 'Phase-I';
-            } else if($this->session->userdata('unit_id') == '2') {
+            } else if ($this->session->userdata('unit_id') == '2') {
                 $phase = 'Phase-IV';
             } else if (($this->session->userdata('unit_id') == 3) || ($this->session->userdata('unit_id') == 17)) {
                 $phase = 'Phase-III';
@@ -5176,7 +5200,7 @@ $branch_id='';
                 $gpa_t2 = 0.00;
                 $denominator_count--;
             }
-            
+
             if (!isset($gpa_t3) || is_null($gpa_t3) || $gpa_t3 == 0.00) {
                 $gpa_t3 = 0.00;
                 $denominator_count--;
@@ -5202,11 +5226,11 @@ $branch_id='';
                 $denominator_count--;
             }
 
-            if($denominator_count == 0) {
+            if ($denominator_count == 0) {
                 $denominator_count = 1;
-            } 
+            }
 
-            $cgpa = ($gpa_t1 + $gpa_t2 + $gpa_t3 + $gpa_t4 + $gpa_t5 + $gpa_t6 + $gpa_t7 + $gpa_t8) / $denominator_count; 
+            $cgpa = ($gpa_t1 + $gpa_t2 + $gpa_t3 + $gpa_t4 + $gpa_t5 + $gpa_t6 + $gpa_t7 + $gpa_t8) / $denominator_count;
 
             $count = $this->db->select('count(*) as row_count')->where('p_id', $p_id)->get('semester_results')->row_array();
 
@@ -5216,9 +5240,9 @@ $branch_id='';
                 $action = 'Insert';
             }
 
-            if($this->session->userdata('unit_id') == '1') {
+            if ($this->session->userdata('unit_id') == '1') {
                 $phase = 'Phase-I';
-            } else if($this->session->userdata('unit_id') == '2') {
+            } else if ($this->session->userdata('unit_id') == '2') {
                 $phase = 'Phase-IV';
             } else if (($this->session->userdata('unit_id') == 3) || ($this->session->userdata('unit_id') == 17)) {
                 $phase = 'Phase-III';
@@ -5445,9 +5469,9 @@ $branch_id='';
             $extra_activities = $postData['extra_activites'];
             $p_id = $postData['id'];
 
-            if($this->session->userdata('unit_id') == '1') {
+            if ($this->session->userdata('unit_id') == '1') {
                 $phase = 'Phase-I';
-            } else if($this->session->userdata('unit_id') == '2') {
+            } else if ($this->session->userdata('unit_id') == '2') {
                 $phase = 'Phase-IV';
             } else if (($this->session->userdata('unit_id') == 3) || ($this->session->userdata('unit_id') == 17)) {
                 $phase = 'Phase-III';
