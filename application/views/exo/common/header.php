@@ -174,7 +174,9 @@
                 <div id="collapse_academic" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<?= base_url(); ?>EXO/view_result"><?php if($this->session->userdata('unit_id') != '1') { ?>Results (Terms VI - VIII)<?php } else { ?> Results (Terms I - III) <?php }?></a>
+                        <?php if ($this->session->userdata('unit_id') == '1') { ?>
                         <a class="collapse-item" href="<?= base_url(); ?>EXO/view_training_report">Sea Training Report Term II</a>
+                        <?php } ?>
                     </div>
                 </div>
             </li>

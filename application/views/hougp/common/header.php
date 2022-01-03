@@ -173,15 +173,30 @@
                 </a>
                 <div id="collapse_academic" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?= base_url(); ?>HOUGP/view_semester_result"><?php if ($this->session->userdata('unit_id') != '1') {
+                        
+
+                        <?php if ($this->session->userdata('unit_id') != '2') { ?>
+                            <a class="collapse-item" href="<?= base_url(); ?>HOUGP/view_semester_result"><?php if ($this->session->userdata('unit_id') != '1') {
                                                                                                             if (($this->session->userdata('branch_name') == 'WE') ||  ($this->session->userdata('branch_name') == 'ME') || ($this->session->userdata('branch_name') == 'LOG')) { ?>
-                                                                                                                Results (Semester 3 - 8)
-                                                                                                            <?php } else { ?>
-                                                                                                                Results (Semester 4 - 6)
-                                                                                                            <?php }
+                                    Results (Semester 3 - 8)
+                                <?php } else { ?>
+                                    Results (Semester 4 - 6)
+                                <?php }
                                                                                                         } else { ?>
-                                                                                                        Results (Terms I - III) <?php } ?></a>
-                        <a class="collapse-item" href="<?= base_url(); ?>HOUGP/view_training_report">Sea Training Report Term II</a>
+                                Results (Terms I - III) <?php } ?></a>
+                        <?php } else { ?>
+                            <a class="collapse-item" href="<?= base_url(); ?>HOUGP/view_result"><?php if ($this->session->userdata('unit_id') != '1') {
+                                                                                                            if (($this->session->userdata('branch_name') == 'WE') ||  ($this->session->userdata('branch_name') == 'ME') || ($this->session->userdata('branch_name') == 'LOG')) { ?>
+                                    Results (Semester 3 - 8)
+                                <?php } else { ?>
+                                    Results (Semester 4 - 6)
+                                <?php }
+                                                                                                        } else { ?>
+                                Results (Terms I - III) <?php } ?></a>
+                        <?php } ?>
+                        <?php if ($this->session->userdata('unit_id') == '1') { ?>
+                            <a class="collapse-item" href="<?= base_url(); ?>HOUGP/view_training_report">Sea Training Report Term II</a>
+                        <?php } ?>
                     </div>
                 </div>
             </li>

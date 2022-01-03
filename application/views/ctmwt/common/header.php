@@ -60,29 +60,29 @@
                 <a class="nav-link" href="<?php echo base_url(); ?><?php if ($this->session->userdata('acct_type') == 'do') {
                                                                         echo "D_O";
                                                                     } else if ($this->session->userdata('acct_type') == 'joto') {
-                                                                        echo "JOTO"; 
+                                                                        echo "JOTO";
                                                                     } else if ($this->session->userdata('acct_type') == 'ct') {
-                                                                        echo "CT"; 
+                                                                        echo "CT";
                                                                     } else if ($this->session->userdata('acct_type') == 'co') {
-                                                                        echo "CO"; 
+                                                                        echo "CO";
                                                                     } else if ($this->session->userdata('acct_type') == 'cao') {
-                                                                        echo "CAO"; 
+                                                                        echo "CAO";
                                                                     } else if ($this->session->userdata('acct_type') == 'dean') {
-                                                                        echo "DEAN"; 
+                                                                        echo "DEAN";
                                                                     } else if ($this->session->userdata('acct_type') == 'hougp') {
-                                                                        echo "HOUGP"; 
+                                                                        echo "HOUGP";
                                                                     } else if ($this->session->userdata('acct_type') == 'cao_sec') {
-                                                                        echo "CAO_SEC"; 
+                                                                        echo "CAO_SEC";
                                                                     } else if ($this->session->userdata('acct_type') == 'smo') {
-                                                                        echo "SMO"; 
+                                                                        echo "SMO";
                                                                     } else if ($this->session->userdata('acct_type') == 'ctmwt') {
-                                                                        echo "CTMWT"; 
+                                                                        echo "CTMWT";
                                                                     } else if ($this->session->userdata('acct_type') == 'exo') {
-                                                                        echo "EXO"; 
+                                                                        echo "EXO";
                                                                     } else if ($this->session->userdata('acct_type') == 'sqc') {
-                                                                        echo "SQC"; 
+                                                                        echo "SQC";
                                                                     }
-                                                                        ?>">
+                                                                    ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -102,13 +102,13 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url(); ?>CTMWT/view_academy_analytics"  aria-expanded="true">
+                <a class="nav-link" href="<?php echo base_url(); ?>CTMWT/view_academy_analytics" aria-expanded="true">
                     <i class="fas fa-th-list"></i>
                     <span> Academy Analytics </span>
                 </a>
             </li>
 
-     
+
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -168,8 +168,10 @@
                 </a>
                 <div id="collapse_academic" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?= base_url(); ?>CTMWT/view_result"><?php if($this->session->userdata('unit_id') != '1') { ?>Results (Terms VI - VIII)<?php } else { ?> Results (Terms I - III) <?php }?></a>
-                        <a class="collapse-item" href="<?= base_url(); ?>CTMWT/view_training_report">Sea Training Report Term II</a>
+                        <a class="collapse-item" href="<?= base_url(); ?>CTMWT/view_result"><?php if ($this->session->userdata('unit_id') != '1') { ?>Results (Terms VI - VIII)<?php } else { ?> Results (Terms I - III) <?php } ?></a>
+                        <?php if ($this->session->userdata('unit_id') == '1') { ?>
+                            <a class="collapse-item" href="<?= base_url(); ?>CTMWT/view_training_report">Sea Training Report Term II</a>
+                        <?php } ?>
                     </div>
                 </div>
             </li>
@@ -227,26 +229,26 @@
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
-          <?php if($this->uri->segment(2) != null) {?>
-             <div id="content-wrapper" class="d-flex flex-column bg-custom2">
-        <?php }else{ ?>
-           <div id="content-wrapper" class="d-flex flex-column bg-custom2 img-cheif">
-           <?php } ?> 
+        <?php if ($this->uri->segment(2) != null) { ?>
+            <div id="content-wrapper" class="d-flex flex-column bg-custom2">
+            <?php } else { ?>
+                <div id="content-wrapper" class="d-flex flex-column bg-custom2 img-cheif">
+                <?php } ?>
 
-            <!-- Main Content -->
-            <div id="content">
+                <!-- Main Content -->
+                <div id="content">
 
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-custom1 topbar static-top shadow">
+                    <!-- Topbar -->
+                    <nav class="navbar navbar-expand navbar-light bg-custom1 topbar static-top shadow">
 
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
+                        <!-- Sidebar Toggle (Topbar) -->
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
 
-                    <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <!-- <div class="input-group">
+                        <!-- Topbar Search -->
+                        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <!-- <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
@@ -254,68 +256,68 @@
                                 </button>
                             </div>
                         </div> -->
-                    </form>
+                        </form>
 
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                        <!-- Topbar Navbar -->
+                        <ul class="navbar-nav ml-auto">
 
 
-                        <li class="nav-item dropdown no-arrow mx-1" id="notifications">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter"></span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown" id="xyz">
-                                <h6 class="dropdown-header">
-                                    Notifications
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div style="padding:10px">
-                                        <b>No New Notifications </b>
-                                    </div>
+                            <li class="nav-item dropdown no-arrow mx-1" id="notifications">
+                                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-bell fa-fw"></i>
+                                    <!-- Counter - Alerts -->
+                                    <span class="badge badge-danger badge-counter"></span>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Notifications </a>
-                            </div>
-                        </li>
+                                <!-- Dropdown - Alerts -->
+                                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown" id="xyz">
+                                    <h6 class="dropdown-header">
+                                        Notifications
+                                    </h6>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <div style="padding:10px">
+                                            <b>No New Notifications </b>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item text-center small text-gray-500" href="#">Show All Notifications </a>
+                                </div>
+                            </li>
 
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1" id="notification">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class=""></span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Chat Corner
-                                </h6>
-
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div>
-                                        <div style="padding:10px"><b>No New Messages
-                                            </b></div>
-                                    </div>
+                            <!-- Nav Item - Messages -->
+                            <li class="nav-item dropdown no-arrow mx-1" id="notification">
+                                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-envelope fa-fw"></i>
+                                    <!-- Counter - Messages -->
+                                    <span class=""></span>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
-                        </li>
+                                <!-- Dropdown - Messages -->
+                                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                                    <h6 class="dropdown-header">
+                                        Chat Corner
+                                    </h6>
+
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <div>
+                                            <div style="padding:10px"><b>No New Messages
+                                                </b></div>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                                </div>
+                            </li>
 
 
-                        <div class="topbar-divider d-none d-sm-block"></div>
+                            <div class="topbar-divider d-none d-sm-block"></div>
 
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-white small"><?php echo $this->session->userdata('username'); ?></span>
-                                <span id="user_id" style="display:none"><?php echo $this->session->userdata('user_id'); ?></span>
-                                <img class="img-profile rounded-circle" src="<?php echo base_url(); ?>assets/img/undraw_profile.svg">
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <!--     <a class="dropdown-item" href="#">
+                            <!-- Nav Item - User Information -->
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="mr-2 d-none d-lg-inline text-white small"><?php echo $this->session->userdata('username'); ?></span>
+                                    <span id="user_id" style="display:none"><?php echo $this->session->userdata('user_id'); ?></span>
+                                    <img class="img-profile rounded-circle" src="<?php echo base_url(); ?>assets/img/undraw_profile.svg">
+                                </a>
+                                <!-- Dropdown - User Information -->
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                    <!--     <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -327,22 +329,21 @@
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
                                 </a> -->
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Logout
+                                    </a>
+                                </div>
+                            </li>
 
-                    </ul>
+                        </ul>
 
-                </nav>
-                <!-- End of Topbar -->
+                    </nav>
+                    <!-- End of Topbar -->
 
-                <script>
-                    $('#general').click(function() {
-                        $('.collapse_general').collapse();
-                    });
-                    
-                </script>
+                    <script>
+                        $('#general').click(function() {
+                            $('.collapse_general').collapse();
+                        });
+                    </script>

@@ -1936,18 +1936,8 @@ class D_O extends CI_Controller
                 ];
             }
 
-            // if ($all == 'no' && $this->session->userdata('acct_type') == 'joto') {
-            //     $cond  = [
-            //         'p_id' => $p_id,
-            //         'term' => $curr_term
-            //     ];
-            // } else if ($all == 'yes' && $this->session->userdata('acct_type') == 'joto') {
-            //     $cond  = [
-            //         'term' => $curr_term
-            //     ];
-            // }
-
-            //print_r($cond);exit;
+            // print_r($cond);
+            // print_r($update_array);exit;
             // echo $p_id;exit;
 
             $this->db->where($cond);
