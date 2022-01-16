@@ -141,6 +141,29 @@
                             </div>
 
                             <hr>
+
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <h6>&nbsp;<strong>Add Result Sheet:</strong></h6>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12 mb-1">
+                                    <input type="file" style="height: 50px; padding:10px !important;" multiple="multiple" class="form-control form-control-user" placeholder="Upload Document" name="file[]" id="result_file" x-model="fileName">
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-2">
+                                    <h6>&nbsp;<strong>Uploaded files:</strong></h6>
+                                </div>
+                                <div class="col-sm-8">
+                                    <a id="uploaded_filename">
+                                </div>
+                            </div>
+
+                            <hr>
+
                             <div class="form-group row">
                                 <div class="col-sm-3">
                                     <h6>&nbsp;<strong>Term:</strong></h6>
@@ -379,6 +402,33 @@
                             $('#gpa_t8').val(null);
                         }
 
+                    },
+                    async: false
+                });
+            }
+
+            if ($('#name').val() != null) {
+                $.ajax({
+                    url: '<?= base_url(); ?>HOUGP/get_manual_result_files',
+                    method: 'POST',
+                    data: {
+                        'p_id': $('#id').val()
+                    },
+                    success: function(data) {
+                        var result = jQuery.parseJSON(data);
+
+                        if (result != undefined) {
+                            var len = result.length;
+                            if (len > 0) {
+                                for (i = 0; i < len; i++) {
+                                    $('#uploaded_filename').append(`<h6><a href="<?= base_url(); ?>uploads/documents/${result[i]['file_name']}"><strong>${result[i]['file_name']}</strong></h6>`);
+                                }
+                            } else {
+                                $('#uploaded_filename').html(`<h6>No Files Uploaded</h6>`);
+                            }
+                        } else {
+                            $('#uploaded_filename').html(`<h6>No Files Uploaded</h6>`);
+                        }
                     },
                     async: false
                 });

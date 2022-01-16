@@ -5172,6 +5172,40 @@ class JOTO extends CI_Controller
         }
     }
 
+    public function save_manual_result_file($result_type = NULL, $id = NULL, $term = NULL){
+        if ($_FILES['file']['name'][0] != NULL) {
+            $upload1 = $this->upload_result($_FILES['file']);
+            if (count($upload1) > 1) {
+                $files = implode(',', $upload1);
+            } else {
+                $files = $upload1[0];
+            }
+        } else {
+            $files = '';
+        }
+        $file_size = $_FILES['file']['size'] . " kb";
+        $file_name = $_FILES['file']['name'];
+        $file_type = $_FILES['file']['type'];
+        $file_path = $_FILES['file']['tmp_name'];
+
+        $insert_array = array(
+            'file_name' => $file_name,
+            'file_type' => $file_type,
+            'file_path' => $file_path,
+            'file_size' => $file_size,
+            'p_id' => $id,
+            'do_id' => $this->session->userdata('user_id'),
+            'phase' => 'Phase 1',
+            'term' => $term,
+            'doc_name' => $result_type,
+            'doc_type' => $result_type,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        );
+
+        $insert = $this->db->insert('academic_records', $insert_array);
+    }
+
 
     public function save_cadet_semester_result()
     {
@@ -5239,6 +5273,8 @@ class JOTO extends CI_Controller
             } else {
                 $action = 'Insert';
             }
+
+            $this->save_manual_result_file ('Result', $p_id, $term);
 
             if ($this->session->userdata('unit_id') == '1') {
                 $phase = 'Phase-I';

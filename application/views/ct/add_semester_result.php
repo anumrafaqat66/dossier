@@ -101,7 +101,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>D_O/save_cadet_semester_result">
+                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>CT/save_cadet_semester_result">
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Name:</h6>
@@ -313,7 +313,7 @@
             $('#show_error_new').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>D_O/search_cadet',
+                url: '<?= base_url(); ?>CT/search_cadet',
                 method: 'POST',
                 data: {
                     'oc_no': oc_no
@@ -343,7 +343,7 @@
 
             if ($('#name').val() != null) {
                 $.ajax({
-                    url: '<?= base_url(); ?>D_O/get_semester_results_values',
+                    url: '<?= base_url(); ?>CT/show_semester_results_values',
                     method: 'POST',
                     data: {
                         'p_id': $('#id').val()
@@ -408,7 +408,7 @@
 
             if ($('#name').val() != null) {
                 $.ajax({
-                    url: '<?= base_url(); ?>D_O/get_manual_result_files',
+                    url: '<?= base_url(); ?>CT/get_manual_result_files',
                     method: 'POST',
                     data: {
                         'p_id': $('#id').val()
