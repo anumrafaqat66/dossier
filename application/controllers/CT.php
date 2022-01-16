@@ -3829,4 +3829,260 @@ class CT extends CI_Controller
             echo json_encode($data['cadets-div']);
         }
     }
+
+    //new addition 2022
+    public function add_physical_milestone($page = null)
+    {
+        if ($this->session->has_userdata('user_id')) {
+            // echo $page;
+            $data['physical_milestone_data'] = $this->db->where('p_id', $this->session->has_userdata('user_id'))->get('physical_milestone')->row_array();
+            if ($page != null) {
+                $data['page'] = $page;
+            }
+            $this->load->view('ct/add_physical_milestone', $data);
+        }
+    }
+
+    public function view_milestone_list()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $this->db->select('or.*, f.*');
+            $this->db->from('physical_milestone or');
+            $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
+            // $this->db->where('or.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $data['milestone_records'] = $this->db->get()->result_array();
+            // print_r( $data['milestone_records']);exit;
+            $this->load->view('ct/view_milestone_list', $data);
+        }
+    }
+
+    public function search_cadet_for_observation()
+    {
+        if ($this->input->post()) {
+            $oc_no = $_POST['oc_no'];
+            $query = $this->db->where('oc_no', $oc_no)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
+            // print_r($query);
+            echo json_encode($query);
+        }
+    }
+
+    public function search_cadet_physical_milestone()
+    {
+        if ($this->input->post()) {
+
+            $oc_no = $_POST['oc_no'];
+
+            $this->db->select('f.oc_no f_oc_no, f.p_id f_p_id, f.term f_term, f.divison_name f_divison_name, f.name f_name, or.*, term_i_details.*,term_ii_details.*, term_i_details.*,term_ii_details.*');
+            $this->db->from('pn_form1s f');
+            $this->db->join('physical_milestone or', 'f.p_id = or.p_id', 'left');
+            $this->db->join('term_i_details', 'term_i_details.p_id = or.p_id', 'left');
+            $this->db->join('term_ii_details', 'term_ii_details.p_id = or.p_id', 'left');
+            // $this->db->where('f.do_id', $this->session->userdata('user_id'));
+            // $this->db->where('f.divison_name', $this->session->userdata('division'));
+            $this->db->where('f.oc_no', $oc_no);
+            $data['milestone_records'] = $this->db->get()->row_array();
+
+            echo json_encode($data['milestone_records']);
+        }
+    }
+
+    public function save_physical_milestone()
+    {
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+
+            $oc_no = $postData['oc_num'];
+            $p_id = $postData['id'];
+            $term = $postData['term'];
+            $PST_result = $postData['pst'];
+            $PST_attempt = $postData['pst_attempt'];
+            $SST_result = $postData['sst'];
+            $SST_attempt = $postData['sst_attempt'];
+            $PET_I_result = $postData['pet_I'];
+            $PET_I_attempt = $postData['pet_I_attempt'];
+            $PET_II_result = $postData['pet_II'];
+            $PET_II_attempt = $postData['pet_II_attempt'];
+
+            $assault_result = $postData['assault'];
+            $assault_attempt = $postData['assault_attempt'];
+            $saluting_result = $postData['saluting'];
+            $saluting_attempt = $postData['saluting_attempt'];
+            $plx_result = $postData['plx'];
+            $plx_attempt = $postData['plx_attempt'];
+
+            $long_cross = $postData['long_cross'];
+            $long_cross_card = $postData['long_cross_card'];
+            $mini_cross = $postData['mini_cross'];
+            $mini_cross_card = $postData['mini_cross_card'];
+
+            $milestone_id = $postData['milestone_id'];
+
+            $insert_array = array(
+                'oc_no' => $oc_no,
+                'p_id' => $p_id,
+                'do_id' => $this->session->userdata('user_id'),
+                'term' => $term,
+                'PST_result' => $PST_result,
+                'PST_attempt' => $PST_attempt,
+                'SST_result' => $SST_result,
+                'SST_attempt' => $SST_attempt,
+                'PET_I_result' => $PET_I_result,
+                'PET_I_attempt' => $PET_I_attempt,
+                'PET_II_result' => $PET_II_result,
+                'PET_II_attempt' => $PET_II_attempt,
+                'assault_result' => $assault_result,
+                'assault_attempt' => $assault_attempt,
+                'saluting_result' => $saluting_result,
+                'saluting_attempt' => $saluting_attempt,
+                'plx_result' => $plx_result,
+                'plx_attempt' => $plx_attempt,
+                'long_cross_result' => $long_cross,
+                'long_cross_card_number' => $long_cross_card,
+                'mini_cross_result' => $mini_cross,
+                'mini_cross_card_number' => $mini_cross_card,
+                'date_added' => date('Y-m-d H:i:s')
+            );
+
+            $this->db->where('oc_no', $oc_no)->where('p_id', $p_id)->delete('physical_milestone');
+            $insert = $this->db->insert('physical_milestone', $insert_array);
+
+            if (!empty($insert)) {
+
+                $cadet_name = $this->db->select('name')->where('oc_no', $oc_no)->get('pn_form1s')->row_array();
+
+                $insert_activity = array(
+                    'activity_module' => $this->session->userdata('acct_type'),
+                    'activity_action' => 'add',
+                    'activity_detail' => "Physical Milestone has been added for cadet " . $cadet_name['name'],
+                    'activity_by' => $this->session->userdata('username'),
+                    'activity_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_act = $this->db->insert('activity_log', $insert_activity);
+                $last_id = $this->db->insert_id();
+
+                $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+                for ($i = 0; $i < count($query); $i++) {
+                    $insert_activity_seen = array(
+                        'activity_id' => $last_id,
+                        'user_id' => $query[$i]['id'],
+                        'seen' => 'no'
+                    );
+                    $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+                }
+            }
+
+            if (!empty($insert)) {
+
+                if ($postData['pagee'] == 'milestone_list') {
+                    $this->session->set_flashdata('success', 'Data Submitted successfully');
+                    redirect('CT/view_milestone_list');
+                } elseif ($postData['pagee'] == 'dossier') {
+                    $this->session->set_flashdata('success', 'Data Updated successfully');
+                    redirect('CT/view_dossier');
+                } elseif ($postData['pagee'] == 'view_dossier_folder') {
+                    $this->session->set_flashdata('success', 'Data Updated successfully');
+                    redirect('CT/view_dossier_folder');
+                } else {
+                    $this->session->set_flashdata('success', 'Data Submitted successfully');
+                    redirect('CT/add_physical_milestone');
+                }
+            } else {
+                if (isset($postData['pagee'])) {
+                    $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                    redirect('CT/view_milestone_list');
+                } elseif ($postData['pagee'] == 'view_dossier_folder') {
+                    $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                    redirect('CT/view_dossier_folder');
+                } else {
+                    $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+                    redirect('CT/add_physical_milestone');
+                }
+            }
+        }
+    }
+
+
+    public function add_termI_details()
+    {
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+
+            $oc_no = $postData['oc_no'];
+            $p_id = $postData['p_id'];
+            $term = $postData['term'];
+            $mile_time = $postData['mile_time'];
+            $pushups = $postData['Pushups'];
+            $chinups = $postData['Chinups'];
+            $rope = $postData['rope'];
+            $date_added = date('Y-m-d H:i:s');
+
+            $insert_array = array(
+                'oc_no' => $oc_no,
+                'p_id' => $p_id,
+                'do_id' => $this->session->userdata('user_id'),
+                'term' => $term,
+                'mile_time' => $mile_time,
+                'pushups' => $pushups,
+                'chinups' => $chinups,
+                'rope' => $rope,
+                'date_added' => date('Y-m-d H:i:s')
+            );
+
+            $this->db->where('oc_no', $oc_no)->where('p_id', $p_id)->delete('term_i_details');
+            $insert = $this->db->insert('term_i_details', $insert_array);
+        }
+    }
+
+    public function add_termII_details()
+    {
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+            //print_r($postData);exit;
+            $oc_no = $postData['oc_no'];
+            $p_id = $postData['p_id'];
+            $term = $postData['term'];
+            $mile_time = $postData['mile_time'];
+            $pushups = $postData['Pushups'];
+            $chinups = $postData['Chinups'];
+            $rope = $postData['rope'];
+            $date_added = date('Y-m-d H:i:s');
+
+            $insert_array = array(
+                'oc_no' => $oc_no,
+                'p_id' => $p_id,
+                'do_id' => $this->session->userdata('user_id'),
+                'term' => $term,
+                'mile_time' => $mile_time,
+                'pushups' => $pushups,
+                'chinups' => $chinups,
+                'rope' => $rope,
+                'date_added' => date('Y-m-d H:i:s')
+            );
+
+            $this->db->where('oc_no', $oc_no)->where('p_id', $p_id)->delete('term_ii_details');
+            $insert = $this->db->insert('term_ii_details', $insert_array);
+        }
+    }
+
+    public function view_PET_I()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $p_id = $_POST['id'];
+            $data['term_i_details'] = $this->db->where('p_id', $p_id)->get('term_i_details')->row_array();
+            echo json_encode($data['term_i_details']);
+        }
+    }
+
+    public function view_PET_II()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $p_id = $_POST['id'];
+            $data['term_ii_details'] = $this->db->where('p_id', $p_id)->get('term_ii_details')->row_array();
+            echo json_encode($data['term_ii_details']);
+        }
+    }
+
 }
