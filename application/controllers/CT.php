@@ -1393,7 +1393,8 @@ class CT extends CI_Controller
                 'divison_name' => $div_name,
                 'term' => $term,
                 'unit_id' => $this->session->userdata('unit_id'),
-                'bahadur' => $country
+                'bahadur' => $country,
+                'phase' => 'Phase 1'
             );
 
             $insert_pnform = $this->db->insert('pn_form1s', $insert_array_pnform);

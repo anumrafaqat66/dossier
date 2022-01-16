@@ -1385,7 +1385,9 @@ class CO extends CI_Controller
                 'category' => $category,
                 'divison_name' => $div_name,
                 'term' => $term,
-                'bahadur' => $country
+                'phase' => 'Phase 1',
+                'bahadur' => $country,
+                'unit_id' => $this->session->userdata('unit_id')
             );
 
             $insert_pnform = $this->db->insert('pn_form1s', $insert_array_pnform);
