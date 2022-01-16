@@ -1,29 +1,4 @@
-<?php if ($this->session->userdata('acct_type') == 'do') {
-    $this->load->view('do/common/header');
-} else if ($this->session->userdata('acct_type') == 'joto') {
-    $this->load->view('joto/common/header');
-} else if ($this->session->userdata('acct_type') == 'exo') {
-    $this->load->view('exo/common/header');
-} else if ($this->session->userdata('acct_type') == 'co') {
-    $this->load->view('co/common/header');
-} else if ($this->session->userdata('acct_type') == 'ct') {
-    $this->load->view('ct/common/header');
-} else if ($this->session->userdata('acct_type') == 'sqc') {
-    $this->load->view('sqc/common/header');
-} else if ($this->session->userdata('acct_type') == 'cao') {
-    $this->load->view('cao/common/header');
-} else if ($this->session->userdata('acct_type') == 'cao_sec') {
-    $this->load->view('cao_sec/common/header');
-} else if ($this->session->userdata('acct_type') == 'smo') {
-    $this->load->view('smo/common/header');
-} else if ($this->session->userdata('acct_type') == 'ctmwt') {
-    $this->load->view('ctmwt/common/header');
-} else if ($this->session->userdata('acct_type') == 'dean') {
-    $this->load->view('dean/common/header');
-} else if ($this->session->userdata('acct_type') == 'hougp') {
-    $this->load->view('hougp/common/header');
-} ?>
-
+<?php $this->load->view('ctmwt/common/header'); ?>
 <?php !isset($PST_result['count']) ? $PST_result['count'] = 0 : $PST_result['count']; ?>
 <?php !isset($SST_result['count']) ? $SST_result['count'] = 0 : $SST_result['count']; ?>
 <?php !isset($PET_I_result['count']) ? $PET_I_result['count'] = 0 : $PET_I_result['count']; ?>
@@ -79,7 +54,7 @@
 <div class="container-fluid my-4">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-black-800"><strong>ACADEMY ANALYTICS</strong></h1>
+        <h1 class="h3 mb-0 text-black-800"><strong>PHYSICAL MILESTONE GRAPHS</strong></h1>
         <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#all_projects"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
     </div>
     <!-- Content Row -->
@@ -89,13 +64,13 @@
 
     <div class="row">
         <div class="col-sm-3 mb-1">
-            <a id="overall" href="#" class="btn btn-md btn-primary shadow-md rounded-pill" style="border-radius:20px;width:100%; height:100%"><i class="fas fa-globe fa-md text-white-60"></i> Overall Analytics</a>
+            <a id="overall" href="#" class="btn btn-md btn-primary shadow-md rounded-pill" style="border-radius:20px;width:100%; height:100%"><i class="fas fa-globe fa-md text-white-60"></i> Overall Milestone Graph</a>
         </div>
         <div class="col-sm-3 mb-1">
-            <a id="termwise" href="#" class="btn btn-md btn-primary shadow-md rounded-pill" style="border-radius:20px;width:100%;height:100%"><i class="fas fa-align-justify fa-md text-white-60"></i> Termwise Analytics</a>
+            <a id="termwise" href="#" class="btn btn-md btn-primary shadow-md rounded-pill" style="border-radius:20px;width:100%;height:100%"><i class="fas fa-align-justify fa-md text-white-60"></i> Termwise Milestone Graph</a>
         </div>
         <div class="col-sm-3 mb-1">
-            <a id="divisionwise" href="#" class="btn btn-md btn-primary shadow-md rounded-pill" style="border-radius:20px;width:100%;height:100%"><i class="fas fa-layer-group fa-md text-white-60"></i> Divisionwise Analytics</a>
+            <a id="divisionwise" href="#" class="btn btn-md btn-primary shadow-md rounded-pill" style="border-radius:20px;width:100%;height:100%"><i class="fas fa-layer-group fa-md text-white-60"></i> Divisionwise Milestone Graph</a>
         </div>
         <div class="col-sm-3 mb-1">
             <select id="div_select" class="form-control rounded-pill" name="div" id="div" data-placeholder="Select ship" style="font-size: 0.8rem; height:100%; display:none">
@@ -134,7 +109,6 @@
         </div>
     </div>
 
-    
     <?php
     if (!isset($Total_cadet_tp['count']) || $Total_cadet_tp['count'] == 0) {
         $Total_cadet_tp['count'] = 1;
@@ -151,6 +125,7 @@
     if (!isset($Total_cadet['count']) || $Total_cadet['count'] == 0) {
         $Total_cadet['count'] = 1;
     }
+    
 
     $dataPoints2 = array(
         array("label" => "PST Qualified", "y" => ($PST_result['count'] / $Total_cadet['count']) * 100),
@@ -175,7 +150,7 @@
         array("label" => "Long Cross", "y" => ($long_cross_result_tp['count'] / $Total_cadet_tp['count']) * 100),
         array("label" => "Mini Cross", "y" => ($mini_cross_result_tp['count'] / $Total_cadet_tp['count']) * 100)
     );
-
+    
     $dataPoints_t1 = array(
         array("label" => "PST", "y" => ($PST_result_t1['count'] / $Total_cadet_t1['count']) * 100),
         array("label" => "SST", "y" => ($SST_result_t1['count'] / $Total_cadet_t1['count']) * 100),
@@ -301,7 +276,6 @@
                 });
                 chartp.render();
 
-                
                 var chart2 = new CanvasJS.Chart("chartContainer_t1", {
                     animationEnabled: true,
                     theme: "light2", // "light1", "light2", "dark1", "dark2"
@@ -379,7 +353,7 @@
     $('#overall').on('click', function() {
 
         $.ajax({
-            url: '<?= base_url(); ?>CTMWT/get_graph_overall',
+            url: '<?= base_url(); ?>CT/get_graph_overall',
             method: 'POST',
             data: {
                 'type': 'overall'
@@ -400,7 +374,7 @@
     $('#termwise').on('click', function() {
 
         $.ajax({
-            url: '<?= base_url(); ?>CTMWT/get_graph_termwise',
+            url: '<?= base_url(); ?>CT/get_graph_termwise',
             method: 'POST',
             data: {
                 'type': 'termwise'
@@ -428,7 +402,7 @@
         var selectedValue = $(this).val();
         // alert(selectedValue);
         $.ajax({
-            url: '<?= base_url(); ?>CTMWT/get_graph_divisionwise',
+            url: '<?= base_url(); ?>CT/get_graph_divisionwise',
             method: 'POST',
             data: {
                 'selected_division': selectedValue

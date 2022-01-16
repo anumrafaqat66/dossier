@@ -54,7 +54,7 @@
 <div class="container-fluid my-4">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-black-800"><strong>ACADEMY ANALYTICS</strong></h1>
+        <h1 class="h3 mb-0 text-black-800"><strong>PHYSICAL MILESTONE GRAPHS</strong></h1>
         <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#all_projects"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
     </div>
     <!-- Content Row -->
@@ -64,13 +64,13 @@
 
     <div class="row">
         <div class="col-sm-3 mb-1">
-            <a id="overall" href="#" class="btn btn-md btn-primary shadow-md rounded-pill" style="border-radius:20px;width:100%; height:100%"><i class="fas fa-globe fa-md text-white-60"></i> Overall Analytics</a>
+            <a id="overall" href="#" class="btn btn-md btn-primary shadow-md rounded-pill" style="border-radius:20px;width:100%; height:100%"><i class="fas fa-globe fa-md text-white-60"></i> Overall Milestone Graph</a>
         </div>
         <div class="col-sm-3 mb-1">
-            <a id="termwise" href="#" class="btn btn-md btn-primary shadow-md rounded-pill" style="border-radius:20px;width:100%;height:100%"><i class="fas fa-align-justify fa-md text-white-60"></i> Termwise Analytics</a>
+            <a id="termwise" href="#" class="btn btn-md btn-primary shadow-md rounded-pill" style="border-radius:20px;width:100%;height:100%"><i class="fas fa-align-justify fa-md text-white-60"></i> Termwise Milestone Graph</a>
         </div>
         <div class="col-sm-3 mb-1">
-            <a id="divisionwise" href="#" class="btn btn-md btn-primary shadow-md rounded-pill" style="border-radius:20px;width:100%;height:100%"><i class="fas fa-layer-group fa-md text-white-60"></i> Divisionwise Analytics</a>
+            <a id="divisionwise" href="#" class="btn btn-md btn-primary shadow-md rounded-pill" style="border-radius:20px;width:100%;height:100%"><i class="fas fa-layer-group fa-md text-white-60"></i> Divisionwise Milestone Graph</a>
         </div>
         <div class="col-sm-3 mb-1">
             <select id="div_select" class="form-control rounded-pill" name="div" id="div" data-placeholder="Select ship" style="font-size: 0.8rem; height:100%; display:none">

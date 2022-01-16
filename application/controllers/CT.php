@@ -93,9 +93,60 @@ class CT extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $data['divisions'] = $this->db->get('divisions')->result_array();
+            $this->load->view('ct/academy_analytics_master', $data);
+        }
+    }
+    public function view_milestone_graph()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $data['divisions'] = $this->db->get('divisions')->result_array();
             $this->load->view('ct/academy_analytics', $data);
         }
     }
+    public function view_academic_graph()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $data['divisions'] = $this->db->get('divisions')->result_array();
+            $this->load->view('ct/view_academic_graph', $data);
+        }
+    }
+    public function view_olq_graph()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $data['divisions'] = $this->db->get('divisions')->result_array();
+            $this->load->view('ct/view_olq_graph', $data);
+        }
+    }
+    public function get_academic_graph()
+    {
+        if ($this->input->post()) {
+            $p_id = $_POST['p_id'];
+            $data['gpa'] = $this->db->where('p_id', $p_id)->get('semester_results')->row_array();
+            $data['cadet_data'] = $this->db->where('p_id', $p_id)->get('pn_form1s')->row_array();
+            $view_page = $this->load->view('ct/view_academic_graph', $data, false);
+            // echo $view_page;
+            json_encode($view_page);
+        }
+    }
+    public function get_olq_graph()
+    {
+        if ($this->input->post()) {
+            $p_id = $_POST['p_id'];
+            $data['olq_t1'] = $this->db->where('p_id', $p_id)->where('term','Term-I')->get('officer_qualities')->row_array();
+            $data['olq_t2'] = $this->db->where('p_id', $p_id)->where('term','Term-II')->get('officer_qualities')->row_array();
+            $data['olq_t3'] = $this->db->where('p_id', $p_id)->where('term','Term-III')->get('officer_qualities')->row_array();
+            $data['olq_t4'] = $this->db->where('p_id', $p_id)->where('term','Term-VI')->get('officer_qualities')->row_array();
+            $data['olq_t5'] = $this->db->where('p_id', $p_id)->where('term','Term-V')->get('officer_qualities')->row_array();
+            $data['olq_t6'] = $this->db->where('p_id', $p_id)->where('term','Term-VI')->get('officer_qualities')->row_array();
+            $data['olq_t7'] = $this->db->where('p_id', $p_id)->where('term','Term-VII')->get('officer_qualities')->row_array();
+            $data['olq_t8'] = $this->db->where('p_id', $p_id)->where('term','Term-VIII')->get('officer_qualities')->row_array();
+            $data['cadet_data'] = $this->db->where('p_id', $p_id)->get('pn_form1s')->row_array();
+            $view_page = $this->load->view('ct/view_olq_graph', $data, false);
+            // echo $view_page;
+            json_encode($view_page);
+        }
+    }
+    
 
     public function get_graph_divisionwise()
     {

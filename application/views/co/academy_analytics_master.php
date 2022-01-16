@@ -1,4 +1,4 @@
-<?php $this->load->view('cao/common/header'); ?>
+<?php $this->load->view('co/common/header'); ?>
 <?php !isset($PST_result['count']) ? $PST_result['count'] = 0 : $PST_result['count']; ?>
 <?php !isset($SST_result['count']) ? $SST_result['count'] = 0 : $SST_result['count']; ?>
 <?php !isset($PET_I_result['count']) ? $PET_I_result['count'] = 0 : $PET_I_result['count']; ?>
@@ -54,7 +54,7 @@
 <div class="container-fluid my-4">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-black-800"><strong>PHYSICAL MILESTONE GRAPHS</strong></h1>
+        <h1 class="h3 mb-0 text-black-800"><strong>ACADEMY ANALYTICS</strong></h1>
         <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#all_projects"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
     </div>
     <!-- Content Row -->
@@ -63,23 +63,16 @@
     </div>
 
     <div class="row">
-        <div class="col-sm-3 mb-1">
-            <a id="overall" href="#" class="btn btn-md btn-primary shadow-md rounded-pill" style="border-radius:20px;width:100%; height:100%"><i class="fas fa-globe fa-md text-white-60"></i> Overall Milestone Graph</a>
+        <div class="col-sm-4 mb-1">
+            <a id="overall" onclick="location.href='<?php echo base_url(); ?>CO/view_academic_graph'" class="btn btn-md btn-primary shadow-md rounded-pill" style="border-radius:20px;width:100%; height:100%"><i class="fas fa-globe fa-md text-white-60"></i> Academic Graph</a>
         </div>
-        <div class="col-sm-3 mb-1">
-            <a id="termwise" href="#" class="btn btn-md btn-primary shadow-md rounded-pill" style="border-radius:20px;width:100%;height:100%"><i class="fas fa-align-justify fa-md text-white-60"></i> Termwise Milestone Graph</a>
+        <div class="col-sm-4 mb-1">
+            <a id="termwise" onclick="location.href='<?php echo base_url(); ?>CO/view_olq_graph'" class="btn btn-md btn-primary shadow-md rounded-pill" style="border-radius:20px;width:100%;height:100%"><i class="fas fa-align-justify fa-md text-white-60"></i> OLQs Graph</a>
         </div>
-        <div class="col-sm-3 mb-1">
-            <a id="divisionwise" href="#" class="btn btn-md btn-primary shadow-md rounded-pill" style="border-radius:20px;width:100%;height:100%"><i class="fas fa-layer-group fa-md text-white-60"></i> Divisionwise Milestone Graph</a>
+        <div class="col-sm-4 mb-1">
+            <a id="divisionwise" onclick="location.href='<?php echo base_url(); ?>CO/view_milestone_graph'" class="btn btn-md btn-primary shadow-md rounded-pill" style="border-radius:20px;width:100%;height:100%"><i class="fas fa-layer-group fa-md text-white-60"></i> Physical Milestone Graphs</a>
         </div>
-        <div class="col-sm-3 mb-1">
-            <select id="div_select" class="form-control rounded-pill" name="div" id="div" data-placeholder="Select ship" style="font-size: 0.8rem; height:100%; display:none">
-                <option class="form-control form-control-user" value="">Select Division</option>
-                <?php foreach ($divisions as $data) { ?>
-                    <option class="form-control form-control-user" value="<?= $data['division_name'] ?>"><?= $data['division_name'] ?></option>
-                <?php } ?>
-            </select>
-        </div>
+
     </div>
 
     <div class="card-body bg-custom3" id="overall_graph" style="display:none">
@@ -125,7 +118,7 @@
     if (!isset($Total_cadet['count']) || $Total_cadet['count'] == 0) {
         $Total_cadet['count'] = 1;
     }
-    
+
 
     $dataPoints2 = array(
         array("label" => "PST Qualified", "y" => ($PST_result['count'] / $Total_cadet['count']) * 100),
@@ -150,7 +143,7 @@
         array("label" => "Long Cross", "y" => ($long_cross_result_tp['count'] / $Total_cadet_tp['count']) * 100),
         array("label" => "Mini Cross", "y" => ($mini_cross_result_tp['count'] / $Total_cadet_tp['count']) * 100)
     );
-    
+
     $dataPoints_t1 = array(
         array("label" => "PST", "y" => ($PST_result_t1['count'] / $Total_cadet_t1['count']) * 100),
         array("label" => "SST", "y" => ($SST_result_t1['count'] / $Total_cadet_t1['count']) * 100),
@@ -191,233 +184,6 @@
 
 <?php $this->load->view('common/footer'); ?>
 <script>
-    window.onload = function() {
-        var division = $('#div_passed').val();
-
-        if (division != "ooo" && division != 'Overall' && division != 'termwise') {
-            setTimeout(function() {
-
-                var chart1 = new CanvasJS.Chart("chartContainer2", {
-                    animationEnabled: true,
-                    theme: "light2", // "light1", "light2", "dark1", "dark2"
-                    title: {
-                        text: division + " - Cadets Physical Milestone Analytics"
-                    },
-                    subtitles: [{
-                        text: "Percentage (%)"
-                    }],
-                    axisY: {
-                        title: "Aggregate",
-                        maximum: 100,
-                    },
-                    data: [{
-                        type: "column",
-                        showInLegend: true,
-                        legendMarkerColor: "grey",
-                        legendText: "Total Aggregate",
-                        dataPoints: <?php echo json_encode($dataPoints2, JSON_NUMERIC_CHECK); ?>
-                    }]
-                });
-                chart1.render();
-
-            }, 1000);
-
-            $('#overall_graph').show();
-
-        } else if (division == 'Overall') {
-            setTimeout(function() {
-                var chart1 = new CanvasJS.Chart("chartContainer2", {
-                    animationEnabled: true,
-                    theme: "light2", // "light1", "light2", "dark1", "dark2"
-                    title: {
-                        text: "Overall Cadets Physical Milestone Analytics"
-                    },
-                    subtitles: [{
-                        text: "Percentage (%)"
-                    }],
-                    axisY: {
-                        title: "Aggregate",
-                        maximum: 100,
-                    },
-                    data: [{
-                        type: "column",
-                        showInLegend: true,
-                        legendMarkerColor: "grey",
-                        legendText: "Total Aggregate",
-                        dataPoints: <?php echo json_encode($dataPoints2, JSON_NUMERIC_CHECK); ?>
-                    }]
-                });
-                chart1.render();
-
-            }, 1000);
-
-        } else if (division == 'termwise') {
-            setTimeout(function() {
-                var chartp = new CanvasJS.Chart("chartContainer_tp", {
-                    animationEnabled: true,
-                    theme: "light2", // "light1", "light2", "dark1", "dark2"
-                    title: {
-                        text: "Term-Prep"
-                    },
-                    subtitles: [{
-                        text: "Percentage (%)"
-                    }],
-                    axisY: {
-                        title: "Aggregate",
-                        maximum: 100,
-                    },
-                    data: [{
-                        type: "column",
-                        showInLegend: true,
-                        legendMarkerColor: "grey",
-                        legendText: "Total Aggregate",
-                        dataPoints: <?php echo json_encode($dataPoints_tp, JSON_NUMERIC_CHECK); ?>
-                    }]
-                });
-                chartp.render();
-
-                var chart2 = new CanvasJS.Chart("chartContainer_t1", {
-                    animationEnabled: true,
-                    theme: "light2", // "light1", "light2", "dark1", "dark2"
-                    title: {
-                        text: "Term-I"
-                    },
-                    subtitles: [{
-                        text: "Percentage (%)"
-                    }],
-                    axisY: {
-                        title: "Aggregate",
-                        maximum: 100,
-                    },
-                    data: [{
-                        type: "column",
-                        showInLegend: true,
-                        legendMarkerColor: "grey",
-                        legendText: "Total Aggregate",
-                        dataPoints: <?php echo json_encode($dataPoints_t1, JSON_NUMERIC_CHECK); ?>
-                    }]
-                });
-                chart2.render();
-
-                var chart3 = new CanvasJS.Chart("chartContainer_t2", {
-                    animationEnabled: true,
-                    theme: "light2", // "light1", "light2", "dark1", "dark2"
-                    title: {
-                        text: "Term-II"
-                    },
-                    subtitles: [{
-                        text: "Percentage (%)"
-                    }],
-                    axisY: {
-                        title: "Aggregate",
-                        maximum: 100,
-                    },
-                    data: [{
-                        type: "column",
-                        showInLegend: true,
-                        legendMarkerColor: "grey",
-                        legendText: "Total Aggregate",
-                        dataPoints: <?php echo json_encode($dataPoints_t2, JSON_NUMERIC_CHECK); ?>
-                    }]
-                });
-                chart3.render();
-
-                var chart4 = new CanvasJS.Chart("chartContainer_t3", {
-                    animationEnabled: true,
-                    theme: "light2", // "light1", "light2", "dark1", "dark2"
-                    title: {
-                        text: "Term-III"
-                    },
-                    subtitles: [{
-                        text: "Percentage (%)"
-                    }],
-                    axisY: {
-                        title: "Aggregate",
-                        maximum: 100,
-                    },
-                    data: [{
-                        type: "column",
-                        showInLegend: true,
-                        legendMarkerColor: "grey",
-                        legendText: "Total Aggregate",
-                        dataPoints: <?php echo json_encode($dataPoints_t3, JSON_NUMERIC_CHECK); ?>
-                    }]
-                });
-                chart4.render();
-            }, 1000);
-        } else {
-            $('#overall_graph').hide();
-        }
-    }
-
-    $('#overall').on('click', function() {
-
-        $.ajax({
-            url: '<?= base_url(); ?>CT/get_graph_overall',
-            method: 'POST',
-            data: {
-                'type': 'overall'
-            },
-            success: function(data) {
-                var newDoc = document.open("text/html", "replace");
-                newDoc.write(data);
-                newDoc.close();
-            },
-            async: false,
-
-        });
-
-        $('#overall_graph').show();
-        $('#termwise_graph').hide();
-    });
-
-    $('#termwise').on('click', function() {
-
-        $.ajax({
-            url: '<?= base_url(); ?>CT/get_graph_termwise',
-            method: 'POST',
-            data: {
-                'type': 'termwise'
-            },
-            success: function(data) {
-                var newDoc = document.open("text/html", "replace");
-                newDoc.write(data);
-                newDoc.close();
-            },
-            async: false,
-
-        });
-
-        $('#termwise_graph').show();
-        $('#overall_graph').hide();
-    });
-
-    $('#divisionwise').on('click', function() {
-        $('#div_select').show();
-        $('#termwise_graph').hide();
-        $('#overall_graph').hide();
-    });
-
-    $('#div_select').on('change', function() {
-        var selectedValue = $(this).val();
-        // alert(selectedValue);
-        $.ajax({
-            url: '<?= base_url(); ?>CT/get_graph_divisionwise',
-            method: 'POST',
-            data: {
-                'selected_division': selectedValue
-            },
-            success: function(data) {
-                var newDoc = document.open("text/html", "replace");
-                newDoc.write(data);
-                newDoc.close();
-            },
-            async: false,
-
-        });
-    });
-
-
     function seen(data) {
         $.ajax({
             url: '<?= base_url(); ?>ChatController/seen',

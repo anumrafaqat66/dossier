@@ -91,7 +91,57 @@ class CO extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $data['divisions'] = $this->db->get('divisions')->result_array();
+            $this->load->view('co/academy_analytics_master', $data);
+        }
+    }
+    public function view_milestone_graph()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $data['divisions'] = $this->db->get('divisions')->result_array();
             $this->load->view('co/academy_analytics', $data);
+        }
+    }
+    public function view_academic_graph()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $data['divisions'] = $this->db->get('divisions')->result_array();
+            $this->load->view('co/view_academic_graph', $data);
+        }
+    }
+    public function view_olq_graph()
+    {
+        if ($this->session->has_userdata('user_id')) {
+            $data['divisions'] = $this->db->get('divisions')->result_array();
+            $this->load->view('co/view_olq_graph', $data);
+        }
+    }
+    public function get_academic_graph()
+    {
+        if ($this->input->post()) {
+            $p_id = $_POST['p_id'];
+            $data['gpa'] = $this->db->where('p_id', $p_id)->get('semester_results')->row_array();
+            $data['cadet_data'] = $this->db->where('p_id', $p_id)->get('pn_form1s')->row_array();
+            $view_page = $this->load->view('co/view_academic_graph', $data, false);
+            // echo $view_page;
+            json_encode($view_page);
+        }
+    }
+    public function get_olq_graph()
+    {
+        if ($this->input->post()) {
+            $p_id = $_POST['p_id'];
+            $data['olq_t1'] = $this->db->where('p_id', $p_id)->where('term','Term-I')->get('officer_qualities')->row_array();
+            $data['olq_t2'] = $this->db->where('p_id', $p_id)->where('term','Term-II')->get('officer_qualities')->row_array();
+            $data['olq_t3'] = $this->db->where('p_id', $p_id)->where('term','Term-III')->get('officer_qualities')->row_array();
+            $data['olq_t4'] = $this->db->where('p_id', $p_id)->where('term','Term-VI')->get('officer_qualities')->row_array();
+            $data['olq_t5'] = $this->db->where('p_id', $p_id)->where('term','Term-V')->get('officer_qualities')->row_array();
+            $data['olq_t6'] = $this->db->where('p_id', $p_id)->where('term','Term-VI')->get('officer_qualities')->row_array();
+            $data['olq_t7'] = $this->db->where('p_id', $p_id)->where('term','Term-VII')->get('officer_qualities')->row_array();
+            $data['olq_t8'] = $this->db->where('p_id', $p_id)->where('term','Term-VIII')->get('officer_qualities')->row_array();
+            $data['cadet_data'] = $this->db->where('p_id', $p_id)->get('pn_form1s')->row_array();
+            $view_page = $this->load->view('co/view_olq_graph', $data, false);
+            // echo $view_page;
+            json_encode($view_page);
         }
     }
 
@@ -4072,7 +4122,7 @@ class CO extends CI_Controller
             if ($page != null) {
                 $data['page'] = $page;
             }
-            $this->load->view('ct/add_physical_milestone', $data);
+            $this->load->view('co/add_physical_milestone', $data);
         }
     }
 
@@ -4086,7 +4136,7 @@ class CO extends CI_Controller
             // $this->db->where('f.divison_name', $this->session->userdata('division'));
             $data['milestone_records'] = $this->db->get()->result_array();
             // print_r( $data['milestone_records']);exit;
-            $this->load->view('ct/view_milestone_list', $data);
+            $this->load->view('co/view_milestone_list', $data);
         }
     }
 
