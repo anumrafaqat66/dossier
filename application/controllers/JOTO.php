@@ -1959,11 +1959,17 @@ class JOTO extends CI_Controller
                     'phase' => $phase
                 );
             } else {
-                if (($branch_id == '1') && ($curr_term == '6MS')) {
-                    $update_array = array(
-                        'term' => $next_term,
-                        'unit_id' => $unit_id
-                    );
+                if (isset($branch_id)) {
+                    if (($branch_id == '1') && ($curr_term == '6MS')) {
+                        $update_array = array(
+                            'term' => $next_term,
+                            'unit_id' => $unit_id
+                        );
+                    } else {
+                        $update_array = array(
+                            'term' => $next_term
+                        );
+                    }
                 } else {
                     $update_array = array(
                         'term' => $next_term
@@ -5172,7 +5178,8 @@ class JOTO extends CI_Controller
         }
     }
 
-    public function save_manual_result_file($result_type = NULL, $id = NULL, $term = NULL){
+    public function save_manual_result_file($result_type = NULL, $id = NULL, $term = NULL)
+    {
         if ($_FILES['file']['name'][0] != NULL) {
             $upload1 = $this->upload_result($_FILES['file']);
             if (count($upload1) > 1) {
@@ -5274,7 +5281,9 @@ class JOTO extends CI_Controller
                 $action = 'Insert';
             }
 
-            $this->save_manual_result_file ('Result', $p_id, $term);
+            if ($_FILES['file']['name'][0] != NULL) {
+                $this->save_manual_result_file('Result', $p_id, $term);
+            }
 
             if ($this->session->userdata('unit_id') == '1') {
                 $phase = 'Phase-I';

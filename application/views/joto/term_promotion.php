@@ -497,6 +497,12 @@
         }
 
         if (validate == 0) {
+            var pass_branch;
+            if (branch_in == ''){
+                pass_branch = branch_id;
+            } else {
+                pass_branch = branch_in;
+            }
             $('#show_error_select_unit_all').hide();
             $.ajax({
                 url: '<?= base_url(); ?>JOTO/update_cadet_term',
@@ -507,7 +513,7 @@
                     'action': 'promote',
                     'all': 'no',
                     'unit_id': unit_id,
-                    'branch_id': branch_in
+                    'branch_id': pass_branch
                 },
                 success: function(data) {
                     var newDoc = document.open("text/html", "replace");

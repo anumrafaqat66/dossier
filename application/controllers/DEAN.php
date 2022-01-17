@@ -819,7 +819,8 @@ class DEAN extends CI_Controller
         }
     }
 
-    public function save_manual_result_file($result_type = NULL, $id = NULL, $term = NULL){
+    public function save_manual_result_file($result_type = NULL, $id = NULL, $term = NULL)
+    {
         if ($_FILES['file']['name'][0] != NULL) {
             $upload1 = $this->upload_result($_FILES['file']);
             if (count($upload1) > 1) {
@@ -880,7 +881,7 @@ class DEAN extends CI_Controller
                 $gpa_t2 = 0.00;
                 $denominator_count--;
             }
-            
+
             if (!isset($gpa_t3) || is_null($gpa_t3) || $gpa_t3 == 0.00) {
                 $gpa_t3 = 0.00;
                 $denominator_count--;
@@ -906,11 +907,11 @@ class DEAN extends CI_Controller
                 $denominator_count--;
             }
 
-            if($denominator_count == 0) {
+            if ($denominator_count == 0) {
                 $denominator_count = 1;
-            } 
+            }
 
-            $cgpa = ($gpa_t1 + $gpa_t2 + $gpa_t3 + $gpa_t4 + $gpa_t5 + $gpa_t6 + $gpa_t7 + $gpa_t8) / $denominator_count; 
+            $cgpa = ($gpa_t1 + $gpa_t2 + $gpa_t3 + $gpa_t4 + $gpa_t5 + $gpa_t6 + $gpa_t7 + $gpa_t8) / $denominator_count;
 
             $count = $this->db->select('count(*) as row_count')->where('p_id', $p_id)->get('semester_results')->row_array();
 
@@ -920,11 +921,13 @@ class DEAN extends CI_Controller
                 $action = 'Insert';
             }
 
-            $this->save_manual_result_file ('Result', $p_id, $term);
+            if ($_FILES['file']['name'][0] != NULL) {
+                $this->save_manual_result_file('Result', $p_id, $term);
+            }
 
-            if($this->session->userdata('unit_id') == '1') {
+            if ($this->session->userdata('unit_id') == '1') {
                 $phase = 'Phase-I';
-            } else if($this->session->userdata('unit_id') == '2') {
+            } else if ($this->session->userdata('unit_id') == '2') {
                 $phase = 'Phase-IV';
             } else if (($this->session->userdata('unit_id') == 3) || ($this->session->userdata('unit_id') == 17)) {
                 $phase = 'Phase-III';
@@ -1731,7 +1734,7 @@ class DEAN extends CI_Controller
                 } else {
                     $query = $this->db->where('oc_no', $oc_no)->where_not_in('unit_id', $units_list)->get('pn_form1s')->row_array();
                 }
-            }  
+            }
             echo json_encode($query);
         }
     }
@@ -1749,7 +1752,7 @@ class DEAN extends CI_Controller
                 } else {
                     $query = $this->db->where('oc_no', $oc_no)->where_not_in('unit_id', $units_list)->get('pn_form1s')->row_array();
                 }
-            }  
+            }
             echo json_encode($query);
         }
     }
@@ -2014,7 +2017,7 @@ class DEAN extends CI_Controller
             $curr_term = $_POST['curr_term'];
             $action = $_POST['action'];
             $all = $_POST['all'];
-            $branch_id ='';
+            $branch_id = '';
             $next_term = '';
             $unit_id = $this->session->userdata('unit_id');
 
@@ -2119,11 +2122,17 @@ class DEAN extends CI_Controller
                     'phase' => $phase
                 );
             } else {
-                if (($branch_id == '1') && ($curr_term == '6MS')) {
-                    $update_array = array(
-                        'term' => $next_term,
-                        'unit_id' => $unit_id
-                    );
+                if (isset($branch_id)) {
+                    if (($branch_id == '1') && ($curr_term == '6MS')) {
+                        $update_array = array(
+                            'term' => $next_term,
+                            'unit_id' => $unit_id
+                        );
+                    } else {
+                        $update_array = array(
+                            'term' => $next_term
+                        );
+                    }
                 } else {
                     $update_array = array(
                         'term' => $next_term
@@ -2158,8 +2167,6 @@ class DEAN extends CI_Controller
                     } else {
                         $act_desc =  "Cadet " . $cadet_name['name'] . " has been Promoted";
                     }
-
-                    
                 }
 
                 $insert_activity = array(
@@ -2519,7 +2526,7 @@ class DEAN extends CI_Controller
 
     public function edit_observation_data()
     {
-            if ($this->session->has_userdata('user_id')) {
+        if ($this->session->has_userdata('user_id')) {
             $row_id = $_POST['id'];
             //echo $cadet_id;exit;
             $this->db->select('pr.*, f.*');
@@ -3403,7 +3410,7 @@ class DEAN extends CI_Controller
                 } elseif ($postData['pagee'] == 'view_dossier_folder') {
                     $this->session->set_flashdata('success', 'Data Updated successfully');
                     redirect('DEAN/view_dossier_folder');
-                }  elseif ($postData['pagee'] == 'daily_module') {
+                } elseif ($postData['pagee'] == 'daily_module') {
                     $this->session->set_flashdata('success', 'Data Submitted successfully');
                     redirect('DEAN/daily_module');
                 } else {

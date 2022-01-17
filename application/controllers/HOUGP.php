@@ -1536,7 +1536,7 @@ class HOUGP extends CI_Controller
                 } else {
                     $query = $this->db->where('oc_no', $oc_no)->where_not_in('unit_id', $units_list)->get('pn_form1s')->row_array();
                 }
-            }  
+            }
             echo json_encode($query);
         }
     }
@@ -1554,7 +1554,7 @@ class HOUGP extends CI_Controller
                 } else {
                     $query = $this->db->where('oc_no', $oc_no)->where_not_in('unit_id', $units_list)->get('pn_form1s')->row_array();
                 }
-            }  
+            }
             echo json_encode($query);
         }
     }
@@ -1812,16 +1812,16 @@ class HOUGP extends CI_Controller
 
     public function update_cadet_term()
     {
-             if ($this->input->post()) {
+        if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
 
             $p_id = $_POST['p_id'];
             $curr_term = $_POST['curr_term'];
             $action = $_POST['action'];
             $all = $_POST['all'];
-            $branch_id ='';
+            $branch_id = '';
             $next_term = '';
-            $unit_id = $this->session->userdata('unit_id'); 
+            $unit_id = $this->session->userdata('unit_id');
 
             if ($action == 'promote') {
                 if ($curr_term == 'Term-P') {
@@ -1839,7 +1839,7 @@ class HOUGP extends CI_Controller
                     $unit_id = $_POST['unit_id'];
                     $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
                 } else {
-                    $phase='Sub-Lieutenant';
+                    $phase = 'Sub-Lieutenant';
                     if (isset($_POST['unit_id'])) {
                         $unit_id = $_POST['unit_id'];
                     }
@@ -1924,11 +1924,17 @@ class HOUGP extends CI_Controller
                     'phase' => $phase
                 );
             } else {
-                if (($branch_id == '1') && ($curr_term == '6MS')) {
-                    $update_array = array(
-                        'term' => $next_term,
-                        'unit_id' => $unit_id
-                    );
+                if (isset($branch_id)) {
+                    if (($branch_id == '1') && ($curr_term == '6MS')) {
+                        $update_array = array(
+                            'term' => $next_term,
+                            'unit_id' => $unit_id
+                        );
+                    } else {
+                        $update_array = array(
+                            'term' => $next_term
+                        );
+                    }
                 } else {
                     $update_array = array(
                         'term' => $next_term
@@ -1947,7 +1953,7 @@ class HOUGP extends CI_Controller
                     'unit_id' => $this->session->userdata('unit_id'),
                     'term' => $curr_term
                 ];
-            } 
+            }
 
             $this->db->where($cond);
             $update = $this->db->update('pn_form1s', $update_array);
@@ -2014,7 +2020,7 @@ class HOUGP extends CI_Controller
             $view_page = $this->load->view('hougp/term_promotion', $data, TRUE);
             echo $view_page;
             json_encode($view_page);
-        }  
+        }
     }
 
     public function update_cadet_to_midshipman()
@@ -2055,7 +2061,7 @@ class HOUGP extends CI_Controller
                             'term' => $curr_term,
                             'divison_name' => $this->session->userdata('division')
                         ];
-                    }else {
+                    } else {
                         $cond  = [
                             'term' => $curr_term
                         ];
@@ -2127,7 +2133,7 @@ class HOUGP extends CI_Controller
 
     public function update_cadet_to_sub_lieutenant()
     {
-         if ($this->input->post()) {
+        if ($this->input->post()) {
             $postData = $this->security->xss_clean($this->input->post());
 
             $p_id = $_POST['p_id'];
@@ -2427,7 +2433,7 @@ class HOUGP extends CI_Controller
 
     public function edit_observation_data()
     {
-            if ($this->session->has_userdata('user_id')) {
+        if ($this->session->has_userdata('user_id')) {
             $row_id = $_POST['id'];
             //echo $cadet_id;exit;
             $this->db->select('pr.*, f.*');
@@ -2612,7 +2618,7 @@ class HOUGP extends CI_Controller
 
     public function search_cadet_for_dossier()
     {
-    if ($this->session->has_userdata('user_id')) {
+        if ($this->session->has_userdata('user_id')) {
             $oc_no = $_POST['oc_no'];
             $units_list = array('2', '3', '17');
             if (($this->session->userdata('unit_id')) != 1) {
@@ -3065,7 +3071,7 @@ class HOUGP extends CI_Controller
                     $view_page = 0;
                 }
             }
-            
+
             echo $view_page;
             json_encode($view_page);
         }
@@ -5009,7 +5015,8 @@ class HOUGP extends CI_Controller
         }
     }
 
-    public function save_manual_result_file($result_type = NULL, $id = NULL, $term = NULL){
+    public function save_manual_result_file($result_type = NULL, $id = NULL, $term = NULL)
+    {
         if ($_FILES['file']['name'][0] != NULL) {
             $upload1 = $this->upload_result($_FILES['file']);
             if (count($upload1) > 1) {
@@ -5070,7 +5077,7 @@ class HOUGP extends CI_Controller
                 $gpa_t2 = 0.00;
                 $denominator_count--;
             }
-            
+
             if (!isset($gpa_t3) || is_null($gpa_t3) || $gpa_t3 == 0.00) {
                 $gpa_t3 = 0.00;
                 $denominator_count--;
@@ -5096,11 +5103,11 @@ class HOUGP extends CI_Controller
                 $denominator_count--;
             }
 
-            if($denominator_count == 0) {
+            if ($denominator_count == 0) {
                 $denominator_count = 1;
-            } 
+            }
 
-            $cgpa = ($gpa_t1 + $gpa_t2 + $gpa_t3 + $gpa_t4 + $gpa_t5 + $gpa_t6 + $gpa_t7 + $gpa_t8) / $denominator_count; 
+            $cgpa = ($gpa_t1 + $gpa_t2 + $gpa_t3 + $gpa_t4 + $gpa_t5 + $gpa_t6 + $gpa_t7 + $gpa_t8) / $denominator_count;
 
             $count = $this->db->select('count(*) as row_count')->where('p_id', $p_id)->get('semester_results')->row_array();
 
@@ -5110,11 +5117,13 @@ class HOUGP extends CI_Controller
                 $action = 'Insert';
             }
 
-            $this->save_manual_result_file ('Result', $p_id, $term);
+            if ($_FILES['file']['name'][0] != NULL) {
+                $this->save_manual_result_file('Result', $p_id, $term);
+            }
 
-            if($this->session->userdata('unit_id') == '1') {
+            if ($this->session->userdata('unit_id') == '1') {
                 $phase = 'Phase-I';
-            } else if($this->session->userdata('unit_id') == '2') {
+            } else if ($this->session->userdata('unit_id') == '2') {
                 $phase = 'Phase-IV';
             } else if (($this->session->userdata('unit_id') == 3) || ($this->session->userdata('unit_id') == 17)) {
                 $phase = 'Phase-III';

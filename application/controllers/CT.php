@@ -15,7 +15,7 @@ class CT extends CI_Controller
     {
         if ($this->session->has_userdata('user_id')) {
             $id = $this->session->userdata('user_id');
-            $data['total_cadets'] = $this->db->select('count(*) as count')->where('completed', 0)->where('unit_id',$this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
+            $data['total_cadets'] = $this->db->select('count(*) as count')->where('completed', 0)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
             $this->load->view('ct/dashboard', $data);
         } else {
             $this->load->view('login');
@@ -132,21 +132,21 @@ class CT extends CI_Controller
     {
         if ($this->input->post()) {
             $p_id = $_POST['p_id'];
-            $data['olq_t1'] = $this->db->where('p_id', $p_id)->where('term','Term-I')->get('officer_qualities')->row_array();
-            $data['olq_t2'] = $this->db->where('p_id', $p_id)->where('term','Term-II')->get('officer_qualities')->row_array();
-            $data['olq_t3'] = $this->db->where('p_id', $p_id)->where('term','Term-III')->get('officer_qualities')->row_array();
-            $data['olq_t4'] = $this->db->where('p_id', $p_id)->where('term','Term-VI')->get('officer_qualities')->row_array();
-            $data['olq_t5'] = $this->db->where('p_id', $p_id)->where('term','Term-V')->get('officer_qualities')->row_array();
-            $data['olq_t6'] = $this->db->where('p_id', $p_id)->where('term','Term-VI')->get('officer_qualities')->row_array();
-            $data['olq_t7'] = $this->db->where('p_id', $p_id)->where('term','Term-VII')->get('officer_qualities')->row_array();
-            $data['olq_t8'] = $this->db->where('p_id', $p_id)->where('term','Term-VIII')->get('officer_qualities')->row_array();
+            $data['olq_t1'] = $this->db->where('p_id', $p_id)->where('term', 'Term-I')->get('officer_qualities')->row_array();
+            $data['olq_t2'] = $this->db->where('p_id', $p_id)->where('term', 'Term-II')->get('officer_qualities')->row_array();
+            $data['olq_t3'] = $this->db->where('p_id', $p_id)->where('term', 'Term-III')->get('officer_qualities')->row_array();
+            $data['olq_t4'] = $this->db->where('p_id', $p_id)->where('term', 'Term-VI')->get('officer_qualities')->row_array();
+            $data['olq_t5'] = $this->db->where('p_id', $p_id)->where('term', 'Term-V')->get('officer_qualities')->row_array();
+            $data['olq_t6'] = $this->db->where('p_id', $p_id)->where('term', 'Term-VI')->get('officer_qualities')->row_array();
+            $data['olq_t7'] = $this->db->where('p_id', $p_id)->where('term', 'Term-VII')->get('officer_qualities')->row_array();
+            $data['olq_t8'] = $this->db->where('p_id', $p_id)->where('term', 'Term-VIII')->get('officer_qualities')->row_array();
             $data['cadet_data'] = $this->db->where('p_id', $p_id)->get('pn_form1s')->row_array();
             $view_page = $this->load->view('ct/view_olq_graph', $data, false);
             // echo $view_page;
             json_encode($view_page);
         }
     }
-    
+
 
     public function get_graph_divisionwise()
     {
@@ -493,6 +493,7 @@ class CT extends CI_Controller
                     $query = $this->db->where('oc_no', $oc_no)->where_not_in('unit_id', $units_list)->get('pn_form1s')->row_array();
                 }
             }
+            // echo $this->db->last_query(); exit;
             echo json_encode($query);
         }
     }
@@ -513,7 +514,7 @@ class CT extends CI_Controller
             $this->db->select('or.*, f.*');
             $this->db->from('observation_records or');
             $this->db->join('pn_form1s f', 'f.p_id = or.p_id');
-            $this->db->where('f.unit_id',$this->session->userdata('unit_id'));
+            $this->db->where('f.unit_id', $this->session->userdata('unit_id'));
             $data['observation_records'] = $this->db->get()->result_array();
             $view_page = $this->load->view('ct/view_observation_list', $data, TRUE);
             echo $view_page;
@@ -1943,7 +1944,10 @@ class CT extends CI_Controller
     }
     public function view_promotion_screen()
     {
-        $this->load->view('ct/term_promotion');
+        $data['units'] = $this->db->where('id', '2')->or_where('id', '3')->or_where('id', '17')->get('navy_units')->result_array();
+        $data['ships'] = $this->db->where('id', '6')->or_where('id', '7')->or_where('id', '8')->or_where('id', '9')->or_where('id', '10')->or_where('id', '11')->or_where('id', '12')->or_where('id', '13')->or_where('id', '14')->or_where('id', '15')->or_where('id', '16')->get('navy_units')->result_array();
+        $data['branches'] = $this->db->get('branch_preference_list')->result_array();
+        $this->load->view('ct/term_promotion', $data);
     }
 
     public function save_distinction_records()
@@ -2485,11 +2489,17 @@ class CT extends CI_Controller
                     'phase' => $phase
                 );
             } else {
-                if (($branch_id == '1') && ($curr_term == '6MS')) {
-                    $update_array = array(
-                        'term' => $next_term,
-                        'unit_id' => $unit_id
-                    );
+                if (isset($branch_id)) {
+                    if (($branch_id == '1') && ($curr_term == '6MS')) {
+                        $update_array = array(
+                            'term' => $next_term,
+                            'unit_id' => $unit_id
+                        );
+                    } else {
+                        $update_array = array(
+                            'term' => $next_term
+                        );
+                    }
                 } else {
                     $update_array = array(
                         'term' => $next_term
@@ -2497,18 +2507,35 @@ class CT extends CI_Controller
                 }
             }
 
-            if ($all == 'no') {
-                $cond  = [
-                    'p_id' => $p_id,
-                    'unit_id' => $this->session->userdata('unit_id'),
-                    'term' => $curr_term
-                ];
-            } else if ($all == 'yes') {
-                $cond  = [
-                    'unit_id' => $this->session->userdata('unit_id'),
-                    'term' => $curr_term
-                ];
+            if ($this->session->userdata('unit_id') == '1') {
+                if ($all == 'no') {
+                    $cond  = [
+                        'p_id' => $p_id,
+                        'term' => $curr_term
+                    ];
+                } else if ($all == 'yes') {
+                    $cond  = [
+                        'term' => $curr_term
+                    ];
+                }
+            } else {
+                if ($all == 'no') {
+                    $cond  = [
+                        'p_id' => $p_id,
+                        'unit_id' => $this->session->userdata('unit_id'),
+                        'term' => $curr_term
+                    ];
+                } else if ($all == 'yes') {
+                    $cond  = [
+                        'unit_id' => $this->session->userdata('unit_id'),
+                        'term' => $curr_term
+                    ];
+                }
             }
+
+            // print_r($update_array);
+            // print_r($cond);
+            // exit;
 
             $this->db->where($cond);
             $update = $this->db->update('pn_form1s', $update_array);
@@ -4137,7 +4164,8 @@ class CT extends CI_Controller
         }
     }
 
-    public function save_manual_result_file($result_type = NULL, $id = NULL, $term = NULL){
+    public function save_manual_result_file($result_type = NULL, $id = NULL, $term = NULL)
+    {
         if ($_FILES['file']['name'][0] != NULL) {
             $upload1 = $this->upload_result($_FILES['file']);
             if (count($upload1) > 1) {
@@ -4200,7 +4228,7 @@ class CT extends CI_Controller
                 $gpa_t2 = 0.00;
                 $denominator_count--;
             }
-            
+
             if (!isset($gpa_t3) || is_null($gpa_t3) || $gpa_t3 == 0.00) {
                 $gpa_t3 = 0.00;
                 $denominator_count--;
@@ -4226,11 +4254,11 @@ class CT extends CI_Controller
                 $denominator_count--;
             }
 
-            if($denominator_count == 0) {
+            if ($denominator_count == 0) {
                 $denominator_count = 1;
-            } 
+            }
 
-            $cgpa = ($gpa_t1 + $gpa_t2 + $gpa_t3 + $gpa_t4 + $gpa_t5 + $gpa_t6 + $gpa_t7 + $gpa_t8) / $denominator_count; 
+            $cgpa = ($gpa_t1 + $gpa_t2 + $gpa_t3 + $gpa_t4 + $gpa_t5 + $gpa_t6 + $gpa_t7 + $gpa_t8) / $denominator_count;
 
             $count = $this->db->select('count(*) as row_count')->where('p_id', $p_id)->get('semester_results')->row_array();
 
@@ -4239,12 +4267,14 @@ class CT extends CI_Controller
             } else {
                 $action = 'Insert';
             }
-            
-            $this->save_manual_result_file ('Result', $p_id, $term);
 
-            if($this->session->userdata('unit_id') == '1') {
+            if ($_FILES['file']['name'][0] != NULL) {
+                $this->save_manual_result_file('Result', $p_id, $term);
+            }
+
+            if ($this->session->userdata('unit_id') == '1') {
                 $phase = 'Phase-I';
-            } else if($this->session->userdata('unit_id') == '2') {
+            } else if ($this->session->userdata('unit_id') == '2') {
                 $phase = 'Phase-IV';
             } else if (($this->session->userdata('unit_id') == 3) || ($this->session->userdata('unit_id') == 17)) {
                 $phase = 'Phase-III';
@@ -4347,5 +4377,19 @@ class CT extends CI_Controller
         }
     }
 
+    public function get_semester_list()
+    {
+        $branch_id = $_POST['branch_id'];
+        if ($branch_id == 2) {
+            $semster_list = array('4WE', '5WE', '6WE', '7WE', '8WE');
+        } else if ($branch_id == 4) {
+            $semster_list = array('4ME', '5ME', '6ME', '7ME', '8ME');
+        } else if ($branch_id == 1) {
+            $semster_list = array('5MS', '6MS', 'GLOPS');
+        } else if ($branch_id == 3) {
+            $semster_list = array('3LOG', '4LOG', '5LOG', '6LOG', '7LOG', '8LOG');
+        }
 
+        echo json_encode($semster_list);
+    }
 }

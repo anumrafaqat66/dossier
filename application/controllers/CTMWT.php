@@ -30,7 +30,7 @@ class CTMWT extends CI_Controller
             $data['saif_count'] = $this->db->select('count(*) as count')->where('divison_name', 'Saif division')->get('pn_form1s')->row_array();
             $data['khalid_count'] = $this->db->select('count(*) as count')->where('divison_name', 'Khalid division')->get('pn_form1s')->row_array();
             $data['moawin_count'] = $this->db->select('count(*) as count')->where('divison_name', 'Moawin division')->get('pn_form1s')->row_array();
-            $data['total_cadets'] = $this->db->select('count(*) as count')->where('completed', 0)->where('unit_id',$this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
+            $data['total_cadets'] = $this->db->select('count(*) as count')->where('completed', 0)->where('unit_id', $this->session->userdata('unit_id'))->get('pn_form1s')->row_array();
 
             $this->load->view('ctmwt/dashboard', $data);
         } else {
@@ -148,14 +148,14 @@ class CTMWT extends CI_Controller
     {
         if ($this->input->post()) {
             $p_id = $_POST['p_id'];
-            $data['olq_t1'] = $this->db->where('p_id', $p_id)->where('term','Term-I')->get('officer_qualities')->row_array();
-            $data['olq_t2'] = $this->db->where('p_id', $p_id)->where('term','Term-II')->get('officer_qualities')->row_array();
-            $data['olq_t3'] = $this->db->where('p_id', $p_id)->where('term','Term-III')->get('officer_qualities')->row_array();
-            $data['olq_t4'] = $this->db->where('p_id', $p_id)->where('term','Term-VI')->get('officer_qualities')->row_array();
-            $data['olq_t5'] = $this->db->where('p_id', $p_id)->where('term','Term-V')->get('officer_qualities')->row_array();
-            $data['olq_t6'] = $this->db->where('p_id', $p_id)->where('term','Term-VI')->get('officer_qualities')->row_array();
-            $data['olq_t7'] = $this->db->where('p_id', $p_id)->where('term','Term-VII')->get('officer_qualities')->row_array();
-            $data['olq_t8'] = $this->db->where('p_id', $p_id)->where('term','Term-VIII')->get('officer_qualities')->row_array();
+            $data['olq_t1'] = $this->db->where('p_id', $p_id)->where('term', 'Term-I')->get('officer_qualities')->row_array();
+            $data['olq_t2'] = $this->db->where('p_id', $p_id)->where('term', 'Term-II')->get('officer_qualities')->row_array();
+            $data['olq_t3'] = $this->db->where('p_id', $p_id)->where('term', 'Term-III')->get('officer_qualities')->row_array();
+            $data['olq_t4'] = $this->db->where('p_id', $p_id)->where('term', 'Term-VI')->get('officer_qualities')->row_array();
+            $data['olq_t5'] = $this->db->where('p_id', $p_id)->where('term', 'Term-V')->get('officer_qualities')->row_array();
+            $data['olq_t6'] = $this->db->where('p_id', $p_id)->where('term', 'Term-VI')->get('officer_qualities')->row_array();
+            $data['olq_t7'] = $this->db->where('p_id', $p_id)->where('term', 'Term-VII')->get('officer_qualities')->row_array();
+            $data['olq_t8'] = $this->db->where('p_id', $p_id)->where('term', 'Term-VIII')->get('officer_qualities')->row_array();
             $data['cadet_data'] = $this->db->where('p_id', $p_id)->get('pn_form1s')->row_array();
             $view_page = $this->load->view('co/view_olq_graph', $data, false);
             // echo $view_page;
@@ -1796,6 +1796,12 @@ class CTMWT extends CI_Controller
         $this->load->view('ctmwt/Results');
     }
 
+    public function view_semester_result()
+    {
+        // $this->load->view('ct/view_semester_result_graph', false);
+        $this->load->view('ctmwt/add_semester_result', false);
+    }
+
     public function save_cadet_result($result_type = NULL)
     {
         if ($this->input->post()) {
@@ -2480,11 +2486,17 @@ class CTMWT extends CI_Controller
                     'phase' => $phase
                 );
             } else {
-                if (($branch_id == '1') && ($curr_term == '6MS')) {
-                    $update_array = array(
-                        'term' => $next_term,
-                        'unit_id' => $unit_id
-                    );
+                if (isset($branch_id)) {
+                    if (($branch_id == '1') && ($curr_term == '6MS')) {
+                        $update_array = array(
+                            'term' => $next_term,
+                            'unit_id' => $unit_id
+                        );
+                    } else {
+                        $update_array = array(
+                            'term' => $next_term
+                        );
+                    }
                 } else {
                     $update_array = array(
                         'term' => $next_term
@@ -4089,5 +4101,234 @@ class CTMWT extends CI_Controller
             $data['cadets-div'] = $this->db->get()->result_array();
             echo json_encode($data['cadets-div']);
         }
+    }
+
+    public function save_manual_result_file($result_type = NULL, $id = NULL, $term = NULL)
+    {
+        if ($_FILES['file']['name'][0] != NULL) {
+            $upload1 = $this->upload_result($_FILES['file']);
+            if (count($upload1) > 1) {
+                $files = implode(',', $upload1);
+            } else {
+                $files = $upload1[0];
+            }
+        } else {
+            $files = '';
+        }
+        $file_size = $_FILES['file']['size'] . " kb";
+        $file_name = $_FILES['file']['name'];
+        $file_type = $_FILES['file']['type'];
+        $file_path = $_FILES['file']['tmp_name'];
+
+        $insert_array = array(
+            'file_name' => $file_name,
+            'file_type' => $file_type,
+            'file_path' => $file_path,
+            'file_size' => $file_size,
+            'p_id' => $id,
+            'do_id' => $this->session->userdata('user_id'),
+            'phase' => 'Phase 1',
+            'term' => $term,
+            'doc_name' => $result_type,
+            'doc_type' => $result_type,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        );
+
+        $insert = $this->db->insert('academic_records', $insert_array);
+    }
+
+
+    public function save_cadet_semester_result()
+    {
+        if ($this->input->post()) {
+            $postData = $this->security->xss_clean($this->input->post());
+            $term = $postData['term'];
+            $p_id = $postData['id'];
+            $unit_id = $postData['unit_id'];
+
+            $gpa_t1 = (float)$postData['gpa_t1'];
+            $gpa_t2 = (float)$postData['gpa_t2'];
+            $gpa_t3 = (float)$postData['gpa_t3'];
+            $gpa_t4 = (float)$postData['gpa_t4'];
+            $gpa_t5 = (float)$postData['gpa_t5'];
+            $gpa_t6 = (float)$postData['gpa_t6'];
+            $gpa_t7 = (float)$postData['gpa_t7'];
+            $gpa_t8 = (float)$postData['gpa_t8'];
+
+
+            $denominator_count = 8;
+
+            if (!isset($gpa_t1) || is_null($gpa_t1) || $gpa_t1 == 0.00) {
+                $gpa_t1 = 0.00;
+                $denominator_count--;
+            }
+            if (!isset($gpa_t2) || is_null($gpa_t2) || $gpa_t2 == 0.00) {
+                $gpa_t2 = 0.00;
+                $denominator_count--;
+            }
+
+            if (!isset($gpa_t3) || is_null($gpa_t3) || $gpa_t3 == 0.00) {
+                $gpa_t3 = 0.00;
+                $denominator_count--;
+            }
+            if (!isset($gpa_t4) || is_null($gpa_t4) || $gpa_t4 == 0.00) {
+                $gpa_t4 = 0.00;
+                $denominator_count--;
+            }
+            if (!isset($gpa_t5) || is_null($gpa_t5) || $gpa_t5 == 0.00) {
+                $gpa_t5 = 0.00;
+                $denominator_count--;
+            }
+            if (!isset($gpa_t6) || is_null($gpa_t6) || $gpa_t6 == 0.00) {
+                $gpa_t6 = 0.00;
+                $denominator_count--;
+            }
+            if (!isset($gpa_t7) || is_null($gpa_t7) || $gpa_t7 == 0.00) {
+                $gpa_t7 = 0.00;
+                $denominator_count--;
+            }
+            if (!isset($gpa_t8) || is_null($gpa_t8) || $gpa_t8 == 0.00) {
+                $gpa_t8 = 0.00;
+                $denominator_count--;
+            }
+
+            if ($denominator_count == 0) {
+                $denominator_count = 1;
+            }
+
+            $cgpa = ($gpa_t1 + $gpa_t2 + $gpa_t3 + $gpa_t4 + $gpa_t5 + $gpa_t6 + $gpa_t7 + $gpa_t8) / $denominator_count;
+
+            $count = $this->db->select('count(*) as row_count')->where('p_id', $p_id)->get('semester_results')->row_array();
+
+            if ($count['row_count'] > 0) {
+                $action = 'Update';
+            } else {
+                $action = 'Insert';
+            }
+
+            if ($_FILES['file']['name'][0] != NULL) {
+                $this->save_manual_result_file('Result', $p_id, $term);
+            }
+
+            if ($this->session->userdata('unit_id') == '1') {
+                $phase = 'Phase-I';
+            } else if ($this->session->userdata('unit_id') == '2') {
+                $phase = 'Phase-IV';
+            } else if (($this->session->userdata('unit_id') == 3) || ($this->session->userdata('unit_id') == 17)) {
+                $phase = 'Phase-III';
+            } else {
+                $phase = 'Phase-II';
+            }
+
+            if ($action == 'Insert') {
+                $insert_array = array(
+                    'p_id' => $p_id,
+                    'user_id' => $this->session->userdata('user_id'),
+                    'unit_id' => $unit_id,
+                    'gpa_t2' => $gpa_t1,
+                    'gpa_t1' => $gpa_t2,
+                    'gpa_t3' => $gpa_t3,
+                    'gpa_t4' => $gpa_t4,
+                    'gpa_t5' => $gpa_t5,
+                    'gpa_t6' => $gpa_t6,
+                    'gpa_t7' => $gpa_t7,
+                    'gpa_t8' => $gpa_t8,
+                    'cgpa' => $cgpa,
+                    'phase' => $phase,
+                    'created_at' => date('Y-m-d H:i:s')
+                );
+                $insert = $this->db->insert('semester_results', $insert_array);
+            } elseif ($action == 'Update') {
+                $update_array = array(
+                    'user_id' => $this->session->userdata('user_id'),
+                    'unit_id' => $unit_id,
+                    'gpa_t2' => $gpa_t1,
+                    'gpa_t1' => $gpa_t2,
+                    'gpa_t3' => $gpa_t3,
+                    'gpa_t4' => $gpa_t4,
+                    'gpa_t5' => $gpa_t5,
+                    'gpa_t6' => $gpa_t6,
+                    'gpa_t7' => $gpa_t7,
+                    'gpa_t8' => $gpa_t8,
+                    'cgpa' => $cgpa,
+                    'created_at' => date('Y-m-d H:i:s')
+                );
+
+                $cond  = ['p_id' => $p_id];
+                $this->db->where($cond);
+                $update = $this->db->update('semester_results', $update_array);
+            }
+        }
+
+        if (!empty($update) || !empty($insert)) {
+
+            $cadet_name = $this->db->select('name')->where('p_id', $p_id)->get('pn_form1s')->row_array();
+
+            $insert_activity = array(
+                'activity_module' => $this->session->userdata('acct_type'),
+                'activity_action' => 'add',
+                'activity_detail' => "Semester Results added for cadet " . $cadet_name['name'],
+                'activity_by' => $this->session->userdata('username'),
+                'activity_date' => date('Y-m-d H:i:s')
+            );
+
+            $insert_act = $this->db->insert('activity_log', $insert_activity);
+            $last_id = $this->db->insert_id();
+
+            $query = $this->db->where('username !=', $this->session->userdata('username'))->get('security_info')->result_array();
+
+            for ($i = 0; $i < count($query); $i++) {
+                $insert_activity_seen = array(
+                    'activity_id' => $last_id,
+                    'user_id' => $query[$i]['id'],
+                    'seen' => 'no'
+                );
+                $insert_act_seen = $this->db->insert('activity_log_seen', $insert_activity_seen);
+            }
+        }
+
+        if (!empty($insert) || !empty($update)) {
+            $this->session->set_flashdata('success', 'Data Submitted successfully');
+            redirect('CTMWT/view_semester_result');
+        } else {
+            $this->session->set_flashdata('failure', 'Something went wrong, try again.');
+            redirect('CTMWT/view_semester_result');
+        }
+    }
+
+    public function show_semester_results_values()
+    {
+        if ($this->input->post()) {
+            $p_id = $_POST['p_id'];
+            $query = $this->db->where('p_id', $p_id)->get('semester_results')->row_array();
+            echo json_encode($query);
+        }
+    }
+
+    public function get_manual_result_files()
+    {
+        if ($this->input->post()) {
+            $p_id = $_POST['p_id'];
+            $query = $this->db->where('p_id', $p_id)->get('academic_records')->result_array();
+
+            echo json_encode($query);
+        }
+    }
+
+    public function get_semester_list()
+    {
+        $branch_id = $_POST['branch_id'];
+        if ($branch_id == 2) {
+            $semster_list = array('4WE', '5WE', '6WE', '7WE', '8WE');
+        } else if ($branch_id == 4) {
+            $semster_list = array('4ME', '5ME', '6ME', '7ME', '8ME');
+        } else if ($branch_id == 1) {
+            $semster_list = array('5MS', '6MS', 'GLOPS');
+        } else if ($branch_id == 3) {
+            $semster_list = array('3LOG', '4LOG', '5LOG', '6LOG', '7LOG', '8LOG');
+        }
+
+        echo json_encode($semster_list);
     }
 }

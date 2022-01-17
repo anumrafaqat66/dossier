@@ -1458,7 +1458,7 @@ class D_O extends CI_Controller
                 }
             }
 
-           // print_r($query);exit;
+            // print_r($query);exit;
             echo json_encode($query);
         }
     }
@@ -1561,7 +1561,7 @@ class D_O extends CI_Controller
     public function auto_biography()
     {
         if ($this->session->has_userdata('user_id')) {
-    $this->load->view('do/biography');
+            $this->load->view('do/biography');
         }
     }
     public function personal_data()
@@ -1803,11 +1803,11 @@ class D_O extends CI_Controller
             $curr_term = $_POST['curr_term'];
             $action = $_POST['action'];
             $all = $_POST['all'];
-            
-            $branch_id ='';
-            $next_term='';
+
+            $branch_id = '';
+            $next_term = '';
             $unit_id = $this->session->userdata('unit_id');
-            
+
             if ($action == 'promote') {
                 if ($curr_term == 'Term-P') {
                     $next_term = 'Term-I';
@@ -1824,8 +1824,8 @@ class D_O extends CI_Controller
                     $unit_id = $_POST['unit_id'];
                     $branch_id = $_POST['branch_id']; //Added by Awais Dated: 13 Dec 21
                 } else {
-                    $phase='Sub-Lieutenant';
-                    
+                    $phase = 'Sub-Lieutenant';
+
                     if (isset($_POST['unit_id'])) {
                         $unit_id = $_POST['unit_id'];
                     }
@@ -1903,7 +1903,7 @@ class D_O extends CI_Controller
                     'branch_id' => $branch_id,
                     'phase' => $phase
                 );
-            } else if ($curr_term == 'Term-IV'){
+            } else if ($curr_term == 'Term-IV') {
                 $update_array = array(
                     'term' => $next_term,
                     'unit_id' => $unit_id,
@@ -1911,11 +1911,17 @@ class D_O extends CI_Controller
                     'phase' => $phase
                 );
             } else {
-                if (($branch_id == '1') && ($curr_term == '6MS')) {
-                    $update_array = array(
-                        'term' => $next_term,
-                        'unit_id' => $unit_id
-                    );
+                if (isset($branch_id)) {
+                    if (($branch_id == '1') && ($curr_term == '6MS')) {
+                        $update_array = array(
+                            'term' => $next_term,
+                            'unit_id' => $unit_id
+                        );
+                    } else {
+                        $update_array = array(
+                            'term' => $next_term
+                        );
+                    }
                 } else {
                     $update_array = array(
                         'term' => $next_term
@@ -2467,7 +2473,7 @@ class D_O extends CI_Controller
 
     public function edit_observation_data()
     {
-         if ($this->session->has_userdata('user_id')) {
+        if ($this->session->has_userdata('user_id')) {
             $row_id = $_POST['id'];
             //echo $cadet_id;exit;
             $this->db->select('pr.*, f.*');
@@ -3107,7 +3113,7 @@ class D_O extends CI_Controller
                     $view_page = 0;
                 }
             }
-            
+
             echo $view_page;
             json_encode($view_page);
         }
@@ -5033,7 +5039,8 @@ class D_O extends CI_Controller
         }
     }
 
-    public function save_manual_result_file($result_type = NULL, $id = NULL, $term = NULL){
+    public function save_manual_result_file($result_type = NULL, $id = NULL, $term = NULL)
+    {
         if ($_FILES['file']['name'][0] != NULL) {
             $upload1 = $this->upload_result($_FILES['file']);
             if (count($upload1) > 1) {
@@ -5096,7 +5103,7 @@ class D_O extends CI_Controller
                 $gpa_t2 = 0.00;
                 $denominator_count--;
             }
-            
+
             if (!isset($gpa_t3) || is_null($gpa_t3) || $gpa_t3 == 0.00) {
                 $gpa_t3 = 0.00;
                 $denominator_count--;
@@ -5122,11 +5129,11 @@ class D_O extends CI_Controller
                 $denominator_count--;
             }
 
-            if($denominator_count == 0) {
+            if ($denominator_count == 0) {
                 $denominator_count = 1;
-            } 
+            }
 
-            $cgpa = ($gpa_t1 + $gpa_t2 + $gpa_t3 + $gpa_t4 + $gpa_t5 + $gpa_t6 + $gpa_t7 + $gpa_t8) / $denominator_count; 
+            $cgpa = ($gpa_t1 + $gpa_t2 + $gpa_t3 + $gpa_t4 + $gpa_t5 + $gpa_t6 + $gpa_t7 + $gpa_t8) / $denominator_count;
 
             $count = $this->db->select('count(*) as row_count')->where('p_id', $p_id)->get('semester_results')->row_array();
 
@@ -5135,12 +5142,14 @@ class D_O extends CI_Controller
             } else {
                 $action = 'Insert';
             }
-            
-            $this->save_manual_result_file ('Result', $p_id, $term);
 
-            if($this->session->userdata('unit_id') == '1') {
+            if ($_FILES['file']['name'][0] != NULL) {
+                $this->save_manual_result_file('Result', $p_id, $term);
+            }
+
+            if ($this->session->userdata('unit_id') == '1') {
                 $phase = 'Phase-I';
-            } else if($this->session->userdata('unit_id') == '2') {
+            } else if ($this->session->userdata('unit_id') == '2') {
                 $phase = 'Phase-IV';
             } else if (($this->session->userdata('unit_id') == 3) || ($this->session->userdata('unit_id') == 17)) {
                 $phase = 'Phase-III';
