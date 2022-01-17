@@ -1,21 +1,12 @@
-<?php $this->load->view('cao/common/header'); ?>
-<?php !isset($olq_t1['mid_marks']) ? $olq_t1['mid_marks'] = 0 : $olq_t1['mid_marks']; ?>
-<?php !isset($olq_t1['terminal_marks']) ? $olq_t1['terminal_marks'] = 0 : $olq_t1['terminal_marks']; ?>
-<?php !isset($olq_t2['mid_marks']) ? $olq_t2['mid_marks'] = 0 : $olq_t2['mid_marks']; ?>
-<?php !isset($olq_t2['terminal_marks']) ? $olq_t2['terminal_marks'] = 0 : $olq_t2['terminal_marks']; ?>
-<?php !isset($olq_t3['mid_marks']) ? $olq_t3['mid_marks'] = 0 : $olq_t3['mid_marks']; ?>
-<?php !isset($olq_t3['terminal_marks']) ? $olq_t3['terminal_marks'] = 0 : $olq_t3['terminal_marks']; ?>
-<?php !isset($olq_t4['mid_marks']) ? $olq_t4['mid_marks'] = 0 : $olq_t4['mid_marks']; ?>
-<?php !isset($olq_t4['terminal_marks']) ? $olq_t4['terminal_marks'] = 0 : $olq_t4['terminal_marks']; ?>
-<?php !isset($olq_t5['mid_marks']) ? $olq_t5['mid_marks'] = 0 : $olq_t5['mid_marks']; ?>
-<?php !isset($olq_t5['terminal_marks']) ? $olq_t5['terminal_marks'] = 0 : $olq_t5['terminal_marks']; ?>
-<?php !isset($olq_t6['mid_marks']) ? $olq_t6['mid_marks'] = 0 : $olq_t6['mid_marks']; ?>
-<?php !isset($olq_t6['terminal_marks']) ? $olq_t6['terminal_marks'] = 0 : $olq_t6['terminal_marks']; ?>
-<?php !isset($olq_t7['mid_marks']) ? $olq_t7['mid_marks'] = 0 : $olq_t7['mid_marks']; ?>
-<?php !isset($olq_t7['terminal_marks']) ? $olq_t7['terminal_marks'] = 0 : $olq_t7['terminal_marks']; ?>
-<?php !isset($olq_t8['mid_marks']) ? $olq_t8['mid_marks'] = 0 : $olq_t8['mid_marks']; ?>
-<?php !isset($olq_t8['terminal_marks']) ? $olq_t8['terminal_marks'] = 0 : $olq_t8['terminal_marks']; ?>
-
+<?php $this->load->view('joto/common/header'); ?>
+<?php !isset($gpa['gpa_t1']) ? $gpa['gpa_t1'] = 0 : $gpa['gpa_t1']; ?>
+<?php !isset($gpa['gpa_t2']) ? $gpa['gpa_t2'] = 0 : $gpa['gpa_t2']; ?>
+<?php !isset($gpa['gpa_t3']) ? $gpa['gpa_t3'] = 0 : $gpa['gpa_t3']; ?>
+<?php !isset($gpa['gpa_t4']) ? $gpa['gpa_t4'] = 0 : $gpa['gpa_t4']; ?>
+<?php !isset($gpa['gpa_t5']) ? $gpa['gpa_t5'] = 0 : $gpa['gpa_t5']; ?>
+<?php !isset($gpa['gpa_t6']) ? $gpa['gpa_t6'] = 0 : $gpa['gpa_t6']; ?>
+<?php !isset($gpa['gpa_t7']) ? $gpa['gpa_t7'] = 0 : $gpa['gpa_t7']; ?>
+<?php !isset($gpa['gpa_t8']) ? $gpa['gpa_t8'] = 0 : $gpa['gpa_t8']; ?>
 
 
 <style>
@@ -43,7 +34,7 @@
             <img src='<?= base_url() ?>assets/img/navy_logo-new.png' style="height: 130px; width:100px;">
         </div>
         <div class="col-lg-11">
-            <h1 style="text-align:center; padding:40px"><strong>OLQs GRAPH</strong></h1>
+            <h1 style="text-align:center; padding:40px"><strong>ACADEMIC GRAPH</strong></h1>
         </div>
 
         <div class="row" style="height:20px">
@@ -101,7 +92,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>CAO/save_cadet_result/Result">
+                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>JOTO/save_cadet_result/Result">
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Officer Name:</h6>
@@ -137,8 +128,6 @@
 
                             </div>
 
-
-
                         </form>
                     </div>
                 </div>
@@ -166,14 +155,14 @@
     <?php
 
     $dataPoints1 = array(
-        array("label" => "Term-I", "y" => (($olq_t1['mid_marks'] + $olq_t1['terminal_marks'])/2)),
-        array("label" => "Term-II", "y" => (($olq_t2['mid_marks'] + $olq_t2['terminal_marks'])/2)),
-        array("label" => "Term-III", "y" => (($olq_t3['mid_marks'] + $olq_t3['terminal_marks'])/2)),
-        array("label" => "Term-IV", "y" => (($olq_t4['mid_marks'] + $olq_t4['terminal_marks'])/2)),
-        array("label" => "Term-V", "y" => (($olq_t5['mid_marks'] + $olq_t5['terminal_marks'])/2)),
-        array("label" => "Term-VI", "y" => (($olq_t6['mid_marks'] + $olq_t6['terminal_marks'])/2)),
-        array("label" => "Term-VII", "y" => (($olq_t7['mid_marks'] + $olq_t7['terminal_marks'])/2)),
-        array("label" => "Term-VIII", "y" => (($olq_t8['mid_marks'] + $olq_t8['terminal_marks'])/2)),
+        array("label" => "Term-I", "y" => ($gpa['gpa_t1'])),
+        array("label" => "Term-II", "y" => ($gpa['gpa_t2'])),
+        array("label" => "Term-III", "y" => ($gpa['gpa_t3'])),
+        array("label" => "Term-IV", "y" => ($gpa['gpa_t4'])),
+        array("label" => "Term-V", "y" => ($gpa['gpa_t5'])),
+        array("label" => "Term-VI", "y" => ($gpa['gpa_t6'])),
+        array("label" => "Term-VII", "y" => ($gpa['gpa_t7'])),
+        array("label" => "Term-VIII", "y" => ($gpa['gpa_t8'])),
     );
     ?>
 
@@ -205,8 +194,8 @@
                 text: "GPA Termwise"
             }],
             axisY: {
-                title: "OLQs Percentage (Mid + Final)",
-                maximum: 100,
+                title: "GPA",
+                maximum: 4,
                 color:'blue'
             },
             data: [{
@@ -265,7 +254,7 @@
             $('#show_error_new').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>CAO/search_cadet',
+                url: '<?= base_url(); ?>JOTO/search_cadet',
                 method: 'POST',
                 data: {
                     'oc_no': oc_no
@@ -295,9 +284,8 @@
 
 
             if ($('#officer_name').val() != '') {
-                // alert($('#id').val());
                 $.ajax({
-                    url: '<?= base_url(); ?>CAO/get_olq_graph',
+                    url: '<?= base_url(); ?>JOTO/get_academic_graph',
                     method: 'POST',
                     data: {
                         'p_id': $('#id').val()

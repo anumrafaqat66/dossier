@@ -11255,7 +11255,9 @@ a:focus {
 }
 
 .bg-login-image {
-    background: url(../img/Pakistan-Navy.jpg);
+    /* background: url(../img/Pakistan-Navy.jpg); */
+    /* background: url(../img/navy_logo2.png); */
+    background: url(../img/logo-demo.jpg);
     background-position: center;
     background-size: cover;
 }

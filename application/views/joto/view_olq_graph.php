@@ -1,4 +1,4 @@
-<?php $this->load->view('cao/common/header'); ?>
+<?php $this->load->view('joto/common/header'); ?>
 <?php !isset($olq_t1['mid_marks']) ? $olq_t1['mid_marks'] = 0 : $olq_t1['mid_marks']; ?>
 <?php !isset($olq_t1['terminal_marks']) ? $olq_t1['terminal_marks'] = 0 : $olq_t1['terminal_marks']; ?>
 <?php !isset($olq_t2['mid_marks']) ? $olq_t2['mid_marks'] = 0 : $olq_t2['mid_marks']; ?>
@@ -101,7 +101,7 @@
                     </div>
 
                     <div class="card-body bg-custom3">
-                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>CAO/save_cadet_result/Result">
+                        <form class="user" role="form" method="post" enctype="multipart/form-data" id="save_form" action="<?= base_url(); ?>JOTO/save_cadet_result/Result">
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <h6>&nbsp;Officer Name:</h6>
@@ -265,7 +265,7 @@
             $('#show_error_new').hide();
 
             $.ajax({
-                url: '<?= base_url(); ?>CAO/search_cadet',
+                url: '<?= base_url(); ?>JOTO/search_cadet',
                 method: 'POST',
                 data: {
                     'oc_no': oc_no
@@ -295,9 +295,8 @@
 
 
             if ($('#officer_name').val() != '') {
-                // alert($('#id').val());
                 $.ajax({
-                    url: '<?= base_url(); ?>CAO/get_olq_graph',
+                    url: '<?= base_url(); ?>JOTO/get_olq_graph',
                     method: 'POST',
                     data: {
                         'p_id': $('#id').val()

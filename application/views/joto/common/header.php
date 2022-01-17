@@ -22,9 +22,9 @@
 
 <style>
     .img-cheif {
-        background: url('<?= base_url() ?>assets/img/img5.jpg');
-        /* background-position: center; */
-        background-position: top;
+        background: url('<?= base_url() ?>assets/img/logo-demo1.jpg');
+        background-position: center;
+        /* background-position: top; */
         /* background-size: cover; */
         background-repeat: no-repeat;
         max-width: 100%;
@@ -79,11 +79,17 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url(); ?>JOTO/view_dossier" aria-expanded="true">
-                    <i class="fas fa-th-list"></i>
-                    <span> Division Analytics </span>
-                    <!-- <span>Components</span> -->
-                </a>
+                <?php if (($this->session->userdata('unit_id') == '2') || ($this->session->userdata('unit_id') == '3') || ($this->session->userdata('unit_id') == '17')) { ?>
+                    <a class="nav-link" href="<?php echo base_url(); ?>JOTO/view_academy_analytics" aria-expanded="true">
+                        <i class="fas fa-th-list"></i>
+                        <span> Division Analytics </span>
+                    </a>
+                <?php } else { ?>
+                    <a class="nav-link" href="<?php echo base_url(); ?>JOTO/view_dossier" aria-expanded="true">
+                        <i class="fas fa-th-list"></i>
+                        <span> Division Analytics </span>
+                    </a>
+                <?php } ?>
 
             </li>
 
@@ -153,7 +159,7 @@
                         <?php if ($this->session->userdata('unit_id') != '2') { ?>
                             <a class="collapse-item" href="<?= base_url(); ?>JOTO/view_semester_result"><?php if ($this->session->userdata('unit_id') != '1') { ?>Results (Terms VI - VIII)<?php } else { ?> Results (Terms I - III) <?php } ?></a>
                         <?php } else { ?>
-                            <a class="collapse-item" href="<?= base_url(); ?>JOTO/view_result"><?php if ($this->session->userdata('unit_id') != '1') { ?>Results (Terms VI - VIII)<?php } else { ?> Results (Terms I - III) <?php } ?></a>
+                            <a class="collapse-item" href="<?= base_url(); ?>JOTO/view_semester_result"><?php if ($this->session->userdata('unit_id') != '1') { ?>Results (Terms VI - VIII)<?php } else { ?> Results (Terms I - III) <?php } ?></a>
                         <?php } ?>
                         <?php if ($this->session->userdata('unit_id') == '1') { ?>
                             <a class="collapse-item" href="<?= base_url(); ?>JOTO/view_training_report">Sea Training Report Term II</a>

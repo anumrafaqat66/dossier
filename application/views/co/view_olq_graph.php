@@ -285,7 +285,7 @@
                     } else {
                         $('#no_data').show();
                         $('#search_cadet').hide();
-
+                        $('#overall_graph').hide();
                     }
 
                 },
@@ -293,7 +293,7 @@
             });
 
 
-            if ($('#officer_name').val() != null) {
+            if ($('#officer_name').val() != '') {
                 // alert($('#id').val());
                 $.ajax({
                     url: '<?= base_url(); ?>CO/get_olq_graph',

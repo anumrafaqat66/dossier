@@ -22,9 +22,9 @@
 
 <style>
     .img-cheif {
-        background: url('<?= base_url() ?>assets/img/img5.jpg');
-        /* background-position: center; */
-        background-position: top;
+        background: url('<?= base_url() ?>assets/img/logo-demo1.jpg');
+        background-position: center;
+        /* background-position: top; */
         /* background-size: cover; */
         background-repeat: no-repeat;
         max-width: 100%;

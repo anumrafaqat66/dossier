@@ -345,14 +345,14 @@
 
             if ($('#name').val() != null) {
                 $.ajax({
-                    url: '<?= base_url(); ?>JOTO/get_semester_results_values',
+                    url: '<?= base_url(); ?>JOTO/show_semester_results_values',
                     method: 'POST',
                     data: {
                         'p_id': $('#id').val()
                     },
                     success: function(data) {
                         var result = jQuery.parseJSON(data);
-
+                        alert(result);
                         if (result != undefined) {
 
                             if (result['gpa_t1'] == 0) {
